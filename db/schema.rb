@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160421032607) do
+ActiveRecord::Schema.define(version: 20160425075501) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,8 +66,10 @@ ActiveRecord::Schema.define(version: 20160421032607) do
   end
 
   create_table "carts", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "voucher_code"
+    t.string   "coupon_code"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -117,6 +119,18 @@ ActiveRecord::Schema.define(version: 20160421032607) do
     t.text     "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "coupons", force: :cascade do |t|
+    t.string   "name"
+    t.string   "code"
+    t.datetime "from_date"
+    t.datetime "to_date"
+    t.text     "description"
+    t.integer  "quantity"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.decimal  "price"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -176,6 +190,7 @@ ActiveRecord::Schema.define(version: 20160421032607) do
     t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean  "status"
   end
 
   create_table "order_deliveries", force: :cascade do |t|
@@ -213,6 +228,10 @@ ActiveRecord::Schema.define(version: 20160421032607) do
     t.integer  "user_id"
     t.string   "status",             default: "Pending"
     t.boolean  "different_delivery", default: false
+    t.string   "voucher_code"
+    t.decimal  "voucher_price"
+    t.string   "coupon_code"
+    t.decimal  "coupon_price"
   end
 
   create_table "parent_article_categories", force: :cascade do |t|
@@ -270,6 +289,18 @@ ActiveRecord::Schema.define(version: 20160421032607) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "slideshows", force: :cascade do |t|
+    t.string   "image_url"
+    t.string   "title_1"
+    t.string   "title_2"
+    t.string   "name_button"
+    t.string   "link"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "color_1"
+    t.string   "color_2"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -298,6 +329,18 @@ ActiveRecord::Schema.define(version: 20160421032607) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "vouchers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "code"
+    t.datetime "from_date"
+    t.datetime "to_date"
+    t.text     "description"
+    t.integer  "quantity"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.decimal  "price"
+  end
 
   create_table "wish_lists", force: :cascade do |t|
     t.integer  "product_id"
