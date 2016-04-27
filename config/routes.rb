@@ -76,6 +76,7 @@ Rails.application.routes.draw do
     resources :carts do
       collection do
         get "use_voucher"
+        get "shopping_cart_use_voucher"
         get "use_coupon"
       end
     end
@@ -140,6 +141,7 @@ Rails.application.routes.draw do
       resources :contacts
       resources :wish_lists
       resources :comments
+      resources :comment_articles
       resources :payment_methods
       resources :delivery_methods
       resources :slideshows
