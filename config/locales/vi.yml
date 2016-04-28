@@ -110,7 +110,7 @@ vi:
   orders: "Đơn đặt hàng"
   
   #-------------------------------------
-  comment: "Bình luận"
+  comment_question: "Bình luận/Câu hỏi"
   comments: "Bình luận sản phẩm"
   comment_articles: "Bình luận bài viết"
   customer_name: "Tên khách hàng"
@@ -118,6 +118,10 @@ vi:
   star: "sao"
   rating: "Đánh giá"
   article_title: "Tiêu đề bài viết"
+  
+  #-------------------------------------
+  question: "Câu hỏi"
+  questions: "Danh sách câu hỏi"
   
   #-------------------------------------
   delivery_method: "Hình thức giao hàng"
@@ -135,6 +139,11 @@ vi:
   #-------------------------------------
   customer: "Khách hàng"
   customers: "Danh sách khách hàng"
+  email: "Email"
+  phone: "Điện thoại"
+  company: "Công ty"
+  info: "Thông tin"
+  last_bought: "Lần mua cuối"
   
   #-------------------------------------
   user: "Người dùng"
