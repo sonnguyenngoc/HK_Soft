@@ -60,7 +60,7 @@ class Order < ActiveRecord::Base
     
     #Product filter
     if params[:product_id].present?
-        records = records.joins(:order_details).where(order_details: {id: params[:product_id]})
+        records = records.joins(:order_details).where(order_details: {product_id: params[:product_id]})
     end
     
     #From Date filter
