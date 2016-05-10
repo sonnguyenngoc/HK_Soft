@@ -2,7 +2,7 @@
 
     <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
 
-    <div class="wide_layout">
+    <div class="wide_layout page_with_main_nav">
 
         <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
 
@@ -16,15 +16,7 @@
 
             <div class="container">
 
-                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
-
-                <ul class="breadcrumbs">
-
-                    <li><%= link_to "Trang chủ", root_path %></li>
-                    
-                    <li><%= @title_head %></li>
-
-                </ul>
+                
 
                 <div class="row">
 
@@ -39,6 +31,18 @@
                     </aside>
 
                     <main class="col-md-9 col-sm-8">
+                        
+                        <%= render 'module/main_nav_right' %>
+                        
+                        <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+                        <ul class="breadcrumbs">
+        
+                            <li><%= link_to "Trang chủ", root_path %></li>
+                            
+                            <li><%= @title_head %></li>
+        
+                        </ul>
                         
                         <h1>Kết quả tìm kiếm - <%= params[:keyword] %></h1>                       
 
@@ -117,7 +121,7 @@
 
                             </header>
 
-                            <div class="table_layout" id="products_container">
+                            <div class="table_layout table_layout_fix" id="products_container">
 
                                 <div class="table_row">
                                     
@@ -161,15 +165,15 @@
     
                                                         <% if current_user.present? %>
 											
-                                                            <%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container" %>
+                                                            <%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "color_red button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container" %>
                                                         
                                                         <% else %>
                                                             
-                                                            <%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container no_singed_button" %>
+                                                            <%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "color_red button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container no_singed_button" %>
                                                         
                                                         <% end %>
                                                         
-                                                        <%= link_to '<span class="tooltip left">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: product), class: "button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container" %>
+                                                        <%= link_to '<span class="tooltip left">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: product), class: "color_orange button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container" %>
     
                                                     </div><!--/ .actions_wrap-->
                                                     
@@ -281,25 +285,25 @@
 
                             </div><!--/ .table_layout -->
 
-                            <footer class="bottom_box on_the_sides">
-
-                                <div class="left_side">
-
-                                    <p><%= page_entries_info @products %> sản phẩm.</p>
-
-                                </div>
-
-                                <div class="right_side">
-
-                                    <%= will_paginate @products, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
-
-                                </div>
-
-                            </footer>
-
                         </div>
 
                         <!-- - - - - - - - - - - - - - End of products - - - - - - - - - - - - - - - - -->
+                        
+                        <footer class="bottom_box box_fix">
+
+                            <div class="left_side">
+
+                                <p><%= page_entries_info @products %> sản phẩm.</p>
+
+                            </div>
+
+                            <div class="right_side">
+
+                                <%= will_paginate @products, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
+
+                            </div>
+
+                        </footer>
 
                     </main>
 
@@ -340,9 +344,7 @@
     <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
     <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
     <%= javascript_include_tag '/frontend/js/retina.min.js' %>
-    <%= javascript_include_tag '/frontend/js/bootstrap.min.js' %>
     <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
-    <%= stylesheet_link_tag '/frontend/css/custom.css' %>
     <%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>
 
     <!-- Theme files

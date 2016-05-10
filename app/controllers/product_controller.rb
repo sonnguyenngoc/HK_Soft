@@ -12,6 +12,7 @@ class ProductController < ApplicationController
         @product = Product.find(params[:product_id])
         @comment = Comment.new
         @question = Question.new
+        #@line_items = LineItem.all
     end
     
     def quick_view
@@ -49,5 +50,33 @@ class ProductController < ApplicationController
     def testimonialform
         @title_head = "Gửi ý kiến khách hàng"
         @testimonial = Testimonial.new
+    end
+    
+    def view_all_product_by_status
+        if params[:st] == "deal"
+            @title_head = "Hàng khuyến mãi"
+        elsif params[:st] == "prominent"
+            @title_head = "Sản phẩm nổi bật"
+        elsif params[:st] == "bestseller"
+            @title_head = "Sản phẩm bán chạy"
+        elsif params[:st] == "new"
+            @title_head = "Sản phẩm mới"
+        elsif params[:st] == "imported"
+            @title_head = "Hàng nhập khẩu"
+        end
+        @view_all_products = Product.get_all_product_by_status(params[:st]).paginate(:page => params[:page], :per_page => 15)
+    end
+    
+    def add_cart_buy_now
+    quantity = params[:quantity]
+    product = Product.find(params[:product_id])
+    @line_item = @cart.add_product(product.id, quantity)
+    @line_item.save
+
+    respond_to do |format|
+      if @line_item.save
+        format.html { redirect_to controller: "checkout", action: "checkout", product_id: product.id }
+      end
+    end
     end
 end

@@ -1,7 +1,11 @@
 <section class="section_offset animated transparent" data-animation="fadeInDown"> 
-
-    <h3><%= title %></h3>
-
+	
+	<% if status == "deal" %>
+		<h3 class="widget_title offset_title"><%= title %></h3>
+	<% else %>
+		<h3><%= title %></h3>
+	<% end %>
+		
     <div class="tabs type_2 products">
 
         <!-- - - - - - - - - - - - - - Navigation of tabs - - - - - - - - - - - - - - - - -->
@@ -82,21 +86,25 @@
         
                                 <!-- - - - - - - - - - - - - - End thumbnail - - - - - - - - - - - - - - - - -->
         
-                                <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
-        
-                                <!--<div class="label_offer percentage">
-        
-                                    <!--<div>30%</div>OFF
-        
-                                </div>-->
-        
-                                <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
-        
-                                <!-- - - - - - - - - - - - - - Countdown - - - - - - - - - - - - - - - - -->
-        
-                                <!--<div class="countdown" data-year="2016" data-month="11" data-day="6" data-hours="15" data-minutes="0" data-seconds="0"></div>-->
-        
-                                <!-- - - - - - - - - - - - - - End countdown - - - - - - - - - - - - - - - - -->
+								<% if status == "deal" %>
+									
+									<!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+									
+									<div class="label_offer percentage">
+			
+										<div>30%</div>OFF
+			
+									</div>
+			
+									<!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
+			
+									<!-- - - - - - - - - - - - - - Countdown - - - - - - - - - - - - - - - - -->
+			
+									<div class="countdown" data-year="2016" data-month="11" data-day="6" data-hours="15" data-minutes="0" data-seconds="0"></div>
+			
+									<!-- - - - - - - - - - - - - - End countdown - - - - - - - - - - - - - - - - -->
+									
+								<% end %>
         
                                 <!-- - - - - - - - - - - - - - Product description - - - - - - - - - - - - - - - - -->
         
@@ -149,6 +157,27 @@
         </div>
 
         <!-- - - - - - - - - - - - - - End of tabs containers - - - - - - - - - - - - - - - - -->
+		
+		<!-- - - - - - - - - - - - - - View all - - - - - - - - - - - - - - - - -->
+		
+		<footer class="bottom_box">
+			
+			<% if status == "deal" %>
+				<%= link_to 'Xem tất cả', { controller: "product", action: "view_all_product_by_status", st: status, url: "hang-khuyen-mai"}, class: "button_grey middle_btn" %>
+			<% elsif status == "prominent" %>
+				<%= link_to 'Xem tất cả', { controller: "product", action: "view_all_product_by_status", st: status, url: "san-pham-noi-bat"}, class: "button_grey middle_btn" %>
+			<% elsif status == "bestseller" %>
+				<%= link_to 'Xem tất cả', { controller: "product", action: "view_all_product_by_status", st: status, url: "san-pham-ban-chay"}, class: "button_grey middle_btn" %>
+			<% elsif status == "new" %>
+				<%= link_to 'Xem tất cả', { controller: "product", action: "view_all_product_by_status", st: status, url: "san-pham-moi"}, class: "button_grey middle_btn" %>
+			<% elsif status == "imported" %>
+				<%= link_to 'Xem tất cả', { controller: "product", action: "view_all_product_by_status", st: status, url: "hang-nhap-khau"}, class: "button_grey middle_btn" %>
+			<% end %>
+			
+			
+		</footer>
+		
+		<!-- - - - - - - - - - - - - - End of view all - - - - - - - - - - - - - - - - -->
 
     </div>
 

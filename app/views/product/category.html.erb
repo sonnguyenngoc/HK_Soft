@@ -2,7 +2,7 @@
 
     <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
 
-    <div class="wide_layout">
+    <div class="wide_layout page_with_main_nav">
 
         <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
 
@@ -16,14 +16,9 @@
 
             <div class="container">
 
-                <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+                
 
-                <ul class="breadcrumbs">
-
-                    <li><a href="<%= root_path %>">Trang chủ</a></li>
-                    <li><%= @category.name %></li>
-
-                </ul>
+                
 
                 <div class="row">
 
@@ -79,7 +74,18 @@
 
                     <main class="col-md-9 col-sm-8">
                         
+                        <%= render 'module/main_nav_right' %>
+                        
                         <!--render 'todays_deals'-->
+                        
+                        <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+                        
+                        <ul class="breadcrumbs">
+
+                            <li><a href="<%= root_path %>">Trang chủ</a></li>
+                            <li><%= @category.name %></li>
+        
+                        </ul>
 
                         <section class="section_offset">
 
@@ -102,20 +108,6 @@
                                         <!-- - - - - - - - - - - - - - Sort by - - - - - - - - - - - - - - - - -->
     
                                         <div class="v_centered">
-    
-                                            <span>Hiển thị:</span>
-    
-                                            <div class="">
-    
-                                                <select name="number">
-    
-                                                    <option value="15">15</option>
-                                                    <option value="12">12</option>
-                                                    <option value="9">9</option>
-    
-                                                </select>
-    
-                                            </div>
                                             
                                             <span>Sắp xếp:</span>
     
@@ -132,8 +124,6 @@
                                                 </select>
     
                                             </div>
-                                            
-                                            <button type="submit" class="button_blue middle_btn" style="margin-top: 10px;">Sắp xếp</button>
     
                                         </div>
     
@@ -144,6 +134,24 @@
                                 </div>
 
                                 <div class="right_side">
+                                    
+                                    <div class="v_centered mrg-show-category">
+                                    
+                                        <span>Hiển thị:</span>
+        
+                                        <div class="">
+    
+                                            <select name="number">
+    
+                                                <option value="15">15</option>
+                                                <option value="12">12</option>
+                                                <option value="9">9</option>
+    
+                                            </select>
+    
+                                        </div>
+                                        
+                                    </div>
 
                                     <!-- - - - - - - - - - - - - - Product layout type - - - - - - - - - - - - - - - - -->
 
@@ -199,7 +207,7 @@
     
                                                     <div class="actions_wrap">
     
-                                                        <div class="centered_buttons">
+                                                        <div class="centered_buttons centered_buttons_category">
                                                             
                                                             <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="<%= quick_view_path(product_id: product.id) %>">Xem nhanh</a>
                                                             
@@ -209,15 +217,15 @@
                                                         
                                                         <% if current_user.present? %>
 											
-                                                            <%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container add_to_wishlist_button" %>
+                                                            <%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "color_red button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container add_to_wishlist_button" %>
                                                         
                                                         <% else %>
                                                             
-                                                            <%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container no_singed_button" %>
+                                                            <%= link_to '<span class="tooltip right">Thêm vào mục yêu thích</span>'.html_safe, { controller: "account", action: "login" }, class: "color_red button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container no_singed_button" %>
                                                         
                                                         <% end %>
                                                         
-                                                        <%= link_to '<span class="tooltip left">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: product), class: "button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container add_to_compare_button" %>
+                                                        <%= link_to '<span class="tooltip left">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: product), class: "color_orange button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container add_to_compare_button" %>
     
                                                     </div><!--/ .actions_wrap-->
 
@@ -372,9 +380,7 @@
     <%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
     <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
     <%= javascript_include_tag '/frontend/js/retina.min.js' %>
-    <%= javascript_include_tag '/frontend/js/bootstrap.min.js' %>
     <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
-    <%= stylesheet_link_tag '/frontend/css/custom.css' %>
     <%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>
 
     <!-- Theme files

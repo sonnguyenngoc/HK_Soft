@@ -29,7 +29,6 @@ class Article < ActiveRecord::Base
     article_categories.each do |c|
       cat_ids += c.get_all_related_ids
     end
-    records = records.joins(:code_status).where(code_statuses: { title: 'news' })
     records = Article.joins(:article_categories).where(article_categories: {id: cat_ids}).uniq
     
     return records
@@ -43,16 +42,42 @@ class Article < ActiveRecord::Base
   
   def self.sort_orders
     [
-      ["DESC","desc"],
       ["ASC","asc"],
+      ["DESC","desc"],
     ]
   end
   
   #the highest product quality
-  
   def self.get_highest_product_quality
     records = self.all
     records = records.joins(:code_status).where(code_statuses: { title: 'the_highest_product_quality' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  #the highest product quality
+  def self.get_privacy_policy
+    records = self.all
+    records = records.joins(:code_status).where(code_statuses: { title: 'privacy_policy' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  #the highest product quality
+  def self.get_delivery_information
+    records = self.all
+    records = records.joins(:code_status).where(code_statuses: { title: 'delivery_information' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  #the highest product quality
+  def self.get_terms_conditions
+    records = self.all
+    records = records.joins(:code_status).where(code_statuses: { title: 'terms_conditions' })
     records.order("created_at DESC").first
     
     return records
@@ -98,6 +123,15 @@ class Article < ActiveRecord::Base
   def self.get_favorable_gift
     records = self.all
     records = records.joins(:code_status).where(code_statuses: { title: 'favorable_gift' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  #get footer about us
+  def self.get_footer_about_us
+    records = self.all
+    records = records.joins(:code_status).where(code_statuses: { title: 'about_us' })
     records.order("created_at DESC").first
     
     return records
