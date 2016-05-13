@@ -43,9 +43,9 @@
                             <li><%= @title_head %></li>
         
                         </ul>
-                        
-                        <h1>Kết quả tìm kiếm <% if params[:keyword].present? %>- <%= params[:keyword] %><% end %></h1>                       
 
+                        <h1>Kết quả tìm kiếm <% if params[:keyword].present? %>- <%= params[:keyword] %><% end %></h1>
+                        
                         <!-- - - - - - - - - - - - - - Products - - - - - - - - - - - - - - - - -->
 
                         <div class="section_offset">
@@ -55,11 +55,11 @@
                                 <div class="left_side clearfix v_centered">
                                     
                                     <%= form_tag({controller: "product", action: "search"}, method: "get") do %>
-                                  
+                                    
                                         <!-- - - - - - - - - - - - - - Sort by - - - - - - - - - - - - - - - - -->
     
                                         <div class="v_centered">
-                                            
+
                                             <span>Sắp xếp:</span>
     
                                             <div class="sort_select">
@@ -86,23 +86,33 @@
 
                                 <div class="right_side">
                                     
-                                    <div class="v_centered mrg-show-category">
+                                    <%= form_tag({controller: "product", action: "search"}, method: "get") do %>
                                     
-                                        <span>Hiển thị:</span>
-        
-                                        <div class="">
+                                        <!-- - - - - - - - - - - - - - Number of products shown - - - - - - - - - - - - - - - - -->
     
-                                            <select name="number">
+                                        <div class="v_centered mrg-show-category">
     
-                                                <option value="15">15</option>
-                                                <option value="12">12</option>
-                                                <option value="9">9</option>
+                                            <span>Hiển thị:</span>
     
-                                            </select>
+                                            <div class="show_select">
+    
+                                                <select name="number">
+                                                    
+                                                    <option <%= "selected" if params[:number] == "15" %> value="15">15</option>
+                                                    <option <%= "selected" if params[:number] == "12" %> value="12">12</option>
+                                                    <option <%= "selected" if params[:number] == "9" %> value="9">9</option>
+                                                    <option <%= "selected" if params[:number] == "6" %> value="6">6</option>
+                                                    <option <%= "selected" if params[:number] == "3" %> value="3">3</option>
+    
+                                                </select>
+    
+                                            </div>
     
                                         </div>
-                                        
-                                    </div>
+    
+                                        <!-- - - - - - - - - - - - - - End of number of products shown - - - - - - - - - - - - - - - - -->
+
+                                    <% end %>
 
                                     <!-- - - - - - - - - - - - - - Product layout type - - - - - - - - - - - - - - - - -->
 
@@ -353,7 +363,7 @@
                                                     <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
         
                                                     <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-                                                    
+
                                                     <div class="description">
                                                         
                                                         <div class="nowrap-ellipsis">
@@ -397,26 +407,29 @@
                                                         <div class="nowrap-ellipsis">
                                                             
                                                             <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, class: "product_title", title: product.name %>
+                                                            <%= link_to product.manufacturer.name, { controller: "manufacturer", action: "list" }, class: "product_category" %>
                                                         
                                                         </div>
         
-                                                        <p class="product_price bold"><%= format_number(product.price) %> đ</p>
-        
                                                         <div class="v_centered product_reviews">
         
-                                                            <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-                                                        
-                                                            <ul class="rating">
-        
-                                                                <li class="active"></li>
-                                                                <li class="active"></li>
-                                                                <li class="active"></li>
-                                                                <li class="active"></li>
-                                                                <li></li>
-        
-                                                            </ul>
+                                                            <% if product.count_stars.length > 0 %>
+
+                                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
                                                                 
-                                                            <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+                                                                <ul class="rating">
+                                                                    
+                                                                    <% (1..product.average_stars).each do |star| %>
+                    
+                                                                        <li class="active"></li>
+                                                                    
+                                                                    <% end %>
+                    
+                                                                </ul>
+                                                                    
+                                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+                
+                                                            <% end %>
         
                                                         </div>
         
@@ -425,6 +438,34 @@
                                                     </div>
         
                                                     <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
+                                                    
+                                                    <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+    
+                                                    <div class="actions">
+        
+                                                        <p class="product_price bold"><%= format_number(product.price) %> đ</p>
+        
+                                                        <ul class="buttons_col">
+                                                            
+                                                            <li><%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart btn_add_to_cart_list_view" %></li>
+                                                            
+                                                            <% if current_user.present? %>
+                                                                
+                                                                <li><%= link_to '<i class="icon-heart-5 icon_red"></i>Thêm vào mục yêu thích'.html_safe, add_item_wish_lists_path(product_id: product, user_id: current_user.id), class: "icon_link icon_link_fix" %></li>
+                                                            
+                                                            <% else %>
+                                                                
+                                                                <li><%= link_to '<i class="icon-heart-5 icon_red"></i>Thêm vào mục yêu thích'.html_safe, { controller: "account", action: "login" }, class: "icon_link icon_link_fix" %></li>
+                                                                
+                                                            <% end %>
+                                                            
+                                                            <li><%= link_to '<i class="icon-resize-small icon_orange"></i>Thêm vào mục so sánh'.html_safe, add_item_line_item_compares_path(product_id: product), class: "icon_link icon_link_fix" %></li>
+        
+                                                        </ul>
+        
+                                                    </div>
+        
+                                                    <!-- - - - - - - - - - - - - - End product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
         
                                                 </div><!--/ .product_item-->
         
@@ -437,28 +478,30 @@
                                         <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
                                         
                                     <% end %>
+                                    
+                                </div>
 
                             </div><!--/ .table_layout -->
+                            
+                            <footer class="bottom_box on_the_sides border-top">
+
+                                <div class="left_side">
+    
+                                    <p><%= page_entries_info @products %> sản phẩm.</p>
+    
+                                </div>
+    
+                                <div class="right_side">
+    
+                                    <%= will_paginate @products, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
+    
+                                </div>
+    
+                            </footer>
 
                         </div>
 
                         <!-- - - - - - - - - - - - - - End of products - - - - - - - - - - - - - - - - -->
-                        
-                        <footer class="bottom_box box_fix">
-
-                            <div class="left_side">
-
-                                <p><%= page_entries_info @products %> sản phẩm.</p>
-
-                            </div>
-
-                            <div class="right_side">
-
-                                <%= will_paginate @products, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
-
-                            </div>
-
-                        </footer>
 
                     </main>
 
