@@ -102,7 +102,9 @@
             <li>
                 <a href="#"><i class="icon-users"></i> <span><%= t(:user) %></span></a>
                 <ul>
-                    <li><%= link_to t(:users), "" %></li>
+                    <li class="<%= "active" if ["admin/users"].include?(params[:controller]) %>">
+                        <%= link_to t(:users), admin_users_path %>
+                    </li>
                 </ul>
             </li>
             <li>
@@ -116,7 +118,9 @@
             <li>
                 <a href="#"><i class="glyphicon glyphicon-cog"></i> <span><%= t(:settings) %></span></a>
                 <ul>
-                    <li></li>
+                    <li  class="<%= "active" if ["admin/options"].include?(params[:controller]) %>">
+                        <%= link_to t(:options), admin_options_path %>
+                    </li>
                 </ul>
             </li>
         </ul>
