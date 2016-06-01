@@ -47,7 +47,13 @@
     font-size: small;
     margin-bottom: 5px;
 }
-#form_edit_user .error {
+#form_user .error {
+    border-color: red;
+}
+label.error {
+	display: none !important;
+}
+#form_coupon .error {
     border-color: red;
 }
 .category_taggable_list .fancytree-icon::after, .category_taggable_list .c-item {

@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
     
     def short_name
         if !first_name.nil?
-            last_name + " " + first_name.split(" ").first
+            last_name.to_s + " " + first_name.to_s.split(" ").first
         else
             email.gsub(/@(.+)/,'')
         end
@@ -97,9 +97,13 @@ class User < ActiveRecord::Base
     def self.search(params)
         records = self.all
         
+        if params[:area_id].present?
+            records = records.where(area_id: params[:area_id])
+        end
+        
         #Search keyword filter
         if params[:keyword].present?
-            records = records.where("LOWER(concat(users.first_name,' ',users.last_name,' ',users.email,' ',users.phone,' ',users.address_1,' ',users.address_2)) LIKE ?", "%#{params[:keyword].downcase.strip}%")
+            records = records.where("LOWER(CONCAT(users.first_name,' ',users.last_name,' ',users.email,' ',users.phone,' ',users.address_1,' ',users.address_2)) LIKE ?", "%#{params[:keyword].downcase.strip}%")
         end
         
         # for sorting

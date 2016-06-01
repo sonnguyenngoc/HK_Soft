@@ -1,10 +1,8 @@
 class Product < ActiveRecord::Base
-  validates :name, :price, :quantity, :unit, :categories, :short_description, presence: true
-  before_destroy :ensure_not_referenced_by_any_line_item
-  before_destroy :ensure_not_referenced_by_any_line_item_compare
+  validates :name, :price, :quantity, :unit, :manufacturer_id, :short_description, presence: true
   
-  has_many :line_items
-  has_many :line_item_comparies
+  has_many :line_items, dependent: :destroy
+  has_many :line_item_comparies, dependent: :destroy
   has_many :categories_products
   has_many :wish_lists
   has_and_belongs_to_many :categories
@@ -18,6 +16,7 @@ class Product < ActiveRecord::Base
   
   def self.get_products_for_manufacturer(params)
     records = self.where(manufacturer_id: params[:manufacturer_id])
+                  .where(is_show: true)
     
     if params[:sort_group] == "name_asc"
       records = records.order("products.name ASC")
@@ -110,6 +109,62 @@ class Product < ActiveRecord::Base
     
     #Search keyword filter
     if params[:keyword].present?
+        records = records.where("LOWER(CONCAT(products.name,' ',products.code)) LIKE ?", "%#{params[:keyword].downcase.strip}%")
+    end
+    
+    # for sorting
+    sort_by = params[:sort_by].present? ? params[:sort_by] : "products.name"
+    sort_order = params[:sort_order].present? ? params[:sort_order] : "asc"
+    records = records.order("#{sort_by} #{sort_order}")
+    
+    return records.where(is_show: true)
+  end
+  
+  #Filter, Sort
+  def self.search_backend(params)
+    records = self.includes(:manufacturer)
+    
+    #sorting search_page (frontend)
+    if params[:sort_group] == "name_asc"
+      records = records.order("products.name ASC")
+    end
+    
+    if params[:sort_group] == "name_desc"
+      records = records.order("products.name DESC")
+    end
+    
+    if params[:sort_group] == "price_asc"
+      records = records.order("products.price ASC")
+    end
+    
+    if params[:sort_group] == "price_desc"
+      records = records.order("products.price DESC")
+    end
+    #end sorting search_page (frontend)
+    
+    # Manufacturer filter
+    if params[:manufacturer_id].present?
+        records = records.where(manufacturer_id: params[:manufacturer_id])
+    end
+    
+    #Category filter
+    if params[:category_id].present?
+      category = Category.find(params[:category_id])
+      records = records.joins(:categories).where(categories: {id: category.get_all_related_ids})
+    end
+    
+    #Area filter
+    if params[:area_id].present?
+        records = records.joins(:areas).where(areas: {id: params[:area_id]})
+    end
+    
+    #Status filter
+    if params[:status].present?
+        records = records.where("products.status LIKE ?", "%#{params[:status]}%")
+    end
+    
+    #Search keyword filter
+    if params[:keyword].present?
         records = records.where("LOWER(products.name) LIKE ?", "%#{params[:keyword].downcase.strip}%")
     end
     
@@ -118,7 +173,7 @@ class Product < ActiveRecord::Base
     sort_order = params[:sort_order].present? ? params[:sort_order] : "asc"
     records = records.order("#{sort_by} #{sort_order}")
     
-    return records   
+    return records
   end
   
   def get_main_image
@@ -150,33 +205,33 @@ class Product < ActiveRecord::Base
   end
   
   def self.get_by_category_status(category, status)
-    records = self.all
+    records = self.where(is_show: true)
     records = records.where("products.status LIKE ?", "%#{status}%")
     records = records.joins(:categories).where(categories: {id: category})
     return records
   end
   
   def self.get_by_bestseller
-    records = self.all
+    records = self.where(is_show: true)
     records = records.where("products.status LIKE ?", "%#{'bestseller'}%")
     records = records.order("updated_at DESC").first(3)
     return records
   end
   
   def self.get_by_deal
-    records = self.all
+    records = self.where(is_show: true)
     records = records.where("products.status LIKE ?", "%#{'deal'}%")
     return records
   end
   
   def self.get_by_new
-    records = self.all
+    records = self.where(is_show: true)
     records = records.where("products.status LIKE ?", "%#{'new'}%")
     return records
   end
   
   def self.get_all_product_by_status(params)
-    records = self.all
+    records = self.where(is_show: true)
     if params[:st].present?
       records = records.where("products.status LIKE ?", "%#{params[:st]}%")
     end
@@ -263,26 +318,5 @@ class Product < ActiveRecord::Base
     end
     return display
   end
-  
-  private
-    # ensure that there are no line items referencing this product
-    def ensure_not_referenced_by_any_line_item
-      if line_items.empty?
-        return true
-      else
-        errors.add(:base, 'Line Items present')
-        return false
-      end
-    end
-    
-    # ensure that there are no line items compare referencing this product
-    def ensure_not_referenced_by_any_line_item_compare
-      if line_item_comparies.empty?
-        return true
-      else
-        errors.add(:base, 'Compare of Line Items present')
-        return false
-      end
-    end
  
 end

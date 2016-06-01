@@ -152,7 +152,7 @@
                                     <td><%= item.customer.name %></td>
                                     <td>
                                         <% item.order_details.each do |detail| %>
-                                            <%= detail.product.name %> - (x<%= detail.quantity %>)
+                                            <%= detail.product_name %> - (x<%= detail.quantity %>)
                                             <br />
                                         <% end %>
                                     </td>

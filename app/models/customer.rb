@@ -4,6 +4,15 @@ class Customer < ActiveRecord::Base
   def name
     first_name + " " + last_name
   end
+  
+  def checkout_total_price
+    price = 0
+    self.order.order_details.each do |item|
+      price += item.price
+    end
+    return price
+  end
+  
   def display_address
     str = []
     str << address if address.present?
@@ -19,7 +28,8 @@ class Customer < ActiveRecord::Base
   #
   def self.sort_by
     [
-      [I18n.t('last_bought'),"customers.created_at"]
+      [I18n.t('last_bought'),"customers.created_at"],
+      [I18n.t('bought_at_a_price'),""],
     ]
   end
   
@@ -32,6 +42,10 @@ class Customer < ActiveRecord::Base
   
   def self.search(params)
     records = self.all
+    
+    if params[:area_id].present?
+      records = records.where(area_id: params[:area_id])
+    end
     
     #Search keyword filter
     if params[:keyword].present?
