@@ -57,12 +57,12 @@ ActiveRecord::Schema.define(version: 20160602083819) do
     t.text     "content"
     t.string   "tags"
     t.integer  "article_category_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.integer  "code_status_id"
     t.string   "meta_keywords"
     t.text     "meta_description"
-    t.boolean  "is_show"
+    t.boolean  "is_show",              default: false
     t.string   "page_layout"
     t.string   "image_url_full_width"
   end
@@ -413,8 +413,8 @@ ActiveRecord::Schema.define(version: 20160602083819) do
     t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.text     "current_sign_in_ip"
-    t.text     "last_sign_in_ip"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.string   "first_name"
