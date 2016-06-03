@@ -309,8 +309,11 @@ en:
   voucher: "Voucher"
   coupon: "Coupon"
   user_group: "User group"
+  user_groups: "User groups"
   system_setting: "System setting"
-  
+  contact: "Contact"
+  newsletter: "Newsletter"
+  category_level: "Level Category"
   
   will_paginate:
     page_entries_info:

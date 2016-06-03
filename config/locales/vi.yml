@@ -311,9 +311,11 @@ vi:
   voucher: "Voucher"
   coupon: "Coupon"
   user_group: "Nhóm người dùng"
+  user_groups: "Danh sách nhóm người dùng"
   system_setting: "Cấu hình hệ thống"
-  user_groups: "Nhóm người dùng"
-  cetegroy_level: "Chuyên mục cấp"
+  contact: "Liên hệ"
+  newsletter: "Đăng ký nhận tin mới"
+  category_level: "Cấp chuyên mục"
   
   will_paginate:
     page_entries_info:
