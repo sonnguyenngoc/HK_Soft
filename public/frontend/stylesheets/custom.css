@@ -916,7 +916,7 @@ h3.care {
     }
 }
 /*--------CSS display image item----------*/
-/*.table_cell {
+.table_cell {
     display: inline-block;
     padding-left: 3%;
     padding-right: 3%;
@@ -975,5 +975,20 @@ h3.care {
     .tabs-loading .box {
         width: 33.3%;
     }
-}*/
+}
+@media (max-width: 680px) {
+    .tabs-loading .box {
+        width: 50%;
+    }
+}
+.custom-comment-reply-link {
+    position: absolute;
+    right: 55px;
+    top: 11px;
+}
+.custom-comment-remove-link {
+    position: absolute;
+    right: 19px;
+    top: 11px;
+}
 /*-----------------------------------------*/
