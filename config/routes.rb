@@ -1,9 +1,81 @@
 Rails.application.routes.draw do
-  
-  root "home#index"
   devise_for :users
-  
-  scope "(:locale)", locale: /vi|en/ do
+  scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
+    
+    # home page
+    root "home#index"
+    
+    # hosting pages
+    get "hosting-1" => "hosting1#index", as: :hosting1
+    get "hosting-2" => "hosting2#index", as: :hosting2
+    get "hosting-3" => "hosting3#index", as: :hosting3
+    get "hosting-4" => "hosting4#index", as: :hosting4
+    get "hosting-5" => "hosting5#index", as: :hosting5
+    get "hosting-6" => "hosting6#index", as: :hosting6
+    
+    # domains page
+    get "domains" => "domains#index", as: :domains
+    
+    # PAGES
+    
+        # about us page
+        get "about-us" => "about_us#index", as: :about_us
+
+        # servies page
+        get "services" => "services#index", as: :services
+
+        # our team page
+        get "our-team" => "our_team#index", as: :our_team
+
+        # left sidebar page
+        get "left-sidebar" => "left_sidebar#index", as: :left_sidebar
+
+        # right sidebar page
+        get "right-sidebar" => "right_sidebar#index", as: :right_sidebar
+        
+        # left navigation page
+        get "left-nav" => "left_nav#index", as: :left_nav
+        
+        # right navigation page
+        get "right-navigation" => "right_nav#index", as: :right_nav
+
+        # faq page
+        get "faq" => "faq#index", as: :faq
+
+        # video background page
+        get "video-bg" => "video_bg#index", as: :video_bg
+        
+        # coming soon page
+        get "coming-soon" => "coming_soon#index", as: :coming_soon
+
+        # history  timeline page
+        get "history" => "history#index", as: :history
+
+        # login page
+        get "login" => "login#index", as: :login
+
+        # register page
+        get "register" => "register#index", as: :register
+
+        # error page
+        get "error-page" => "error_page#index", as: :error_page
+    
+    # END PAGES
+    
+    # blog pages
+    get "blog-1" => "blog1#index", as: :blog1
+    get "blog-2" => "blog2#index", as: :blog2
+    get "blog-3" => "blog3#index", as: :blog3
+    get "blog-post" => "blog_post#index", as: :blog_post
+    
+    # support page
+    get "support" => "support#index", as: :support
+    
+    # contact pages
+    get "contact" => "contact#index", as: :contact
+    get "contact-2" => "contact2#index", as: :contact2
+    get "contact-3" => "contact3#index", as: :contact3
+    
     namespace :admin, path: "quan-tri" do
       get "/" => "main#index"
       scope(:path_names => { :new => "tao-moi", :edit => "chinh-sua" }) do

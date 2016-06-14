@@ -1,0 +1,2 @@
+module VideoBgHelper
+end

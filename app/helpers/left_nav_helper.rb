@@ -1,0 +1,2 @@
+module LeftNavHelper
+end
