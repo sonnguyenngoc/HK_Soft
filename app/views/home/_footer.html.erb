@@ -6,8 +6,8 @@
             <div class="container">
 
                 <div class="left">
-                    <h4 class="caps light"><strong>Need Help?</strong> Call Us 24/7:</h4>
-                    <h1>123-456-7890</h1>
+                    <h4 class="caps light"><strong>Need Help?</strong> Call Us:</h4>
+                    <h1>(08) 2212 9454</h1>
                 </div>
                 <!-- end left -->
 
@@ -74,14 +74,11 @@
                 <div class="one_fourth last aliright">
                     <div class="address">
                         <img src="/frontend/images/footer-logo.png" alt="" />
-                        <br /><br /> 2901 Marmora Road, Glassgow, Seattle, WA 98122-1090
+                        <br /><br /> 188, Street 1, Ward 16, Go Vap District, Ho Chi Minh City
                         <div class="clearfix margin_bottom1"></div>
-                        <strong>Phone:</strong> <b>1 -234 -456 -7890</b>
-                        <br />
-                        <strong>Mail:</strong> <a href="mailto:info@arkahost.com">info@arkahost.com</a>
-                        <br />
-                        <a href="contact.html" class="smbut">View Directions</a>
-                        <br /><br />
+                        <strong>Phone:</strong> <b>(08) 2212 9454</b><br />
+                        <strong>Mail:</strong> <a href="mailto:soft.support@hoangkhang.com.vn">soft.support@hoangkhang.com.vn</a><br />
+                        <%= link_to "View Directions", contact_path, class: "smbut" %><br /><br />
                         <img src="/frontend/images/payment-logos.png" alt="" />
 
                     </div>
@@ -144,7 +141,7 @@
             <div class="container">
         
                 <div class="one_half">Copyright &copy; 2016 Hoang Khang Incotech - Software Development. All rights reserved.</div>
-                <div class="one_half last aliright"><a href="#">Home</a>|<a href="#">About Us</a>|<a href="#">Support</a>|<a href="#">Contact</a></div>
+                <div class="one_half last aliright"><%= link_to "Home", root_path %>|<%= link_to "About Us", about_us_path %>|<%= link_to "Support", support_path %>|<%= link_to "Contact", contact_path %></div>
         
             </div>
         </div>

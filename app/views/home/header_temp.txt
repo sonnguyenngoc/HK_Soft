@@ -25,8 +25,6 @@
                         <ul class="nav navbar-nav">
 
                             <li class="dropdown"> <%= link_to "Home", root_path, class: ("active" if params[:controller] == "home").to_s %></li>
-                            
-                            <li><%= link_to "About Us", about_us_path, class: ("active" if params[:controller] == "about_us").to_s %></li>
 
                             <li class="dropdown yamm-fw"><%= link_to "Hosting", hosting1_path, class: "dropdown-toggle" %>
                                 <ul class="dropdown-menu">
@@ -91,6 +89,7 @@
 
                             <li class="dropdown"> <%= link_to "Pages", about_us_path, class: "dropdown-toggle" %>
                                 <ul class="dropdown-menu multilevel" role="menu">
+                                    <li><%= link_to "About Us", about_us_path, class: ("active" if params[:controller] == "about_us").to_s %></li>
                                     <li><%= link_to "Services", services_path, class: ("active" if params[:controller] == "services").to_s %></li>
                                     <li><%= link_to "Our Team", our_team_path, class: ("active" if params[:controller] == "our_team").to_s %></li>
                                     <li><%= link_to "Left Sidebar", left_sidebar_path, class: ("active" if params[:controller] == "left_sidebar").to_s %></li>
@@ -107,11 +106,28 @@
                                 </ul>
                             </li>
 
-                            <li class="dropdown"> <%= link_to "Blog", blog3_path, class: ("active" if params[:controller] == "blog3").to_s %></li>
+                            <li class="dropdown"> <%= link_to "Blog", blog1_path, class: "dropdown-toggle" %>
+                                
+                                <ul class="dropdown-menu multilevel" role="menu">
+                                    <li> <%= link_to "With Large Image", blog1_path, class: ("active" if params[:controller] == "blog1").to_s %></li>
+                                    <li> <%= link_to "With Medium Image", blog2_path, class: ("active" if params[:controller] == "blog2").to_s %></li>
+                                    <li> <%= link_to "With Small Image", blog3_path, class: ("active" if params[:controller] == "blog3").to_s %></li>
+                                    <li> <%= link_to "Single Post", blog_post_path, class: ("active" if params[:controller] == "blog_post").to_s %></li>
+                                </ul>
+                            
+                            </li>
 
                             <li><%= link_to "Support", support_path, class: ("active" if params[:controller] == "support").to_s %></li>
 
-                            <li><%= link_to "Contact", contact_path, class: ("active" if params[:controller] == "contact").to_s %></li>
+                            <li class="dropdown"> <%= link_to "Contact", contact_path, class: "dropdown-toggle" %></a>
+                                
+                                <ul class="dropdown-menu multilevel" role="menu">
+                                    <li> <%= link_to "Contact Version 1", contact_path, class: ("active" if params[:controller] == "contact").to_s %></li>
+                                    <li> <%= link_to "Contact Version 2", contact2_path, class: ("active" if params[:controller] == "contact2").to_s %></li>
+                                    <li> <%= link_to "Contact Version 3", contact3_path, class: ("active" if params[:controller] == "contact3").to_s %></li>
+                                </ul>
+                            
+                            </li>
 
                         </ul>
 

@@ -6,75 +6,75 @@ Rails.application.routes.draw do
     root "home#index"
     
     # hosting pages
-    get "hosting-1" => "hosting1#index", as: :hosting1
-    get "hosting-2" => "hosting2#index", as: :hosting2
-    get "hosting-3" => "hosting3#index", as: :hosting3
-    get "hosting-4" => "hosting4#index", as: :hosting4
-    get "hosting-5" => "hosting5#index", as: :hosting5
-    get "hosting-6" => "hosting6#index", as: :hosting6
+    get "hosting-1.html" => "hosting1#index", as: :hosting1
+    get "hosting-2.html" => "hosting2#index", as: :hosting2
+    get "hosting-3.html" => "hosting3#index", as: :hosting3
+    get "hosting-4.html" => "hosting4#index", as: :hosting4
+    get "hosting-5.html" => "hosting5#index", as: :hosting5
+    get "hosting-6.html" => "hosting6#index", as: :hosting6
     
     # domains page
-    get "domains" => "domains#index", as: :domains
+    get "domains.html" => "domains#index", as: :domains
     
     # PAGES
     
         # about us page
-        get "about-us" => "about_us#index", as: :about_us
+        get "about-us.html" => "about_us#index", as: :about_us
 
         # servies page
-        get "services" => "services#index", as: :services
+        get "services.html" => "services#index", as: :services
 
         # our team page
-        get "our-team" => "our_team#index", as: :our_team
+        get "our-team.html" => "our_team#index", as: :our_team
 
         # left sidebar page
-        get "left-sidebar" => "left_sidebar#index", as: :left_sidebar
+        get "left-sidebar.html" => "left_sidebar#index", as: :left_sidebar
 
         # right sidebar page
-        get "right-sidebar" => "right_sidebar#index", as: :right_sidebar
+        get "right-sidebar.html" => "right_sidebar#index", as: :right_sidebar
         
         # left navigation page
-        get "left-nav" => "left_nav#index", as: :left_nav
+        get "left-nav.html" => "left_nav#index", as: :left_nav
         
         # right navigation page
-        get "right-navigation" => "right_nav#index", as: :right_nav
+        get "right-navigation.html" => "right_nav#index", as: :right_nav
 
         # faq page
-        get "faq" => "faq#index", as: :faq
+        get "faq.html" => "faq#index", as: :faq
 
         # video background page
-        get "video-bg" => "video_bg#index", as: :video_bg
+        get "video-bg.html" => "video_bg#index", as: :video_bg
         
         # coming soon page
-        get "coming-soon" => "coming_soon#index", as: :coming_soon
+        get "coming-soon.html" => "coming_soon#index", as: :coming_soon
 
         # history  timeline page
-        get "history" => "history#index", as: :history
+        get "history.html" => "history#index", as: :history
 
         # login page
-        get "login" => "login#index", as: :login
+        get "login.html" => "login#index", as: :login
 
         # register page
-        get "register" => "register#index", as: :register
+        get "register.html" => "register#index", as: :register
 
         # error page
-        get "error-page" => "error_page#index", as: :error_page
+        get "error-page.html" => "error_page#index", as: :error_page
     
     # END PAGES
     
     # blog pages
-    get "blog-1" => "blog1#index", as: :blog1
-    get "blog-2" => "blog2#index", as: :blog2
-    get "blog-3" => "blog3#index", as: :blog3
-    get "blog-post" => "blog_post#index", as: :blog_post
+    get "blog-1.html" => "blog1#index", as: :blog1
+    get "blog-2.html" => "blog2#index", as: :blog2
+    get "blog.html" => "blog3#index", as: :blog3
+    get "blog-post.html" => "blog_post#index", as: :blog_post
     
     # support page
-    get "support" => "support#index", as: :support
+    get "support.html" => "support#index", as: :support
     
     # contact pages
-    get "contact" => "contact#index", as: :contact
-    get "contact-2" => "contact2#index", as: :contact2
-    get "contact-3" => "contact3#index", as: :contact3
+    get "contact.html" => "contact#index", as: :contact
+    get "contact-2.html" => "contact2#index", as: :contact2
+    get "contact-3.html" => "contact3#index", as: :contact3
     
     namespace :admin, path: "quan-tri" do
       get "/" => "main#index"
