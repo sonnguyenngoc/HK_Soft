@@ -14,7 +14,7 @@
     <div class="clearfix"></div>
 
 
-    <div class="page_title1 sty4">
+    <div class="page_title1 sty13">
         <div class="container alileft">
 
             <h1>Contact</h1>
@@ -104,9 +104,9 @@
                 </div>
                 <div class="clearfix"></div>
                 <h4 class="caps">Find the <strong>Address</strong></h4>
-                <iframe class="google-map" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1959.262202773641!2d106.65648565788261!3d10.847661632351063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529bc96b68a43%3A0x417a67c38124ede3!2zNDUvMjJDIEzDqiBWxINuIFRo4buNLCBwaMaw4budbmcgMTYsIEfDsiBW4bqlcCwgSOG7kyBDaMOtIE1pbmgsIFZpZXRuYW0!5e0!3m2!1sen!2s!4v1465913500426"></iframe>
+                <div id="map-canvas"/></div>
                 <br />
-                <small><a href="https://www.google.com/maps/place/45%2F22C+L%C3%AA+V%C4%83n+Th%E1%BB%8D,+ph%C6%B0%E1%BB%9Dng+16,+G%C3%B2+V%E1%BA%A5p,+H%E1%BB%93+Ch%C3%AD+Minh,+Vietnam/@10.8476616,106.6564857,18z/data=!4m5!3m4!1s0x317529bc96b68a43:0x417a67c38124ede3!8m2!3d10.847659!4d106.65758?hl=en-US" target="_blank">View Larger Map</a></small> </div>
+                <small><a class="button three" href="https://www.google.com/maps/place/45%2F22C+L%C3%AA+V%C4%83n+Th%E1%BB%8D,+ph%C6%B0%E1%BB%9Dng+16,+G%C3%B2+V%E1%BA%A5p,+H%E1%BB%93+Ch%C3%AD+Minh,+Vietnam/@10.8476616,106.6564857,18z/data=!4m5!3m4!1s0x317529bc96b68a43:0x417a67c38124ede3!8m2!3d10.847659!4d106.65758?hl=en-US" target="_blank">View Larger Map</a></small> </div>
 
         </div>
     </div>
@@ -132,9 +132,145 @@
 <!-- get jQuery used for the theme -->
 <%= render "/home/js_files" %>
 
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?language=fra&amp;sensor=false"></script> 
 <!-- get jQuery used for the theme - contact form validate -->
 <script>
     $(document).ready(function(){
         $("#contact_form_validate").validate();
     });
+    /*
+    * 5 ways to customize the Google Maps infowindow
+    * 2015 - en.marnoto.com
+    * http://en.marnoto.com/2014/09/5-formas-de-personalizar-infowindow.html
+    */
+   // map center
+   var center = new google.maps.LatLng(10.847707, 106.657580);
+   
+   // marker position
+   var factory = new google.maps.LatLng(10.847707, 106.657580);
+   
+   function initialize() {
+       var mapOptions = {
+           center: center,
+           zoom: 16,
+           mapTypeId: google.maps.MapTypeId.ROADMAP
+       };
+   
+       var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+   
+       // InfoWindow content
+       var content = '<div id="iw-container">' +
+           '<div class="iw-title">Hoang Khang Incotech<br>Software Development</div>' +
+           '<div class="iw-content">' +
+           '<img src="http://maps.marnoto.com/en/5wayscustomizeinfowindow/images/vistalegre.jpg" alt="Porcelain Factory of Vista Alegre" height="115" width="83">' +
+           '<div class="iw-subTitle">Contacts</div>' +
+           '<p>188, Street 1, Ward 16, Go Vap District, Ho Chi Minh City' +
+           '<br><strong>Phone</strong>: (08) 3984 7690<br><strong>Hotline</strong>: (08) 2212 9454<br><strong>E-mail</strong>: soft.support@hoangkhang.com.vn<br><strong>Website</strong>: http://hoangkhang.com.vn/</p>' +
+           '</div>' +
+           '<div class="iw-bottom-gradient"></div>' +
+           '</div>';
+   
+       // A new Info Window is created and set content
+       var infowindow = new google.maps.InfoWindow({
+           content: content,
+   
+           // Assign a maximum value for the width of the infowindow allows
+           // greater control over the various content elements
+           maxWidth: 350
+       });
+   
+       // marker options
+       var marker = new google.maps.Marker({
+           position: factory,
+           map: map,
+           title: "Porcelain Factory of Vista Alegre"
+       });
+   
+       // This event expects a click on a marker
+       // When this event is fired the Info Window is opened.
+       google.maps.event.addListener(marker, 'click', function() {
+           infowindow.open(map, marker);
+       });
+   
+       // Event that closes the Info Window with a click on the map
+       google.maps.event.addListener(map, 'click', function() {
+           infowindow.close();
+       });
+   
+       // *
+       // START INFOWINDOW CUSTOMIZE.
+       // The google.maps.event.addListener() event expects
+       // the creation of the infowindow HTML structure 'domready'
+       // and before the opening of the infowindow, defined styles are applied.
+       // *
+       google.maps.event.addListener(infowindow, 'domready', function() {
+   
+           // Reference to the DIV that wraps the bottom of infowindow
+           var iwOuter = $('.gm-style-iw');
+   
+           /* Since this div is in a position prior to .gm-div style-iw.
+            * We use jQuery and create a iwBackground variable,
+            * and took advantage of the existing reference .gm-style-iw for the previous div with .prev().
+            */
+           var iwBackground = iwOuter.prev();
+   
+           // Removes background shadow DIV
+           iwBackground.children(':nth-child(2)').css({
+               'display': 'none'
+           });
+   
+           // Removes white background DIV
+           iwBackground.children(':nth-child(4)').css({
+               'display': 'none'
+           });
+   
+           // Moves the infowindow 115px to the right.
+           iwOuter.parent().parent().css({
+               left: '115px'
+           });
+   
+           // Moves the shadow of the arrow 76px to the left margin.
+           iwBackground.children(':nth-child(1)').attr('style', function(i, s) {
+               return s + 'left: 76px !important;'
+           });
+   
+           // Moves the arrow 76px to the left margin.
+           iwBackground.children(':nth-child(3)').attr('style', function(i, s) {
+               return s + 'left: 76px !important;'
+           });
+   
+           // Changes the desired tail shadow color.
+           iwBackground.children(':nth-child(3)').find('div').children().css({
+               'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px 6px',
+               'z-index': '1'
+           });
+   
+           // Reference to the div that groups the close button elements.
+           var iwCloseBtn = iwOuter.next();
+   
+           // Apply the desired effect to the close button
+           iwCloseBtn.css({
+               opacity: '1',
+               right: '38px',
+               top: '3px',
+               'border-radius': '13px',
+               'box-shadow': '0 0 5px #3990B9'
+           });
+   
+           // If the content of infowindow not exceed the set maximum height, then the gradient is removed.
+           if ($('.iw-content').height() < 140) {
+               $('.iw-bottom-gradient').css({
+                   display: 'none'
+               });
+           }
+   
+           // The API automatically applies 0.7 opacity to the button after the mouseout event. This function reverses this event to the desired value.
+           iwCloseBtn.mouseout(function() {
+               $(this).css({
+                   opacity: '1'
+               });
+           });
+       });
+   }
+   google.maps.event.addDomListener(window, 'load', initialize);
 </script>
