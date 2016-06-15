@@ -34,24 +34,24 @@
 
                 <p>Feel free to talk to our online representative at any time you please using our Live Chat system on our website or one of the below instant messaging programs.</p>
                 <br />
-                <p>Please be patient while waiting for response. (24/7 Support!) <strong>Phone General Inquiries: 1-888-123-4567-8900</strong></p>
+                <p>Please be patient while waiting for response. (24/7 Support!) <strong> <br/>
+                Phone General Inquiries: 1-888-123-4567-8900</strong></p>
                 <br /><br />
 
                 <div class="cforms">
-
-
-                    <div id="form_status"></div>
-                    <form type="POST" id="gsr-contact" onSubmit="return valid_datas( this );">
+                    
+                    <form id="contact_form_validate">
+                        
                         <label class="label">Name <em>*</em></label>
                         <label class="input">
-                            <input type="text" name="name" id="name">
+                            <input type="text" name="name" id="name" class="required">
                         </label>
 
                         <div class="clearfix"></div>
 
                         <label class="label">E-mail <em>*</em></label>
                         <label class="input">
-                            <input type="email" name="email" id="email">
+                            <input type="email" name="email" id="email" class="required email">
                         </label>
 
                         <div class="clearfix"></div>
@@ -65,22 +65,21 @@
 
                         <label class="label">Subject <em>*</em></label>
                         <label class="input">
-                            <input type="text" name="subject" id="subject">
+                            <input type="text" name="subject" id="subject" class="required">
                         </label>
 
                         <div class="clearfix"></div>
 
                         <label class="label">Message <em>*</em></label>
                         <label class="textarea">
-                            <textarea rows="5" name="message" id="message"></textarea>
+                            <textarea rows="5" name="message" id="message" class="required"></textarea>
                         </label>
 
                         <div class="clearfix"></div>
-                        <input type="hidden" name="token" value="FsWga4&@f6aw" />
+                        
                         <button type="submit" class="button">Send Message</button>
 
                     </form>
-
 
                 </div>
 
@@ -132,3 +131,10 @@
 <!-- ######### JS FILES ######### -->
 <!-- get jQuery used for the theme -->
 <%= render "/home/js_files" %>
+
+<!-- get jQuery used for the theme - contact form validate -->
+<script>
+    $(document).ready(function(){
+        $("#contact_form_validate").validate();
+    });
+</script>

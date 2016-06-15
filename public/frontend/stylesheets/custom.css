@@ -1,0 +1,12 @@
+#contact_form_validate input.error, #contact_form_validate textarea.error {
+	border-color: red;
+}
+#newsletter_form_validate input.error, #newsletter_form_validate textarea.error {
+	border: red solid 2px;
+}
+label.error {
+	display: none !important;
+}
+.cforms input, .cforms textarea {
+    border-radius: 3px;
+}

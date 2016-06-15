@@ -65,7 +65,7 @@ Rails.application.routes.draw do
     # blog pages
     get "blog-1.html" => "blog1#index", as: :blog1
     get "blog-2.html" => "blog2#index", as: :blog2
-    get "blog.html" => "blog3#index", as: :blog3
+    get "news.html" => "blog3#index", as: :blog3
     get "blog-post.html" => "blog_post#index", as: :blog_post
     
     # support page

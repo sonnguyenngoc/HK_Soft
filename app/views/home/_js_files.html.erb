@@ -1,20 +1,29 @@
-<script type="text/javascript" src="/frontend/js/universal/jquery.js"></script>
-<script src="/frontend/js/style-switcher/styleselector.js"></script>
-<script src="/frontend/js/animations/js/animations.min.js" type="text/javascript"></script>
-<script src="/frontend/js/mainmenu/bootstrap.min.js"></script>
-<script src="/frontend/js/mainmenu/customeUI.js"></script>
-<script src="/frontend/js/masterslider/jquery.easing.min.js"></script>
+<%= javascript_include_tag "/frontend/js/universal/jquery.js" %>
+<%= javascript_include_tag "/frontend/js/style-switcher/styleselector.js" %>
+<%= javascript_include_tag "/frontend/js/animations/js/animations.min.js" %>
+<%= javascript_include_tag "/frontend/js/mainmenu/bootstrap.min.js" %>
+<%= javascript_include_tag "/frontend/js/mainmenu/customeUI.js" %>
+<%= javascript_include_tag "/frontend/js/masterslider/jquery.easing.min.js" %>
 
-<script src="/frontend/js/scrolltotop/totop.js" type="text/javascript"></script>
-<script type="text/javascript" src="/frontend/js/mainmenu/sticky.js"></script>
-<script type="text/javascript" src="/frontend/js/mainmenu/modernizr.custom.75180.js"></script>
-<script type="text/javascript" src="/frontend/js/cubeportfolio/jquery.cubeportfolio.min.js"></script>
-<script type="text/javascript" src="/frontend/js/cubeportfolio/main.js"></script>
+<%= javascript_include_tag "/frontend/js/scrolltotop/totop.js" %>
+<%= javascript_include_tag "/frontend/js/mainmenu/sticky.js" %>
+<%= javascript_include_tag "/frontend/js/mainmenu/modernizr.custom.75180.js" %>
+<%= javascript_include_tag "/frontend/js/cubeportfolio/jquery.cubeportfolio.min.js" %>
+<%= javascript_include_tag "/frontend/js/cubeportfolio/main.js" %>
 
-<script src="/frontend/js/aninum/jquery.animateNumber.min.js"></script>
-<script src="/frontend/js/carouselowl/owl.carousel.js"></script>
-<script type="text/javascript" src="/frontend/js/accordion/jquery.accordion.js"></script>
-<script type="text/javascript" src="/frontend/js/accordion/custom.js"></script>
-<script src="/frontend/js/progressbar/progress.js" type="text/javascript" charset="utf-8"></script>
-<script type="text/javascript" src="/frontend/js/universal/custom.js"></script>
-<script src="/frontend/js/tabs/assets/js/responsive-tabs.min.js" type="text/javascript"></script>
+<%= javascript_include_tag "/frontend/js/aninum/jquery.animateNumber.min.js" %>
+<%= javascript_include_tag "/frontend/js/carouselowl/owl.carousel.js" %>
+<%= javascript_include_tag "/frontend/js/accordion/jquery.accordion.js" %>
+<%= javascript_include_tag "/frontend/js/accordion/custom.js" %>
+<%= javascript_include_tag "/frontend/js/progressbar/progress.js" %>
+<%= javascript_include_tag "/frontend/js/universal/custom.js" %>
+<%= javascript_include_tag "/frontend/js/tabs/assets/js/responsive-tabs.min.js" %>
+
+<%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>
+
+<!-- get jQuery used for the theme - newsletter form validate -->
+<script>
+    $(document).ready(function(){
+        $("#newsletter_form_validate").validate();
+    });
+</script>
