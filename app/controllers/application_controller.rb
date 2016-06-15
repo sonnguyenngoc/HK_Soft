@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
       if controller_name == "home" || controller_name == "hosting1" || controller_name == "hosting2" || controller_name == "hosting3" || controller_name == "hosting4" || controller_name == "hosting5" || controller_name == "hosting6" ||
          controller_name == "domains" || controller_name == "about_us" || controller_name == "services" || controller_name == "our_team" || controller_name == "left_sidebar" || controller_name == "right_sidebar" || controller_name == "left_nav" || controller_name == "right_nav" || controller_name == "faq" ||
          controller_name == "video_bg" || controller_name == "history" || controller_name == "login" || controller_name == "register" || controller_name == "error_page" || controller_name == "blog1" || controller_name == "blog2" || controller_name == "blog3" || controller_name == "blog_post" ||
-         controller_name == "support" || controller_name == "contact" || controller_name == "contact2" || controller_name == "contact3" || controller_name = "email_signup_success"
+         controller_name == "support" || controller_name == "contact" || controller_name == "contact2" || controller_name == "contact3" || controller_name == "email_signup_success" || controller_name == "works"
         "frontend"
       elsif controller_name == "coming_soon"
         "coming_soon"

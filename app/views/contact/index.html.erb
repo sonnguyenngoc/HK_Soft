@@ -58,14 +58,14 @@
 
                         <label class="label">Phone</label>
                         <label class="input">
-                            <%= f.text_field :name %>
+                            <%= f.text_field :phone %>
                         </label>
 
                         <div class="clearfix"></div>
 
                         <label class="label">Subject <em>*</em></label>
                         <label class="input">
-                            <input type="text" name="subject" id="subject" class="required">
+                            <%= f.text_field :subject, class: "required" %>
                         </label>
 
                         <div class="clearfix"></div>
@@ -77,7 +77,7 @@
 
                         <div class="clearfix"></div>
                         
-                        <button type="submit" class="button">Send Message</button>
+                        <button type="submit" class="button"><i class="fa fa-paper-plane"></i> Send Message</button>
 
                     <% end %>
 
@@ -106,7 +106,7 @@
                 <h4 class="caps">Find the <strong>Address</strong></h4>
                 <div id="map-canvas"/></div>
                 <br />
-                <small><a class="button three" href="https://www.google.com/maps/place/45%2F22C+L%C3%AA+V%C4%83n+Th%E1%BB%8D,+ph%C6%B0%E1%BB%9Dng+16,+G%C3%B2+V%E1%BA%A5p,+H%E1%BB%93+Ch%C3%AD+Minh,+Vietnam/@10.8476616,106.6564857,18z/data=!4m5!3m4!1s0x317529bc96b68a43:0x417a67c38124ede3!8m2!3d10.847659!4d106.65758?hl=en-US" target="_blank">View Larger Map</a></small> </div>
+                <small><a class="but_thumbs_down" href="https://www.google.com/maps/place/45%2F22C+L%C3%AA+V%C4%83n+Th%E1%BB%8D,+ph%C6%B0%E1%BB%9Dng+16,+G%C3%B2+V%E1%BA%A5p,+H%E1%BB%93+Ch%C3%AD+Minh,+Vietnam/@10.8476616,106.6564857,18z/data=!4m5!3m4!1s0x317529bc96b68a43:0x417a67c38124ede3!8m2!3d10.847659!4d106.65758?hl=en-US" target="_blank"><i class="fa fa-share fa-lg"></i>  View Larger Map</a></small> </div>
 
         </div>
     </div>

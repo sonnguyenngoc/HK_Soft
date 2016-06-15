@@ -1,0 +1,148 @@
+<div class="site_wrapper">
+
+    <%= render "/home/top_navigation" %>
+    <!-- end top navigation links -->
+
+
+    <div class="clearfix"></div>
+
+
+    <%= render "/home/header" %>
+    <!-- end header -->
+
+
+    <div class="clearfix"></div>
+
+
+    <div class="page_title1 sty9">
+        <div class="container">
+
+            <h1>Work Detail</h1>
+            <div class="pagenation">&nbsp;<%= link_to "Home", root_path %> <i>/</i> <%= link_to "Works", works_path %> <i>/</i> Work Detail</div>
+
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="clearfix"></div>
+
+
+    <div class="content_fullwidth less2">
+        <div class="container">
+
+            <div class="portfolio_area">
+
+                <div class="portfolio_area_left">
+                    <a href="#" target="_blank"><img src="/frontend/images/project1.jpg" alt="" /></a><br />
+                   
+                    <hr>
+                    
+                    <a href="#" target="_blank"><img src="/frontend/images/project1.jpg" alt="" /></a><br />
+                    
+                    <hr>
+                    
+                    <a href="#" target="_blank"><img src="/frontend/images/project1.jpg" alt="" /></a>
+                </div>
+
+                <div class="portfolio_area_right">
+
+                    <h3 class="caps"><strong>Project Description</strong></h3>
+
+                    <p>There are many variations passages available alteraised words which look even slightly believable.</p>
+
+                    <a href="#" class="addto_favorites"><i class="fa fa-heart"></i>&nbsp; Add to Favorites</a>
+
+                    <ul class="small_social_links">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                    </ul>
+
+                    <div class="project_details">
+                        <h5 class="caps">Project Details</h5>
+                        <span><strong>Date</strong> <em>18 August 2015</em></span>
+                        <span><strong>Categories</strong> <em><a href="#">Animation</a> <a href="#">HTML5</a> <a href="#">Clean</a> <a href="#">Design</a> </em></span>
+                        <span><strong>Author</strong> <em>M.A Anderson</em></span>
+                        <div class="clearfix margin_top5"></div>
+                        <a href="#" class="but_medium1"><i class="fa fa-hand-o-right fa-lg"></i>&nbsp; Visit Site</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+    <div class="clearfix"></div>
+
+
+    <%= render "/home/footer" %>
+    <!-- end footer -->
+
+
+    <div class="clearfix"></div>
+
+
+    <a href="#" class="scrollup">Scroll</a>
+    <!-- end scroll to top of the page-->
+
+</div>
+
+
+<!-- ######### JS FILES ######### -->
+<!-- get jQuery used for the theme -->
+<%= render "/home/js_files" %>
+
+<!-- portfolio -->
+<%= javascript_include_tag "/frontend/js/portfolio/pretty/js/jquery.prettyPhoto.js" %>
+<%= javascript_include_tag "/frontend/js/portfolio/modernizr.js" %>
+<%= javascript_include_tag "/frontend/js/portfolio/jquery_002.js" %>
+
+<%= javascript_include_tag "/frontend/js/portfolio/page.js" %>
+<%= javascript_include_tag "/frontend/js/portfolio/evenheights.js" %>
+<%= javascript_include_tag "/frontend/js/portfolio/homepage.js" %>
+
+<script type="text/javascript" charset="utf-8">
+    var site_url = "/Shuffle";
+    
+    (function($) {
+        "use strict";
+
+        $(document).ready(function() {
+            $("area[rel^='prettyPhoto']").prettyPhoto();
+
+            $(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({
+                animation_speed: 'normal',
+                theme: 'light_square',
+                slideshow: 3000,
+                autoplay_slideshow: true
+            });
+            $(".gallery:gt(0) a[rel^='prettyPhoto']").prettyPhoto({
+                animation_speed: 'fast',
+                slideshow: 10000,
+                hideflash: true
+            });
+
+            $("#custom_content a[rel^='prettyPhoto']:first").prettyPhoto({
+                custom_markup: '<div id="map_canvas" style="width:260px; height:265px"></div>',
+                changepicturecallback: function() {
+                    initialize();
+                }
+            });
+
+            $("#custom_content a[rel^='prettyPhoto']:last").prettyPhoto({
+                custom_markup: '<div id="bsap_1259344" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div><div id="bsap_1237859" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6" style="height:260px"></div><div id="bsap_1251710" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div>',
+                changepicturecallback: function() {
+                    _bsap.exec();
+                }
+            });
+        });
+
+    })(jQuery);
+</script>

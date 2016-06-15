@@ -1117,12 +1117,12 @@ pre {
   background: none;}
 .row-fluid .btn--warning:hover {
 	color: #fff;
-	border: 1px solid #86c724;
-  background-color: #86c724; }
+	border: 1px solid #3183d7;
+  background-color: #3183d7; }
 .row-fluid .btn--warning.active, .row-fluid .btn--warning:active {
 	color: #fff;
-	border: 1px solid #86c724;
-  background-color: #86c724; }
+	border: 1px solid #3183d7;
+  background-color: #3183d7; }
 
 .btn--primary {
   background-color: #3498DB; }

@@ -1,0 +1,287 @@
+<div class="site_wrapper">
+
+    <%= render "/home/top_navigation" %>
+    <!-- end top navigation links -->
+
+
+    <div class="clearfix"></div>
+
+
+    <%= render "/home/header" %>
+    <!-- end header -->
+
+
+    <div class="clearfix"></div>
+
+
+    <div class="page_title1 sty9">
+        <div class="container">
+
+            <h1>Works</h1>
+            <div class="pagenation">&nbsp;<%= link_to "Home", root_path %> <i>/</i> Works</div>
+
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="clearfix"></div>
+
+
+    <div class="content_fullwidth less2">
+        <div class="container">
+
+            <div class="row-fluid">
+
+                <div class="alicent">
+                    <div class="filter-options">
+                        <button class="btn btn--warning active" data-group="all">All</button>
+                        <button class="btn btn--warning" data-group="graphic">Graphic</button>
+                        <button class="btn btn--warning" data-group="people">People</button>
+                        <button class="btn btn--warning" data-group="objects">Objects</button>
+                        <button class="btn btn--warning" data-group="nature">Nature</button>
+                    </div>
+                </div>
+
+            </div>
+            <!-- end filter buttons -->
+
+
+            <div class="container-fluid">
+
+                <div id="grid" class="row-fluid m-row shuffle--container shuffle--fluid">
+
+                    <figure class="span4 m-span3 picture-item gallery" data-groups='["graphic"]' data-date-created="2015-08-10" data-title="One">
+                        <img src="/frontend/images/media/works-img1.jpg" class="zoomimg" alt="ADD ITEM TITLE HERE." />
+                        <div class="textbox">
+                            <div class="text">
+                                <p>
+                                    <a href="/frontend/images/media/works-img1.jpg" rel="prettyPhoto[gallery1]" title="">View Image</a>
+                                    <%= link_to "Visit Site", work_detail_path %>
+                                </p>
+                            </div>
+                        </div>
+                    </figure>
+                    <!-- end item -->
+
+                    <figure class="span4 m-span3 picture-item gallery" data-groups='["people"]' data-date-created="2015-08-14" data-title="Two">
+                        <img src="/frontend/images/media/works-img40.jpg" alt="ADD ITEM TITLE HERE." />
+                        <div class="textbox">
+                            <div class="text">
+                                <p>
+                                    <a href="http://www.youtube.com/watch?v=kh29_SERH0Y?rel=0" rel="prettyPhoto" title="">View Video</a>
+                                    <%= link_to "Visit Site", work_detail_path %>
+                                </p>
+                            </div>
+                        </div>
+                    </figure>
+                    <!-- end item -->
+
+                    <figure class="span4 m-span3 picture-item gallery" data-groups='["objects"]' data-date-created="2015-08-12" data-title="Three">
+                        <img src="/frontend/images/media/works-img122.jpg" alt="ADD ITEM TITLE HERE." />
+                        <div class="textbox">
+                            <div class="text">
+                                <p>
+                                    <a href="/frontend/images/media/works-img122.jpg" rel="prettyPhoto[gallery1]" title="">View Image</a>
+                                    <%= link_to "Visit Site", work_detail_path %>
+                                </p>
+                            </div>
+                        </div>
+                    </figure>
+                    <!-- end item -->
+
+                    <figure class="span4 m-span3 picture-item gallery" data-groups='["nature","people"]' data-date-created="2015-08-11" data-title="Four">
+                        <img src="/frontend/images/media/works-img132.jpg" alt="ADD ITEM TITLE HERE." />
+                        <div class="textbox">
+                            <div class="text">
+                                <p>
+                                    <a href="http://vimeo.com/7874398&amp;width=700" rel="prettyPhoto" title="">View Video</a>
+                                    <%= link_to "Visit Site", work_detail_path %>
+                                </p>
+                            </div>
+                        </div>
+                    </figure>
+                    <!-- end item -->
+
+                    <figure class="span4 m-span3 picture-item gallery" data-groups='["nature","people"]' data-date-created="2015-08-06" data-title="Five">
+                        <img src="/frontend/images/media/works-img33.jpg" alt="ADD ITEM TITLE HERE." />
+                        <div class="textbox">
+                            <div class="text">
+                                <p>
+                                    <a href="/frontend/images/media/works-img33.jpg" rel="prettyPhoto[gallery1]" title="">View Image</a>
+                                    <%= link_to "Visit Site", work_detail_path %>
+                                </p>
+                            </div>
+                        </div>
+                    </figure>
+                    <!-- end item -->
+
+                    <figure class="span4 m-span3 picture-item gallery" data-groups='["graphic"]' data-date-created="2015-08-05" data-title="Six">
+                        <img src="/frontend/images/media/works-img7.jpg" alt="ADD ITEM TITLE HERE." />
+                        <div class="textbox">
+                            <div class="text">
+                                <p>
+                                    <a href="/frontend/images/media/works-img7.jpg" rel="prettyPhoto[gallery1]" title="">View Image</a>
+                                    <%= link_to "Visit Site", work_detail_path %>
+                                </p>
+                            </div>
+                        </div>
+                    </figure>
+                    <!-- end item -->
+
+                    <figure class="span4 m-span3 picture-item gallery" data-groups='["objects"]' data-date-created="2015-08-17" data-title="Seven">
+                        <img src="/frontend/images/media/works-img128.jpg" alt="ADD ITEM TITLE HERE." />
+                        <div class="textbox">
+                            <div class="text">
+                                <p>
+                                    <a href="/frontend/images/media/works-img128.jpg" rel="prettyPhoto[gallery1]" title="">View Image</a>
+                                    <%= link_to "Visit Site", work_detail_path %>
+                                </p>
+                            </div>
+                        </div>
+                    </figure>
+                    <!-- end item -->
+
+                    <figure class="span4 m-span3 picture-item gallery" data-groups='["graphic"]' data-date-created="2015-08-03" data-title="Eight">
+                        <img src="/frontend/images/media/works-img14.jpg" alt="ADD ITEM TITLE HERE." />
+                        <div class="textbox">
+                            <div class="text">
+                                <p>
+                                    <a href="http://vimeo.com/7874398&amp;width=700" rel="prettyPhoto" title="">View Video</a>
+                                    <%= link_to "Visit Site", work_detail_path %>
+                                </p>
+                            </div>
+                        </div>
+                    </figure>
+                    <!-- end item -->
+
+                    <figure class="span4 m-span3 picture-item gallery" data-groups='["nature","people"]' data-date-created="2015-08-18" data-title="Nine">
+                        <img src="/frontend/images/media/works-img44.jpg" alt="ADD ITEM TITLE HERE." />
+                        <div class="textbox">
+                            <div class="text">
+                                <p>
+                                    <a href="/frontend/images/media/works-img44.jpg" rel="prettyPhoto[gallery1]" title="">View Image</a>
+                                    <%= link_to "Visit Site", work_detail_path %>
+                                </p>
+                            </div>
+                        </div>
+                    </figure>
+                    <!-- end item -->
+
+                    <figure class="span4 m-span3 picture-item gallery" data-groups='["people"]' data-date-created="2015-08-01" data-title="Ten">
+                        <img src="/frontend/images/media/works-img123.jpg" alt="ADD ITEM TITLE HERE." />
+                        <div class="textbox">
+                            <div class="text">
+                                <p>
+                                    <a href="/frontend/images/media/works-img123.jpg" rel="prettyPhoto[gallery1]" title="">View Image</a>
+                                    <%= link_to "Visit Site", work_detail_path %>
+                                </p>
+                            </div>
+                        </div>
+                    </figure>
+                    <!-- end item -->
+
+                    <figure class="span4 m-span3 picture-item gallery" data-groups='["graphic"]' data-date-created="2015-07-30" data-title="Twelve">
+                        <img src="/frontend/images/media/works-img5.jpg" alt="ADD ITEM TITLE HERE." />
+                        <div class="textbox">
+                            <div class="text">
+                                <p>
+                                    <a href="http://www.youtube.com/watch?v=kh29_SERH0Y?rel=0" rel="prettyPhoto" title="">View Video</a>
+                                    <%= link_to "Visit Site", work_detail_path %>
+                                </p>
+                            </div>
+                        </div>
+                    </figure>
+                    <!-- end item -->
+
+                    <figure class="span4 m-span3 picture-item gallery" data-groups='["objects"]' data-date-created="2015-07-30" data-title="Eleven">
+                        <img src="/frontend/images/media/works-img130.jpg" alt="ADD ITEM TITLE HERE." />
+                        <div class="textbox">
+                            <div class="text">
+                                <p>
+                                    <a href="/frontend/images/media/works-img130.jpg" rel="prettyPhoto[gallery1]" title="">View Image</a>
+                                    <%= link_to "Visit Site", work_detail_path %>
+                                </p>
+                            </div>
+                        </div>
+                    </figure>
+                    <!-- end item -->
+
+                    <div class="span4 m-span3 shuffle__sizer"></div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+    <div class="clearfix"></div>
+
+
+    <%= render "/home/footer" %>
+    <!-- end footer -->
+
+
+    <div class="clearfix"></div>
+
+
+    <a href="#" class="scrollup">Scroll</a>
+    <!-- end scroll to top of the page-->
+
+</div>
+
+
+<!-- ######### JS FILES ######### -->
+<!-- get jQuery used for the theme -->
+<%= render "/home/js_files" %>
+
+<!-- portfolio -->
+<%= javascript_include_tag "/frontend/js/portfolio/pretty/js/jquery.prettyPhoto.js" %>
+<%= javascript_include_tag "/frontend/js/portfolio/modernizr.js" %>
+<%= javascript_include_tag "/frontend/js/portfolio/jquery_002.js" %>
+
+<%= javascript_include_tag "/frontend/js/portfolio/page.js" %>
+<%= javascript_include_tag "/frontend/js/portfolio/evenheights.js" %>
+<%= javascript_include_tag "/frontend/js/portfolio/homepage.js" %>
+
+<script type="text/javascript" charset="utf-8">
+    var site_url = "/Shuffle";
+    
+    (function($) {
+        "use strict";
+
+        $(document).ready(function() {
+            $("area[rel^='prettyPhoto']").prettyPhoto();
+
+            $(".gallery:first a[rel^='prettyPhoto']").prettyPhoto({
+                animation_speed: 'normal',
+                theme: 'light_square',
+                slideshow: 3000,
+                autoplay_slideshow: true
+            });
+            $(".gallery:gt(0) a[rel^='prettyPhoto']").prettyPhoto({
+                animation_speed: 'fast',
+                slideshow: 10000,
+                hideflash: true
+            });
+
+            $("#custom_content a[rel^='prettyPhoto']:first").prettyPhoto({
+                custom_markup: '<div id="map_canvas" style="width:260px; height:265px"></div>',
+                changepicturecallback: function() {
+                    initialize();
+                }
+            });
+
+            $("#custom_content a[rel^='prettyPhoto']:last").prettyPhoto({
+                custom_markup: '<div id="bsap_1259344" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div><div id="bsap_1237859" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6" style="height:260px"></div><div id="bsap_1251710" class="bsarocks bsap_d49a0984d0f377271ccbf01a33f2b6d6"></div>',
+                changepicturecallback: function() {
+                    _bsap.exec();
+                }
+            });
+        });
+
+    })(jQuery);
+</script>
