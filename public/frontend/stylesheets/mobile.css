@@ -295,7 +295,7 @@
     .categories_module {
         display: none;
     }
-    .categories_products_home_tabs_container .tab_containers_wrap {
+    .tab_containers_wrap {
         visibility: hidden;
     }
     .chat_box_page .invisible {
@@ -370,6 +370,14 @@
         font-size: 18px;
         font-weight: normal;
         line-height: 30px;
+    }
+
+    .table_cell {
+        width: 100%;
+    }
+    .table_cell img {
+        width: calc(100% - 40px);
+        margin: 10px 20px;
     }
     
 }
