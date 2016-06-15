@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
+  scope "(:locale)", locale: /vi|en/, defaults: {locale: "en"} do
     
     # home page
     root "home#index"
@@ -73,8 +73,13 @@ Rails.application.routes.draw do
     
     # contact pages
     get "contact.html" => "contact#index", as: :contact
+    get "contact/message-sent-success.html" => "contact#message_sent_success", as: :message_sent_success
     get "contact-2.html" => "contact2#index", as: :contact2
     get "contact-3.html" => "contact3#index", as: :contact3
+    
+    resources :contacts
+    resources :newsletters
+    get "email-signup-success.html" => "email_signup_success#index", as: :email_signup_success
     
     namespace :admin, path: "quan-tri" do
       get "/" => "main#index"

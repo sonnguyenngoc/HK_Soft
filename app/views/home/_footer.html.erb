@@ -6,17 +6,21 @@
             <div class="container">
 
                 <div class="left">
+                    
                     <h4 class="caps light"><strong>Need Help?</strong> Call Us:</h4>
                     <h1>(08) 2212 9454</h1>
+                
                 </div>
                 <!-- end left -->
 
                 <div class="right">
+                    
                     <p>Sign up to Newsletter for get special offers</p>
-                    <form id="newsletter_form_validate">
-                        <input class="newsle_eminput required email" placeholder="Please enter your email..." type="text">
+                    <%= form_for Newsletter.new, html: {id: 'newsletter_form_validate'} do |f| %>
+                        <%= f.email_field :email, placeholder: 'Please enter your email...', class: "newsle_eminput required email" %>
                         <input value="Sign Up" class="input_submit" type="submit">
-                    </form>
+                    <% end %>
+                
                 </div>
                 <!-- end right -->
 
