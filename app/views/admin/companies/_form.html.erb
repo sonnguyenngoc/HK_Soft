@@ -55,6 +55,13 @@
             <%= f.text_field :hotline, class: "form-control required" %>
         </div>
     </div>
+    
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:fax) %></label>
+        <div class="col-lg-10">
+            <%= f.text_field :fax, class: "form-control required" %>
+        </div>
+    </div>
         
     <div class="form-group">
         <label class="col-lg-2 control-label" ><%= t(:email) %> <span class='text-danger'>*</span></label>
@@ -64,16 +71,16 @@
     </div>
         
     <div class="form-group">
-        <label class="col-lg-2 control-label" ><%= t(:certificate_no) %> <span class='text-danger'>*</span></label>
+        <label class="col-lg-2 control-label" ><%= t(:certificate_no) %></label>
         <div class="col-lg-10">
-            <%= f.text_field :certificate_no, class: "form-control required" %>
+            <%= f.text_field :certificate_no, class: "form-control" %>
         </div>
     </div>
         
     <div class="form-group">
-        <label class="col-lg-2 control-label" ><%= t(:date_of_issue) %> <span class='text-danger'>*</span></label>
+        <label class="col-lg-2 control-label" ><%= t(:date_of_issue) %></label>
         <div class="col-lg-10">
-            <%= f.text_field :date_of_issue, class: "form-control required" %>
+            <%= f.text_field :date_of_issue, class: "form-control" %>
         </div>
     </div>
         
