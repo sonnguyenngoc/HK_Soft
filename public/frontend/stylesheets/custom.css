@@ -961,6 +961,12 @@ h3.care {
         width: 100%;
     }    
 }
+.social_feeds .dropdown {
+    width: 390px;
+}
+.social_feeds .google_box {
+    width: 263px;
+}
 
 /*--------CSS display image item----------*/
 /*.table_cell {
