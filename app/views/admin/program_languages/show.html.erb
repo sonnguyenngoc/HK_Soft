@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @program_language.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @program_language.description %>
+</p>
+
+<%= link_to 'Edit', edit_program_language_path(@program_language) %> |
+<%= link_to 'Back', program_languages_path %>
