@@ -1,5 +1,6 @@
 class Blog3Controller < ApplicationController
     def index
+        @articles = Article.get_active_articles.order("created_at DESC").paginate(:page => params[:page], :per_page => 6)
     end
     def blog_post
     end
