@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   root "home#index"
   devise_for :users
   
@@ -139,6 +138,11 @@ Rails.application.routes.draw do
             get 'search'
           end
         end
+        
+        # projects
+        resources :projects
+        resources :project_categories
+        resources :program_languages
       end
     end
   end

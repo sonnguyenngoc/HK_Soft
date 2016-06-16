@@ -34,6 +34,21 @@
                 </li>
             <% end %>
             
+            <li>
+                <a href="#"><i class="icon-files-empty2"></i> <span><%= t(:projects) %></span></a>
+                <ul>
+                    <li class="<%= "active" if ["admin/projects"].include?(params[:controller]) %>">
+                        <%= link_to t(:projects), admin_projects_path %>
+                    </li>
+                    <li class="<%= "active" if ["admin/project_categories"].include?(params[:controller]) %>">
+                        <%= link_to t(:project_categories), admin_project_categories_path %>
+                    </li>
+                    <li class="<%= "active" if ["admin/program_languages"].include?(params[:controller]) %>">
+                        <%= link_to t(:program_languages), admin_program_languages_path %>
+                    </li>
+                </ul>
+            </li>
+            
             <% if can?(:read, Article) or can?(:read, Slideshow) or can?(:read, ArticleCategory) or can?(:read, CodeStatus) %>
                 <li>
                     <a href="#"><i class="glyphicon glyphicon-pencil"></i> <span><%= t(:article) %></span></a>
