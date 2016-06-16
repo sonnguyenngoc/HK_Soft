@@ -965,6 +965,10 @@ h3.care {
     width: 390px;
 }
 
+.social_feeds .google_box {
+    width: 263px;
+}
+
 /*--------CSS display image item----------*/
 /*.table_cell {
     display: inline-block;
