@@ -14,7 +14,9 @@ Rails.application.routes.draw do
     get "hosting-6.html" => "hosting6#index", as: :hosting6
     
     # domains page
-    get "domains.html" => "domains#index", as: :domains
+    get "domains-hosting.html" => "domains#index", as: :domains_hosting
+    
+    # domains-hosting page
     
     # PAGES
     
