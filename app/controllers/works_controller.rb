@@ -5,5 +5,6 @@ class WorksController < ApplicationController
     end
     
     def detail
+        @project = Project.find(params[:project_id])
     end
 end

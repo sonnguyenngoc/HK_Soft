@@ -66,7 +66,7 @@ Rails.application.routes.draw do
     get "blog-1.html" => "blog1#index", as: :blog1
     get "blog-2.html" => "blog2#index", as: :blog2
     get "news.html" => "blog3#index", as: :blog3
-    get "news/blog-post/:news_id.html" => "blog3#blog_post", as: :blog_post
+    get "news/:news_id.html" => "blog3#blog_post", as: :blog_post
     
     # support page
     get "support.html" => "support#index", as: :support
@@ -79,7 +79,7 @@ Rails.application.routes.draw do
     
     # portfolio page
     get "works.html" => "works#index", as: :works
-    get "works/detail.html" => "works#detail", as: :work_detail
+    get "works/:project_id.html" => "works#detail", as: :work_detail
     
     resources :contacts
     resources :newsletters

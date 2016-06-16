@@ -7,7 +7,7 @@ class Project < ActiveRecord::Base
     accepts_nested_attributes_for :project_images, :reject_if => lambda { |a| a[:image_url].blank? }, :allow_destroy => true
     
     def get_category_ids
-        "["+(self.project_categories.map{|item| '"'+item.id.to_s+'"'}).join(",")+"]"
+        "["+(self.project_categories.map{|item| '"a'+item.id.to_s+'"'}).join(",")+"]"
     end
     
 end

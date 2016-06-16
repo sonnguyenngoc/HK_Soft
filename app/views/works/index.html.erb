@@ -54,7 +54,7 @@
                                 <div class="text">
                                     <p>
                                         <a href="<%= item.image_url.medium %>" rel="prettyPhoto[gallery1]" title="">View Image</a>
-                                        <%= link_to "Visit Site", work_detail_path %>
+                                        <%= link_to "Visit Site", work_detail_path(project_id: item.id) %>
                                     </p>
                                 </div>
                             </div>

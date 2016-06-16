@@ -17,8 +17,8 @@
     <div class="page_title1 sty13">
         <div class="container">
 
-            <h1>Single Post</h1>
-            <div class="pagenation">&nbsp;<a href="index.html">Home</a> <i>/</i> <a href="#">Blog</a> <i>/</i> Single Post</div>
+            <h1><%= @news.title %></h1>
+            <div class="pagenation">&nbsp;<%= link_to "Home", root_path %> <i>/</i> <%= link_to "News", blog3_path %> <i>/</i> <%= @news.title %></div>
 
         </div>
     </div>
@@ -36,59 +36,22 @@
                 <div class="blog_post">
                     <div class="blog_postcontent">
                         <div class="image_frame">
-                            <a href="#"><img src="/frontend/images/blog/blog-img-03.jpg" alt="" /></a>
+                            <a href="#"><img src="<%= @news.image_url.hksoft_large_image %>" alt="<%= @news.title %>" /></a>
                         </div>
-                        <h3><a href="blog-post.html">Many web sites still in their infancy</a></h3>
+                        <h3><a href="#news"><%= @news.title %></a></h3>
                         <ul class="post_meta_links">
-                            <li><a href="#" class="date">27 August 2015</a></li>
-                            <li class="post_by"><i>by:</i> <a href="#">Adam Harrison</a></li>
-                            <li class="post_categoty"><i>in:</i> <a href="#">Web tutorials</a></li>
-                            <li class="post_comments"><i>note:</i> <a href="#">18 Comments</a></li>
+                            <li><a href="#" class="date"><%= @news.created_at.strftime("%d %B %Y") %></a></li>
+                            <li class="post_by"><i>by:</i> <a href="#">HK-Soft</a></li>
+                            <li class="post_categoty"><i>in:</i><% @news.article_categories.each do |item| %> <a href="#"><%= item.name %></a><% end %></li>
                         </ul>
                         <div class="clearfix"></div>
                         <div class="margin_top1"></div>
-                        <p>Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years <a href="#">read more...</a></p>
+                        <div class="text-justify"><%= @news.content.html_safe %></div>
                     </div>
                 </div>
                 <!-- /# end post -->
 
                 <div class="clearfix divider_line9 lessm"></div>
-
-
-                <div class="sharepost">
-                    <h5 class="caps">Share this Post</h5>
-                    <ul>
-                        <li><a href="#">&nbsp;<i class="fa fa-facebook fa-lg"></i>&nbsp;</a></li>
-                        <li><a href="#"><i class="fa fa-twitter fa-lg"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus fa-lg"></i></a></li>
-                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                        <li><a href="#"><i class="fa fa-flickr fa-lg"></i></a></li>
-                        <li><a href="#"><i class="fa fa-dribbble fa-lg"></i></a></li>
-                        <li><a href="#"><i class="fa fa-html5 fa-lg"></i></a></li>
-                        <li><a href="#"><i class="fa fa-skype fa-lg"></i></a></li>
-                        <li><a href="#"><i class="fa fa-youtube fa-lg"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin fa-lg"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest fa-lg"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linux fa-lg"></i></a></li>
-                        <li><a href="#"><i class="fa fa-android fa-lg"></i></a></li>
-                        <li><a href="#"><i class="fa fa-rss fa-lg"></i></a></li>
-                    </ul>
-
-                </div>
-                <!-- end share post links -->
-
-                <div class="clearfix"></div>
-
-                <h5 class="caps">About the Author</h5>
-                <div class="about_author">
-
-                    <img src="/frontend/images/blog/avatar.jpg" alt="" />
-
-                    <a href="http://themeforest.net/user/gsrthemes9/portfolio" target="_blank">GSR Themes</a><br /> I'm a freelance designer with satisfied clients worldwide. I design simple, clean websites and develop easy-to-use applications. Web Design is not just my job it's my passion. You need professional web designer you are welcome.
-                </div>
-                <!-- end about author -->
-
-                <div class="clearfix margin_top7"></div>
 
                 <div class="one_half">
                     <div class="popular-posts-area">
@@ -96,154 +59,42 @@
                         <div class="clearfix margin_bottom1"></div>
 
                         <ul class="recent_posts_list">
-                            <li>
-                                <span><a href="#"><img src="/frontend/images/post-simg1.jpg" alt="" /></a></span>
-                                <a href="#">Many desktop uncure publish package webpages simple on internet</a>
-                                <i>August 18, 2015</i>
-                            </li>
-
-                            <li>
-                                <span><a href="#"><img src="/frontend/images/post-simg2.jpg" alt="" /></a></span>
-                                <a href="#">Many desktop uncure publish package webpages simple on internet</a>
-                                <i>August 17, 2015</i>
-                            </li>
-
-                            <li>
-                                <span><a href="#"><img src="/frontend/images/post-simg3.jpg" alt="" /></a></span>
-                                <a href="#">Many desktop uncure publish package webpages simple on internet</a>
-                                <i>August 16, 2015</i>
-                            </li>
+                            
+                            <% @news.get_related_blogs.each do |item| %>
+                                <li>
+                                    <span><%= link_to image_tag(item.image_url.hksoft_square_image, alt: item.title), blog_post_path(news_id: item) %></span>
+                                    <%= link_to item.title, blog_post_path(news_id: item) %>
+                                    <i><%= @news.created_at.strftime("%d %B %Y") %></i>
+                                </li>
+                            <% end %>
+                        
                         </ul>
 
                     </div>
                 </div>
                 <!-- end recent posts -->
 
-
                 <div class="one_half last">
                     <div class="popular-posts-area">
-                        <h5 class="caps">Popular Posts</h5>
+                        <h5 class="caps">Lastest Posts</h5>
                         <div class="clearfix margin_bottom1"></div>
 
                         <ul class="recent_posts_list">
-                            <li>
-                                <span><a href="#"><img src="/frontend/images/post-simg4.jpg" alt="" /></a></span>
-                                <a href="#">Many desktop uncure publish package webpages simple on internet</a>
-                                <i>August 13, 2015</i>
-                            </li>
-
-                            <li>
-                                <span><a href="#"><img src="/frontend/images/post-simg5.jpg" alt="" /></a></span>
-                                <a href="#">Many desktop uncure publish package webpages simple on internet</a>
-                                <i>August 12, 2015</i>
-                            </li>
-
-                            <li>
-                                <span><a href="#"><img src="/frontend/images/post-simg6.jpg" alt="" /></a></span>
-                                <a href="#">Many desktop uncure publish package webpages simple on internet</a>
-                                <i>August 11, 2015</i>
-                            </li>
+                            
+                            <% @lastest_news.limit(3).each do |item| %>
+                                
+                                <li>
+                                    <span><%= link_to image_tag(item.image_url.hksoft_square_image, alt: item.title), blog_post_path(news_id: item) %></span>
+                                    <%= link_to item.title, blog_post_path(news_id: item) %>
+                                    <i><%= @news.created_at.strftime("%d %B %Y") %></i>
+                                </li>
+                                
+                            <% end %>
                         </ul>
 
                     </div>
                 </div>
                 <!-- end popular posts -->
-
-                <div class="clearfix divider_line9 lessm"></div>
-
-                <h5>Comments</h5>
-                <div class="mar_top_bottom_lines_small3"></div>
-                <div class="comment_wrap">
-                    <div class="gravatar"><img src="/frontend/images/blog/people_img.jpg" alt="" /></div>
-                    <div class="comment_content">
-                        <div class="comment_meta">
-
-                            <div class="comment_author">Admin - <i>August 12, 2015</i></div>
-
-                        </div>
-                        <div class="comment_text">
-                            <p>Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage.</p>
-                            <a href="#">Reply</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end section -->
-
-                <div class="comment_wrap chaild">
-                    <div class="gravatar"><img src="/frontend/images/blog/people_img.jpg" alt="" /></div>
-                    <div class="comment_content">
-                        <div class="comment_meta">
-
-                            <div class="comment_author">Admin - <i>August 12, 2015</i></div>
-
-                        </div>
-                        <div class="comment_text">
-                            <p>Lorem ipsum dolor sit amet, consectetur rius a auctor enim accumsan.</p>
-                            <a href="#">Reply</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end section -->
-
-                <div class="comment_wrap chaild">
-                    <div class="gravatar"><img src="/frontend/images/blog/people_img.jpg" alt="" /></div>
-                    <div class="comment_content">
-                        <div class="comment_meta">
-
-                            <div class="comment_author">Admin - <i>August 12, 2015</i></div>
-
-                        </div>
-                        <div class="comment_text">
-                            <p>Lorem ipsum dolor sit amet, consectetur rius a auctor enim accumsan.</p>
-                            <a href="#">Reply</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end section -->
-
-                <div class="comment_wrap chaild">
-                    <div class="gravatar"><img src="/frontend/images/blog/people_img.jpg" alt="" /></div>
-                    <div class="comment_content">
-                        <div class="comment_meta">
-
-                            <div class="comment_author">Admin - <i>August 12, 2015</i></div>
-
-                        </div>
-                        <div class="comment_text">
-                            <p>Lorem ipsum dolor sit amet, consectetur rius a auctor enim accumsan.</p>
-                            <a href="#">Reply</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- end section -->
-
-
-
-                <div class="comment_form">
-
-                    <h5>Leave a Comment</h5>
-
-                    <form action="blog-post.html" method="post">
-                        <input type="text" name="yourname" id="name" class="comment_input_bg" />
-                        <label for="name">Name*</label>
-
-                        <input type="text" name="email" id="mail" class="comment_input_bg" />
-                        <label for="mail">Mail*</label>
-
-                        <input type="text" name="website" id="website" class="comment_input_bg" />
-                        <label for="website">Website</label>
-
-                        <textarea name="comment" class="comment_textarea_bg" rows="20" cols="7"></textarea>
-                        <div class="clearfix"></div>
-                        <input name="send" type="submit" value="Submit Comment" class="comment_submit" />
-                        <p></p>
-                        <p class="comment_checkbox"><input type="checkbox" name="check" /> Notify me of followup comments via e-mail</p>
-
-
-                    </form>
-
-                </div>
-                <!-- end comment form -->
 
                 <div class="clearfix mar_top2"></div>
 
@@ -282,8 +133,7 @@
 
                         <ul class="tabs">
                             <li class="active"><a href="#tab1">Popular</a></li>
-                            <li><a href="#tab2">Recent</a></li>
-                            <li class="last"><a href="#tab3">Tags</a></li>
+                            <li><a href="#tab2">Lastest</a></li>
                         </ul>
                         <!-- /# end tab links -->
 
@@ -334,37 +184,6 @@
                             </div>
                             <!-- end popular articles -->
 
-                            <div id="tab3" class="tab_content">
-                                <ul class="tags">
-
-                                    <li><a href="#">2015</a></li>
-                                    <li><a href="#"><b>Amazing</b></a></li>
-                                    <li><a href="#">Animation</a></li>
-                                    <li><a href="#">Beautiful</a></li>
-                                    <li><a href="#"><b>Cartoon</b></a></li>
-                                    <li><a href="#">Comedy</a></li>
-                                    <li><a href="#"><b>Cool</b></a></li>
-                                    <li><a href="#">Dance</a></li>
-                                    <li><a href="#">Drive</a></li>
-                                    <li><a href="#"><b>Family</b></a></li>
-                                    <li><a href="#"><b>Fantasy</b></a></li>
-                                    <li><a href="#">News</a></li>
-                                    <li><a href="#"><b>Friends</b></a></li>
-                                    <li><a href="#">Funny</a></li>
-                                    <li><a href="#"><b>Games</b></a></li>
-                                    <li><a href="#">Love</a></li>
-                                    <li><a href="#"><b>Music</b></a></li>
-                                    <li><a href="#">Nature</a></li>
-                                    <li><a href="#"><b>Party</b></a></li>
-                                    <li><a href="#">Pictures</a></li>
-                                    <li><a href="#">Sports</a></li>
-                                    <li><a href="#"><b>Best</b></a></li>
-                                    <li><a href="#">Wedding</a></li>
-                                    <li><a href="#">Weight</a></li>
-                                    <li><a href="#"><b>Youtube</b></a></li>
-                                </ul>
-                            </div>
-
                         </div>
 
                     </div>
@@ -391,23 +210,23 @@
                 <div class="sidebar_widget">
 
                     <div class="sidebar_title">
-                        <h4 class="caps">Site Advertisements</h4></div>
+                        <h4 class="caps">Program Languages</h4></div>
 
                     <ul class="adsbanner-list">
                         <li>
-                            <a href="#"><img src="/frontend/images/sample-ad-banner.jpg" alt="" /></a>
+                            <a href="#"><img src="/frontend/images/blog/news-banner-html5.png" alt="" /></a>
                         </li>
                         <li class="last">
-                            <a href="#"><img src="/frontend/images/sample-ad-banner.jpg" alt="" /></a>
+                            <a href="#"><img src="/frontend/images/blog/news-banner-css3.jpg" alt="" /></a>
                         </li>
                     </ul>
 
                     <ul class="adsbanner-list">
                         <li>
-                            <a href="#"><img src="/frontend/images/sample-ad-banner.jpg" alt="" /></a>
+                            <a href="#"><img src="/frontend/images/blog/news-banner-ruby-on-rails.jpg" alt="" /></a>
                         </li>
                         <li class="last">
-                            <a href="#"><img src="/frontend/images/sample-ad-banner.jpg" alt="" /></a>
+                            <a href="#"><img src="/frontend/images/blog/news-banner-bootstrap.png" alt="" /></a>
                         </li>
                     </ul>
 
