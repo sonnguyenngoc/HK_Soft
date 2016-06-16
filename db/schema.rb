@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160615074814) do
+ActiveRecord::Schema.define(version: 20160616023635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -151,6 +151,7 @@ ActiveRecord::Schema.define(version: 20160615074814) do
     t.integer  "head_area_id"
     t.integer  "branch_area_id"
     t.string   "type_company"
+    t.string   "fax"
   end
 
   create_table "compares", force: :cascade do |t|
