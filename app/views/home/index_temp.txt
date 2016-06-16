@@ -213,6 +213,12 @@
         
     </h5>
 
+                <!--<div class="ms-layer cirbox1 colored" style="left: 810px; top: 100px;" data-type="text" data-effect="top(45)" data-duration="2500" data-delay="350" data-ease="easeOutExpo">
+
+                    <span class="dncfont">Starts at</span><br /> $5.75 <em>/mo</em>
+
+                </div>-->
+
                 <a href="#" class="ms-layer sbut1" style="left: 115px; top: 390px;" data-type="text" data-delay="700" data-ease="easeOutExpo" data-duration="1800" data-effect="scale(1.5,1.6)">
         Get Started Now!
         
@@ -225,6 +231,300 @@
         </div>
     </div>
     <!-- end of masterslider -->
+
+
+    <div class="clearfix"></div>
+
+
+    <!--<div class="domain_search">
+
+        <div class="serch_area">
+            <div class="container">
+                <h5 class="white caps">Find your Perfect Domain Name:</h5>
+
+                <form method="get" action="index.html">
+                    <input class="enter_email_input" name="samplees" id="samplees" value="Enter your domain name here..." onFocus="if(this.value == 'Enter your domain name here...') {this.value = '';}" onBlur="if (this.value == '') {this.value = 'Enter your domain name here...';}" type="text">
+                    <input name="" value="Search Domain" class="input_submit" type="submit">
+                </form>
+            </div>
+        </div>-->
+        <!-- end section -->
+
+        <!--<div class="offers">
+            <div class="container">
+                <ul>
+                    <li><strong>.com</strong> $5.75</li>
+                    <li><strong>.net</strong> $9.45</li>
+                    <li><strong>.org</strong> $7.50</li>
+                    <li><strong>.us</strong> $5.99</li>
+                    <li><strong>.biz</strong> $9.99</li>
+                    <li class="last">
+                        <p>* All prices<br />per annum</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>-->
+    <!-- end domain search -->
+
+
+    <div class="clearfix"></div>
+
+
+    <!--<div class="host_plans">
+        <div class="container">
+
+            <h1 class="caps"><strong>We are Announcing Perfect Package for you</strong>
+<em>ARKAHOST Providing you with a hesitate free web hosting service we take words look the believable.</em></h1>
+
+            <div class="clearfix margin_bottom3"></div>
+
+            <div class="one_fourth_less animate" data-anim-type="fadeIn" data-anim-delay="100">
+                <div class="planbox">
+
+                    <div class="title">
+                        <h4 class="caps"><strong>Starter</strong></h4></div>
+
+                    <div class="prices">
+                        <strong>$2.99<i>/M</i></strong> <b>Regularly <em>$4.99</em></b>
+                        <a href="#">Sign Up</a>
+                    </div>
+
+                    <ul>
+                        <li><strong>Unlimited</strong> Web Space</li>
+                        <li><strong>FREE</strong> Site Building Tools</li>
+                        <li><strong>FREE</strong> Domain Registar</li>
+                        <li><strong>24/7/365</strong> Support </li>
+                        <li><strong>FREE</strong> Marketing &amp; SEO Tools</li>
+                        <li><strong>99.9%</strong> Service Uptime</li>
+                        <li class="last"><strong>30 Day</strong> Money Back Guarantee</li>
+                    </ul>
+
+                </div>
+            </div>-->
+            <!-- end plan -->
+
+            <!--<div class="one_fourth_less animate" data-anim-type="fadeIn" data-anim-delay="200">
+                <div class="planbox highlight">
+
+                    <img src="/frontend/images/best-seller.png" alt="" class="hiimg" />
+
+                    <div class="title">
+                        <h4 class="caps"><strong>Business</strong></h4></div>
+
+                    <div class="prices">
+                        <strong>$9.75<i>/M</i></strong> <b>Regularly <em>$16.99</em></b>
+                        <a href="#">Sign Up</a>
+                    </div>
+
+                    <ul>
+                        <li><strong>Unlimited</strong> Web Space</li>
+                        <li><strong>FREE</strong> Site Building Tools</li>
+                        <li><strong>FREE</strong> Domain Registar</li>
+                        <li><strong>24/7/365</strong> Support </li>
+                        <li><strong>FREE</strong> Marketing &amp; SEO Tools</li>
+                        <li><strong>99.9%</strong> Service Uptime</li>
+                        <li class="last"><strong>30 Day</strong> Money Back Guarantee</li>
+                    </ul>
+
+                </div>
+            </div>-->
+            <!-- end plan -->
+
+            <!--<div class="one_fourth_less animate" data-anim-type="fadeIn" data-anim-delay="100">
+                <div class="planbox">
+
+                    <div class="title">
+                        <h4 class="caps"><strong>Premium</strong></h4></div>
+
+                    <div class="prices">
+                        <strong>$45.50<i>/M</i></strong> <b>Regularly <em>$90.50</em></b>
+                        <a href="#">Sign Up</a>
+                    </div>
+
+                    <ul>
+                        <li><strong>Unlimited</strong> Web Space</li>
+                        <li><strong>FREE</strong> Site Building Tools</li>
+                        <li><strong>FREE</strong> Domain Registar</li>
+                        <li><strong>24/7/365</strong> Support </li>
+                        <li><strong>FREE</strong> Marketing &amp; SEO Tools</li>
+                        <li><strong>99.9%</strong> Service Uptime</li>
+                        <li class="last"><strong>30 Day</strong> Money Back Guarantee</li>
+                    </ul>
+
+                </div>
+            </div>-->
+            <!-- end plan -->
+
+            <!--<div class="one_fourth_less last animate" data-anim-type="fadeIn" data-anim-delay="200">
+                <div class="planbox">
+
+                    <div class="title">
+                        <h4 class="caps"><strong>Dedicated</strong></h4></div>
+
+                    <div class="prices">
+                        <strong>$100<i>/M</i></strong> <b>Regularly <em>$200</em></b>
+                        <a href="#">Sign Up</a>
+                    </div>
+
+                    <ul>
+                        <li><strong>Unlimited</strong> Web Space</li>
+                        <li><strong>FREE</strong> Site Building Tools</li>
+                        <li><strong>FREE</strong> Domain Registar</li>
+                        <li><strong>24/7/365</strong> Support </li>
+                        <li><strong>FREE</strong> Marketing &amp; SEO Tools</li>
+                        <li><strong>99.9%</strong> Service Uptime</li>
+                        <li class="last"><strong>30 Day</strong> Money Back Guarantee</li>
+                    </ul>
+
+                </div>
+            </div>-->
+            <!-- end plan -->
+
+        <!--</div>
+    </div>-->
+    <!-- end hosting plans -->
+
+
+    <!--<div class="clearfix"></div>-->
+
+
+    <!--<div class="feature_section1">
+        <div class="container">
+
+            <h1 class="caps"><strong>What makes our hosting is Best?</strong></h1>
+
+            <div class="clearfix margin_bottom3"></div>
+
+            <div class="one_third animate" data-anim-type="fadeIn" data-anim-delay="200">
+                <i class="fa fa-rocket"></i>
+                <h4 class="light">99.9% Uptime Guarantee</h4>
+                <p>Desktop publishing packages web page model and a for many web sites.</p>
+
+                <div class="clearfix margin_bottom5"></div>
+
+                <i class="fa fa-sliders"></i>
+                <h4 class="light">Advanced Security Scan</h4>
+                <p>Desktop publishing packages web page model and a for many web sites.</p>
+
+                <div class="clearfix margin_bottom5"></div>
+
+                <i class="fa fa-tachometer"></i>
+                <h4 class="light">cPanel Control Panel</h4>
+                <p>Desktop publishing packages web page model and a for many web sites.</p>
+
+            </div>-->
+            <!-- end section -->
+
+
+            <!--<div class="one_third animate" data-anim-type="fadeIn" data-anim-delay="300">
+                <i class="fa fa-lightbulb-o"></i>
+                <h4 class="light">One FREE Domain for Life</h4>
+                <p>Desktop publishing packages web page model and a for many web sites.</p>
+
+                <div class="clearfix margin_bottom5"></div>
+
+                <i class="fa fa-sitemap"></i>
+                <h4 class="light">Host Unlimited Domains</h4>
+                <p>Desktop publishing packages web page model and a for many web sites.</p>
+
+                <div class="clearfix margin_bottom5"></div>
+
+                <i class="fa fa-bullhorn"></i>
+                <h4 class="light">Free Website Transfer</h4>
+                <p>Desktop publishing packages web page model and a for many web sites.</p>
+
+            </div>-->
+            <!-- end section -->
+
+
+            <!--<div class="one_third last animate" data-anim-type="fadeIn" data-anim-delay="400">
+                <i class="fa fa-database"></i>
+                <h4 class="light">Unlimited Disk Space</h4>
+                <p>Desktop publishing packages web page model and a for many web sites.</p>
+
+                <div class="clearfix margin_bottom5"></div>
+
+                <i class="fa fa-clock-o"></i>
+                <h4 class="light">Free 24×7/365 Support</h4>
+                <p>Desktop publishing packages web page model and a for many web sites.</p>
+
+                <div class="clearfix margin_bottom5"></div>
+
+                <i class="fa fa-usd"></i>
+                <h4 class="light">30 Day Money-back Guarantee</h4>
+                <p>Desktop publishing packages web page model and a for many web sites.</p>
+
+            </div>-->
+            <!-- end section -->
+
+        <!--</div>
+    </div>-->
+    <!-- end feature section 1 -->
+
+
+    <!--<div class="clearfix"></div>
+
+
+    <div class="feature_section2">
+
+        <div class="title">
+            <h1 class="caps sitecolor"><strong>how to build your website Online Today?</strong></h1></div>
+
+        <div class="twoboxes">
+            <div class="container">
+
+                <div class="left">
+
+                    <i class="fa fa-desktop animate" data-anim-type="zoomIn" data-anim-delay="100"></i>
+                    <strong class="animate" data-anim-type="fadeInRight" data-anim-delay="100"><em>Create your own website with our</em>
+    Web site builder</strong>
+
+                    <div class="clearfix"></div>
+
+                    <ul>
+                        <li><i class="fa fa-long-arrow-right"></i> Point One is many web sites still in their infancy various versions have evolved over the years.</li>
+
+                        <li><i class="fa fa-long-arrow-right"></i> Point Two is desktop publishing software like include.</li>
+
+                        <li><i class="fa fa-long-arrow-right"></i> Point Three is alteration in some form by humou or randomised
+                            <div class="sitecolor">Starting at Just $99 only.</div>
+                        </li>
+                        <li><a href="#" class="button one">Read More</a></li>
+                    </ul>
+
+                </div>-->
+                <!-- end left section -->
+
+
+                <!--<div class="right">
+
+                    <i class="fa fa-map-o animate" data-anim-type="zoomIn" data-anim-delay="100"></i>
+                    <strong class="animate" data-anim-type="fadeInRight" data-anim-delay="100"><em>Arka web hosting before you upload</em>
+    host and domain</strong>
+
+                    <div class="clearfix"></div>
+
+                    <ul>
+                        <li><i class="fa fa-long-arrow-right"></i> Point One is many web sites still in their infancy various versions have evolved over the years.</li>
+
+                        <li><i class="fa fa-long-arrow-right"></i> Point Two is desktop publishing software like include.</li>
+
+                        <li><i class="fa fa-long-arrow-right"></i> Point Three is alteration in some form by humou or randomised
+                            <div class="sitecolor">Starting at Just $99 only.</div>
+                        </li>
+                        <li><a href="#" class="button one">Read More</a></li>
+                    </ul>
+
+                </div>-->
+                <!-- end right section -->
+
+            <!--</div>
+        </div>
+
+    </div>-->
+    <!-- end feature section 2 -->
 
 
     <div class="clearfix"></div>

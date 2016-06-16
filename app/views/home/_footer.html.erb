@@ -8,7 +8,7 @@
                 <div class="left">
                     
                     <h4 class="caps light"><strong>Need Help?</strong> Call Us:</h4>
-                    <h1>(08) 2212 9454</h1>
+                    <h1><%= Company.get_company.hotline %></h1>
                 
                 </div>
                 <!-- end left -->
@@ -16,6 +16,7 @@
                 <div class="right">
                     
                     <p>Sign up to Newsletter for get special offers</p>
+                    
                     <%= form_for Newsletter.new, html: {id: 'newsletter_form_validate'} do |f| %>
                         <%= f.email_field :email, placeholder: 'Please enter your email...', class: "newsle_eminput required email" %>
                         <input value="Sign Up" class="input_submit" type="submit">
@@ -74,15 +75,15 @@
                     </ul>
                 </div>
                 <!-- end section -->
-
+                
                 <div class="one_fourth last aliright">
                     <div class="address">
                         <img src="/frontend/images/footer-logo.png" alt="" />
-                        <br /><br /> 188, Street 1, Ward 16, Go Vap District, Ho Chi Minh City
+                        <br /><br /> <%= Company.get_company.head_office_address %>
                         <div class="clearfix margin_bottom1"></div>
-                        <strong>Phone:</strong> <b>(08) 2212 9454</b><br />
-                        <strong>Mail:</strong> <a href="mailto:soft.support@hoangkhang.com.vn">soft.support@hoangkhang.com.vn</a><br />
-                        <%= link_to "View Directions", contact_path, class: "smbut" %><br /><br />
+                        <strong>Phone:</strong> <b><%= Company.get_company.phone %></b><br />
+                        <strong>Email:</strong> <a href="mailto:<%= Company.get_company.email %>"><%= Company.get_company.email %></a><br />
+                        <%= link_to "View Directions", about_us_path, class: "smbut" %><br /><br />
                         <img src="/frontend/images/payment-logos.png" alt="" />
 
                     </div>

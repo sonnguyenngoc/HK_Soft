@@ -92,12 +92,12 @@
                     <h4 class="caps">Company  <strong>Address</strong></h4>
                     <ul>
                         <li>
-                            <strong>Chi Nhánh Công Ty TNHH Giải Pháp CNTT & TT Hoàng Khang</strong><br />
-                            188, Street 1, Ward 16, Go Vap District, Ho Chi Minh City, Viet Nam<br />
-                            Phone: (08) 3984 7690<br />
-                            Hotline: (08) 2212 9454<br />
-                            Fax: (08) 3984 7691<br />
-                            E-mail: <a href="mailto:soft.support@hoangkhang.com.vn">soft.support@hoangkhang.com.vn</a><br />
+                            <strong><%= @company.name %></strong><br />
+                            <%= @company.head_office_address %><br />
+                            Phone: <%= @company.phone %><br />
+                            Hotline: <%= @company.hotline %><br />
+                            Fax: <%= @company.fax %><br />
+                            E-mail: <a href="mailto:<%= @company.email %>"><%= @company.email %></a><br />
                             Website: <%= link_to "http://hoangkhang.com.vn/", root_path, target: "_blank" %>
                         </li>
                     </ul>
@@ -114,7 +114,7 @@
                              mapTypeId: google.maps.MapTypeId.ROADMAP};
                              map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
                              marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(10.847659, 106.657580)});
-                             infowindow = new google.maps.InfoWindow({content:"<div class='noScroll'><b>Chi Nhánh Công Ty TNHH Giải Pháp CNTT & TT Hoàng Khang</b><br/>188, Street 1, Ward 16, Go Vap District, Ho Chi Minh City, Viet Nam<br/>Phone: (08) 3984 7690<br/>Hotline: (08) 2212 9454<br/>E-mail: <a href='mailto:soft.support@hoangkhang.com.vn'>soft.support@hoangkhang.com.vn</a><br /></div>" });
+                             infowindow = new google.maps.InfoWindow({content:"<div class='noScroll'><b><%= @company.name %></b><br/><%= @company.head_office_address %><br/>Phone: <%= @company.phone %><br/>Hotline: <%= @company.hotline %><br/>E-mail: <a href='mailto:<%= @company.email %>'><%= @company.email %></a><br /></div>" });
                              google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});
                              infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);
                      </script>
