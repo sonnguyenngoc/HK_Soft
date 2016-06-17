@@ -5,6 +5,17 @@ Rails.application.routes.draw do
     # home page
     root "home#index"
     
+    # servies page
+    get "services.html" => "services#index", as: :services
+    get "website-development.html" => "services#services_sub_1", as: :services_sub_1
+    get "web-based-software-development.html" => "services#services_sub_2", as: :services_sub_2
+    get "e-commerce.html" => "services#services_sub_3", as: :services_sub_3
+    get "google-apps-for-bussiness.html" => "services#services_sub_4", as: :services_sub_4
+    get "outsourcing.html" => "services#services_sub_5", as: :services_sub_5
+    get "research-and-development.html" => "services#services_sub_6", as: :services_sub_6
+    get "systems-integration.html" => "services#services_sub_7", as: :services_sub_7
+    get "email-marketing.html" => "services#services_sub_8", as: :services_sub_8
+    
     # hosting pages
     get "hosting-1.html" => "hosting1#index", as: :hosting1
     get "hosting-2.html" => "hosting2#index", as: :hosting2
@@ -22,9 +33,6 @@ Rails.application.routes.draw do
     
         # about us page
         get "about-us.html" => "about_us#index", as: :about_us
-
-        # servies page
-        get "services.html" => "services#index", as: :services
 
         # our team page
         get "our-team.html" => "our_team#index", as: :our_team

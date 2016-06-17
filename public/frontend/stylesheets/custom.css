@@ -68,3 +68,6 @@ label.error {
 .feature_section11 ul.domlist1 {
 	width: 25%;
 }
+ul.tabs li {
+	width: 50%;
+}

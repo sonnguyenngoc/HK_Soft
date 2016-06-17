@@ -80,9 +80,11 @@
 	<!-- progressbar -->
     <link rel="stylesheet" href="/frontend/js/progressbar/ui.progress-bar.css">
 	
+	<% if params[:controller] == "blog3" || params[:controller] == "services" %>
 	<!-- tabs -->
-    <!--<link rel="stylesheet" type="text/css" href="/frontend/js/tabs/assets/css/responsive-tabs3.css">
-	<link rel="stylesheet" type="text/css" href="/frontend/js/tabs/tabwidget/tabwidget.css" />-->
+	<link rel="stylesheet" type="text/css" href="/frontend/js/tabs/assets/css/responsive-tabs3.css">
+	<link rel="stylesheet" type="text/css" href="/frontend/js/tabs/tabwidget/tabwidget.css" />
+	<% end %>
 	
 	<!-- tabs 2 -->
     <link href="/frontend/js/tabs2/tabacc.css" rel="stylesheet" />

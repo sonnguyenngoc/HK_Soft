@@ -35,67 +35,6 @@
             <div class="container">
 
                 <div class="one_fourth">
-                    <h4 class="white">Hosting Packages</h4>
-                    <ul class="foolist">
-                        <li><a href="#">Web Hosting</a></li>
-                        <li><a href="#">Reseller Hosting</a></li>
-                        <li><a href="#">VPS Hosting</a></li>
-                        <li><a href="#">Dedicated Servers</a></li>
-                        <li><a href="#">Windows Hosting</a></li>
-                        <li><a href="#">Cloud Hosting</a></li>
-                        <li><a href="#">Linux Servers</a></li>
-                    </ul>
-                </div>
-                <!-- end section -->
-
-                <div class="one_fourth">
-                    <h4 class="white">Our Products</h4>
-                    <ul class="foolist">
-                        <li><a href="#">Website Builder</a></li>
-                        <li><a href="#">Web Design</a></li>
-                        <li><a href="#">Logo Design</a></li>
-                        <li><a href="#">Register Domains</a></li>
-                        <li><a href="#">Traffic Booster</a></li>
-                        <li><a href="#">Search Advertising</a></li>
-                        <li><a href="#">Email Marketing</a></li>
-                    </ul>
-                </div>
-                <!-- end section -->
-
-                <div class="one_fourth">
-                    <h4 class="white">Company</h4>
-                    <ul class="foolist">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Press &amp; Media</a></li>
-                        <li><a href="#">News / Blogs</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Awards &amp; Reviews</a></li>
-                        <li><a href="#">Testimonials</a></li>
-                        <li><a href="#">Affiliate Program</a></li>
-                    </ul>
-                </div>
-                <!-- end section -->
-                
-                <div class="one_fourth last aliright">
-                    <div class="address">
-                        <img src="/frontend/images/footer-logo.png" alt="" />
-                        <br /><br /> <%= Company.get_company.head_office_address %>
-                        <div class="clearfix margin_bottom1"></div>
-                        <strong>Phone:</strong> <b><%= Company.get_company.phone %></b><br />
-                        <strong>Email:</strong> <a href="mailto:<%= Company.get_company.email %>"><%= Company.get_company.email %></a><br />
-                        <%= link_to "View Directions", about_us_path, class: "smbut" %><br /><br />
-                        <img src="/frontend/images/payment-logos.png" alt="" />
-
-                    </div>
-
-                </div>
-                <!-- end section -->
-
-
-                <div class="clearfix margin_bottom3"></div>
-
-
-                <div class="one_fourth">
                     <h4 class="white">Follow Us</h4>
                     <ul class="foosocial">
                         <li class="faceboox"><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -110,7 +49,7 @@
                 <div class="one_fourth">
                     <h4 class="white">Resources</h4>
                     <ul class="foolist">
-                        <li><a href="#">How to Create a Website</a></li>
+                        <li><a href="#">Domains & Hosting</a></li>
                         <li><a href="#">How to Transfer a Website</a></li>
                         <li><a href="#">Start a Web Hosting Business</a></li>
                         <li><a href="#">How to Start a Blog</a></li>
@@ -119,19 +58,31 @@
                 <!-- end section -->
 
                 <div class="one_fourth">
-                    <h4 class="white">Support</h4>
+                    <h4 class="white">Our Services</h4>
                     <ul class="foolist">
-                        <li><a href="#">Product Support</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Knowledge Base</a></li>
-                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Website Development</a></li>
+                        <li><a href="#">Web-based Software Development</a></li>
+                        <li><a href="#">E-Commerce</a></li>
+                        <li><a href="#">Google Apps for Business</a></li>
+                        <li><a href="#">Outsourcing</a></li>
+                        <li><a href="#">Research & Development</a></li>
+                        <li><a href="#">Systems Integration</a></li>
+                        <li><a href="#">Email Marketing</a></li>
                     </ul>
                 </div>
                 <!-- end section -->
-
+                
                 <div class="one_fourth last aliright">
-                    <p class="clearfix margin_bottom1"></p>
-                    <img src="/frontend/images/app-logo1.png" alt="" /> &nbsp; <img src="/frontend/images/app-logo1.png" alt="" />
+                    <div class="address">
+                        <img src="/frontend/images/footer-logo.png" alt="" />
+                        <br /><br /> <%= Company.get_company.head_office_address %>
+                        <div class="clearfix margin_bottom1"></div>
+                        <strong>Phone:</strong> <b><%= Company.get_company.phone %></b><br />
+                        <strong><i class="fa fa-envelope-o"></i></strong> <a href="mailto:<%= Company.get_company.email %>"><%= Company.get_company.email %></a><br />
+                        <%= link_to "View Directions", about_us_path, class: "smbut" %>
+
+                    </div>
+
                 </div>
                 <!-- end section -->
 
