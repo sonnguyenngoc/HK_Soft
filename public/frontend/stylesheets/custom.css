@@ -77,3 +77,16 @@ p {
 .blog_postcontent .image_frame img {
 	border: 2px solid gray;
 }
+figure.span4.m-span3.picture-item.gallery.shuffle-item.filtered {
+    border: 1px solid #d9d9d9;
+}
+a#img_mobile {
+    width: auto;
+    display: table-caption;
+    height: 100%;
+    margin-top: 20px;
+}
+img#img_mobile {
+    width: auto;
+	margin-left: 20px;
+}
