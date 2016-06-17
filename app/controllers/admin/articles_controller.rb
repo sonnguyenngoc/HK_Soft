@@ -47,6 +47,7 @@ class Admin::ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
+    @article_categories = ArticleCategory.all
     @areas = Area.get_by_level(2)
     # authorize
     authorize! :create, Article
