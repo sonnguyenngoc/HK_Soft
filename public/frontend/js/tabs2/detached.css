@@ -185,7 +185,18 @@
 	margin-right: 50px;
 }
 
-
+@media (max-width: 489px) {
+	.js .detached.accordion > section > :first-child span {
+		font-size: 14px;
+		padding: 12px 45px;
+		text-align: center;
+		margin: 0 0px;
+		color: #fff;
+		background: #2a363f;
+		border-radius: 3px;
+		
+	}
+}
 
 
 
