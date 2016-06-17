@@ -48,6 +48,7 @@ class Admin::ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article_categories = ArticleCategory.all
+    @products = Product.paginate(:page => params[:page], :per_page => 10)
     @areas = Area.get_by_level(2)
     # authorize
     authorize! :create, Article
