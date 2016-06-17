@@ -56,7 +56,7 @@ class ArticleUploader < CarrierWave::Uploader::Base
   
   # set version website hksoft
   version :hksoft_large_image do
-    process :resize_to_fill => [1170, 520]
+    process :resize_to_fit => [1170, 520]
   end
   
   version :hksoft_square_image do
