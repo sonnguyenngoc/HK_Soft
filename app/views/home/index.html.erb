@@ -328,8 +328,7 @@
 
 
     <div class="alicent">
-        <h4 class="caps">More than 200,000 websites hosted</h4>
-        <h1 class="caps"><strong>get your website online today</strong></h1></div>
+        <h1 class="caps"><strong>recent works</strong></h1></div>
 
     <div class="clearfix margin_bottom2"></div>
 
@@ -341,24 +340,20 @@
             <div id="sl-view" class="clearfix">
 
                 <div id="sl-wrap">
-
-                    <div class="sl-div">
-                        <a href="#">visit website</a>
-                        <img src="/frontend/images/site-img14.jpg" alt="" /></a>
-                    </div>
-                    <!-- end section -->
-
-                    <div class="sl-div">
-                        <a href="#">visit website</a>
-                        <img src="/frontend/images/site-img15.jpg" alt="" />
-                    </div>
-                    <!-- end section -->
-
-                    <div class="sl-div">
-                        <a href="#">visit website</a>
-                        <img src="/frontend/images/site-img16.jpg" alt="" />
-                    </div>
-                    <!-- end section -->
+                    
+                    <% @projects.each do |item| %>
+                        
+                        <div class="sl-div">
+                            
+                            <%= link_to "View Detail", work_detail_path(project_id: item) %>
+                            
+                            <img src="<%= item.image_url.small %>" alt="<%= item.name %>" /></a>
+                        
+                        </div>
+                       
+                        <!-- end section -->
+                    
+                    <% end %>
 
                 </div>
 
