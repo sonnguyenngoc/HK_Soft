@@ -186,6 +186,78 @@ class Article < ActiveRecord::Base
     return records
   end
   
+  # website_development
+  def self.get_website_development
+    records = self.get_active_articles
+    records = records.joins(:code_status).where(code_statuses: { title: 'website_development' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  # web_based_software_development
+  def self.get_web_based_software_development
+    records = self.get_active_articles
+    records = records.joins(:code_status).where(code_statuses: { title: 'web_based_software_development' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  # e_commerce
+  def self.get_e_commerce
+    records = self.get_active_articles
+    records = records.joins(:code_status).where(code_statuses: { title: 'e_commerce' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  # e_commerce
+  def self.get_google_apps_for_bussiness
+    records = self.get_active_articles
+    records = records.joins(:code_status).where(code_statuses: { title: 'google_apps_for_bussiness' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  # e_commerce
+  def self.get_outsourcing
+    records = self.get_active_articles
+    records = records.joins(:code_status).where(code_statuses: { title: 'outsourcing' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  # e_commerce
+  def self.get_research_and_development
+    records = self.get_active_articles
+    records = records.joins(:code_status).where(code_statuses: { title: 'research_and_development' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  # e_commerce
+  def self.get_systems_integration
+    records = self.get_active_articles
+    records = records.joins(:code_status).where(code_statuses: { title: 'systems_integration' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  # e_commerce
+  def self.get_email_marketing
+    records = self.get_active_articles
+    records = records.joins(:code_status).where(code_statuses: { title: 'email_marketing' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
   #get footer about us
   def self.get_footer_about_us
     records = self.get_active_articles

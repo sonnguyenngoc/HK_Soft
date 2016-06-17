@@ -36,6 +36,10 @@ class ProjectUploader < CarrierWave::Uploader::Base
   #   process :resize_to_fit => [50, 50]
   # end
   
+  version :small do
+    process :resize_to_fit => [750, 500]
+  end
+  
   version :medium do
     process :resize_to_fit => [800, 600]
   end
