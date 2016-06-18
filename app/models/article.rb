@@ -332,4 +332,13 @@ class Article < ActiveRecord::Base
     return records   
   end
   
+  # check domain if available
+  def self.lookup_domain(domain)
+    if domain.present?
+      require 'net/http'
+      uri = URI('http://www.whois.net.vn/whois.php?domain='+domain)
+      Net::HTTP.get(uri).chars.last.force_encoding("UTF-8")
+    end
+  end
+  
 end

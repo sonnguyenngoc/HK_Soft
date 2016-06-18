@@ -4,6 +4,10 @@
 #newsletter_form_validate input.error, #newsletter_form_validate textarea.error {
 	border: red solid 2px;
 }
+#enter_domain_name input.error, #enter_domain_name textarea.error {
+	border: red solid 2px;
+	border-radius: 3px;
+}
 label.error {
 	display: none !important;
 }
