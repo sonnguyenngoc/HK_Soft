@@ -17,15 +17,39 @@
     <div class="page_title1 sty7">
 
         <h1>FIND YOUR PERFECT DOMAIN NAME.
-        <em>Huge Choice. New Extensions. Low Prices. Register your perfect domain name today.</em></h1>
+        <em>Register your perfect domain name today.</em></h1>
 
         <div class="serch_area">
-            <form method="get" action="index.html">
-                <input class="enter_email_input" name="enter_email_input" id="enter_email_input" placeholder="Enter your domain name here..." type="text">
+            
+            <% if params[:enter_domain_name].present? %>
+            
+                <% if @domain_name == "0" %>
+                
+                    <div id="div2" class="successmes">
+                        <div class="message-box-wrap">
+                        <a class="close-but" id="colosebut2">close</a> <strong><%= params[:enter_domain_name] %></strong> is available.</div>
+                    </div>
+                    <br/>
+                    
+                <% end %>
+                
+                <% if @domain_name == "1" %>
+                    <div id="div4" class="errormes">
+                        <div class="message-box-wrap">
+                            <a class="close-but" id="colosebut4">close</a> <strong><%= params[:enter_domain_name] %></strong> is already registered.</div>
+                    </div>
+                    <br/>
+                <% end %>
+                
+            <% end %>
+            
+            <%= form_for("", url: {controller: 'domains', action: 'index'}, html: {id: 'enter_domain_name'}, method: "get") do |f| %>
+                <%= text_field_tag :enter_domain_name, nil, class: "enter_email_input required", placeholder: "Enter your domain name here..." %>
                 <input name="" value="Search Domain" class="input_submit" type="submit">
-            </form>
+            <% end %>
+            
             <br />
-            <div class="molinks"><a href="#"><i class="fa fa-caret-right"></i> Bulk Domain Search</a> <a href="#"><i class="fa fa-caret-right"></i> Transfer Domains</a></div>
+            <div class="molinks"><a href="#"><i class="fa fa-caret-right"></i> Domain Name Search - Advanced Domain Search Tool</a></div>
         </div>
         <!-- end section -->
 
@@ -601,3 +625,8 @@
 <!-- ######### JS FILES ######### -->
 <!-- get jQuery used for the theme -->
 <%= render "/home/js_files" %>
+<script>
+    $(document).ready(function(){
+        $("#enter_domain_name").validate();
+    });
+</script>
