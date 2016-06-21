@@ -966,6 +966,14 @@ h3.care {
 .social_feeds .google_box {
     width: 263px;
 }
+#footer .list_of_entries li {
+    padding: 5px 0;
+}
+.tags_container a {
+    display: inline-block;
+    margin-right: 15px;
+    line-height: 27px;
+}
 
 /*--------CSS display image item----------*/
 /*.table_cell {

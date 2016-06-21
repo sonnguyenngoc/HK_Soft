@@ -560,3 +560,6 @@ input, textarea, select, .form-control {
 .bootstrap-datetimepicker-widget{
     border: solid 1px #ddd;
 }
+#footer .list_of_entries li {
+    padding: 5px 0;
+}
