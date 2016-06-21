@@ -94,3 +94,7 @@ img#img_mobile {
     width: auto;
 	margin-left: 20px;
 }
+.portfolio_area_left img {
+	border: 1px solid gray;
+	margin-bottom: 5px;
+}

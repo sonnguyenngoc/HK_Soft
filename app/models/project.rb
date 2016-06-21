@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
+    validates :author, :name, :start_date, :end_date, presence: true
     mount_uploader :image_url, ProjectUploader
     
     has_and_belongs_to_many :project_categories

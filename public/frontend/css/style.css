@@ -189,11 +189,11 @@
 	float:left;
 	display:block;
 	width:100%;
-	min-height: 50px;
+	min-height: 62px;
 	margin-top:3px;
 	position: relative;
 	text-indent:-999em;
-	background:url(../images/logo.png) no-repeat left top;
+	background:url(../images/logo_hksoft.png) no-repeat left top;
 }
 
 /* bigger logo? remove below comment */
@@ -214,7 +214,6 @@
 .logo {
 	float: left;
 	width: 25%;
-	margin-top: 5px;
 }
 
 .menu_main {

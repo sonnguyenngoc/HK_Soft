@@ -48,7 +48,7 @@
                             </ul>
                             <div class="clearfix"></div>
                             <div class="margin_top1"></div>
-                            <p class="text-justify"><%= truncate(strip_tags(item.content), length: 380) %><a href="#"> read more...</a></p>
+                            <p class="text-justify"><%= truncate(strip_tags(item.content), length: 380) %><%= link_to "read more...", blog_post_path(news_id: item) %></p>
                         </div>
                     </div>
                     <!-- /# end post -->

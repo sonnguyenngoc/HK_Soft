@@ -35,34 +35,32 @@
                 <div class="portfolio_area_left">
                     
                     <a href="#" target="_blank"><img src="<%= @project.image_url.large %>" alt="" /></a><br />
-                       
-                    <hr>
                     
                     <% @project.project_images.each do |item| %>
                     
                         <a href="#" target="_blank"><img src="<%= item.image_url.large %>" alt="" /></a><br />
-                       
-                        <hr>
-                    
+                        
                     <% end %>
                     
                 </div>
 
                 <div class="portfolio_area_right">
-
+                
                     <h3 class="caps"><strong>Project Description</strong></h3>
 
                     <p class="text-justify"><%= @project.description %></p>
 
                     <div class="project_details">
-                        <h5 class="caps">Project Details</h5>
+                        <h3 class="caps">Project Details</h3>
                         <span><strong>Name</strong> <em><%= @project.name %></em></span>
                         <span><strong>Start Date</strong> <em><%= @project.start_date.strftime("%d %B %Y") %></em></span>
                         <span><strong>End Date</strong> <em><%= @project.end_date.strftime("%d %B %Y") %></em></span>
                         <span><strong>Categories</strong> <em><% @project.program_languages.each do |item| %><a href="#<%= item.name %>"><%= item.name %></a> <% end %> </em></span>
                         <span><strong>Author</strong> <em><%= @project.author %></em></span>
-                        <div class="clearfix margin_top5"></div>
-                        <a href="<%= @project.website %>" class="but_medium1" target="_blank"><i class="fa fa-hand-o-right fa-lg"></i>&nbsp; Visit Site</a>
+                        <% if @project.website != "" %>
+                            <div class="clearfix margin_top5"></div>
+                            <a href="<%= @project.website %>" class="but_medium1" target="_blank"><i class="fa fa-hand-o-right fa-lg"></i>&nbsp; Visit Site</a>
+                        <% end %>
                     </div>
 
                 </div>
