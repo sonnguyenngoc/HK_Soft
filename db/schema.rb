@@ -71,9 +71,9 @@ ActiveRecord::Schema.define(version: 20160621025518) do
     t.text     "meta_description"
     t.boolean  "is_show",              default: false
     t.string   "page_layout"
+    t.string   "image_url_full_width"
     t.integer  "user_id"
     t.boolean  "approved",             default: false
-    t.string   "image_url_full_width"
   end
 
   create_table "articles_products", force: :cascade do |t|
