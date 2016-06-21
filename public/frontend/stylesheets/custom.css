@@ -970,7 +970,9 @@ h3.care {
     padding: 5px 0;
 }
 .tags_container a {
-    
+    display: inline-block;
+    margin-right: 15px;
+    line-height: 27px;
 }
 
 /*--------CSS display image item----------*/
