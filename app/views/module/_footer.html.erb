@@ -405,7 +405,7 @@
                                     
                                     <% Article.get_keyword_article.keywords.each do |item| %>
                                                 
-                                        <span href="#" class=""><strong><%= item.html_safe %></strong></span>
+                                        <a href="<%= search_path(keyword: item) %>" class=""><strong><%= item.html_safe %></strong></a>
                                         
                                     <% end %>
                                     
