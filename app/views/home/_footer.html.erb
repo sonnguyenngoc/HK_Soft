@@ -74,12 +74,12 @@
                 
                 <div class="one_fourth last aliright">
                     <div class="address">
-                        <img src="/frontend/images/footer-logo.png" alt="" />
+                        <img src="/frontend/images/logo_hksoft.png" alt="" />
                         <br /><br /> <%= Company.get_company.head_office_address %>
                         <div class="clearfix margin_bottom1"></div>
                         <strong>Phone:</strong> <b><%= Company.get_company.phone %></b><br />
                         <strong><i class="fa fa-envelope-o"></i></strong> <a href="mailto:<%= Company.get_company.email %>"><%= Company.get_company.email %></a><br />
-                        <%= link_to "View Directions", about_us_path, class: "smbut" %>
+                        <%= link_to "View Directions", contact_path, class: "smbut" %>
 
                     </div>
 

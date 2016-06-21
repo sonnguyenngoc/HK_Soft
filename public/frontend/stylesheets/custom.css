@@ -98,3 +98,6 @@ img#img_mobile {
 	border: 1px solid gray;
 	margin-bottom: 5px;
 }
+.text-justify p img {
+	width: 100%;
+}
