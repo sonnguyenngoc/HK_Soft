@@ -967,6 +967,9 @@ h3.care {
 .social_feeds .google_box {
     width: 263px;
 }
+#footer .list_of_entries li {
+    padding: 5px 0;
+}
 
 /*--------CSS display image item----------*/
 /*.table_cell {
