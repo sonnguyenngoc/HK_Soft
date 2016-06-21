@@ -103,34 +103,44 @@ class Category < ActiveRecord::Base
     return records   
   end
   
-  def self.get_by_status(area, status, limit=5)    
+  def self.get_by_status(area, status, limit=8)    
     records = self.joins(:products).where("products.approved = true and products.is_show = true")
     
     if status == "new"
       records = records.order("created_at DESC")
-    end
-    
-    if status == "deal" or status == "prominent" or status == "bestseller" or status == "imported"
+    else
       records = records.where("products.status LIKE ?", "%#{status}%")
     end
     
-    #records = records.joins(:areas).where("areas.id = ?", area.id) if area.id.present?
+    records = records.joins(:areas).where("areas.id = ?", area.id) if area.id.present?
     
     records = records.uniq.limit(limit)
   end
   
-  def get_products_by_status(area, status, limit=5)
+  def get_products_by_status(area, status, limit=8)
     records = self.products.where("products.approved = true and products.is_show = true")
     
-    #if status == "new"
-    #  records = records.order("created_at DESC")
-    #end
-    #
-    #if status == "deal" or status == "prominent" or status == "bestseller" or status == "imported"
-    #  records = records.where("products.status LIKE ?", "%#{status}%")
-    #end
+    if status == "new"
+      records = records.order("created_at DESC")
+    else
+      records = records.where("products.status LIKE ?", "%#{status}%")
+    end
     
-    #records = records.joins(:areas).where("areas.id = ?", area.id) if area.id.present?
+    records = records.joins(:areas).where("areas.id = ?", area.id) if area.id.present?
+    
+    records = records.uniq.limit(limit)
+  end
+  
+  def self.get_products_by_status(area, status, limit=8)
+    records = Product.get_active_products
+    
+    if status == "new"
+      records = records.order("created_at DESC")
+    else
+      records = records.where("products.status LIKE ?", "%#{status}%")
+    end
+    
+    records = records.joins(:areas).where("areas.id = ?", area.id) if area.id.present?
     
     records = records.uniq.limit(limit)
   end
