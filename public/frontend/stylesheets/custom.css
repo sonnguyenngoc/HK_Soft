@@ -754,13 +754,12 @@ h3.care {
     right: 50px;
     width: 350px;
     background: #fff;
-    height: 430px;
+    height: 580px;
     border: 3px solid #ddd;
     padding: 3px 0;
 }
 .footer_register_box .section_register_box {
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 15px;
 }
 .footer_register_box #quick_login form:not(:last-child) {
     margin-bottom: 10px;

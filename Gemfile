@@ -65,3 +65,5 @@ gem 'thin'
 gem 'onliner'
 gem 'devise_lastseenable'
 gem 'cancan'
+gem "koala", "~> 2.2"
+

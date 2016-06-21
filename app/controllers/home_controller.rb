@@ -11,6 +11,8 @@ class HomeController < ApplicationController
   end
   
   def countdown
+    
+    
     render layout: nil
   end
   

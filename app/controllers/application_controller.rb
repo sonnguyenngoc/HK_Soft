@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_current_area
   before_action :set_current_area
   before_filter :check_mobile
+  before_action :share_fb
   
   protect_from_forgery
   
@@ -76,5 +77,17 @@ class ApplicationController < ActionController::Base
     else
       @is_mobile = request.user_agent =~ /Mobile|webOS/
     end
+  end
+  
+  def share_fb
+    #@user = Koala::Facebook::API.new('EAACEdEose0cBAJ06QQlgap9pQ1i8HyVeQpe2iQ6SFYGNjHFZC7jHjNc9hGG5u7XEzilq5eugoAi7txdWUWXDvZCsmKiWvZAsGa86d9WWrpx4aHfMSuAJouOeHHurvgEX7caywasVllkiCKRggWy7XRfOZBO1CG9t1dXx4b22egZDZD')
+    #@share_item = Product.get_share_item
+    #if !@share_item.nil?
+    #  #begin
+    #    @user.put_connections("me", "feed", :message => @share_item.name, :link => 'http://dacsanvungmien.net', :picture => 'http://dacsanvungmien.net'+@share_item.get_main_image.image_url.large_image.to_s)
+    #    @share_item.update_attribute(:fb_shared, true)
+    #  #rescue
+    #  #end
+    #end
   end
 end
