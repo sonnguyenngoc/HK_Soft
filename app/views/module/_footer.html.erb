@@ -403,9 +403,15 @@
                                 
                                 <div class="tags_container">
                                     
+                                    <% Article.get_keyword_article.keywords.each do |item| %>
+                                                
+                                        <a href="#" class=""><%= item.html_safe %></a>,
+                                    
+                                    <% end %>
+                                    
                                     <% if !Article.get_keyword_article.nil? %>
                                        
-                                        <ul class="tags_cloud">
+                                        <ul class="tags_cloud" style="display: none>
                                             
                                             <% Article.get_keyword_article.keywords.each do |item| %>
                                                 
