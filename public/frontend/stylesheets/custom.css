@@ -970,7 +970,7 @@ h3.care {
 #footer .list_of_entries li {
     padding: 5px 0;
 }
-.tags_container span {
+.tags_container a {
     display: inline-block;
     margin-right: 15px;
     line-height: 27px;
