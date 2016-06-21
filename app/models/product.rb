@@ -389,4 +389,8 @@ class Product < ActiveRecord::Base
     
     return sum
   end
+  
+  def self.get_share_item
+    self.get_active_products.where(fb_shared: false).order("products.created_at").first
+  end
 end
