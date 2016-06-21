@@ -754,7 +754,7 @@ h3.care {
     right: 50px;
     width: 350px;
     background: #fff;
-    height: 580px;
+    height: 537px;
     border: 3px solid #ddd;
     padding: 3px 0;
 }
@@ -963,6 +963,7 @@ h3.care {
 .social_feeds .dropdown {
     width: 390px;
 }
+
 .social_feeds .google_box {
     width: 263px;
 }

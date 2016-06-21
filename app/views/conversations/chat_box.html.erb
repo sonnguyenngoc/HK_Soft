@@ -293,10 +293,6 @@
 											<!-- - - - - - - - - - - - - - Tab - - - - - - - - - - - - - - - - -->
 	
 											<!--<div id="register" class="tab_container active">
-												
-												
-											
-
 										
 											</div>--><!--/ #tab-9-->
 	
@@ -361,7 +357,7 @@
 												<p>Bạn cần điền thông tin bên dưới để chat với quản trị viên.</p>
 												<br />
 	
-												<%= form_for User.new, url: quick_register_path, html: {class: "type_2"} do |f| %>
+												<%= form_for User.new, url: quick_register_path, html: {class: "type_2", id: "new_user_validate_mobile"} do |f| %>
 													
 													<ul>
 											
@@ -457,6 +453,7 @@
         <%= javascript_include_tag "/frontend/js/colorpicker/colorpicker.js" %>
         <%= javascript_include_tag "/frontend/js/retina.min.js" %>
         <%= javascript_include_tag "http://s7.addthis.com/js/300/addthis_widget.js" %>
+		<%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>
 
 		<!-- Theme files
 		============================================ -->
@@ -493,7 +490,11 @@
 					chatBox.chatWith(<%= params[:chat_id] %>);
 					resizeChatbox();
 				<% end %>
-			})
+			});
+			
+			$(document).ready(function(){
+				$("#new_user_validate_mobile").validate();
+			});
 			
         </script>
 		<style>
