@@ -393,7 +393,7 @@ class Product < ActiveRecord::Base
   def self.share_facebook
     last_shared = Product.where(fb_shared: true).order("products.updated_at DESC").first
     last_shared = last_shared.nil? ? Time.now - 1.year : last_shared.updated_at
-    if last_shared < (Time.now - 3.hours)
+    if last_shared < (Time.now - 3.seconds)
       @share_item = self.get_active_products.where(fb_shared: false).order("products.created_at").first
     else
       @share_item = nil
@@ -407,8 +407,19 @@ class Product < ActiveRecord::Base
         #begin
           @message = ActionView::Base.full_sanitizer.sanitize(@article.content)
           @message = @message.gsub("{ten_san_pham}", @share_item.name).gsub("{mo_ta}", ActionView::Base.full_sanitizer.sanitize(@share_item.description[0..100]))
-          @user.put_connections("me", "feed", :message => @message, :link => 'http://dacsanvungmien.net' + Rails.application.routes.url_helpers.product_path(product_id: @share_item.id), :picture => 'http://dacsanvungmien.net'+@share_item.get_main_image.image_url.large_image.to_s)
+          @user.put_connections("me", "feed", :message => @message, :link => 'http://dacsanvungmien.net/san-pham/chi-tiet-san-pham/' + @share_item.id.to_s, :picture => 'http://dacsanvungmien.net'+@share_item.get_main_image.image_url)
           @share_item.update_attribute(:fb_shared, true)
+          
+          sleep 120
+          
+          @user.get_connections('me', 'accounts').each do |item|
+            page_access_token = item['access_token'] #this gets the users first page.
+            page_id = item['id']
+            @page = Koala::Facebook::API.new(page_access_token)
+            @page.put_connections(page_id, "feed", :message => @message, :link => 'http://dacsanvungmien.net/san-pham/chi-tiet-san-pham/' + @share_item.id.to_s, :picture => 'http://dacsanvungmien.net'+@share_item.get_main_image.image_url)
+            
+            sleep 600
+          end
         #rescue
         #end
       end
