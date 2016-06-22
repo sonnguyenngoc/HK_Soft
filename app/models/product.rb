@@ -403,13 +403,15 @@ class Product < ActiveRecord::Base
     if !@share_item.nil?
       @user = Koala::Facebook::API.new('EAACEdEose0cBAORaDsebZA252TpshfU2MOCZCzR59ffLktwD7g1WhOFZAlrynL9LvO2ZCZCxYjgVDwj6EAPDMLDiWzCv00giaSVJj3aZCKwJZBJLtlKUfnLRlPoszD5ZBrnd3IVbzAMb79RO86NXscjYYzzglzz6k31jhqi3Kukv7QZDZD')
       @article = Article.get_facebook_share_message
-      #begin
-        @message = ActionView::Base.full_sanitizer.sanitize(@article.content)
-        @message = @message.gsub("{ten_san_pham}", @share_item.name).gsub("{mo_ta}", ActionView::Base.full_sanitizer.sanitize(@share_item.description[0..100]))
-        @user.put_connections("me", "feed", :message => @message, :link => 'http://dacsanvungmien.net' + Rails.application.routes.url_helpers.product_path(product_id: @share_item.id), :picture => 'http://dacsanvungmien.net'+@share_item.get_main_image.image_url.large_image.to_s)
-        @share_item.update_attribute(:fb_shared, true)
-      #rescue
-      #end
+      if !@article.nil?
+        #begin
+          @message = ActionView::Base.full_sanitizer.sanitize(@article.content)
+          @message = @message.gsub("{ten_san_pham}", @share_item.name).gsub("{mo_ta}", ActionView::Base.full_sanitizer.sanitize(@share_item.description[0..100]))
+          @user.put_connections("me", "feed", :message => @message, :link => 'http://dacsanvungmien.net' + Rails.application.routes.url_helpers.product_path(product_id: @share_item.id), :picture => 'http://dacsanvungmien.net'+@share_item.get_main_image.image_url.large_image.to_s)
+          @share_item.update_attribute(:fb_shared, true)
+        #rescue
+        #end
+      end
     end
   end
 end
