@@ -101,3 +101,18 @@ img#img_mobile {
 .text-justify p img {
 	width: 100%;
 }
+div.free_setup {
+    color: #fff;
+    background-color: #43bb7e;
+    height: 30px;
+    width: 40px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    padding: 10px 0;
+    margin: 0 auto;
+    line-height: 100%;
+    font-weight: bold;
+    font-size: .8em;
+}
