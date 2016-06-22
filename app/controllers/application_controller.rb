@@ -80,6 +80,6 @@ class ApplicationController < ActionController::Base
   end
   
   def share_fb
-    Product.share_facebook
+    # Product.share_facebook
   end
 end
