@@ -37,6 +37,13 @@ class Article < ActiveRecord::Base
     return records
   end
   
+  def self.get_facebook_share_message
+    records = self.joins(:code_status).where("code_statuses.title = 'facebook_share_message' and articles.approved = true")
+    records = records.order("created_at").first
+    
+    return records
+  end
+  
   def get_related_blogs
     cat_ids = []
     article_categories.each do |c|
