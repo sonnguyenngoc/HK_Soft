@@ -393,7 +393,7 @@ class Product < ActiveRecord::Base
   def self.share_facebook
     last_shared = Product.where(fb_shared: true).order("products.updated_at DESC").first
     last_shared = last_shared.nil? ? Time.now - 1.year : last_shared.updated_at
-    if last_shared < (Time.now - 3.seconds)
+    if last_shared < (Time.now - 3.hours)
       @share_item = self.get_active_products.where(fb_shared: false).order("products.created_at").first
     else
       @share_item = nil
