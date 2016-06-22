@@ -56,6 +56,8 @@ class Admin::ArticlesController < ApplicationController
     
     @article.article_categories.clear
     
+    @article_categories = ArticleCategory.all
+    
     # update areas
     @article.areas.clear
     if params[:area_ids].present?
@@ -77,6 +79,8 @@ class Admin::ArticlesController < ApplicationController
         @article.products << Product.find(id)
       end
     end
+    
+    @products = @article.products
 
     respond_to do |format|
       if @article.save
