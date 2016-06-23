@@ -976,7 +976,9 @@ h3.care {
     margin-right: 15px;
     line-height: 27px;
 }
-
+.product_item:not(.type_3) .actions_wrap_viewall {
+    opacity: 1;
+}
 /*--------CSS display image item----------*/
 /*.table_cell {
     display: inline-block;
