@@ -17,7 +17,7 @@
     <div class="page_title1 sty13">
         <div class="container">
 
-            <h1>Lastest news</h1>
+            <h1><%= t(:lastest_news) %></h1>
 
         </div>
     </div>
@@ -28,8 +28,11 @@
 
 
     <div class="content_fullwidth less2">
+        
         <div class="container">
+            
             <div class="content_halfsite">
+                
                 <% @articles.each_with_index do |item, index| %>
                     
                     <% if index%3 != 0 %><div class="clearfix divider_line9"></div><% end %>
@@ -43,12 +46,12 @@
                             <ul class="post_meta_links">
                                 <li><a href="#" class="date"><%= item.created_at.strftime("%d %B %Y") %></a></li>
     
-                                <li class="post_categoty"><i>in:</i> <a href="#news">News</a></li>
-                                <li class="post_comments"><i>by:</i> <a href="#global_naturesoft">Global Naturesoft</a></li>
+                                <li class="post_categoty"><i><%= t(:in) %>:</i> <a href="#news"><%= t(:news) %></a></li>
+                                <li class="post_comments"><i><%= t(:by) %>:</i> <a href="#global_naturesoft"><%= t(:global_naturesoft) %></a></li>
                             </ul>
                             <div class="clearfix"></div>
                             <div class="margin_top1"></div>
-                            <p class="text-justify"><%= truncate(strip_tags(item.content), length: 380) %><%= link_to "read more...", blog_post_path(news_id: item) %></p>
+                            <p class="text-justify"><%= truncate(strip_tags(item.content), length: 380) %><%= link_to t(:read_more), blog_post_path(news_id: item) %></p>
                         </div>
                     </div>
                     <!-- /# end post -->
@@ -65,7 +68,7 @@
             <div>
 
                 <div class="div_pagination center">
-                    <%= will_paginate @articles, previous_label: '< PREVIOUS', next_label: 'NEXT >' %>
+                    <%= will_paginate @articles, previous_label: '< ' + t(:previous), next_label: t(:next) + ' >' %>
                 </div>
                 <!-- /# end pagination -->
 

@@ -101,6 +101,9 @@ img#img_mobile {
 .text-justify p img {
 	width: 100%;
 }
+.footer .ftop .right .input_submit {
+	margin-left: 4px;
+}
 div.free_setup {
     color: #fff;
     background-color: #43bb7e;

@@ -17,7 +17,7 @@
     <div class="page_title1 sty13">
         <div class="container alileft">
 
-            <h1>Contact</h1>
+            <h1><%= t(:home_contact) %></h1>
 
         </div>
     </div>
@@ -32,15 +32,15 @@
 
             <div class="error_pagenotfound">
                 
-                <b>THANK YOU!</b>
+                <b><%= t(:thank_you) %></b>
 
-                <em>Your message has been received. We'll get back to you shortly.</em>
+                <em><%= t(:thank_you_content) %></em>
 
-                <p>Visit <%= link_to "Our Services", services_sub_1_path %></p>
+                <p>Visit <%= link_to t(:our_services), services_sub_1_path %></p>
 
                 <div class="clearfix margin_top3"></div>
 
-                <%= link_to '<i class="fa fa-arrow-circle-left fa-lg"></i>&nbsp; Go to Home Page'.html_safe, root_path, class: "but_medium1" %>
+                <%= link_to '<i class="fa fa-arrow-circle-left fa-lg"></i>&nbsp; '.html_safe + t(:go_to_home), root_path, class: "but_medium1" %>
 
             </div>
             <!-- end error page notfound -->

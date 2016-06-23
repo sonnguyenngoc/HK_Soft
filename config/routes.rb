@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  scope "(:locale)", locale: /vi|en/, defaults: {locale: "en"} do
+  #, defaults: {locale: "en"}
+  scope "(:locale)", locale: /vi|en/ do
     
     # home page
     root "home#index"

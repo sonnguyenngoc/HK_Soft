@@ -14,13 +14,13 @@
             <ul class="tplinks">
                 <li><strong><i class="fa fa-phone"></i> (08) 2212 9454</strong></li>
                 <li>
-                    <a href="mailto:soft.support@hoangkhang.com.vn"><img src="/frontend/images/site-icon1.png" alt="" /> E-Mail</a>
+                    <a href="mailto:soft.support@hoangkhang.com.vn"><img src="/frontend/images/site-icon1.png" alt="" /> <%= t(:e_mail) %></a>
                 </li>
                 <li>
-                    <%= link_to image_tag("/frontend/images/site-icon3.png") + "Support", support_path %>
+                    <%= link_to image_tag("/frontend/images/site-icon3.png") + t(:home_support), support_path %>
                 </li>
                 <li>
-                    <%= link_to image_tag("/frontend/images/site-icon2.png") + "Contact", contact_path %>
+                    <%= link_to image_tag("/frontend/images/site-icon2.png") + t(:home_contact), contact_path %>
                 </li>
             </ul>
 
