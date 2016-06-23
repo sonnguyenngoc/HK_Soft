@@ -80,14 +80,6 @@ class ApplicationController < ActionController::Base
   end
   
   def share_fb
-    #@user = Koala::Facebook::API.new('EAACEdEose0cBAJ06QQlgap9pQ1i8HyVeQpe2iQ6SFYGNjHFZC7jHjNc9hGG5u7XEzilq5eugoAi7txdWUWXDvZCsmKiWvZAsGa86d9WWrpx4aHfMSuAJouOeHHurvgEX7caywasVllkiCKRggWy7XRfOZBO1CG9t1dXx4b22egZDZD')
-    #@share_item = Product.get_share_item
-    #if !@share_item.nil?
-    #  #begin
-    #    @user.put_connections("me", "feed", :message => @share_item.name, :link => 'http://dacsanvungmien.net', :picture => 'http://dacsanvungmien.net'+@share_item.get_main_image.image_url.large_image.to_s)
-    #    @share_item.update_attribute(:fb_shared, true)
-    #  #rescue
-    #  #end
-    #end
+    # Product.share_facebook
   end
 end
