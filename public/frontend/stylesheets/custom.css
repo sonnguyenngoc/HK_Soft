@@ -104,3 +104,21 @@ img#img_mobile {
 .footer .ftop .right .input_submit {
 	margin-left: 4px;
 }
+div.free_setup {
+    color: #fff;
+    background-color: #43bb7e;
+    height: 30px;
+    width: 40px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    padding: 10px 0;
+    margin: 0 auto;
+    line-height: 100%;
+    font-weight: bold;
+    font-size: .8em;
+}
+.page_title1.sty7 .serch_area .enter_email_input {
+	width: 72.6%;
+}
