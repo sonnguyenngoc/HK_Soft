@@ -421,7 +421,7 @@ vi:
   view_image: "Xem hình ảnh"
   all: "Tất cả"
   thank_you: "Cảm ơn!"
-  thank_you_content: "Lời nhắn của bạn đã được gửi thành công. Chúng tôi sẽ phản hồi trong thời gian ngắn nhất."
+  thank_you_content: "Lời nhắn của bạn đã được gửi thành công."
   got_to_home: "Về trang chủ"
   project_description: "Mô tả dự án"
   project_details: "Chi tiết dự án"
@@ -477,6 +477,8 @@ vi:
   unlimited: "Không giới hạn"
   web_hosting_features: "Tính năng web hosting"
   free: "Free"
+  newsletter_thank_you: "Cảm Ơn!"
+  newsletter_thank_you_content: "Đăng ký email nhận tin mới thành công."
   
   activerecord:
     attributes:

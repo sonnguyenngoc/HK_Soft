@@ -477,6 +477,8 @@ en:
   unlimited: "Unlimited"
   web_hosting_features: "Web Hosting Features"
   free: "Free"
+  newsletter_thank_you: "Thank you for your subscription!"
+  newsletter_thank_you_content: "Email newsletter successful signup."
   
   devise:
     sessions:
