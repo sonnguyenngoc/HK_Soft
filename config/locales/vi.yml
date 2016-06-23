@@ -338,6 +338,8 @@ vi:
   author_vi: "Author"
   categories_article_name_vi: "Tên chuyên mục bài viết"
   
+  
+  
   # frontend global naturesoft translate
   home_page: "Trang Chủ"
   services: "Dịch Vụ"
@@ -365,9 +367,7 @@ vi:
   need_help: "Cần hỗ trợ?"
   call_us: "Gọi cho chúng tôi"
   e_mail: "E-Mail"
-  slider1_content: "Our expertise ranges from developing custom eCommerce websites,<br />
-                    implementing eCommerce capabilities to existing websites and applications,<br />
-                    or customizing popular eCommerce platforms to your design needs and requirements."
+  slider1_content: "E-Commerce content"
   more_info: "Xem thêm !"
   domains: "Domains"
   hosting: "Hosting"
@@ -385,14 +385,14 @@ vi:
   management_systems: "Hệ Thống Quản Lý"
   cost_effective_solutions: "Cost-Effective Solutions"
   development: "Development"
-  web_development_sub_1: "Clean & Modern Design"
-  web_development_sub_2: "Fully Responsive & Retina Ready"
-  web_development_sub_3: "Live Search with Ajax"
-  web_development_sub_4: "Admin Control Panel"
-  web_development_sub_5: "Featured Posts Slideshow"
-  web_development_sub_6: "SEO & PageSpeed Optimized"
-  web_development_sub_7: "Versatile Drop Down Menu Options"
-  web_development_sub_8: "Free 24/7 Tech Support"
+  web_development_sub_1: "Thiết kế hiện đại"
+  web_development_sub_2: "Hiển thị tốt trên đa màn hình & retina"
+  web_development_sub_3: "Live Search với Ajax"
+  web_development_sub_4: "Trang quản lý hệ thống riêng biệt"
+  web_development_sub_5: "Tạo các slideshow cho trang web"
+  web_development_sub_6: "Tối ưu SEO & tốc độ duyệt web"
+  web_development_sub_7: "Hỗ trợ menu đa cấp"
+  web_development_sub_8: "Hỗ trợ miễn phí 24/7"
   
   # what di we offer? 
   what_do_we_offer: "Dịch Vụ Của Chúng Tôi"
