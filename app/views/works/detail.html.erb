@@ -16,9 +16,14 @@
 
     <div class="page_title1 sty9">
         <div class="container">
-
-            <h1><%= @project.name %></h1>
-            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:works), works_path %> <i>/</i> <%= @project.name %></div>
+            
+            <% if params[:locale] == "en" %>
+                <h1><%= @project.name %></h1>
+            <% else %>
+                <h1><%= @project.name_vi %></h1>
+            <% end %>
+            
+            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:works), works_path %> <i>/</i> <% if params[:locale] == "en" %><%= @project.name %><% else %><%= @project.name_vi %><% end %></div>
 
         </div>
     </div>
@@ -47,18 +52,33 @@
                 <div class="portfolio_area_right">
                 
                     <h3 class="caps"><strong><%= t(:project_description) %></strong></h3>
+                    
+                    <% if params[:locale] == "en" %>
 
-                    <p class="text-justify"><%= @project.description %></p>
+                        <p class="text-justify"><%= @project.description %></p>
+                    
+                    <% else %>
+                        
+                        <p class="text-justify"><%= @project.description_vi %></p>
+                        
+                    <% end %>
 
                     <div class="project_details">
                         
                         <h3 class="caps"><%= t(:project_details) %></h3>
                         
-                        <span><strong><%= t(:name) %></strong> <em><%= @project.name %></em></span>
-                        <span><strong><%= t(:start_date) %></strong> <em><%= @project.start_date.strftime("%d %B %Y") %></em></span>
-                        <span><strong><%= t(:end_date) %></strong> <em><%= @project.end_date.strftime("%d %B %Y") %></em></span>
+                        
+                        <span><strong><%= t(:project_name) %></strong>
+                            <% if params[:locale] == "en" %>
+                                <em><%= @project.name %></em>
+                            <% else %>
+                                <em><%= @project.name_vi %></em>
+                            <% end %>
+                        </span>
+                        <span><strong><%= t(:start_date) %></strong> <em><% if params[:locale] == "en" %><%= @project.start_date.strftime("%d %B %Y") %><% else %><%= @project.start_date.strftime("%d/%m/%Y") %><% end %></em></span>
+                        <span><strong><%= t(:end_date) %></strong> <em><% if params[:locale] == "en" %><%= @project.end_date.strftime("%d %B %Y") %><% else %><%= @project.end_date.strftime("%d/%m/%Y") %><% end %></em></span>
                         <span><strong><%= t(:program_languages) %></strong> <em><% @project.program_languages.each do |item| %><a href="#<%= item.name %>"><%= item.name %></a> <% end %> </em></span>
-                        <span><strong><%= t(:author) %></strong> <em><%= @project.author %></em></span>
+                        <span><strong><%= t(:author) %></strong> <em><% if params[:locale] == "en" %><%= @project.author %><% else %><%= @project.author_vi %><% end %></em></span>
                         <% if @project.website != "" %>
                             <div class="clearfix margin_top5"></div>
                             <a href="<%= @project.website %>" class="but_medium1" target="_blank"><i class="fa fa-hand-o-right fa-lg"></i>&nbsp; <%= t(:visit_site) %></a>

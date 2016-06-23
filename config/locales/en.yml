@@ -330,6 +330,12 @@ en:
   wishlist_number: "Wishlist number"
   vietnamese: "Tiếng Việt"
   english: "English"
+  en_info: "En Info"
+  vi_info: "Vi Info"
+  name_vi: "Name"
+  description_vi: "Description"
+  author_vi: "Author"
+  categories_article_name_vi: "Name"
   
   
   # frontend global naturesoft translate
@@ -429,6 +435,11 @@ en:
   global_naturesoft: "Global Naturesoft"
   previous: "PREVIOUS"
   next: "NEXT"
+  project_name: "Project Name"
+  customer_support: "Customer Support"
+  email_support: "Email Support"
+  phone_support: "Phone Support"
+  live_chat: "Live Chat"
   
   devise:
     sessions:

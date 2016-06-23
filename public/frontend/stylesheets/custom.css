@@ -122,3 +122,6 @@ div.free_setup {
 .page_title1.sty7 .serch_area .enter_email_input {
 	width: 72.6%;
 }
+.row-fluid .btn--warning {
+	margin-bottom: 10px;
+}
