@@ -330,6 +330,12 @@ en:
   wishlist_number: "Wishlist number"
   vietnamese: "Tiếng Việt"
   english: "English"
+  en_info: "En Info"
+  vi_info: "Vi Info"
+  name_vi: "Name"
+  description_vi: "Description"
+  author_vi: "Author"
+  categories_article_name_vi: "Name"
   
   devise:
     sessions:

@@ -331,6 +331,12 @@ vi:
   wishlist_number: "Số lượng yêu thích"
   vietnamese: "Tiếng Việt"
   english: "English"
+  en_info: "Thông tin tiếng anh"
+  vi_info: "Thông tin tiếng việt"
+  name_vi: "Tên"
+  description_vi: "Mô tả"
+  author_vi: "Author"
+  categories_article_name_vi: "Tên chuyên mục bài viết"
   
   activerecord:
     attributes:
