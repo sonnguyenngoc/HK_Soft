@@ -48,11 +48,11 @@
 
                         <!-- - - - - - - - - - - - - - Related Products - - - - - - - - - - - - - - - - -->
                         
-                        <% if @blog.products.count < 4 %>
+                        <% if @blog.products.count > 0 and @blog.products.count < 4 %>
 								
                             <%= render "module/blog_related_products_1" %>
                             
-                        <% else %>
+                        <% elsif @blog.products.count > 4 %>
                             
                             <%= render "module/blog_related_products_2" %>
                             
@@ -60,39 +60,11 @@
                         
                         <!-- - - - - - - - - - - - - - End Related Products - - - - - - - - - - - - - - - - -->
                         
-                        <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
-
-                        <div class="section_offset">
-
-                            <a href="#" class="banner">
-
-                                <img src="/frontend/images/banner_img_10.png" alt="">
-
-                            </a>
-
-                        </div>
-
-                        <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
-                        
                         <!-- - - - - - - - - - - - - - Sign Up to Our Newsletter - - - - - - - - - - - - - - - - -->
 
                         <%= render 'module/newsletter' %>
 
                         <!-- - - - - - - - - - - - - - End of Sign Up to Our Newsletter - - - - - - - - - - - - - - - - -->
-                        
-                        <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
-
-                        <div class="section_offset">
-
-                            <a href="#" class="banner">
-
-                                <img src="/frontend/images/banner_img_11.png" alt="">
-
-                            </a>
-
-                        </div>
-
-                        <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
 
                         <!-- - - - - - - - - - - - - - Blog Tags - - - - - - - - - - - - - - - - -->
 
