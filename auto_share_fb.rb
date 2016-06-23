@@ -41,7 +41,7 @@ end
 # System.backup({database: true, file: true, dir: DIR+"/"})
 Product.share_facebook
 
-
+`touch /home/dsvm/kkk`
 
 
 
