@@ -117,7 +117,7 @@ class Category < ActiveRecord::Base
     records = records.uniq.limit(limit)
   end
   
-  def get_products_by_status(area, status, limit=8)
+  def get_products_by_status(area, status, limit=5)
     records = self.products.where("products.approved = true and products.is_show = true")
     
     if status == "new"
@@ -131,7 +131,7 @@ class Category < ActiveRecord::Base
     records = records.uniq.limit(limit)
   end
   
-  def self.get_products_by_status(area, status, limit=8)
+  def self.get_products_by_status(area, status, limit=5)
     records = Product.get_active_products
     
     if status == "new"
