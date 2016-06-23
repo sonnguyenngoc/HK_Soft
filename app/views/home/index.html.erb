@@ -194,6 +194,15 @@
 			})
 			.done(function( msg ) {
 				$(".home_tabs").html(msg);
+				
+
+					$('.actions_wrap').click(function() {					
+						if(event.target.tagName == 'DIV') {
+							var url = $(this).parents(".product_item").find('.description a').eq(0).attr('href');
+							window.location = url;
+						}
+					});
+
 			});			
 		});
 	</script>
