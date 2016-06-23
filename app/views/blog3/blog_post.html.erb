@@ -18,7 +18,7 @@
         <div class="container">
 
             <h1><%= @news.title %></h1>
-            <div class="pagenation">&nbsp;<%= link_to "Home", root_path %> <i>/</i> <%= link_to "News", blog3_path %> <i>/</i> <%= @news.title %></div>
+            <div class="pagenation">&nbsp;<%= link_to t(:home), root_path %> <i>/</i> <%= link_to t(:news), blog3_path %> <i>/</i> <%= @news.title %></div>
 
         </div>
     </div>
@@ -29,25 +29,39 @@
 
 
     <div class="content_fullwidth less2">
+        
         <div class="container">
 
             <div class="content_left">
 
                 <div class="blog_post">
+                    
                     <div class="blog_postcontent">
+                        
                         <div class="image_frame">
-                            <a href="#"><img src="<%= @news.image_url.hksoft_large_image %>" alt="<%= @news.title %>" /></a>
+                            
+                            <img src="<%= @news.image_url.hksoft_large_image %>" alt="<%= @news.title %>" />
+                        
                         </div>
+                        
                         <h3><a href="#news"><%= @news.title %></a></h3>
+                        
                         <ul class="post_meta_links">
-                            <li><a href="#" class="date"><%= @news.created_at.strftime("%d %B %Y") %></a></li>
-                            <li class="post_by"><i>by:</i> <a href="#">HK-Soft</a></li>
-                            <li class="post_categoty"><i>in:</i><% @news.article_categories.each do |item| %> <a href="#"><%= item.name %></a><% end %></li>
+                            
+                            <li><a href="#createdt_at" class="date"><%= @news.created_at.strftime("%d %B %Y") %></a></li>
+                            <li class="post_by"><i><%= t(:by) %>:</i> <a href="#global_naturesoft">Global Naturesoft</a></li>
+                            <li class="post_categoty"><i><%= t(:in) %>:</i><% @news.article_categories.each do |item| %> <a href="#category"><%= item.name %></a><% end %></li>
+                        
                         </ul>
+                        
                         <div class="clearfix"></div>
+                        
                         <div class="margin_top1"></div>
+                        
                         <div class="text-justify"><%= @news.content.html_safe %></div>
+                        
                     </div>
+                
                 </div>
                 <!-- /# end post -->
 
@@ -65,23 +79,30 @@
                     <div id="tabs">
 
                         <ul class="tabs">
-                            <li class="active"><a href="#tab1">Lastest News</a></li>
-                            <li class="last"><a href="#tab2">Tags</a></li>
+                            
+                            <li class="active"><a href="#tab1"><%= t(:lastest_news) %></a></li>
+                            <li class="last"><a href="#tab2"><%= t(:tags) %></a></li>
+                        
                         </ul>
                         <!-- /# end tab links -->
 
                         <div class="tab_container">
+                            
                             <div id="tab1" class="tab_content">
 
                                 <ul class="recent_posts_list">
                                     
                                     <% @lastest_news.limit(8).each do |item| %>
-                                    <li>
-                                        <span><%= link_to image_tag(item.image_url.hksoft_square_image, alt: item.title), blog_post_path(news_id: item) %></span>
-                                        <%= link_to item.title, blog_post_path(news_id: item), class: "text-justify" %>
-                                        <i><%= @news.created_at.strftime("%d %B %Y") %></i>
-                                    </li>
-                                <% end %>
+                                       
+                                        <li>
+                                            
+                                            <span><%= link_to image_tag(item.image_url.hksoft_square_image, alt: item.title), blog_post_path(news_id: item) %></span>
+                                            <%= link_to item.title, blog_post_path(news_id: item), class: "text-justify" %>
+                                            <i><%= @news.created_at.strftime("%d %B %Y") %></i>
+                                        
+                                        </li>
+                                        
+                                    <% end %>
                                 
                                 </ul>
 
@@ -89,6 +110,7 @@
                             <!-- end popular posts -->
 
                             <div id="tab2" class="tab_content">
+                                
                                 <ul class="tags">
 
                                     <% @program_languages.each do |item| %>
@@ -108,18 +130,6 @@
                 <!-- end section -->
 
                 <div class="clearfix margin_top4"></div>
-
-                <div class="clientsays_widget">
-
-                    <div class="sidebar_title">
-                        <h4 class="caps">Happy Client Say's</h4></div>
-
-                    <img src="/frontend/images/people-sm1.jpg" alt="" />
-                    <strong>- Michle Siminson</strong>
-                    <p>Lorem Ipsum passage, and going through the cites of the word here classical literature passage discovere there undou btable source looks reasonable the generated charac eristic words.</p>
-
-                </div>
-                <!-- end section -->
 
 
             </div>

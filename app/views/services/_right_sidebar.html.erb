@@ -1,16 +1,16 @@
 <div class="sidebar_widget">
 
     <div class="sidebar_title">
-        <h4 class="caps">Our Services</h4></div>
+        <h4 class="caps"><%= t(:ours_services) %></h4></div>
     <ul class="arrows_list1">
-        <li><%= link_to '<i class="fa fa-caret-right"></i> Website Development'.html_safe, services_sub_1_path %></li>
-        <li><%= link_to '<i class="fa fa-caret-right"></i> Web-based Software Development'.html_safe, services_sub_2_path %></li>
-        <li><%= link_to '<i class="fa fa-caret-right"></i> E-Commerce'.html_safe, services_sub_3_path %></li>
-        <li><%= link_to '<i class="fa fa-caret-right"></i> Google Apps for Bussiness'.html_safe, services_sub_4_path %></li>
-        <li><%= link_to '<i class="fa fa-caret-right"></i> Outsourcing'.html_safe, services_sub_5_path %></li>
-        <li><%= link_to '<i class="fa fa-caret-right"></i> Research & Development'.html_safe, services_sub_6_path %></li>
-        <li><%= link_to '<i class="fa fa-caret-right"></i> System Integration'.html_safe, services_sub_7_path %></li>
-        <li><%= link_to '<i class="fa fa-caret-right"></i> Email Marketing'.html_safe, services_sub_8_path %></li>
+        <li><%= link_to '<i class="fa fa-caret-right"></i> '.html_safe + t(:website_development), services_sub_1_path %></li>
+        <li><%= link_to '<i class="fa fa-caret-right"></i> '.html_safe + t(:web_based_software_development), services_sub_2_path %></li>
+        <li><%= link_to '<i class="fa fa-caret-right"></i> '.html_safe + t(:e_commerce), services_sub_3_path %></li>
+        <li><%= link_to '<i class="fa fa-caret-right"></i> '.html_safe + t(:google_apps_for_bussiness), services_sub_4_path %></li>
+        <li><%= link_to '<i class="fa fa-caret-right"></i> '.html_safe + t(:outsourcing), services_sub_5_path %></li>
+        <li><%= link_to '<i class="fa fa-caret-right"></i> '.html_safe + t(:research_and_development), services_sub_6_path %></li>
+        <li><%= link_to '<i class="fa fa-caret-right"></i> '.html_safe + t(:systems_integration), services_sub_7_path %></li>
+        <li><%= link_to '<i class="fa fa-caret-right"></i> '.html_safe + t(:email_marketing), services_sub_8_path %></li>
     </ul>
 
 </div>
@@ -24,8 +24,8 @@
     <div id="tabs">
 
         <ul class="tabs">
-            <li class="active"><a href="#tab1">Lastest News</a></li>
-            <li class="last"><a href="#tab2">Tags</a></li>
+            <li class="active"><a href="#tab1"><%= t(:lastest_news) %></a></li>
+            <li class="last"><a href="#tab2"><%= t(:tags) %></a></li>
         </ul>
         <!-- /# end tab links -->
 

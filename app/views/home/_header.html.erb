@@ -24,30 +24,30 @@
 
                         <ul class="nav navbar-nav">
 
-                            <li class="dropdown"> <%= link_to "Home", root_path, class: ("active" if params[:controller] == "home").to_s %></li>
+                            <li class="dropdown"> <%= link_to t(:home_page), root_path, class: ("active" if params[:controller] == "home").to_s %></li>
                             
-                            <li class="dropdown"> <%= link_to "Services", services_sub_1_path, class: "dropdown-toggle #{("active" if params[:controller] == "services").to_s}" %>
+                            <li class="dropdown"> <%= link_to t(:services), services_sub_1_path, class: "dropdown-toggle #{("active" if params[:controller] == "services").to_s}" %>
                                 <ul class="dropdown-menu multilevel" role="menu">
-                                    <li><%= link_to "Website Development", services_sub_1_path %></li>
-                                    <li><%= link_to "Web-based Software Development", services_sub_2_path %></li>
-                                    <li><%= link_to "E-Commerce", services_sub_3_path %></li>
-                                    <li><%= link_to "Google Apps for Business", services_sub_4_path %></li>
-                                    <li><%= link_to "Outsourcing", services_sub_5_path %></li>
-                                    <li><%= link_to "Research & Development", services_sub_6_path %></li>
-                                    <li><%= link_to "Systems Integration", services_sub_7_path %></li>
-                                    <li><%= link_to "Email Marketing", services_sub_8_path %></li>
+                                    <li><%= link_to t(:website_development), services_sub_1_path %></li>
+                                    <li><%= link_to t(:web_based_software_development), services_sub_2_path %></li>
+                                    <li><%= link_to t(:e_commerce), services_sub_3_path %></li>
+                                    <li><%= link_to t(:google_apps_for_bussiness), services_sub_4_path %></li>
+                                    <li><%= link_to t(:outsourcing), services_sub_5_path %></li>
+                                    <li><%= link_to t(:research_and_development), services_sub_6_path %></li>
+                                    <li><%= link_to t(:systems_integration), services_sub_7_path %></li>
+                                    <li><%= link_to t(:email_marketing), services_sub_8_path %></li>
                                 </ul>
                             </li>
                                                 
-                            <li><%= link_to "Domains & Hosting", domains_hosting_path, class: (" active" if params[:controller] == "domains").to_s %></li>
+                            <li><%= link_to t(:domains_and_hosting), domains_hosting_path, class: (" active" if params[:controller] == "domains").to_s %></li>
 
-                            <li><%= link_to "Works", works_path, class: (" active" if params[:controller] == "works").to_s %></li>
+                            <li><%= link_to t(:works), works_path, class: (" active" if params[:controller] == "works").to_s %></li>
 
-                            <li> <%= link_to "News", blog3_path, class: ("active" if params[:controller] == "blog3").to_s %></li>
+                            <li><%= link_to t(:news), blog3_path, class: ("active" if params[:controller] == "blog3").to_s %></li>
 
-                            <li><%= link_to "Support", support_path, class: ("active" if params[:controller] == "support").to_s %></li>
+                            <li><%= link_to t(:home_support), support_path, class: ("active" if params[:controller] == "support").to_s %></li>
                             
-                            <li><%= link_to "Contact", contact_path, class: ("active" if params[:controller] == "contact").to_s %></li>
+                            <li><%= link_to t(:home_contact), contact_path, class: ("active" if params[:controller] == "contact").to_s %></li>
 
                         </ul>
 

@@ -17,7 +17,7 @@
     <div class="page_title1 sty13">
         <div class="container alileft">
 
-            <h1>Contact</h1>
+            <h1><%= t(:home_contact) %></h1>
 
         </div>
     </div>
@@ -32,48 +32,48 @@
 
             <div class="one_half">
                 
-                <h4 class="caps">Contact  <strong>Form</strong></h4>
+                <h4 class="caps"><strong><%= t(:contact) %></strong></h4>
 
                 <div class="cforms">
                     
                     <%= form_for @contact, html: {id: "contact_form_validate"} do |f| %>
                         
-                        <label class="label">Name <em>*</em></label>
+                        <label class="label"><%= t(:name) %> <em>*</em></label>
                         <label class="input">
                             <%= f.text_field :name, class: "required" %>
                         </label>
 
                         <div class="clearfix"></div>
 
-                        <label class="label">E-mail <em>*</em></label>
+                        <label class="label"><%= t(:e_mail) %> <em>*</em></label>
                         <label class="input">
                             <%= f.text_field :email, class: "required email" %>
                         </label>
 
                         <div class="clearfix"></div>
 
-                        <label class="label">Phone</label>
+                        <label class="label"><%= t(:phone) %></label>
                         <label class="input">
                             <%= f.text_field :phone %>
                         </label>
 
                         <div class="clearfix"></div>
 
-                        <label class="label">Subject <em>*</em></label>
+                        <label class="label"><%= t(:subject) %> <em>*</em></label>
                         <label class="input">
                             <%= f.text_field :subject, class: "required" %>
                         </label>
 
                         <div class="clearfix"></div>
 
-                        <label class="label">Message <em>*</em></label>
+                        <label class="label"><%= t(:message) %> <em>*</em></label>
                         <label class="textarea">
                             <%= f.text_area :message, rows: '5', class: "required" %>
                         </label>
 
                         <div class="clearfix"></div>
                         
-                        <button type="submit" class="button"><i class="fa fa-paper-plane"></i> Send Message</button>
+                        <button type="submit" class="button"><i class="fa fa-paper-plane"></i> <%= t(:send_message) %></button>
 
                     <% end %>
 
@@ -85,21 +85,21 @@
 
                 <div class="address_info">
 
-                    <h4 class="caps">Company  <strong>Address</strong></h4>
+                    <h4 class="caps"><strong><%= t(:company_info) %></strong></h4>
                     <ul>
                         <li>
                             <strong><%= @company.name %></strong><br />
                             <%= @company.head_office_address %><br />
-                            Phone: <%= @company.phone %><br />
-                            Hotline: <%= @company.hotline %><br />
-                            Fax: <%= @company.fax %><br />
-                            E-mail: <a href="mailto:<%= @company.email %>"><%= @company.email %></a><br />
-                            Website: <%= link_to "http://hoangkhang.com.vn/", root_path, target: "_blank" %>
+                            <%= t(:phone) %>: <%= @company.phone %><br />
+                            <%= t(:hotline) %>: <%= @company.hotline %><br />
+                            <%= t(:fax) %>: <%= @company.fax %><br />
+                            <%= t(:e_mail) %>: <a href="mailto:<%= @company.email %>"><%= @company.email %></a><br />
+                            <%= t(:website) %>: <%= link_to "http://hoangkhang.com.vn/", root_path, target: "_blank" %>
                         </li>
                     </ul>
                 </div>
                 <div class="clearfix"></div>
-                <h4 class="caps">Find the <strong>Address</strong></h4>
+                <h4 class="caps"><strong><%= t(:address) %></strong></h4>
                 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
                 <div id="map_canvas" style="height: 500px; width: 100%;">
                     
@@ -117,7 +117,7 @@
                     
                 </div>
                 <br />
-                <small><a class="but_thumbs_down" href="https://www.google.com/maps/place/45%2F22C+L%C3%AA+V%C4%83n+Th%E1%BB%8D,+ph%C6%B0%E1%BB%9Dng+16,+G%C3%B2+V%E1%BA%A5p,+H%E1%BB%93+Ch%C3%AD+Minh,+Vietnam/@10.8476616,106.6564857,18z/data=!4m5!3m4!1s0x317529bc96b68a43:0x417a67c38124ede3!8m2!3d10.847659!4d106.65758?hl=en-US" target="_blank"><i class="fa fa-share fa-lg"></i>  View Larger Map</a></small> </div>
+                <small><a class="but_thumbs_down" href="https://www.google.com/maps/place/45%2F22C+L%C3%AA+V%C4%83n+Th%E1%BB%8D,+ph%C6%B0%E1%BB%9Dng+16,+G%C3%B2+V%E1%BA%A5p,+H%E1%BB%93+Ch%C3%AD+Minh,+Vietnam/@10.8476616,106.6564857,18z/data=!4m5!3m4!1s0x317529bc96b68a43:0x417a67c38124ede3!8m2!3d10.847659!4d106.65758?hl=en-US" target="_blank"><i class="fa fa-share fa-lg"></i>  <%= t(:view_larger_map) %></a></small> </div>
 
         </div>
     </div>

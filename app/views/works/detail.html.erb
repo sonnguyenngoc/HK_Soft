@@ -18,7 +18,7 @@
         <div class="container">
 
             <h1><%= @project.name %></h1>
-            <div class="pagenation">&nbsp;<%= link_to "Home", root_path %> <i>/</i> <%= link_to "Works", works_path %> <i>/</i> <%= @project.name %></div>
+            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:works), works_path %> <i>/</i> <%= @project.name %></div>
 
         </div>
     </div>
@@ -38,7 +38,7 @@
                     
                     <% @project.project_images.each do |item| %>
                     
-                        <a href="#" target="_blank"><img src="<%= item.image_url.large %>" alt="" /></a><br />
+                        <img src="<%= item.image_url.large %>" alt="" /><br />
                         
                     <% end %>
                     
@@ -46,20 +46,22 @@
 
                 <div class="portfolio_area_right">
                 
-                    <h3 class="caps"><strong>Project Description</strong></h3>
+                    <h3 class="caps"><strong><%= t(:project_description) %></strong></h3>
 
                     <p class="text-justify"><%= @project.description %></p>
 
                     <div class="project_details">
-                        <h3 class="caps">Project Details</h3>
-                        <span><strong>Name</strong> <em><%= @project.name %></em></span>
-                        <span><strong>Start Date</strong> <em><%= @project.start_date.strftime("%d %B %Y") %></em></span>
-                        <span><strong>End Date</strong> <em><%= @project.end_date.strftime("%d %B %Y") %></em></span>
-                        <span><strong>Categories</strong> <em><% @project.program_languages.each do |item| %><a href="#<%= item.name %>"><%= item.name %></a> <% end %> </em></span>
-                        <span><strong>Author</strong> <em><%= @project.author %></em></span>
+                        
+                        <h3 class="caps"><%= t(:project_details) %></h3>
+                        
+                        <span><strong><%= t(:name) %></strong> <em><%= @project.name %></em></span>
+                        <span><strong><%= t(:start_date) %></strong> <em><%= @project.start_date.strftime("%d %B %Y") %></em></span>
+                        <span><strong><%= t(:end_date) %></strong> <em><%= @project.end_date.strftime("%d %B %Y") %></em></span>
+                        <span><strong><%= t(:program_languages) %></strong> <em><% @project.program_languages.each do |item| %><a href="#<%= item.name %>"><%= item.name %></a> <% end %> </em></span>
+                        <span><strong><%= t(:author) %></strong> <em><%= @project.author %></em></span>
                         <% if @project.website != "" %>
                             <div class="clearfix margin_top5"></div>
-                            <a href="<%= @project.website %>" class="but_medium1" target="_blank"><i class="fa fa-hand-o-right fa-lg"></i>&nbsp; Visit Site</a>
+                            <a href="<%= @project.website %>" class="but_medium1" target="_blank"><i class="fa fa-hand-o-right fa-lg"></i>&nbsp; <%= t(:visit_site) %></a>
                         <% end %>
                     </div>
 

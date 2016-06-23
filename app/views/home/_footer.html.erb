@@ -7,7 +7,7 @@
 
                 <div class="left">
                     
-                    <h4 class="caps light"><strong>Need Help?</strong> Call Us:</h4>
+                    <h4 class="caps light"><strong><%= t(:need_help) %></strong> <%= t(:call_us) %></h4>
                     <h1><%= Company.get_company.hotline %></h1>
                 
                 </div>
@@ -15,11 +15,11 @@
 
                 <div class="right">
                     
-                    <p>Sign up to Newsletter for get special offers</p>
+                    <p><%= t(:sign_up_newsletter) %></p>
                     
                     <%= form_for Newsletter.new, html: {id: 'newsletter_form_validate'} do |f| %>
-                        <%= f.email_field :email, placeholder: 'Please enter your email...', class: "newsle_eminput required email" %>
-                        <input value="Sign Up" class="input_submit" type="submit">
+                        <%= f.email_field :email, placeholder: t(:placeholder_newsletter), class: "newsle_eminput required email" %>
+                        <input value="<%= t(:sign_up) %>" class="input_submit" type="submit">
                     <% end %>
                 
                 </div>
@@ -35,7 +35,7 @@
             <div class="container">
 
                 <div class="one_fourth">
-                    <h4 class="white">Follow Us</h4>
+                    <h4 class="white"><%= t(:follow_us) %></h4>
                     <ul class="foosocial">
                         <li class="faceboox"><a href="#"><i class="fa fa-facebook"></i></a></li>
                         <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -47,7 +47,7 @@
                 <!-- end section -->
 
                 <div class="one_fourth">
-                    <h4 class="white">Resources</h4>
+                    <h4 class="white"><%= t(:resources) %></h4>
                     <ul class="foolist">
                         <li><a href="#">Domains & Hosting</a></li>
                         <li><a href="#">How to Transfer a Website</a></li>
@@ -58,16 +58,16 @@
                 <!-- end section -->
 
                 <div class="one_fourth">
-                    <h4 class="white">Our Services</h4>
+                    <h4 class="white"><%= t(:our_services) %></h4>
                     <ul class="foolist">
-                        <li><a href="#">Website Development</a></li>
-                        <li><a href="#">Web-based Software Development</a></li>
-                        <li><a href="#">E-Commerce</a></li>
-                        <li><a href="#">Google Apps for Business</a></li>
-                        <li><a href="#">Outsourcing</a></li>
-                        <li><a href="#">Research & Development</a></li>
-                        <li><a href="#">Systems Integration</a></li>
-                        <li><a href="#">Email Marketing</a></li>
+                        <li><%= link_to t(:website_development), services_sub_1_path %></li>
+                        <li><%= link_to t(:web_based_software_development), services_sub_2_path %></li>
+                        <li><%= link_to t(:e_commerce), services_sub_3_path %></li>
+                        <li><%= link_to t(:google_apps_for_bussiness), services_sub_4_path %></li>
+                        <li><%= link_to t(:outsourcing), services_sub_5_path %></li>
+                        <li><%= link_to t(:research_and_development), services_sub_6_path %></li>
+                        <li><%= link_to t(:systems_integration), services_sub_7_path %></li>
+                        <li><%= link_to t(:email_marketing), services_sub_8_path %></li>
                     </ul>
                 </div>
                 <!-- end section -->
@@ -77,9 +77,9 @@
                         <img src="/frontend/images/logo_hksoft.png" alt="" />
                         <br /><br /> <%= Company.get_company.head_office_address %>
                         <div class="clearfix margin_bottom1"></div>
-                        <strong>Phone:</strong> <b><%= Company.get_company.phone %></b><br />
+                        <strong><i class="fa fa-phone"></i></strong> <b> <%= Company.get_company.phone %></b><br />
                         <strong><i class="fa fa-envelope-o"></i></strong> <a href="mailto:<%= Company.get_company.email %>"><%= Company.get_company.email %></a><br />
-                        <%= link_to "View Directions", contact_path, class: "smbut" %>
+                        <%= link_to t(:view_directions), contact_path, class: "smbut" %>
 
                     </div>
 
@@ -97,7 +97,7 @@
             <div class="container">
         
                 <div class="one_half">Copyright &copy; 2016 Global Naturesoft. All rights reserved.</div>
-                <div class="one_half last aliright"><%= link_to "Home", root_path %>|<%= link_to "About Us", about_us_path %>|<%= link_to "Support", support_path %>|<%= link_to "Contact", contact_path %></div>
+                <div class="one_half last aliright"><%= link_to t(:home_page), root_path %>|<%= link_to t(:home_support), support_path %>|<%= link_to t(:home_contact), contact_path %></div>
         
             </div>
         </div>
