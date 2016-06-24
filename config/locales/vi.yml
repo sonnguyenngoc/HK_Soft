@@ -432,7 +432,7 @@ vi:
   visit_site: "Xem trang web"
   in: "Chuyên mục"
   by: "Đăng bởi"
-  read_more: "đọc tiếp....."
+  read_more: "read_more....."
   global_naturesoft: "Global Naturesoft"
   previous: "TRANG TRƯỚC"
   next: "TRANG SAU"
@@ -479,6 +479,8 @@ vi:
   free: "Free"
   newsletter_thank_you: "Cảm Ơn!"
   newsletter_thank_you_content: "Đăng ký email nhận tin mới thành công."
+  is_available: "có thể sử dụng."
+  is_already_registered: "đã được đăng ký."
   
   activerecord:
     attributes:

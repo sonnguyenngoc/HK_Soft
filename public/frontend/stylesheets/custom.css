@@ -131,3 +131,8 @@ div.free_setup {
 ul.tabs {
 	font-family: 'Open Sans', sans-serif;
 }
+@media only screen and (max-width: 479px) {
+	.page_title1.sty7 .serch_area .enter_email_input {
+		width: 100%;
+	}
+}

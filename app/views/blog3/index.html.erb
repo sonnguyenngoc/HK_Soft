@@ -57,7 +57,7 @@
                                 <p class="text-justify"><%= truncate(strip_tags(item.content), length: 380) %><%= link_to t(:read_more), blog_post_path(news_id: item) %></p>
                             <% else %>
                                 <h3>
-                                    <%= link_to item.title_vi, blog_post_path(news_id: item) %>
+                                    <%= link_to item.title, blog_post_path(news_id: item) %>
                                 </h3>
                                 <ul class="post_meta_links">
                                     <li><a href="#date" class="date"><%= item.created_at.strftime("%d/%m/%Y") %></a></li>
@@ -67,7 +67,7 @@
                                 </ul>
                                 <div class="clearfix"></div>
                                 <div class="margin_top1"></div>
-                                <p class="text-justify"><%= truncate(strip_tags(item.content_vi), length: 380) %><%= link_to t(:read_more), blog_post_path(news_id: item) %></p>
+                                <p class="text-justify"><%= truncate(strip_tags(item.content), length: 380) %><%= link_to t(:read_more), blog_post_path(news_id: item) %></p>
                             <% end %>
                         </div>
                     </div>

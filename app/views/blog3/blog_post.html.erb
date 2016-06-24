@@ -21,10 +21,10 @@
                 <% if params[:locale] == "en" %>
                     <%= @news.title %>
                 <% else %>
-                    <%= @news.title_vi %>
+                    <%= @news.title %>
                 <% end %>
             </h1>
-            <div class="pagenation">&nbsp;<%= link_to t(:home), root_path %> <i>/</i> <%= link_to t(:news), blog3_path %> <i>/</i> <% if params[:locale] == "en" %><%= @news.title %><% else %><%= @news.title_vi %><% end %></div>
+            <div class="pagenation">&nbsp;<%= link_to t(:home), root_path %> <i>/</i> <%= link_to t(:news), blog3_path %> <i>/</i> <% if params[:locale] == "en" %><%= @news.title %><% else %><%= @news.title %><% end %></div>
 
         </div>
     </div>
@@ -68,7 +68,7 @@
                             
                         <% else %>
                             
-                            <h3><a href="#news"><%= @news.title_vi %></a></h3>
+                            <h3><a href="#news"><%= @news.title %></a></h3>
                             
                             <ul class="post_meta_links">
                                 
@@ -127,7 +127,7 @@
                                                 <%= link_to item.title, blog_post_path(news_id: item), class: "text-justify" %>
                                                 <i><%= @news.created_at.strftime("%d %B %Y") %></i>
                                             <% else %>
-                                                <%= link_to item.title_vi, blog_post_path(news_id: item), class: "text-justify" %>
+                                                <%= link_to item.title, blog_post_path(news_id: item), class: "text-justify" %>
                                                 <i><%= @news.created_at.strftime("%d/%m/%Y") %></i>
                                             <% end %>
                                         
