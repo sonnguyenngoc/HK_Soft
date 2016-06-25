@@ -2,8 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, only: :omniauth_callbacks, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
   
   scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
-    root "home#countdown"
-    get "san-pham" => "home#index", as: :home
+    root "home#index"
     get "home-tab" => "home#home_tab", as: :home_tab
     
     # change current area session
