@@ -29,7 +29,7 @@
                             <%= f.file_field :image_url, class: "file-styled", accept: ".png, .jpg, .jpeg, .gif" %>
                             <span class="action" style="-webkit-user-select: none;"><i class="icon-googleplus5"></i></span>
                         </div>
-                        <span class="help-block">Accepted formats: gif, png, jpg, jpeg.</span>
+                        <span class="help-block"><%= t(:accepted_formats)%>: *.gif, *.png, *.jpg, *.jpeg.</span>
                         <%= image_tag(@project.image_url.medium, size: "180x110", class: "img-rouded") %>
                     </div>
                 </div>
@@ -42,14 +42,14 @@
                 </div>
                     
                 <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:name) %> <span class='text-danger'>*</span></label>
+                    <label class="col-lg-2 control-label" ><%= t(:name_project) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-10">
                         <%= f.text_field :name, class: "form-control required" %>
                     </div>
                 </div>
                     
                 <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:website) %> <span class='text-danger'>*</span></label>
+                    <label class="col-lg-2 control-label" ><%= t(:website_url) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-10">
                         <%= f.text_field :website, class: "form-control required" %>
                     </div>
@@ -85,7 +85,7 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label" ><%= t(:project_category) %></label>
                     <div class="col-lg-10">
-                        <select name="project_category_ids[]" id="project_category_ids" class="select-item-color required" data-placeholder="Choose project category..." multiple="multiple">
+                        <select name="project_category_ids[]" id="project_category_ids" class="select-item-color required" data-placeholder="<%= t(:choose_project_category) %>..." multiple="multiple">
                             <% @project_categories.each do |item| %>
                                 <option <%= "selected" if @project.project_categories.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
                             <% end %>
@@ -96,7 +96,7 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label" ><%= t(:program_language) %></label>
                     <div class="col-lg-10">
-                        <select name="program_language_ids[]" id="project_language_ids" class="select-item-color required" data-placeholder="Choose program language..." multiple="multiple">
+                        <select name="program_language_ids[]" id="project_language_ids" class="select-item-color required" data-placeholder="<%= t(:choose_language) %>..." multiple="multiple">
                             <% @program_languages.each do |item| %>
                                 <option <%= "selected" if @project.program_languages.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
                             <% end %>
@@ -105,7 +105,7 @@
                 </div>
                 
                 <div class="form-group">
-                    <%= f.label "Related Images: ", class: "col-lg-2 control-label" %>
+                    <%= f.label "#{t(:related_images)}: ", class: "col-lg-2 control-label" %>
                     <div class="col-lg-10">
                         <% index = 0 %>
                         <%= f.fields_for :project_images do |ff| %>
@@ -139,14 +139,14 @@
             </div>
             <div class="tab-pane has-padding" id="control-tab2">
                 <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:author_name_vi) %> <span class='text-danger'>*</span></label>
+                    <label class="col-lg-2 control-label" ><%= t(:author_name) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-10">
                         <%= f.text_field :author_vi, class: "form-control required" %>
                     </div>
                 </div>
                     
                 <div class="form-group">
-                    <label class="col-lg-2 control-label" ><%= t(:name_vi) %> <span class='text-danger'>*</span></label>
+                    <label class="col-lg-2 control-label" ><%= t(:name_project) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-10">
                         <%= f.text_field :name_vi, class: "form-control required" %>
                     </div>
