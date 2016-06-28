@@ -596,6 +596,8 @@ p.text-justifly {
 }
 .image_preview_container div.percentage {
     border-radius: 5px;
+    width: 15%;
+    line-height: 15px;
 }
 s {
     font-weight: 200;
@@ -974,7 +976,9 @@ h3.care {
     margin-right: 15px;
     line-height: 27px;
 }
-
+.product_item:not(.type_3) .actions_wrap_viewall {
+    opacity: 1;
+}
 /*--------CSS display image item----------*/
 /*.table_cell {
     display: inline-block;
