@@ -1,0 +1,337 @@
+<header id="header" class="navbar-static-top">
+    
+    <div class="topnav hidden-xs">
+        
+        <div class="container">
+            
+            <ul class="quick-menu pull-left">
+                
+                <li><a href="#">TÀI KHOẢN KHÁCH HÀNG</a></li>
+                
+                <li class="ribbon">
+                    
+                    <a href="#">Tiếng Việt</a>
+                    
+                    <ul class="menu mini">
+
+                        <li class="active"><a href="#" title="Tiếng Việt">Tiếng Việt</a></li>
+                        
+                    </ul>
+                    
+                </li>
+                
+            </ul>
+            
+            <ul class="quick-menu pull-right">
+                
+                <li><a href="#" class="button yellow btn-small" style="height: 30px; font-size: 1em;"><i class="soap-icon-beach"></i> BẢNG GIÁ TOUR</a></li>
+                <li><a href="#travelo-login" class="soap-popupbox">ĐĂNG NHẬP</a></li>
+                <li><a href="#travelo-signup" class="soap-popupbox">ĐĂNG KÝ</a></li>
+            
+            </ul>
+            
+        </div>
+        
+    </div>
+
+    <div class="main-header">
+
+        <a href="#mobile-menu-01" data-toggle="collapse" class="mobile-menu-toggle">
+            Mobile Menu Toggle
+        </a>
+
+        <div class="container">
+            
+            <h1 class="logo navbar-brand">
+                
+                <%= link_to image_tag("/frontend/images/logo.png", alt: "Khám Phá Mới Travel"), root_path %>
+
+            </h1>
+
+            <nav id="main-menu" role="navigation">
+                <ul class="menu">
+                    <li<% if params[:controller] == "about_us" %> class="active"<% end %>><%= link_to "Giới thiệu", about_us_path %></li>
+                    <li class="menu-item-has-children megamenu-menu <%= "active" if params[:controller] == "tour" %>">
+                        <%= link_to "Tour Du Lịch", tour_path %>
+                        <div class="megamenu-wrapper container" data-items-per-column="5">
+                            <div class="megamenu-holder">
+                                <ul class="megamenu">
+                                    <li class="menu-item-has-children">
+                                        <%= link_to "Tour Trong Nước", domestic_tour_path %>
+                                        <ul class="clearfix">
+                                            <li><%= link_to "Du Lịch Phú Quốc", tour_packages_path %></li>
+                                            <li><%= link_to "Du Lịch Phan Thiết", tour_packages_path %></li>
+                                            <li><%= link_to "Tour Miền Bắc", tour_packages_path %></li>
+                                            <li><%= link_to "Tour Miền Trung", tour_packages_path %></li>
+                                            <li><%= link_to "Tour Miền Nam", tour_packages_path %></li>
+                                            <li><%= link_to "Tour Miền Tây", tour_packages_path %></li>
+                                            <li><%= link_to "Tour Tây Bắc", tour_packages_path %></li>
+                                            <li><%= link_to "Tour Hành Hương", tour_packages_path %></li>
+                                            <li><%= link_to "Tour Học Sinh", tour_packages_path %></li>
+                                            <li><%= link_to "Tour Tây Nguyên", tour_packages_path %></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <%= link_to "Tour Nước Ngoài", foreign_tour_path %>
+                                        <ul class="clearfix">
+                                            <li><%= link_to "Tour Khuyến Mãi", tour_packages_path %></li>
+                                            <li><%= link_to "Tour Đông Nam Á", tour_packages_path %></li>
+                                            <li><%= link_to "Tour Châu Á", tour_packages_path %></li>
+                                            <li><%= link_to "Tour Châu Âu", tour_packages_path %></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="menu-item-has-children <%= "active" if params[:controller] == "car_hire" %>">
+                        <%= link_to "Thuê Xe Du Lịch", car_hire_path %>
+                        <ul>
+                            <li><a href="#">Thuê Xe 4 Chổ</a></li>
+                            <li><a href="#">Thuê Xe 7 Chổ</a></li>
+                            <li><a href="#">Thuê Xe 16 Chổ</a></li>
+                            <li><a href="#">Thuê Xe 29 Chổ</a></li>
+                            <li><a href="#">Thuê Xe 35 Chổ</a></li>
+                            <li><a href="#">Thuê Xe 45 Chổ</a></li>
+                        </ul>
+                    </li>
+                    <li<% if params[:controller] == "book_hotel" %> class="active"<% end %>><%= link_to "Khách Sạn", hotel_listing_path %></li>
+                    <li class="menu-item-has-children <%= "active" if params[:controller] == "event" %>">
+                        <%= link_to "Tổ Chức Sự Kiện", event_path %>
+                        <ul>
+                            <li><%= link_to "Tổ Chức Teambuilding", event_listing_path %></li>
+                            <li><%= link_to "Tổ Chức Hội Nghị", event_listing_path %></li>
+                            <li><%= link_to "Tổ Chức Tour Đoàn", event_listing_path %></li>
+                        </ul>
+                    </li>
+                    <li class="menu-item-has-children megamenu-menu <%= "active" if params[:controller] == "tour_handbook" %>">
+                        <%= link_to "Cẩm Nang Du Lịch", tour_handbook_path %>
+                        <div class="megamenu-wrapper container" data-items-per-column="4">
+                            <div class="megamenu-holder">
+                                <ul class="megamenu">
+                                    <li class="menu-item-has-children">
+                                        <%= link_to "Khám Phá", tour_handbook_sub_1_path %>
+                                        <ul class="clearfix">
+                                            <li><%= link_to "An Giang", tour_handbook_sub_2_path %></li>
+                                            <li><%= link_to "Bắc Cạn", tour_handbook_sub_2_path %></li>
+                                            <li><%= link_to "Bắc Giang", tour_handbook_sub_2_path %></li>
+                                            <li><%= link_to "Bạc Liêu", tour_handbook_sub_2_path %></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <%= link_to "Kinh Nghiệm", tour_handbook_sub_1_path %>
+                                        <ul class="clearfix">
+                                            <li><%= link_to "Du Lịch Trong Nước", tour_handbook_sub_2_path %></li>
+                                            <li><%= link_to "Du Lịch Nước Ngoài", tour_handbook_sub_2_path %></li>
+                                            <li><%= link_to "Kinh Nghiệm Đi Biển Đảo", tour_handbook_sub_2_path %></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <%= link_to "Ẩm Thực", tour_handbook_sub_1_path %>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <%= link_to "Thư Giản", tour_handbook_sub_1_path %>
+                                        <ul class="clearfix">
+                                            <li><%= link_to "Truyện Cười", tour_handbook_sub_2_path %></li>
+                                            <li><%= link_to "Top Du Lịch", tour_handbook_sub_2_path %></li>
+                                            <li><%= link_to "Ảnh Đẹp", tour_handbook_sub_2_path %></li>
+                                            <li><%= link_to "Chuyện Lạ", tour_handbook_sub_2_path %></li>
+                                            <li><%= link_to "Hình Chế", tour_handbook_sub_2_path %></li>
+                                            <li><%= link_to "Phượt Viết", tour_handbook_sub_2_path %></li>
+                                        </ul>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <%= link_to "Du Lịch & Thời Trang", tour_handbook_sub_1_path %>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="menu-item-has-children <%= "active" if params[:controller] == "travel_news" %>"><%= link_to "Tin Tức Du Lịch", travel_news_path %></li>
+                </ul>
+            </nav>
+        </div>
+
+        <nav id="mobile-menu-01" class="mobile-menu collapse">
+            <ul id="mobile-primary-menu" class="menu">
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <li><%= link_to "Giới thiệu", about_us_path %></li>
+                <li class="menu-item-has-children">
+                    <%= link_to "Tour Du Lịch", tour_path %>
+                    <ul>
+                        <li class="menu-item-has-children">
+                            <%= link_to "Tour Du Lịch", domestic_tour_path %>
+                            <ul>
+                                <li><%= link_to "Du Lịch Phú Quốc", tour_packages_path %></li>
+                                <li><%= link_to "Du Lịch Phan Thiết", tour_packages_path %></li>
+                                <li><%= link_to "Tour Miền Bắc", tour_packages_path %></li>
+                                <li><%= link_to "Tour Miền Trung", tour_packages_path %></li>
+                                <li><%= link_to "Tour Miền Nam", tour_packages_path %></li>
+                                <li><%= link_to "Tour Miền Tây", tour_packages_path %></li>
+                                <li><%= link_to "Tour Tây Bắc", tour_packages_path %></li>
+                                <li><%= link_to "Tour Hành Hương", tour_packages_path %></li>
+                                <li><%= link_to "Tour Học Sinh", tour_packages_path %></li>
+                                <li><%= link_to "Tour Tây Nguyên", tour_packages_path %></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <%= link_to "Tour Ngoài Nước", foreign_tour_path %>
+                            <ul>
+                                <li><%= link_to "Tour Khuyến Mãi", tour_packages_path %></li>
+                                <li><%= link_to "Tour Đông Nam Á", tour_packages_path %></li>
+                                <li><%= link_to "Tour Châu Á", tour_packages_path %></li>
+                                <li><%= link_to "Tour Châu Âu", tour_packages_path %></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children">
+                    <%= link_to "Thuê Xe Du Lịch", car_hire_path %>
+                    <ul>
+                        <li><a href="#">Thuê Xe 4 Chổ</a></li>
+                        <li><a href="#">Thuê Xe 7 Chổ</a></li>
+                        <li><a href="#">Thuê Xe 16 Chổ</a></li>
+                        <li><a href="#">Thuê Xe 29 Chổ</a></li>
+                        <li><a href="#">Thuê Xe 35 Chổ</a></li>
+                        <li><a href="#">Thuê Xe 45 Chổ</a></li>
+                    </ul>
+                </li>
+                <li><%= link_to "Khách Sạn", hotel_listing_path %></li>
+                <li class="menu-item-has-children">
+                    <%= link_to "Tổ Chức Sự Kiện", event_path %>
+                    <ul>
+                        <li><%= link_to "Tổ Chức Teambuilding", event_listing_path %></li>
+                        <li><%= link_to "Tổ Chức Hội Nghị", event_listing_path %></li>
+                        <li><%= link_to "Tổ Chức Tour Đoàn", event_listing_path %></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children">
+                    <%= link_to "Cẩm Nang Du Lịch", tour_handbook_path %>
+                    <ul>
+                        <li class="menu-item-has-children">
+                            <%= link_to "Khám Phá", tour_handbook_sub_1_path %>
+                            <ul>
+                                <li><%= link_to "An Giang", tour_handbook_sub_2_path %></li>
+                                <li><%= link_to "Bắc Cạn", tour_handbook_sub_2_path %></li>
+                                <li><%= link_to "Bắc Giang", tour_handbook_sub_2_path %></li>
+                                <li><%= link_to "Bạc Liêu", tour_handbook_sub_2_path %></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <%= link_to "Kinh Nghiệm", tour_handbook_sub_1_path %>
+                            <ul>
+                                <li><%= link_to "Du Lịch Trong Nước", tour_handbook_sub_2_path %></li>
+                                <li><%= link_to "Du Lịch Nước Ngoài", tour_handbook_sub_2_path %></li>
+                                <li><%= link_to "Kinh Nghiệm Đi Biển Đảo", tour_handbook_sub_2_path %></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <%= link_to "Ẩm Thực", tour_handbook_sub_1_path %>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <%= link_to "Thư Giản", tour_handbook_sub_1_path %>
+                            <ul>
+                                <li><%= link_to "Truyện Cười", tour_handbook_sub_2_path %></li>
+                                <li><%= link_to "Top Du Lịch", tour_handbook_sub_2_path %></li>
+                                <li><%= link_to "Ảnh Đẹp", tour_handbook_sub_2_path %></li>
+                                <li><%= link_to "Chuyện Lạ", tour_handbook_sub_2_path %></li>
+                                <li><%= link_to "Hình Chế", tour_handbook_sub_2_path %></li>
+                                <li><%= link_to "Phượt Viết", tour_handbook_sub_2_path %></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <%= link_to "Du Lịch & Thời Trang", tour_handbook_sub_1_path %>
+                        </li>
+                    </ul>
+                </li>
+                <li><%= link_to "Tin Tức Du Lịch", travel_news_path %></li>
+                <li>
+                    <a href="#"><i class="soap-icon-shopping"></i> BẢNG GIÁ TOUR</a>
+                </li>
+            </ul>
+
+            <ul class="mobile-topnav container">
+                <li><a href="#">TÀI KHOẢN KHÁCH HÀNG</a></li>
+                <li class="ribbon language menu-color-skin">
+                    <a href="#" data-toggle="collapse">Tiếng Việt</a>
+                    <ul class="menu mini">
+                        <li class="active"><a href="#" title="English">Tiếng Việt</a></li>
+                    </ul>
+                </li>
+                <li><a href="#travelo-login" class="soap-popupbox">ĐĂNG NHẬP</a></li>
+                <li><a href="#travelo-signup" class="soap-popupbox">ĐĂNG KÝ</a></li>
+            </ul>
+
+        </nav>
+    </div>
+    <div id="travelo-signup" class="travelo-signup-box travelo-box">
+        <div class="login-social">
+            <a href="#" class="button login-facebook"><i class="soap-icon-facebook"></i>Đăng nhập bằng facebook</a>
+            <a href="#" class="button login-googleplus"><i class="soap-icon-googleplus"></i>Đăng nhập bằng google+</a>
+        </div>
+        <div class="seperator"><label>HOẶC</label></div>
+        <div class="simple-signup">
+            <div class="text-center signup-email-section">
+                <a href="#" class="signup-email"><i class="soap-icon-letter"></i>Đăng ký bằng email</a>
+            </div>
+            <p class="description">By signing up, I agree to Travelo's Terms of Service, Privacy Policy, Guest Refund olicy, and Host Guarantee Terms.</p>
+        </div>
+        <div class="email-signup">
+            <form>
+                <div class="form-group">
+                    <input type="text" class="input-text full-width" placeholder="first name">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="input-text full-width" placeholder="last name">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="input-text full-width" placeholder="email address">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="input-text full-width" placeholder="password">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="input-text full-width" placeholder="confirm password">
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Tell me about Travelo news
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <p class="description">By signing up, I agree to Travelo's Terms of Service, Privacy Policy, Guest Refund Policy, and Host Guarantee Terms.</p>
+                </div>
+                <button type="submit" class="full-width btn-medium">Đăng Ký</button>
+            </form>
+        </div>
+        <div class="seperator"></div>
+        <p>Bạn đã là thành viên của Khám Phá Mới Travel? <a href="#travelo-login" class="goto-login soap-popupbox">Đăng Nhập</a></p>
+    </div>
+    <div id="travelo-login" class="travelo-login-box travelo-box">
+        <div class="login-social">
+            <a href="#" class="button login-facebook"><i class="soap-icon-facebook"></i>Login with Facebook</a>
+            <a href="#" class="button login-googleplus"><i class="soap-icon-googleplus"></i>Login with Google+</a>
+        </div>
+        <div class="seperator"><label>OR</label></div>
+        <form>
+            <div class="form-group">
+                <input type="text" class="input-text full-width" placeholder="email address">
+            </div>
+            <div class="form-group">
+                <input type="password" class="input-text full-width" placeholder="password">
+            </div>
+            <div class="form-group">
+                <a href="#" class="forgot-password pull-right">Forgot password?</a>
+                <div class="checkbox checkbox-inline">
+                    <label>
+                        <input type="checkbox"> Remember me
+                    </label>
+                </div>
+            </div>
+        </form>
+        <div class="seperator"></div>
+        <p>Bạn chưa có tài khoản? <a href="#travelo-signup" class="goto-signup soap-popupbox">  Đăng ký</a></p>
+    </div>
+</header>

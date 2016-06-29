@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="ie ie8"> <![endif]-->
+<!--[if IE 9]><html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!--><!--<![endif]-->
+<html>
+
+    <head>
+        
+        <!-- Page Title -->
+        <title>Du Lịch Khám Phá Mới - Luôn Luôn Đổi Mới - Luôn Luôn Sáng Tạo</title>
+    
+        <!-- Meta Tags -->
+        <%= csrf_meta_tags %>
+        <meta charset="utf-8">
+        <meta name="keywords" content="du lịch khám phá mới, du lich kham pha moi, tour miền tây, tour phú quốc, tour bình ba, tour bình hưng, tour nam du, tour hải tặc, tour đoàn, event, team building, sinh nhật, noel, trung thu" />
+        <meta name="description" content="Du Lịch Khám Phá Mới - Chuyên tour Miền Tây, Phú Quốc, Bình Ba, Bình Hưng, Nam Du, Hải Tặc. Chuyên tour đoàn, tổ chức event, team building.">
+        <meta name="author" content="Khám Phá Mới Travel">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- Favicon -->
+        <%= favicon_link_tag '/frontend/favicon.ico', rel: 'shortcut icon', type: 'image/x-icon' %>
+    
+        <!-- Theme Styles -->
+        <%= stylesheet_link_tag "/frontend/css/bootstrap.min.css" %>
+        <%= stylesheet_link_tag "/frontend/css/font-awesome.min.css" %>
+        <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Lato:300,400,700" %>
+        <%= stylesheet_link_tag "/frontend/css/animate.min.css" %>
+    
+        <!-- Current Page Styles -->
+        <%= stylesheet_link_tag "/frontend/components/revolution_slider/css/settings.css" %>
+        <%= stylesheet_link_tag "/frontend/components/revolution_slider/css/style.css" %>
+        <%= stylesheet_link_tag "/frontend/components/jquery.bxslider/jquery.bxslider.css" %>
+        <%= stylesheet_link_tag "/frontend/components/flexslider/flexslider.css" %>
+    
+        <!-- Main Style -->
+        <%= stylesheet_link_tag "/frontend/css/style-light-blue.css" %>
+    
+        <!-- Updated Styles -->
+        <%= stylesheet_link_tag "/frontend/css/updates.css" %>
+    
+        <!-- Custom Styles -->
+        <%= stylesheet_link_tag "/frontend/css/custom.css" %>
+    
+        <!-- Responsive Styles -->
+        <%= stylesheet_link_tag "/frontend/css/responsive.css" %>
+    
+        <!-- CSS for IE -->
+        <!--[if lte IE 9]>
+        <%= stylesheet_link_tag "/frontend/css/ie.css" %>
+        <![endif]-->
+    
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <%= javascript_include_tag "http://html5shiv.googlecode.com/svn/trunk/html5.js" %>
+        <%= javascript_include_tag "http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js" %>
+        <![endif]-->
+        
+    </head>
+    
+    <body<% if @style_body.present? %> class="<%= @style_body %>"<% end %>>
+    
+        <%= yield %>
+    
+    </body>
+
+</html>

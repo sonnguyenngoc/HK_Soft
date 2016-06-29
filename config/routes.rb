@@ -1,9 +1,57 @@
 Rails.application.routes.draw do
-  
-  root "home#index"
   devise_for :users
   
-  scope "(:locale)", locale: /vi|en/ do
+  scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
+    
+    # Trang chủ
+    root "home#index"
+    
+    # Giới thiệu
+    get "gioi-thieu.html" => "about_us#index", as: :about_us
+    
+    # Tour du lịch
+    get "tour-du-lich.html" => "tour#index", as: :tour
+    get "tour-du-lich/tour-trong-nuoc.html" => "tour#domestic_tour", as: :domestic_tour
+    get "tour-du-lich/tour-nuoc-ngoai.html" => "tour#foreign_tour", as: :foreign_tour
+    get "tour-du-lich/tour-trong-nuoc/cac-goi-tour-du-lich.html" => "tour#tour_packages", as: :tour_packages
+    get "tour-du-lich/tour-trong-nuoc/cac-goi-tour-du-lich/chi-tiet-tour-du-lich.html" => "tour#tour_detail", as: :tour_detail
+    get "tour-du-lich/tour-trong-nuoc/cac-goi-tour-du-lich/chi-tiet-tour-du-lich/dat-tour.html" => "tour#tour_booking", as: :tour_booking
+    
+    # Tổ chức sự kiện
+    get "to-chuc-su-kien.html" => "event#index", as: :event
+    get "to-chuc-su-kien/to-chuc-team-building.html" => "event#event_listing", as: :event_listing
+    get "to-chuc-su-kien/to-chuc-team-building/chi-tiet.html" => "event#event_detail", as: :event_detail
+    
+    # Thuê xe du lịch
+    get "thue-xe-du-lich.html" => "car_hire#index", as: :car_hire
+    get "thue-xe-du-lich/hien-thi-dang-danh-sach.html" => "car_hire#car_list_view", as: :car_list_view
+    get "thue-xe-du-lich/hien-thi-dang-o.html" => "car_hire#car_grid_view", as: :car_grid_view
+    get "thue-xe-du-lich/chi-tiet-xe.html" => "car_hire#car_detail", as: :car_detail
+  
+    # Khách sạn
+    get "danh-sach-khach-san.html" => "book_hotel#index", as: :hotel_listing
+    get "danh-sach-khach-san/chi-tiet-khach-san.html" => "book_hotel#book_hotel_detail", as: :book_hotel_detail
+    get "danh-sach-khach-san/chi-tiet-khach-san/dat-phong.html" => "book_hotel#hotel_booking", as: :hotel_booking
+   post "slideshow-popup.html" => "book_hotel#slideshow_popup", as: :slideshow_popup
+  
+    # Cẩm nang du lịch
+    get "cam-nang-du-lich.html" => "tour_handbook#index", as: :tour_handbook
+    get "cam-nang-du-lich/kham-pha.html" => "tour_handbook#tour_handbook_sub_1", as: :tour_handbook_sub_1
+    get "cam-nang-du-lich/kham-pha/an-giang.html" => "tour_handbook#tour_handbook_sub_2", as: :tour_handbook_sub_2
+    get "cam-nang-du-lich/kham-pha/an-giang/chi-tiet-cam-nang-du-lich.html" => "tour_handbook#tour_handbook_detail", as: :tour_handbook_detail
+  
+    # Tin tức du lịch
+    get "tin-tuc-du-lich.html" => "travel_news#index", as: :travel_news
+    get "tin-tuc-du-lich/chi-tiet-tin-tuc-du-lich.html" => "travel_news#travel_news_detail", as: :travel_news_detail
+  
+    # Bảng giá tour
+    # Tin từ công ty
+    get "chinh-sach-thanh-toan.html" => "info#info_sub_1", as: :info_sub_1
+    get "chinh-sach-doi-tra-voucher-va-hoan-tien.html" => "info#info_sub_2", as: :info_sub_2
+    get "chinh-sach-bao-mat-thong-tin-khach-hang.html" => "info#info_sub_3", as: :info_sub_3
+    get "chinh-sach-giai-quyet-tranh-chap-khieu-nai.html" => "info#info_sub_4", as: :info_sub_4
+    get "dieu-khoan-mua-ban-hang-hoa.html" => "info#info_sub_5", as: :info_sub_5
+    
     namespace :admin, path: "quan-tri" do
       get "/" => "main#index"
       scope(:path_names => { :new => "tao-moi", :edit => "chinh-sua" }) do
