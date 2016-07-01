@@ -136,3 +136,8 @@ ul.tabs {
 		width: 100%;
 	}
 }
+.compact .header #logo {
+    background-size: 80%;
+    background-position: left 9px;
+    margin-top: -3px;
+}
