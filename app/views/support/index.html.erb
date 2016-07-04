@@ -34,10 +34,7 @@
                 <i class="fa fa-envelope-o"></i>
                 <h3 class="caps"><strong><%= t(:email_support) %></strong></h3>
                 <h5 class="light">Slightly you are needs to be sure chunks is therefore always.</h5>
-                <a href="mailto:soft.support@hoangkhang.com.vn"><strong>soft.support@hoangkhang.com.vn</strong></a><br />
-                <a href="mailto:luanpm@hoangkhang.com.vn">luanpm@hoangkhang.com.vn<strong></strong></a><br />
-                <a href="mailto:sonnn@hoangkhang.com.vn">sonnn@hoangkhang.com.vn<strong></strong></a><br />
-                <a href="mailto:hungnt@hoangkhang.com.vn">hungnt@hoangkhang.com.vn<strong></strong></a>
+                <a href="mailto:<%= Company.get_company.email %>"><strong><%= Company.get_company.email %></strong></a><br />
             </div>
             <!-- end section -->
 
@@ -45,9 +42,9 @@
                 <i class="fa fa-phone"></i>
                 <h3 class="caps"><strong><%= t(:phone_support) %></strong></h3>
                 <h5 class="light">Slightly you are needs to be sure chunks is therefore always. <br />
-                Office: <strong>(84-8) 39 847 690 - 204</strong> <br />
-                Technical: <strong>(84-9) 76 009 003</strong> <br />
-                Hotline: <strong>(84-8) 22 129 454</strong>
+                Office: <strong><%= Company.get_company.phone %></strong> <br />
+                Technical: <strong>+84 97 600 9003</strong> <br />
+                Hotline: <strong><%= Company.get_company.hotline %></strong>
             </h5>
             </div>
             <!-- end section -->
@@ -56,7 +53,8 @@
                 <i class="fa fa-comments-o"></i>
                 <h3 class="caps"><strong><%= t(:live_chat) %></strong></h3>
                 <h5 class="light">Slightly you are needs to be tend need to be sure there to repeat is therefore always.</h5>
-                Skype: <strong></strong>
+                Skype: <strong></strong> <br />
+                Viber: <strong></strong>
             </div>
             <!-- end section -->
             
