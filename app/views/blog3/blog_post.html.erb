@@ -17,16 +17,20 @@
     <div class="page_title1 sty13">
         <div class="container">
 
-            <h1><%= @news.title %></h1>
-            <div class="pagenation">&nbsp;<%= link_to t(:home), root_path %> <i>/</i> <%= link_to t(:news), blog3_path %> <i>/</i> <%= @news.title %></div>
+            <h1>
+                <% if params[:locale] == "en" %>
+                    <%= @news.title %>
+                <% else %>
+                    <%= @news.title %>
+                <% end %>
+            </h1>
+            <div class="pagenation">&nbsp;<%= link_to t(:home), root_path %> <i>/</i> <%= link_to t(:news), blog3_path %> <i>/</i> <% if params[:locale] == "en" %><%= @news.title %><% else %><%= @news.title %><% end %></div>
 
         </div>
     </div>
     <!-- end page title -->
 
-
     <div class="clearfix"></div>
-
 
     <div class="content_fullwidth less2">
         
@@ -44,21 +48,43 @@
                         
                         </div>
                         
-                        <h3><a href="#news"><%= @news.title %></a></h3>
+                        <% if params[:locale] == "en" %>
                         
-                        <ul class="post_meta_links">
+                            <h3><a href="#news"><%= @news.title %></a></h3>
                             
-                            <li><a href="#createdt_at" class="date"><%= @news.created_at.strftime("%d %B %Y") %></a></li>
-                            <li class="post_by"><i><%= t(:by) %>:</i> <a href="#global_naturesoft">Global Naturesoft</a></li>
-                            <li class="post_categoty"><i><%= t(:in) %>:</i><% @news.article_categories.each do |item| %> <a href="#category"><%= item.name %></a><% end %></li>
-                        
-                        </ul>
-                        
-                        <div class="clearfix"></div>
-                        
-                        <div class="margin_top1"></div>
-                        
-                        <div class="text-justify"><%= @news.content.html_safe %></div>
+                            <ul class="post_meta_links">
+                                
+                                <li><a href="#createdt_at" class="date"><%= @news.created_at.strftime("%d %B %Y") %></a></li>
+                                <li class="post_by"><i><%= t(:by) %>:</i> <a href="#global_naturesoft">Global Naturesoft</a></li>
+                                <li class="post_categoty"><i><%= t(:in) %>:</i><% @news.article_categories.each do |item| %> <a href="#category"><%= item.name %></a><% end %></li>
+                            
+                            </ul>
+                            
+                            <div class="clearfix"></div>
+                            
+                            <div class="margin_top1"></div>
+                            
+                            <div class="text-justify"><%= @news.content.html_safe %></div>
+                            
+                        <% else %>
+                            
+                            <h3><a href="#news"><%= @news.title %></a></h3>
+                            
+                            <ul class="post_meta_links">
+                                
+                                <li><a href="#createdt_at" class="date"><%= @news.created_at.strftime("%d/%m/%Y") %></a></li>
+                                <li class="post_by"><i><%= t(:by) %>:</i> <a href="#global_naturesoft">Global Naturesoft</a></li>
+                                <li class="post_categoty"><i><%= t(:in) %>:</i><% @news.article_categories.each do |item| %> <a href="#category"><%= item.name_vi %></a><% end %></li>
+                            
+                            </ul>
+                            
+                            <div class="clearfix"></div>
+                            
+                            <div class="margin_top1"></div>
+                            
+                            <div class="text-justify"><%= @news.content.html_safe %></div>
+                            
+                        <% end %>
                         
                     </div>
                 
@@ -97,8 +123,13 @@
                                         <li>
                                             
                                             <span><%= link_to image_tag(item.image_url.hksoft_square_image, alt: item.title), blog_post_path(news_id: item) %></span>
-                                            <%= link_to item.title, blog_post_path(news_id: item), class: "text-justify" %>
-                                            <i><%= @news.created_at.strftime("%d %B %Y") %></i>
+                                            <% if params[:locale] == "en" %>
+                                                <%= link_to item.title, blog_post_path(news_id: item), class: "text-justify" %>
+                                                <i><%= @news.created_at.strftime("%d %B %Y") %></i>
+                                            <% else %>
+                                                <%= link_to item.title, blog_post_path(news_id: item), class: "text-justify" %>
+                                                <i><%= @news.created_at.strftime("%d/%m/%Y") %></i>
+                                            <% end %>
                                         
                                         </li>
                                         

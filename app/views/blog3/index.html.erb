@@ -42,16 +42,33 @@
                             <div class="image_frame">
                                 <%= link_to image_tag(item.image_url.hksoft_large_image), blog_post_path(news_id: item) %>
                             </div>
-                            <h3><a href="blog-post.html"><%= link_to item.title, blog_post_path(news_id: item) %></a></h3>
-                            <ul class="post_meta_links">
-                                <li><a href="#" class="date"><%= item.created_at.strftime("%d %B %Y") %></a></li>
-    
-                                <li class="post_categoty"><i><%= t(:in) %>:</i> <a href="#news"><%= t(:news) %></a></li>
-                                <li class="post_comments"><i><%= t(:by) %>:</i> <a href="#global_naturesoft"><%= t(:global_naturesoft) %></a></li>
-                            </ul>
-                            <div class="clearfix"></div>
-                            <div class="margin_top1"></div>
-                            <p class="text-justify"><%= truncate(strip_tags(item.content), length: 380) %><%= link_to t(:read_more), blog_post_path(news_id: item) %></p>
+                            <% if params[:locale] == "en" %>
+                                <h3>
+                                    <%= link_to item.title, blog_post_path(news_id: item) %>
+                                </h3>
+                                <ul class="post_meta_links">
+                                    <li><a href="#date" class="date"><%= item.created_at.strftime("%d %B %Y") %></a></li>
+        
+                                    <li class="post_categoty"><i><%= t(:in) %>:</i> <a href="#news"><%= t(:news) %></a></li>
+                                    <li class="post_comments"><i><%= t(:by) %>:</i> <a href="#global_naturesoft"><%= t(:global_naturesoft) %></a></li>
+                                </ul>
+                                <div class="clearfix"></div>
+                                <div class="margin_top1"></div>
+                                <p class="text-justify"><%= truncate(strip_tags(item.content), length: 380) %><%= link_to t(:read_more), blog_post_path(news_id: item) %></p>
+                            <% else %>
+                                <h3>
+                                    <%= link_to item.title, blog_post_path(news_id: item) %>
+                                </h3>
+                                <ul class="post_meta_links">
+                                    <li><a href="#date" class="date"><%= item.created_at.strftime("%d/%m/%Y") %></a></li>
+        
+                                    <li class="post_categoty"><i><%= t(:in) %>:</i> <a href="#news"><%= t(:news) %></a></li>
+                                    <li class="post_comments"><i><%= t(:by) %>:</i> <a href="#global_naturesoft"><%= t(:global_naturesoft) %></a></li>
+                                </ul>
+                                <div class="clearfix"></div>
+                                <div class="margin_top1"></div>
+                                <p class="text-justify"><%= truncate(strip_tags(item.content), length: 380) %><%= link_to t(:read_more), blog_post_path(news_id: item) %></p>
+                            <% end %>
                         </div>
                     </div>
                     <!-- /# end post -->

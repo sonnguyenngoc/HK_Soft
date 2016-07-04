@@ -122,3 +122,22 @@ div.free_setup {
 .page_title1.sty7 .serch_area .enter_email_input {
 	width: 72.6%;
 }
+.row-fluid .btn--warning {
+	margin-bottom: 10px;
+}
+.feature_section11 .domlist1 li {
+	height: 58px;
+}
+ul.tabs {
+	font-family: 'Open Sans', sans-serif;
+}
+@media only screen and (max-width: 479px) {
+	.page_title1.sty7 .serch_area .enter_email_input {
+		width: 100%;
+	}
+}
+.compact .header #logo {
+    background-size: 80%;
+    background-position: left 9px;
+    margin-top: -3px;
+}

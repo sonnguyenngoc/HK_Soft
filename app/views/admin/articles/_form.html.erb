@@ -15,6 +15,7 @@
     <div class="tabbable tab-content-bordered">
         <ul class="nav nav-tabs bg-primary">
             <li class="active"><a href="#control-tab1" data-toggle="tab"><%= t(:infomations) %></a></li>
+			<li><a href="#control-tab6" data-toggle="tab"><%= t(:infomations_vi) %></a></li>
             <li><a href="#control-tab2" data-toggle="tab"><%= t(:content) %> </a></li>
             <li><a href="#control-tab3" data-toggle="tab"><%= t(:picture) %> </a></li>
             <li><a href="#control-tab4" data-toggle="tab"><%= t(:orther_setting) %> </a></li>
@@ -72,6 +73,29 @@
                 </div>
                     
             </div>
+				
+			<div class="tab-pane has-padding" id="control-tab6">
+				<div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:title_vi) %> </label>
+                    <div class="col-lg-10">
+                        <%= f.text_field :title_vi, class: "form-control" %>
+                    </div>
+                </div>
+					
+				<div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:content_vi) %> <span class='text-danger'>*</span></label>
+                </div>
+                <div class="form-group">
+                    <div class="upload_tools text-right" style="margin-bottom: 5px; margin-top: -30px;">											
+						<span class="uploading" style="display: none;font-size: 17px;">
+							Đang tải hình ảnh/video...<i class="icon-spinner2 spinner" style="font-size: 40px; display: inline-block; margin-right: 10px;"></i>
+						</span>
+						<a id="editor_upload_button" class="btn btn-primary btn-xs upload-image-video">Tải hình ảnh</a>
+						<a data-toggle="modal" data-target="#modal_upload_video" href="#" class="btn btn-primary btn-xs upload-video" >Tải video</a>
+					</div>
+                    <%= f.text_area :content_vi, rows: "4", cols: "4", id: "editor-full", class: "required" %>
+                </div>
+			</div>
                 
             <div class="tab-pane has-padding" id="control-tab2">
                 <div class="form-group">

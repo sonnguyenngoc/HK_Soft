@@ -68,6 +68,6 @@ class Admin::ProjectCategoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_category_params
-      params.require(:project_category).permit(:name, :description)
+      params.require(:project_category).permit(:name, :name_vi, :description, :description_vi)
     end
 end
