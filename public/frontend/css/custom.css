@@ -3,7 +3,7 @@
  * Author:  http://themeforest.net/user/soaptheme 
  */
 #header .logo {
-    margin: 5px 0 5px 0;
+    margin: 10px 0 5px 0;
 }
 #main-menu ul.menu, .chaser ul.menu {
     margin: 15px 0;
@@ -38,4 +38,16 @@
 }
 .box-title {
     line-height: 1.3em;
+}
+.chaser .logo {
+    margin-top: 12px;
+}
+.chaser .logo a {
+    background-size: auto 48px;
+}
+.chaser .logo img {
+    height: 48px;
+}
+.post-content img {
+    max-width: 100%;
 }
