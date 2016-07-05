@@ -32,10 +32,17 @@
     </div>
         
     <div class="form-group">
+        <label class="col-lg-2 control-label" >Người đại diện <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <%= f.text_field :representative, class: "form-control required" %>
+        </div>
+    </div>
+        
+    <div class="form-group">
         <label class="col-lg-2 control-label" ><%= t(:type) %> <span class='text-danger'>*</span></label>
         <div class="col-lg-10">
             <!--<%= f.select(:type_company, ['Branch Office', 'Head Office'], {}, { :class => 'select_2' })%>-->
-            <select class="select_2" name="type_company">
+            <select class="select_2" name="company[type_company]" id="company_type_company">
                 <option <%= "selected" if @company.type_company == "Branch Office" %> value="Branch Office"><%= t(:branch_office) %></option>
                 <option <%= "selected" if @company.type_company == "Head Office" %> value="Head Office"><%= t(:head_office) %></option>
             </select>
@@ -50,9 +57,23 @@
     </div>
         
     <div class="form-group">
+        <label class="col-lg-2 control-label" >Fax <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <%= f.text_field :fax, class: "form-control required" %>
+        </div>
+    </div>
+        
+    <div class="form-group">
         <label class="col-lg-2 control-label" ><%= t(:hotline) %> <span class='text-danger'>*</span></label>
         <div class="col-lg-10">
             <%= f.text_field :hotline, class: "form-control required" %>
+        </div>
+    </div>
+        
+    <div class="form-group">
+        <label class="col-lg-2 control-label" >Hotline 2 <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <%= f.text_field :hotline_2, class: "form-control required" %>
         </div>
     </div>
         
@@ -74,6 +95,13 @@
         <label class="col-lg-2 control-label" ><%= t(:date_of_issue) %> <span class='text-danger'>*</span></label>
         <div class="col-lg-10">
             <%= f.text_field :date_of_issue, class: "form-control required" %>
+        </div>
+    </div>
+        
+    <div class="form-group">
+        <label class="col-lg-2 control-label" >Nơi cấp <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <%= f.text_field :issued_by, class: "form-control required" %>
         </div>
     </div>
         

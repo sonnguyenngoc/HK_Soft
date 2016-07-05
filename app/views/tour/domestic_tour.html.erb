@@ -107,345 +107,48 @@
                 
                 <div id="main">
                     <div class="row add-clearfix image-box style1 tour-locations">
-                        
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <article class="box">
-                                <figure>
-                                    <a href="#" class="hover-effect">
-                                        <img src="/frontend/images/tour/simple-packages/4-col/1.jpg" alt="">
-                                    </a>
-                                </figure>
-                                <div class="details">
-                                    <span class="price">$620</span>
-                                    <h4 class="box-title">Hawaii City Tour</h4>
-                                    <hr>
-                                    <ul class="features check">
-                                        <li>City Tour In 3 Hours</li>
-                                        <li>Enjoy World Famous Restaurant</li>
-                                        <li>Wine Tester Trips</li>
-                                        <li>Night Street Life in Downtown </li>
-                                    </ul>
-                                    <hr>
-                                    <div class="text-center">
-                                        <div class="time">
-                                            <i class="soap-icon-clock yellow-color"></i>
-                                            <span>01 Nov 2014 - 08 Nov 2014</span>
+                        <% @tours.each do |item| %>
+                            <div class="col-sm-6 col-md-4 col-lg-3">
+                                <article class="box">
+                                    <figure>
+                                        <%= link_to image_tag("/frontend/images/tour/simple-packages/4-col/3.jpg"), tour_detail_path(tour_id: item), class: "hover-effect" %>
+                                    </figure>
+                                    <div class="details">
+                                        <h4 class="box-title text-justify"><%= item.name %></h4>
+                                        <span class="price"><% if item.new_price == 0 %>Liên hệ<% else %><%= format_number(item.new_price) %> VND<% end %></span>
+                                        <hr>
+                                        <div class="text-justify"><%= truncate(strip_tags(item.description), length: 100) %></div>
+                                        <hr>
+                                        <div class="text-center">
+                                            <div class="selector">
+                                                <select class="full-width">
+                                                    <option value="">Lịch khởi hành - [<%= item.get_count_tour_schedules %>]</option>
+                                                    <% item.tour_schedules.each do |schedule| %>
+                                                        <option value=""><%= schedule.from_date.strftime("%d/%m/%Y") %> - <%= schedule.to_date.strftime("%d/%m/%Y") %></option>
+                                                    <% end %>
+                                                </select>
+                                            </div>
+                                            <div class="time">
+                                                <i class="soap-icon-clock yellow-color"></i>
+                                                <span>Tour sớm nhất: <br/><% if item.tour_schedules.count > 0 %><%= item.get_lastest_tour_from_date %> - <%= item.get_lastest_tour_to_date %><% else %>Chưa có lịch cho tour<% end %></span>
+                                            </div>
                                         </div>
+                                        <%= link_to "XEM TOUR", tour_detail_path(tour_id: item), class: "button btn-small full-width" %>
                                     </div>
-                                    <a href="#" class="button btn-small full-width">BOOK NOW</a>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <article class="box">
-                                <figure>
-                                    <a href="#" class="hover-effect">
-                                        <img src="/frontend/images/tour/simple-packages/4-col/2.jpg" alt="">
-                                    </a>
-                                </figure>
-                                <div class="details">
-                                    <span class="price">$534</span>
-                                    <h4 class="box-title">Italy Family Tour</h4>
-                                    <hr>
-                                    <ul class="features check">
-                                        <li>City Tour In 3 Hours</li>
-                                        <li>Enjoy World Famous Restaurant</li>
-                                        <li>Wine Tester Trips</li>
-                                        <li>Night Street Life in Downtown </li>
-                                    </ul>
-                                    <hr>
-                                    <div class="text-center">
-                                        <div class="time">
-                                            <i class="soap-icon-clock yellow-color"></i>
-                                            <span>01 Nov 2014 - 08 Nov 2014</span>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="button btn-small full-width">BOOK NOW</a>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <article class="box">
-                                <figure>
-                                    <a href="#" class="hover-effect">
-                                        <img src="/frontend/images/tour/simple-packages/4-col/3.jpg" alt="">
-                                    </a>
-                                </figure>
-                                <div class="details">
-                                    <span class="price">$718</span>
-                                    <h4 class="box-title">Chicago Long Tour</h4>
-                                    <hr>
-                                    <ul class="features check">
-                                        <li>City Tour In 3 Hours</li>
-                                        <li>Enjoy World Famous Restaurant</li>
-                                        <li>Wine Tester Trips</li>
-                                        <li>Night Street Life in Downtown </li>
-                                    </ul>
-                                    <hr>
-                                    <div class="text-center">
-                                        <div class="time">
-                                            <i class="soap-icon-clock yellow-color"></i>
-                                            <span>01 Nov 2014 - 08 Nov 2014</span>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="button btn-small full-width">BOOK NOW</a>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <article class="box">
-                                <figure>
-                                    <a href="#" class="hover-effect">
-                                        <img src="/frontend/images/tour/simple-packages/4-col/4.jpg" alt="">
-                                    </a>
-                                </figure>
-                                <div class="details">
-                                    <span class="price">$426</span>
-                                    <h4 class="box-title">Sydney Tour</h4>
-                                    <hr>
-                                    <ul class="features check">
-                                        <li>City Tour In 3 Hours</li>
-                                        <li>Enjoy World Famous Restaurant</li>
-                                        <li>Wine Tester Trips</li>
-                                        <li>Night Street Life in Downtown </li>
-                                    </ul>
-                                    <hr>
-                                    <div class="text-center">
-                                        <div class="time">
-                                            <i class="soap-icon-clock yellow-color"></i>
-                                            <span>01 Nov 2014 - 08 Nov 2014</span>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="button btn-small full-width">BOOK NOW</a>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <article class="box">
-                                <figure>
-                                    <a href="#" class="hover-effect">
-                                        <img src="/frontend/images/tour/simple-packages/4-col/5.jpg" alt="">
-                                    </a>
-                                </figure>
-                                <div class="details">
-                                    <span class="price">$620</span>
-                                    <h4 class="box-title">Florida Tour</h4>
-                                    <hr>
-                                    <ul class="features check">
-                                        <li>City Tour In 3 Hours</li>
-                                        <li>Enjoy World Famous Restaurant</li>
-                                        <li>Wine Tester Trips</li>
-                                        <li>Night Street Life in Downtown </li>
-                                    </ul>
-                                    <hr>
-                                    <div class="text-center">
-                                        <div class="time">
-                                            <i class="soap-icon-clock yellow-color"></i>
-                                            <span>01 Nov 2014 - 08 Nov 2014</span>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="button btn-small full-width">BOOK NOW</a>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <article class="box">
-                                <figure>
-                                    <a href="#" class="hover-effect">
-                                        <img src="/frontend/images/tour/simple-packages/4-col/6.jpg" alt="">
-                                    </a>
-                                </figure>
-                                <div class="details">
-                                    <span class="price">$534</span>
-                                    <h4 class="box-title">Paris Tour Package</h4>
-                                    <hr>
-                                    <ul class="features check">
-                                        <li>City Tour In 3 Hours</li>
-                                        <li>Enjoy World Famous Restaurant</li>
-                                        <li>Wine Tester Trips</li>
-                                        <li>Night Street Life in Downtown </li>
-                                    </ul>
-                                    <hr>
-                                    <div class="text-center">
-                                        <div class="time">
-                                            <i class="soap-icon-clock yellow-color"></i>
-                                            <span>01 Nov 2014 - 08 Nov 2014</span>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="button btn-small full-width">BOOK NOW</a>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <article class="box">
-                                <figure>
-                                    <a href="#" class="hover-effect">
-                                        <img src="/frontend/images/tour/simple-packages/4-col/7.jpg" alt="">
-                                    </a>
-                                </figure>
-                                <div class="details">
-                                    <span class="price">$718</span>
-                                    <h4 class="box-title">Australia Tour</h4>
-                                    <hr>
-                                    <ul class="features check">
-                                        <li>City Tour In 3 Hours</li>
-                                        <li>Enjoy World Famous Restaurant</li>
-                                        <li>Wine Tester Trips</li>
-                                        <li>Night Street Life in Downtown </li>
-                                    </ul>
-                                    <hr>
-                                    <div class="text-center">
-                                        <div class="time">
-                                            <i class="soap-icon-clock yellow-color"></i>
-                                            <span>01 Nov 2014 - 08 Nov 2014</span>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="button btn-small full-width">BOOK NOW</a>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <article class="box">
-                                <figure>
-                                    <a href="#" class="hover-effect">
-                                        <img src="/frontend/images/tour/simple-packages/4-col/8.jpg" alt="">
-                                    </a>
-                                </figure>
-                                <div class="details">
-                                    <span class="price">$426</span>
-                                    <h4 class="box-title">Dubai Family Tour</h4>
-                                    <hr>
-                                    <ul class="features check">
-                                        <li>City Tour In 3 Hours</li>
-                                        <li>Enjoy World Famous Restaurant</li>
-                                        <li>Wine Tester Trips</li>
-                                        <li>Night Street Life in Downtown </li>
-                                    </ul>
-                                    <hr>
-                                    <div class="text-center">
-                                        <div class="time">
-                                            <i class="soap-icon-clock yellow-color"></i>
-                                            <span>01 Nov 2014 - 08 Nov 2014</span>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="button btn-small full-width">BOOK NOW</a>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <article class="box">
-                                <figure>
-                                    <a href="#" class="hover-effect">
-                                        <img src="/frontend/images/tour/simple-packages/4-col/9.jpg" alt="">
-                                    </a>
-                                </figure>
-                                <div class="details">
-                                    <span class="price">$620</span>
-                                    <h4 class="box-title">Sydney Tour</h4>
-                                    <hr>
-                                    <ul class="features check">
-                                        <li>City Tour In 3 Hours</li>
-                                        <li>Enjoy World Famous Restaurant</li>
-                                        <li>Wine Tester Trips</li>
-                                        <li>Night Street Life in Downtown </li>
-                                    </ul>
-                                    <hr>
-                                    <div class="text-center">
-                                        <div class="time">
-                                            <i class="soap-icon-clock yellow-color"></i>
-                                            <span>01 Nov 2014 - 08 Nov 2014</span>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="button btn-small full-width">BOOK NOW</a>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <article class="box">
-                                <figure>
-                                    <a href="#" class="hover-effect">
-                                        <img src="/frontend/images/tour/simple-packages/4-col/10.jpg" alt="">
-                                    </a>
-                                </figure>
-                                <div class="details">
-                                    <span class="price">$534</span>
-                                    <h4 class="box-title">Italy Family Tour</h4>
-                                    <hr>
-                                    <ul class="features check">
-                                        <li>City Tour In 3 Hours</li>
-                                        <li>Enjoy World Famous Restaurant</li>
-                                        <li>Wine Tester Trips</li>
-                                        <li>Night Street Life in Downtown </li>
-                                    </ul>
-                                    <hr>
-                                    <div class="text-center">
-                                        <div class="time">
-                                            <i class="soap-icon-clock yellow-color"></i>
-                                            <span>01 Nov 2014 - 08 Nov 2014</span>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="button btn-small full-width">BOOK NOW</a>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <article class="box">
-                                <figure>
-                                    <a href="#" class="hover-effect">
-                                        <img src="/frontend/images/tour/simple-packages/4-col/11.jpg" alt="">
-                                    </a>
-                                </figure>
-                                <div class="details">
-                                    <span class="price">$620</span>
-                                    <h4 class="box-title">Florida Tour</h4>
-                                    <hr>
-                                    <ul class="features check">
-                                        <li>City Tour In 3 Hours</li>
-                                        <li>Enjoy World Famous Restaurant</li>
-                                        <li>Wine Tester Trips</li>
-                                        <li>Night Street Life in Downtown </li>
-                                    </ul>
-                                    <hr>
-                                    <div class="text-center">
-                                        <div class="time">
-                                            <i class="soap-icon-clock yellow-color"></i>
-                                            <span>01 Nov 2014 - 08 Nov 2014</span>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="button btn-small full-width">BOOK NOW</a>
-                                </div>
-                            </article>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-3">
-                            <article class="box">
-                                <figure>
-                                    <a href="#" class="hover-effect">
-                                        <img src="/frontend/images/tour/simple-packages/4-col/12.jpg" alt="">
-                                    </a>
-                                </figure>
-                                <div class="details">
-                                    <span class="price">$426</span>
-                                    <h4 class="box-title">Hawaii City Tour</h4>
-                                    <hr>
-                                    <ul class="features check">
-                                        <li>City Tour In 3 Hours</li>
-                                        <li>Enjoy World Famous Restaurant</li>
-                                        <li>Wine Tester Trips</li>
-                                        <li>Night Street Life in Downtown </li>
-                                    </ul>
-                                    <hr>
-                                    <div class="text-center">
-                                        <div class="time">
-                                            <i class="soap-icon-clock yellow-color"></i>
-                                            <span>01 Nov 2014 - 08 Nov 2014</span>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="button btn-small full-width">BOOK NOW</a>
-                                </div>
-                            </article>
-                        </div>
+                                </article>
+                            </div>
+                        <% end %>
                     </div>
-                    <a href="#" class="button btn-large full-width uppercase">XEM THÊM</a>
+                    <ul class="pagination clearfix">
+                        <li class="prev disabled"><a href="#">Trang trước</a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">6</a></li>
+                        <li class="next"><a href="#">Trang sau</a></li>
+                    </ul>
                 </div>
             </div>
         </div>

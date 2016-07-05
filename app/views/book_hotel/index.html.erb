@@ -6,11 +6,11 @@
     <div class="page-title-container style2">
         <div class="container">
             <div class="page-title pull-left">
-                <h2 class="entry-title">Khách Sạn</h2>
+                <h2 class="entry-title"><%= @page_name.name %></h2>
             </div>
             <ul class="breadcrumbs pull-right">
-                <li><a href="#">Trang Chủ</a></li>
-                <li class="active">Khách Sạn</li>
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <li class="active"><%= @page_name.name %></li>
             </ul>
         </div>
     </div>
@@ -20,11 +20,10 @@
             <div id="main">
                 <div class="row">
                     <div class="col-sm-4 col-md-3">
-                        <h4 class="search-results-title"><i class="soap-icon-search"></i><b>1,984</b> results found.</h4>
                         <div class="toggle-container filters-container">
                             <div class="panel style1 arrow-right">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#price-filter" class="collapsed">Price</a>
+                                    <a data-toggle="collapse" href="#price-filter" class="collapsed">Giá tiền</a>
                                 </h4>
                                 <div id="price-filter" class="panel-collapse collapse">
                                     <div class="panel-content">
@@ -39,149 +38,98 @@
                             
                             <div class="panel style1 arrow-right">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#rating-filter" class="collapsed">User Rating</a>
-                                </h4>
-                                <div id="rating-filter" class="panel-collapse collapse">
-                                    <div class="panel-content">
-                                        <div id="rating" class="five-stars-container editable-rating"></div>
-                                        <br />
-                                        <small>2458 REVIEWS</small>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="panel style1 arrow-right">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#accomodation-type-filter" class="collapsed">Accomodation Type</a>
+                                    <a data-toggle="collapse" href="#accomodation-type-filter" class="collapsed">Loại Khách Sạn</a>
                                 </h4>
                                 <div id="accomodation-type-filter" class="panel-collapse collapse">
                                     <div class="panel-content">
                                         <ul class="check-square filters-option">
-                                            <li><a href="#">All<small>(722)</small></a></li>
-                                            <li><a href="#">Hotel<small>(982)</small></a></li>
-                                            <li><a href="#">Resort<small>(127)</small></a></li>
-                                            <li class="active"><a href="#">Bed &amp; Breakfast<small>(222)</small></a></li>
-                                            <li><a href="#">Condo<small>(158)</small></a></li>
-                                            <li><a href="#">Residence<small>(439)</small></a></li>
-                                            <li><a href="#">Guest House<small>(52)</small></a></li>
+                                            <li><a href="#">Khách sạn 1 sao<small>(982)</small></a></li>
+                                            <li><a href="#">Khách sạn 2 sao<small>(127)</small></a></li>
+                                            <li><a href="#">Khách sạn 3 sao<small>(222)</small></a></li>
+                                            <li><a href="#">Khách sạn 4 sao<small>(158)</small></a></li>
+                                            <li><a href="#">Khách sạn 5 sao<small>(439)</small></a></li>
                                         </ul>
-                                        <a class="button btn-mini">MORE</a>
                                     </div>
                                 </div>
                             </div>
                             
                             <div class="panel style1 arrow-right">
                                 <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#amenities-filter" class="collapsed">Amenities</a>
+                                    <a data-toggle="collapse" href="#amenities-filter" class="collapsed">Khu Vực</a>
                                 </h4>
                                 <div id="amenities-filter" class="panel-collapse collapse">
                                     <div class="panel-content">
                                         <ul class="check-square filters-option">
-                                            <li><a href="#">Bathroom<small>(722)</small></a></li>
-                                            <li><a href="#">Cable tv<small>(982)</small></a></li>
-                                            <li class="active"><a href="#">air conditioning<small>(127)</small></a></li>
-                                            <li class="active"><a href="#">mini bar<small>(222)</small></a></li>
-                                            <li><a href="#">wi - fi<small>(158)</small></a></li>
-                                            <li><a href="#">pets allowed<small>(439)</small></a></li>
-                                            <li><a href="#">room service<small>(52)</small></a></li>
+                                            <li><a href="#">Phú Quốc<small>(722)</small></a></li>
+                                            <li><a href="#">Đà Lạt<small>(982)</small></a></li>
+                                            <li><a href="#">Côn Đảo<small>(127)</small></a></li>
+                                            <li><a href="#">Nha Trang<small>(222)</small></a></li>
                                         </ul>
-                                        <a class="button btn-mini">MORE</a>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="panel style1 arrow-right">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#language-filter" class="collapsed">Host Language</a>
-                                </h4>
-                                <div id="language-filter" class="panel-collapse collapse">
-                                    <div class="panel-content">
-                                        <ul class="check-square filters-option">
-                                            <li><a href="#">English<small>(722)</small></a></li>
-                                            <li><a href="#">Español<small>(982)</small></a></li>
-                                            <li class="active"><a href="#">Português<small>(127)</small></a></li>
-                                            <li class="active"><a href="#">Français<small>(222)</small></a></li>
-                                            <li><a href="#">Suomi<small>(158)</small></a></li>
-                                            <li><a href="#">Italiano<small>(439)</small></a></li>
-                                            <li><a href="#">Sign Language<small>(52)</small></a></li>
-                                        </ul>
-                                        <a class="button btn-mini">MORE</a>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="panel style1 arrow-right">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#modify-search-panel" class="collapsed">Modify Search</a>
-                                </h4>
-                                <div id="modify-search-panel" class="panel-collapse collapse">
-                                    <div class="panel-content">
-                                        <form method="post">
-                                            <div class="form-group">
-                                                <label>destination</label>
-                                                <input type="text" class="input-text full-width" placeholder="" value="Paris" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>check in</label>
-                                                <div class="datepicker-wrap">
-                                                    <input type="text" name="date_from" class="input-text full-width" placeholder="mm/dd/yy" />
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label>check out</label>
-                                                <div class="datepicker-wrap">
-                                                    <input type="text" name="date_to" class="input-text full-width" placeholder="mm/dd/yy" />
-                                                </div>
-                                            </div>
-                                            <br />
-                                            <button class="btn-medium icon-check uppercase full-width">search again</button>
-                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-8 col-md-9">
-                        <div class="sort-by-section clearfix">
-                            <h4 class="sort-by-title block-sm">Sort results by:</h4>
-                            <ul class="sort-bar clearfix block-sm">
-                                <li class="sort-by-name"><a class="sort-by-container" href="#"><span>name</span></a></li>
-                                <li class="sort-by-price"><a class="sort-by-container" href="#"><span>price</span></a></li>
-                                <li class="clearer visible-sms"></li>
-                                <li class="sort-by-rating active"><a class="sort-by-container" href="#"><span>rating</span></a></li>
-                                <li class="sort-by-popularity"><a class="sort-by-container" href="#"><span>popularity</span></a></li>
-                            </ul>
-                        </div>
                         <div class="hotel-list">
-                            <div class="row image-box hotel listing-style1">
-                                <% (1..12).each do |item| %>
-                                    <div class="col-sm-6 col-md-4">
-                                        <article class="box">
-                                            <figure>
-                                                <a href="<%= slideshow_popup_path %>" class="hover-effect popup-gallery"><img width="270" height="161" alt="" src="/frontend/images/hotels/1.png"></a>
-                                            </figure>
-                                            <div class="details">
-                                                <span class="price">
-                                                    <small>avg/night</small>
-                                                    $620
-                                                </span>
-                                                <h4 class="box-title">Hotel Hilton<small>Paris france</small></h4>
-                                                <div class="feedback">
-                                                    <div data-placement="bottom" data-toggle="tooltip" class="five-stars-container" title="4 stars"><span style="width: 80%;" class="five-stars"></span></div>
-                                                    <span class="review">270 reviews</span>
+                            <div class="row image-box hotel listing-style3">
+                                <% @hotels.each do |item| %>
+                                    <article class="box">
+                                        <figure class="col-sm-5 col-md-4">
+                                            <a title="" href="<%= slideshow_popup_path %>" class="hover-effect popup-gallery"><img width="270" height="160" alt="" src="/frontend/images/hotels/1.png"></a>
+                                        </figure>
+                                        <div class="details col-sm-7 col-md-8">
+                                            <div>
+                                                <div>
+                                                    <h4 class="box-title"><%= item.name %><small><i class="soap-icon-departure yellow-color"></i> <%= item.area.name %></small></h4>
+                                                    <div class="amenities">
+                                                        <i class="soap-icon-wifi circle"></i>
+                                                        <i class="soap-icon-fitnessfacility circle"></i>
+                                                        <i class="soap-icon-fork circle"></i>
+                                                        <i class="soap-icon-television circle"></i>
+                                                    </div>
                                                 </div>
-                                                <p class="description">Nunc cursus libero purus ac congue arcu cursus ut sed vitae pulvinar massa idporta nequetiam.</p>
-                                                <div class="action">
-                                                    <%= link_to "SELECT", book_hotel_detail_path, class: "button btn-small" %>
-                                                    <a class="button btn-small yellow popup-map" href="#" data-box="48.856614, 2.352222">VIEW ON MAP</a>
+                                                <div>
+                                                    <div class="five-stars-container">
+                                                        <% if item.hotel_type == "Khách sạn 1 sao" %>
+                                                            <span class="five-stars" style="width: 20%;"></span>
+                                                        <% end %>
+                                                        <% if item.hotel_type == "Khách sạn 2 sao" %>
+                                                            <span class="five-stars" style="width: 40%;"></span>
+                                                        <% end %>
+                                                        <% if item.hotel_type == "Khách sạn 3 sao" %>
+                                                            <span class="five-stars" style="width: 60%;"></span>
+                                                        <% end %>
+                                                        <% if item.hotel_type == "Khách sạn 4 sao" %>
+                                                            <span class="five-stars" style="width: 80%;"></span>
+                                                        <% end %>
+                                                        <% if item.hotel_type == "Khách sạn 5 sao" %>
+                                                            <span class="five-stars" style="width: 100%;"></span>
+                                                        <% end %>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </article>
-                                    </div>
+                                            <div>
+                                                <p class="text-justify"><%= truncate(strip_tags(item.content.html_safe), length: 170) %></p>
+                                                <div>
+                                                    <%= link_to "XEM THÊM", book_hotel_detail_path(hotel_id: item), class: "button btn-small full-width text-center" %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
                                 <% end %>
                             </div>
                         </div>
-                        <a href="#" class="uppercase full-width button btn-large">load more listing</a>
+                        <ul class="pagination clearfix">
+                            <li class="prev disabled"><a href="#">Trang trước</a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">6</a></li>
+                            <li class="next"><a href="#">Trang sau</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>

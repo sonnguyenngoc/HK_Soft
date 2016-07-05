@@ -27,12 +27,15 @@ Rails.application.routes.draw do
     get "thue-xe-du-lich/hien-thi-dang-danh-sach.html" => "car_hire#car_list_view", as: :car_list_view
     get "thue-xe-du-lich/hien-thi-dang-o.html" => "car_hire#car_grid_view", as: :car_grid_view
     get "thue-xe-du-lich/chi-tiet-xe.html" => "car_hire#car_detail", as: :car_detail
+    get "thue-xe-du-lich/chi-tiet-xe/dat-xe.html" => "car_hire#car_booking", as: :car_booking
+    get "thue-xe-du-lich/chi-tiet-xe/dat-xe/cam-on.html" => "car_hire#car_thankyou", as: :car_thankyou
   
     # Khách sạn
     get "danh-sach-khach-san.html" => "book_hotel#index", as: :hotel_listing
     get "danh-sach-khach-san/chi-tiet-khach-san.html" => "book_hotel#book_hotel_detail", as: :book_hotel_detail
     get "danh-sach-khach-san/chi-tiet-khach-san/dat-phong.html" => "book_hotel#hotel_booking", as: :hotel_booking
-   post "slideshow-popup.html" => "book_hotel#slideshow_popup", as: :slideshow_popup
+    get "danh-sach-khach-san/chi-tiet-khach-san/dat-phong/cam-on.html" => "book_hotel#hotel_thankyou", as: :hotel_thankyou
+    post "slideshow-popup.html" => "book_hotel#slideshow_popup", as: :slideshow_popup
   
     # Cẩm nang du lịch
     get "cam-nang-du-lich.html" => "tour_handbook#index", as: :tour_handbook
@@ -42,7 +45,7 @@ Rails.application.routes.draw do
   
     # Tin tức du lịch
     get "tin-tuc-du-lich.html" => "travel_news#index", as: :travel_news
-    get "tin-tuc-du-lich/chi-tiet-tin-tuc-du-lich.html" => "travel_news#travel_news_detail", as: :travel_news_detail
+    get "tin-tuc-du-lich/(:title)-:travel_news_id.html" => "travel_news#travel_news_detail", as: :travel_news_detail
   
     # Bảng giá tour
     # Tin từ công ty
@@ -178,6 +181,13 @@ Rails.application.routes.draw do
             get 'search'
           end
         end
+        resources :tours, path: "tour-du-lich" do
+          collection do
+            get 'approve'
+          end
+        end
+        resources :hotels
+        resources :cars
         resources :companies, path: "chi-nhanh"
         resources :user_groups, path: "nhom-nguoi-dung"
         get "tru-so-chinh" => "companies#head_office", as: :head_office

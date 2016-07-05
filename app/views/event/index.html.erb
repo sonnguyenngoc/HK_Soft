@@ -6,11 +6,11 @@
     <div class="page-title-container style2">
         <div class="container">
             <div class="page-title">
-                <h2 class="entry-title">Tổ Chức Sự Kiện</h2>
+                <h2 class="entry-title"><%= @page_name.name %></h2>
             </div>
             <ul class="breadcrumbs">
-                <li><a href="#">Trang Chủ</a></li>
-                <li class="active">Tổ Chức Sự Kiện</li>
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <li class="active"><%= @page_name.name %></li>
             </ul>
         </div>
     </div>
@@ -19,35 +19,33 @@
         <div class="container">
             <div id="main">
                 <div class="page">
-                    <span style="display: none;" class="entry-title page-title">Blog Full Width</span>
-                    <span style="display: none;" class="vcard"><span class="fn"><a rel="author" title="Posts by admin" href="#">admin</a></span></span>
-                    <span style="display:none;" class="updated">2014-06-20T13:35:34+00:00</span>
+                    <span style="display: none;" class="entry-title page-title"><%= @page_name.name %></span>
+                    <span style="display: none;" class="vcard"><span class="fn"><a rel="author" title="Đăng Bởi Du Lịch Khám Phá Mới" href="#">Du Lịch Khám Phá Mới</a></span></span>
+                    <span style="display:none;" class="updated">2016-06-30-T5 09:00</span>
                     <div class="post-content">
                         <div class="blog-infinite">
-                            <% (1..5).each do |item| %>
+                            <% @blogs.each do |item| %>
                                 <div class="post">
                                     <div class="post-content-wrapper">
                                         <figure class="image-container">
-                                            <a href="pages-blog-read.html" class="hover-effect"><img src="/frontend/images/blog/full_width_post/image/1.png" alt="" /></a>
+                                            <%= link_to image_tag("/frontend/images/blog/full_width_post/image/1.png", alt: item.title), event_detail_path(event_id: item), class: "hover-effect" %>
                                         </figure>
                                         <div class="details">
-                                            <h2 class="entry-title"><a href="pages-blog-read.html">Standard single image post</a></h2>
+                                            <h2 class="entry-title"><%= link_to item.title, event_detail_path(event_id: item) %></h2>
                                             <div class="excerpt-container">
-                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's stand dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a neque a tortor tempor in porta sem vulputate. Donec varius felis fermentum nis type specimen book. It has survived not only five centuries.</p>
+                                                <div class="text-justify"><%= truncate(strip_tags(item.content.html_safe), length: 400) %></div>
                                             </div>
                                             <div class="post-meta">
                                                 <div class="entry-date">
-                                                    <label class="date">29</label>
-                                                    <label class="month">Aug</label>
+                                                    <label class="date"><%= item.created_at.strftime("%d") %></label>
+                                                    <label class="month"><%= item.created_at.strftime("%m") %></label>
                                                 </div>
                                                 <div class="entry-author fn">
-                                                    <i class="icon soap-icon-user"></i> Posted By:
-                                                    <a href="#" class="author">Jessica Browen</a>
+                                                    <i class="icon soap-icon-user"></i> Đăng bởi:
+                                                    <a href="#" class="author">Du Lịch Khám Phá Mới</a>
                                                 </div>
                                                 <div class="entry-action">
-                                                    <a href="#" class="button entry-comment btn-small"><i class="soap-icon-comment"></i><span>30 Comments</span></a>
-                                                    <a href="#" class="button btn-small"><i class="soap-icon-wishlist"></i><span>22 Likes</span></a>
-                                                    <span class="entry-tags"><i class="soap-icon-features"></i><span><a href="#">Adventure</a>, <a href="#">Romance</a></span></span>
+                                                    <span class="entry-tags"><i class="soap-icon-features"></i><span><a href="#">Tổ chức sự kiện</a>, <a href="#">Du lịch khám phá mới</a></span></span>
                                                 </div>
                                             </div>
                                         </div>
@@ -55,7 +53,16 @@
                                 </div>
                             <% end %>
                         </div>
-                        <a href="#" class="button btn-large full-width">LOAD MORE POSTS</a>
+                        <ul class="pagination clearfix">
+                            <li class="prev disabled"><a href="#">Trang trước</a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#">6</a></li>
+                            <li class="next"><a href="#">Trang sau</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>

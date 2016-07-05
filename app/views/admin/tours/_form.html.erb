@@ -1,0 +1,246 @@
+<% if @tour.errors.any? %>
+    <div id="error_explanation">
+        <span class="label label-warning"></span>
+        <div class="alert alert-warning alert-styled-left">
+            <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+            <% @tour.errors.full_messages.each do |message| %>
+                - <%= message %>.<br/>
+            <% end %>
+        </div>
+    </div>
+<% end %>
+
+<%= form_for [:admin, @tour], html: {class: "form-horizontal", id: "validate_checking"} do |f| %>
+    <div class="tabbable tab-content-bordered">
+        <ul class="nav nav-tabs bg-primary">
+            <li class="active button_tab_product"><a href="#control-tab1" value="control-tab1" data-toggle="tab">Thông tin chung</a></li>
+            <li><a href="#control-tab2" data-toggle="tab">Tổng quan hành trình</a></li>
+            <li><a href="#control-tab3" data-toggle="tab">Lịch khởi hành tour du lịch</a></li>
+            <li><a href="#control-tab4" data-toggle="tab">Hình ảnh tour du lịch</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane has-padding active" id="control-tab1">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Hình đại diện cho tour <span class='text-danger'>*</span></label>
+                    <div class="col-lg-9">
+                        <div class="uploader bg-teal-400">
+                            <%= f.file_field :image_url, class: "file-styled ", accept: ".png, .jpg, .jpeg, .gif" %>
+                            <span class="action" style="-webkit-user-select: none;"><i class="icon-googleplus5"></i></span>
+                        </div>
+                        <span class="help-block">Accepted formats: gif, png, jpg.</span>
+                        <%= image_tag(@tour.image_url, size: "202x128", class: "img-rouded") %>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Loại <span class='text-danger'>*</span></label>
+                    <div class="col-lg-9">
+                        <select class="select-tour-type" name="tour[type_name]">
+                            <option <%= "selected" if @tour.type_name == "Tour Trong Nước" %> value="Tour Trong Nước">Tour Trong Nước</option>
+                            <option <%= "selected" if @tour.type_name == "Tour Nước Ngoài" %> value="Tour Nước Ngoài">Tour Nước Ngoài</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Chuyên mục Tour <span class='text-danger'>*</span></label>
+                    <div class="col-lg-9">
+                        <% ArticleCategory.get_menu_tours.each do |item| %>
+                            <select name="tour[article_category_id]" data-placeholder="Chọn chuyên mục tour..." class="select-tour-category select-lg">
+                                <option></option>
+                                <% item.children.each do |child_1| %>
+                                    <optgroup label="<%= child_1.name %>">
+                                        <% child_1.children.each do |child_2| %>
+                                            <option <%= "selected" if @tour.article_category_id == child_2.id %> value="<%= child_2.id %>"><%= child_2.name %></option>
+                                        <% end %>
+                                    </optgroup>
+                                <% end %>
+                            </select>
+                        <% end %>
+                    </div>
+                </div>
+                   
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Tour <span class='text-danger'>*</span></label>
+                    <div class="col-lg-9">
+                        <%= f.text_field :name, class: "form-control" %>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Giá tiền của tour <span class='text-danger'>*</span></label>
+                    <div class="col-lg-9">
+                        <%= f.text_field :new_price, class: "form-control" %>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Khởi hành:</label>
+                    <div class="col-lg-4">
+                        <%= f.text_field :duration, class: "form-control" %>
+                    </div>
+                    
+                    <label class="col-lg-2 control-label" >Vị trí (Google map):</label>
+                    <div class="col-lg-3">
+                        <%= f.text_field :position, class: "form-control" %>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Loại khách sạn <span class='text-danger'>*</span></label>
+                    <div class="col-lg-9">
+                        <%= f.select(:hotel, ['Khách sạn 1 sao', 'Khách sạn 2 sao', 'Khách sạn 3 sao', 'Khách sạn 4 sao', 'Khách sạn 5 sao'], {}, { :class => 'select-hotel' })%>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Phương tiện</label>
+                    <div class="col-lg-9">
+                        <% Tour.transportation_listing.each do |item| %>
+                            <label class="checkbox-inline">
+                                <input class="checkbox-transportations" <%= "checked" if @tour.get_transportations.include?(item) %> type="checkbox" name="tour[transportation][]" id="tour_transportation_<%= item %>" value="<%= item %>"><%= t(item) %>
+                            </label>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Dịch vụ đính kèm</label>
+                    <div class="col-lg-9">
+                        <% Tour.service_listing.each do |item| %>
+                            <label class="checkbox-inline">
+                                <input class="checkbox-services" <%= "checked" if @tour.get_services.include?(item) %> type="checkbox" name="tour[services][]" id="tour_services_<%= item %>" value="<%= item %>"><%= t(item) %>
+                            </label>
+                        <% end %>
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Giá tiền của tour trước khi giảm giá:</label>
+                    <div class="col-lg-2">
+                        <%= f.text_field :old_price, class: "form-control" %>
+                    </div>
+                    
+                    <label class="col-lg-2 control-label" >Phần trăm khuyến mãi:</label>
+                    <div class="col-lg-2">
+                        <%= f.text_field :discount_percent, class: "form-control" %>
+                    </div>
+                    
+                    <div class="col-lg-3">
+                        <div class="row-fluid">
+                            <div class="checkbox">
+                                <%= check_box 'tour', 'is_sale', {}, 'true', 'false' %>
+                                <label for="tour_is_sale">Tour đang khuyến mãi</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <%= f.label "Mô tả", class: "col-lg-3 control-label" %>
+                    <div class="col-lg-9">
+                      <%= f.text_area :description, rows: "5", cols: "5", class: "form-control" %>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-pane has-padding" id="control-tab2">
+                
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" >Giới thiệu về tour <span class='text-danger'>*</span></label>
+                </div>
+                <div class="form-group">
+                    <div class="upload_tools text-right" style="margin-bottom: 5px; margin-top: -30px;">											
+                      <span class="uploading" style="display: none;font-size: 17px;">
+                        Đang tải hình ảnh/video...<i class="icon-spinner2 spinner" style="font-size: 40px; display: inline-block; margin-right: 10px;"></i>
+                      </span>
+                      <a id="editor_upload_button" class="btn btn-primary btn-xs upload-image-video">Tải hình ảnh</a>
+                      <a data-toggle="modal" data-target="#modal_upload_video" href="#" class="btn btn-primary btn-xs upload-video" >Tải video</a>
+                    </div>
+                    <%= f.text_area :content, rows: "4", cols: "4", id: "editor-full" %>
+                </div>
+            </div>
+            
+            <div class="tab-pane has-padding" id="control-tab3">
+                <% count = 1 %>
+                <%= f.fields_for :tour_schedules do |ff| %>
+                    <span class="label bg-info">DÒNG <%= count %></span>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" >Ngày khởi hành:</label>
+                        <div class="col-lg-4">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="icon-calendar5"></i></span>
+                                <%= ff.text_field :from_date, class: "form-control pickadate-selectors" %>
+                            </div>
+                        </div>
+                        
+                        <label class="col-lg-2 control-label" >Ngày về:</label>
+                        <div class="col-lg-4">
+                            <div class="input-group">
+                            <span class="input-group-addon"><i class="icon-calendar5"></i></span>
+                                <%= ff.text_field :to_date, class: "form-control pickadate-selectors" %>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" >Địa điểm khởi hành:</label>
+                        <div class="col-lg-4">
+                            <%= ff.text_field :depart, class: "form-control" %>
+                        </div>
+                        <label class="col-lg-2 control-label" >Địa điểm tới:</label>
+                        <div class="col-lg-4">
+                            <%= ff.text_field :arrive, class: "form-control" %>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" >Số lượng ghế:</label>
+                        <div class="col-lg-7">
+                            <%= ff.text_field :seat, class: "form-control" %>
+                        </div>
+                        <div class="col-lg-3 padding-bottom">
+                            <%= ff.check_box :_destroy %>
+                            <%= ff.label :_destroy, 'Xóa lịch khởi hành' %>
+                        </div>
+                    </div>
+                    <hr/><% count = count + 1 %>
+                <% end %>
+            </div>
+            
+            <div class="tab-pane has-padding" id="control-tab4">
+                
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" >Hình ảnh của tour</label>
+                    <div class="col-lg-10">
+                        <% index = 0 %>
+                        <%= f.fields_for :tour_images do |ff| %>
+                          <% g = @tour.tour_images[index] %>
+                          <%= ff.hidden_field :id %>
+                          
+                          <div class="col-lg-8 padding-bottom">
+                              <%= ff.file_field :image_url, class: "file-styled margin-bottom" %>
+                              <br /><br />
+                          </div>
+                          <% if g.image_url? %>
+                            <div class="col-lg-3 padding-bottom">
+                                <img style="width: 100%; margin-bottom: 10px;" src="<%= g.image_url if g.image_url? %>" />
+                            </div>
+                          <% end %>
+                          <% if g.image_url? %>
+                            <div class="col-lg-1 padding-bottom">
+                                <%= ff.check_box :_destroy %>
+                                <%= ff.label :_destroy, 'Remove' %>
+                            </div>
+                          <% end %>
+                        <% index += 1 %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+                    
+        <br />
+        <div class="text-right">
+            <%= button_tag "#{t(:save)}<i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
+            <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, admin_tours_path, class: "btn btn-danger"%>
+        </div>
+        
+    </div>
+    
+<% end %>
+
+<%= render "/admin/main/editor_upload" %>

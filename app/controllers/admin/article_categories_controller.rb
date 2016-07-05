@@ -7,14 +7,14 @@ class Admin::ArticleCategoriesController < ApplicationController
     # authorize
     authorize! :read, ArticleCategory
     
-    @article_categories = ArticleCategory.search(params).paginate(:page => params[:page], :per_page => 10)
+    @article_categories = ArticleCategory.search(params)
   end
   
   def search
     # authorize
     authorize! :read, ArticleCategory
     
-    @article_categories = ArticleCategory.search(params).paginate(:page => params[:page], :per_page => 10)
+    @article_categories = ArticleCategory.search(params)
     render "admin/article_categories/index"
   end
 

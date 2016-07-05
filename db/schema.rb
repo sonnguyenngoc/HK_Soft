@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607034155) do
+ActiveRecord::Schema.define(version: 20160704155731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 20160607034155) do
     t.integer  "level"
     t.string   "meta_keywords"
     t.text     "meta_description"
+    t.string   "name_vi"
+    t.string   "description_vi"
   end
 
   create_table "article_categories_articles", force: :cascade do |t|
@@ -74,6 +76,8 @@ ActiveRecord::Schema.define(version: 20160607034155) do
     t.integer  "user_id"
     t.boolean  "approved",             default: false
     t.string   "image_url_full_width"
+    t.string   "title_vi"
+    t.string   "content_vi"
   end
 
   create_table "articles_products", force: :cascade do |t|
@@ -81,6 +85,18 @@ ActiveRecord::Schema.define(version: 20160607034155) do
     t.integer  "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "cars", force: :cascade do |t|
+    t.string   "image_url"
+    t.string   "name"
+    t.decimal  "price"
+    t.text     "description"
+    t.text     "content"
+    t.integer  "manufacturer_id"
+    t.integer  "article_category_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "carts", force: :cascade do |t|
@@ -151,6 +167,10 @@ ActiveRecord::Schema.define(version: 20160607034155) do
     t.integer  "head_area_id"
     t.integer  "branch_area_id"
     t.string   "type_company"
+    t.string   "fax"
+    t.string   "representative"
+    t.string   "issued_by"
+    t.string   "hotline_2"
   end
 
   create_table "compares", force: :cascade do |t|
@@ -165,6 +185,8 @@ ActiveRecord::Schema.define(version: 20160607034155) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+    t.string   "phone"
+    t.string   "subject"
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -215,6 +237,38 @@ ActiveRecord::Schema.define(version: 20160607034155) do
 
   create_table "feedbacks", force: :cascade do |t|
     t.string   "email"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "hotel_images", force: :cascade do |t|
+    t.string   "image_url"
+    t.integer  "hotel_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "hotel_rooms", force: :cascade do |t|
+    t.string   "image_url"
+    t.string   "room_type"
+    t.string   "price"
+    t.decimal  "people_number"
+    t.decimal  "bed_number"
+    t.integer  "hotel_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "hotels", force: :cascade do |t|
+    t.string   "image_url"
+    t.string   "name"
+    t.string   "hotel_type"
+    t.string   "address"
+    t.string   "position"
+    t.integer  "area_id"
+    t.decimal  "avg_price"
+    t.string   "services"
     t.text     "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -375,6 +429,58 @@ ActiveRecord::Schema.define(version: 20160607034155) do
     t.integer  "user_id"
   end
 
+  create_table "program_languages", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "program_languages_projects", force: :cascade do |t|
+    t.integer  "program_language_id"
+    t.integer  "project_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  create_table "project_categories", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "name_vi"
+    t.text     "description_vi"
+  end
+
+  create_table "project_categories_projects", force: :cascade do |t|
+    t.integer  "project_category_id"
+    t.integer  "project_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  create_table "project_images", force: :cascade do |t|
+    t.string   "image_url"
+    t.integer  "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "image_url"
+    t.string   "author"
+    t.string   "name"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.text     "description"
+    t.string   "website"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "author_vi"
+    t.string   "name_vi"
+    t.string   "description_vi"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -406,6 +512,46 @@ ActiveRecord::Schema.define(version: 20160607034155) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "tour_images", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "image_url"
+    t.integer  "tour_id"
+  end
+
+  create_table "tour_schedules", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "from_date"
+    t.datetime "to_date"
+    t.string   "depart"
+    t.string   "arrive"
+    t.decimal  "seat"
+    t.integer  "tour_id"
+  end
+
+  create_table "tours", force: :cascade do |t|
+    t.string   "type"
+    t.string   "name"
+    t.boolean  "is_sale"
+    t.decimal  "discount_percent"
+    t.decimal  "new_price"
+    t.decimal  "old_price"
+    t.string   "services"
+    t.string   "duration"
+    t.string   "position"
+    t.string   "hotel"
+    t.string   "transportation"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "image_url"
+    t.text     "content"
+    t.integer  "article_category_id"
+    t.string   "type_name"
+    t.boolean  "approved",            default: false
+    t.text     "description"
   end
 
   create_table "user_groups", force: :cascade do |t|

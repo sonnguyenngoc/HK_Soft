@@ -14,8 +14,12 @@ class Article < ActiveRecord::Base
   belongs_to :code_status
   has_and_belongs_to_many :areas
   
+  def url_friendly
+    self.title.downcase.unaccent.to_s.gsub(/[^0-9a-z]/i, '-').strip
+  end
+  
   def self.get_active_articles
-    self.where("articles.approved = true")
+    self.where("articles.approved = true and articles.is_show = true")
   end
   
   def self.get_lastest_blog_posts
@@ -43,7 +47,6 @@ class Article < ActiveRecord::Base
       cat_ids += c.get_all_related_ids
     end
     records = Article.joins(:article_categories).where(article_categories: {id: cat_ids}).uniq
-    records = Article.joins(:code_status).where("code_statuses.title = 'news'")
     return records
   end
   

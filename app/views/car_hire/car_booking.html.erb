@@ -1,0 +1,117 @@
+<div id="page-wrapper">
+    
+    <!-- HEADER -->
+    <%= render "/home/header" %>
+    
+    <div class="page-title-container style2">
+        <div class="container">
+            <div class="page-title pull-left">
+                <h2 class="entry-title">Đặt Xe</h2>
+            </div>
+            <ul class="breadcrumbs pull-right">
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <li><%= link_to @page_name.name, car_hire_path %></li>
+                <li><%= link_to @car_booking.article_category.name, car_grid_view_path(car_category_id: @car_booking.article_category_id) %></li>
+                <li><%= link_to @car_booking.name, car_detail_path(car_id: @car_booking) %></li>
+            </ul>
+        </div>
+    </div>
+    <section id="content" class="gray-area">
+        <div class="container">
+            <div class="row">
+                <div id="main" class="col-sms-6 col-sm-8 col-md-9">
+                    <div class="booking-section travelo-box">
+                        
+                        <form class="booking-form" method="post" action="booking-handler.php">
+                            <div class="person-information">
+                                <h2>Thông Tin Khách Hàng</h2>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 col-md-10">
+                                        <label>Tên Khách Hàng *</label>
+                                        <input type="text" name="full_name" class="input-text full-width" value="" placeholder="" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 col-md-10">
+                                        <label>Địa Chỉ *</label>
+                                        <input type="text" name="phone" class="input-text full-width" value="" placeholder="" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Số Điện Thoại *</label>
+                                        <input type="text" name="phone" class="input-text full-width" value="" placeholder="" />
+                                    </div>
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Địa chỉ email</label>
+                                        <input type="text" name="email" class="input-text full-width" value="" placeholder="" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Lộ Trình (Điểm khởi hành) *</label>
+                                        <div class="selector">
+                                            <select name="country_code" class="full-width">
+                                                <option value="+44">United Kingdom (+44)</option>
+                                                <option value="+1">United States (+1)</option>
+                                            </select><span class="custom-select full-width">United Kingdom (+44)</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Lộ Trình (Điểm đến) *</label>
+                                        <div class="selector">
+                                            <select name="country_code" class="full-width">
+                                                <option value="+44">United Kingdom (+44)</option>
+                                                <option value="+1">United States (+1)</option>
+                                            </select><span class="custom-select full-width">United Kingdom (+44)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 col-md-5">
+                                    <button type="submit" class="full-width btn-large">ĐẶT XE</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="sidebar col-sms-6 col-sm-4 col-md-3">
+                    <div class="booking-details travelo-box">
+                        <h4>Thông Tin Thuê Xe</h4>
+                        <article class="car-detail">
+                            <figure class="clearfix">
+                                <a title="" href="car-detailed.html" class="middle-block"><img class="middle-item" alt="" src="/frontend/images/cars/thumbnail/4.png"></a>
+                                <div class="travel-title">
+                                    <h5 class="box-title"><%= @car_booking.name %><small><%= @car_booking.manufacturer.name %></small></h5>
+                                    <%= link_to "Chọn gói thuê khác", car_hire_path, class: "button" %>
+                                </div>
+                            </figure>
+                        </article>
+                        
+                        <h4>Giá thuê</h4>
+                        <dl class="other-details">
+                            <dt class="total-price">Giá</dt><dd class="total-price-value"><% if @car_booking.price == 0 %>Liên Hệ<% else %><%= format_number(@car_booking.price) %> VND<% end %></dd>
+                        </dl>
+                    </div>
+                    
+                    <div class="travelo-box contact-box">
+                        <h4>Need Travelo Help?</h4>
+                        <p>We would be more than happy to help you. Our team advisor are 24/7 at your service to help you.</p>
+                        <address class="contact-details">
+                            <span class="contact-phone"><i class="soap-icon-phone"></i> 1-800-123-HELLO</span>
+                            <br>
+                            <a class="contact-email" href="#">help@travelo.com</a>
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <%= render "/home/footer" %>
+    
+</div>
+
+<!-- Javascript -->
+<%= render "/home/js_files" %>

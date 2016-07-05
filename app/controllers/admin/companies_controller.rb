@@ -7,7 +7,7 @@ class Admin::CompaniesController < ApplicationController
     # authorize
     authorize! :read, Company
     
-    @companies = Company.where(type_company: "Branch Office").order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+    @companies = Company.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
   end
   
   # GET /companies
@@ -92,6 +92,6 @@ class Admin::CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:image_url, :name, :head_office_address, :certificate_no, :date_of_issue, :sales_office_address, :phone, :hotline, :email, :type_company, :head_area_id, :branch_area_id)
+      params.require(:company).permit(:image_url, :name, :fax, :representative, :head_office_address, :certificate_no, :date_of_issue, :issued_by, :sales_office_address, :phone, :hotline, :hotline_2, :email, :type_company, :head_area_id, :branch_area_id)
     end
 end

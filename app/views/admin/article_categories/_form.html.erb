@@ -50,17 +50,25 @@
                 </div>
             </div>
             <% ArticleCategory.all.each do |article_category| %>
-                <% if @article_category.id != article_category.id %>
-                  <% if article_category.level == 1 %>
+                <% if article_category.level == 1 %>
                     <% if @article_category.id != article_category.id %>
                         <div class="row-fluid">
                             <div class="radio">
-                                <%= radio_button_tag 'parent_id', article_category.id, @article_category.parent.include?(article_category), id: "article_category", class: "styled-level-1" %>
+                                <%= radio_button_tag 'parent_id', article_category.id, @article_category.parent.include?(article_category), id: "article_category_#{article_category.id}", class: "styled-level-1" %>
                                 <label for="article_category_<%= article_category.id %>"><%= article_category.name %></label>
                             </div>
                         </div>
                     <% end %>
-                  <% end %>
+                    <% article_category.children.each do |child_1| %>                        
+                        <% if @article_category.id != child_1.id %>
+                            <div class="row-fluid" style="margin-left: 30px">
+                                <div class="radio">
+                                    <%= radio_button_tag 'parent_id', child_1.id, @article_category.parent.include?(child_1), :id => "article_category_#{child_1.id}", class: "styled-level-2" %>
+                                    <label for="article_category_<%= child_1.id %>"><%= child_1.name %></label>
+                                </div>
+                            </div>
+                        <% end %>
+                    <% end %>
                 <% end %>
             <% end %>
         </div>

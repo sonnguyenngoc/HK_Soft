@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  name: MyString
+  is_sale: false
+  discount_percent: 9.99
+  new_price: 9.99
+  old_price: 9.99
+  services: MyString
+  duration: MyString
+  position: MyString
+  hotel: MyString
+  transportation: MyString
+
+two:
+  type: 
+  name: MyString
+  is_sale: false
+  discount_percent: 9.99
+  new_price: 9.99
+  old_price: 9.99
+  services: MyString
+  duration: MyString
+  position: MyString
+  hotel: MyString
+  transportation: MyString

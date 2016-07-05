@@ -150,9 +150,9 @@
                                         <tr>
                                             <td>
                                                 <% if can? :update, child_1 %>
-                                                    <strong><%= link_to child_1.name.html_safe, edit_admin_article_category_path(child_1) %></strong>
+                                                    <strong>--- <%= link_to child_1.name.html_safe, edit_admin_article_category_path(child_1) %></strong>
                                                 <% else %>
-                                                    <strong><%= child_1.name.html_safe %></strong>
+                                                    <strong>--- <%= child_1.name.html_safe %></strong>
                                                 <% end %>
                                             </td>
                                             <td>
@@ -188,19 +188,55 @@
                                                 <% end %>
                                             </td>
                                         </tr>
+                                        <% child_1.children.each do |child_2| %>
+											<% child_2.update_level(3) %>
+											<tr>
+                                                <td>
+                                                    <% if can? :update, child_2 %>
+                                                        <strong>--------- <%= link_to child_2.name.html_safe, edit_admin_article_category_path(child_2) %></strong>
+                                                    <% else %>
+                                                        <strong>--------- <%= child_2.name.html_safe %></strong>
+                                                    <% end %>
+                                                </td>
+                                                <td>
+                                                    <%= child_2.description %>
+                                                </td>
+                                                <td><%= child_2.created_at.strftime("%d/%m/%Y") %></td>
+                                                <td class="text-center">
+                                                    <% if can?(:update, child_1) or can?(:delete, child_2) %>
+                                                        <ul class="icons-list">
+                                                            <li class="dropdown">
+                                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                                    <i class="icon-menu9"></i>
+                                                                </a>
+                                
+                                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                                    <% if can?(:update, child_2) %>
+                                                                        <li>
+                                                                            <%= link_to '<i class="glyphicon glyphicon-edit"></i> Edit'.html_safe, edit_admin_article_category_path(child_2) %>
+                                                                        </li>
+                                                                    <% end %>
+                                                                    <% if can?(:delete, child_2) %>
+                                                                        <li>
+                                                                            <% if child_2.articles.count > 0 %>
+                                                                                <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), "#modal_theme_danger", data: { toggle: "modal" } %>
+                                                                            <% else %>
+                                                                                <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), "#delete_article_category", url: admin_article_category_path(child_2) , class: "backend_delete_item" %>
+                                                                            <% end %>
+                                                                        </li>
+                                                                    <% end %>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    <% end %>
+                                                </td>
+                                            </tr>
+										<% end %>
                                     <% end %>
                                 <% end %>
                             <% end %>
                         </tbody>
                     </table>
-                    <div class="dataTables_wrapper no-footer">
-                        <div class="datatable-footer showed">
-                            <div class="dataTables_info" ><%= page_entries_info @article_categories %></div>
-                            <div class="dataTables_paginate paging_simple_numbers">
-                                <%= will_paginate @article_categories, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!-- /basic datatable -->
             

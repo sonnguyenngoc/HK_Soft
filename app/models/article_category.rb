@@ -12,10 +12,69 @@ class ArticleCategory < ActiveRecord::Base
     self.save
   end
   
+  # New discovery
+  def self.get_menu_events
+    self.all.where(description: "event").order("created_at ASC")
+  end
+  def self.get_menu_tour_handbooks
+    self.all.where(description: "tour_handbook").order("created_at ASC")
+  end
+  def self.get_menu_tours
+    self.all.where(description: "tour").order("created_at ASC")
+  end
+  def self.get_menu_car_hires
+    self.all.where(description: "car_hire").order("created_at ASC")
+  end
+  def self.get_menu_about_us
+    self.all.where(description: "about_us").first
+  end
+  def self.get_menu_travel_news
+    self.all.where(description: "travel_news").first
+  end
+  def self.get_menu_hotels
+    self.all.where(description: "hotel").first
+  end
+  
   def get_blogs_for_categories(params)
-    article_category = ArticleCategory.find(params[:article_category_id])
-    records = Article.joins(:code_status).where("code_statuses.title = 'news' and articles.approved = true")
+    records = Article.get_active_articles
+    if params[:tour_handbook_sub_1].present?
+      article_category = ArticleCategory.find(params[:tour_handbook_sub_1])
+    end
+    if params[:tour_handbook_sub_2].present?
+      article_category = ArticleCategory.find(params[:tour_handbook_sub_2])
+    end
+    if params[:event_id].present?
+      article_category = ArticleCategory.find(params[:event_id])
+    end
     records = records.joins(:article_categories).where(article_categories: {id: article_category.get_all_related_ids}).uniq
+    
+    return records
+  end
+  
+  def self.get_tour_handbook_blogs
+    records = Article.get_active_articles
+    records = records.joins(:article_categories).where(article_categories: {id: self.where(description: "tour_handbook").first.get_all_related_ids}).uniq
+    
+    return records
+  end
+  
+  def self.get_tour_blogs
+    records = Article.get_active_articles
+    records = records.joins(:article_categories).where(article_categories: {id: self.where(description: "tour").first.get_all_related_ids}).uniq
+    
+    return records
+  end
+  
+  def self.get_event_blogs
+    records = Article.get_active_articles
+    records = records.joins(:article_categories).where(article_categories: {id: self.where(description: "event").first.get_all_related_ids}).uniq
+    
+    return records
+  end
+  
+  def self.get_travel_news
+    records = Article.get_active_articles
+    records = records.joins(:article_categories).where(article_categories: {id: self.where(description: "travel_news").first.get_all_related_ids}).uniq
     
     return records
   end

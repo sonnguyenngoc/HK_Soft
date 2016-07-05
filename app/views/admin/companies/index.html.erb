@@ -54,7 +54,7 @@
                     <div class="panel-heading col-md-12">
                         <h5 class="panel-title col-md-6"><span class="text-semibold"><%= t(:companies) %></span></h5>
                         <% if can?(:create, Company) %>
-                            <%= link_to t(:new_branch), new_admin_company_path, class: 'btn btn-primary pull-right' %>
+                            <%= link_to "Tạo mới", new_admin_company_path, class: 'btn btn-primary pull-right' %>
                         <% end %>
                     </div>
                     

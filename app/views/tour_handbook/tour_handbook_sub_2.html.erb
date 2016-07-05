@@ -5,13 +5,13 @@
     <div class="page-title-container style2">
         <div class="container">
             <div class="page-title pull-left">
-                <h2 class="entry-title">An Giang</h2>
+                <h2 class="entry-title"><%= @article_category.name %></h2>
             </div>
             <ul class="breadcrumbs pull-right">
                 <li><a href="#">Trang Chủ</a></li>
-                <li><a href="#">Cẩm Nang Du Lịch</a></li>
-                <li><a href="#">Khám Phá</a></li>
-                <li class="active">An Giang</li>
+                <li><%= link_to @page_name.name, tour_handbook_path %></li>
+                <li><%= link_to @article_category.parent.first.name, tour_handbook_sub_1_path(tour_handbook_sub_1: @article_category.parent.first) %></li>
+                <li class="active"><%= @article_category.name %></li>
             </ul>
         </div>
     </div>
@@ -21,35 +21,32 @@
             <div class="row">
                 <div id="main" class="col-sm-8 col-md-9">
                     <div class="page">
-                        <span style="display: none;" class="entry-title page-title">Blog Right Sidebar</span>
-                        <span style="display: none;" class="vcard"><span class="fn"><a rel="author" title="Posts by admin" href="#">admin</a></span></span>
-                        <span style="display:none;" class="updated">2014-06-20T13:35:34+00:00</span>
+                        <span style="display: none;" class="entry-title page-title"><%= @article_category.name %></span>
+                        <span style="display: none;" class="vcard"><span class="fn"><a rel="author" title="Đăng bởi" href="#">Du Lịch Khám Phá Mới</a></span></span>
+                        <span style="display:none;" class="updated"><%= @blogs.first.created_at.strftime("%d/%m/%Y %H:%M") %></span>
                         <div class="post-content">
                             <div class="blog-infinite">
-                                <% (1..4).each do |item| %>
+                                <% @blogs.each do |item| %>
                                     <div class="post">
                                         <div class="post-content-wrapper">
                                             <figure class="image-container">
-                                                <%= link_to image_tag("/frontend/images/blog/post/image/1.png", alt: "Cẩm Nang Du Lịch - An Giang"), tour_handbook_detail_path, class: "hover-effect" %>
+                                                <%= link_to image_tag("/frontend/images/blog/post/image/1.png", alt: "Cẩm Nang Du Lịch - An Giang"), tour_handbook_detail_path(tour_handbook_detail_id: item), class: "hover-effect" %>
                                             </figure>
                                             <div class="details">
-                                                <h2 class="entry-title"><a href="pages-blog-read.html">Standard single image post</a></h2>
-                                                <div class="excerpt-container">
-                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's stand dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a neque a tortor tempor in porta sem vulputate. Donec varius felis fermentum nis type specimen book. It has survived not only five centuries.</p>
+                                                <h2 class="entry-title"><%= link_to item.title, tour_handbook_detail_path(tour_handbook_detail_id: item) %></h2>
+                                                <div class="excerpt-container text-justify">
+                                                    <%= truncate(strip_tags(item.content.html_safe), length: 400) %>
                                                 </div>
                                                 <div class="post-meta">
                                                     <div class="entry-date">
-                                                        <label class="date">29</label>
-                                                        <label class="month">Aug</label>
+                                                        <label class="date"><%= item.created_at.strftime("%d") %></label>
+                                                        <label class="month"><%= item.created_at.strftime("%m") %></label>
                                                     </div>
                                                     <div class="entry-author fn">
-                                                        <i class="icon soap-icon-user"></i> Posted By:
-                                                        <a href="#" class="author">Jessica Browen</a>
+                                                        <i class="icon soap-icon-user"></i> Đăng bởi: <%= link_to "Du Lịch Khám Phá Mới", about_us_path, class: "author" %>
                                                     </div>
                                                     <div class="entry-action">
-                                                        <a href="#" class="button entry-comment btn-small"><i class="soap-icon-comment"></i><span>30 Comments</span></a>
-                                                        <a href="#" class="button btn-small"><i class="soap-icon-wishlist"></i><span>22 Likes</span></a>
-                                                        <span class="entry-tags"><i class="soap-icon-features"></i><span><a href="#">Adventure</a>, <a href="#">Romance</a></span></span>
+                                                        <span class="entry-tags"><i class="soap-icon-features"></i><span><%= link_to @article_category.name, "#" %>, <%= link_to @page_name.name, "#" %>, <%= link_to "Du lịch khám phá mới", about_us_path %></span></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -57,110 +54,21 @@
                                     </div>
                                 <% end %>
                             </div>
-                            <a href="#" class="button btn-large full-width">LOAD MORE POSTS</a>
+                            <ul class="pagination clearfix">
+                                <li class="prev disabled"><a href="#">Trang trước</a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">6</a></li>
+                                <li class="next"><a href="#">Trang sau</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
                 <div class="sidebar col-sm-4 col-md-3">
-                    <div class="travelo-box">
-                        <h5 class="box-title">Search Stories</h5>
-                        <div class="with-icon full-width">
-                            <input type="text" class="input-text full-width" placeholder="story name or category">
-                            <button class="icon green-bg white-color"><i class="soap-icon-search"></i></button>
-                        </div>
-                    </div>
-                    <div class="travelo-box">
-                        <h5 class="box-title">About Travelo</h5>
-                        <p>Phasellus vehicula justo eget  sollicitudin eu tincidu ncurabitur ele sollicitu tincidu nulla curabitur magna ined and posuere lorem sollicitudin eu tin.</p>
-                    </div>
-                    <div class="tab-container box">
-                        <ul class="tabs full-width">
-                            <li><a data-toggle="tab" href="#recent-posts">Recent</a></li>
-                            <li class="active"><a data-toggle="tab" href="#popular-posts">Popular</a></li>
-                            <li><a data-toggle="tab" href="#new-posts">New</a></li>
-                        </ul>
-                        <div class="tab-content">
-                            <div id="recent-posts" class="tab-pane fade">
-                                
-                            </div>
-                            <div id="popular-posts" class="tab-pane fade in active">
-                                <div class="image-box style14">
-                                    <article class="box">
-                                        <figure><a href="#" title=""><img width="63" height="59" src="/frontend/images/dashboard/booking1.png" alt=""></a></figure>
-                                        <div class="details">
-                                            <h5 class="box-title"><a href="#">Half-Day Island Tour</a></h5>
-                                            <label class="price-wrapper"><span class="price-per-unit">$35</span>Family Package</label>
-                                        </div>
-                                    </article>
-                                    <article class="box">
-                                        <figure><a href="#" title=""><img width="63" height="59" src="/frontend/images/dashboard/booking2.png" alt=""></a></figure>
-                                        <div class="details">
-                                            <h5 class="box-title"><a href="#">Ocean Park Tour</a></h5>
-                                            <label class="price-wrapper"><span class="price-per-unit">$26</span>Per Person</label>
-                                        </div>
-                                    </article>
-                                    <article class="box">
-                                        <figure><a href="#" title=""><img width="63" height="59" src="/frontend/images/dashboard/booking3.png" alt=""></a></figure>
-                                        <div class="details">
-                                            <h5 class="box-title"><a href="#">Dream World Trip</a></h5>
-                                            <label class="price-wrapper"><span class="price-per-unit">$11</span>holiday offer</label>
-                                        </div>
-                                    </article>
-                                </div>
-                            </div>
-                            <div id="new-posts" class="tab-pane fade">
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="travelo-box filters-container">
-                        <h4 class="box-title">All Categories</h4>
-                        <ul class="check-square categories-filter filters-option">
-                            <li><a href="#">All<small>(722)</small></a></li>
-                            <li><a href="#">Family<small>(982)</small></a></li>
-                            <li><a href="#">Romance<small>(127)</small></a></li>
-                            <li class="active"><a href="#">Adventure<small>(222)</small></a></li>
-                            <li class="active"><a href="#">Beach<small>(158)</small></a></li>
-                            <li><a href="#">Wildlife<small>(439)</small></a></li>
-                            <li><a href="#">Island &amp; parks<small>(52)</small></a></li>
-                        </ul>
-                        <a class="button btn-mini">MORE</a>
-                    </div>
-                    <div class="travelo-box twitter-box">
-                        <h4 class="box-title">Twitter Feeds</h4>
-                        <div class="twitter-holder">
-                            <ul>
-                                <li class="tweet">
-                                    <p class="tweet-text">
-                                        <a href="#">@Travelo</a>, Proin feugiat mattis a sed adipiscing velit sodales.
-                                    </p>
-                                    <a class="tweet-date" href="http://twitter.com/">25 Minutes ago</a>
-                                </li>
-                                <li class="tweet">
-                                    <p class="tweet-text">
-                                        Proin feugiat mattis antesmoke sed adipiscing velit sodales.
-                                        <a href="#">http://travelo.com</a>
-                                    </p>
-                                    <a class="tweet-date" href="http://twitter.com/">25 Minutes ago</a>
-                                </li>
-                                <li class="tweet">
-                                    <p class="tweet-text">
-                                        <a href="#">@Travelo</a>, Proin feugiat mattis a sed adipiscing velit sodales.
-                                    </p>
-                                    <a class="tweet-date" href="http://twitter.com/">25 Minutes ago</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="travelo-box contact-box">
-                        <h4 class="box-title">Need Travelo Help?</h4>
-                        <p>We would be more than happy to help you. Our team advisor are 24/7 at your service to help you.</p>
-                        <address class="contact-details">
-                            <span class="contact-phone"><i class="soap-icon-phone"></i> 1-800-123-HELLO</span>
-                            <br />
-                            <a href="#" class="contact-email">help@travelo.com</a>
-                        </address>
-                    </div>
+                    <%= render "/tour_handbook/right_sidebar" %>
                 </div>
             </div>
         </div>

@@ -82,3 +82,6 @@ label.error {
     text-transform: uppercase;
     font-weight: 900;
 }
+.tour-schedule .input-group {
+    margin-bottom: 7px;
+}
