@@ -154,15 +154,21 @@
                             <li class="menu-item-has-children">
                                 <%= link_to item.name, tour_path %>
                                 <ul>
-                                    <% item.children.order("ordered").each do |child_1| %>
-                                        <li class="menu-item-has-children">
-                                            <%= link_to child_1.name, domestic_tour_path %>
-                                            <ul class="clearfix">
-                                                <% child_1.children.order("ordered").each do |child_2| %>
-                                                    <li><%= link_to child_2.name, tour_packages_path %></li>
+                                    <% ArticleCategory.get_menu_tours.each do |tours| %>
+                                        <% tours.children.order("created_at ASC").each do |child_1| %>
+                                            <li class="menu-item-has-children">
+                                                <% if child_1.description == "domestic_tour" %>
+                                                    <%= link_to child_1.name, domestic_tour_path %>
+                                                <% else %>
+                                                    <%= link_to child_1.name, foreign_tour_path %>
                                                 <% end %>
-                                            </ul>
-                                        </li>
+                                                <ul class="clearfix">
+                                                    <% child_1.children.order("created_at ASC").each do |child_2| %>
+                                                        <li><%= link_to child_2.name, tour_packages_path(tour_packages_id: child_2) %></li>
+                                                    <% end %>
+                                                </ul>
+                                            </li>
+                                        <% end %>
                                     <% end %>
                                 </ul>
                             </li>
@@ -170,10 +176,12 @@
                         
                         <% if item.description == "car_hire" %>
                             <li class="menu-item-has-children">
-                                <%= link_to item.name, car_detail_path %>
+                                <%= link_to item.name, car_hire_path %>
                                 <ul>
-                                    <% item.children.order("ordered").each do |child_1| %>
-                                        <li><%= link_to child_1.name, car_detail_path %></li>
+                                    <% ArticleCategory.get_menu_car_hires.each do |car_hire| %>
+                                        <% car_hire.children.order("created_at ASC").each do |child_1| %>
+                                            <li><%= link_to child_1.name, car_grid_view_path(car_category_id: child_1) %></li>
+                                        <% end %>
                                     <% end %>
                                 </ul>
                             </li>
@@ -185,12 +193,14 @@
                         
                         <% if item.description == "event" %>
                             <li class="menu-item-has-children">
-                                <%= link_to item.name, event_path %>
-                                <ul>
-                                    <% item.children.order("ordered").each do |child_1| %>
-                                        <li><%= link_to child_1.name, event_listing_path %></li>
-                                    <% end %>
-                                </ul>
+                                <% ArticleCategory.get_menu_events.each do |events| %>
+                                    <%= link_to events.name, event_path %>
+                                    <ul>
+                                        <% events.children.each do |child_1| %>
+                                            <li><%= link_to child_1.name, event_listing_path(event_id: child_1) %></li>
+                                        <% end %>
+                                    </ul>
+                                <% end %>
                             </li>
                         <% end %>
                         
@@ -198,15 +208,17 @@
                             <li class="menu-item-has-children">
                                 <%= link_to item.name, tour_handbook_path %>
                                 <ul>
-                                    <% item.children.order("ordered").each do |child_1| %>
-                                        <li class="menu-item-has-children">
-                                            <%= link_to child_1.name, tour_handbook_sub_1_path %>
-                                            <ul class="clearfix">
-                                                <% child_1.children.order("ordered").each do |child_2| %>
-                                                    <li><%= link_to child_2.name, tour_handbook_sub_2_path %></li>
-                                                <% end %>
-                                            </ul>
-                                        </li>
+                                    <% ArticleCategory.get_menu_tour_handbooks.each do |tour_handbook| %>
+                                        <% tour_handbook.children.order("created_at ASC").each do |child_1| %>
+                                            <li class="menu-item-has-children">
+                                                <%= link_to child_1.name, tour_handbook_sub_1_path(tour_handbook_sub_1: child_1) %>
+                                                <ul class="clearfix">
+                                                    <% child_1.children.order("created_at ASC").each do |child_2| %>
+                                                        <li><%= link_to child_2.name, tour_handbook_sub_2_path(tour_handbook_sub_2: child_2) %></li>
+                                                    <% end %>
+                                                </ul>
+                                            </li>
+                                        <% end %>
                                     <% end %>
                                 </ul>
                             </li>
