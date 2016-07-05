@@ -1,0 +1,166 @@
+<div id="page-wrapper">
+    
+    <!-- HEADER -->
+    <%= render "/home/header" %>
+    
+    <div class="page-title-container style2">
+        <div class="container">
+            <div class="page-title pull-left">
+                <h2 class="entry-title">Đặt Phòng</h2>
+            </div>
+            <ul class="breadcrumbs pull-right">
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <li><%= link_to @page_name.name, hotel_listing_path %></li>
+                <li><%= link_to @hotel_booking.name, book_hotel_detail_path(hotel_id: @hotel_booking) %></li>
+                <li class="active">Đặt Phòng</li>
+            </ul>
+        </div>
+    </div>
+    
+    <section id="content" class="gray-area">
+        <div class="container">
+            <div class="row">
+                <div id="main" class="col-sms-6 col-sm-8 col-md-9">
+                    <div class="booking-section travelo-box">
+                        
+                        <form class="booking-form" method="post" action="booking-handler.php">
+                            <div class="person-information">
+                                <h2>Thông tin đặt phòng</h2>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 col-md-10">
+                                        <label>Tên khách hàng *</label>
+                                        <input type="text" name="full_name" class="input-text full-width" value="" placeholder="" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 col-md-10">
+                                        <label>Địa chỉ *</label>
+                                        <input type="text" name="address" class="input-text full-width" value="" placeholder="" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Số điện thoại</label>
+                                        <input type="text" name="phone" class="input-text full-width" value="" placeholder="" />
+                                    </div>
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Địa chỉ email</label>
+                                        <input type="text" name="email" class="input-text full-width" value="" placeholder="" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Ngày nhận phòng</label>
+                                        <div class="datepicker-wrap">
+                                            <input type="text" name="date_from" class="input-text full-width" placeholder="mm/dd/yy" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Ngày giao phòng</label>
+                                        <div class="datepicker-wrap">
+                                            <input type="text" name="date_to" class="input-text full-width" placeholder="mm/dd/yy" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Số người lớn</label>
+                                        <input type="text" name="adult" class="input-text full-width" value="" placeholder="" />
+                                    </div>
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Số trẻ em</label>
+                                        <input type="text" name="child" class="input-text full-width" value="" placeholder="" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Số phòng cần đặt</label>
+                                        <input type="text" name="room" class="input-text full-width" value="" placeholder="" />
+                                    </div>
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Loại phòng</label>
+                                        <div class="selector">
+                                            <select name="country_code" class="full-width">
+                                                <% @hotel_booking.hotel_rooms.each do |item| %>
+                                                    <% if params[:hotel_room_booking_id].present? %>
+                                                        <option <% if params[:hotel_room_booking_id].to_i == item.id %>selected<% end %> value="<%= item.id %>"><%= item.room_type %></option>
+                                                    <% else %>
+                                                        <option value=""><%= item.room_type %></option>
+                                                    <% end %>
+                                                <% end %>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 col-md-5">
+                                    <button type="submit" class="full-width btn-large">ĐẶT PHÒNG</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="sidebar col-sms-6 col-sm-4 col-md-3">
+                    <div class="booking-details travelo-box">
+                        <h4><%= @hotel_booking.name %></h4>
+                        <article class="image-box hotel listing-style1">
+                            <figure class="clearfix">
+                                <small class="uppercase"><strong>Loại phòng:</strong> <%= @hotel_booking.hotel_rooms.count %> loại</small><br/>
+                                <small class="uppercase"><strong>Loại khách sạn:</strong> <%= @hotel_booking.hotel_type %></small><br/>
+                                <small class="uppercase"><strong>Khu vực:</strong> <%= @hotel_booking.area.name %></small><br/>
+                                <small class="uppercase"><strong>Địa chỉ:</strong> <%= @hotel_booking.address %></small><br/><br/>
+                                <%= link_to "Xem", book_hotel_detail_path(hotel_id: @hotel_booking), class: "button" %>
+                            </figure>
+                            <div class="details">
+                                <div class="feedback">
+                                    <div data-placement="bottom" data-toggle="tooltip" class="five-stars-container" title="4 stars">
+                                        <% if @hotel_booking.hotel_type == "Khách sạn 1 sao" %>
+                                            <span class="five-stars" style="width: 20%;"></span>
+                                        <% end %>
+                                        <% if @hotel_booking.hotel_type == "Khách sạn 2 sao" %>
+                                            <span class="five-stars" style="width: 40%;"></span>
+                                        <% end %>
+                                        <% if @hotel_booking.hotel_type == "Khách sạn 3 sao" %>
+                                            <span class="five-stars" style="width: 60%;"></span>
+                                        <% end %>
+                                        <% if @hotel_booking.hotel_type == "Khách sạn 4 sao" %>
+                                            <span class="five-stars" style="width: 80%;"></span>
+                                        <% end %>
+                                        <% if @hotel_booking.hotel_type == "Khách sạn 5 sao" %>
+                                            <span class="five-stars" style="width: 100%;"></span>
+                                        <% end %>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <h4>THÔNG TIN CHI TIẾT</h4>
+                        <dl class="other-details">
+                            <% @hotel_booking.hotel_rooms.each do |item| %>
+                                <dt class="feature"><%= item.room_type %>:</dt><dd class="value"><% if item.price == 0 %>Liên hệ<% else %><%= format_number(item.price) %> VND<% end %>/<%= item.people_number.to_i %> khách</dd>
+                            <% end %>
+                        </dl>
+                    </div>
+                    
+                    <div class="travelo-box contact-box">
+                        <h4>Need Travelo Help?</h4>
+                        <p>We would be more than happy to help you. Our team advisor are 24/7 at your service to help you.</p>
+                        <address class="contact-details">
+                            <span class="contact-phone"><i class="soap-icon-phone"></i> 1-800-123-HELLO</span>
+                            <br>
+                            <a class="contact-email" href="#">help@travelo.com</a>
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <%= render "/home/footer" %>
+    
+</div>
+
+<!-- Javascript -->
+<%= render "/home/js_files" %>

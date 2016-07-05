@@ -1,0 +1,41 @@
+/*
+ * Title:   Custom Style File
+ * Author:  http://themeforest.net/user/soaptheme 
+ */
+#header .logo {
+    margin: 5px 0 5px 0;
+}
+#main-menu ul.menu, .chaser ul.menu {
+    margin: 15px 0;
+}
+#footer .footer-wrapper {
+    padding: 20px 0;
+}
+#footer .bottom .copyright, #footer .bottom #back-to-top {
+    margin-top: 45px;
+}
+#footer .bottom .container {
+    margin-bottom: 10px;
+}
+.selector span.custom-select:before {
+    background: #01b7f2;
+}
+.time {
+    font-size: 1em;
+    margin-top: 5px;
+}
+.tour-locations .box .box-title {
+    height: 44px;
+}
+#tour-details .price-section .details:last-child {
+    float: left;
+}
+.toggle-container .panel.style1 .panel-content {
+    padding: 10px 15px 15px 15px;
+}
+.article_content table {
+    border: solid 1px !important;
+}
+.box-title {
+    line-height: 1.3em;
+}

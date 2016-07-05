@@ -1,0 +1,310 @@
+<header id="header" class="navbar-static-top">
+    
+    <div class="topnav hidden-xs">
+        
+        <div class="container">
+            
+            <ul class="quick-menu pull-right">
+                
+                <li><a href="#" class="button yellow btn-small" style="height: 30px; font-size: 1em;"><i class="soap-icon-beach"></i> BẢNG GIÁ TOUR</a></li>
+                
+                <li class="ribbon">
+                    
+                    <a href="#">Tiếng Việt</a>
+                    
+                    <ul class="menu mini">
+
+                        <li class="active"><a href="#" title="Tiếng Việt">Tiếng Việt</a></li>
+                        
+                    </ul>
+                    
+                </li>
+                
+            </ul>
+            
+        </div>
+        
+    </div>
+
+    <div class="main-header">
+
+        <a href="#mobile-menu-01" data-toggle="collapse" class="mobile-menu-toggle">
+            Mobile Menu Toggle
+        </a>
+
+        <div class="container">
+            
+            <h1 class="logo navbar-brand">
+                
+                <%= link_to image_tag("/frontend/images/logo_new_discovery.png", alt: "Khám Phá Mới Travel"), root_path %>
+
+            </h1>
+
+            <nav id="main-menu" role="navigation">
+                <ul class="menu">
+                    <% Category.all.order("ordered").each do |item| %>
+                        <% if item.level == 1 %>
+                            
+                            <% if item.description == "about_us" %>
+                                <li<% if params[:controller] == "about_us" %> class="active"<% end %>><%= link_to item.name, about_us_path %></li>
+                            <% end %>
+                            
+                            <% if item.description == "tour" %>
+                                <li class="menu-item-has-children megamenu-menu <%= "active" if params[:controller] == "tour" %>">
+                                    <%= link_to item.name, tour_path %>
+                                    <div class="megamenu-wrapper container" data-items-per-column="5">
+                                        <div class="megamenu-holder">
+                                            <ul class="megamenu">
+                                                <% ArticleCategory.get_menu_tours.each do |tours| %>
+                                                    <% tours.children.order("created_at ASC").each do |child_1| %>
+                                                        <li class="menu-item-has-children">
+                                                            <% if child_1.description == "domestic_tour" %>
+                                                                <%= link_to child_1.name, domestic_tour_path %>
+                                                            <% else %>
+                                                                <%= link_to child_1.name, foreign_tour_path %>
+                                                            <% end %>
+                                                            <ul class="clearfix">
+                                                                <% child_1.children.order("created_at ASC").each do |child_2| %>
+                                                                    <li><%= link_to child_2.name, tour_packages_path(tour_packages_id: child_2) %></li>
+                                                                <% end %>
+                                                            </ul>
+                                                        </li>
+                                                    <% end %>
+                                                <% end %>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            <% end %>
+                            
+                            <% if item.description == "car_hire" %>
+                                <li class="menu-item-has-children <%= "active" if params[:controller] == "car_hire" %>">
+                                    <%= link_to item.name, car_hire_path %>
+                                    <ul>
+                                        <% ArticleCategory.get_menu_car_hires.each do |car_hire| %>
+                                            <% car_hire.children.order("created_at ASC").each do |child_1| %>
+                                                <li><%= link_to child_1.name, car_grid_view_path(car_category_id: child_1) %></li>
+                                            <% end %>
+                                        <% end %>
+                                    </ul>
+                                </li>
+                            <% end %>
+                            
+                            <% if item.description == "book_hotel" %>
+                                <li<% if params[:controller] == "book_hotel" %> class="active"<% end %>><%= link_to item.name, hotel_listing_path %></li>
+                            <% end %>
+                            
+                            <% if item.description == "event" %>
+                                <li class="menu-item-has-children <%= "active" if params[:controller] == "event" %>">
+                                    <% ArticleCategory.get_menu_events.each do |events| %>
+                                        <%= link_to events.name, event_path %>
+                                        <ul>
+                                            <% events.children.each do |child_1| %>
+                                                <li><%= link_to child_1.name, event_listing_path(event_id: child_1) %></li>
+                                            <% end %>
+                                        </ul>
+                                    <% end %>
+                                </li>
+                            <% end %>
+                            
+                            <% if item.description == "tour_handbook" %>
+                                <li class="menu-item-has-children megamenu-menu <%= "active" if params[:controller] == "tour_handbook" %>">
+                                    <%= link_to item.name, tour_handbook_path %>
+                                    <div class="megamenu-wrapper container" data-items-per-column="4">
+                                        <div class="megamenu-holder">
+                                            <ul class="megamenu">
+                                                <% ArticleCategory.get_menu_tour_handbooks.each do |tour_handbook| %>
+                                                    <% tour_handbook.children.order("created_at ASC").each do |child_1| %>
+                                                        <li class="menu-item-has-children">
+                                                            <%= link_to child_1.name, tour_handbook_sub_1_path(tour_handbook_sub_1: child_1) %>
+                                                            <ul class="clearfix">
+                                                                <% child_1.children.order("created_at ASC").each do |child_2| %>
+                                                                    <li><%= link_to child_2.name, tour_handbook_sub_2_path(tour_handbook_sub_2: child_2) %></li>
+                                                                <% end %>
+                                                            </ul>
+                                                        </li>
+                                                    <% end %>
+                                                <% end %>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            <% end %>
+                            
+                            <% if item.description == "travel_news" %>
+                                <li class="menu-item-has-children <%= "active" if params[:controller] == "travel_news" %>"><%= link_to item.name, travel_news_path %></li>
+                            <% end %>
+                            
+                        <% end %>
+                    <% end %>
+                </ul>
+            </nav>
+        </div>
+
+        <nav id="mobile-menu-01" class="mobile-menu collapse">
+            <ul id="mobile-primary-menu" class="menu">
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <% Category.all.order("ordered").each do |item| %>
+                    <% if item.level == 1 %>
+                        <% if item.description == "about_us" %>
+                            <li><%= link_to item.name, about_us_path %></li>
+                        <% end %>
+                        
+                        <% if item.description == "tour" %>
+                            <li class="menu-item-has-children">
+                                <%= link_to item.name, tour_path %>
+                                <ul>
+                                    <% item.children.order("ordered").each do |child_1| %>
+                                        <li class="menu-item-has-children">
+                                            <%= link_to child_1.name, domestic_tour_path %>
+                                            <ul class="clearfix">
+                                                <% child_1.children.order("ordered").each do |child_2| %>
+                                                    <li><%= link_to child_2.name, tour_packages_path %></li>
+                                                <% end %>
+                                            </ul>
+                                        </li>
+                                    <% end %>
+                                </ul>
+                            </li>
+                        <% end %>
+                        
+                        <% if item.description == "car_hire" %>
+                            <li class="menu-item-has-children">
+                                <%= link_to item.name, car_detail_path %>
+                                <ul>
+                                    <% item.children.order("ordered").each do |child_1| %>
+                                        <li><%= link_to child_1.name, car_detail_path %></li>
+                                    <% end %>
+                                </ul>
+                            </li>
+                        <% end %>
+                        
+                        <% if item.description == "book_hotel" %>
+                            <li><%= link_to item.name, hotel_listing_path %></li>
+                        <% end %>
+                        
+                        <% if item.description == "event" %>
+                            <li class="menu-item-has-children">
+                                <%= link_to item.name, event_path %>
+                                <ul>
+                                    <% item.children.order("ordered").each do |child_1| %>
+                                        <li><%= link_to child_1.name, event_listing_path %></li>
+                                    <% end %>
+                                </ul>
+                            </li>
+                        <% end %>
+                        
+                        <% if item.description == "tour_handbook" %>
+                            <li class="menu-item-has-children">
+                                <%= link_to item.name, tour_handbook_path %>
+                                <ul>
+                                    <% item.children.order("ordered").each do |child_1| %>
+                                        <li class="menu-item-has-children">
+                                            <%= link_to child_1.name, tour_handbook_sub_1_path %>
+                                            <ul class="clearfix">
+                                                <% child_1.children.order("ordered").each do |child_2| %>
+                                                    <li><%= link_to child_2.name, tour_handbook_sub_2_path %></li>
+                                                <% end %>
+                                            </ul>
+                                        </li>
+                                    <% end %>
+                                </ul>
+                            </li>
+                        <% end %>
+                        
+                        <% if item.description == "travel_news" %>
+                            <li><%= link_to item.name, travel_news_path %></li>
+                        <% end %>
+                        
+                    <% end %>  
+                <% end %>
+                <li>
+                    <a href="#"><i class="soap-icon-shopping"></i> BẢNG GIÁ TOUR</a>
+                </li>
+            </ul>
+
+            <ul class="mobile-topnav container">
+                <li><a href="#">TÀI KHOẢN KHÁCH HÀNG</a></li>
+                <li class="ribbon language menu-color-skin">
+                    <a href="#" data-toggle="collapse">Tiếng Việt</a>
+                    <ul class="menu mini">
+                        <li class="active"><a href="#" title="English">Tiếng Việt</a></li>
+                    </ul>
+                </li>
+                <li><a href="#travelo-login" class="soap-popupbox">ĐĂNG NHẬP</a></li>
+                <li><a href="#travelo-signup" class="soap-popupbox">ĐĂNG KÝ</a></li>
+            </ul>
+
+        </nav>
+    </div>
+    <div id="travelo-signup" class="travelo-signup-box travelo-box">
+        <div class="login-social">
+            <a href="#" class="button login-facebook"><i class="soap-icon-facebook"></i>Đăng nhập bằng facebook</a>
+            <a href="#" class="button login-googleplus"><i class="soap-icon-googleplus"></i>Đăng nhập bằng google+</a>
+        </div>
+        <div class="seperator"><label>HOẶC</label></div>
+        <div class="simple-signup">
+            <div class="text-center signup-email-section">
+                <a href="#" class="signup-email"><i class="soap-icon-letter"></i>Đăng ký bằng email</a>
+            </div>
+            <p class="description">By signing up, I agree to Travelo's Terms of Service, Privacy Policy, Guest Refund olicy, and Host Guarantee Terms.</p>
+        </div>
+        <div class="email-signup">
+            <form>
+                <div class="form-group">
+                    <input type="text" class="input-text full-width" placeholder="first name">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="input-text full-width" placeholder="last name">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="input-text full-width" placeholder="email address">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="input-text full-width" placeholder="password">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="input-text full-width" placeholder="confirm password">
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> Tell me about Travelo news
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <p class="description">By signing up, I agree to Travelo's Terms of Service, Privacy Policy, Guest Refund Policy, and Host Guarantee Terms.</p>
+                </div>
+                <button type="submit" class="full-width btn-medium">Đăng Ký</button>
+            </form>
+        </div>
+        <div class="seperator"></div>
+        <p>Bạn đã là thành viên của Khám Phá Mới Travel? <a href="#travelo-login" class="goto-login soap-popupbox">Đăng Nhập</a></p>
+    </div>
+    <div id="travelo-login" class="travelo-login-box travelo-box">
+        <div class="login-social">
+            <a href="#" class="button login-facebook"><i class="soap-icon-facebook"></i>Login with Facebook</a>
+            <a href="#" class="button login-googleplus"><i class="soap-icon-googleplus"></i>Login with Google+</a>
+        </div>
+        <div class="seperator"><label>OR</label></div>
+        <form>
+            <div class="form-group">
+                <input type="text" class="input-text full-width" placeholder="email address">
+            </div>
+            <div class="form-group">
+                <input type="password" class="input-text full-width" placeholder="password">
+            </div>
+            <div class="form-group">
+                <a href="#" class="forgot-password pull-right">Forgot password?</a>
+                <div class="checkbox checkbox-inline">
+                    <label>
+                        <input type="checkbox"> Remember me
+                    </label>
+                </div>
+            </div>
+        </form>
+        <div class="seperator"></div>
+        <p>Bạn chưa có tài khoản? <a href="#travelo-signup" class="goto-signup soap-popupbox">  Đăng ký</a></p>
+    </div>
+</header>

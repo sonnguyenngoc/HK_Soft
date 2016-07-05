@@ -1,0 +1,204 @@
+<% if @hotel.errors.any? %>
+    <div id="error_explanation">
+        <span class="label label-warning"></span>
+        <div class="alert alert-warning alert-styled-left">
+            <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+            <% @hotel.errors.full_messages.each do |message| %>
+                - <%= message %>.<br/>
+            <% end %>
+        </div>
+    </div>
+<% end %>
+
+<%= form_for [:admin, @hotel], html: {class: "form-horizontal", id: "validate_checking"} do |f| %>
+    <div class="tabbable tab-content-bordered">
+        <ul class="nav nav-tabs bg-primary">
+            <li class="active button_tab_product"><a href="#control-tab1" value="control-tab1" data-toggle="tab">Thông tin chung</a></li>
+            <li><a href="#control-tab2" data-toggle="tab">Giới thiệu</a></li>
+            <li><a href="#control-tab3" data-toggle="tab">Phân loại phòng</a></li>
+            <li><a href="#control-tab4" data-toggle="tab">Hình ảnh</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane has-padding active" id="control-tab1">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Hình đại diện cho khách sạn <span class='text-danger'>*</span></label>
+                    <div class="col-lg-9">
+                        <div class="uploader bg-teal-400">
+                            <%= f.file_field :image_url, class: "file-styled ", accept: ".png, .jpg, .jpeg, .gif" %>
+                            <span class="action" style="-webkit-user-select: none;"><i class="icon-googleplus5"></i></span>
+                        </div>
+                        <span class="help-block">Accepted formats: gif, png, jpg.</span>
+                        <%= image_tag(@hotel.image_url, size: "202x128", class: "img-rouded") %>
+                    </div>
+                </div>
+                   
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Tên khách sạn <span class='text-danger'>*</span></label>
+                    <div class="col-lg-9">
+                        <%= f.text_field :name, class: "form-control" %>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Loại khách sạn <span class='text-danger'>*</span></label>
+                    <div class="col-lg-9">
+                        <%= f.select(:hotel_type, ['Khách sạn 1 sao', 'Khách sạn 2 sao', 'Khách sạn 3 sao', 'Khách sạn 4 sao', 'Khách sạn 5 sao'], {}, { :class => 'select-hotel' })%>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Địa chỉ <span class='text-danger'>*</span></label>
+                    <div class="col-lg-9">
+                        <%= f.text_field :address, class: "form-control" %>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Vị trí <span class='text-danger'>*</span></label>
+                    <div class="col-lg-9">
+                        <%= f.text_field :position, class: "form-control" %>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Giá tiền trung bình <span class='text-danger'>*</span></label>
+                    <div class="col-lg-9">
+                        <%= f.text_field :avg_price, class: "form-control" %>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <%= f.label "Khu vực của khách sạn ", class: "col-lg-3 control-label" %>
+                    <div class="col-lg-9">
+                        <%= f.collection_select(:area_id, Area.get_list_province_city, :id, :name, {:prompt=> "Chọn khu vực của khách sạn....."}, {class: "select-area"}) %>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Tiện nghi & Dịch vụ</label>
+                    <div class="col-lg-9">
+                        <% Hotel.service_listing.each do |item| %>
+                            <label class="checkbox-inline">
+                                <input <%= "checked" if @hotel.get_services.include?(item) %> class="hotel_services" type="checkbox" name="hotel[services][]" id="hotel_services_<%= item %>" value="<%= item %>"><%= t(item) %>
+                            </label>
+                        <% end %>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Ngôn ngữ sử dụng</label>
+                    <div class="col-lg-9">
+                        <% Hotel.language_listing.each do |item| %>
+                            <label class="checkbox-inline">
+                                <input <%= "checked" if @hotel.get_services.include?(item) %> class="hotel_services" type="checkbox" name="hotel[services][]" id="hotel_services_<%= item %>" value="<%= item %>"><%= t(item) %>
+                            </label>
+                        <% end %>
+                    </div>
+                </div> 
+            </div>
+            
+            <div class="tab-pane has-padding" id="control-tab2">
+                
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" >Giới thiệu về tour <span class='text-danger'>*</span></label>
+                </div>
+                <div class="form-group">
+                    <div class="upload_tools text-right" style="margin-bottom: 5px; margin-top: -30px;">											
+                      <span class="uploading" style="display: none;font-size: 17px;">
+                        Đang tải hình ảnh/video...<i class="icon-spinner2 spinner" style="font-size: 40px; display: inline-block; margin-right: 10px;"></i>
+                      </span>
+                      <a id="editor_upload_button" class="btn btn-primary btn-xs upload-image-video">Tải hình ảnh</a>
+                      <a data-toggle="modal" data-target="#modal_upload_video" href="#" class="btn btn-primary btn-xs upload-video" >Tải video</a>
+                    </div>
+                    <%= f.text_area :content, rows: "4", cols: "4", id: "editor-full" %>
+                </div>
+            </div>
+            
+            <div class="tab-pane has-padding" id="control-tab3">
+                <% count = 1 %>
+                <% index = 0 %>
+                <%= f.fields_for :hotel_rooms do |ff| %>
+                    <% g = @hotel.hotel_rooms[index] %>
+                    <span class="label bg-info">DÒNG <%= count %></span>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" >Ảnh phòng:</label>
+                        <div class="col-lg-10 padding-bottom">
+                            <%= ff.file_field :image_url, class: "file-styled margin-bottom" %>
+                            <br /><br />
+                            <% if g.image_url? %>
+                            <div class="col-lg-4 padding-bottom">
+                                <img style="width: 100%; margin-bottom: 10px;" src="<%= g.image_url if g.image_url? %>" />
+                            </div>
+                          <% end %>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" >Loại phòng:</label>
+                        <div class="col-lg-4">
+                            <%= ff.text_field :room_type, class: "form-control" %>
+                        </div>
+                        <label class="col-lg-2 control-label" >Giá tiền:</label>
+                        <div class="col-lg-4">
+                            <%= ff.text_field :price, class: "form-control" %>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" >Số lượng người/phòng:</label>
+                        <div class="col-lg-3">
+                            <%= ff.text_field :people_number, class: "form-control" %>
+                        </div>
+                        <label class="col-lg-1 control-label" >Số giường:</label>
+                        <div class="col-lg-3">
+                            <%= ff.text_field :bed_number, class: "form-control" %>
+                        </div>
+                        <div class="col-lg-3 padding-bottom">
+                            <%= ff.check_box :_destroy %>
+                            <%= ff.label :_destroy, 'Xóa phòng' %>
+                        </div>
+                    </div>
+                    <hr/><% count = count + 1 %><% index += 1 %>
+                <% end %>
+            </div>
+            
+            <div class="tab-pane has-padding" id="control-tab4">
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" >Hình ảnh của tour</label>
+                    <div class="col-lg-10">
+                        <% index = 0 %>
+                        <%= f.fields_for :hotel_images do |ff| %>
+                          <% g = @hotel.hotel_images[index] %>
+                          <%= ff.hidden_field :id %>
+                          
+                          <div class="col-lg-8 padding-bottom">
+                              <%= ff.file_field :image_url, class: "file-styled margin-bottom" %>
+                              <br /><br />
+                          </div>
+                          <% if g.image_url? %>
+                            <div class="col-lg-3 padding-bottom">
+                                <img style="width: 100%; margin-bottom: 10px;" src="<%= g.image_url if g.image_url? %>" />
+                            </div>
+                          <% end %>
+                          <% if g.image_url? %>
+                            <div class="col-lg-1 padding-bottom">
+                                <%= ff.check_box :_destroy %>
+                                <%= ff.label :_destroy, 'Xóa hình liên quan' %>
+                            </div>
+                          <% end %>
+                        <% index += 1 %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+                    
+        <br />
+        <div class="text-right">
+            <%= button_tag "#{t(:save)}<i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
+            <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, admin_hotels_path, class: "btn btn-danger"%>
+        </div>
+        
+    </div>
+    
+<% end %>
+
+<%= render "/admin/main/editor_upload" %>

@@ -1,0 +1,245 @@
+<% if @product.errors.any? %>
+    <div id="error_explanation">
+        <span class="label label-warning"></span>
+        <div class="alert alert-warning alert-styled-left">
+            <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+            <% @product.errors.full_messages.each do |message| %>
+                - <%= message %>.<br/>
+            <% end %>
+        </div>
+    </div>
+<% end %>
+
+<%= form_for [:admin, @product], html: {class: "form-horizontal", id: "validate_checking"} do |f| %>
+    <div class="tabbable tab-content-bordered">
+        <ul class="nav nav-tabs bg-primary">
+            <li class="active button_tab_product"><a href="#control-tab1" value="control-tab1" data-toggle="tab"><%= t(:tab_product_info) %></a></li>
+            <li><a href="#control-tab2" data-toggle="tab"><%= t(:tab_product_status) %> </a></li>
+            <li><a href="#control-tab3" data-toggle="tab"><%= t(:tab_product_intro) %> </a></li>
+            <li><a href="#control-tab4" data-toggle="tab"><%= t(:tab_product_images) %> </a></li>
+            <li><a href="#control-tab5" data-toggle="tab"><%= t(:tab_related_articles) %> </a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane has-padding active" id="control-tab1">
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:list_product_name) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-6">
+                        <%= f.text_field :name, class: "form-control required" %>
+                    </div>
+                    <label class="col-lg-2 control-label" ><%= t(:show) %></label>
+                    <div class="col-lg-2">
+                        <div class="row-fluid">
+                            <div class="checkbox">
+                                <%= check_box 'product', 'is_show', {}, 'true', 'false' %>
+                                <label for="product_is_show"><%= t(:show_product) %></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:list_product_code) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-6">
+                        <%= f.text_field :code, class: "form-control required" %>
+                    </div>
+                    <label class="col-lg-2 control-label" ><%= t(:stock) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-2">
+                        <%= f.text_field :stock, class: "form-control required" %>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:list_price) %> </label>
+                    
+                    <label class="col-lg-1 control-label" ><%= t(:current_price) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-2">
+                        <%= f.text_field :price, class: "form-control required", placeholder: "#{t(:apply_price)}" %>
+                    </div>
+                    
+                    <label class="col-lg-1 control-label" ><%= t(:old_price) %> </label>
+                    <div class="col-lg-2">
+                        <%= f.text_field :old_price, class: "form-control", placeholder: "#{t(:with_deal)}" %>
+                    </div>
+                    
+                    <label class="col-lg-2 control-label" ><%= t(:discount_percent) %> </label>
+                    <div class="col-lg-2">
+                        <%= f.text_field :discount_percent, class: "form-control", placeholder: "#{t(:with_deal)}" %>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:quantity) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-5">
+                        <%= f.text_field :quantity, class: "form-control required" %>
+                    </div>
+                    <label class="col-lg-1 control-label" ><%= t(:unit) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-4">
+                        <%= f.text_field :unit, class: "form-control required" %>
+                    </div>
+                </div>
+                
+                <div class="form-group field">
+                    <label class="col-lg-2 control-label" ><%= t(:list_categories) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-10 three_cols_select">
+                        <%= render "admin/categories/three_cols_select" %>
+                    </div>
+                </div>
+                
+                <div class="form-group field">
+                    <label class="col-lg-2 control-label" ><%= t(:list_areas) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-10">
+                        <select name="area_ids[]" class="select select-item-color" data-placeholder="<%= t(:list_areas) %>....." multiple="multiple">
+                            <% Area.get_list_province_city.each do |item| %>
+                                <option <%= "selected" if @product.areas.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
+                            <% end %>
+                        </select>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:manufacturers) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-10">
+                        <%= f.collection_select(:manufacturer_id, Manufacturer.all, :id, :name, {:prompt=> "#{t(:manufacturers)}....."}, {class: "select"}) %>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:short_description) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-10">
+                        <%= f.text_area :short_description, rows: "5", cols: "5", class: "form-control required" %>
+                    </div>
+                </div>
+ 
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:tags) %> </label>
+                    <div class="col-lg-10">
+                        <%= f.text_field :tags, class: "form-control" %>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:meta_keywords) %> </label>
+                    <div class="col-lg-10">
+                        <%= f.text_field :meta_keywords, class: "form-control" %>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:meta_description) %> </label>
+                    <div class="col-lg-10">
+                        <%= f.text_area :meta_description, rows: "5", cols: "5", class: "form-control" %>
+                    </div>
+                </div>
+                    
+                
+                
+            </div>
+            
+            <div class="tab-pane has-padding" id="control-tab2">
+                
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%=  %></label>
+                    <div class="col-lg-12">
+                        <label class="checkbox-inline">
+                            <input <%= "checked" if @product.statuses.include?t(:deal) %> type="checkbox" name="product[status][]" id="product_status_deal" value="deal"><%= t(:st_deal) %>
+                        </label>
+                        <label class="checkbox-inline">
+                            <input <%= "checked" if @product.statuses.include?t(:prominent) %> type="checkbox" name="product[status][]" id="product_status_prominent" value="prominent"><%= t(:st_prominent) %></label>
+                        <label class="checkbox-inline">
+                            <input <%= "checked" if @product.statuses.include?t(:bestseller) %> type="checkbox" name="product[status][]" id="product_status_bestseller" value="bestseller"><%= t(:st_bestseller) %></label>
+                        <label class="checkbox-inline">
+                            <input <%= "checked" if @product.statuses.include?t(:imported) %> type="checkbox" name="product[status][]" id="product_status_imported" value="imported"><%= t(:st_imported) %></label>
+                        <label class="checkbox-inline">
+                            <input <%= "checked" if @product.statuses.include?t(:sold_out) %> type="checkbox" name="product[status][]" id="product_status_sold_out" value="sold_out"><b><%= t(:st_sold_out) %></b></label>
+                    </div>
+                </div>
+                    
+                
+                    
+            </div>
+            
+            <div class="tab-pane has-padding" id="control-tab3">
+                
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:introduction) %> <span class='text-danger'>*</span></label>
+                </div>
+                
+                <div class="form-group">
+                    <div class="upload_tools text-right" style="margin-bottom: 5px; margin-top: -30px;">											
+						<span class="uploading" style="display: none;font-size: 17px;">
+							Đang tải hình ảnh/video...<i class="icon-spinner2 spinner" style="font-size: 40px; display: inline-block; margin-right: 10px;"></i>
+						</span>
+						<a id="editor_upload_button" class="btn btn-primary btn-xs upload-image-video">Tải hình ảnh</a>
+						<a data-toggle="modal" data-target="#modal_upload_video" href="#" class="btn btn-primary btn-xs upload-video" >Tải video</a>
+					</div>
+                    <%= f.text_area :description, rows: "4", cols: "4", id: "editor-full" %>
+                </div>
+                
+            </div>
+            
+            <div class="tab-pane has-padding" id="control-tab4">
+                
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:related_photos) %> </label>
+                    <div class="col-lg-10">
+                        <% index = 0 %>
+                        <%= f.fields_for :product_images do |ff| %>
+                            <% g = @product.product_images[index] %>
+                            <%= ff.hidden_field :id %>
+                            <div class="col-lg-7" style="margin-bottom: 30px;">
+                                <!--<%= ff.select(:is_main, ['False', 'True'], {}, { :class => 'select col-lg-5' })%>-->
+                                <select class="select col-lg-5" name="product[product_images_attributes][<%= index %>][is_main]">
+                                    <option <%= "selected" if g.is_main == "True" %> value="True"><%= t(:image_default_true) %></option>
+                                    <option <%= "selected" if g.is_main == "False" %> value="False"><%= t(:image_default_false) %></option>
+                                </select>
+                                <%= ff.file_field :image_url, class: "file-styled margin-bottom col-lg-7" %>
+                                <br /><br />
+                            </div>
+                            <% if g.image_url? %>
+                              <div class="col-lg-3">
+                                  <img style="width: 100%; margin-bottom: 10px;" src="<%= g.image_url if g.image_url? %>" />
+                              </div>
+                            <% end %>
+                            <% if g.image_url? %>
+                              <div class="col-lg-1" style="white-space: nowrap">
+                                  <%= ff.check_box :_destroy, class: "styled-level-1" %>
+                                  <%= ff.label :_destroy, t(:remove) %>
+                              </div>
+                            <% end %>
+                          <% index += 1 %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-pane has-padding" id="control-tab5">
+                <div class="form-group">
+                    <div class="col-lg-10">
+                        <select name="" class="select list_related_articles" data-placeholder="<%= t(:related_articles) %>....." multiple="multiple">
+                            <% Article.all.each do |item| %>
+                                <option value="<%= item.id %>"><%= item.title %></option>
+                            <% end %>
+                        </select>
+                    </div>
+                    <div class="col-lg-2">
+                        <%= link_to "#{t(:add_to_list)}".html_safe, "#add_to_list", class: "btn btn-info add_related_articles_button", product_id: @product.id %>
+                    </div>
+                </div>
+                
+                <% @articles = @product.articles %>
+                <div class="table_related_articles"><%= render "table_related_articles" %></div>
+                
+            </div>
+        </div>
+                    
+        <br />
+        <div class="text-right">
+            <%= button_tag "#{t(:save)}<i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
+            <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, admin_products_path, class: "btn btn-danger"%>
+        </div>
+        
+    </div>
+    
+<% end %>
+
+<%= render "/admin/main/editor_upload" %>

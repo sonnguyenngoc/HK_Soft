@@ -1,0 +1,241 @@
+<div id="page-wrapper">
+    
+    <!-- HEADER -->
+    <%= render "/home/header" %>
+    
+    <div class="page-title-container style2">
+        <div class="container">
+            <div class="page-title pull-left">
+                <h2 class="entry-title"><%= @car_detail.name %></h2>
+            </div>
+            <ul class="breadcrumbs pull-right">
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <li><%= link_to @page_name.name, car_hire_path %></li>
+                <li><%= link_to @car_detail.article_category.name, car_grid_view_path(car_category_id: @car_detail.article_category_id) %></li>
+                <li class="active"><%= @car_detail.name %></li>
+            </ul>
+        </div>
+    </div>
+    <section id="content" class="gray-area">
+        <div class="container car-detail-page">
+            <div class="row">
+                <div id="main" class="col-md-9">
+                    <div class="featured-image box">
+                        <img src="/frontend/images/cars/main1.png" alt="" />
+                    </div>
+                    <div class="tab-container">
+                        <ul class="tabs">
+                            <li class="active">
+                                <a href="#car-details" data-toggle="tab">Thông tin chi tiết</a>
+                            </li>
+                            <li>
+                                <a href="#car-upgrade" data-toggle="tab">Bảng giá <%= @car_detail.article_category.name %> liên quan</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active" id="car-details">
+                                <h2>Giới thiệu</h2>
+                                <p class="text-justify"><%= @car_detail.description %></p>
+                                <hr/>
+                                <h2>Bảng giá chi tiết</h2>
+                                <div class="text-justify article_content"><%= @car_detail.content.html_safe %></div>
+                            </div>
+                            <div class="tab-pane fade in" id="car-upgrade">
+                                <h2>Upgrade Your Car Experience</h2>
+                                <p>Sed aliquam nunc eget velit imperdiet, in rutrum mauris malesuada. Quisque ullamcorper vulputate nisi, et fringilla ante convallis quis. Nullam vel tellus non elit suscipit volutpat. Integer id felis et nibh rutrum dignissim ut non risus. In tincidunt urna quis sem luctus, sed accumsan magna pellentesque. Donec et iaculis tellus. Vestibulum ut iaculis justo, auctor sodales lectus. </p>
+                                <div class="car-list listing-style3 car">
+                                    <article class="box">
+                                        <figure class="col-xs-3">
+                                            <span><img width="189" height="120" alt="" src="/frontend/images/cars/7.png"></span>
+                                        </figure>
+                                        <div class="details col-xs-9 clearfix">
+                                            <div class="col-sm-8">
+                                                <div class="clearfix">
+                                                    <h4 class="box-title">Economy Car<small>bmw mini</small></h4>
+                                                    <div class="logo">
+                                                        <img src="/frontend/images/cars/logo/1.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="amenities">
+                                                    <ul>
+                                                        <li><i class="soap-icon-user circle"></i>4</li>
+                                                        <li><i class="soap-icon-suitcase circle"></i>3</li>
+                                                        <li><i class="soap-icon-aircon circle"></i>AC</li>
+                                                        <li><i class="soap-icon-fueltank circle"></i>12</li>
+                                                        <li><i class="soap-icon-fmstereo circle"></i>YES</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-2 character">
+                                                <dl class="">
+                                                    <dt class="skin-color">mileage</dt><dd>3000 miles</dd>
+                                                    <dt class="skin-color">Pickup Time</dt><dd>5:45 pm</dd>
+                                                    <dt class="skin-color">Location</dt><dd>London city</dd>
+                                                </dl>
+                                            </div>
+                                            <div class="action col-xs-6 col-sm-2">
+                                                <span class="price"><small>per day</small>$45.39</span>
+                                                <a href="car-booking.html" class="button btn-small full-width">select</a>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <article class="box">
+                                        <figure class="col-xs-3">
+                                            <span><img width="189" height="120" alt="" src="/frontend/images/cars/10.png"></span>
+                                        </figure>
+                                        <div class="details col-xs-9 clearfix">
+                                            <div class="col-sm-8">
+                                                <div class="clearfix">
+                                                    <h4 class="box-title">Full Size<small>Holden sv6</small></h4>
+                                                    <div class="logo">
+                                                        <img src="/frontend/images/cars/logo/2.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="amenities">
+                                                    <ul>
+                                                        <li><i class="soap-icon-user circle"></i>4</li>
+                                                        <li><i class="soap-icon-suitcase circle"></i>3</li>
+                                                        <li><i class="soap-icon-aircon circle"></i>AC</li>
+                                                        <li><i class="soap-icon-fueltank circle"></i>12</li>
+                                                        <li><i class="soap-icon-fmstereo circle"></i>YES</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-2 character">
+                                                <dl class="">
+                                                    <dt class="skin-color">mileage</dt><dd>3000 miles</dd>
+                                                    <dt class="skin-color">Pickup Time</dt><dd>5:45 pm</dd>
+                                                    <dt class="skin-color">Location</dt><dd>London city</dd>
+                                                </dl>
+                                            </div>
+                                            <div class="action col-xs-6 col-sm-2">
+                                                <span class="price"><small>per day</small>$100</span>
+                                                <a href="car-booking.html" class="button btn-small full-width">select</a>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <article class="box">
+                                        <figure class="col-xs-3">
+                                            <span><img width="189" height="120" alt="" src="/frontend/images/cars/9.png"></span>
+                                        </figure>
+                                        <div class="details col-xs-9 clearfix">
+                                            <div class="col-sm-8">
+                                                <div class="clearfix">
+                                                    <h4 class="box-title">Luxury Elite<small>bmw 5 series</small></h4>
+                                                    <div class="logo">
+                                                        <img src="/frontend/images/cars/logo/3.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="amenities">
+                                                    <ul>
+                                                        <li><i class="soap-icon-user circle"></i>4</li>
+                                                        <li><i class="soap-icon-suitcase circle"></i>3</li>
+                                                        <li><i class="soap-icon-aircon circle"></i>AC</li>
+                                                        <li><i class="soap-icon-fueltank circle"></i>12</li>
+                                                        <li><i class="soap-icon-fmstereo circle"></i>YES</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-2 character">
+                                                <dl>
+                                                    <dt class="skin-color">mileage</dt><dd>3000 miles</dd>
+                                                    <dt class="skin-color">Pickup Time</dt><dd>5:45 pm</dd>
+                                                    <dt class="skin-color">Location</dt><dd>London city</dd>
+                                                </dl>
+                                            </div>
+                                            <div class="action col-xs-6 col-sm-2">
+                                                <span class="price"><small>per day</small>$79.39</span>
+                                                <a href="car-booking.html" class="button btn-small full-width">select</a>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <article class="box">
+                                        <figure class="col-xs-3">
+                                            <span><img width="189" height="120" alt="" src="/frontend/images/cars/11.png"></span>
+                                        </figure>
+                                        <div class="details col-xs-9 clearfix">
+                                            <div class="col-sm-8">
+                                                <div class="clearfix">
+                                                    <h4 class="box-title">Mini Car<small>Fiat 500</small></h4>
+                                                    <div class="logo">
+                                                        <img src="/frontend/images/cars/logo/4.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="amenities">
+                                                    <ul>
+                                                        <li><i class="soap-icon-user circle"></i>4</li>
+                                                        <li><i class="soap-icon-suitcase circle"></i>3</li>
+                                                        <li><i class="soap-icon-aircon circle"></i>AC</li>
+                                                        <li><i class="soap-icon-fueltank circle"></i>12</li>
+                                                        <li><i class="soap-icon-fmstereo circle"></i>YES</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-2 character">
+                                                <dl>
+                                                    <dt class="skin-color">mileage</dt><dd>Unlimited</dd>
+                                                    <dt class="skin-color">Pickup Time</dt><dd>5:45 pm</dd>
+                                                    <dt class="skin-color">Location</dt><dd>London city</dd>
+                                                </dl>
+                                            </div>
+                                            <div class="action col-xs-6 col-sm-2">
+                                                <span class="price"><small>per day</small>$15.39</span>
+                                                <a href="car-booking.html" class="button btn-small full-width">select</a>
+                                            </div>
+                                        </div>
+                                    </article>
+                                    <article class="box">
+                                        <figure class="col-xs-3">
+                                            <span><img width="189" height="120" alt="" src="/frontend/images/cars/12.png"></span>
+                                        </figure>
+                                        <div class="details col-xs-9 clearfix">
+                                            <div class="col-sm-8">
+                                                <div class="clearfix">
+                                                    <h4 class="box-title">Intermediate<small>Renault grand scenic</small></h4>
+                                                    <div class="logo">
+                                                        <img src="/frontend/images/cars/logo/1.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="amenities">
+                                                    <ul>
+                                                        <li><i class="soap-icon-user circle"></i>4</li>
+                                                        <li><i class="soap-icon-suitcase circle"></i>3</li>
+                                                        <li><i class="soap-icon-aircon circle"></i>AC</li>
+                                                        <li><i class="soap-icon-fueltank circle"></i>12</li>
+                                                        <li><i class="soap-icon-fmstereo circle"></i>YES</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-2 character">
+                                                <dl>
+                                                    <dt class="skin-color">mileage</dt><dd>Unlimited</dd>
+                                                    <dt class="skin-color">Pickup Time</dt><dd>5:45 pm</dd>
+                                                    <dt class="skin-color">Location</dt><dd>London city</dd>
+                                                </dl>
+                                            </div>
+                                            <div class="action col-xs-6 col-sm-2">
+                                                <span class="price"><small>per day</small>$30.21</span>
+                                                <a href="car-booking.html" class="button btn-small full-width">select</a>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                                <a href="#" class="button btn-large full-width">LOAD MORE CARS</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar col-md-3">
+                    <%= render "/car_hire/right_sidebar" %>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <%= render "/home/footer" %>
+    
+</div>
+
+<!-- Javascript -->
+<%= render "/home/js_files" %>

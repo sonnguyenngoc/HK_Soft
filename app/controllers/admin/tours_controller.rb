@@ -1,0 +1,112 @@
+class Admin::ToursController < ApplicationController
+  before_action :set_tour, only: [:show, :edit, :update, :destroy]
+
+  # GET /tours
+  # GET /tours.json
+  def index
+    @tours = Tour.paginate(:page => params[:page], :per_page => 10)
+  end
+
+  # GET /tours/1
+  # GET /tours/1.json
+  def show
+  end
+
+  # GET /tours/new
+  def new
+    @tour = Tour.new
+    30.times do
+      @tour.tour_schedules.build
+    end
+    30.times do
+      @tour.tour_images.build
+    end
+  end
+
+  # GET /tours/1/edit
+  def edit
+    (30-@tour.tour_schedules.count).times do
+      @tour.tour_schedules.build
+    end
+    (30-@tour.tour_images.count).times do
+      @tour.tour_images.build
+    end
+  end
+
+  # POST /tours
+  # POST /tours.json
+  def create
+    @tour = Tour.new(tour_params)
+    
+    # create transportation
+    @tour.transportation = nil if params[:tour][:transportation].present?
+    @tour.transportation = params[:tour][:transportation].join(",") if params[:tour][:transportation].present?
+    
+    # create services
+    @tour.services = nil if params[:tour][:services].present?
+    @tour.services = params[:tour][:services].join(",") if params[:tour][:services].present?
+
+    respond_to do |format|
+      if @tour.save
+        format.html { redirect_to edit_admin_tour_path(@tour.id), notice: 'Tạo mới tour du lịch thành công.' }
+        format.json { render :show, status: :created, location: @tour }
+      else
+        format.html { render :new }
+        format.json { render json: @tour.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /tours/1
+  # PATCH/PUT /tours/1.json
+  def update
+    # create transportation
+    @tour.transportation = nil if params[:tour][:transportation].present?
+    @tour.transportation = params[:tour][:transportation].join(",") if params[:tour][:transportation].present?
+    
+    # update services
+    @tour.services = nil if params[:tour][:services].present?
+    @tour.services = params[:tour][:services].join(",") if params[:tour][:services].present?
+    
+    respond_to do |format|
+      if @tour.update(tour_params)
+        format.html { redirect_to edit_admin_tour_path(@tour.id), notice: 'Chỉnh sửa tour du lịch thành công.' }
+        format.json { render :show, status: :ok, location: @tour }
+      else
+        format.html { render :edit }
+        format.json { render json: @tour.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /tours/1
+  # DELETE /tours/1.json
+  def destroy
+    @tour.destroy
+    
+    render nothing:true
+    flash[:notice] = 'Xóa tour du lịch thành công.'
+  end
+  
+  def approve
+    @tour = Tour.find(params[:id])
+    authorize! :approve, @tour
+    @tour.approved = true
+    @tour.save
+    respond_to do |format|
+      format.html { redirect_to :back, notice: 'Duyệt tour du lịch thành công.' }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_tour
+      @tour = Tour.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def tour_params
+      params.require(:tour).permit(:image_url, :approved, :article_category_id, :type_name, :name, :description, :content, :is_sale, :discount_percent, :new_price, :old_price, :services, :duration, :position, :hotel, :transportation, tour_schedules_attributes: [:id, :from_date, :to_date, :depart, :arrive, :seat, :_destroy], tour_images_attributes: [:id, :image_url, :_destroy])
+    end
+end

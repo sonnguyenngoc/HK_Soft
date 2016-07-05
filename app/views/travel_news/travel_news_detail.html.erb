@@ -1,0 +1,102 @@
+<div id="page-wrapper">
+    
+    <!-- HEADER -->
+    <%= render "/home/header" %>
+
+    <div class="page-title-container style2">
+        <div class="container">
+            <div class="page-title pull-left">
+                <h2 class="entry-title"><%= @blog_detail.title %></h2>
+            </div>
+            <ul class="breadcrumbs pull-right">
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <li><%= link_to @page_name.name, travel_news_path %></li>
+            </ul>
+        </div>
+    </div>
+
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div id="main" class="col-sm-8 col-md-9">
+                    <div class="post">
+                        <figure class="image-container">
+                            <img src="/frontend/images/blog/post/image/1.png" alt="" />
+                        </figure>
+                        <div class="details">
+                            <h1 class="entry-title"><%= @blog_detail.title %></h1>
+                            <div class="post-content text-justify">
+                                <p><%= @blog_detail.content.html_safe %></p>
+                            </div>
+                            <div class="post-meta">
+                                <div class="entry-date">
+                                    <label class="date"><%= @blog_detail.created_at.strftime("%d") %></label>
+                                    <label class="month"><%= @blog_detail.created_at.strftime("%m") %></label>
+                                </div>
+                                <div class="entry-author fn">
+                                    <i class="icon soap-icon-user"></i> Đăng bởi: <%= link_to "Du Lịch Khám Phá Mới", about_us_path %>
+                                </div>
+                                <div class="entry-action">
+                                    <span class="entry-tags"><i class="soap-icon-features"></i><span><%= link_to @page_name.name, travel_news_path %>, <%= link_to "Du Lịch Khám Phá Mới", about_us_path %></span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <h2>Tour liên quan</h2>
+                        <div class="travelo-box">
+                            <div class="suggestions image-carousel style2" data-animation="slide" data-item-width="150" data-item-margin="22">
+                                <ul class="slides">
+                                    <li>
+                                        <a href="#" class="hover-effect">
+                                            <img src="/frontend/images/dashboard/suggestion1.png" alt="" class="middle-item" />
+                                        </a>
+                                        <h5 class="caption">Adventure</h5>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="hover-effect">
+                                            <img src="/frontend/images/dashboard/suggestion2.png" alt="" class="middle-item" />
+                                        </a>
+                                        <h5 class="caption">Beaches &amp; Sun</h5>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="hover-effect">
+                                            <img src="/frontend/images/dashboard/suggestion3.png" alt="" class="middle-item" />
+                                        </a>
+                                        <h5 class="caption">Casinos</h5>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="hover-effect">
+                                            <img src="/frontend/images/dashboard/suggestion4.png" alt="" class="middle-item" />
+                                        </a>
+                                        <h5 class="caption">Family Fun</h5>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="hover-effect">
+                                            <img src="/frontend/images/dashboard/suggestion5.png" alt="" class="middle-item" />
+                                        </a>
+                                        <h5 class="caption">History</h5>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="hover-effect">
+                                            <img src="/frontend/images/dashboard/suggestion1.png" alt="" class="middle-item" />
+                                        </a>
+                                        <h5 class="caption">Adventure</h5>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar col-sm-4 col-md-3">
+                    <%= render "/travel_news/right_sidebar" %>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <%= render "/home/footer" %>
+
+</div>
+
+<!-- Javascript -->
+<%= render "/home/js_files" %>

@@ -1,0 +1,83 @@
+<div id="page-wrapper">
+    
+    <%= render "/home/header" %>
+
+    <div class="page-title-container style2">
+        <div class="container">
+            <div class="page-title pull-left">
+                <h2 class="entry-title"><%= @article_category.name %></h2>
+            </div>
+            <ul class="breadcrumbs pull-right">
+                <li><a href="#">Trang Chủ</a></li>
+                <li><%= link_to @page_name.name, tour_handbook_path %></li>
+                <li><%= link_to @article_category.parent.first.name, tour_handbook_sub_1_path(tour_handbook_sub_1: @article_category.parent.first) %></li>
+                <li class="active"><%= @article_category.name %></li>
+            </ul>
+        </div>
+    </div>
+
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div id="main" class="col-sm-8 col-md-9">
+                    <div class="page">
+                        <span style="display: none;" class="entry-title page-title"><%= @article_category.name %></span>
+                        <span style="display: none;" class="vcard"><span class="fn"><a rel="author" title="Đăng bởi" href="#">Du Lịch Khám Phá Mới</a></span></span>
+                        <span style="display:none;" class="updated"><%= @blogs.first.created_at.strftime("%d/%m/%Y %H:%M") %></span>
+                        <div class="post-content">
+                            <div class="blog-infinite">
+                                <% @blogs.each do |item| %>
+                                    <div class="post">
+                                        <div class="post-content-wrapper">
+                                            <figure class="image-container">
+                                                <%= link_to image_tag("/frontend/images/blog/post/image/1.png", alt: "Cẩm Nang Du Lịch - An Giang"), tour_handbook_detail_path(tour_handbook_detail_id: item), class: "hover-effect" %>
+                                            </figure>
+                                            <div class="details">
+                                                <h2 class="entry-title"><%= link_to item.title, tour_handbook_detail_path(tour_handbook_detail_id: item) %></h2>
+                                                <div class="excerpt-container text-justify">
+                                                    <%= truncate(strip_tags(item.content.html_safe), length: 400) %>
+                                                </div>
+                                                <div class="post-meta">
+                                                    <div class="entry-date">
+                                                        <label class="date"><%= item.created_at.strftime("%d") %></label>
+                                                        <label class="month"><%= item.created_at.strftime("%m") %></label>
+                                                    </div>
+                                                    <div class="entry-author fn">
+                                                        <i class="icon soap-icon-user"></i> Đăng bởi: <%= link_to "Du Lịch Khám Phá Mới", about_us_path, class: "author" %>
+                                                    </div>
+                                                    <div class="entry-action">
+                                                        <span class="entry-tags"><i class="soap-icon-features"></i><span><%= link_to @article_category.name, "#" %>, <%= link_to @page_name.name, "#" %>, <%= link_to "Du lịch khám phá mới", about_us_path %></span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <% end %>
+                            </div>
+                            <ul class="pagination clearfix">
+                                <li class="prev disabled"><a href="#">Trang trước</a></li>
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                                <li><a href="#">6</a></li>
+                                <li class="next"><a href="#">Trang sau</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar col-sm-4 col-md-3">
+                    <%= render "/tour_handbook/right_sidebar" %>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <%= render "/home/footer" %>
+    
+</div>
+
+<!-- Javascript -->
+<%= render "/home/js_files" %>
