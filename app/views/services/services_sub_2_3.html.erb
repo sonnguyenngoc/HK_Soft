@@ -17,8 +17,8 @@
     <div class="page_title1 sty13">
         <div class="container">
 
-            <h1><%= t(:e_commerce) %></h1>
-            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_3_path %> <i>/</i> <%= t(:e_commerce) %></div>
+            <h1><%= t(:real_estale_agent_monitor) %></h1>
+            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_2_path %> <i>/</i> <%= t(:real_estale_agent_monitor) %></div>
 
         </div>
     </div>
@@ -34,18 +34,18 @@
             <div class="content_left">
 
                 <div class="blog_post">
-                    <% @e_commerce.each do |item| %>
+                    <% @real_estale_agent_monitor.each do |item| %>
                     <div class="blog_postcontent">
                         <div class="image_frame">
                             <%= image_tag item.image_url.hksoft_large_image %>
                         </div>
-                        <h3><%= t(:e_commerce) %></h3>
+                        <h3><%= t(:real_estale_agent_monitor) %></h3>
                         <ul class="post_meta_links">
                             <li><a href="#created_at" class="date">
                             <% if params[:locale] == "en" %><%= item.created_at.strftime("%d %B %Y") %><% else %><%= item.created_at.strftime("%d/%m/%Y") %><% end %>
                             </a></li>
                             <li class="post_by"><i><%= t(:by) %>:</i> <a href="#global_naturesoft">Global Naturesoft</a></li>
-                            <li class="post_categoty"><i><%= t(:in) %>:</i> <a href="#e_commerce"><%= t(:e_commerce) %></a></li>
+                            <li class="post_categoty"><i><%= t(:in) %>:</i> <a href="#real_estale_agent_monitor"><%= t(:web_based_software_development) %></a></li>
                         </ul>
                         <div class="clearfix"></div>
                         <div class="margin_top1"></div>

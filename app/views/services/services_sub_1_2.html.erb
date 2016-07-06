@@ -1,0 +1,99 @@
+<div class="site_wrapper">
+
+    <%= render "/home/top_navigation" %>
+    <!-- end top navigation links -->
+
+
+    <div class="clearfix"></div>
+
+
+    <%= render "/home/header" %>
+    <!-- end header -->
+
+
+    <div class="clearfix"></div>
+
+
+    <div class="page_title1 sty13">
+        <div class="container">
+
+            <h1><%= t(:real_estale) %></h1>
+            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_1_path %> <i>/</i> <%= t(:real_estale) %></div>
+
+        </div>
+    </div>
+    <!-- end page title -->
+
+
+    <div class="clearfix"></div>
+
+
+    <div class="content_fullwidth less2">
+        <div class="container">
+
+            <div class="content_left">
+
+                <div class="blog_post">
+                    <% @real_estale.each do |item| %>
+                    <div class="blog_postcontent">
+                        <div class="image_frame">
+                            <%= image_tag item.image_url.hksoft_large_image %>
+                        </div>
+                        <h3><%= t(:website_development) %></h3>
+                        <ul class="post_meta_links">
+                            <li><a href="#created_at" class="date">
+                            <% if params[:locale] == "en" %><%= item.created_at.strftime("%d %B %Y") %><% else %><%= item.created_at.strftime("%d/%m/%Y") %><% end %>
+                            </a></li>
+                            <li class="post_by"><i><%= t(:by) %>:</i> <a href="#global_naturesoft">Global Naturesoft</a></li>
+                            <li class="post_categoty"><i><%= t(:in) %>:</i> <a href="#real_estale"><%= t(:real_estale) %></a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                        <div class="margin_top1"></div>
+                        <% if params[:locale] == "en" %>
+                            <div class="text-justify"><%= item.content.html_safe %></div>
+                        <% else %>
+                            <div class="text-justify"><%= item.content.html_safe %></div>
+                        <% end %>
+                    </div>
+                    <% end %>
+                </div>
+                <!-- /# end post -->
+
+                <div class="clearfix divider_line9 lessm"></div>
+
+            </div>
+            <!-- end content left side -->
+
+
+            <!-- right sidebar starts -->
+            <div class="right_sidebar">
+
+                <%= render "/services/right_sidebar" %>
+
+            </div>
+            <!-- end right sidebar -->
+
+        </div>
+        
+    </div>
+
+
+    <div class="clearfix"></div>
+
+
+    <%= render "/home/footer" %>
+    <!-- end footer -->
+
+
+    <div class="clearfix"></div>
+
+
+    <a href="#" class="scrollup">Scroll</a>
+    <!-- end scroll to top of the page-->
+
+</div>
+
+
+<!-- ######### JS FILES ######### -->
+<!-- get jQuery used for the theme -->
+<%= render "/home/js_files" %>

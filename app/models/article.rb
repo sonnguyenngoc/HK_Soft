@@ -2,8 +2,8 @@ class Article < ActiveRecord::Base
   validates :title, :content, presence: true
   validates :image_url, presence: true
   validates :image_url, allow_blank: true, format: {
-    with: %r{\.(gif|jpg|png)\Z}i,
-    message: 'must be a URL for GIF, JPG or PNG image.'
+    with: %r{\.(gif|jpg|png|jpeg)\Z}i,
+    message: 'must be a URL for GIF, JPG, JPEG or PNG image.'
   }
   
   mount_uploader :image_url, ArticleUploader
@@ -253,6 +253,51 @@ class Article < ActiveRecord::Base
   def self.get_email_marketing
     records = self.get_active_articles
     records = records.joins(:code_status).where(code_statuses: { title: 'email_marketing' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  # content_management_system
+  def self.get_content_management_system
+    records = self.get_active_articles
+    records = records.joins(:code_status).where(code_statuses: { title: 'content_management_system' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  # real_estale
+  def self.get_real_estale
+    records = self.get_active_articles
+    records = records.joins(:code_status).where(code_statuses: { title: 'real_estale' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  # real_estale_agent_monitor
+  def self.get_real_estale_agent_monitor
+    records = self.get_active_articles
+    records = records.joins(:code_status).where(code_statuses: { title: 'real_estale_agent_monitor' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  # education_and_school_system
+  def self.get_education_and_school_system
+    records = self.get_active_articles
+    records = records.joins(:code_status).where(code_statuses: { title: 'education_and_school_system' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  # erp_system
+  def self.get_erp_system
+    records = self.get_active_articles
+    records = records.joins(:code_status).where(code_statuses: { title: 'erp_system' })
     records.order("created_at DESC").first
     
     return records

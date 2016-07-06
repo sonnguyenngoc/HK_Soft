@@ -9,8 +9,13 @@ Rails.application.routes.draw do
     # servies page
     get "services.html" => "services#index", as: :services
     get "website-development.html" => "services#services_sub_1", as: :services_sub_1
+    get "website-development/content-management-system.html" => "services#services_sub_1_1", as: :services_sub_1_1
+    get "website-development/real-estale.html" => "services#services_sub_1_2", as: :services_sub_1_2
+    get "website-development/e-commerce.html" => "services#services_sub_1_3", as: :services_sub_1_3
     get "web-based-software-development.html" => "services#services_sub_2", as: :services_sub_2
-    get "e-commerce.html" => "services#services_sub_3", as: :services_sub_3
+    get "website-development/erp-system.html" => "services#services_sub_2_1", as: :services_sub_2_1
+    get "website-development/education&school-system.html" => "services#services_sub_2_2", as: :services_sub_2_2
+    get "website-development/real-estale-agent-monitor.html" => "services#services_sub_2_3", as: :services_sub_2_3
     get "google-apps-for-bussiness.html" => "services#services_sub_4", as: :services_sub_4
     get "outsourcing.html" => "services#services_sub_5", as: :services_sub_5
     get "research-and-development.html" => "services#services_sub_6", as: :services_sub_6
