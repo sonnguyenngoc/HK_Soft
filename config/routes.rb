@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'contact/index'
+
+  get 'service/index'
+
   devise_for :users
   
   scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
@@ -22,19 +26,21 @@ Rails.application.routes.draw do
     get "to-chuc-su-kien/to-chuc-team-building.html" => "event#event_listing", as: :event_listing
     get "to-chuc-su-kien/to-chuc-team-building/chi-tiet.html" => "event#event_detail", as: :event_detail
     
+    # Dịch vụ
+    get "dich-vu.html" => "service#index", as: :service
+        
     # Thuê xe du lịch
-    get "thue-xe-du-lich.html" => "car_hire#index", as: :car_hire
-    get "thue-xe-du-lich/hien-thi-dang-danh-sach.html" => "car_hire#car_list_view", as: :car_list_view
-    get "thue-xe-du-lich/hien-thi-dang-o.html" => "car_hire#car_grid_view", as: :car_grid_view
-    get "thue-xe-du-lich/chi-tiet-xe.html" => "car_hire#car_detail", as: :car_detail
-    get "thue-xe-du-lich/chi-tiet-xe/dat-xe.html" => "car_hire#car_booking", as: :car_booking
-    get "thue-xe-du-lich/chi-tiet-xe/dat-xe/cam-on.html" => "car_hire#car_thankyou", as: :car_thankyou
+    get "dich-vu/thue-xe-du-lich.html" => "car_hire#index", as: :car_hire
+    get "dich-vu/thue-xe-du-lich/hien-thi-dang-o.html" => "car_hire#car_grid_view", as: :car_grid_view
+    get "dich-vu/thue-xe-du-lich/chi-tiet-xe.html" => "car_hire#car_detail", as: :car_detail
+    get "dich-vu/thue-xe-du-lich/chi-tiet-xe/dat-xe.html" => "car_hire#car_booking", as: :car_booking
+    get "dich-vu/thue-xe-du-lich/chi-tiet-xe/dat-xe/cam-on.html" => "car_hire#car_thankyou", as: :car_thankyou
   
     # Khách sạn
-    get "danh-sach-khach-san.html" => "book_hotel#index", as: :hotel_listing
-    get "danh-sach-khach-san/chi-tiet-khach-san.html" => "book_hotel#book_hotel_detail", as: :book_hotel_detail
-    get "danh-sach-khach-san/chi-tiet-khach-san/dat-phong.html" => "book_hotel#hotel_booking", as: :hotel_booking
-    get "danh-sach-khach-san/chi-tiet-khach-san/dat-phong/cam-on-:booking_hotel_id.html" => "book_hotel#hotel_thankyou", as: :hotel_thankyou
+    get "dich-vu/khach-san.html" => "book_hotel#index", as: :hotel_listing
+    get "dich-vu/khach-san/chi-tiet-khach-san.html" => "book_hotel#book_hotel_detail", as: :book_hotel_detail
+    get "dich-vu/khach-san/chi-tiet-khach-san/dat-phong.html" => "book_hotel#hotel_booking", as: :hotel_booking
+    get "dich-vu/khach-san/chi-tiet-khach-san/dat-phong/thanh-cong-:booking_hotel_id.html" => "book_hotel#hotel_thankyou", as: :hotel_thankyou
     post "slideshow-popup.html" => "book_hotel#slideshow_popup", as: :slideshow_popup
   
     # Cẩm nang du lịch
@@ -55,9 +61,13 @@ Rails.application.routes.draw do
     get "chinh-sach-giai-quyet-tranh-chap-khieu-nai.html" => "info#info_sub_4", as: :info_sub_4
     get "dieu-khoan-mua-ban-hang-hoa.html" => "info#info_sub_5", as: :info_sub_5
     
+    get "lien-he.html" => "contact#index", as: :contact
+    get "lien-he/gui-thanh-cong.html" => "contact#contact_thankyou", as: :contact_thankyou
+    
     # booking
     resources :booking_hotels
     resources :booking_cars
+    resources :contacts
     
     namespace :admin, path: "quan-tri" do
       get "/" => "main#index"

@@ -22,17 +22,17 @@ class ArticleCategory < ActiveRecord::Base
   def self.get_menu_tours
     self.all.where(description: "tour").order("created_at ASC")
   end
-  def self.get_menu_car_hires
-    self.all.where(description: "car_hire").order("created_at ASC")
-  end
   def self.get_menu_about_us
     self.all.where(description: "about_us").first
+  end
+  def self.get_menu_car_hires
+    self.all.where(description: "car_hire").order("created_at ASC")
   end
   def self.get_menu_travel_news
     self.all.where(description: "travel_news").first
   end
-  def self.get_menu_hotels
-    self.all.where(description: "hotel").first
+  def self.get_menu_services
+    self.all.where(description: "services").order("created_at ASC")
   end
   
   def get_blogs_for_categories(params)
