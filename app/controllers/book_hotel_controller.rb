@@ -14,12 +14,17 @@ class BookHotelController < ApplicationController
   def hotel_booking
     @page_name = Category.where(description: "book_hotel").first
     @hotel_booking = Hotel.find(params[:hotel_booking_id])
+    @hotel_checkout = BookingHotel.new
   end
 
   def slideshow_popup
   end
   
   def hotel_thankyou
+    if !params[:booking_hotel_id].present?
+      redirect_to root_path
+    end
     @page_name = Category.where(description: "book_hotel").first
+    @booking_hotel = BookingHotel.find(params[:booking_hotel_id])
   end
 end

@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Full name:</strong>
+  <%= @booking_car.full_name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @booking_car.address %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @booking_car.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @booking_car.email %>
+</p>
+
+<p>
+  <strong>Date from:</strong>
+  <%= @booking_car.date_from %>
+</p>
+
+<p>
+  <strong>Date to:</strong>
+  <%= @booking_car.date_to %>
+</p>
+
+<p>
+  <strong>Address from:</strong>
+  <%= @booking_car.address_from %>
+</p>
+
+<p>
+  <strong>Address to:</strong>
+  <%= @booking_car.address_to %>
+</p>
+
+<%= link_to 'Edit', edit_booking_car_path(@booking_car) %> |
+<%= link_to 'Back', booking_cars_path %>

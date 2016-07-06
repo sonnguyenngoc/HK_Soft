@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     get "danh-sach-khach-san.html" => "book_hotel#index", as: :hotel_listing
     get "danh-sach-khach-san/chi-tiet-khach-san.html" => "book_hotel#book_hotel_detail", as: :book_hotel_detail
     get "danh-sach-khach-san/chi-tiet-khach-san/dat-phong.html" => "book_hotel#hotel_booking", as: :hotel_booking
-    get "danh-sach-khach-san/chi-tiet-khach-san/dat-phong/cam-on.html" => "book_hotel#hotel_thankyou", as: :hotel_thankyou
+    get "danh-sach-khach-san/chi-tiet-khach-san/dat-phong/cam-on-:booking_hotel_id.html" => "book_hotel#hotel_thankyou", as: :hotel_thankyou
     post "slideshow-popup.html" => "book_hotel#slideshow_popup", as: :slideshow_popup
   
     # Cẩm nang du lịch
@@ -54,6 +54,10 @@ Rails.application.routes.draw do
     get "chinh-sach-bao-mat-thong-tin-khach-hang.html" => "info#info_sub_3", as: :info_sub_3
     get "chinh-sach-giai-quyet-tranh-chap-khieu-nai.html" => "info#info_sub_4", as: :info_sub_4
     get "dieu-khoan-mua-ban-hang-hoa.html" => "info#info_sub_5", as: :info_sub_5
+    
+    # booking
+    resources :booking_hotels
+    resources :booking_cars
     
     namespace :admin, path: "quan-tri" do
       get "/" => "main#index"
@@ -188,6 +192,8 @@ Rails.application.routes.draw do
         end
         resources :hotels
         resources :cars
+        resources :booking_hotels
+        resources :booking_cars
         resources :companies, path: "chi-nhanh"
         resources :user_groups, path: "nhom-nguoi-dung"
         get "tru-so-chinh" => "companies#head_office", as: :head_office

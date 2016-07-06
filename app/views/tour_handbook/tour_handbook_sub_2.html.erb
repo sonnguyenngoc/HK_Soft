@@ -23,7 +23,9 @@
                     <div class="page">
                         <span style="display: none;" class="entry-title page-title"><%= @article_category.name %></span>
                         <span style="display: none;" class="vcard"><span class="fn"><a rel="author" title="Đăng bởi" href="#">Du Lịch Khám Phá Mới</a></span></span>
-                        <span style="display:none;" class="updated"><%= @blogs.first.created_at.strftime("%d/%m/%Y %H:%M") %></span>
+                        <% if @blogs.count > 0 %>
+                            <span style="display:none;" class="updated"><%= @blogs.first.created_at.strftime("%d/%m/%Y %H:%M") %></span>
+                        <% end %>
                         <div class="post-content">
                             <div class="blog-infinite">
                                 <% @blogs.each do |item| %>
