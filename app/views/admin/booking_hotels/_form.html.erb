@@ -1,0 +1,61 @@
+<%= form_for(@booking_hotel) do |f| %>
+  <% if @booking_hotel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@booking_hotel.errors.count, "error") %> prohibited this booking_hotel from being saved:</h2>
+
+      <ul>
+      <% @booking_hotel.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :full_name %><br>
+    <%= f.text_field :full_name %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :date_from %><br>
+    <%= f.datetime_select :date_from %>
+  </div>
+  <div class="field">
+    <%= f.label :date_to %><br>
+    <%= f.datetime_select :date_to %>
+  </div>
+  <div class="field">
+    <%= f.label :adult %><br>
+    <%= f.number_field :adult %>
+  </div>
+  <div class="field">
+    <%= f.label :child %><br>
+    <%= f.number_field :child %>
+  </div>
+  <div class="field">
+    <%= f.label :room_number %><br>
+    <%= f.number_field :room_number %>
+  </div>
+  <div class="field">
+    <%= f.label :hotel_room_id %><br>
+    <%= f.number_field :hotel_room_id %>
+  </div>
+  <div class="field">
+    <%= f.label :hotel_room_name %><br>
+    <%= f.text_field :hotel_room_name %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

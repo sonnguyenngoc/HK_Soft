@@ -21,49 +21,52 @@
             <div class="row">
                 <div id="main" class="col-sms-6 col-sm-8 col-md-9">
                     <div class="booking-section travelo-box">
-                        
-                        <form class="booking-form" method="post" action="booking-handler.php">
+                        <%= form_for @car_checkout, html: {class: "booking-form"} do |f| %>
                             <div class="person-information">
                                 <h2>Thông Tin Khách Hàng</h2>
                                 <div class="form-group row">
                                     <div class="col-sm-12 col-md-10">
                                         <label>Tên Khách Hàng *</label>
-                                        <input type="text" name="full_name" class="input-text full-width" value="" placeholder="" />
+                                        <%= f.text_field :full_name, class: "input-text full-width required" %>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-12 col-md-10">
                                         <label>Địa Chỉ *</label>
-                                        <input type="text" name="phone" class="input-text full-width" value="" placeholder="" />
+                                        <%= f.text_field :address, class: "input-text full-width required" %>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 col-md-5">
                                         <label>Số Điện Thoại *</label>
-                                        <input type="text" name="phone" class="input-text full-width" value="" placeholder="" />
+                                        <%= f.text_field :phone, class: "input-text full-width required" %>
                                     </div>
                                     <div class="col-sm-6 col-md-5">
-                                        <label>Địa chỉ email</label>
-                                        <input type="text" name="email" class="input-text full-width" value="" placeholder="" />
+                                        <label>Địa chỉ email *</label>
+                                        <%= f.text_field :email, class: "input-text full-width required email" %>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 col-md-5">
                                         <label>Lộ Trình (Điểm khởi hành) *</label>
-                                        <div class="selector">
-                                            <select name="country_code" class="full-width">
-                                                <option value="+44">United Kingdom (+44)</option>
-                                                <option value="+1">United States (+1)</option>
-                                            </select><span class="custom-select full-width">United Kingdom (+44)</span>
-                                        </div>
+                                        <%= f.text_field :address_from, class: "input-text full-width required" %>
                                     </div>
                                     <div class="col-sm-6 col-md-5">
                                         <label>Lộ Trình (Điểm đến) *</label>
-                                        <div class="selector">
-                                            <select name="country_code" class="full-width">
-                                                <option value="+44">United Kingdom (+44)</option>
-                                                <option value="+1">United States (+1)</option>
-                                            </select><span class="custom-select full-width">United Kingdom (+44)</span>
+                                        <%= f.text_field :address_to, class: "input-text full-width required" %>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Ngày đi *</label>
+                                        <div class="datepicker-wrap">
+                                            <input type="text" name="booking_car[date_from]" id="booking_car_date_from" class="input-text full-width" placeholder="mm/dd/yy" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Ngày về *</label>
+                                        <div class="datepicker-wrap">
+                                            <input type="text" name="booking_car[date_to]" id="booking_car_date_to" class="input-text full-width" placeholder="mm/dd/yy" />
                                         </div>
                                     </div>
                                 </div>
@@ -73,7 +76,7 @@
                                     <button type="submit" class="full-width btn-large">ĐẶT XE</button>
                                 </div>
                             </div>
-                        </form>
+                        <% end %>
                     </div>
                 </div>
                 <div class="sidebar col-sms-6 col-sm-4 col-md-3">

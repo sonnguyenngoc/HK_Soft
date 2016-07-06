@@ -33,14 +33,17 @@
                         <hr />
                         <h2>Thông Tin Đặt Phòng</h2>
                         <dl class="term-description">
-                            <dt>Tên khách hàng:</dt><dd>5784-BD245</dd>
-                            <dt>Địa chỉ:</dt><dd>Jessica</dd>
-                            <dt>Last name:</dt><dd>Brown</dd>
-                            <dt>E-mail address:</dt><dd>Info@Jessica.com</dd>
-                            <dt>Street Address and number:</dt><dd>353 Third floor Avenue</dd>
-                            <dt>Town / City:</dt><dd>Paris,France</dd>
-                            <dt>ZIP code:</dt><dd>75800-875</dd>
-                            <dt>Country:</dt><dd>United States of america</dd>
+                            <dt>Tên khách hàng: </dt><dd><%= @booking_hotel.full_name %></dd>
+                            <dt>Số điện thoại: </dt><dd><%= @booking_hotel.phone %></dd>
+                            <dt>Email: </dt><dd><%= @booking_hotel.email %></dd>
+                            <dt>Ngày nhận phòng: </dt><dd><%= @booking_hotel.date_from.strftime("%d/%m/%Y") %></dd>
+                            <dt>Ngày giao phòng: </dt><dd><%= @booking_hotel.date_to.strftime("%d/%m/%Y") %></dd>
+                            <dt>Số người lớn: </dt><dd><%= @booking_hotel.adult %> người lớn</dd>
+                            <dt>Số trẻ em: </dt><dd><%= @booking_hotel.child %> trẻ em</dd>
+                            <dt>Số phòng cần đặt: </dt><dd><%= @booking_hotel.room_number %> phòng</dd>
+                            <dt>Tên khách sạn: </dt><dd><%= @booking_hotel.hotel.name %></dd>
+                            <dt>Địa chỉ: </dt><dd><%= @booking_hotel.hotel.address %></dd>
+                            <dt>Loại phòng: </dt><dd><%= @booking_hotel.hotel_room.room_type %></dd>
                         </dl>
                     </div>
                 </div>
