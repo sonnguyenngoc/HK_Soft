@@ -51,3 +51,9 @@
 .post-content img {
     max-width: 100%;
 }
+label.error {
+    display: none !important;
+}
+#form-validate input.error, #form-validate textarea.error {
+    border: 1px solid red;
+}
