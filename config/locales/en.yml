@@ -355,6 +355,14 @@ en:
   news: "News"
   home_support: "Support"
   home_contact: "Contact"
+  
+  web_design_and_development: "Web Design & Development"
+  content_management_system: "Content Management System"
+  b2c_e_commerce_site: "B2C e-Commerce Site"
+  b2b_trade_portal: "B2B Trade Portal"
+  education_and_school_system: "Education & School System"
+  real_estale_agent_monitor: "Real Estale Agent Monitor"
+  
   our_services: "Our Services"
   resources: "Resources"
   follow_us: "Follow Us"

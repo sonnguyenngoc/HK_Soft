@@ -358,6 +358,14 @@ vi:
   news: "Tin Tức"
   home_support: "Hỗ Trợ"
   home_contact: "Liên Hệ"
+  
+  web_design_and_development: "Thiết Kế & Phát Triển Website"
+  content_management_system: "Hệ Thống Quản Trị Nội Dung"
+  b2c_e_commerce_site: "Trang Thương Mại Điện Tử B2C"
+  b2b_trade_portal: "Sàn Thương Mại Điện Tử B2B"
+  education_and_school_system: "Hệ Thống Giáo Dục & Trường Học"
+  real_estale_agent_monitor: "Quản Lý Giao Dịch Bất Động Sản"
+  
   our_services: "Các Dịch Vụ Của Chúng Tôi"
   resources: "Resources"
   follow_us: "Theo dõi"
@@ -381,7 +389,7 @@ vi:
   domains_hosting_sub_8: "30 Day Money Back Guarantee"
   web: "Web"
   application: "Ứng Dụng"
-  erp_system: "Hệ Thống ERP"
+  erp_system: "Hệ Thống Quản Trị ERP"
   management_systems: "Hệ Thống Quản Lý"
   cost_effective_solutions: "Cost-Effective Solutions"
   development: "Development"
