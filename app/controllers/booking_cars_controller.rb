@@ -6,7 +6,7 @@ class BookingCarsController < ApplicationController
     
     respond_to do |format|
       if @booking_car.save
-        format.html { redirect_to car_thankyou_path(booking_car_id: @booking_car) }
+        format.html { redirect_to car_thankyou_path }
       end
     end
   end
@@ -19,6 +19,6 @@ class BookingCarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_car_params
-      params.require(:booking_car).permit(:full_name, :address, :phone, :email, :date_from, :date_to, :address_from, :address_to)
+      params.require(:booking_car).permit(:full_name, :address, :phone, :email, :passport, :message, :date_from, :date_to, :address_from, :address_to, :price)
     end
 end

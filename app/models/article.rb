@@ -19,7 +19,10 @@ class Article < ActiveRecord::Base
   end
   
   def self.get_active_articles
-    self.where("articles.approved = true and articles.is_show = true")
+    self.where("articles.approved = true and articles.is_show = true").order("created_at DESC")
+  end
+  
+  def self.get_lastest_travel_news
   end
   
   def self.get_lastest_blog_posts

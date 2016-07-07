@@ -27,6 +27,7 @@ class TourController < ApplicationController
 
   def tour_booking
     @page_name = Category.where(description: "tour").first
+    @tour = Tour.find(params[:tour_booking_id])
   end
   
   def tour_thankyou

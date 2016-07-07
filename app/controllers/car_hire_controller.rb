@@ -25,10 +25,6 @@ class CarHireController < ApplicationController
   end
   
   def car_thankyou
-    if !params[:booking_car_id].present?
-      redirect_to root_path
-    end
-    @page_name = Category.where(description: "car_hire").first
-    @booking_car = BookingCar.find(params[:booking_car_id])
+    @page_name = Category.where(description: "services").first
   end
 end
