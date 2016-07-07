@@ -56,4 +56,5 @@ label.error {
 }
 #form-validate input.error, #form-validate textarea.error {
     border: 1px solid red;
+    border-radius: 2px;
 }
