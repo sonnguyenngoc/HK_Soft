@@ -148,3 +148,24 @@ ul.tabs {
 .marg-right {
 	margin-right: 20px;
 }
+@media only screen and (max-width: 1199px) {
+    .footer .ftop .left h1 {
+        font-size: 38px;
+    }
+}
+@media only screen and (max-width: 999px) {
+    .footer .ftop .left h1 {
+        font-size: 23px;
+    }
+}
+@media only screen and (max-width: 479px) {
+    .footer .ftop .left h1 {
+        font-size: 21px;
+    }
+	.copyrights .one_half {
+		font-size: 11px;
+	}
+	.st-accordion-four ul li > a span {
+		top: 23px;
+	}
+}
