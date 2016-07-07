@@ -39,7 +39,11 @@
                         <div class="image_frame">
                             <%= image_tag item.image_url.hksoft_large_image %>
                         </div>
-                        <h3><%= t(:erp_system) %></h3>
+                        <% if params[:locale] == "vi" %>
+                            <h3><%= item.title_vi %></h3>
+                        <% else %>
+                            <h3><%= item.title %></h3>
+                        <% end %>
                         <ul class="post_meta_links">
                             <li><a href="#created_at" class="date">
                             <% if params[:locale] == "en" %><%= item.created_at.strftime("%d %B %Y") %><% else %><%= item.created_at.strftime("%d/%m/%Y") %><% end %>
@@ -49,10 +53,10 @@
                         </ul>
                         <div class="clearfix"></div>
                         <div class="margin_top1"></div>
-                        <% if params[:locale] == "en" %>
-                            <div class="text-justify"><%= item.content.html_safe %></div>
+                        <% if params[:locale] == "vi" %>
+                            <div class="text-justify"><%= item.content_vi.html_safe if !item.content_vi.nil? %></div>
                         <% else %>
-                            <div class="text-justify"><%= item.content.html_safe %></div>
+                            <div class="text-justify"><%= item.content.html_safe if !item.content.nil? %></div>
                         <% end %>
                     </div>
                     <% end %>

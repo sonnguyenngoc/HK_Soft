@@ -5,7 +5,7 @@ class ServicesController < ApplicationController
     
     def services_sub_1
         @program_languages = ProgramLanguage.all
-        @website_development = Article.get_website_development
+        @web_design_and_development = Article.get_web_design_and_development
     end
     
     def services_sub_2
@@ -45,12 +45,12 @@ class ServicesController < ApplicationController
     
     def services_sub_1_2
         @program_languages = ProgramLanguage.all
-        @real_estale = Article.get_real_estale
+        @b2b_trade_portal = Article.get_b2b_trade_portal
     end
     
     def services_sub_1_3
         @program_languages = ProgramLanguage.all
-        @e_commerce = Article.get_e_commerce
+        @b2c_e_commerce_site = Article.get_b2c_e_commerce_site
     end
     
     def services_sub_2_1

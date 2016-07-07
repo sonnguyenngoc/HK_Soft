@@ -186,10 +186,10 @@ class Article < ActiveRecord::Base
     return records
   end
   
-  # website_development
-  def self.get_website_development
+  # web_design_and_development
+  def self.get_web_design_and_development
     records = self.get_active_articles
-    records = records.joins(:code_status).where(code_statuses: { title: 'website_development' })
+    records = records.joins(:code_status).where(code_statuses: { title: 'web_design_and_development' })
     records.order("created_at DESC").first
     
     return records
@@ -204,10 +204,10 @@ class Article < ActiveRecord::Base
     return records
   end
   
-  # e_commerce
-  def self.get_e_commerce
+  # b2c_e_commerce_site
+  def self.get_b2c_e_commerce_site
     records = self.get_active_articles
-    records = records.joins(:code_status).where(code_statuses: { title: 'e_commerce' })
+    records = records.joins(:code_status).where(code_statuses: { title: 'b2c_e_commerce_site' })
     records.order("created_at DESC").first
     
     return records
@@ -267,10 +267,10 @@ class Article < ActiveRecord::Base
     return records
   end
   
-  # real_estale
-  def self.get_real_estale
+  # b2b_trade_portal
+  def self.get_b2b_trade_portal
     records = self.get_active_articles
-    records = records.joins(:code_status).where(code_statuses: { title: 'real_estale' })
+    records = records.joins(:code_status).where(code_statuses: { title: 'b2b_trade_portal' })
     records.order("created_at DESC").first
     
     return records

@@ -17,8 +17,8 @@
     <div class="page_title1 sty13">
         <div class="container">
 
-            <h1><%= t(:e_commerce) %></h1>
-            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_1_3_path %> <i>/</i> <%= t(:e_commerce) %></div>
+            <h1><%= t(:b2c_e_commerce_site) %></h1>
+            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_1_3_path %> <i>/</i> <%= t(:b2c_e_commerce_site) %></div>
 
         </div>
     </div>
@@ -34,18 +34,22 @@
             <div class="content_left">
 
                 <div class="blog_post">
-                    <% @e_commerce.each do |item| %>
+                    <% @b2c_e_commerce_site.each do |item| %>
                     <div class="blog_postcontent">
                         <div class="image_frame">
                             <%= image_tag item.image_url.hksoft_large_image %>
                         </div>
-                        <h3><%= t(:e_commerce) %></h3>
+                        <% if params[:locale] == "vi" %>
+                            <h3><%= item.title_vi %></h3>
+                        <% else %>
+                            <h3><%= item.title %></h3>
+                        <% end %>
                         <ul class="post_meta_links">
                             <li><a href="#created_at" class="date">
                             <% if params[:locale] == "en" %><%= item.created_at.strftime("%d %B %Y") %><% else %><%= item.created_at.strftime("%d/%m/%Y") %><% end %>
                             </a></li>
                             <li class="post_by"><i><%= t(:by) %>:</i> <a href="#global_naturesoft">Global Naturesoft</a></li>
-                            <li class="post_categoty"><i><%= t(:in) %>:</i> <a href="#e_commerce"><%= t(:e_commerce) %></a></li>
+                            <li class="post_categoty"><i><%= t(:in) %>:</i> <a href="#b2c_e_commerce_site"><%= t(:b2c_e_commerce_site) %></a></li>
                         </ul>
                         <div class="clearfix"></div>
                         <div class="margin_top1"></div>

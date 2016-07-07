@@ -17,8 +17,8 @@
     <div class="page_title1 sty13">
         <div class="container">
 
-            <h1><%= t(:real_estale) %></h1>
-            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_1_path %> <i>/</i> <%= t(:real_estale) %></div>
+            <h1><%= t(:b2b_trade_portal) %></h1>
+            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_1_path %> <i>/</i> <%= t(:b2b_trade_portal) %></div>
 
         </div>
     </div>
@@ -34,23 +34,27 @@
             <div class="content_left">
 
                 <div class="blog_post">
-                    <% @real_estale.each do |item| %>
+                    <% @b2b_trade_portal.each do |item| %>
                     <div class="blog_postcontent">
                         <div class="image_frame">
                             <%= image_tag item.image_url.hksoft_large_image %>
                         </div>
-                        <h3><%= t(:website_development) %></h3>
+                        <% if params[:locale] == "vi" %>
+                            <h3><%= item.title_vi %></h3>
+                        <% else %>
+                            <h3><%= item.title %></h3>
+                        <% end %>
                         <ul class="post_meta_links">
                             <li><a href="#created_at" class="date">
                             <% if params[:locale] == "en" %><%= item.created_at.strftime("%d %B %Y") %><% else %><%= item.created_at.strftime("%d/%m/%Y") %><% end %>
                             </a></li>
                             <li class="post_by"><i><%= t(:by) %>:</i> <a href="#global_naturesoft">Global Naturesoft</a></li>
-                            <li class="post_categoty"><i><%= t(:in) %>:</i> <a href="#real_estale"><%= t(:real_estale) %></a></li>
+                            <li class="post_categoty"><i><%= t(:in) %>:</i> <a href="#b2b_trade_portal"><%= t(:b2b_trade_portal) %></a></li>
                         </ul>
                         <div class="clearfix"></div>
                         <div class="margin_top1"></div>
-                        <% if params[:locale] == "en" %>
-                            <div class="text-justify"><%= item.content.html_safe %></div>
+                        <% if params[:locale] == "vi" %>
+                            <div class="text-justify"><%= item.content_vi.html_safe %></div>
                         <% else %>
                             <div class="text-justify"><%= item.content.html_safe %></div>
                         <% end %>
