@@ -34,6 +34,16 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 col-md-5">
+                                        <label>Địa Chỉ</label>
+                                        <%= f.text_field :address, class: "input-text full-width required" %>
+                                    </div>
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>ID/Passport *</label>
+                                        <%= f.text_field :passport, class: "input-text full-width required email" %>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
                                         <label>Số điện thoại *</label>
                                         <%= f.text_field :phone, class: "input-text full-width required" %>
                                     </div>
@@ -44,13 +54,13 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 col-md-5">
-                                        <label>Ngày nhận phòng</label>
+                                        <label>Ngày nhận phòng *</label>
                                         <div class="datepicker-wrap">
                                             <input type="text" name="booking_hotel[date_from]" id="booking_hotel_date_from" class="input-text full-width" placeholder="mm/dd/yy" />
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-md-5">
-                                        <label>Ngày giao phòng</label>
+                                        <label>Ngày giao phòng *</label>
                                         <div class="datepicker-wrap">
                                             <input type="text" name="booking_hotel[date_to]" id="booking_hotel_date_to" class="input-text full-width" placeholder="mm/dd/yy" />
                                         </div>
@@ -68,22 +78,28 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 col-md-5">
-                                        <label>Số phòng cần đặt</label>
+                                        <label>Số phòng cần đặt *</label>
                                         <%= f.text_field :room_number, class: "input-text full-width required" %>
                                     </div>
                                     <div class="col-sm-6 col-md-5">
-                                        <label>Loại phòng</label>
+                                        <label>Loại phòng *</label>
                                         <div class="selector">
                                             <select name="booking_hotel[hotel_room_id]" id="booking_hotel_hotel_room_id" class="full-width">
                                                 <% @hotel_booking.hotel_rooms.each do |item| %>
                                                     <% if params[:hotel_room_booking_id].present? %>
                                                         <option <% if params[:hotel_room_booking_id].to_i == item.id %>selected<% end %> value="<%= item.id %>"><%= item.room_type %></option>
                                                     <% else %>
-                                                        <option value="<%= item.id %>"><%= item.room_type %></option>
+                                                        <option value="<%= item.id %>"><%= item.room_type %> - <% if item.price == 0 %>Liên hệ<% else %><%= format_number(item.price) %> VND<% end %>/<%= item.people_number.to_i %> khách</option>
                                                     <% end %>
                                                 <% end %>
                                             </select>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-10">
+                                        <label>Lời Nhắn</label>
+                                        <%= f.text_area :message, rows: '8', class: "input-text full-width" %>
                                     </div>
                                 </div>
                             </div>
@@ -137,15 +153,8 @@
                         </dl>
                     </div>
                     
-                    <div class="travelo-box contact-box">
-                        <h4>Need Travelo Help?</h4>
-                        <p>We would be more than happy to help you. Our team advisor are 24/7 at your service to help you.</p>
-                        <address class="contact-details">
-                            <span class="contact-phone"><i class="soap-icon-phone"></i> 1-800-123-HELLO</span>
-                            <br>
-                            <a class="contact-email" href="#">help@travelo.com</a>
-                        </address>
-                    </div>
+                    <%= render "/home/need_help" %>
+                    
                 </div>
             </div>
         </div>

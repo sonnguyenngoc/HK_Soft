@@ -21,10 +21,7 @@ class BookHotelController < ApplicationController
   end
   
   def hotel_thankyou
-    if !params[:booking_hotel_id].present?
-      redirect_to root_path
-    end
     @page_name = Category.where(description: "services").first
-    @booking_hotel = BookingHotel.find(params[:booking_hotel_id])
+    
   end
 end

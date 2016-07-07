@@ -96,7 +96,7 @@
                                         </div>
                                         <div class="details">
                                             <span class="price">Giá: <% if @tour.new_price == 0 %>Liên hệ<% else %><%= format_number(@tour.new_price) %> VND<% end %></span>
-                                            <%= link_to "ĐẶT TOUR", tour_booking_path, class: "button green btn-small uppercase" %>
+                                            <%= link_to "ĐẶT TOUR", tour_booking_path(tour_booking_id: @tour), class: "button green btn-small uppercase" %>
                                         </div>
                                     </div>
                                     <div class="price-section clearfix">
@@ -106,7 +106,7 @@
                                         <dl class="term-description">
                                             <dt>Thời gian chuyến tour</dt><dd>2 ngày 3 đêm</dd>
                                             <dt>Phương tiện</i></dt><dd>Tàu, Máy bay</dd>
-                                            <dt>Khách sạn</i></dt><dd>Khách sạn 3 sao</dd>
+                                            <dt>Khách sạn</i></dt><dd><%= @tour.hotel %></dd>
                                         </dl>
                                     </div>
                                 </div>

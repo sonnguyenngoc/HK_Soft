@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'contact/index'
-
-  get 'service/index'
-
   devise_for :users
   
   scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
@@ -40,7 +36,7 @@ Rails.application.routes.draw do
     get "dich-vu/khach-san.html" => "book_hotel#index", as: :hotel_listing
     get "dich-vu/khach-san/chi-tiet-khach-san.html" => "book_hotel#book_hotel_detail", as: :book_hotel_detail
     get "dich-vu/khach-san/chi-tiet-khach-san/dat-phong.html" => "book_hotel#hotel_booking", as: :hotel_booking
-    get "dich-vu/khach-san/chi-tiet-khach-san/dat-phong/thanh-cong-:booking_hotel_id.html" => "book_hotel#hotel_thankyou", as: :hotel_thankyou
+    get "dich-vu/khach-san/chi-tiet-khach-san/dat-phong/dat-phong-thanh-cong.html" => "book_hotel#hotel_thankyou", as: :hotel_thankyou
     post "slideshow-popup.html" => "book_hotel#slideshow_popup", as: :slideshow_popup
   
     # Cẩm nang du lịch

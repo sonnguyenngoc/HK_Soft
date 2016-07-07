@@ -82,7 +82,7 @@
                             <% end %>
                             
                             <% if item.description == "services" %>
-                                <li class="menu-item-has-children megamenu-menu <%= "active" if params[:controller] == "services" %>">
+                                <li class="menu-item-has-children megamenu-menu <%= "active" if params[:controller] == "service" %>">
                                     <%= link_to item.name, service_path %>
                                     <div class="megamenu-wrapper container" data-items-per-column="4">
                                         <div class="megamenu-holder">
@@ -94,7 +94,7 @@
                                                                 <%= link_to child_1.name, car_hire_path %>
                                                                 <ul class="clearfix">
                                                                     <% child_1.children.order("created_at ASC").each do |child_2| %>
-                                                                        <li><%= link_to child_2.name, car_grid_view_path(car_category_id: child_1) %></li>
+                                                                        <li><%= link_to child_2.name, car_grid_view_path(car_category_id: child_2) %></li>
                                                                     <% end %>
                                                                 </ul>
                                                             <% end %>
