@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160705162104) do
+ActiveRecord::Schema.define(version: 20160707014014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -201,6 +201,8 @@ ActiveRecord::Schema.define(version: 20160705162104) do
     t.string   "representative"
     t.string   "issued_by"
     t.string   "hotline_2"
+    t.string   "email_2"
+    t.string   "email_3"
   end
 
   create_table "compares", force: :cascade do |t|
