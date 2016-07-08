@@ -63,6 +63,7 @@
                                 <th><%= t(:list_image) %></th>
                                 <th class="text-nowrap"><%= t(:name) %></th>
                                 <th><%= t(:price) %></th>
+                                <th>Thời gian/Số lượng</th>
                                 <th><%= t(:created_at) %></th>
                                 <th class="text-nowrap"><%= t(:actions) %></th>
                             </tr>
@@ -74,9 +75,15 @@
                                       <%= link_to image_tag(item.image_url.smaller_image), edit_admin_tour_path(item), title: item.name %>
                                     </td>
                                     <td>
-                                        <strong><%= raw truncate(strip_tags(item.name), length: 20) %></strong>
+                                        <strong><%= item.name %></strong>
                                     </td>
                                     <td><%= format_number(item.new_price) %></td>
+                                    <td>
+                                        <% item.tour_schedules.each do |tour_schedule| %>
+                                            <%= tour_schedule.from_date.strftime("%d/%m/%Y") %> - <%= tour_schedule.to_date.strftime("%d/%m/%Y") %>
+                                            <%= tour_schedule.remain_seats %><br/>
+                                        <% end %>
+                                    </td>
                                     <td>
                                         <%= item.created_at.strftime("%d/%m/%Y") %>
                                     </td>

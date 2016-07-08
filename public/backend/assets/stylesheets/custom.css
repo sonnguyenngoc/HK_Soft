@@ -59,6 +59,9 @@ label.error {
 #form_coupon .error {
     border-color: red;
 }
+#new_user .error {
+    border-color: red;
+}
 .category_taggable_list .fancytree-icon::after, .category_taggable_list .c-item {
     color: blue;
 }

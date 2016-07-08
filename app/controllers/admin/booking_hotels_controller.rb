@@ -4,7 +4,8 @@ class Admin::BookingHotelsController < ApplicationController
   # GET /booking_hotels
   # GET /booking_hotels.json
   def index
-    @booking_hotels = BookingHotel.all
+    authorize! :read, BookingHotel
+    @booking_hotels = BookingHotel.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /booking_hotels/1
@@ -14,16 +15,19 @@ class Admin::BookingHotelsController < ApplicationController
 
   # GET /booking_hotels/new
   def new
+    authorize! :create, BookingHotel
     @booking_hotel = BookingHotel.new
   end
 
   # GET /booking_hotels/1/edit
   def edit
+    authorize! :update, @booking_hotel
   end
 
   # POST /booking_hotels
   # POST /booking_hotels.json
   def create
+    authorize! :create, BookingHotel
     @booking_hotel = BookingHotel.new(booking_hotel_params)
 
     respond_to do |format|
@@ -40,6 +44,7 @@ class Admin::BookingHotelsController < ApplicationController
   # PATCH/PUT /booking_hotels/1
   # PATCH/PUT /booking_hotels/1.json
   def update
+    authorize! :update, @booking_hotel
     respond_to do |format|
       if @booking_hotel.update(booking_hotel_params)
         format.html { redirect_to @booking_hotel, notice: 'Booking hotel was successfully updated.' }
@@ -54,11 +59,11 @@ class Admin::BookingHotelsController < ApplicationController
   # DELETE /booking_hotels/1
   # DELETE /booking_hotels/1.json
   def destroy
+    authorize! :delete, @booking_hotel
     @booking_hotel.destroy
-    respond_to do |format|
-      format.html { redirect_to booking_hotels_url, notice: 'Booking hotel was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    
+    render nothing:true
+    flash[:notice] = 'Xóa thông tin đặt xe thành công.'
   end
 
   private

@@ -375,6 +375,12 @@ en:
   free_buffet_breakfast: "Ăn sáng buffet miễn phí"
   japanese: "Japanese"
   chinese: "Chinese"
+  tour: "Tour"
+  booking_car: "Booking Car"
+  booking_hotel: "Booking Hotel"
+  booking_plane: "Booking Plane"
+  booking_tour: "Booking Tour"
+  booking_visa: "Booking Visa"
   
   devise:
     sessions:

@@ -216,7 +216,7 @@ Rails.application.routes.draw do
         end
         resources :hotels, path: "danh-sach-khach-san"
         resources :cars, path: "danh-sach-xe"
-        resources :booking_hotels, path: "dat-ve-may-bay"
+        resources :booking_hotels, path: "dat-phong-khach-san"
         resources :booking_cars, path: "dat-xe-du-lich"
         resources :booking_tours, path: "dang-ky-tour"
         resources :booking_visas, path: "dang-ky-lam-visa"

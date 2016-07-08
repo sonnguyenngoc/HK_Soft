@@ -3,7 +3,6 @@ class BookingPlanesController < ApplicationController
   # POST /booking_planes.json
   def create
     @booking_plane = BookingPlane.new(booking_plane_params)
-
     respond_to do |format|
       if @booking_plane.save
         format.html { redirect_to plane_ticket_thankyou_path }

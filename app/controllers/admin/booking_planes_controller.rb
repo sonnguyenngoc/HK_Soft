@@ -4,7 +4,8 @@ class Admin::BookingPlanesController < ApplicationController
   # GET /booking_planes
   # GET /booking_planes.json
   def index
-    @booking_planes = BookingPlane.all
+    authorize! :read, BookingPlane
+    @booking_planes = BookingPlane.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /booking_planes/1
@@ -14,16 +15,19 @@ class Admin::BookingPlanesController < ApplicationController
 
   # GET /booking_planes/new
   def new
+    authorize! :create, BookingPlane
     @booking_plane = BookingPlane.new
   end
 
   # GET /booking_planes/1/edit
   def edit
+    authorize! :update, @booking_plane
   end
 
   # POST /booking_planes
   # POST /booking_planes.json
   def create
+    authorize! :create, BookingPlane
     @booking_plane = BookingPlane.new(booking_plane_params)
 
     respond_to do |format|
@@ -40,6 +44,7 @@ class Admin::BookingPlanesController < ApplicationController
   # PATCH/PUT /booking_planes/1
   # PATCH/PUT /booking_planes/1.json
   def update
+    authorize! :update, @booking_plane
     respond_to do |format|
       if @booking_plane.update(booking_plane_params)
         format.html { redirect_to @booking_plane, notice: 'Booking plane was successfully updated.' }
@@ -54,11 +59,11 @@ class Admin::BookingPlanesController < ApplicationController
   # DELETE /booking_planes/1
   # DELETE /booking_planes/1.json
   def destroy
+    authorize! :delete, @booking_plane
     @booking_plane.destroy
-    respond_to do |format|
-      format.html { redirect_to booking_planes_url, notice: 'Booking plane was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    
+    render nothing:true
+    flash[:notice] = 'Xóa thông tin đặt khách sạn thành công.'
   end
 
   private

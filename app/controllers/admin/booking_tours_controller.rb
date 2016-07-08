@@ -4,7 +4,8 @@ class Admin::BookingToursController < ApplicationController
   # GET /booking_tours
   # GET /booking_tours.json
   def index
-    @booking_tours = BookingTour.all
+    authorize! :read, BookingTour
+    @booking_tours = BookingTour.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /booking_tours/1
@@ -14,16 +15,19 @@ class Admin::BookingToursController < ApplicationController
 
   # GET /booking_tours/new
   def new
+    authorize! :create, BookingTour
     @booking_tour = BookingTour.new
   end
 
   # GET /booking_tours/1/edit
   def edit
+    authorize! :update, @booking_tour
   end
 
   # POST /booking_tours
   # POST /booking_tours.json
   def create
+    authorize! :create, BookingTour
     @booking_tour = BookingTour.new(booking_tour_params)
 
     respond_to do |format|
@@ -40,6 +44,7 @@ class Admin::BookingToursController < ApplicationController
   # PATCH/PUT /booking_tours/1
   # PATCH/PUT /booking_tours/1.json
   def update
+    authorize! :update, @booking_tour
     respond_to do |format|
       if @booking_tour.update(booking_tour_params)
         format.html { redirect_to @booking_tour, notice: 'Booking tour was successfully updated.' }
@@ -54,11 +59,11 @@ class Admin::BookingToursController < ApplicationController
   # DELETE /booking_tours/1
   # DELETE /booking_tours/1.json
   def destroy
-    @booking_tour.destroy
-    respond_to do |format|
-      format.html { redirect_to booking_tours_url, notice: 'Booking tour was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    authorize! :delete, @booking_tour
+    @booking_plane.destroy
+    
+    render nothing:true
+    flash[:notice] = 'Xóa thông tin đặt tour thành công.'
   end
 
   private

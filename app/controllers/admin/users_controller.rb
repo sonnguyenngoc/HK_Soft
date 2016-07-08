@@ -40,14 +40,11 @@ class Admin::UsersController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
-    # authorize
     authorize! :delete, @user
-    
     @user.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_users_url, notice: 'Xóa người dùng thành công.' }
-      format.json { head :no_content }
-    end
+    
+    render nothing:true
+    flash[:notice] = 'Xóa người dùng thành công.'
   end
   
   private
