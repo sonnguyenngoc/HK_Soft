@@ -365,6 +365,8 @@ vi:
   b2b_trade_portal: "Sàn Thương Mại Điện Tử B2B"
   education_and_school_system: "Hệ Thống Giáo Dục & Trường Học"
   real_estale_agent_monitor: "Quản Lý Giao Dịch Bất Động Sản"
+  projects_related: "Dự án liên quan"
+  more: "Xem thêm"
   
   our_services: "Các Dịch Vụ Của Chúng Tôi"
   resources: "Resources"
@@ -417,7 +419,7 @@ vi:
   recent_works: "DỰ ÁN GẦN ĐÂY"
   # end frontend global naturesoft translate
   company_info: "Thông tin công ty"
-  lastest_news: "Tin tức mới nhất"
+  lastest_news: "Tin mới"
   form: ""
   name: "Họ & tên"
   subject: "Tiêu đề"

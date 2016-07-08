@@ -172,3 +172,19 @@ ul.tabs {
 		top: 23px;
 	}
 }
+p.right {
+	float: right;
+	/*border: solid 1px #eee;*/
+    padding: 0px 10px;
+	text-decoration: underline;
+    /*background-color: #3183d7;*/
+}
+p.right > a {
+	color: #000;
+}
+p.right > a:hover {
+	color: #888;
+}
+p.right:hover {
+    /*background-color: #3183b0;*/
+}
