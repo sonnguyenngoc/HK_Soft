@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160707041013) do
+ActiveRecord::Schema.define(version: 20160708074454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 20160707041013) do
     t.string   "passport"
     t.text     "message"
     t.decimal  "price"
+    t.integer  "car_id"
   end
 
   create_table "booking_hotels", force: :cascade do |t|
@@ -116,6 +117,62 @@ ActiveRecord::Schema.define(version: 20160707041013) do
     t.integer  "hotel_id"
     t.string   "address"
     t.string   "passport"
+    t.text     "message"
+  end
+
+  create_table "booking_planes", force: :cascade do |t|
+    t.string   "full_name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "address"
+    t.integer  "adult",        default: 1
+    t.integer  "child",        default: 0
+    t.integer  "seat_number"
+    t.datetime "date_from"
+    t.datetime "date_to"
+    t.string   "ticket_type"
+    t.string   "address_from"
+    t.string   "address_to"
+    t.text     "message"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "passport"
+  end
+
+  create_table "booking_tours", force: :cascade do |t|
+    t.string   "full_name"
+    t.string   "address"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "passport"
+    t.integer  "tour_schedule_id"
+    t.integer  "adult",            default: 1
+    t.integer  "child",            default: 0
+    t.text     "message"
+    t.integer  "tour_id"
+    t.string   "tour_name"
+    t.string   "price"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.datetime "from_date"
+    t.datetime "to_date"
+    t.integer  "child_2",          default: 0
+    t.integer  "child_3",          default: 0
+  end
+
+  create_table "booking_visas", force: :cascade do |t|
+    t.string   "full_name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "address"
+    t.string   "passport"
+    t.string   "cmnd_number"
+    t.datetime "date_of_issue"
+    t.string   "place_of_issue"
+    t.string   "country_to"
+    t.string   "visa_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.text     "message"
   end
 
@@ -289,6 +346,7 @@ ActiveRecord::Schema.define(version: 20160707041013) do
     t.integer  "hotel_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.text     "description"
   end
 
   create_table "hotels", force: :cascade do |t|
@@ -301,8 +359,9 @@ ActiveRecord::Schema.define(version: 20160707041013) do
     t.decimal  "avg_price"
     t.string   "services"
     t.text     "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "description"
   end
 
   create_table "line_item_compares", force: :cascade do |t|

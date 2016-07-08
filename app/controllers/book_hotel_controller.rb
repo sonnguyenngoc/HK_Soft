@@ -3,7 +3,7 @@ class BookHotelController < ApplicationController
   
   def index
     @page_name = Category.where(description: "services").first
-    @hotels = Hotel.get_all_hotels
+    @hotels = Hotel.get_all_hotels.paginate(page: params[:page], per_page: 9)
   end
 
   def book_hotel_detail

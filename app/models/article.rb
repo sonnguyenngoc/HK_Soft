@@ -15,7 +15,7 @@ class Article < ActiveRecord::Base
   has_and_belongs_to_many :areas
   
   def url_friendly
-    self.title.downcase.unaccent.to_s.gsub(/[^0-9a-z]/i, '-').strip
+    self.title.unaccent.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip
   end
   
   def self.get_active_articles
@@ -23,6 +23,59 @@ class Article < ActiveRecord::Base
   end
   
   def self.get_lastest_travel_news
+  end
+  
+  def self.get_about_us_blog
+    records = self.get_active_articles
+    records = records.joins(:article_categories).where("article_categories.description = 'about_us'").first
+    
+    return records
+  end
+  
+  # Info system
+  def self.get_info_system_1
+    records = self.get_active_articles
+    records = records.joins(:article_categories).where("article_categories.description = 'info_system_1'").first
+    
+    return records
+  end
+  def self.get_info_system_2
+    records = self.get_active_articles
+    records = records.joins(:article_categories).where("article_categories.description = 'info_system_2'").first
+    
+    return records
+  end
+  def self.get_info_system_3
+    records = self.get_active_articles
+    records = records.joins(:article_categories).where("article_categories.description = 'info_system_3'").first
+    
+    return records
+  end
+  def self.get_info_system_4
+    records = self.get_active_articles
+    records = records.joins(:article_categories).where("article_categories.description = 'info_system_4'").first
+    
+    return records
+  end
+  def self.get_info_system_5
+    records = self.get_active_articles
+    records = records.joins(:article_categories).where("article_categories.description = 'info_system_5'").first
+    
+    return records
+  end
+  
+  def self.get_plane_ticket_blogs
+    records = self.get_active_articles
+    records = records.joins(:article_categories).where("article_categories.description = 'plane_ticket'")
+    
+    return records
+  end
+  
+  def self.get_visa_card_blogs
+    records = self.get_active_articles
+    records = records.joins(:article_categories).where("article_categories.description = 'visa_card'")
+    
+    return records
   end
   
   def self.get_lastest_blog_posts

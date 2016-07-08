@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
     validates :email, uniqueness: true
-    validates :email, :first_name, :last_name, presence: true
+    validates :email, presence: true
     
     belongs_to :area, foreign_key: "province"
     has_many :wish_lists, dependent: :destroy

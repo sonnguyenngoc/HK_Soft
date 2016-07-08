@@ -21,7 +21,9 @@
                     <div class="page">
                         <span style="display: none;" class="entry-title page-title"><%= @page_name.name %></span>
                         <span style="display: none;" class="vcard"><span class="fn"><a rel="author" title="Đăng Bởi Du Lịch Khám Phá Mới" href="#">Du Lịch Khám Phá Mới</a></span></span>
-                        <span style="display:none;" class="updated"><%= @blogs.first.created_at.strftime("%d/%m/%Y %H:%M") %></span>
+                        <% if @blogs.count > 0 %>
+                            <span style="display:none;" class="updated"><%= @blogs.first.created_at.strftime("%d/%m/%Y %H:%M") %></span>
+                        <% end %>
                         <div class="post-content">
                             <div class="blog-infinite">
                                 <% @blogs.each do |item| %>
@@ -43,25 +45,13 @@
                                                     <div class="entry-author fn">
                                                         <i class="icon soap-icon-user"></i> Đăng bởi: <%= link_to "Du Lịch Khám Phá Mới", about_us_path, class: "author" %>
                                                     </div>
-                                                    <div class="entry-action">
-                                                        <span class="entry-tags"><i class="soap-icon-features"></i><span><%= link_to @page_name.name, "#" %>, <%= link_to "Du lịch khám phá mới", about_us_path %></span></span>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 <% end %>
                             </div>
-                            <ul class="pagination clearfix">
-                                <li class="prev disabled"><a href="#">Trang trước</a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">6</a></li>
-                                <li class="next"><a href="#">Trang sau</a></li>
-                            </ul>
+                            <%= will_paginate @blogs, previous_label: 'TRANG TRƯỚC', next_label: 'TRANG SAU', renderer: BootstrapPagination::Rails %>
                         </div>
                     </div>
                 </div>

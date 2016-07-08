@@ -12,14 +12,73 @@ class UserGroup < ActiveRecord::Base
     def self.permission_classes
         [
             {
-                class_name: "Product",
-                display_name: I18n.t(:product),
+                class_name: "Tour",
+                display_name: I18n.t(:tour),
                 actions: [
                             {name: "read", values: ["yes","no"], multiple: false},
                             {name: "create", values: ["yes","no"], multiple: false},
-                            {name: "update", values: ["yes","no","own","not_own","approved","not_approved"], multiple: true},
-                            {name: "delete", values: ["yes","no","own","not_own","approved","not_approved"], multiple: true},
-                            {name: "approve", values: ["yes","no","own","not_own"], multiple: true},
+                            {name: "update", values: ["yes","no"], multiple: false},
+                            {name: "delete", values: ["yes","no"], multiple: false},
+                        ]
+            },
+            {
+                class_name: "Hotel",
+                display_name: I18n.t(:hotel),
+                actions: [
+                            {name: "read", values: ["yes","no"], multiple: false},
+                            {name: "create", values: ["yes","no"], multiple: false},
+                            {name: "update", values: ["yes","no"], multiple: false},
+                            {name: "delete", values: ["yes","no"], multiple: false},
+                        ]
+            },
+            {
+                class_name: "Car",
+                display_name: I18n.t(:car),
+                actions: [
+                            {name: "read", values: ["yes","no"], multiple: false},
+                            {name: "create", values: ["yes","no"], multiple: false},
+                            {name: "update", values: ["yes","no"], multiple: false},
+                            {name: "delete", values: ["yes","no"], multiple: false},
+                        ]
+            },
+            {
+                class_name: "BookingCar",
+                display_name: I18n.t(:tour),
+                actions: [
+                            {name: "read", values: ["yes","no"], multiple: false},
+                            {name: "delete", values: ["yes","no"], multiple: false},
+                        ]
+            },
+            {
+                class_name: "BookingHotel",
+                display_name: I18n.t(:booking_hotel),
+                actions: [
+                            {name: "read", values: ["yes","no"], multiple: false},
+                            {name: "delete", values: ["yes","no"], multiple: false},
+                        ]
+            },
+            {
+                class_name: "BookingPlane",
+                display_name: I18n.t(:booking_plane),
+                actions: [
+                            {name: "read", values: ["yes","no"], multiple: false},
+                            {name: "delete", values: ["yes","no"], multiple: false},
+                        ]
+            },
+            {
+                class_name: "BookingTour",
+                display_name: I18n.t(:booking_tour),
+                actions: [
+                            {name: "read", values: ["yes","no"], multiple: false},
+                            {name: "delete", values: ["yes","no"], multiple: false},
+                        ]
+            },
+            {
+                class_name: "BookingVisa",
+                display_name: I18n.t(:booking_visa),
+                actions: [
+                            {name: "read", values: ["yes","no"], multiple: false},
+                            {name: "delete", values: ["yes","no"], multiple: false},
                         ]
             },
             {
@@ -74,107 +133,6 @@ class UserGroup < ActiveRecord::Base
                         ]
             },
             {
-                class_name: "CodeStatus",
-                display_name: I18n.t(:code_status),
-                actions: [
-                            {name: "read", values: ["yes","no"], multiple: false},
-                            {name: "create", values: ["yes","no"], multiple: false},
-                            {name: "update", values: ["yes","no"], multiple: false},
-                            {name: "delete", values: ["yes","no"], multiple: false},
-                        ]
-            },
-            {
-                class_name: "Slideshow",
-                display_name: I18n.t(:slideshow),
-                actions: [
-                            {name: "read", values: ["yes","no"], multiple: false},
-                            {name: "create", values: ["yes","no"], multiple: false},
-                            {name: "update", values: ["yes","no"], multiple: false},
-                            {name: "delete", values: ["yes","no"], multiple: false},
-                        ]
-            },
-            {
-                class_name: "Order",
-                display_name: I18n.t(:order),
-                actions: [
-                            {name: "read", values: ["yes","no"], multiple: false},
-                            {name: "update", values: ["yes","no"], multiple: false},
-                            {name: "delete", values: ["yes","no"], multiple: false},
-                        ]
-            },
-            {
-                class_name: "DeliveryMethod",
-                display_name: I18n.t(:delivery_method),
-                actions: [
-                            {name: "read", values: ["yes","no"], multiple: false},
-                            {name: "create", values: ["yes","no"], multiple: false},
-                            {name: "update", values: ["yes","no"], multiple: false},
-                            {name: "delete", values: ["yes","no"], multiple: false},
-                        ]
-            },
-            {
-                class_name: "PaymentMethod",
-                display_name: I18n.t(:payment_method),
-                actions: [
-                            {name: "read", values: ["yes","no"], multiple: false},
-                            {name: "create", values: ["yes","no"], multiple: false},
-                            {name: "update", values: ["yes","no"], multiple: false},
-                            {name: "delete", values: ["yes","no"], multiple: false},
-                        ]
-            },
-            {
-                class_name: "Comment",
-                display_name: I18n.t(:comment),
-                actions: [
-                            {name: "read", values: ["yes","no"], multiple: false},
-                            {name: "delete", values: ["yes","no","own","not_own"], multiple: false},
-                        ]
-            },
-            {
-                class_name: "Question",
-                display_name: I18n.t(:question),
-                actions: [
-                            {name: "read", values: ["yes","no"], multiple: false},
-                            {name: "delete", values: ["yes","no"], multiple: false},
-                        ]
-            },
-            {
-                class_name: "Testimonial",
-                display_name: I18n.t(:testimonial),
-                actions: [
-                            {name: "read", values: ["yes","no"], multiple: false},
-                            {name: "delete", values: ["yes","no",], multiple: false},
-                        ]
-            },
-            {
-                class_name: "CommentArticle",
-                display_name: I18n.t(:comment_article),
-                actions: [
-                            {name: "read", values: ["yes","no"], multiple: false},
-                            {name: "delete", values: ["yes","no"], multiple: false},
-                        ]
-            },
-            {
-                class_name: "Voucher",
-                display_name: I18n.t(:voucher),
-                actions: [
-                            {name: "read", values: ["yes","no"], multiple: false},
-                            {name: "create", values: ["yes","no"], multiple: false},
-                            {name: "update", values: ["yes","no"], multiple: false},
-                            {name: "delete", values: ["yes","no"], multiple: false},
-                        ]
-            },
-            {
-                class_name: "Coupon",
-                display_name: I18n.t(:coupon),
-                actions: [
-                            {name: "read", values: ["yes","no"], multiple: false},
-                            {name: "create", values: ["yes","no"], multiple: false},
-                            {name: "update", values: ["yes","no"], multiple: false},
-                            {name: "delete", values: ["yes","no"], multiple: false},
-                        ]
-            },
-            {
                 class_name: "Customer",
                 display_name: I18n.t(:customer),
                 actions: [
@@ -187,14 +145,6 @@ class UserGroup < ActiveRecord::Base
             {
                 class_name: "Contact",
                 display_name: I18n.t(:contact),
-                actions: [
-                            {name: "read", values: ["yes","no"], multiple: false},
-                            {name: "delete", values: ["yes","no"], multiple: false},
-                        ]
-            },
-            {
-                class_name: "Newsletter",
-                display_name: I18n.t(:newsletter),
                 actions: [
                             {name: "read", values: ["yes","no"], multiple: false},
                             {name: "delete", values: ["yes","no"], multiple: false},
@@ -230,16 +180,6 @@ class UserGroup < ActiveRecord::Base
                             {name: "delete", values: ["yes","no"], multiple: false},
                         ]
             },
-            {
-                class_name: "Option",
-                display_name: I18n.t(:system_setting),
-                actions: [
-                            {name: "read", values: ["yes","no"], multiple: false},
-                            {name: "create", values: ["yes","no"], multiple: false},
-                            {name: "update", values: ["yes","no"], multiple: false},
-                            {name: "delete", values: ["yes","no"], multiple: false},
-                        ]
-            }
         ]
     end
 end

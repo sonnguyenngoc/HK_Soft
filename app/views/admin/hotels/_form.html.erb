@@ -75,6 +75,13 @@
                 </div>
                     
                 <div class="form-group">
+                    <label class="col-lg-3 control-label" >Mô tả ngắn</label>
+                    <div class="col-lg-9">
+                        <%= f.text_area :description, rows: "5", cols: "5", class: "form-control" %>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
                     <label class="col-lg-3 control-label" >Tiện nghi & Dịch vụ</label>
                     <div class="col-lg-9">
                         <% Hotel.service_listing.each do |item| %>
@@ -144,12 +151,18 @@
                     </div>
                     <div class="form-group">
                         <label class="col-lg-2 control-label" >Số lượng người/phòng:</label>
-                        <div class="col-lg-3">
+                        <div class="col-lg-4">
                             <%= ff.text_field :people_number, class: "form-control" %>
                         </div>
-                        <label class="col-lg-1 control-label" >Số giường:</label>
-                        <div class="col-lg-3">
+                        <label class="col-lg-2 control-label" >Số giường:</label>
+                        <div class="col-lg-4">
                             <%= ff.text_field :bed_number, class: "form-control" %>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" >Mô tả ngắn</label>
+                        <div class="col-lg-7">
+                            <%= ff.text_area :description, rows: "5", cols: "5", class: "form-control" %>
                         </div>
                         <div class="col-lg-3 padding-bottom">
                             <%= ff.check_box :_destroy %>

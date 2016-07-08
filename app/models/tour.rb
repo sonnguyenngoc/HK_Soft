@@ -6,6 +6,14 @@ class Tour < ActiveRecord::Base
     accepts_nested_attributes_for :tour_schedules, :reject_if => lambda { |a| a[:from_date].blank? }, :allow_destroy => true
     accepts_nested_attributes_for :tour_images, :reject_if => lambda { |a| a[:image_url].blank? && a[:id].blank? }, :allow_destroy => true
     
+    def self.get_discount_tours
+        self.where("tours.is_sale = true").order("created_at DESC")
+    end
+    
+    def url_friendly
+        self.name.unaccent.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip
+    end
+    
     def get_transportations
         arr = []
         transportation.to_s.split(",").each do |st|
@@ -44,6 +52,14 @@ class Tour < ActiveRecord::Base
     
     def self.get_foreign_tour
         self.where(type_name: "Tour Nước Ngoài").order("created_at DESC")
+    end
+    
+    def self.get_lastest_domestic_tour
+        self.where(type_name: "Tour Trong Nước").order("created_at DESC").first(8)
+    end
+    
+    def self.get_lastest_foreign_tour
+        self.where(type_name: "Tour Nước Ngoài").order("created_at DESC").first(8)
     end
     
     def self.get_tour_packages(params)

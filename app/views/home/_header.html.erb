@@ -6,7 +6,7 @@
             
             <ul class="quick-menu pull-right">
                 
-                <li><a href="#" class="button yellow btn-small" style="height: 30px; font-size: 1em;"><i class="soap-icon-beach"></i> BẢNG GIÁ TOUR</a></li>
+                <li><a href="<%= tour_pricing_path %>" class="button yellow btn-small" style="height: 30px; font-size: 1em;"><i class="soap-icon-beach"></i> BẢNG GIÁ TOUR</a></li>
                 
                 <li class="ribbon">
                     
@@ -69,7 +69,7 @@
                                                             <% end %>
                                                             <ul class="clearfix">
                                                                 <% child_1.children.order("created_at ASC").each do |child_2| %>
-                                                                    <li><%= link_to child_2.name, tour_packages_path(tour_packages_id: child_2) %></li>
+                                                                    <li><%= link_to child_2.name, tour_packages_path(tour_packages_id: child_2, name: child_2.url_friendly) %></li>
                                                                 <% end %>
                                                             </ul>
                                                         </li>
@@ -82,7 +82,7 @@
                             <% end %>
                             
                             <% if item.description == "services" %>
-                                <li class="menu-item-has-children megamenu-menu <%= "active" if params[:controller] == "service" %>">
+                                <li class="menu-item-has-children megamenu-menu <%= "active" if params[:controller] == "service" || params[:controller] == "book_hotel" || params[:controller] == "car_hire" %>">
                                     <%= link_to item.name, service_path %>
                                     <div class="megamenu-wrapper container" data-items-per-column="4">
                                         <div class="megamenu-holder">
@@ -94,7 +94,7 @@
                                                                 <%= link_to child_1.name, car_hire_path %>
                                                                 <ul class="clearfix">
                                                                     <% child_1.children.order("created_at ASC").each do |child_2| %>
-                                                                        <li><%= link_to child_2.name, car_grid_view_path(car_category_id: child_2) %></li>
+                                                                        <li><%= link_to child_2.name, car_grid_view_path(car_category_id: child_2, car_category_name: child_2.url_friendly) %></li>
                                                                     <% end %>
                                                                 </ul>
                                                             <% end %>
@@ -107,18 +107,18 @@
                                                                 </ul>
                                                             <% end %>
                                                             <% if child_1.description == "plane_ticket" %>
-                                                                <%= link_to child_1.name, "#" %>
+                                                                <%= link_to child_1.name, plane_ticket_path %>
                                                                 <ul class="clearfix">
                                                                     <% child_1.children.order("created_at ASC").each do |child_2| %>
-                                                                        <li><%= link_to child_2.name, "#" %></li>
+                                                                        <li><%= link_to child_2.name, plane_ticket_path %></li>
                                                                     <% end %>
                                                                 </ul>
                                                             <% end %>
                                                             <% if child_1.description == "visa_card" %>
-                                                                <%= link_to child_1.name, "#" %>
+                                                                <%= link_to child_1.name, visa_card_path %>
                                                                 <ul class="clearfix">
                                                                     <% child_1.children.order("created_at ASC").each do |child_2| %>
-                                                                        <li><%= link_to child_2.name, "#" %></li>
+                                                                        <li><%= link_to child_2.name, visa_card_path %></li>
                                                                     <% end %>
                                                                 </ul>
                                                             <% end %>
@@ -137,7 +137,7 @@
                                         <%= link_to events.name, event_path %>
                                         <ul>
                                             <% events.children.each do |child_1| %>
-                                                <li><%= link_to child_1.name, event_listing_path(event_id: child_1) %></li>
+                                                <li><%= link_to child_1.name, event_listing_path(event_id: child_1, name: child_1.url_friendly) %></li>
                                             <% end %>
                                         </ul>
                                     <% end %>
@@ -153,10 +153,10 @@
                                                 <% ArticleCategory.get_menu_tour_handbooks.each do |tour_handbook| %>
                                                     <% tour_handbook.children.order("created_at ASC").each do |child_1| %>
                                                         <li class="menu-item-has-children">
-                                                            <%= link_to child_1.name, tour_handbook_sub_1_path(tour_handbook_sub_1: child_1) %>
+                                                            <%= link_to child_1.name, tour_handbook_sub_1_path(tour_handbook_sub_1: child_1, name: child_1.url_friendly) %>
                                                             <ul class="clearfix">
                                                                 <% child_1.children.order("created_at ASC").each do |child_2| %>
-                                                                    <li><%= link_to child_2.name, tour_handbook_sub_2_path(tour_handbook_sub_2: child_2) %></li>
+                                                                    <li><%= link_to child_2.name, tour_handbook_sub_2_path(tour_handbook_sub_2: child_2, parent_name: child_1.url_friendly, name: child_2.url_friendly) %></li>
                                                                 <% end %>
                                                             </ul>
                                                         </li>

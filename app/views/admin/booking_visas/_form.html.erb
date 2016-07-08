@@ -1,0 +1,57 @@
+<%= form_for(@booking_visa) do |f| %>
+  <% if @booking_visa.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@booking_visa.errors.count, "error") %> prohibited this booking_visa from being saved:</h2>
+
+      <ul>
+      <% @booking_visa.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :full_name %><br>
+    <%= f.text_field :full_name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :passport %><br>
+    <%= f.text_field :passport %>
+  </div>
+  <div class="field">
+    <%= f.label :cmnd_number %><br>
+    <%= f.text_field :cmnd_number %>
+  </div>
+  <div class="field">
+    <%= f.label :date_of_issue %><br>
+    <%= f.datetime_select :date_of_issue %>
+  </div>
+  <div class="field">
+    <%= f.label :place_of_issue %><br>
+    <%= f.text_field :place_of_issue %>
+  </div>
+  <div class="field">
+    <%= f.label :country_to %><br>
+    <%= f.text_field :country_to %>
+  </div>
+  <div class="field">
+    <%= f.label :visa_type %><br>
+    <%= f.text_field :visa_type %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

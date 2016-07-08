@@ -4,9 +4,16 @@ class Car < ActiveRecord::Base
     belongs_to :manufacturer
     belongs_to :article_category
     
+    def url_friendly
+        self.name.unaccent.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip
+    end
     
     def self.get_all_cars
-        self.all.order("created_at DESC")
+        self.order("created_at DESC")
+    end
+    
+    def self.get_lastest_cars
+        self.order("created_at DESC").first(8)
     end
     
     def self.get_car_categories(params)

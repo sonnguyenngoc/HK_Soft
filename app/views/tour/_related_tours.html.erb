@@ -3,41 +3,14 @@
     <div class="image-box style14">
         <% Tour.get_related_tours(@tour.article_category_id).each do |item| %>
             <article class="box">
-                <figure><%= link_to image_tag(item.image_url.smaller_image, height: "59", width: "63"), tour_detail_path(tour_id: item) %></figure>
+                <figure><%= link_to image_tag(item.image_url.smaller_image, height: "59", width: "63"), tour_detail_path(tour_id: item, tour_name: item.url_friendly) %></figure>
                 <div class="details">
-                    <h5 class="box-title"><%= link_to item.name, tour_detail_path(tour_id: item) %></h5>
+                    <h5 class="box-title"><%= link_to item.name, tour_detail_path(tour_id: item, tour_name: item.url_friendly) %></h5>
                     <label class="price-wrapper"><span class="price-per-unit"><% if @tour.new_price == 0 %>Liên hệ<% else %><%= format_number(@tour.new_price) %> VND<% end %></span></label>
                 </div>
             </article>
         <% end %>
     </div>
 </div>
-<div class="travelo-box book-with-us-box">
-    <h4>Why Book with us?</h4>
-    <ul>
-        <li>
-            <i class="soap-icon-hotel-1 circle"></i>
-            <h5 class="title"><a href="#">135,00+ Hotels</a></h5>
-            <p>Nunc cursus libero pur congue arut nimspnty.</p>
-        </li>
-        <li>
-            <i class="soap-icon-savings circle"></i>
-            <h5 class="title"><a href="#">Low Rates &amp; Savings</a></h5>
-            <p>Nunc cursus libero pur congue arut nimspnty.</p>
-        </li>
-        <li>
-            <i class="soap-icon-support circle"></i>
-            <h5 class="title"><a href="#">Excellent Support</a></h5>
-            <p>Nunc cursus libero pur congue arut nimspnty.</p>
-        </li>
-    </ul>
-</div>
-<div class="travelo-box contact-box">
-    <h4 class="box-title">Need Travelo Help?</h4>
-    <p>We would be more than happy to help you. Our team advisor are 24/7 at your service to help you.</p>
-    <address class="contact-details">
-        <span class="contact-phone"><i class="soap-icon-phone"></i> 1-800-123-HELLO</span>
-        <br />
-        <a href="#" class="contact-email">help@travelo.com</a>
-    </address>
-</div>
+<%= render "/tour_handbook/right_sidebar" %>
+<%= render "/home/need_help" %>

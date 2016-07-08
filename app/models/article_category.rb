@@ -12,6 +12,10 @@ class ArticleCategory < ActiveRecord::Base
     self.save
   end
   
+  def url_friendly
+    self.name.unaccent.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip
+  end
+  
   # New discovery
   def self.get_menu_events
     self.all.where(description: "event").order("created_at ASC")

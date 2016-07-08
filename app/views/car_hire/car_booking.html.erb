@@ -21,7 +21,8 @@
             <div class="row">
                 <div id="main" class="col-sms-6 col-sm-8 col-md-9">
                     <div class="booking-section travelo-box">
-                        <%= form_for @car_checkout, html: {class: "booking-form"} do |f| %>
+                        <%= form_for @car_checkout, html: {class: "booking-form", id: "booking_car"} do |f| %>
+                            <%= f.hidden_field :car_id, value: @car_booking.id %>
                             <div class="person-information">
                                 <h2>Thông Tin Khách Hàng</h2>
                                 <div class="form-group row">
@@ -36,8 +37,8 @@
                                         <%= f.text_field :address, class: "input-text full-width required" %>
                                     </div>
                                     <div class="col-sm-6 col-md-5">
-                                        <label>ID/Passport *</label>
-                                        <%= f.text_field :passport, class: "input-text full-width required email" %>
+                                        <label>ID/Passport</label>
+                                        <%= f.text_field :passport, class: "input-text full-width" %>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -64,13 +65,13 @@
                                     <div class="col-sm-6 col-md-5">
                                         <label>Ngày đi *</label>
                                         <div class="datepicker-wrap">
-                                            <input type="text" name="booking_car[date_from]" id="booking_car_date_from" class="input-text full-width" placeholder="mm/dd/yy" />
+                                            <input type="text" name="booking_car[date_from]" id="booking_car_date_from" class="input-text full-width required" placeholder="mm/dd/yy" />
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-md-5">
                                         <label>Ngày về *</label>
                                         <div class="datepicker-wrap">
-                                            <input type="text" name="booking_car[date_to]" id="booking_car_date_to" class="input-text full-width" placeholder="mm/dd/yy" />
+                                            <input type="text" name="booking_car[date_to]" id="booking_car_date_to" class="input-text full-width required" placeholder="mm/dd/yy" />
                                         </div>
                                     </div>
                                 </div>
@@ -94,7 +95,7 @@
                         <h4>Thông Tin Thuê Xe</h4>
                         <article class="car-detail">
                             <figure class="clearfix">
-                                <a title="" href="car-detailed.html" class="middle-block"><img class="middle-item" alt="" src="/frontend/images/cars/thumbnail/4.png"></a>
+                                <a title="" href="<%= car_detail_path(car_id: @car_booking, name: @car_booking.url_friendly) %>" class="middle-block"><img class="middle-item" alt="" src="/frontend/images/cars/thumbnail/4.png"></a>
                                 <div class="travel-title">
                                     <h5 class="box-title"><%= @car_booking.name %><small><%= @car_booking.manufacturer.name %></small></h5>
                                     <%= link_to "Chọn gói thuê khác", car_hire_path, class: "button" %>
@@ -108,15 +109,7 @@
                         </dl>
                     </div>
                     
-                    <div class="travelo-box contact-box">
-                        <h4>Need Travelo Help?</h4>
-                        <p>We would be more than happy to help you. Our team advisor are 24/7 at your service to help you.</p>
-                        <address class="contact-details">
-                            <span class="contact-phone"><i class="soap-icon-phone"></i> 1-800-123-HELLO</span>
-                            <br>
-                            <a class="contact-email" href="#">help@travelo.com</a>
-                        </address>
-                    </div>
+                    <%= render "/home/need_help" %>
                 </div>
             </div>
         </div>
@@ -128,3 +121,9 @@
 
 <!-- Javascript -->
 <%= render "/home/js_files" %>
+
+<script>
+    jQuery(document).ready(function($){
+        $("#booking_car").validate();
+    });
+</script>

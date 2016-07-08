@@ -22,7 +22,7 @@
             <div class="row">
                 <div id="main" class="col-sms-6 col-sm-8 col-md-9">
                     <div class="booking-section travelo-box">
-                        <%= form_for @hotel_checkout, html: {class: "booking-form"} do |f| %>
+                        <%= form_for @hotel_checkout, html: {class: "booking-form", id: "booking_hotel"} do |f| %>
                             <%= f.hidden_field :hotel_id, value: @hotel_booking.id %>
                             <div class="person-information">
                                 <h2>Thông tin đặt phòng</h2>
@@ -34,12 +34,12 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 col-md-5">
-                                        <label>Địa Chỉ</label>
+                                        <label>Địa Chỉ *</label>
                                         <%= f.text_field :address, class: "input-text full-width required" %>
                                     </div>
                                     <div class="col-sm-6 col-md-5">
-                                        <label>ID/Passport *</label>
-                                        <%= f.text_field :passport, class: "input-text full-width required email" %>
+                                        <label>ID/Passport</label>
+                                        <%= f.text_field :passport, class: "input-text full-width" %>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -56,13 +56,13 @@
                                     <div class="col-sm-6 col-md-5">
                                         <label>Ngày nhận phòng *</label>
                                         <div class="datepicker-wrap">
-                                            <input type="text" name="booking_hotel[date_from]" id="booking_hotel_date_from" class="input-text full-width" placeholder="mm/dd/yy" />
+                                            <input type="text" name="booking_hotel[date_from]" id="booking_hotel_date_from" class="input-text full-width required" placeholder="mm/dd/yy" />
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-md-5">
                                         <label>Ngày giao phòng *</label>
                                         <div class="datepicker-wrap">
-                                            <input type="text" name="booking_hotel[date_to]" id="booking_hotel_date_to" class="input-text full-width" placeholder="mm/dd/yy" />
+                                            <input type="text" name="booking_hotel[date_to]" id="booking_hotel_date_to" class="input-text full-width required" placeholder="mm/dd/yy" />
                                         </div>
                                     </div>
                                 </div>
@@ -84,7 +84,7 @@
                                     <div class="col-sm-6 col-md-5">
                                         <label>Loại phòng *</label>
                                         <div class="selector">
-                                            <select name="booking_hotel[hotel_room_id]" id="booking_hotel_hotel_room_id" class="full-width">
+                                            <select name="booking_hotel[hotel_room_id]" id="booking_hotel_hotel_room_id" class="full-width required">
                                                 <% @hotel_booking.hotel_rooms.each do |item| %>
                                                     <% if params[:hotel_room_booking_id].present? %>
                                                         <option <% if params[:hotel_room_booking_id].to_i == item.id %>selected<% end %> value="<%= item.id %>"><%= item.room_type %></option>
@@ -167,3 +167,9 @@
 
 <!-- Javascript -->
 <%= render "/home/js_files" %>
+
+<script>
+    jQuery(document).ready(function($){
+        $("#booking_hotel").validate();
+    });
+</script>

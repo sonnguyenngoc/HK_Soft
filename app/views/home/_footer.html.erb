@@ -5,12 +5,12 @@
                 <div class="col-sm-6 col-md-4">
                     <h2>TRỢ GIÚP</h2>
                     <ul class="discover triangle hover row">
-                        <li class="active col-xs-12"><a href="#">Giới thiệu</a></li>
-                        <li class="col-xs-12"><a href="#">Chính sách thanh toán</a></li>
-                        <li class="col-xs-12"><a href="#">Chính sách đổi trả voucher & hoàn tiền</a></li>
-                        <li class="col-xs-12"><a href="#">Chính sách bảo mật thông tin khách hàng</a></li>
-                        <li class="col-xs-12"><a href="#">Chính sách giải quyết tranh chấp, khiếu nại</a></li>
-                        <li class="col-xs-12"><a href="#">Điều khoản mua bán hàng hóa</a></li>
+                        <li class="<%= "active" if (params[:controller] == "about_us" && params[:action] == "index") %> col-xs-12"><%= link_to "Giới thiệu", about_us_path %></li>
+                        <li class="<%= "active" if (params[:controller] == "about_us" && params[:action] == "info_system_1") %> col-xs-12"><%= link_to "Chính sách thanh toán", info_system_1_path %></li>
+                        <li class="<%= "active" if (params[:controller] == "about_us" && params[:action] == "info_system_2") %> col-xs-12"><%= link_to "Chính sách đổi trả voucher & hoàn tiền", info_system_2_path %></li>
+                        <li class="<%= "active" if (params[:controller] == "about_us" && params[:action] == "info_system_3") %> col-xs-12"><%= link_to "Chính sách bảo mật thông tin khách hàng", info_system_3_path %></li>
+                        <li class="<%= "active" if (params[:controller] == "about_us" && params[:action] == "info_system_4") %> col-xs-12"><%= link_to "Chính sách giải quyết tranh chấp, khiếu nại", info_system_4_path %></li>
+                        <li class="<%= "active" if (params[:controller] == "about_us" && params[:action] == "info_system_5") %> col-xs-12"><%= link_to "Điều khoản mua bán hàng hóa", info_system_5_path %></li>
                     </ul>
                 </div>
                 <div class="col-sm-6 col-md-4">
@@ -73,7 +73,6 @@
                     <a class="button btn-small yellow popup-map" href="#" data-box="10.761742, 106.665154">Xem bản đồ chi nhánh</a><br /><br />
                     <% end %>
                     <ul class="social-icons clearfix">
-                        
                         <li class="facebook"><a title="facebook" href="#" data-toggle="tooltip"><i class="soap-icon-facebook"></i></a></li>
                         <li class="googleplus"><a title="googleplus" href="#" data-toggle="tooltip"><i class="soap-icon-googleplus"></i></a></li>
                         <li class="youtube"><a title="youtube" href="#" data-toggle="tooltip"><i class="soap-icon-youtube"></i></a></li>

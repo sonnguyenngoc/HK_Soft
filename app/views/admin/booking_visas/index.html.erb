@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Booking Visas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Full name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>Passport</th>
+      <th>Cmnd number</th>
+      <th>Date of issue</th>
+      <th>Place of issue</th>
+      <th>Country to</th>
+      <th>Visa type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @booking_visas.each do |booking_visa| %>
+      <tr>
+        <td><%= booking_visa.full_name %></td>
+        <td><%= booking_visa.email %></td>
+        <td><%= booking_visa.phone %></td>
+        <td><%= booking_visa.address %></td>
+        <td><%= booking_visa.passport %></td>
+        <td><%= booking_visa.cmnd_number %></td>
+        <td><%= booking_visa.date_of_issue %></td>
+        <td><%= booking_visa.place_of_issue %></td>
+        <td><%= booking_visa.country_to %></td>
+        <td><%= booking_visa.visa_type %></td>
+        <td><%= link_to 'Show', booking_visa %></td>
+        <td><%= link_to 'Edit', edit_booking_visa_path(booking_visa) %></td>
+        <td><%= link_to 'Destroy', booking_visa, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Booking visa', new_booking_visa_path %>

@@ -96,7 +96,7 @@
                                         </div>
                                         <div class="details">
                                             <span class="price">Giá: <% if @tour.new_price == 0 %>Liên hệ<% else %><%= format_number(@tour.new_price) %> VND<% end %></span>
-                                            <%= link_to "ĐẶT TOUR", tour_booking_path(tour_booking_id: @tour), class: "button green btn-small uppercase" %>
+                                            <%= link_to "ĐẶT TOUR", tour_booking_path(tour_booking_id: @tour, tour_name: @tour.url_friendly), class: "button green btn-small uppercase" %>
                                         </div>
                                     </div>
                                     <div class="price-section clearfix">
@@ -118,6 +118,11 @@
                         <h2>Lịch Trình Tour</h2>
                         <div class="post-content text-justify">
                             <%= @tour.content.html_safe %>
+                        </div>
+                        <div class="post-meta">
+                            <div class="entry-author fn">
+                                <i class="icon soap-icon-user"></i> Đăng bởi: <%= link_to "Du Lịch Khám Phá Mới", about_us_path %>
+                            </div>
                         </div>
                     </div>
                 </div>

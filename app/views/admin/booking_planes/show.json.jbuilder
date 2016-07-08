@@ -1,0 +1,1 @@
+json.extract! @booking_plane, :id, :full_name, :email, :phone, :address, :adult, :child, :seat_number, :date_from, :date_to, :ticket_type, :address_from, :address_to, :message, :created_at, :updated_at

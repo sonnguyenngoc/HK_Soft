@@ -23,6 +23,27 @@
                 </ul>
             </li>
             
+            <li>
+                <a href="#"><i class="icon-stack2"></i> <span>Quản lý đăng ký</span></a>
+                <ul>
+                    <li class="<%= "active" if ["admin/booking_tours"].include?(params[:controller]) %>">
+                        <%= link_to "Danh sách loại xe", admin_booking_tours_path %>
+                    </li>
+                    <li class="<%= "active" if ["admin/booking_cars"].include?(params[:controller]) %>">
+                        <%= link_to "Danh sách đặt xe", admin_booking_cars_path %>
+                    </li>
+                    <li class="<%= "active" if ["admin/booking_hotels"].include?(params[:controller]) %>">
+                        <%= link_to "Danh sách đặt khách sạn", admin_booking_hotels_path %>
+                    </li>
+                    <li class="<%= "active" if ["admin/booking_planes"].include?(params[:controller]) %>">
+                        <%= link_to "Danh sách đặt vé máy bay", admin_booking_planes_path %>
+                    </li>
+                    <li class="<%= "active" if ["admin/booking_visas"].include?(params[:controller]) %>">
+                        <%= link_to "Danh sách làm thẻ visa", admin_booking_visas_path %>
+                    </li>
+                </ul>
+            </li>
+            
             <% if can?(:read, Article) or can?(:read, Slideshow) or can?(:read, ArticleCategory) or can?(:read, CodeStatus) %>
                 <li>
                     <a href="#"><i class="glyphicon glyphicon-pencil"></i> <span><%= t(:article) %></span></a>
