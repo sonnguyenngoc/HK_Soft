@@ -172,6 +172,10 @@ ul.tabs {
 		top: 23px;
 	}
 }
+span.right {
+	float: right;
+	margin-left: 2px;
+}
 p.right {
 	float: right;
 	/*border: solid 1px #eee;*/

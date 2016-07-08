@@ -28,14 +28,14 @@
                             
                             <li class="dropdown"> <%= link_to t(:services), services_sub_1_path, class: "dropdown-toggle #{("active" if params[:controller] == "services").to_s}" %>
                                 <ul class="dropdown-menu multilevel" role="menu">                                    
-                                    <li class="dropdown-submenu mul"><%= link_to "#{t(:web_design_and_development)} +", services_sub_1_path %>
+                                    <li class="dropdown-submenu mul"><a href="<%= url_for (services_sub_1_path) %>"><%= t(:web_design_and_development) %> <span class="right"><i class="fa fa-caret-right"></i></span></a>
                                         <ul class="dropdown-menu" role="menu">
                                             <li><%= link_to t(:content_management_system), services_sub_1_1_path %></li>
                                             <li><%= link_to t(:b2c_e_commerce_site), services_sub_1_3_path %></li>
                                             <li><%= link_to t(:b2b_trade_portal), services_sub_1_2_path %></li>
                                         </ul>
                                     </li>                                    
-                                    <li class="dropdown-submenu mul"><%= link_to "#{t(:web_based_software_development)} +", services_sub_2_path %>
+                                    <li class="dropdown-submenu mul"><a href="<%= url_for (services_sub_2_path) %>"><%= t(:web_based_software_development) %> <span class="right"><i class="fa fa-caret-right"></i></span></a>
                                         <ul class="dropdown-menu" role="menu">
                                             <li><%= link_to t(:erp_system), services_sub_2_1_path %></li>
                                             <li><%= link_to t(:education_and_school_system), services_sub_2_2_path %></li>
