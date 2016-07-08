@@ -12,19 +12,13 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group has-feedback">
-                                <%= f.email_field :email, class: "form-control", placeholder: "Email" %>
-                                <div class="form-control-feedback">
-                                    <i class="icon-mention text-muted"></i>
-                                </div>
+                                <%= f.email_field :email, class: "form-control required", placeholder: "Email" %>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group has-feedback">
                                 <%= f.text_field :phone, class: "form-control required", placeholder: "Số điện thoại" %>
-                                <div class="form-control-feedback">
-                                    <i class="icon-mention text-muted"></i>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -32,19 +26,13 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group has-feedback">
-                                <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Mật khẩu" %>
-                                <div class="form-control-feedback">
-                                    <i class="icon-user-lock text-muted"></i>
-                                </div>
+                                <%= f.password_field :password, autocomplete: "off", class: "form-control required", placeholder: "Mật khẩu" %>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group has-feedback">
-                                <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Xác nhận mật khẩu" %>
-                                <div class="form-control-feedback">
-                                    <i class="icon-user-lock text-muted"></i>
-                                </div>
+                                <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control required", placeholder: "Xác nhận mật khẩu" %>
                             </div>
                         </div>
                     </div>

@@ -376,6 +376,12 @@ vi:
   free_buffet_breakfast: "Ăn sáng buffet miễn phí"
   japanese: "Japanese"
   chinese: "Chinese"
+  tour: "Tour du lịch"
+  booking_car: "Đặt xe"
+  booking_hotel: "Đặt khách sạn"
+  booking_plane: "Đặt vé máy bay"
+  booking_tour: "Đặt tour"
+  booking_visa: "Đặt làm visa"
   
   activerecord:
     attributes:

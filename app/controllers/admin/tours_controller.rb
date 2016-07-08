@@ -4,6 +4,7 @@ class Admin::ToursController < ApplicationController
   # GET /tours
   # GET /tours.json
   def index
+    authorize! :read, Tour
     @tours = Tour.paginate(:page => params[:page], :per_page => 10)
   end
 
@@ -14,6 +15,7 @@ class Admin::ToursController < ApplicationController
 
   # GET /tours/new
   def new
+    authorize! :create, Tour
     @tour = Tour.new
     30.times do
       @tour.tour_schedules.build
@@ -25,6 +27,7 @@ class Admin::ToursController < ApplicationController
 
   # GET /tours/1/edit
   def edit
+    authorize! :update, @tour
     (30-@tour.tour_schedules.count).times do
       @tour.tour_schedules.build
     end
@@ -36,6 +39,7 @@ class Admin::ToursController < ApplicationController
   # POST /tours
   # POST /tours.json
   def create
+    authorize! :create, Tour
     @tour = Tour.new(tour_params)
     
     # create transportation
@@ -60,6 +64,7 @@ class Admin::ToursController < ApplicationController
   # PATCH/PUT /tours/1
   # PATCH/PUT /tours/1.json
   def update
+    authorize! :update, @tour
     # create transportation
     @tour.transportation = nil if params[:tour][:transportation].present?
     @tour.transportation = params[:tour][:transportation].join(",") if params[:tour][:transportation].present?
@@ -82,6 +87,7 @@ class Admin::ToursController < ApplicationController
   # DELETE /tours/1
   # DELETE /tours/1.json
   def destroy
+    authorize! :delete, @tour
     @tour.destroy
     
     render nothing:true

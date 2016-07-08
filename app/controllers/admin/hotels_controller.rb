@@ -4,6 +4,7 @@ class Admin::HotelsController < ApplicationController
   # GET /hotels
   # GET /hotels.json
   def index
+    authorize! :read, Hotel
     @hotels = Hotel.paginate(:page => params[:page], :per_page => 10)
   end
 
@@ -14,6 +15,7 @@ class Admin::HotelsController < ApplicationController
 
   # GET /hotels/new
   def new
+    authorize! :create, Hotel
     @hotel = Hotel.new
     30.times do
       @hotel.hotel_images.build
@@ -25,6 +27,7 @@ class Admin::HotelsController < ApplicationController
 
   # GET /hotels/1/edit
   def edit
+    authorize! :update, @hotel
     (30-@hotel.hotel_images.count).times do
       @hotel.hotel_images.build
     end
@@ -36,6 +39,7 @@ class Admin::HotelsController < ApplicationController
   # POST /hotels
   # POST /hotels.json
   def create
+    authorize! :create, Hotel
     @hotel = Hotel.new(hotel_params)
     # create services
     @hotel.services = nil if params[:hotel][:services].present?
@@ -55,6 +59,7 @@ class Admin::HotelsController < ApplicationController
   # PATCH/PUT /hotels/1
   # PATCH/PUT /hotels/1.json
   def update
+    authorize! :update, @hotel
     # create services
     @hotel.services = nil if params[:hotel][:services].present?
     @hotel.services = params[:hotel][:services].join(",") if params[:hotel][:services].present?
@@ -73,6 +78,7 @@ class Admin::HotelsController < ApplicationController
   # DELETE /tours/1
   # DELETE /tours/1.json
   def destroy
+    authorize! :delete, @hotel
     @hotel.destroy
     
     render nothing:true

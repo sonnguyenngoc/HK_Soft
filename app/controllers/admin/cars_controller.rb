@@ -4,6 +4,7 @@ class Admin::CarsController < ApplicationController
   # GET /cars
   # GET /cars.json
   def index
+    authorize! :read, Car
     @cars = Car.all.paginate(:page => params[:page], :per_page => 10)
   end
 
@@ -14,16 +15,19 @@ class Admin::CarsController < ApplicationController
 
   # GET /cars/new
   def new
+    authorize! :create, Car
     @car = Car.new
   end
 
   # GET /cars/1/edit
   def edit
+    authorize! :update, @car
   end
 
   # POST /cars
   # POST /cars.json
   def create
+    authorize! :create, Car
     @car = Car.new(car_params)
 
     respond_to do |format|
@@ -40,6 +44,7 @@ class Admin::CarsController < ApplicationController
   # PATCH/PUT /cars/1
   # PATCH/PUT /cars/1.json
   def update
+    authorize! :update, @car
     respond_to do |format|
       if @car.update(car_params)
         format.html { redirect_to edit_admin_car_path(@car.id), notice: 'Chỉnh sửa thông tin xe thành công.' }
@@ -54,6 +59,7 @@ class Admin::CarsController < ApplicationController
    # DELETE /articles/1
   # DELETE /articles/1.json
   def destroy
+    authorize! :detele, @car
     @car.destroy
     
     render nothing:true

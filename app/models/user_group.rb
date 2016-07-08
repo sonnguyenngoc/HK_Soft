@@ -43,7 +43,7 @@ class UserGroup < ActiveRecord::Base
             },
             {
                 class_name: "BookingCar",
-                display_name: I18n.t(:tour),
+                display_name: I18n.t(:booking_car),
                 actions: [
                             {name: "read", values: ["yes","no"], multiple: false},
                             {name: "delete", values: ["yes","no"], multiple: false},
@@ -102,16 +102,6 @@ class UserGroup < ActiveRecord::Base
                         ]
             },
             {
-                class_name: "Area",
-                display_name: I18n.t(:area),
-                actions: [
-                            {name: "read", values: ["yes","no"], multiple: false},
-                            {name: "create", values: ["yes","no"], multiple: false},
-                            {name: "update", values: ["yes","no"], multiple: false},
-                            {name: "delete", values: ["yes","no"], multiple: false},
-                        ]
-            },
-            {
                 class_name: "ArticleCategory",
                 display_name: I18n.t(:article_category),
                 actions: [
@@ -130,16 +120,6 @@ class UserGroup < ActiveRecord::Base
                             {name: "update", values: ["yes","no","own","not_own", "not_approved"], multiple: true},
                             {name: "delete", values: ["yes","no","own","not_own", "not_approved"], multiple: true},
                             {name: "approve", values: ["yes","no","own","not_own"], multiple: true},
-                        ]
-            },
-            {
-                class_name: "Customer",
-                display_name: I18n.t(:customer),
-                actions: [
-                            {name: "read", values: ["yes","no"], multiple: false},
-                            {name: "create", values: ["yes","no"], multiple: false},
-                            {name: "update", values: ["yes","no"], multiple: false},
-                            {name: "delete", values: ["yes","no"], multiple: false},
                         ]
             },
             {

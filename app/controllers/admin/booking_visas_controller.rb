@@ -4,7 +4,8 @@ class Admin::BookingVisasController < ApplicationController
   # GET /booking_visas
   # GET /booking_visas.json
   def index
-    @booking_visas = BookingVisa.all
+    authorize! :read, BookingVisa
+    @booking_visas = BookingVisa.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /booking_visas/1
@@ -14,16 +15,19 @@ class Admin::BookingVisasController < ApplicationController
 
   # GET /booking_visas/new
   def new
+    authorize! :create, BookingVisa
     @booking_visa = BookingVisa.new
   end
 
   # GET /booking_visas/1/edit
   def edit
+    authorize! :update, @booking_visa
   end
 
   # POST /booking_visas
   # POST /booking_visas.json
   def create
+    authorize! :create, BookingVisa
     @booking_visa = BookingVisa.new(booking_visa_params)
 
     respond_to do |format|
@@ -40,6 +44,7 @@ class Admin::BookingVisasController < ApplicationController
   # PATCH/PUT /booking_visas/1
   # PATCH/PUT /booking_visas/1.json
   def update
+    authorize! :update, @booking_visa
     respond_to do |format|
       if @booking_visa.update(booking_visa_params)
         format.html { redirect_to @booking_visa, notice: 'Booking visa was successfully updated.' }
@@ -54,11 +59,11 @@ class Admin::BookingVisasController < ApplicationController
   # DELETE /booking_visas/1
   # DELETE /booking_visas/1.json
   def destroy
+    authorize! :detele, @booking_visa
     @booking_visa.destroy
-    respond_to do |format|
-      format.html { redirect_to booking_visas_url, notice: 'Booking visa was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    
+    render nothing:true
+    flash[:notice] = 'Xóa thông tin đặt visa thành công.'
   end
 
   private
