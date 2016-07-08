@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Full name:</strong>
+  <%= @booking_visa.full_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @booking_visa.email %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @booking_visa.phone %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @booking_visa.address %>
+</p>
+
+<p>
+  <strong>Passport:</strong>
+  <%= @booking_visa.passport %>
+</p>
+
+<p>
+  <strong>Cmnd number:</strong>
+  <%= @booking_visa.cmnd_number %>
+</p>
+
+<p>
+  <strong>Date of issue:</strong>
+  <%= @booking_visa.date_of_issue %>
+</p>
+
+<p>
+  <strong>Place of issue:</strong>
+  <%= @booking_visa.place_of_issue %>
+</p>
+
+<p>
+  <strong>Country to:</strong>
+  <%= @booking_visa.country_to %>
+</p>
+
+<p>
+  <strong>Visa type:</strong>
+  <%= @booking_visa.visa_type %>
+</p>
+
+<%= link_to 'Edit', edit_booking_visa_path(@booking_visa) %> |
+<%= link_to 'Back', booking_visas_path %>

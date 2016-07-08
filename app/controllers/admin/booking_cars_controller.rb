@@ -1,4 +1,4 @@
-class BookingCarsController < ApplicationController
+class Admin::BookingCarsController < ApplicationController
   before_action :set_booking_car, only: [:show, :edit, :update, :destroy]
 
   # GET /booking_cars

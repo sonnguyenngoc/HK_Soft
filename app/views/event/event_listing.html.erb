@@ -22,7 +22,9 @@
                     <div class="page">
                         <span style="display: none;" class="entry-title page-title"><%= @article_category.name %></span>
                         <span style="display: none;" class="vcard"><span class="fn"><a rel="author" title="Posts by admin" href="#">admin</a></span></span>
-                        <span style="display:none;" class="updated">2014-06-20T13:35:34+00:00</span>
+                        <% if @blogs.count > 0 %>
+                            <span style="display:none;" class="updated"><%= @blogs.first.created_at.strftime("%d/%m/%Y %H:%M") %></span>
+                        <% end %>
                         <div class="post-content">
                             <div class="blog-infinite">
                                 
@@ -30,26 +32,20 @@
                                     <div class="post">
                                         <div class="post-content-wrapper">
                                             <figure class="image-container">
-                                                <%= link_to image_tag("/frontend/images/blog/post/image/1.png", alt: "Cẩm Nang Du Lịch - An Giang"), event_detail_path, class: "hover-effect" %>
+                                                <%= link_to image_tag("/frontend/images/blog/post/image/1.png", alt: "Cẩm Nang Du Lịch - An Giang"), event_detail_path(event_detail_id: item, name: item.url_friendly, article_category_id: item.article_categories.first, parent_name: item.article_categories.first.url_friendly), class: "hover-effect" %>
                                             </figure>
                                             <div class="details">
-                                                <h2 class="entry-title"><%= link_to "Khó cưỡng trước những ngôi làng đẹp mê hồn", event_detail_path %></h2>
-                                                <div class="excerpt-container">
-                                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's stand dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a neque a tortor tempor in porta sem vulputate. Donec varius felis fermentum nis type specimen book. It has survived not only five centuries.</p>
+                                                <h2 class="entry-title"><%= link_to "Khó cưỡng trước những ngôi làng đẹp mê hồn", event_detail_path(event_detail_id: item, name: item.url_friendly, article_category_id: item.article_categories.first, parent_name: item.article_categories.first.url_friendly) %></h2>
+                                                <div class="excerpt-container text-justify">
+                                                    <%= truncate(strip_tags(item.content.html_safe), length: 400) %>
                                                 </div>
                                                 <div class="post-meta">
                                                     <div class="entry-date">
-                                                        <label class="date">29</label>
-                                                        <label class="month">Aug</label>
+                                                        <label class="date"><%= item.created_at.strftime("%d") %></label>
+                                                        <label class="month"><%= item.created_at.strftime("%m") %></label>
                                                     </div>
                                                     <div class="entry-author fn">
-                                                        <i class="icon soap-icon-user"></i> Posted By:
-                                                        <a href="#" class="author">Jessica Browen</a>
-                                                    </div>
-                                                    <div class="entry-action">
-                                                        <a href="#" class="button entry-comment btn-small"><i class="soap-icon-comment"></i><span>30 Comments</span></a>
-                                                        <a href="#" class="button btn-small"><i class="soap-icon-wishlist"></i><span>22 Likes</span></a>
-                                                        <span class="entry-tags"><i class="soap-icon-features"></i><span><a href="#">Adventure</a>, <a href="#">Romance</a></span></span>
+                                                        <i class="icon soap-icon-user"></i> Đăng bởi: <%= link_to "Du Lịch Khám Phá Mới", about_us_path, class: "author" %>
                                                     </div>
                                                 </div>
                                             </div>
@@ -57,12 +53,12 @@
                                     </div>
                                 <% end %>
                             </div>
-                            <a href="#" class="button btn-large full-width">LOAD MORE POSTS</a>
+                            <%= will_paginate @blogs, previous_label: 'TRANG TRƯỚC', next_label: 'TRANG SAU', renderer: BootstrapPagination::Rails %>
                         </div>
                     </div>
                 </div>
                 <div class="sidebar col-sm-4 col-md-3">
-                    <%= render "/event/right_sidebar" %>
+                    <%= render "/tour_handbook/right_sidebar" %>
                 </div>
             </div>
         </div>

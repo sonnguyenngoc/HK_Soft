@@ -58,3 +58,19 @@ label.error {
     border: 1px solid red;
     border-radius: 2px;
 }
+#booking_plane_validate input.error, #booking_plane_validate textarea.error {
+    border: 1px solid red;
+    border-radius: 2px;
+}
+#booking_visa_validate input.error, #booking_visa_validate textarea.error {
+    border: 1px solid red;
+    border-radius: 2px;
+}
+#booking_car input.error, #booking_car textarea.error {
+    border: 1px solid red;
+    border-radius: 2px;
+}
+#booking_hotel input.error, #booking_hotel textarea.error {
+    border: 1px solid red;
+    border-radius: 2px;
+}

@@ -41,11 +41,10 @@
                 <div class="table-wrapper full-width">
                     <div class="table-cell">
                         <div class="box">
-                            <img src="/frontend/images/tour/home/logo.png" alt="">
+                            <img src="/frontend/images/logo_new_discovery_tour.png" alt="">
                         </div>
                         <div class="heading box">
                             <h1 class="title">DU LỊCH TRONG NƯỚC</h1>
-                            <h3 class="sub-title">Get 20% discount on single tour package</h3>
                         </div>
                         <div class="search-box">
                             <form>
@@ -111,7 +110,7 @@
                             <div class="col-sm-6 col-md-4 col-lg-3">
                                 <article class="box">
                                     <figure>
-                                        <%= link_to image_tag("/frontend/images/tour/simple-packages/4-col/3.jpg"), tour_detail_path(tour_id: item), class: "hover-effect" %>
+                                        <%= link_to image_tag("/frontend/images/tour/simple-packages/4-col/3.jpg"), tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "hover-effect" %>
                                     </figure>
                                     <div class="details">
                                         <h4 class="box-title text-justify"><%= item.name %></h4>
@@ -133,22 +132,13 @@
                                                 <span>Tour sớm nhất: <br/><% if item.tour_schedules.count > 0 %><%= item.get_lastest_tour_from_date %> - <%= item.get_lastest_tour_to_date %><% else %>Chưa có lịch cho tour<% end %></span>
                                             </div>
                                         </div>
-                                        <%= link_to "XEM TOUR", tour_detail_path(tour_id: item), class: "button btn-small full-width" %>
+                                        <%= link_to "XEM TOUR", tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "button btn-small full-width" %>
                                     </div>
                                 </article>
                             </div>
                         <% end %>
                     </div>
-                    <ul class="pagination clearfix">
-                        <li class="prev disabled"><a href="#">Trang trước</a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">6</a></li>
-                        <li class="next"><a href="#">Trang sau</a></li>
-                    </ul>
+                    <%= will_paginate @tours, previous_label: 'TRANG TRƯỚC', next_label: 'TRANG SAU', renderer: BootstrapPagination::Rails %>
                 </div>
             </div>
         </div>

@@ -46,7 +46,7 @@
                                     <i class="soap-icon-plane-right takeoff-effect"></i>
                                 </div>
                                 <div class="details">
-                                    <h4 class="m-title"><%= link_to "Dịch Vụ Đặt Vé Máy Bay", "#" %></h4>
+                                    <h4 class="m-title"><%= link_to "Dịch Vụ Đặt Vé Máy Bay", plane_ticket_path %></h4>
                                 </div>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                                     <i class="soap-icon-card"></i>
                                 </div>
                                 <div class="details">
-                                    <h4 class="m-title"><%= link_to "Dịch Vụ Làm Thẻ Visa", "#" %></h4>
+                                    <h4 class="m-title"><%= link_to "Dịch Vụ Làm Thẻ Visa", visa_card_path %></h4>
                                 </div>
                             </div>
                         </div>
@@ -67,48 +67,48 @@
                     <div class="col-md-6">
                         <article class="box">
                             <figure>
-                                <a href="#" title=""><img src="/frontend/images/offers01.jpg" alt="" width="272" height="192" /></a>
+                                <a href="<%= car_hire_path %>" title=""><img src="/frontend/images/booking_car.jpg" alt="" width="272" height="192" /></a>
                             </figure>
                             <div class="details">
-                                <h4>Hire Cars</h4>
+                                <h4>Dịch Vụ Thuê Xe Du Lịch</h4>
                                 <p>Nunc cursus libero purus ac congue ar lorem cursus ut sed vitae pulvinar massa idend porta nequetiam elerisque mi id.</p>
-                                <a href="#" title="" class="button btn-mini">SEE ALL</a>
+                                <a href="<%= car_hire_path %>" title="" class="button btn-mini">XEM</a>
                             </div>
                         </article>
                     </div>
                     <div class="col-md-6">
                         <article class="box">
                             <figure>
-                                <a href="#" title=""><img src="/frontend/images/offers02.jpg" alt="" width="272" height="192" /></a>
+                                <a href="<%= hotel_listing_path %>" title=""><img src="/frontend/images/booking_room.jpg" alt="" width="272" height="192" /></a>
                             </figure>
                             <div class="details">
-                                <h4>Cruise Deals</h4>
+                                <h4>Dịch Vụ Đặt Phòng Khách Sạn</h4>
                                 <p>Nunc cursus libero purus ac congue ar lorem cursus ut sed vitae pulvinar massa idend porta nequetiam elerisque mi id.</p>
-                                <a href="#" title="" class="button btn-mini">SEE ALL</a>
+                                <a href="<%= hotel_listing_path %>" title="" class="button btn-mini">XEM</a>
                             </div>
                         </article>
                     </div>
                     <div class="col-md-6">
                         <article class="box">
                             <figure>
-                                <a href="#" title=""><img src="/frontend/images/offers03.jpg" alt="" width="272" height="192" /></a>
+                                <a href="<%= plane_ticket_path %>" title=""><img src="/frontend/images/booking_plane.jpg" alt="" width="272" height="192" /></a>
                             </figure>
                             <div class="details">
-                                <h4>Things To Do</h4>
+                                <h4>Dịch Vụ Đặt Vé Máy Bay</h4>
                                 <p>Nunc cursus libero purus ac congue ar lorem cursus ut sed vitae pulvinar massa idend porta nequetiam elerisque mi id.</p>
-                                <a href="#" title="" class="button btn-mini">SEE ALL</a>
+                                <a href="<%= plane_ticket_path %>" title="" class="button btn-mini">XEM</a>
                             </div>
                         </article>
                     </div>
                     <div class="col-md-6">
                         <article class="box">
                             <figure>
-                                <a href="#" title=""><img src="/frontend/images/offers04.jpg" alt="" width="272" height="192" /></a>
+                                <a href="<%= visa_card_path %>" title=""><img src="/frontend/images/booking_visa.jpg" alt="" width="272" height="192" /></a>
                             </figure>
                             <div class="details">
-                                <h4>Fly in Comfort</h4>
+                                <h4>Dịch Vụ Làm Thẻ Visa</h4>
                                 <p>Nunc cursus libero purus ac congue ar lorem cursus ut sed vitae pulvinar massa idend porta nequetiam elerisque mi id.</p>
-                                <a href="#" title="" class="button btn-mini">SEE ALL</a>
+                                <a href="<%= visa_card_path %>" title="" class="button btn-mini">XEM</a>
                             </div>
                         </article>
                     </div>

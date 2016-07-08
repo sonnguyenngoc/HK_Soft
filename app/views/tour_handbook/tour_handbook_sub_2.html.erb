@@ -32,10 +32,10 @@
                                     <div class="post">
                                         <div class="post-content-wrapper">
                                             <figure class="image-container">
-                                                <%= link_to image_tag("/frontend/images/blog/post/image/1.png", alt: "Cẩm Nang Du Lịch - An Giang"), tour_handbook_detail_path(tour_handbook_detail_id: item), class: "hover-effect" %>
+                                                <%= link_to image_tag("/frontend/images/blog/post/image/1.png", alt: "Cẩm Nang Du Lịch - An Giang"), tour_handbook_detail_path(tour_handbook_detail_id: item, name: item.url_friendly), class: "hover-effect" %>
                                             </figure>
                                             <div class="details">
-                                                <h2 class="entry-title"><%= link_to item.title, tour_handbook_detail_path(tour_handbook_detail_id: item) %></h2>
+                                                <h2 class="entry-title"><%= link_to item.title, tour_handbook_detail_path(tour_handbook_detail_id: item, name: item.url_friendly) %></h2>
                                                 <div class="excerpt-container text-justify">
                                                     <%= truncate(strip_tags(item.content.html_safe), length: 400) %>
                                                 </div>
@@ -47,25 +47,13 @@
                                                     <div class="entry-author fn">
                                                         <i class="icon soap-icon-user"></i> Đăng bởi: <%= link_to "Du Lịch Khám Phá Mới", about_us_path, class: "author" %>
                                                     </div>
-                                                    <div class="entry-action">
-                                                        <span class="entry-tags"><i class="soap-icon-features"></i><span><%= link_to @article_category.name, "#" %>, <%= link_to @page_name.name, "#" %>, <%= link_to "Du lịch khám phá mới", about_us_path %></span></span>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 <% end %>
                             </div>
-                            <ul class="pagination clearfix">
-                                <li class="prev disabled"><a href="#">Trang trước</a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li><a href="#">6</a></li>
-                                <li class="next"><a href="#">Trang sau</a></li>
-                            </ul>
+                            <%= will_paginate @blogs, previous_label: 'TRANG TRƯỚC', next_label: 'TRANG SAU', renderer: BootstrapPagination::Rails %>
                         </div>
                     </div>
                 </div>

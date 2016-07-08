@@ -6,6 +6,10 @@ class Hotel < ActiveRecord::Base
     accepts_nested_attributes_for :hotel_images, :reject_if => lambda { |a| a[:image_url].blank? && a[:id].blank? }, :allow_destroy => true
     accepts_nested_attributes_for :hotel_rooms, :reject_if => lambda { |a| a[:image_url].blank? && a[:id].blank? }, :allow_destroy => true
     
+    def url_friendly
+        self.name.unaccent.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip
+    end
+    
     def get_services
         arr = []
         services.to_s.split(",").each do |st|

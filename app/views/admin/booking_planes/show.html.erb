@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Full name:</strong>
+  <%= @booking_plane.full_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @booking_plane.email %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @booking_plane.phone %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @booking_plane.address %>
+</p>
+
+<p>
+  <strong>Adult:</strong>
+  <%= @booking_plane.adult %>
+</p>
+
+<p>
+  <strong>Child:</strong>
+  <%= @booking_plane.child %>
+</p>
+
+<p>
+  <strong>Seat number:</strong>
+  <%= @booking_plane.seat_number %>
+</p>
+
+<p>
+  <strong>Date from:</strong>
+  <%= @booking_plane.date_from %>
+</p>
+
+<p>
+  <strong>Date to:</strong>
+  <%= @booking_plane.date_to %>
+</p>
+
+<p>
+  <strong>Ticket type:</strong>
+  <%= @booking_plane.ticket_type %>
+</p>
+
+<p>
+  <strong>Address from:</strong>
+  <%= @booking_plane.address_from %>
+</p>
+
+<p>
+  <strong>Address to:</strong>
+  <%= @booking_plane.address_to %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @booking_plane.message %>
+</p>
+
+<%= link_to 'Edit', edit_booking_plane_path(@booking_plane) %> |
+<%= link_to 'Back', booking_planes_path %>

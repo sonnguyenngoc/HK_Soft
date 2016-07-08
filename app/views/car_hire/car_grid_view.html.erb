@@ -62,12 +62,12 @@
                                     <div class="col-sms-6 col-sm-6 col-md-4">
                                         <article class="box">
                                             <figure>
-                                                <%= link_to image_tag("/frontend/images/cars/7.png"), car_detail_path(car_id: item) %>
+                                                <%= link_to image_tag("/frontend/images/cars/7.png"), car_detail_path(car_id: item, name: item.url_friendly) %>
                                             </figure>
                                             <div class="details">
-                                                <h4 class="box-title"><%= item.name %><small><% if item.price == 0 %>Liên Hệ<% else %><%= format_number(item.price) %> VND<% end %></small></h4>
+                                                <h4 class="box-title"><%= item.name %><small>Giá: <% if item.price == 0 %>Liên Hệ<% else %><%= format_number(item.price) %> VND<% end %></small></h4>
                                                 <div class="action">
-                                                    <%= link_to "Xem Xe", car_detail_path(car_id: item), class: "button btn-small full-width" %>
+                                                    <%= link_to "Xem Xe", car_detail_path(car_id: item, name: item.url_friendly), class: "button btn-small full-width" %>
                                                 </div>
                                             </div>
                                         </article>
@@ -75,16 +75,7 @@
                                 <% end %>
                             </div>
                         </div>
-                        <ul class="pagination clearfix">
-                            <li class="prev disabled"><a href="#">Trang trước</a></li>
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">6</a></li>
-                            <li class="next"><a href="#">Trang sau</a></li>
-                        </ul>
+                        <%= will_paginate @cars, previous_label: 'TRANG TRƯỚC', next_label: 'TRANG SAU', renderer: BootstrapPagination::Rails %>
                     </div>
                 </div>
             </div>

@@ -21,17 +21,20 @@
                 <div class="page">
                     <span style="display: none;" class="entry-title page-title"><%= @page_name.name %></span>
                     <span style="display: none;" class="vcard"><span class="fn"><a rel="author" title="Đăng Bởi Du Lịch Khám Phá Mới" href="#">Du Lịch Khám Phá Mới</a></span></span>
-                    <span style="display:none;" class="updated">2016-06-30-T5 09:00</span>
+                    <% if @blogs.count > 0 %>
+                            <span style="display:none;" class="updated"><%= @blogs.first.created_at.strftime("%d/%m/%Y %H:%M") %></span>
+                        <% end %>
                     <div class="post-content">
                         <div class="blog-infinite">
                             <% @blogs.each do |item| %>
+                            <%=  %>
                                 <div class="post">
                                     <div class="post-content-wrapper">
                                         <figure class="image-container">
-                                            <%= link_to image_tag("/frontend/images/blog/full_width_post/image/1.png", alt: item.title), event_detail_path(event_id: item), class: "hover-effect" %>
+                                            <%= link_to image_tag("/frontend/images/blog/full_width_post/image/1.png", alt: item.title), event_detail_path(event_detail_id: item, name: item.url_friendly, article_category_id: item.article_categories.first, parent_name: item.article_categories.first.url_friendly), class: "hover-effect" %>
                                         </figure>
                                         <div class="details">
-                                            <h2 class="entry-title"><%= link_to item.title, event_detail_path(event_id: item) %></h2>
+                                            <h2 class="entry-title"><%= link_to item.title, event_detail_path(event_detail_id: item, name: item.url_friendly, article_category_id: item.article_categories.first, parent_name: item.article_categories.first.url_friendly) %></h2>
                                             <div class="excerpt-container">
                                                 <div class="text-justify"><%= truncate(strip_tags(item.content.html_safe), length: 400) %></div>
                                             </div>
@@ -41,11 +44,7 @@
                                                     <label class="month"><%= item.created_at.strftime("%m") %></label>
                                                 </div>
                                                 <div class="entry-author fn">
-                                                    <i class="icon soap-icon-user"></i> Đăng bởi:
-                                                    <a href="#" class="author">Du Lịch Khám Phá Mới</a>
-                                                </div>
-                                                <div class="entry-action">
-                                                    <span class="entry-tags"><i class="soap-icon-features"></i><span><a href="#">Tổ chức sự kiện</a>, <a href="#">Du lịch khám phá mới</a></span></span>
+                                                    <i class="icon soap-icon-user"></i> Đăng bởi: <%= link_to "Du Lịch Khám Phá Mới", about_us_path, class: "author" %>
                                                 </div>
                                             </div>
                                         </div>
@@ -53,16 +52,7 @@
                                 </div>
                             <% end %>
                         </div>
-                        <ul class="pagination clearfix">
-                            <li class="prev disabled"><a href="#">Trang trước</a></li>
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">6</a></li>
-                            <li class="next"><a href="#">Trang sau</a></li>
-                        </ul>
+                        <%= will_paginate @blogs, previous_label: 'TRANG TRƯỚC', next_label: 'TRANG SAU', renderer: BootstrapPagination::Rails %>
                     </div>
                 </div>
             </div>

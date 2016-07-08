@@ -40,6 +40,10 @@
     
         <!-- Custom Styles -->
         <%= stylesheet_link_tag "/frontend/css/custom.css" %>
+        
+        <% if params[:controller] == "tour" && params[:action] == "tour_pricing" %>
+            <%= stylesheet_link_tag "/frontend/css/custom_table.css" %>
+        <% end %>
     
         <!-- Responsive Styles -->
         <%= stylesheet_link_tag "/frontend/css/responsive.css" %>

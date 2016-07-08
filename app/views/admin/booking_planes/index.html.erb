@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Booking Planes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Full name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th>Adult</th>
+      <th>Child</th>
+      <th>Seat number</th>
+      <th>Date from</th>
+      <th>Date to</th>
+      <th>Ticket type</th>
+      <th>Address from</th>
+      <th>Address to</th>
+      <th>Message</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @booking_planes.each do |booking_plane| %>
+      <tr>
+        <td><%= booking_plane.full_name %></td>
+        <td><%= booking_plane.email %></td>
+        <td><%= booking_plane.phone %></td>
+        <td><%= booking_plane.address %></td>
+        <td><%= booking_plane.adult %></td>
+        <td><%= booking_plane.child %></td>
+        <td><%= booking_plane.seat_number %></td>
+        <td><%= booking_plane.date_from %></td>
+        <td><%= booking_plane.date_to %></td>
+        <td><%= booking_plane.ticket_type %></td>
+        <td><%= booking_plane.address_from %></td>
+        <td><%= booking_plane.address_to %></td>
+        <td><%= booking_plane.message %></td>
+        <td><%= link_to 'Show', booking_plane %></td>
+        <td><%= link_to 'Edit', edit_booking_plane_path(booking_plane) %></td>
+        <td><%= link_to 'Destroy', booking_plane, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Booking plane', new_booking_plane_path %>
