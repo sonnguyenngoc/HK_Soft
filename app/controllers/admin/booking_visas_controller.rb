@@ -59,7 +59,6 @@ class Admin::BookingVisasController < ApplicationController
   # DELETE /booking_visas/1
   # DELETE /booking_visas/1.json
   def destroy
-    authorize! :detele, @booking_visa
     @booking_visa.destroy
     
     render nothing:true

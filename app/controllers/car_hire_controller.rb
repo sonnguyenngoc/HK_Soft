@@ -1,7 +1,12 @@
 class CarHireController < ApplicationController
   def index
     @page_name = Category.where(description: "services").first
-    @cars = Car.get_all_cars.paginate(page: params[:page], per_page: 15)
+    @cars = Car.get_all_cars(params).paginate(page: params[:page], per_page: 15)
+  end
+  
+  def car_search
+    @page_name = Category.where(description: "services").first
+    @cars = Car.get_all_cars(params).paginate(page: params[:page], per_page: 15)
   end
 
   def car_list_view

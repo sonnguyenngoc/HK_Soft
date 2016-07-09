@@ -30,20 +30,40 @@ class Tour < ActiveRecord::Base
         return arr    
     end
     
-    def self.get_tour_listing
-        self.order("created_at DESC")
+    def self.get_tour_listing(params)
+        records = self.order("created_at DESC")
+        
+        if params[:name].present?
+            records = records.where("LOWER(tours.name) LIKE ?", "%#{params[:name].downcase.strip}%")
+        end 
+        
+        if params[:type_name].present?
+            records = records.where(type_name: params[:type_name])
+        end 
+        
+        if params[:from_date].present?
+            records = records.joins(:tour_schedules).where("tour_schedules.from_date = ?", params[:from_date])
+        end 
+        
+        return records
     end
     
     def get_lastest_tour_from_date
-        self.tour_schedules.order("created_at ASC").first.from_date.strftime("%d/%m/%Y")
+        records = self.tour_schedules.where("from_date > ?", Time.now)
+        records = records.order("created_at ASC").first.from_date.strftime("%d/%m/%Y")
+        
+        return records
     end
     
     def get_lastest_tour_to_date
-        self.tour_schedules.order("created_at ASC").first.to_date.strftime("%d/%m/%Y")
+        records = self.tour_schedules.where("from_date > ?", Time.now)
+        records = records.order("created_at ASC").first.to_date.strftime("%d/%m/%Y")
+        
+        return records
     end
     
     def get_count_tour_schedules
-        self.tour_schedules.count
+        self.tour_schedules.where("from_date > ?", Time.now).count
     end
     
     def self.get_domestic_tour

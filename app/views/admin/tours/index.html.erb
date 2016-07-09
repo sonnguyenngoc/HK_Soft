@@ -80,8 +80,20 @@
                                     <td><%= format_number(item.new_price) %></td>
                                     <td>
                                         <% item.tour_schedules.each do |tour_schedule| %>
-                                            <%= tour_schedule.from_date.strftime("%d/%m/%Y") %> - <%= tour_schedule.to_date.strftime("%d/%m/%Y") %>
-                                            <%= tour_schedule.remain_seats %><br/>
+                                            <% if tour_schedule.from_date > Time.now %>
+                                                <%= tour_schedule.from_date.strftime("%d/%m/%Y") %> - <%= tour_schedule.to_date.strftime("%d/%m/%Y") %>
+                                                <% remain_seat =  tour_schedule.seat.to_i - tour_schedule.remain_seats.to_i %>
+                                                <% if remain_seat > 0 %>
+                                                    <span class="label bg-info">Còn <%= remain_seat %> ghế.</span>
+                                                <% end %>
+                                                <% if remain_seat == 0 %>
+                                                    <span class="label bg-orange-600">Còn <%= remain_seat %> ghế.</span>
+                                                <% end %>
+                                                <% if remain_seat < 0 %>
+                                                    <span class="label bg-danger-400">Thiếu <%= remain_seat %> ghế.</span>
+                                                <% end %>
+                                                <br/><br/>
+                                            <% end %>
                                         <% end %>
                                     </td>
                                     <td>

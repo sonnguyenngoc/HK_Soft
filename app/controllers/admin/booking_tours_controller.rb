@@ -60,7 +60,7 @@ class Admin::BookingToursController < ApplicationController
   # DELETE /booking_tours/1.json
   def destroy
     authorize! :delete, @booking_tour
-    @booking_plane.destroy
+    @booking_tour.destroy
     
     render nothing:true
     flash[:notice] = 'Xóa thông tin đặt tour thành công.'

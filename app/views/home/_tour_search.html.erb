@@ -1,0 +1,40 @@
+<div class="tab-pane fade active in" id="booking_tour">
+    <%= form_tag(tour_search_path, method: "get") do %>
+        <div class="row">
+            <div class="form-group col-sm-6 col-md-3">
+                <h4 class="title">Loại Tour</h4>
+                <label>Chọn loại tour</label>
+                <div class="selector">
+                    <select class="full-width" name="type_name">
+                        <option value="">Chọn loại tour cần tìm</option>
+                        <option value="Tour Trong Nước">Tour Trong Nước</option>
+                        <option value="Tour Nước Ngoài">Tour Nước Ngoài</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group col-sm-6 col-md-3">
+                <h4 class="title">Địa điểm</h4>
+                <label>Địa điểm cần tìm</label>
+                <input type="text" name="name" class="input-text full-width" placeholder="Nhập địa điểm du lịch cần tìm" />
+            </div>
+
+            <div class="form-group col-sm-6 col-md-4">
+                <h4 class="title">Ngày</h4>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label>Chọn ngày khởi hành</label>
+                        <div class="datepicker-wrap">
+                            <input type="text" name="from_date" class="input-text full-width" placeholder="yy/mm/dd" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group col-sm-6 col-md-2 fixheight">
+                <label class="hidden-xs">&nbsp;</label>
+                <button type="submit" class="full-width icon-check animated" data-animation-type="bounce" data-animation-duration="1">TÌM TOUR</button>
+            </div>
+        </div>
+    <% end %>
+</div>

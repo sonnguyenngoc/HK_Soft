@@ -95,7 +95,7 @@
                                                     <ul class="dropdown-menu dropdown-menu-right">
                                                         <% if can? :delete, item %>
                                                             <li>
-                                                                <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), "#booking_hotel", url: admin_booking_hotel_path(item) , class: "backend_delete_item" %>
+                                                                <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), "#booking_tour", url: admin_booking_tour_path(item) , class: "backend_delete_item" %>
                                                             </li>
                                                         <% end %>
                                                     </ul>
@@ -109,9 +109,9 @@
                     </table>
                     <div class="dataTables_wrapper no-footer">
                         <div class="datatable-footer showed">
-                            <div class="dataTables_info" ><%= page_entries_info @booking_hotels %></div>
+                            <div class="dataTables_info" ><%= page_entries_info @booking_tours %></div>
                             <div class="dataTables_paginate paging_simple_numbers">
-                                <%= will_paginate @booking_hotels, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
+                                <%= will_paginate @booking_tours, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
                             </div>
                         </div>
                     </div>

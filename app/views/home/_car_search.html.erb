@@ -1,0 +1,40 @@
+<div class="tab-pane fade" id="booking_car">
+    <%= form_tag(car_search_path, method: "get") do %>
+        <div class="row">
+            <div class="form-group col-sm-6 col-md-5">
+                <h4 class="title">Loại xe</h4>
+                <label>Chọn loại xe</label>
+                <div class="selector">
+                    <select class="full-width" name="article_category_id" >
+                        <% ArticleCategory.get_menu_services.each do |service| %>
+                            <option value="">Chọn loại xe cần tìm</option>
+                            <% service.children.order("created_at ASC").each do |child_1| %>
+                                <% if child_1.description == "car_hire" %>
+                                    <% child_1.children.order("created_at ASC").each do |child_2| %>
+                                        <option value="<%= child_2.id %>"><%= child_2.name %></option>
+                                    <% end %>
+                                <% end %>
+                            <% end %>
+                        <% end %>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-sm-6 col-md-5">
+                <h4 class="title">Hãng xe</h4>
+                <label>Chọn hãng xe</label>
+                <div class="selector">
+                    <select class="full-width" name="manufacturer_id">
+                        <option value="">Chọn hãng xe cần tìm</option>
+                        <% Manufacturer.all.each do |item| %>
+                            <option value="<%= item.id %>"><%= item.name %></option>
+                        <% end %>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-sm-6 col-md-2 fixheight">
+                <label class="hidden-xs">&nbsp;</label>
+                <button type="submit" class="full-width icon-check animated" data-animation-type="bounce" data-animation-duration="1">TÌM XE</button>
+            </div>
+        </div>
+    <% end %>
+</div>

@@ -1,7 +1,12 @@
 class TourController < ApplicationController
   def index
     @page_name = Category.where(description: "tour").first
-    @tours = Tour.get_tour_listing.paginate(page: params[:page], per_page: 12)
+    @tours = Tour.get_tour_listing(params).paginate(page: params[:page], per_page: 12)
+  end
+  
+  def tour_search
+    @page_name = Category.where(description: "tour").first
+    @tours = Tour.get_tour_listing(params).paginate(page: params[:page], per_page: 12)
   end
 
   def domestic_tour
