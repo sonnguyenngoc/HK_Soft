@@ -62,7 +62,17 @@ class Hotel < ActiveRecord::Base
         ]
     end
     
-    def self.get_all_hotels
-        self.order("created_at DESC")
+    def self.get_all_hotels(params)
+        records = self.order("created_at DESC")
+        
+        if params[:hotel_type].present?
+            records = records.where(hotel_type: params[:hotel_type])
+        end 
+        
+        if params[:area_id].present?
+            records = records.where(area_id: params[:area_id])
+        end 
+        
+        return records
     end
 end

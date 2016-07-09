@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     
     # Tour du lịch
     get "tour-du-lich.html" => "tour#index", as: :tour
+    get "tour-du-lich/tim-kiem-tour.html" => "tour#tour_search", as: :tour_search
     get "bang-gia-tour.html" => "tour#tour_pricing", as: :tour_pricing
     get "tour-du-lich/tour-trong-nuoc.html" => "tour#domestic_tour", as: :domestic_tour
     get "tour-du-lich/tour-nuoc-ngoai.html" => "tour#foreign_tour", as: :foreign_tour
@@ -37,6 +38,7 @@ Rails.application.routes.draw do
         
     # Thuê xe du lịch
     get "dich-vu/thue-xe-du-lich.html" => "car_hire#index", as: :car_hire
+    get "dich-vu/thue-xe-du-lich/tim-kiem.html" => "car_hire#car_search", as: :car_search
     get "dich-vu/thue-xe-du-lich/(:car_category_name)-:car_category_id.html" => "car_hire#car_grid_view", as: :car_grid_view
     get "dich-vu/thue-xe-du-lich/chi-tiet/(:name)-:car_id.html" => "car_hire#car_detail", as: :car_detail
     get "dich-vu/thue-xe-du-lich/(:car_name)-:car_book_id/dat-xe.html" => "car_hire#car_booking", as: :car_booking
@@ -44,6 +46,7 @@ Rails.application.routes.draw do
   
     # Khách sạn
     get "dich-vu/khach-san.html" => "book_hotel#index", as: :hotel_listing
+    get "dich-vu/khach-san/tim-kiem.html" => "book_hotel#hotel_search", as: :hotel_search
     get "dich-vu/khach-san/(:name)-:hotel_id.html" => "book_hotel#book_hotel_detail", as: :book_hotel_detail
     get "dich-vu/khach-san/(:hotel_name)-:hotel_booking_id/dat-phong.html" => "book_hotel#hotel_booking", as: :hotel_booking
     get "dich-vu/khach-san/dat-phong/dat-phong-thanh-cong.html" => "book_hotel#hotel_thankyou", as: :hotel_thankyou

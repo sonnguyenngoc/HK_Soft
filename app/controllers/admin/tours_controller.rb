@@ -28,7 +28,7 @@ class Admin::ToursController < ApplicationController
   # GET /tours/1/edit
   def edit
     authorize! :update, @tour
-    (30-@tour.tour_schedules.count).times do
+    (30+@tour.tour_schedules.count).times do
       @tour.tour_schedules.build
     end
     (30-@tour.tour_images.count).times do
