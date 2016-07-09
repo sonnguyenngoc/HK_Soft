@@ -46,57 +46,30 @@
                             <h1 class="title">Tìm Kiếm Tour Du Lịch Yêu Thích Tại Đây</h1>
                         </div>
                         <div class="search-box">
-                            <form>
+                            <%= form_tag(tour_path, method: "get") do %>
                                 <div class="row">
-                                    <div class="col-sm-4 col-md-3 form-group">
-                                        <input type="text" class="input-text full-width" placeholder="Gõ địa điểm bạn cần tìm tại đây...">
-                                    </div>
-                                    <div class="col-xs-6 col-sm-4 col-md-2 form-group">
-                                        <div class="datepicker-wrap">
-                                            <input type="text" name="date_from" class="input-text full-width" placeholder="Ngày khởi hành" />
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-4 col-md-2 form-group">
+                                    <div class="col-xs-12 col-sm-4 col-md-3 form-group">
                                         <div class="selector">
-                                            <select class="full-width">
-                                                <option value="">Chủ đề tour</option>
+                                            <select class="full-width" name="type_name">
+                                                <option value="">Loại tour cần tìm</option>
+                                                <option value="Tour Trong Nước">Tour Trong Nước</option>
+                                                <option value="Tour Nước Ngoài">Tour Nước Ngoài</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-5 row">
-                                        <div class="col-xs-6 col-sm-4 form-group">
-                                            <div class="selector">
-                                                <select class="full-width">
-                                                    <option value="">Điểm đến Hot</option>
-                                                    <option value="">Nha Trang</option>
-                                                    <option value="">Đà Lạt</option>
-                                                    <option value="">Phú Yên</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-4 form-group">
-                                            <div class="selector">
-                                                <select class="full-width">
-                                                    <option value="">Tiêu chuẩn</option>
-                                                    <option value="">Tiêu chuẩn 1 sao</option>
-                                                    <option value="">Tiêu chuẩn 2 sao</option>
-                                                    <option value="">Tiêu chuẩn 3 sao</option>
-                                                    <option value="">Tiêu chuẩn 4 sao</option>
-                                                    <option value="">Tiêu chuẩn 5 sao</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-4 form-group">
-                                            <div class="selector">
-                                                <select class="full-width">
-                                                    <option value="">Tour trong nước</option>
-                                                    <option value="">Tour nước ngoài</option>
-                                                </select>
-                                            </div>
+                                    <div class="col-sm-3 col-md-4 form-group">
+                                        <input type="text" name="name" class="input-text full-width" placeholder="Nhập địa điểm du lịch cần tìm...">
+                                    </div>
+                                    <div class="col-xs-12 col-sm-3 col-md-2 form-group">
+                                        <div class="datepicker-wrap">
+                                            <input type="text" name="from_date" class="input-text full-width" placeholder="Ngày khởi hành" />
                                         </div>
                                     </div>
+                                    <div class="col-sm-2 col-md-3 form-group">
+                                        <button class="button btn-medium full-width uppercase sky-blue1">Tìm Tour</button>
+                                    </div>
                                 </div>
-                            </form>
+                            <% end %>
                         </div>
                         <div class="text-center">
                             <a href="#hotline" class="button btn-medium sky-blue1 uppercase">HOTLINE: (84) 3 85 333 18 - (84) 3 85 333 21</a>
