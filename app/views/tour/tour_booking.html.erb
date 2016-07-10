@@ -30,7 +30,7 @@
                 <div id="main" class="col-sms-6 col-sm-8 col-md-9">
                     <div class="booking-section travelo-box">
                         
-                        <%= form_for @booking_tour, html: {class: "booking-form"} do |f| %>  
+                        <%= form_for @booking_tour, html: {class: "booking-form", id: "booking_tour"} do |f| %>  
                             <%= f.hidden_field :tour_id, value: @tour.id %>
                             <div class="person-information">
                                 <h2>Thông Tin Khách Hàng</h2>
@@ -64,7 +64,7 @@
                                     <div class="col-sm-6 col-md-5">
                                         <label>Ngày đặt tour *</label>
                                         <div class="selector">
-                                            <select name="booking_tour[tour_schedule_id]" id="booking_tour_tour_schedule_id" class="full-width">
+                                            <select name="booking_tour[tour_schedule_id]" id="booking_tour_tour_schedule_id" class="full-width required">
                                                 <option value="">Lịch khởi hành - [<%= @tour.get_count_tour_schedules %>]</option>
                                                 <% @tour.tour_schedules.get_tour_schedules.each do |schedule| %>
                                                     <option value="<%= schedule.id %>"><%= schedule.from_date.strftime("%d/%m/%Y") %> - <%= schedule.to_date.strftime("%d/%m/%Y") %></option>
@@ -148,3 +148,9 @@
 
 <!-- Javascript -->
 <%= render "/home/js_files" %>
+
+<script>
+    jQuery(document).ready(function($){
+        $("#booking_tour").validate();
+    });
+</script>

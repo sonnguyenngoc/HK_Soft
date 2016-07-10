@@ -10,7 +10,8 @@
             </div>
             <ul class="breadcrumbs">
                 <li><%= link_to "Trang Chủ", root_path %></li>
-                <li class="active"><%= @page_name.name %></li>
+                <li><%= link_to @page_name.name, service_path %></li>
+                <li class="active">Thuê xe du lịch</li>
             </ul>
         </div>
     </div>
@@ -21,38 +22,43 @@
                 <div class="row">
                     <div class="col-sm-4 col-md-3">
                         <div class="toggle-container filters-container">
-                            
-                            <div class="panel style1 arrow-right">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#cartype-filter" class="collapsed">Loại Xe</a>
-                                </h4>
-                                <div id="cartype-filter" class="panel-collapse collapse filters-container">
-                                    <div class="panel-content">
-                                        <ul class="check-square filters-option">
-                                            <% ArticleCategory.get_menu_car_hires.each do |item| %>
-                                                <% item.children.each do |child_1| %>
-                                                    <li><a href="#"><%= child_1.name %></a></li>
+                            <form>
+                                <div class="panel style1 arrow-right">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" href="#cartype-filter" class="collapsed">Loại Xe</a>
+                                    </h4>
+                                    <div id="cartype-filter" class="panel-collapse collapse filters-container">
+                                        <div class="panel-content">
+                                            <ul class="check-square filters-option">
+                                                <% ArticleCategory.get_menu_car_hires.each do |item| %>
+                                                    <% item.children.each do |child_1| %>
+                                                        <li><a href="#"><%= child_1.name %></a></li>
+                                                    <% end %>
                                                 <% end %>
-                                            <% end %>
-                                        </ul>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            
-                            <div class="panel style1 arrow-right">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#car-rental-agent-filter" class="collapsed">Hãng Xe</a>
-                                </h4>
-                                <div id="car-rental-agent-filter" class="panel-collapse collapse">
-                                    <div class="panel-content">
-                                        <ul class="check-square filters-option">
-                                            <% Manufacturer.all.each do |item| %>
-                                                <li><a href="#"><%= item.name %></a></li>
-                                            <% end %>
-                                        </ul>
+                                
+                                <div class="panel style1 arrow-right">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" href="#car-rental-agent-filter" class="collapsed">Hãng Xe</a>
+                                    </h4>
+                                    <div id="car-rental-agent-filter" class="panel-collapse collapse">
+                                        <div class="panel-content">
+                                            <ul class="check-square filters-option">
+                                                <% Manufacturer.all.each do |item| %>
+                                                    <li><a href="#"><%= item.name %></a></li>
+                                                <% end %>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                                
+                                <div class="panel style1 arrow-right">
+                                    <button class="button btn-medium full-width uppercase sky-blue1">Tìm Xe Du Lịch</button>
+                                </div>
+                            <form>
                         </div>
                     </div>
                     <div class="col-sm-8 col-md-9">
@@ -61,7 +67,7 @@
                                 <div class="col-sms-6 col-sm-6 col-md-4">
                                     <article class="box">
                                         <figure>
-                                            <%= link_to image_tag("/frontend/images/cars/2.png", height: '160', width: '270'), car_detail_path(car_id: item, name: item.url_friendly), class: "hover-effect" %>
+                                            <%= link_to image_tag(item.image_url.large_image, height: '160', width: '270'), car_detail_path(car_id: item, name: item.url_friendly), class: "hover-effect" %>
                                         </figure>
                                         <div class="details">
                                             <h4 class="box-title"><%= link_to item.name, car_detail_path(car_id: item, name: item.url_friendly) %></h4>

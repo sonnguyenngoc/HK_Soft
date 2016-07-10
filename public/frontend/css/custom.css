@@ -74,3 +74,10 @@ label.error {
     border: 1px solid red;
     border-radius: 2px;
 }
+#booking_tour input.error, #booking_tour textarea.error {
+    border: 1px solid red;
+    border-radius: 2px;
+}
+.color-red {
+    color: red !important;
+}

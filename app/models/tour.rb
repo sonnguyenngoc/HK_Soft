@@ -66,12 +66,40 @@ class Tour < ActiveRecord::Base
         self.tour_schedules.where("from_date > ?", Time.now).count
     end
     
-    def self.get_domestic_tour
-        self.where(type_name: "Tour Trong Nước").order("created_at DESC")
+    def self.get_domestic_tour(params)
+        records = self.where(type_name: "Tour Trong Nước").order("created_at DESC")
+        
+        if params[:name].present?
+            records = records.where("LOWER(tours.name) LIKE ?", "%#{params[:name].downcase.strip}%")
+        end
+        
+        if params[:from_date].present?
+            records = records.joins(:tour_schedules).where("tour_schedules.from_date = ?", params[:from_date])
+        end
+        
+        if params[:article_category_id].present?
+            records = records.where(article_category_id: params[:article_category_id])
+        end
+        
+        return records
     end
     
-    def self.get_foreign_tour
-        self.where(type_name: "Tour Nước Ngoài").order("created_at DESC")
+    def self.get_foreign_tour(params)
+        records = self.where(type_name: "Tour Nước Ngoài").order("created_at DESC")
+        
+        if params[:name].present?
+            records = records.where("LOWER(tours.name) LIKE ?", "%#{params[:name].downcase.strip}%")
+        end
+        
+        if params[:from_date].present?
+            records = records.joins(:tour_schedules).where("tour_schedules.from_date = ?", params[:from_date])
+        end
+        
+        if params[:article_category_id].present?
+            records = records.where(article_category_id: params[:article_category_id])
+        end
+        
+        return records
     end
     
     def self.get_lastest_domestic_tour
@@ -84,7 +112,18 @@ class Tour < ActiveRecord::Base
     
     def self.get_tour_packages(params)
         records = Tour.order("created_at DESC")
-        records = records.where(article_category_id: params[:tour_packages_id])
+        
+        if params[:search_name].present?
+            records = records.where("LOWER(tours.name) LIKE ?", "%#{params[:search_name].downcase.strip}%")
+        end
+        
+        if params[:search_from_date].present?
+            records = records.joins(:tour_schedules).where("tour_schedules.from_date = ?", params[:search_from_date])
+        end
+        
+        if params[:tour_packages_id].present?
+            records = records.where(article_category_id: params[:tour_packages_id])
+        end
         
         return records
     end

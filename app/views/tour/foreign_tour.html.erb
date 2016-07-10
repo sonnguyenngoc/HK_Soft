@@ -9,8 +9,8 @@
                 <h2 class="entry-title">Tour Nước Ngoài</h2>
             </div>
             <ul class="breadcrumbs pull-right">
-                <li><a href="#">Trang Chủ</a></li>
-                <li><a href="#">Tour Du Lịch</a></li>
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <li><%= link_to "Tour Du Lịch", tour_path %></li>
                 <li class="active">Tour Nước Ngoài</li>
             </ul>
         </div>
@@ -47,48 +47,37 @@
                             <h1 class="title">DU LỊCH NƯỚC NGOÀI</h1>
                         </div>
                         <div class="search-box">
-                            <form>
+                            <%= form_tag(foreign_tour_path, method: "get") do %>
                                 <div class="row">
-                                    <div class="col-sm-4 col-md-3 form-group">
-                                        <input type="text" class="input-text full-width" placeholder="Gõ Từ Khóa Cần Tìm...">
+                                    <div class="col-sm-3 col-md-4 form-group">
+                                        <input type="text" name="name" class="input-text full-width" placeholder="Nhập địa điểm du lịch cần tìm...">
                                     </div>
-                                    <div class="col-xs-6 col-sm-4 col-md-2 form-group">
-                                        <div class="datepicker-wrap">
-                                            <input type="text" name="date_from" class="input-text full-width" placeholder="Chọn Lịch Khởi Hành" />
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-4 col-md-2 form-group">
+                                    <div class="col-xs-12 col-sm-4 col-md-3 form-group">
                                         <div class="selector">
-                                            <select class="full-width">
-                                                <option value="">Chủ Đề Tour</option>
+                                            <select class="full-width" name="article_category_id">
+                                                <option value="">Loại tour cần tìm</option>
+                                                <% ArticleCategory.get_menu_tours.each do |tours| %>
+                                                    <% tours.children.order("created_at ASC").each do |child_1| %>
+                                                        <% if child_1.description == "foreign_tour" %>
+                                                            <% child_1.children.order("created_at ASC").each do |child_2| %>
+                                                                <option value="<%= child_2.id %>"><%= child_2.name %></option>
+                                                            <% end %>
+                                                        <% end %>
+                                                    <% end %>
+                                                <% end %>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-5 row">
-                                        <div class="col-xs-6 col-sm-4 form-group">
-                                            <div class="selector">
-                                                <select class="full-width">
-                                                    <option value="">Điểm Đến Hot</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-4 form-group">
-                                            <div class="selector">
-                                                <select class="full-width">
-                                                    <option value="">Tiêu Chuẩn</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-6 col-sm-4 form-group">
-                                            <div class="selector">
-                                                <select class="full-width">
-                                                    <option value="">Theo Miền</option>
-                                                </select>
-                                            </div>
+                                    <div class="col-xs-12 col-sm-3 col-md-2 form-group">
+                                        <div class="datepicker-wrap">
+                                            <input type="text" name="from_date" class="input-text full-width" placeholder="Ngày khởi hành" />
                                         </div>
                                     </div>
+                                    <div class="col-sm-2 col-md-3 form-group">
+                                        <button class="button btn-medium full-width uppercase sky-blue1">Tìm Tour</button>
+                                    </div>
                                 </div>
-                            </form>
+                            <% end %>
                         </div>
                         <div class="text-center">
                             <a href="#hotline" class="button btn-medium sky-blue1 uppercase">HOTLINE: (84) 3 85 333 18 - (84) 3 85 333 21</a>
@@ -110,7 +99,7 @@
                             <div class="col-sm-6 col-md-4 col-lg-3">
                                 <article class="box">
                                     <figure>
-                                        <%= link_to image_tag("/frontend/images/tour/simple-packages/4-col/3.jpg"), tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "hover-effect" %>
+                                        <%= link_to image_tag(item.image_url.large_image), tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "hover-effect" %>
                                     </figure>
                                     <div class="details">
                                         <h4 class="box-title text-justify"><%= item.name %></h4>

@@ -11,12 +11,12 @@ class TourController < ApplicationController
 
   def domestic_tour
     @page_name = Category.where(description: "tour").first
-    @tours = Tour.get_domestic_tour.paginate(page: params[:page], per_page: 12)
+    @tours = Tour.get_domestic_tour(params).paginate(page: params[:page], per_page: 12)
   end
 
   def foreign_tour
     @page_name = Category.where(description: "tour").first
-    @tours = Tour.get_foreign_tour.paginate(page: params[:page], per_page: 12)
+    @tours = Tour.get_foreign_tour(params).paginate(page: params[:page], per_page: 12)
   end
 
   def tour_packages
@@ -28,7 +28,6 @@ class TourController < ApplicationController
   def tour_detail
     @page_name = Category.where(description: "tour").first
     @tour = Tour.find(params[:tour_id])
-    @style_body = "single single-pos"
   end
 
   def tour_booking

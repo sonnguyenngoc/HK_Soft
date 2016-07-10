@@ -10,7 +10,8 @@
             </div>
             <ul class="breadcrumbs pull-right">
                 <li><%= link_to "Trang Chủ", root_path %></li>
-                <li class="active"><%= @page_name.name %></li>
+                <li><%= link_to @page_name.name, service_path %></li>
+                <li class="active">Khách Sạn</li>
             </ul>
         </div>
     </div>
@@ -43,11 +44,11 @@
                                 <div id="accomodation-type-filter" class="panel-collapse collapse">
                                     <div class="panel-content">
                                         <ul class="check-square filters-option">
-                                            <li><a href="#">Khách sạn 1 sao<small>(982)</small></a></li>
-                                            <li><a href="#">Khách sạn 2 sao<small>(127)</small></a></li>
-                                            <li><a href="#">Khách sạn 3 sao<small>(222)</small></a></li>
-                                            <li><a href="#">Khách sạn 4 sao<small>(158)</small></a></li>
-                                            <li><a href="#">Khách sạn 5 sao<small>(439)</small></a></li>
+                                            <li><a href="#">Khách sạn 1 sao<small>(0)</small></a></li>
+                                            <li><a href="#">Khách sạn 2 sao<small>(0)</small></a></li>
+                                            <li><a href="#">Khách sạn 3 sao<small>(0)</small></a></li>
+                                            <li><a href="#">Khách sạn 4 sao<small>(0)</small></a></li>
+                                            <li><a href="#">Khách sạn 5 sao<small>(0)</small></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -60,10 +61,10 @@
                                 <div id="amenities-filter" class="panel-collapse collapse">
                                     <div class="panel-content">
                                         <ul class="check-square filters-option">
-                                            <li><a href="#">Phú Quốc<small>(722)</small></a></li>
-                                            <li><a href="#">Đà Lạt<small>(982)</small></a></li>
-                                            <li><a href="#">Côn Đảo<small>(127)</small></a></li>
-                                            <li><a href="#">Nha Trang<small>(222)</small></a></li>
+                                            <li><a href="#">Phú Quốc<small>(0)</small></a></li>
+                                            <li><a href="#">Đà Lạt<small>(0)</small></a></li>
+                                            <li><a href="#">Côn Đảo<small>(0)</small></a></li>
+                                            <li><a href="#">Nha Trang<small>(0)</small></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -76,7 +77,7 @@
                                 <% @hotels.each do |item| %>
                                     <article class="box">
                                         <figure class="col-sm-5 col-md-4">
-                                            <a title="" href="<%= slideshow_popup_path %>" class="hover-effect popup-gallery"><img width="270" height="160" alt="" src="/frontend/images/hotels/1.png"></a>
+                                            <a title="" href="<%= slideshow_popup_path(hotel_id: item.id) %>" class="hover-effect popup-gallery"><img width="270" height="160" alt="" src="<%= item.image_url.medium_image %>"></a>
                                         </figure>
                                         <div class="details col-sm-7 col-md-8">
                                             <div>

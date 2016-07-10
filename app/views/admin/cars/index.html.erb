@@ -71,7 +71,7 @@
                             <% @cars.each do |item| %>
                                 <tr>
                                     <td>
-                                      <%= link_to image_tag(item.image_url), edit_admin_car_path(item), title: item.name %>
+                                      <%= link_to image_tag(item.image_url.smaller_image), edit_admin_car_path(item), title: item.name %>
                                     </td>
                                     <td>
                                         <strong><%= item.name %></strong>
