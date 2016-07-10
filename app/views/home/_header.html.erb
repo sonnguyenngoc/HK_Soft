@@ -50,7 +50,7 @@
                             <% end %>
                             
                             <% if item.description == "about_us" %>
-                                <li<% if params[:controller] == "about_us" %> class="active"<% end %>><%= link_to item.name, about_us_path %></li>
+                                <li<% if (params[:controller] == "about_us" && params[:action] == "index") %> class="active"<% end %>><%= link_to item.name, about_us_path %></li>
                             <% end %>
                             
                             <% if item.description == "tour" %>
@@ -184,9 +184,12 @@
 
         <nav id="mobile-menu-01" class="mobile-menu collapse">
             <ul id="mobile-primary-menu" class="menu">
-                <li><%= link_to "Trang Chủ", root_path %></li>
                 <% Category.all.order("ordered").each do |item| %>
                     <% if item.level == 1 %>
+                        <% if item.description == "home" %>
+                            <li><%= link_to item.name, root_path %></li>
+                        <% end %>
+                            
                         <% if item.description == "about_us" %>
                             <li><%= link_to item.name, about_us_path %></li>
                         <% end %>
@@ -205,7 +208,7 @@
                                                 <% end %>
                                                 <ul class="clearfix">
                                                     <% child_1.children.order("created_at ASC").each do |child_2| %>
-                                                        <li><%= link_to child_2.name, tour_packages_path(tour_packages_id: child_2) %></li>
+                                                        <li><%= link_to child_2.name, tour_packages_path(tour_packages_id: child_2, name: child_2.url_friendly) %></li>
                                                     <% end %>
                                                 </ul>
                                             </li>
@@ -215,21 +218,50 @@
                             </li>
                         <% end %>
                         
-                        <% if item.description == "car_hire" %>
+                        <% if item.description == "services" %>
                             <li class="menu-item-has-children">
-                                <%= link_to item.name, car_hire_path %>
+                                <%= link_to item.name, service_path %>
                                 <ul>
-                                    <% ArticleCategory.get_menu_car_hires.each do |car_hire| %>
-                                        <% car_hire.children.order("created_at ASC").each do |child_1| %>
-                                            <li><%= link_to child_1.name, car_grid_view_path(car_category_id: child_1) %></li>
+                                    <% ArticleCategory.get_menu_services.each do |service| %>
+                                        <% service.children.order("created_at ASC").each do |child_1| %>
+                                            <li class="menu-item-has-children">
+                                                <% if child_1.description == "car_hire" %>
+                                                    <%= link_to child_1.name, car_hire_path %>
+                                                    <ul class="clearfix">
+                                                        <% child_1.children.order("created_at ASC").each do |child_2| %>
+                                                            <li><%= link_to child_2.name, car_grid_view_path(car_category_id: child_2, car_category_name: child_2.url_friendly) %></li>
+                                                        <% end %>
+                                                    </ul>
+                                                <% end %>
+                                                <% if child_1.description == "hotel" %>
+                                                    <%= link_to child_1.name, hotel_listing_path %>
+                                                    <ul class="clearfix">
+                                                        <% child_1.children.order("created_at ASC").each do |child_2| %>
+                                                            <li><%= link_to child_2.name, hotel_listing_path %></li>
+                                                        <% end %>
+                                                    </ul>
+                                                <% end %>
+                                                <% if child_1.description == "plane_ticket" %>
+                                                    <%= link_to child_1.name, plane_ticket_path %>
+                                                    <ul class="clearfix">
+                                                        <% child_1.children.order("created_at ASC").each do |child_2| %>
+                                                            <li><%= link_to child_2.name, plane_ticket_path %></li>
+                                                        <% end %>
+                                                    </ul>
+                                                <% end %>
+                                                <% if child_1.description == "visa_card" %>
+                                                    <%= link_to child_1.name, visa_card_path %>
+                                                    <ul class="clearfix">
+                                                        <% child_1.children.order("created_at ASC").each do |child_2| %>
+                                                            <li><%= link_to child_2.name, visa_card_path %></li>
+                                                        <% end %>
+                                                    </ul>
+                                                <% end %>
+                                            </li>
                                         <% end %>
                                     <% end %>
                                 </ul>
                             </li>
-                        <% end %>
-                        
-                        <% if item.description == "book_hotel" %>
-                            <li><%= link_to item.name, hotel_listing_path %></li>
                         <% end %>
                         
                         <% if item.description == "event" %>
@@ -238,7 +270,7 @@
                                     <%= link_to events.name, event_path %>
                                     <ul>
                                         <% events.children.each do |child_1| %>
-                                            <li><%= link_to child_1.name, event_listing_path(event_id: child_1) %></li>
+                                            <li><%= link_to child_1.name, event_listing_path(event_id: child_1, name: child_1.url_friendly) %></li>
                                         <% end %>
                                     </ul>
                                 <% end %>
@@ -252,10 +284,10 @@
                                     <% ArticleCategory.get_menu_tour_handbooks.each do |tour_handbook| %>
                                         <% tour_handbook.children.order("created_at ASC").each do |child_1| %>
                                             <li class="menu-item-has-children">
-                                                <%= link_to child_1.name, tour_handbook_sub_1_path(tour_handbook_sub_1: child_1) %>
+                                                <%= link_to child_1.name, tour_handbook_sub_1_path(tour_handbook_sub_1: child_1, name: child_1.url_friendly) %>
                                                 <ul class="clearfix">
                                                     <% child_1.children.order("created_at ASC").each do |child_2| %>
-                                                        <li><%= link_to child_2.name, tour_handbook_sub_2_path(tour_handbook_sub_2: child_2) %></li>
+                                                        <li><%= link_to child_2.name, tour_handbook_sub_2_path(tour_handbook_sub_2: child_2, parent_name: child_1.url_friendly, name: child_2.url_friendly) %></li>
                                                     <% end %>
                                                 </ul>
                                             </li>
@@ -269,10 +301,14 @@
                             <li><%= link_to item.name, travel_news_path %></li>
                         <% end %>
                         
+                        <% if item.description == "contact" %>
+                            <li><%= link_to item.name, contact_path %></li>
+                        <% end %>
+                        
                     <% end %>  
                 <% end %>
                 <li>
-                    <a href="#"><i class="soap-icon-shopping"></i> BẢNG GIÁ TOUR</a>
+                    <%= link_to '<i class="soap-icon-shopping"></i> BẢNG GIÁ TOUR'.html_safe, tour_pricing_path %>
                 </li>
             </ul>
 
@@ -286,75 +322,5 @@
             </ul>
 
         </nav>
-    </div>
-    <div id="travelo-signup" class="travelo-signup-box travelo-box">
-        <div class="login-social">
-            <a href="#" class="button login-facebook"><i class="soap-icon-facebook"></i>Đăng nhập bằng facebook</a>
-            <a href="#" class="button login-googleplus"><i class="soap-icon-googleplus"></i>Đăng nhập bằng google+</a>
-        </div>
-        <div class="seperator"><label>HOẶC</label></div>
-        <div class="simple-signup">
-            <div class="text-center signup-email-section">
-                <a href="#" class="signup-email"><i class="soap-icon-letter"></i>Đăng ký bằng email</a>
-            </div>
-            <p class="description">By signing up, I agree to Travelo's Terms of Service, Privacy Policy, Guest Refund olicy, and Host Guarantee Terms.</p>
-        </div>
-        <div class="email-signup">
-            <form>
-                <div class="form-group">
-                    <input type="text" class="input-text full-width" placeholder="first name">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="input-text full-width" placeholder="last name">
-                </div>
-                <div class="form-group">
-                    <input type="text" class="input-text full-width" placeholder="email address">
-                </div>
-                <div class="form-group">
-                    <input type="password" class="input-text full-width" placeholder="password">
-                </div>
-                <div class="form-group">
-                    <input type="password" class="input-text full-width" placeholder="confirm password">
-                </div>
-                <div class="form-group">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"> Tell me about Travelo news
-                        </label>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <p class="description">By signing up, I agree to Travelo's Terms of Service, Privacy Policy, Guest Refund Policy, and Host Guarantee Terms.</p>
-                </div>
-                <button type="submit" class="full-width btn-medium">Đăng Ký</button>
-            </form>
-        </div>
-        <div class="seperator"></div>
-        <p>Bạn đã là thành viên của Khám Phá Mới Travel? <a href="#travelo-login" class="goto-login soap-popupbox">Đăng Nhập</a></p>
-    </div>
-    <div id="travelo-login" class="travelo-login-box travelo-box">
-        <div class="login-social">
-            <a href="#" class="button login-facebook"><i class="soap-icon-facebook"></i>Login with Facebook</a>
-            <a href="#" class="button login-googleplus"><i class="soap-icon-googleplus"></i>Login with Google+</a>
-        </div>
-        <div class="seperator"><label>OR</label></div>
-        <form>
-            <div class="form-group">
-                <input type="text" class="input-text full-width" placeholder="email address">
-            </div>
-            <div class="form-group">
-                <input type="password" class="input-text full-width" placeholder="password">
-            </div>
-            <div class="form-group">
-                <a href="#" class="forgot-password pull-right">Forgot password?</a>
-                <div class="checkbox checkbox-inline">
-                    <label>
-                        <input type="checkbox"> Remember me
-                    </label>
-                </div>
-            </div>
-        </form>
-        <div class="seperator"></div>
-        <p>Bạn chưa có tài khoản? <a href="#travelo-signup" class="goto-signup soap-popupbox">  Đăng ký</a></p>
     </div>
 </header>
