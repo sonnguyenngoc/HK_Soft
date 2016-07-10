@@ -23,6 +23,7 @@ class BookHotelController < ApplicationController
   end
 
   def slideshow_popup
+    @hotel_image = Hotel.find(params[:hotel_id])
   end
   
   def hotel_thankyou

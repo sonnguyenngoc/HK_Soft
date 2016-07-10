@@ -38,6 +38,21 @@ class TourImageUploader < CarrierWave::Uploader::Base
   version :smaller_image do
     process :resize_to_fill => [83, 53]
   end
+  version :small_image do
+    process :resize_to_fill => [83, 58]
+  end
+  version :medium_image do
+    process :resize_to_fill => [170, 161]
+  end
+  version :large_image do
+    process :resize_to_fill => [270, 161]
+  end
+  version :larger_image do
+    process :resize_to_fill => [370, 201]
+  end
+  version :big_image do
+    process :resize_to_fill => [870, 483]
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

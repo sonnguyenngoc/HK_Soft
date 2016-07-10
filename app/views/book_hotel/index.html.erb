@@ -77,7 +77,7 @@
                                 <% @hotels.each do |item| %>
                                     <article class="box">
                                         <figure class="col-sm-5 col-md-4">
-                                            <a title="" href="<%= slideshow_popup_path %>" class="hover-effect popup-gallery"><img width="270" height="160" alt="" src="/frontend/images/hotels/1.png"></a>
+                                            <a title="" href="<%= slideshow_popup_path(hotel_id: item.id) %>" class="hover-effect popup-gallery"><img width="270" height="160" alt="" src="<%= item.image_url.medium_image %>"></a>
                                         </figure>
                                         <div class="details col-sm-7 col-md-8">
                                             <div>

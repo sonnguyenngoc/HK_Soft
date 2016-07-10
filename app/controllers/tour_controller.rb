@@ -28,7 +28,6 @@ class TourController < ApplicationController
   def tour_detail
     @page_name = Category.where(description: "tour").first
     @tour = Tour.find(params[:tour_id])
-    @style_body = "single single-pos"
   end
 
   def tour_booking

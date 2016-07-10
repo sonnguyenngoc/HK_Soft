@@ -27,45 +27,31 @@
         <div class="container tour-detail-page">
             <div class="row">
                 <div id="main" class="col-md-9">
-                    <!--<div class="featured-gallery image-box">
-                        <span class="discount"><span class="discount-text">10% Discount</span></span>
-                        <div class="flexslider photo-gallery style1" id="post-slideshow1" data-sync="#post-carousel1" data-func-on-start="showTourDetailedDiscount">
-                            <ul class="slides">
-                                <li><img src="/frontend/images/tour/main.jpg" alt=""></li>
-                                <li><img src="/frontend/images/tour/main.jpg" alt=""></li>
-                                <li><img src="/frontend/images/tour/main.jpg" alt=""></li>
-                                <li><img src="/frontend/images/tour/main.jpg" alt=""></li>
-                                <li><img src="/frontend/images/tour/main.jpg" alt=""></li>
-                                <li><img src="/frontend/images/tour/main.jpg" alt=""></li>
-                                <li><img src="/frontend/images/tour/main.jpg" alt=""></li>
-                                <li><img src="/frontend/images/tour/main.jpg" alt=""></li>
-                                <li><img src="/frontend/images/tour/main.jpg" alt=""></li>
-                                <li><img src="/frontend/images/tour/main.jpg" alt=""></li>
-                                <li><img src="/frontend/images/tour/main.jpg" alt=""></li>
-                                <li><img src="/frontend/images/tour/main.jpg" alt=""></li>
-                                <li><img src="/frontend/images/tour/main.jpg" alt=""></li>
-                                <li><img src="/frontend/images/tour/main.jpg" alt=""></li>
-                            </ul>
+                    <div class="tab-container style1" id="hotel-main-content">
+                        <ul class="tabs">
+                            <li class="pull-right"><a class="button btn-small yellow-bg white-color popup-map" href="#" data-box="<%= @tour.position %>">Xem Bản Đồ</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="photos-tab" class="tab-pane fade in active">
+                                <div class="photo-gallery style1" data-animation="slide" data-sync="#photos-tab .image-carousel">
+                                    <ul class="slides">
+                                        <li><img src="<%= @tour.image_url.big_image %>" alt="" /></li>
+                                        <% @tour.tour_images.each do |item| %>
+                                            <li><img src="<%= item.image_url.big_image %>" alt="" /></li>
+                                        <% end %>
+                                    </ul>
+                                </div>
+                                <div class="image-carousel style1" data-animation="slide" data-item-width="70" data-item-margin="10" data-sync="#photos-tab .photo-gallery">
+                                    <ul class="slides">
+                                        <li><img src="<%= @tour.image_url.small_image %>" alt="" /></li>
+                                        <% @tour.tour_images.each do |item| %>
+                                            <li><img src="<%= item.image_url.small_image %>" alt="" /></li>
+                                        <% end %>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flexslider image-carousel style1" id="post-carousel1"  data-animation="slide" data-item-width="70" data-item-margin="10" data-sync="#post-slideshow1">
-                            <ul class="slides">
-                                <li><img src="/frontend/images/shortcodes/gallery/style01/thumbnail/1.png" alt="" /></li>
-                                <li><img src="/frontend/images/shortcodes/gallery/style01/thumbnail/2.png" alt="" /></li>
-                                <li><img src="/frontend/images/shortcodes/gallery/style01/thumbnail/3.png" alt="" /></li>
-                                <li><img src="/frontend/images/shortcodes/gallery/style01/thumbnail/4.png" alt="" /></li>
-                                <li><img src="/frontend/images/shortcodes/gallery/style01/thumbnail/5.png" alt="" /></li>
-                                <li><img src="/frontend/images/shortcodes/gallery/style01/thumbnail/6.png" alt="" /></li>
-                                <li><img src="/frontend/images/shortcodes/gallery/style01/thumbnail/7.png" alt="" /></li>
-                                <li><img src="/frontend/images/shortcodes/gallery/style01/thumbnail/8.png" alt="" /></li>
-                                <li><img src="/frontend/images/shortcodes/gallery/style01/thumbnail/9.png" alt="" /></li>
-                                <li><img src="/frontend/images/shortcodes/gallery/style01/thumbnail/10.png" alt="" /></li>
-                                <li><img src="/frontend/images/shortcodes/gallery/style01/thumbnail/11.png" alt="" /></li>
-                                <li><img src="/frontend/images/shortcodes/gallery/style01/thumbnail/12.png" alt="" /></li>
-                                <li><img src="/frontend/images/shortcodes/gallery/style01/thumbnail/13.png" alt="" /></li>
-                                <li><img src="/frontend/images/shortcodes/gallery/style01/thumbnail/14.png" alt="" /></li>
-                            </ul>
-                        </div>
-                    </div>-->
+                    </div>
 
                     <div id="tour-details" class="travelo-box">
                         <div class="intro small-box table-wrapper full-width hidden-table-sms">
@@ -118,11 +104,6 @@
                         <h2>Lịch Trình Tour</h2>
                         <div class="post-content text-justify">
                             <%= @tour.content.html_safe %>
-                        </div>
-                        <div class="post-meta">
-                            <div class="entry-author fn">
-                                <i class="icon soap-icon-user"></i> Đăng bởi: <%= link_to "Du Lịch Khám Phá Mới", about_us_path %>
-                            </div>
                         </div>
                     </div>
                 </div>

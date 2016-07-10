@@ -28,26 +28,16 @@
                             <div id="photos-tab" class="tab-pane fade in active">
                                 <div class="photo-gallery style1" data-animation="slide" data-sync="#photos-tab .image-carousel">
                                     <ul class="slides">
-                                        <li><img src="/frontend/images/shortcodes/gallery-popup/1.jpg" alt="" /></li>
-                                        <li><img src="/frontend/images/shortcodes/gallery-popup/1.jpg" alt="" /></li>
-                                        <li><img src="/frontend/images/shortcodes/gallery-popup/1.jpg" alt="" /></li>
-                                        <li><img src="/frontend/images/shortcodes/gallery-popup/1.jpg" alt="" /></li>
-                                        <li><img src="/frontend/images/shortcodes/gallery-popup/1.jpg" alt="" /></li>
-                                        <li><img src="/frontend/images/shortcodes/gallery-popup/1.jpg" alt="" /></li>
-                                        <li><img src="/frontend/images/shortcodes/gallery-popup/1.jpg" alt="" /></li>
-                                        <li><img src="/frontend/images/shortcodes/gallery-popup/1.jpg" alt="" /></li>
+                                        <% @hotel.hotel_images.each do |item| %>
+                                            <li><img src="<%= item.image_url.big_image %>" alt="" /></li>
+                                        <% end %>
                                     </ul>
                                 </div>
                                 <div class="image-carousel style1" data-animation="slide" data-item-width="70" data-item-margin="10" data-sync="#photos-tab .photo-gallery">
                                     <ul class="slides">
-                                        <li><img src="/frontend/images/shortcodes/gallery-popup/thumbnail/1.jpg" alt="" /></li>
-                                        <li><img src="/frontend/images/shortcodes/gallery-popup/thumbnail/1.jpg" alt="" /></li>
-                                        <li><img src="/frontend/images/shortcodes/gallery-popup/thumbnail/1.jpg" alt="" /></li>
-                                        <li><img src="/frontend/images/shortcodes/gallery-popup/thumbnail/1.jpg" alt="" /></li>
-                                        <li><img src="/frontend/images/shortcodes/gallery-popup/thumbnail/1.jpg" alt="" /></li>
-                                        <li><img src="/frontend/images/shortcodes/gallery-popup/thumbnail/1.jpg" alt="" /></li>
-                                        <li><img src="/frontend/images/shortcodes/gallery-popup/thumbnail/1.jpg" alt="" /></li>
-                                        <li><img src="/frontend/images/shortcodes/gallery-popup/thumbnail/1.jpg" alt="" /></li>
+                                        <% @hotel.hotel_images.each do |item| %>
+                                            <li><img src="<%= item.image_url.small_image %>" alt="" /></li>
+                                        <% end %>
                                     </ul>
                                 </div>
                             </div>
@@ -94,7 +84,7 @@
                                     <% @hotel.hotel_rooms.each do |item| %>
                                         <article class="box">
                                             <figure class="col-sm-4 col-md-3">
-                                                <img width="230" height="161" src="/frontend/images/hotels/room/1.png" alt="">
+                                                <img width="230" height="161" src="<%= item.image_url.large_image %>" alt="">
                                             </figure>
                                             <div class="details col-xs-12 col-sm-8 col-md-9">
                                                 <div>
@@ -352,39 +342,19 @@
                     <div class="travelo-box">
                         <h4>Khách Sạn Khác Cùng Khu Vực</h4>
                         <div class="image-box style14">
-                            <article class="box">
-                                <figure>
-                                    <a href="#"><img src="/frontend/images/shortcodes/buttons-sample1.png" alt="" /></a>
-                                </figure>
-                                <div class="details">
-                                    <h5 class="box-title"><a href="#">Plaza Tour Eiffel</a></h5>
-                                    <label class="price-wrapper">
-                                        <span class="price-per-unit">$170</span>avg/night
-                                    </label>
-                                </div>
-                            </article>
-                            <article class="box">
-                                <figure>
-                                    <a href="#"><img src="/frontend/images/shortcodes/buttons-sample2.png" alt="" /></a>
-                                </figure>
-                                <div class="details">
-                                    <h5 class="box-title"><a href="#">Sultan Gardens</a></h5>
-                                    <label class="price-wrapper">
-                                        <span class="price-per-unit">$620</span>avg/night
-                                    </label>
-                                </div>
-                            </article>
-                            <article class="box">
-                                <figure>
-                                    <a href="#"><img src="/frontend/images/shortcodes/buttons-sample3.png" alt="" /></a>
-                                </figure>
-                                <div class="details">
-                                    <h5 class="box-title"><a href="#">Park Central</a></h5>
-                                    <label class="price-wrapper">
-                                        <span class="price-per-unit">$322</span>avg/night
-                                    </label>
-                                </div>
-                            </article>
+                            <% Hotel.where(area_id: @hotel.area_id).limit(4).each do |item| %>
+                                <article class="box">
+                                    <figure>
+                                        <%= link_to image_tag(item.image_url.small_image), book_hotel_detail_path(hotel_id: item, name: item.url_friendly) %>
+                                    </figure>
+                                    <div class="details">
+                                        <h5 class="box-title"><%= link_to item.name, book_hotel_detail_path(hotel_id: item, name: item.url_friendly) %></h5>
+                                        <label class="price-wrapper">
+                                            <span class="price-per-unit">$170</span>avg/night
+                                        </label>
+                                    </div>
+                                </article>
+                            <% end %>
                         </div>
                     </div>
                     <%= render "/travel_news/right_sidebar" %>

@@ -91,7 +91,7 @@
                         <!-- LAYERS -->
 
                         <!-- LAYER NR. 1 -->
-                        <div class="tp-caption large_bold_white_med   tp-resizeme" id="slide-21-layer-1" data-x="15" data-y="261" data-width="['auto']" data-height="['auto']" data-transform_idle="o:1;" data-transform_in="x:left;s:1500;e:Power3.easeInOut;" data-transform_out="x:-50px;opacity:0;s:300;s:300;" data-start="1000" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 5;">SỐNG DƯỚI ÁNH MẶT TRỜI, BƠI TRÊN ĐẠI<br/>DƯƠNG VÀ THƯỞNG THỨC...<br/><strong>BẠN DÁM KHÔNG?</strong> </div>
+                        <div class="tp-caption large_bold_white_med   tp-resizeme" id="slide-21-layer-1" data-x="15" data-y="261" data-width="['auto']" data-height="['auto']" data-transform_idle="o:1;" data-transform_in="x:left;s:1500;e:Power3.easeInOut;" data-transform_out="x:-50px;opacity:0;s:300;s:300;" data-start="1000" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 5; color: navy;">SỐNG DƯỚI ÁNH MẶT TRỜI, BƠI TRÊN ĐẠI<br/>DƯƠNG VÀ THƯỞNG THỨC...<br/><strong>BẠN DÁM KHÔNG?</strong> </div>
 
                         <!-- LAYER NR. 2 -->
                         <div class="tp-caption largewhitebg_button1   tp-resizeme" id="slide-21-layer-2" data-x="15" data-y="342" data-width="['auto']" data-height="['auto']" data-transform_idle="o:1;" data-transform_in="x:-50px;opacity:0;s:1500;e:Power3.easeInOut;" data-transform_out="x:-50px;opacity:0;s:300;s:300;" data-start="1400" data-splitin="none" data-splitout="none" data-responsive_offset="on" style="z-index: 6;"><%= link_to "DỊCH VỤ", service_path, class: "color-red" %></div>
@@ -208,7 +208,7 @@
                                     <article class="box">
                                         <span class="discount"><span class="discount-text">Giảm giá <%= item.discount_percent.to_i %>%</span></span>
                                         <figure>
-                                            <a href="<%= tour_detail_path(tour_id: item, tour_name: item.url_friendly) %>" title="" class="hover-effect yellow"><img src="/frontend/images/shortcodes/image-box/style09/1.png" alt="" width="170" height="161" draggable="false"></a>
+                                            <a href="<%= tour_detail_path(tour_id: item, tour_name: item.url_friendly) %>" title="" class="hover-effect yellow"><img src="<%= item.image_url.medium_image %>" alt="" width="170" height="161" draggable="false"></a>
                                         </figure>
                                         <div class="details">
                                             <h4 class="box-title">
@@ -236,7 +236,7 @@
                         <li>
                             <article class="box">
                                 <figure>
-                                    <%= link_to image_tag("/frontend/images/cars/3.png", width: "270", height: "160"), car_detail_path(car_id: item), class: "hover-effect" %>
+                                    <%= link_to image_tag(item.image_url.medium_image, width: "270", height: "160"), car_detail_path(car_id: item), class: "hover-effect" %>
                                 </figure>
                                 <div class="details">
                                     <h4 class="box-title">
@@ -256,7 +256,7 @@
                     <div class="col-sms-6 col-sm-6 col-md-3">
                         <article class="box">
                             <figure class="animated fadeInDown" data-animation-type="fadeInDown" data-animation-duration="2" style="animation-duration: 2s; visibility: visible;">
-                                <%= link_to image_tag("/frontend/images/destinations01.jpg", width: "270", height: "160"), tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "hover-effect" %>
+                                <%= link_to image_tag(item.image_url.large_image, width: "270", height: "160"), tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "hover-effect" %>
                             </figure>
                             <div class="details">
                                 <%= link_to "Xem Tour", tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "button btn-mini" %>
@@ -273,7 +273,7 @@
                     <div class="col-sms-6 col-sm-6 col-md-3">
                         <article class="box">
                             <figure class="animated fadeInDown" data-animation-type="fadeInDown" data-animation-duration="2" style="animation-duration: 2s; visibility: visible;">
-                                <%= link_to image_tag("/frontend/images/destinations01.jpg", width: "270", height: "160"), tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "hover-effect" %>
+                                <%= link_to image_tag(item.image_url.large_image, width: "270", height: "160"), tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "hover-effect" %>
                             </figure>
                             <div class="details">
                                 <%= link_to "Xem Tour", tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "button btn-mini" %>

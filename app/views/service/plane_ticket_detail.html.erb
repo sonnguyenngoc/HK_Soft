@@ -21,7 +21,7 @@
                 <div id="main" class="col-sm-8 col-md-9">
                     <div class="post">
                         <figure class="image-container">
-                            <img src="/frontend/images/blog/post/image/1.png" alt="" />
+                            <img src="<%= @blog_detail.image_url.large_image %>" alt="<%= @blog_detail.title %>" />
                         </figure>
                         <div class="details">
                             <h1 class="entry-title"><%= @blog_detail.title %></h1>
@@ -42,6 +42,7 @@
                 </div>
                 <div class="sidebar col-sm-4 col-md-3">
                     <%= render "/service/right_sidebar_plane_ticket" %>
+                    <%= render "/tour_handbook/right_sidebar" %>
                 </div>
             </div>
         </div>

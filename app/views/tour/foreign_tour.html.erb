@@ -99,7 +99,7 @@
                             <div class="col-sm-6 col-md-4 col-lg-3">
                                 <article class="box">
                                     <figure>
-                                        <%= link_to image_tag("/frontend/images/tour/simple-packages/4-col/3.jpg"), tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "hover-effect" %>
+                                        <%= link_to image_tag(item.image_url.large_image), tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "hover-effect" %>
                                     </figure>
                                     <div class="details">
                                         <h4 class="box-title text-justify"><%= item.name %></h4>

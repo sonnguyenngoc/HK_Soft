@@ -36,7 +36,19 @@ class HotelUploader < CarrierWave::Uploader::Base
   #   process :resize_to_fit => [50, 50]
   # end
   version :small_image do
+    process :resize_to_fill => [70, 70]
+  end
+  version :small_image do
     process :resize_to_fill => [83, 83]
+  end
+  version :medium_image do
+    process :resize_to_fill => [300, 179]
+  end
+  version :large_image do
+    process :resize_to_fill => [208, 124]
+  end
+  version :big_image do
+    process :resize_to_fill => [870, 483]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
