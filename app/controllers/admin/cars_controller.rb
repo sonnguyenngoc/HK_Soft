@@ -59,7 +59,6 @@ class Admin::CarsController < ApplicationController
    # DELETE /articles/1
   # DELETE /articles/1.json
   def destroy
-    authorize! :detele, @car
     @car.destroy
     
     render nothing:true

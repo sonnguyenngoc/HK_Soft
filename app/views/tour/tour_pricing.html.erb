@@ -31,7 +31,7 @@
                             </thead>
                             <tbody>
                                 <% count = 0 %>
-                                <% Tour.get_tour_listing.each do |item| %>
+                                <% Tour.get_tour_listing(params).each do |item| %>
                                     <tr>
                                         <td><%= count + 1 %></td>
                                         <td><%= link_to item.name, tour_detail_path(tour_id: item) %></td>
