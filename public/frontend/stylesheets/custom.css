@@ -192,3 +192,9 @@ p.right > a:hover {
 p.right:hover {
     /*background-color: #3183b0;*/
 }
+.margin-top-10 {
+	margin-top: 10px;
+}
+strong > i {
+	text-decoration: underline;
+}

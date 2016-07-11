@@ -93,7 +93,7 @@
                             <%= t(:phone) %>: <%= @company.phone %><br />
                             <%= t(:hotline) %>: <%= @company.hotline %><br />
                             <%= t(:fax) %>: <%= @company.fax %><br />
-                            <%= t(:tax_code) %>: 0 3 0 6 1 4 6 7 3 6 - 001<br />
+                            <%= t(:tax_code) %>: 0 3 0 6 1 4 6 7 3 6 - 0 0 1<br />
                             <%= t(:e_mail) %>: <a href="mailto:<%= @company.email %>"><%= @company.email %></a><br />
                             <%= t(:website) %>: <%= link_to "http://hoangkhang.com.vn/", root_path, target: "_blank" %>
                         </li>
@@ -106,14 +106,15 @@
                     <ul>
                         <li>
                             <i>Billing address: (use 1 of 2 content below)</i> <br />
+                            <div class="margin-top-10"></div>
                             <strong><i>Address 1: </i></strong><br />
                             <strong>Hoang Khang Infomation And Communication Technology Solutions Company Limited</strong><br />
-                            138/10, Street 20, Ward 5, Go Vap District, Ho Chi Minh City, Viet Nam<br />
+                            Add: 138/10, Street 20, Ward 5, Go Vap District, Ho Chi Minh City, Viet Nam<br />
                             <%= t(:tax_code) %>: 0 3 0 6 1 4 6 7 3 6<br />
-                            
+                            <div class="margin-top-10"></div>
                             <strong><i>Address 2: </i></strong><br />
                             <strong>The Branch Hoang Khang Infomation And Communication Technology Solutions Company Limited</strong><br />
-                            <%= @company.head_office_address %><br />
+                            Add: <%= @company.head_office_address %><br />
                             <%= t(:tax_code) %>: 0 3 0 6 1 4 6 7 3 6 - 0 0 1<br />
                         </li>
                     </ul>
