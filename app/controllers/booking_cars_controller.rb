@@ -6,6 +6,7 @@ class BookingCarsController < ApplicationController
     
     respond_to do |format|
       if @booking_car.save
+        BookingCarMailer.booking_car_email(@booking_car).deliver_now
         format.html { redirect_to car_thankyou_path }
       end
     end

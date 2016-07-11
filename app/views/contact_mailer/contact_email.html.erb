@@ -1,0 +1,6 @@
+<p>-------- NewDiscovery.vn - Tin nhắn liên hệ từ khách hàng --------</p>
+<p>Họ & Tên: <%= @contact.name %></p>
+<p>Email: <%= @contact.email %></p>
+<p>Số điện thoại: <%= @contact.phone %></p>
+<p>Lời nhắn: <%= @contact.message.html_safe %></p>
+<p>Ngày gửi: <%= @contact.created_at.in_time_zone("Asia/Bangkok").strftime("%d/%m/%Y %H:%M") %> (GMT+07:00)</p>
