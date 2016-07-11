@@ -81,3 +81,14 @@ label.error {
 .color-red {
     color: red !important;
 }
+.image-box.style14 .details {
+    padding: 0px 15px 0;
+}
+@media only screen and (max-width: 900px) {   
+    .page-title-container.style2 .page-title .entry-title {
+        display: none !important;
+    }
+    .tour_sale_color h1 {
+        color: red !important;
+    }
+}

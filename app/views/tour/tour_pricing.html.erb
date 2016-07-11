@@ -23,17 +23,14 @@
                         <table class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>STT</th>
                                     <th>LỊCH TRÌNH TOUR</th>
                                     <th>LỊCH KHỞI HÀNH</th>
                                     <th>GIÁ TOUR</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <% count = 0 %>
                                 <% Tour.get_tour_listing(params).each do |item| %>
                                     <tr>
-                                        <td><%= count + 1 %></td>
                                         <td><%= link_to item.name, tour_detail_path(tour_id: item) %></td>
                                         <td>
                                             <div class="selector">
@@ -47,7 +44,6 @@
                                         </td>
                                         <td><% if item.new_price == 0 %>Liên hệ<% else %><%= format_number(item.new_price) %> VND<% end %></td>
                                     </tr>
-                                    <% count += 1 %>
                                 <% end %>
                             </tbody>
                         </table>
