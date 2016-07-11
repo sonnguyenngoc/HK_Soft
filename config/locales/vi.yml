@@ -392,6 +392,7 @@ vi:
   web: "Web"
   application: "Ứng Dụng"
   erp_system: "Hệ Thống Quản Trị ERP"
+  smb_management_system: "Hệ Thống Quản Trị Doanh Nghiệp Vừa & Nhỏ"
   management_systems: "Hệ Thống Quản Lý"
   cost_effective_solutions: "Cost-Effective Solutions"
   development: "Development"

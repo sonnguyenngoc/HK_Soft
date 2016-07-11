@@ -389,6 +389,7 @@ en:
   web: "Web"
   application: "Application"
   erp_system: "ERP System"
+  smb_management_system: "SMB Management System"
   management_systems: "Management Systems"
   cost_effective_solutions: "Cost-Effective Solutions"
   development: "Development"

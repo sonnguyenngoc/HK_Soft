@@ -106,21 +106,21 @@
                     <ul>
                         <li>
                             <i>Billing address: (use 1 of 2 content below)</i> <br />
-                            <strong>Address 1: </strong><br />
-                            <strong><%= @company.name %></strong><br />
+                            <strong><i>Address 1: </i></strong><br />
+                            <strong>Hoang Khang Infomation And Communication Technology Solutions Company Limited</strong><br />
                             138/10, Street 20, Ward 5, Go Vap District, Ho Chi Minh City, Viet Nam<br />
                             <%= t(:tax_code) %>: 0 3 0 6 1 4 6 7 3 6<br />
                             
-                            <strong>Address 2: </strong><br />
-                            <strong>Branch - <%= @company.name %></strong><br />
+                            <strong><i>Address 2: </i></strong><br />
+                            <strong>The Branch Hoang Khang Infomation And Communication Technology Solutions Company Limited</strong><br />
                             <%= @company.head_office_address %><br />
-                            <%= t(:tax_code) %>: 0 3 0 6 1 4 6 7 3 6 - 001<br />
+                            <%= t(:tax_code) %>: 0 3 0 6 1 4 6 7 3 6 - 0 0 1<br />
                         </li>
                     </ul>
                 </div>
                 
                 <div class="clearfix"></div>
-                <a class="but_thumbs_down" href="https://www.google.com/maps/place/45%2F22C+L%C3%AA+V%C4%83n+Th%E1%BB%8D,+ph%C6%B0%E1%BB%9Dng+16,+G%C3%B2+V%E1%BA%A5p,+H%E1%BB%93+Ch%C3%AD+Minh,+Vietnam/@10.8476616,106.6564857,18z/data=!4m5!3m4!1s0x317529bc96b68a43:0x417a67c38124ede3!8m2!3d10.847659!4d106.65758?hl=en-US" target="_blank"> <%= t(:view_larger_map) %></a>
+                <a class="but_thumbs_down" href="https://www.google.com/maps/place/45%2F22C+L%C3%AA+V%C4%83n+Th%E1%BB%8D,+ph%C6%B0%E1%BB%9Dng+16,+G%C3%B2+V%E1%BA%A5p,+H%E1%BB%93+Ch%C3%AD+Minh,+Vietnam/@10.8476616,106.6564857,18z/data=!4m5!3m4!1s0x317529bc96b68a43:0x417a67c38124ede3!8m2!3d10.847659!4d106.65758?hl=en-US" target="_blank"> <%= t(:view_location_map) %></a>
                 <%= render 'map_center' %>
 
         </div>
