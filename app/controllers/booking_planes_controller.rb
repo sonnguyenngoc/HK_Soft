@@ -5,6 +5,7 @@ class BookingPlanesController < ApplicationController
     @booking_plane = BookingPlane.new(booking_plane_params)
     respond_to do |format|
       if @booking_plane.save
+        BookingPlaneMailer.booking_plane_email(@booking_plane).deliver_now
         format.html { redirect_to plane_ticket_thankyou_path }
       end
     end

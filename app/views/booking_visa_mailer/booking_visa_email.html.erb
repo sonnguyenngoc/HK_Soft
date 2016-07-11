@@ -1,0 +1,15 @@
+<p>-------- NewDiscovery.vn - Đăng ký làm thẻ visa từ khách hàng --------</p>
+<p>Họ & Tên: <%= @booking_visa.full_name %></p>
+<p>Email: <%= @booking_visa.email %></p>
+<p>Số điện thoại: <%= @booking_visa.phone %></p>
+<p>Địa chỉ: <%= @booking_visa.address %></p>
+<p>ID/Passport: <%= @booking_visa.passport %></p>
+<p>Loại thẻ: <%= @booking_visa.visa_type %></p>
+<p>Quốc gia đến: <%= @booking_visa.country_to %></p>
+<p>Số CMND: <%= @booking_visa.cmnd_number %></p>
+<p>Ngày cấp: <%= @booking_visa.date_of_issue.strftime("%d/%m/%Y") %></p>
+<p>Nơi cấp: <%= @booking_visa.place_of_issue %></p>
+<p>Lời nhắn: <%= @booking_visa.message.html_safe %></p>
+<p>
+  Ngày gửi: <%= @booking_visa.created_at.in_time_zone("Asia/Bangkok").strftime("%d/%m/%Y %H:%M") %> (GMT+07:00)
+</p>

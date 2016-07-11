@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
             controller_name == "options" || controller_name == "users" || controller_name == "user_groups" || controller_name == "contacts" || controller_name == "newsletters" || controller_name == "tours" || controller_name == "hotels" || controller_name == "cars" ||
             controller_name == "booking_cars" || controller_name == "booking_hotels" || controller_name == "booking_planes" || controller_name == "booking_tours" || controller_name == "booking_visas" 
           authenticate_user!
+          redirect_to root_path if current_user.is_admin != true
           "backend"
       end
     end

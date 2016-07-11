@@ -6,6 +6,7 @@ class ContactsController < ApplicationController
   
     respond_to do |format|
       if @contact.save
+        ContactMailer.contact_email(@contact).deliver_now
         format.html { redirect_to contact_thankyou_path }
       end
     end

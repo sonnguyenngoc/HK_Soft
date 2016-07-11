@@ -1,5 +1,7 @@
 class Tour < ActiveRecord::Base
     mount_uploader :image_url, TourImageUploader
+    validates :full_name, :address, :phone, :email, :tour_schedule_id, :child, :child_2, :child_3, :adult, :message, presence: true
+    validates_format_of :email, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
     has_many :tour_schedules
     has_many :tour_images
     belongs_to :article_category

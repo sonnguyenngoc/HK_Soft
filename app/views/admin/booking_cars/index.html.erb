@@ -75,6 +75,7 @@
                                         <strong>ID/Passport:</strong> <%= item.passport %>
                                     </td>
                                     <td>
+                                        <strong>Loại xe:</strong> <%= item.car.name %><br/>
                                         <strong>Giá xe:</strong> <% if item.price == 0 %>Liên hệ<% else %><%= format_number(item.price) %> VND<% end %><br/>
                                         <strong>Lộ trình:</strong> <%= item.address_from %> - <%= item.address_to %><br/>
                                         <strong>Thời gian:</strong> <%= item.date_from.strftime("%d/%m/%Y") if !item.date_from.nil? %> - <%= item.date_to.strftime("%d/%m/%Y") if !item.date_to.nil? %>

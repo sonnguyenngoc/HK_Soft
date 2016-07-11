@@ -7,6 +7,7 @@ class BookingVisasController < ApplicationController
 
     respond_to do |format|
       if @booking_visa.save
+        BookingVisaMailer.booking_visa_email(@booking_visa).deliver_now
         format.html { redirect_to visa_card_thankyou_path }
       end
     end
