@@ -304,6 +304,29 @@ class Article < ActiveRecord::Base
     return records
   end
   
+  #real_estate_site
+  def self.get_real_estate_site
+    records = self.get_active_articles
+    records = records.joins(:code_status).where(code_statuses: { title: 'real_estate_site' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  #travel_and_tourism_site
+  def self.get_travel_and_tourism_site
+    records = self.get_active_articles
+    records = records.joins(:code_status).where(code_statuses: { title: 'travel_and_tourism_site' })
+    records.order("created_at DESC").first
+    
+    return records
+  end
+  
+  #related_projects
+  def self.get_related_projects
+    records = self
+  end
+  
   #get footer about us
   def self.get_footer_about_us
     records = self.get_active_articles
