@@ -49,6 +49,17 @@
                         </select>
                     </div>
                 </div>
+				
+				<div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:related_projects) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-10">
+                        <select name="project_ids[]" id="article_project_ids" class="select-item-color required" data-placeholder="<%= t(:related_projects) %>..." multiple="multiple">
+                            <% @projects.each do |item| %>
+                                <option <%= "selected" if @article.projects.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
+                            <% end %>
+                        </select>
+                    </div>
+                </div>
                 
                 <div class="form-group">
                     <label class="col-lg-2 control-label" ><%= t(:keywords) %> </label>
@@ -93,7 +104,7 @@
 						<a id="editor_upload_button" class="btn btn-primary btn-xs upload-image-video">Tải hình ảnh</a>
 						<a data-toggle="modal" data-target="#modal_upload_video" href="#" class="btn btn-primary btn-xs upload-video" >Tải video</a>
 					</div>
-                    <%= f.text_area :content_vi, rows: "4", cols: "4", id: "editor-full", class: "required" %>
+                    <%= f.text_area :content_vi, rows: "4", cols: "4", id: "editor-full-vi", class: "required" %>
                 </div>
 			</div>
                 

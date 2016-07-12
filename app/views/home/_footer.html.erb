@@ -78,7 +78,9 @@
                 <div class="one_fourth last aliright">
                     <div class="address">
                         <img src="/frontend/images/logo_hksoft.png" alt="" />
-                        <br /><br /> <%= Company.get_company.head_office_address %>
+                        <br />
+                        <div class="slogan"><%= t(:slogan) %></div>
+                        <br /> <%= Company.get_company.head_office_address %>
                         <div class="clearfix margin_bottom1"></div>
                         <strong><i class="fa fa-phone"></i></strong> <b> <%= Company.get_company.phone %></b><br />
                         <strong><i class="fa fa-envelope-o"></i></strong> <a href="mailto:<%= Company.get_company.email %>"><%= Company.get_company.email %></a><br />

@@ -3,7 +3,7 @@ function updatePercentDiscount() {
     var price = parseFloat($("input#product_price").val());
     
     if (old_price > 0 && price > 0) {
-        $("input#product_discount_percent").val(((old_price - price)/old_price)*100);
+        $("input#product_discount_percent").val((((old_price - price)/old_price)*100).toFixed(1));
     }
 }
 
