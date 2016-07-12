@@ -105,6 +105,17 @@
                 </div>
                 
                 <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:related_articles) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-10">
+                        <select name="article_ids[]" id="project_article_ids" class="select-item-color required" data-placeholder="<%= t(:related_articles) %>..." multiple="multiple">
+                            <% @articles.each do |item| %>
+                                <option <%= "selected" if @project.articles.include?(item) %> value="<%= item.id %>"><%= item.title %></option>
+                            <% end %>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
                     <%= f.label "#{t(:related_images)}: ", class: "col-lg-2 control-label" %>
                     <div class="col-lg-10">
                         <% index = 0 %>

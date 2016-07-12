@@ -10,6 +10,7 @@ class Article < ActiveRecord::Base
   mount_uploader :image_url_full_width, ArticleUploader
   has_and_belongs_to_many :article_categories
   has_and_belongs_to_many :products
+  has_and_belongs_to_many :projects
   has_many :comment_articles, dependent: :destroy
   belongs_to :code_status
   has_and_belongs_to_many :areas
