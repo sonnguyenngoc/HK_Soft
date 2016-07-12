@@ -433,9 +433,10 @@ vi:
   web_development_sub_7: "Hỗ trợ menu đa cấp"
   web_development_sub_8: "Hỗ trợ miễn phí 24/7"
   
-  # what di we offer? 
+  # what do we offer? 
   what_do_we_offer: "Dịch Vụ Của Chúng Tôi"
   website: "Trang web"
+  web_based_app: "Ứng dụng"
   website_sub_1: "Website Builder packages provide quality web hosting with unlimited resources."
   website_sub_2: "Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy also the leap into electronic typesetting, remaining essentially was in the with the release of sheets versions over the years."
   software_development: "Phần mềm"
