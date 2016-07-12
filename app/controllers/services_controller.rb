@@ -5,17 +5,12 @@ class ServicesController < ApplicationController
     
     def services_sub_1
         @program_languages = ProgramLanguage.all
-        @website_development = Article.get_website_development
+        @web_design_and_development = Article.get_web_design_and_development
     end
     
     def services_sub_2
         @program_languages = ProgramLanguage.all
         @web_based_software_development = Article.get_web_based_software_development
-    end
-    
-    def services_sub_3
-        @program_languages = ProgramLanguage.all
-        @e_commerce = Article.get_e_commerce
     end
     
     def services_sub_4
@@ -41,5 +36,35 @@ class ServicesController < ApplicationController
     def services_sub_8
         @program_languages = ProgramLanguage.all
         @email_marketing = Article.get_email_marketing
+    end
+    #............................................
+    def services_sub_1_1
+        @program_languages = ProgramLanguage.all
+        @content_management_system = Article.get_content_management_system
+    end
+    
+    def services_sub_1_2
+        @program_languages = ProgramLanguage.all
+        @b2b_trade_portal = Article.get_b2b_trade_portal
+    end
+    
+    def services_sub_1_3
+        @program_languages = ProgramLanguage.all
+        @b2c_e_commerce_site = Article.get_b2c_e_commerce_site
+    end
+    
+    def services_sub_2_1
+        @program_languages = ProgramLanguage.all
+        @erp_system = Article.get_erp_system
+    end
+    
+    def services_sub_2_2
+        @program_languages = ProgramLanguage.all
+        @education_and_school_system = Article.get_education_and_school_system
+    end
+    
+    def services_sub_2_3
+        @program_languages = ProgramLanguage.all
+        @real_estale_agent_monitor = Article.get_real_estale_agent_monitor
     end
 end

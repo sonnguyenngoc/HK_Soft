@@ -358,6 +358,16 @@ vi:
   news: "Tin Tức"
   home_support: "Hỗ Trợ"
   home_contact: "Liên Hệ"
+  
+  web_design_and_development: "Thiết Kế & Phát Triển Website"
+  content_management_system: "Hệ Thống Quản Trị Nội Dung"
+  b2c_e_commerce_site: "Trang Thương Mại Điện Tử B2C"
+  b2b_trade_portal: "Sàn Thương Mại Điện Tử B2B"
+  education_and_school_system: "Hệ Thống Giáo Dục & Trường Học"
+  real_estale_agent_monitor: "Quản Lý Giao Dịch Bất Động Sản"
+  projects_related: "Dự án liên quan"
+  more: "Xem thêm"
+  
   our_services: "Các Dịch Vụ Của Chúng Tôi"
   resources: "Resources"
   follow_us: "Theo dõi"
@@ -381,7 +391,8 @@ vi:
   domains_hosting_sub_8: "30 Day Money Back Guarantee"
   web: "Web"
   application: "Ứng Dụng"
-  erp_system: "Hệ Thống ERP"
+  erp_system: "Hệ Thống Quản Trị ERP"
+  smb_management_system: "Hệ Thống Quản Trị Doanh Nghiệp Vừa & Nhỏ"
   management_systems: "Hệ Thống Quản Lý"
   cost_effective_solutions: "Cost-Effective Solutions"
   development: "Development"
@@ -409,7 +420,7 @@ vi:
   recent_works: "DỰ ÁN GẦN ĐÂY"
   # end frontend global naturesoft translate
   company_info: "Thông tin công ty"
-  lastest_news: "Tin tức mới nhất"
+  lastest_news: "Tin mới"
   form: ""
   name: "Họ & tên"
   subject: "Tiêu đề"
@@ -429,6 +440,7 @@ vi:
   end_date: "Ngày hoàn thành"
   program_languages: "Công nghệ"
   author: "Khách hàng"
+  investor: "Chủ đầu tư"
   visit_site: "Xem trang web"
   in: "Chuyên mục"
   by: "Đăng bởi"
@@ -481,6 +493,7 @@ vi:
   newsletter_thank_you_content: "Đăng ký email nhận tin mới thành công."
   is_available: "có thể sử dụng."
   is_already_registered: "đã được đăng ký."
+  available_options_features_comparison: "So sánh tính năng & Tùy chọn"
   
   activerecord:
     attributes:

@@ -27,19 +27,31 @@
                             <li class="dropdown"> <%= link_to t(:home_page), root_path, class: ("active" if params[:controller] == "home").to_s %></li>
                             
                             <li class="dropdown"> <%= link_to t(:services), services_sub_1_path, class: "dropdown-toggle #{("active" if params[:controller] == "services").to_s}" %>
-                                <ul class="dropdown-menu multilevel" role="menu">
-                                    <li><%= link_to t(:website_development), services_sub_1_path %></li>
-                                    <li><%= link_to t(:web_based_software_development), services_sub_2_path %></li>
-                                    <li><%= link_to t(:e_commerce), services_sub_3_path %></li>
+                                <ul class="dropdown-menu multilevel" role="menu">                                    
+                                    <li class="dropdown-submenu mul"><a href="<%= url_for (services_sub_1_path) %>"><%= t(:web_design_and_development) %> <span class="right"><i class="fa fa-caret-right"></i></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><%= link_to t(:content_management_system), services_sub_1_1_path %></li>
+                                            <li><%= link_to t(:b2c_e_commerce_site), services_sub_1_3_path %></li>
+                                            <li><%= link_to t(:b2b_trade_portal), services_sub_1_2_path %></li>
+                                            <li><%= link_to t(:real_estate_site), services_sub_1_4_path %></li>
+                                            <li><%= link_to t(:travel_and_tourism_site), services_sub_1_5_path %></li>
+                                        </ul>
+                                    </li>                                    
+                                    <li class="dropdown-submenu mul"><a href="<%= url_for (services_sub_2_path) %>"><%= t(:web_based_software_development) %> <span class="right"><i class="fa fa-caret-right"></i></span></a>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><%= link_to t(:smb_management_system), services_sub_2_1_path %></li>
+                                            <li><%= link_to t(:education_and_school_system), services_sub_2_2_path %></li>
+                                            <li><%= link_to t(:real_estale_agent_monitor), services_sub_2_3_path %></li>
+                                        </ul>
+                                    </li>                                    
                                     <li><%= link_to t(:google_apps_for_bussiness), services_sub_4_path %></li>
-                                    <li><%= link_to t(:outsourcing), services_sub_5_path %></li>
-                                    <li><%= link_to t(:research_and_development), services_sub_6_path %></li>
-                                    <li><%= link_to t(:systems_integration), services_sub_7_path %></li>
+                                    <!--<li><%= link_to t(:outsourcing), services_sub_5_path %></li>-->
+                                    <!--<li><%= link_to t(:research_and_development), services_sub_6_path %></li>-->
+                                    <!--<li><%= link_to t(:systems_integration), services_sub_7_path %></li>-->
                                     <li><%= link_to t(:email_marketing), services_sub_8_path %></li>
+                                    <li><%= link_to t(:domains_and_hosting), domains_hosting_path, class: (" active" if params[:controller] == "domains").to_s %></li>
                                 </ul>
                             </li>
-                                                
-                            <li><%= link_to t(:domains_and_hosting), domains_hosting_path, class: (" active" if params[:controller] == "domains").to_s %></li>
 
                             <li><%= link_to t(:works), works_path, class: (" active" if params[:controller] == "works").to_s %></li>
 

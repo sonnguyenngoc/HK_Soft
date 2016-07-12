@@ -1,16 +1,23 @@
 Rails.application.routes.draw do
   devise_for :users
   #, defaults: {locale: "en"}
-  scope "(:locale)", locale: /vi|en/ do
+  scope "(:locale)", locale: /vi|en|ja|th/ do
     
     # home page
     root "home#index"
     
     # servies page
     get "services.html" => "services#index", as: :services
-    get "website-development.html" => "services#services_sub_1", as: :services_sub_1
+    get "web-design&development.html" => "services#services_sub_1", as: :services_sub_1
+    get "web-design&development/content-management-system.html" => "services#services_sub_1_1", as: :services_sub_1_1
+    get "web-design&development/b2b-trade-portal.html" => "services#services_sub_1_2", as: :services_sub_1_2
+    get "web-design&development/b2c-e-commerce-site.html" => "services#services_sub_1_3", as: :services_sub_1_3
+    get "web-design&development/real-estate-site.html" => "services#services_sub_1_4", as: :services_sub_1_4
+    get "web-design&development/travel-and-tourism-site.html" => "services#services_sub_1_5", as: :services_sub_1_5
     get "web-based-software-development.html" => "services#services_sub_2", as: :services_sub_2
-    get "e-commerce.html" => "services#services_sub_3", as: :services_sub_3
+    get "web-based-software-development/erp-system.html" => "services#services_sub_2_1", as: :services_sub_2_1
+    get "web-based-software-development/education&school-system.html" => "services#services_sub_2_2", as: :services_sub_2_2
+    get "web-based-software-development/real-estale-agent-monitor.html" => "services#services_sub_2_3", as: :services_sub_2_3
     get "google-apps-for-bussiness.html" => "services#services_sub_4", as: :services_sub_4
     get "outsourcing.html" => "services#services_sub_5", as: :services_sub_5
     get "research-and-development.html" => "services#services_sub_6", as: :services_sub_6

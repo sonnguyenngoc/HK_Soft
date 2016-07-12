@@ -43,12 +43,20 @@
                     <%= t(:slider1_content).html_safe %>
                 
                 </h5>
-
-                <a href="#" class="ms-layer sbut1" style="left: 115px; top: 390px;" data-type="text" data-delay="700" data-ease="easeOutExpo" data-duration="1800" data-effect="scale(1.5,1.6)">
+                
+                <% if params[:locale] == "vi" %>
+                    <a href="vi/e-commerce.html" class="ms-layer sbut1" style="left: 115px; top: 390px;" data-type="text" data-delay="700" data-ease="easeOutExpo" data-duration="1800" data-effect="scale(1.5,1.6)">
+                        
+                        <%= t(:more_info) %>
+                        
+                    </a>
+                <% else %>
+                    <a href="en/e-commerce.html" class="ms-layer sbut1" style="left: 115px; top: 390px;" data-type="text" data-delay="700" data-ease="easeOutExpo" data-duration="1800" data-effect="scale(1.5,1.6)">
                     
-                    <%= t(:more_info) %>
-                    
-                </a>
+                        <%= t(:more_info) %>
+                        
+                    </a>
+                <% end %>
 
             </div>
             <!-- end slide 1 -->
@@ -110,10 +118,15 @@
                     <span class="dncfont">Starts at</span><br /> 36.000vnđ <em>/month</em>
 
                 </div>-->
-
-                <a href="#" class="ms-layer sbut1" style="left: 115px; top: 430px;" data-type="text" data-delay="700" data-ease="easeOutExpo" data-duration="1800" data-effect="scale(1.5,1.6)">
-                    <%= t(:more_info) %>
-                </a>
+                <% if params[:locale] == "vi" %>
+                    <a href="vi/domains-hosting.html" class="ms-layer sbut1" style="left: 115px; top: 430px;" data-type="text" data-delay="700" data-ease="easeOutExpo" data-duration="1800" data-effect="scale(1.5,1.6)">
+                        <%= t(:more_info) %>
+                    </a>
+                <% else %>
+                    <a href="en/domains-hosting.html" class="ms-layer sbut1" style="left: 115px; top: 430px;" data-type="text" data-delay="700" data-ease="easeOutExpo" data-duration="1800" data-effect="scale(1.5,1.6)">
+                        <%= t(:more_info) %>
+                    </a>
+                <% end %>
 
             </div>
             <!-- end slide 2 -->
@@ -148,10 +161,16 @@
                 <h6 class="ms-layer" style="left: 115px; top: 335px;" data-type="text" data-effect="bottom(45)" data-duration="1800" data-delay="700" data-ease="easeOutExpo">
                     <i class="fa fa-check"></i> <%= t(:cost_effective_solutions) %>
                 </h6>
-
-                <a href="#" class="ms-layer sbut1" style="left: 115px; top: 390px;" data-type="text" data-delay="700" data-ease="easeOutExpo" data-duration="1800" data-effect="scale(1.5,1.6)">
-                    <%= t(:more_info) %>
-                </a>
+                
+                <% if params[:locale] == "vi" %>
+                    <a href="vi/web-based-software-development.html" class="ms-layer sbut1" style="left: 115px; top: 390px;" data-type="text" data-delay="700" data-ease="easeOutExpo" data-duration="1800" data-effect="scale(1.5,1.6)">
+                        <%= t(:more_info) %>
+                    </a>
+                <% else %>
+                    <a href="en/web-based-software-development.html" class="ms-layer sbut1" style="left: 115px; top: 390px;" data-type="text" data-delay="700" data-ease="easeOutExpo" data-duration="1800" data-effect="scale(1.5,1.6)">
+                        <%= t(:more_info) %>
+                    </a>
+                <% end %>
 
             </div>
             <!-- end slide 3 -->
@@ -208,10 +227,16 @@
                 <h6 class="ms-layer" style="left: 405px; top: 370px;" data-type="text" data-effect="bottom(45)" data-duration="1800" data-delay="800" data-ease="easeOutExpo">
                     <i class="fa fa-check"></i> <%= t(:web_development_sub_8) %>
                 </h6>
-
-                <a href="#" class="ms-layer sbut1" style="left: 115px; top: 430px;" data-type="text" data-delay="700" data-ease="easeOutExpo" data-duration="1800" data-effect="scale(1.5,1.6)">
-                    More Info !
-                </a>
+                
+                <% if params[:locale] == "vi" %>
+                    <a href="vi/website-development.html" class="ms-layer sbut1" style="left: 115px; top: 430px;" data-type="text" data-delay="700" data-ease="easeOutExpo" data-duration="1800" data-effect="scale(1.5,1.6)">
+                        More Info !
+                    </a>
+                <% else %>
+                    <a href="en/website-development.html" class="ms-layer sbut1" style="left: 115px; top: 430px;" data-type="text" data-delay="700" data-ease="easeOutExpo" data-duration="1800" data-effect="scale(1.5,1.6)">
+                        More Info !
+                    </a>
+                <% end %>
 
             </div>
             <!-- end slide 4 -->
@@ -220,9 +245,7 @@
     </div>
     <!-- end of masterslider -->
 
-
     <div class="clearfix"></div>
-
 
     <div class="parallax_section5">
         <div class="container">
@@ -233,7 +256,7 @@
 
             <div class="tabs detached hide-title cross-fade">
                 
-                <section id="nested-instance">
+                <section id="nested-instance"  style="background: white !important">
                     <h1><span><%= t(:website) %></span></h1>
                     <img src="/frontend/images/main-services-website-development.png" alt="" />
                     <h2><%= t(:website_sub_1) %></h2>
@@ -243,7 +266,7 @@
                 </section>
                 <!-- end section -->
                 
-                <section>
+                <section style="background: white !important">
                     <h1><span><%= t(:software_development) %></span></h1>
                     <img src="/frontend/images/main-services-software-development.png" alt="" />
                     <h2><%= t(:software_development_sub_1) %></h2>
@@ -253,7 +276,7 @@
                 </section>
                 <!-- end section -->
                 
-                <section>
+                <section style="background: white !important">
                     <h1><span><%= t(:email_marketing) %></span></h1>
                     <img src="/frontend/images/main-services-email-marketing.png" alt="" />
                     <h2><%= t(:email_marketing_sub_1) %></h2>
@@ -263,7 +286,7 @@
                 </section>
                 <!-- end section -->
                 
-                <section>
+                <section style="background: white !important">
                     <h1><span><%= t(:domains_and_hosting) %></span></h1>
                     <img src="/frontend/images/main-services-domains-hosting.png" alt="" />
                     <h2><%= t(:domains_and_hosting_sub_1) %></h2>
@@ -348,7 +371,7 @@
         </li>
 
         <li>
-            <a href="<%= services_sub_3_path %>"> <img src="/frontend/images/our-services-e-commerce.png" alt="E-Commerce">
+            <a href="<%= services_sub_1_3_path %>"> <img src="/frontend/images/our-services-e-commerce.png" alt="E-Commerce">
             <h6><%= t(:e_commerce) %></h6></a>
         </li>
 

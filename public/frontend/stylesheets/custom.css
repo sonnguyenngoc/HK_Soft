@@ -136,3 +136,80 @@ ul.tabs {
 		width: 100%;
 	}
 }
+.compact .header #logo {
+    background-size: 80%;
+    background-position: left 9px;
+    margin-top: -3px;
+}
+.feature_section17 .one_third {
+	padding: 35px 40px 45px 40px;
+	height: 320px;
+}
+.marg-right {
+	margin-right: 20px;
+}
+@media only screen and (max-width: 1199px) {
+    .footer .ftop .left h1 {
+        font-size: 38px;
+    }
+}
+@media only screen and (max-width: 999px) {
+    .footer .ftop .left h1 {
+        font-size: 23px;
+    }
+	.footer .ftop .left h4 {
+		font-size: 11px;
+	}
+}
+@media only screen and (max-width: 479px) {
+    .footer .ftop .left h1 {
+        font-size: 21px;
+    }
+	.copyrights .one_half {
+		font-size: 11px;
+	}
+	.st-accordion-four ul li > a span {
+		top: 23px;
+	}
+}
+span.right {
+	float: right;
+	margin-left: 2px;
+}
+p.right {
+	float: right;
+	/*border: solid 1px #eee;*/
+    padding: 0px 10px;
+	text-decoration: underline;
+    /*background-color: #3183d7;*/
+}
+p.right > a {
+	color: #000;
+}
+p.right > a:hover {
+	color: #888;
+}
+p.right:hover {
+    /*background-color: #3183b0;*/
+}
+.margin-top-10 {
+	margin-top: 10px;
+}
+strong > i.title-addr {
+	text-decoration: underline;
+}
+.owl-carousel {
+	width: 71%;
+}
+.fullwidth_fix {
+	padding: 0px 0px 90px 0px;
+}
+.fullwidth_fix_last {
+	padding: 0px 0px 0px 0px !important;
+}
+.pritable .pacdetails.related {
+	width: 23.67% !important;
+}
+.pritable_fix {
+	    padding: 0px 0px;
+}

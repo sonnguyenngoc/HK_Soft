@@ -5,6 +5,8 @@
                 
             <a href="<%= url_for( :locale => 'en' ) %>"><img src="/backend/assets/images/flags/gb.png" alt=""></a>  
             <a href="<%= url_for( :locale => 'vi' ) %>"><img src="/backend/assets/images/flags/vn.png" alt=""></a>
+            <a href="<%= url_for( :locale => 'ja' ) %>"><img src="/backend/assets/images/flags/jp.png" alt=""></a>  
+            <a href="<%= url_for( :locale => 'th' ) %>"><img src="/backend/assets/images/flags/th.png" alt=""></a>
 
         </div>
         <!-- end left -->
@@ -12,9 +14,9 @@
         <div class="right">
 
             <ul class="tplinks">
-                <li><strong><i class="fa fa-phone"></i> (08) 2212 9454</strong></li>
+                <li><strong><i class="fa fa-phone"></i> <%= Company.get_company.hotline %></strong></li>
                 <li>
-                    <a href="mailto:soft.support@hoangkhang.com.vn"><img src="/frontend/images/site-icon1.png" alt="" /> <%= t(:e_mail) %></a>
+                    <a href="mailto:<%= Company.get_company.email %>"><img src="/frontend/images/site-icon1.png" alt="" /> <%= t(:e_mail) %></a>
                 </li>
                 <li>
                     <%= link_to image_tag("/frontend/images/site-icon3.png") + t(:home_support), support_path %>
