@@ -78,7 +78,7 @@
                         <span><strong><%= t(:start_date) %></strong> <em><% if params[:locale] == "en" %><%= @project.start_date.strftime("%d %B %Y") %><% else %><%= @project.start_date.strftime("%d/%m/%Y") %><% end %></em></span>
                         <span><strong><%= t(:end_date) %></strong> <em><% if params[:locale] == "en" %><%= @project.end_date.strftime("%d %B %Y") %><% else %><%= @project.end_date.strftime("%d/%m/%Y") %><% end %></em></span>
                         <span><strong><%= t(:program_languages) %></strong> <em><% @project.program_languages.each do |item| %><a href="#<%= item.name %>"><%= item.name %></a> <% end %> </em></span>
-                        <span><strong><%= t(:author) %></strong> <em><% if params[:locale] == "en" %><%= @project.author %><% else %><%= @project.author_vi %><% end %></em></span>
+                        <span><strong><%= t(:investor) %></strong> <em><% if params[:locale] == "en" %><%= @project.author %><% else %><%= @project.author_vi %><% end %></em></span>
                         <% if @project.website != "" %>
                             <div class="clearfix margin_top5"></div>
                             <a href="<%= @project.website %>" class="but_medium1" target="_blank"><i class="fa fa-hand-o-right fa-lg"></i>&nbsp; <%= t(:visit_site) %></a>

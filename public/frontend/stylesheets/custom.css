@@ -195,6 +195,15 @@ p.right:hover {
 .margin-top-10 {
 	margin-top: 10px;
 }
-strong > i {
+strong > i.title-addr {
 	text-decoration: underline;
+}
+.owl-carousel {
+	width: 71%;
+}
+.fullwidth_fix {
+	padding: 0px 0px 90px 0px;
+}
+.pritable .pacdetails.related {
+	width: 23.67% !important;
 }
