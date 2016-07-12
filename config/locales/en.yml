@@ -519,6 +519,7 @@ en:
   newsletter_thank_you_content: "Email newsletter successful signup."
   is_available: "is available."
   is_already_registered: "is already registered."
+  available_options_features_comparison: "Available Options & Features Comparison"
   
   devise:
     sessions:

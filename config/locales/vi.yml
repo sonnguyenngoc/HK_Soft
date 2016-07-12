@@ -521,6 +521,7 @@ vi:
   newsletter_thank_you_content: "Đăng ký email nhận tin mới thành công."
   is_available: "có thể sử dụng."
   is_already_registered: "đã được đăng ký."
+  available_options_features_comparison: "So sánh tính năng & Tùy chọn"
   
   activerecord:
     attributes:
