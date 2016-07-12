@@ -19,6 +19,7 @@ class Admin::ProjectsController < ApplicationController
     @end_date = Time.now.strftime("%d/%m/%Y")
     @project_categories = ProjectCategory.get_all_categories
     @program_languages = ProgramLanguage.all
+    @articles = Article.all
     
     10.times do
       @project.project_images.build
@@ -31,6 +32,7 @@ class Admin::ProjectsController < ApplicationController
     @end_date = @project.end_date.strftime("%d/%m/%Y")
     @project_categories = ProjectCategory.get_all_categories
     @program_languages = ProgramLanguage.all
+    @articles = Article.all
     
     (10-@project.project_images.count).times do
       @project.project_images.build
@@ -42,6 +44,10 @@ class Admin::ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     
+    @project_categories = ProjectCategory.get_all_categories
+    @program_languages = ProgramLanguage.all
+    @articles = Article.all
+    
     if params[:project_category_ids].present?
       params[:project_category_ids].each do |id|      
         @project.project_categories << ProjectCategory.find(id)
@@ -51,6 +57,12 @@ class Admin::ProjectsController < ApplicationController
     if params[:program_language_ids].present?
       params[:program_language_ids].each do |id|      
         @project.program_languages << ProgramLanguage.find(id)
+      end
+    end
+    
+    if params[:article_ids].present?
+      params[:article_ids].each do |id|      
+        @project.articles << Article.find(id)
       end
     end
     
@@ -70,6 +82,11 @@ class Admin::ProjectsController < ApplicationController
   def update
     @project.project_categories.clear
     @project.program_languages.clear
+    @project.articles.clear
+    
+    @project_categories = ProjectCategory.get_all_categories
+    @program_languages = ProgramLanguage.all
+    @articles = Article.all
     
     if params[:project_category_ids].present?
       params[:project_category_ids].each do |id|      
@@ -80,6 +97,12 @@ class Admin::ProjectsController < ApplicationController
     if params[:program_language_ids].present?
       params[:program_language_ids].each do |id|      
         @project.program_languages << ProgramLanguage.find(id)
+      end
+    end
+    
+    if params[:article_ids].present?
+      params[:article_ids].each do |id|      
+        @project.articles << Article.find(id)
       end
     end
     

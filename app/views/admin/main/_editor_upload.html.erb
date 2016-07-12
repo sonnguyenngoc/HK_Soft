@@ -59,31 +59,11 @@
 <!-- /basic modal -->
 
 <script>
-        function editor_uploaded(data) {
-            //CKEDITOR.instances["editor-full"].insertHtml(data);
-            tinymce.activeEditor.execCommand('mceInsertContent', false, data);
-            // CKEDITOR.instances["editor-full"].insertHtml(data);
-            $(".uploading").hide();
-            $("#modal_upload_video").trigger("click")
-            $(".post_video").attr("disabled", false);
-        }
-        $(document).ready(function() {
-            $("#editor_upload_button").click(function() {							
-                $("#editor_upload_file").trigger("click")
-            });
-            $("#editor_upload_file").change(function() {
-                $(".uploading").show();
-                $("#editor_upload_form").submit();
-            })
-            $(".post_video").click(function() {
-                $(".uploading").show();
-                $(this).attr("disabled", true);
-            })
-            
-            
-            // Init tinyMCE
+		
+		function initEditor(id) {
+			// Init tinyMCE
             tinymce.init({
-				selector: '#editor-full',
+				selector: id,
 				height: 500,
 				theme: 'modern',
 				plugins: [
@@ -110,6 +90,32 @@
 				convert_urls: false,
 				remove_script_host : false,
 			});
+		}
+	
+        function editor_uploaded(data) {
+            //CKEDITOR.instances["editor-full"].insertHtml(data);
+            tinymce.activeEditor.execCommand('mceInsertContent', false, data);
+            // CKEDITOR.instances["editor-full"].insertHtml(data);
+            $(".uploading").hide();
+            $("#modal_upload_video").trigger("click")
+            $(".post_video").attr("disabled", false);
+        }
+        $(document).ready(function() {
+            $("#editor_upload_button").click(function() {							
+                $("#editor_upload_file").trigger("click")
+            });
+            $("#editor_upload_file").change(function() {
+                $(".uploading").show();
+                $("#editor_upload_form").submit();
+            })
+            $(".post_video").click(function() {
+                $(".uploading").show();
+                $(this).attr("disabled", true);
+            })
+            
+			initEditor("#editor-full-vi");
+            initEditor("#editor-full");
+            
         });
         
 </script>

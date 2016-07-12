@@ -29,6 +29,7 @@ class Admin::ArticlesController < ApplicationController
     authorize! :create, Article
     
     @article = Article.new
+    @projects = Project.all
     @article_categories = ArticleCategory.all
     @areas = Area.get_by_level(2)
     @products = Product.paginate(:page => params[:page], :per_page => 10)
@@ -40,6 +41,7 @@ class Admin::ArticlesController < ApplicationController
     authorize! :update, @article
     
     @article_categories = ArticleCategory.all
+    @projects = Project.all
     @areas = Area.get_by_level(2)
     @products = Product.paginate(:page => params[:page], :per_page => 10)
   end
@@ -48,6 +50,7 @@ class Admin::ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article_categories = ArticleCategory.all
+    @projects = Project.all
     @products = Product.paginate(:page => params[:page], :per_page => 10)
     @areas = Area.get_by_level(2)
     # authorize
@@ -56,12 +59,9 @@ class Admin::ArticlesController < ApplicationController
     
     @article.user_id = current_user.id
     
-    @article.article_categories.clear
-    
     # update areas
     @article.areas.clear
     if params[:area_ids].present?
-        @article.areas.clear
         params[:area_ids].each do |id|      
           @article.areas << Area.find(id)
         end
@@ -72,8 +72,11 @@ class Admin::ArticlesController < ApplicationController
         @article.article_categories << ArticleCategory.find(id)
       end
     end
-    
-    @article.products.clear
+    if params[:project_ids].present?
+        params[:project_ids].each do |id|      
+          @article.projects << Project.find(id)
+        end
+    end
     if params[:product_ids].present?
       params[:product_ids].each do |id|      
         @article.products << Product.find(id)
@@ -96,16 +99,22 @@ class Admin::ArticlesController < ApplicationController
   def update
     @areas = Area.get_by_level(2)
     @article_categories = ArticleCategory.all
+    @projects = Project.all
     @products = Product.paginate(:page => params[:page], :per_page => 10)
     # authorize
     authorize! :update, @article
-    
-    @article.article_categories.clear
     
     if params[:category_ids].present?
         @article.article_categories.clear
         params[:category_ids].each do |id|      
           @article.article_categories << ArticleCategory.find(id)
+        end
+    end
+    
+    if params[:project_ids].present?
+        @article.projects.clear
+        params[:project_ids].each do |id|      
+          @article.projects << Project.find(id)
         end
     end
     
