@@ -211,5 +211,11 @@ strong > i.title-addr {
 	width: 23.67% !important;
 }
 .pritable_fix {
-	    padding: 0px 0px;
+	padding: 0px 0px;
+}
+.slogan {
+	font-size: 11px;
+    width: 125%;
+    margin-top: -8px;
+	text-align: left;
 }
