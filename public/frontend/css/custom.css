@@ -91,4 +91,11 @@ label.error {
     .tour_sale_color h1 {
         color: red !important;
     }
+    .post-content table {
+        max-width: 100% !important;
+        width: auto !important;
+    }
+}
+.post-content td, .post-content th {
+    border: 1px solid black;
 }
