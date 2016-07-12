@@ -50,6 +50,7 @@
 }
 .post-content img {
     max-width: 100%;
+    height: auto;
 }
 label.error {
     display: none !important;
