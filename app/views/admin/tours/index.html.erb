@@ -81,7 +81,9 @@
                                     <td>
                                         <% item.tour_schedules.each do |tour_schedule| %>
                                             <% if tour_schedule.from_date > Time.now %>
-                                                <%= tour_schedule.from_date.strftime("%d/%m/%Y") %> - <%= tour_schedule.to_date.strftime("%d/%m/%Y") %>
+                                                <% if !tour_schedule.from_date.nil? && !tour_schedule.to_date.nil? %>
+                                                    <%= tour_schedule.from_date.strftime("%d/%m/%Y") %> - <%= tour_schedule.to_date.strftime("%d/%m/%Y") %>
+                                                <% end %>
                                                 <% remain_seat =  tour_schedule.seat.to_i - tour_schedule.remain_seats.to_i %>
                                                 <% if remain_seat > 0 %>
                                                     <span class="label bg-info">Còn <%= remain_seat %> ghế.</span>

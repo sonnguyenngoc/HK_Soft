@@ -67,7 +67,9 @@
                                             <select name="booking_tour[tour_schedule_id]" id="booking_tour_tour_schedule_id" class="full-width required">
                                                 <option value="">Lịch khởi hành - [<%= @tour.get_count_tour_schedules %>]</option>
                                                 <% @tour.tour_schedules.get_tour_schedules.each do |schedule| %>
-                                                    <option value="<%= schedule.id %>"><%= schedule.from_date.strftime("%d/%m/%Y") %> - <%= schedule.to_date.strftime("%d/%m/%Y") %></option>
+                                                    <% if !schedule.from_date.nil? && !schedule.to_date.nil? %>
+                                                        <option value="<%= schedule.id %>"><%= schedule.from_date.strftime("%d/%m/%Y") %> - <%= schedule.to_date.strftime("%d/%m/%Y") %></option>
+                                                    <% end %>
                                                 <% end %>
                                             </select>
                                         </div>
