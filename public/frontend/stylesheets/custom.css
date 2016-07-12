@@ -204,6 +204,12 @@ strong > i.title-addr {
 .fullwidth_fix {
 	padding: 0px 0px 90px 0px;
 }
+.fullwidth_fix_last {
+	padding: 0px 0px 0px 0px !important;
+}
 .pritable .pacdetails.related {
 	width: 23.67% !important;
+}
+.pritable_fix {
+	    padding: 0px 0px;
 }
