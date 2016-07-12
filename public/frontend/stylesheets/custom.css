@@ -196,7 +196,7 @@ p.right:hover {
 	margin-top: 10px;
 }
 strong > i.title-addr {
-	text-decoration: underline;
+	text-decoration: none;
 }
 .owl-carousel {
 	width: 71%;
