@@ -72,7 +72,11 @@
                             <% @tours.each do |item| %>
                                 <tr>
                                     <td>
-                                        <%= link_to image_tag(item.image_url.smaller_image), edit_admin_tour_path(item), title: item.name %>
+                                        <% if can? :update, item %>
+                                            <%= link_to image_tag(item.image_url.smaller_image), edit_admin_tour_path(item), title: item.name %>
+                                        <% else %>
+                                            <img src="<%= item.image_url.smaller_image %>">
+                                        <% end %>
                                     </td>
                                     <td>
                                         <strong><%= item.name %></strong><br/>
@@ -86,9 +90,7 @@
                                     <td>
                                         <% item.tour_schedules.each do |tour_schedule| %>
                                             <% if tour_schedule.from_date > Time.now %>
-                                                <% if !tour_schedule.from_date.nil? && !tour_schedule.to_date.nil? %>
-                                                    <%= tour_schedule.from_date.strftime("%d/%m/%Y") %> - <%= tour_schedule.to_date.strftime("%d/%m/%Y") %>
-                                                <% end %>
+                                                    <% if !tour_schedule.from_date.nil? %><%= tour_schedule.from_date.strftime("%d/%m/%Y") %><% end %><% if !tour_schedule.to_date.nil? %> - <%= tour_schedule.to_date.strftime("%d/%m/%Y") %><% end %>
                                                 <% remain_seat =  tour_schedule.seat.to_i - tour_schedule.remain_seats.to_i %>
                                                 <% if remain_seat > 0 %>
                                                     <span class="label bg-info">Còn <%= remain_seat %> ghế.</span>
@@ -107,30 +109,36 @@
                                         <%= item.created_at.strftime("%d/%m/%Y") %>
                                     </td>
                                     <td class="text-center">
-                                        <ul class="icons-list">
-                                            <li class="dropdown">
-                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                    <i class="icon-menu9"></i>
-                                                </a>
-                                                <ul class="dropdown-menu dropdown-menu-right">
-                                                    <% if item.hidden == false %>
-                                                        <li>
-                                                            <%= link_to '<i class="glyphicon glyphicon-eye-close"></i> Ẩn tour'.html_safe, {controller: "admin/tours", action: "hidden", id: item.id} %>
-                                                        </li>
-                                                    <% else %>
-                                                        <li>
-                                                            <%= link_to '<i class="glyphicon glyphicon-eye-open"></i> Hiện tour'.html_safe, {controller: "admin/tours", action: "un_hidden", id: item.id} %>
-                                                        </li>
-                                                    <% end %>
-                                                    <li>
-                                                        <%= link_to '<i class="glyphicon glyphicon-edit"></i> '.html_safe + t(:edit), edit_admin_tour_path(item) %>
-                                                    </li>
-                                                    <li>
-                                                        <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), "#delete_tour", url: admin_tour_path(item), class: "backend_delete_item" %>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
+                                        <% if can?(:update, item) or can?(:delete, item) %>
+                                            <ul class="icons-list">
+                                                <li class="dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                        <i class="icon-menu9"></i>
+                                                    </a>
+                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                        <% if can? :update, item %>
+                                                            <% if item.hidden == false %>
+                                                                <li>
+                                                                    <%= link_to '<i class="glyphicon glyphicon-eye-close"></i> Ẩn tour'.html_safe, {controller: "admin/tours", action: "hidden", id: item.id} %>
+                                                                </li>
+                                                            <% else %>
+                                                                <li>
+                                                                    <%= link_to '<i class="glyphicon glyphicon-eye-open"></i> Hiện tour'.html_safe, {controller: "admin/tours", action: "un_hidden", id: item.id} %>
+                                                                </li>
+                                                            <% end %>
+                                                            <li>
+                                                                <%= link_to '<i class="glyphicon glyphicon-edit"></i> '.html_safe + t(:edit), edit_admin_tour_path(item) %>
+                                                            </li>
+                                                        <% end %>
+                                                        <% if can? :delete, item %>
+                                                            <li>
+                                                                <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), "#delete_tour", url: admin_tour_path(item), class: "backend_delete_item" %>
+                                                            </li>
+                                                        <% end %>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        <% end %>
                                     </td>
                                 </tr>
                             <% end %>
