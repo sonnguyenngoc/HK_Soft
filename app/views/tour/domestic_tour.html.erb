@@ -103,7 +103,6 @@
                                     </figure>
                                     <div class="details">
                                         <h4 class="box-title text-justify"><%= item.name %></h4>
-                                        <span class="price"><% if item.new_price == 0 %>Liên hệ<% else %><%= format_number(item.new_price) %> VND<% end %></span>
                                         <hr>
                                         <div class="text-justify"><%= truncate(strip_tags(item.description), length: 100) %></div>
                                         <hr>
@@ -121,8 +120,8 @@
                                                 Tour sớm nhất:<span> <% if item.tour_schedules.count > 0 %><% if !item.get_lastest_tour_from_date.nil? %><%= item.get_lastest_tour_from_date %><% end %><% if !item.get_lastest_tour_to_date.nil? %> - <%= item.get_lastest_tour_to_date %><% end %><% else %>Chưa có lịch cho tour<% end %></span>
                                             </div>
                                             <div class="time">
-                                                <i class="soap-icon-clock yellow-color"></i>
-                                                Tour sớm nhất:<span> <% if item.tour_schedules.count > 0 %><% if !item.get_lastest_tour_from_date.nil? %><%= item.get_lastest_tour_from_date %><% end %><% if !item.get_lastest_tour_to_date.nil? %> - <%= item.get_lastest_tour_to_date %><% end %><% else %>Chưa có lịch cho tour<% end %></span>
+                                                <i class="soap-icon-passed yellow-color"></i>
+                                                Giá:<span> <% if item.new_price == 0 %>Liên hệ<% else %><%= format_number(item.new_price) %> VND<% end %></span>
                                             </div>
                                         </div>
                                         <%= link_to "XEM TOUR", tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "button btn-small full-width" %>
