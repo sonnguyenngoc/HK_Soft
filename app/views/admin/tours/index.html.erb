@@ -115,11 +115,11 @@
                                                 <ul class="dropdown-menu dropdown-menu-right">
                                                     <% if item.hidden == false %>
                                                         <li>
-                                                            <%= link_to '<i class="glyphicon glyphicon-eye-open"></i> Ẩn tour'.html_safe, {controller: "admin/tours", action: "hidden", id: item.id} %>
+                                                            <%= link_to '<i class="glyphicon glyphicon-eye-close"></i> Ẩn tour'.html_safe, {controller: "admin/tours", action: "hidden", id: item.id} %>
                                                         </li>
                                                     <% else %>
                                                         <li>
-                                                            <%= link_to '<i class="glyphicon glyphicon-eye-close"></i> Hiện tour'.html_safe, {controller: "admin/tours", action: "un_hidden", id: item.id} %>
+                                                            <%= link_to '<i class="glyphicon glyphicon-eye-open"></i> Hiện tour'.html_safe, {controller: "admin/tours", action: "un_hidden", id: item.id} %>
                                                         </li>
                                                     <% end %>
                                                     <li>
