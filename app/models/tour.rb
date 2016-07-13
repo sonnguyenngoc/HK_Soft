@@ -157,6 +157,21 @@ class Tour < ActiveRecord::Base
         ]
     end
     
+    def copy
+        new_tour = self.dup
+        new_tour.name += " (Copy)"
+        #new_tour.image_url.download!(self.image_url)
+        #new_tour.store_image_url!
+        new_tour.save
+        
+        # copy tour schedules - 1-n
+        self.tour_schedules.each do |ts|
+            new_ts = ts.dup
+            new_tour.tour_schedules << new_ts
+        end
+        
+    end
+    
     def self.service_listing
         [
             "entrance_fees",
