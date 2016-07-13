@@ -17,8 +17,24 @@
     <div class="page_title1 sty13">
         <div class="container">
 
-            <h1><%= t(:erp_system) %></h1>
-            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_2_path %> <i>/</i> <%= t(:erp_system) %></div>
+            <h1>
+                <% if @erp_system.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @erp_system.first.title_vi if !@erp_system.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @erp_system.first.title if !@erp_system.first.title.nil? %>
+                    <% end %>
+                <% end %>
+            </h1>
+            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_2_path %> <i>/</i>
+                <% if @erp_system.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @erp_system.first.title_vi if !@erp_system.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @erp_system.first.title if !@erp_system.first.title.nil? %>
+                    <% end %>
+                <% end %>
+            </div>
 
         </div>
     </div>
@@ -65,7 +81,9 @@
 
                 <div class="clearfix divider_line9 lessm"></div>
                 
-                <%= render 'modules/related_project' %>
+                <% if @erp_system.first.present? and @erp_system.first.projects.present? %>
+                    <%= render 'modules/related_project', related_projects: @erp_system %>
+                <% end %>
                 
                 <%= render 'modules/quotation_services' %>
 

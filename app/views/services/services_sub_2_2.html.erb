@@ -17,8 +17,24 @@
     <div class="page_title1 sty13">
         <div class="container">
 
-            <h1><%= t(:education_and_school_system) %></h1>
-            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_2_path %> <i>/</i> <%= t(:education_and_school_system) %></div>
+            <h1>
+                <% if @education_and_school_system.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @education_and_school_system.first.title_vi if !@education_and_school_system.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @education_and_school_system.first.title if !@education_and_school_system.first.title.nil? %>
+                    <% end %>
+                <% end %>
+            </h1>
+            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_2_path %> <i>/</i>
+                <% if @education_and_school_system.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @education_and_school_system.first.title_vi if !@education_and_school_system.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @education_and_school_system.first.title if !@education_and_school_system.first.title.nil? %>
+                    <% end %>
+                <% end %>
+            </div>
 
         </div>
     </div>
@@ -65,7 +81,9 @@
 
                 <div class="clearfix divider_line9 lessm"></div>
                 
-                <%= render 'modules/related_project' %>
+                <% if @education_and_school_system.first.present? and @education_and_school_system.first.projects.present? %>
+                    <%= render 'modules/related_project', related_projects: @education_and_school_system %>
+                <% end %>
                 
                 <%= render 'modules/quotation_services' %>
 

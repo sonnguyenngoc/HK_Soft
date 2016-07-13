@@ -17,8 +17,24 @@
     <div class="page_title1 sty13">
         <div class="container">
 
-            <h1><%= t(:web_based_software_development) %></h1>
-            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_2_path %> <i>/</i> <%= t(:web_based_software_development) %></div>
+            <h1>
+                <% if @real_estate_site.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @real_estate_site.first.title_vi if !@real_estate_site.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @real_estate_site.first.title if !@real_estate_site.first.title.nil? %>
+                    <% end %>
+                <% end %>
+            </h1>
+            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_2_path %> <i>/</i> 
+                <% if @real_estate_site.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @real_estate_site.first.title_vi if !@real_estate_site.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @real_estate_site.first.title if !@real_estate_site.first.title.nil? %>
+                    <% end %>
+                <% end %>
+            </div>
 
         </div>
     </div>
@@ -214,7 +230,9 @@
                 
                 <div class="clearfix divider_line9 lessm"></div>
                 
-                <%= render 'modules/related_project' %>
+                <% if @real_estate_site.first.present? and @real_estate_site.first.projects.present? %>
+                    <%= render 'modules/related_project', related_projects: @real_estate_site %>
+                <% end %>
 
             </div>
             <!-- end content left side -->

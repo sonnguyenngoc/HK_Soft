@@ -17,8 +17,24 @@
     <div class="page_title1 sty13">
         <div class="container">
 
-            <h1><%= t(:content_management_system) %></h1>
-            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_1_path %> <i>/</i> <%= t(:content_management_system) %></div>
+            <h1>
+                <% if @content_management_system.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @content_management_system.first.title_vi if !@content_management_system.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @content_management_system.first.title if !@content_management_system.first.title.nil? %>
+                    <% end %>
+                <% end %>   
+            </h1>
+            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_1_path %> <i>/</i>
+                <% if @content_management_system.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @content_management_system.first.title_vi if !@content_management_system.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @content_management_system.first.title if !@content_management_system.first.title.nil? %>
+                    <% end %>
+                <% end %>
+            </div>
 
         </div>
     </div>
@@ -163,7 +179,9 @@
                 
                 <div class="clearfix divider_line9 lessm"></div>
                 
-                <%= render 'modules/related_project' %>
+                <% if @content_management_system.first.present? and @content_management_system.first.projects.present? %>
+                    <%= render 'modules/related_project', related_projects: @content_management_system %>
+                <% end %>
 
             </div>
             <!-- end content left side -->

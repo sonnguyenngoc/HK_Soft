@@ -430,7 +430,7 @@ en:
   web_development_sub_7: "Versatile Drop Down Menu Options"
   web_development_sub_8: "Free 24/7 Tech Support"
   
-  # what di we offer? 
+  # what do we offer? 
   what_do_we_offer: "What do we offer?"
   website: "Website"
   website_sub_1: "Web & Interactive Design"
@@ -443,6 +443,7 @@ en:
   domains_and_hosting_sub_1: "Domain packages provide quality web hosting with unlimited resources."
   domains_and_hosting_sub_2: "We has challenged the traditional web hosting industry by providing every service needed for our customers right from the start, such as mail hosting and website hosting with gallery, blog, PHP, MySQL and free customer support 24/7, 365 days a year. This gives you access to a product bundle where your server space needs are all you need to consider while choosing a subscription."
   recent_works: "Recent Works"
+  web_based_app: "Web-based App"
   # end frontend global naturesoft translate
   company_info: "Conpany Info"
   lastest_news: "Latest News"

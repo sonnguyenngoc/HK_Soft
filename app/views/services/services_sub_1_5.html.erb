@@ -17,8 +17,24 @@
     <div class="page_title1 sty13">
         <div class="container">
 
-            <h1><%= t(:web_based_software_development) %></h1>
-            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_2_path %> <i>/</i> <%= t(:web_based_software_development) %></div>
+            <h1>
+                <% if @travel_and_tourism_site.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @travel_and_tourism_site.first.title_vi if !@travel_and_tourism_site.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @travel_and_tourism_site.first.title if !@travel_and_tourism_site.first.title.nil? %>
+                    <% end %>
+                <% end %>
+            </h1>
+            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_2_path %> <i>/</i>
+                <% if @travel_and_tourism_site.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @travel_and_tourism_site.first.title_vi if !@travel_and_tourism_site.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @travel_and_tourism_site.first.title if !@travel_and_tourism_site.first.title.nil? %>
+                    <% end %>
+                <% end %>
+            </div>
 
         </div>
     </div>
@@ -65,7 +81,9 @@
 
                 <div class="clearfix divider_line9 lessm"></div>
                 
-                <%= render 'modules/related_project' %>
+                <% if @travel_and_tourism_site.first.present? and @travel_and_tourism_site.first.projects.present? %>
+                    <%= render 'modules/related_project', related_projects: @travel_and_tourism_site %>
+                <% end %>
                 
                 <%= render 'modules/quotation_services' %>
 

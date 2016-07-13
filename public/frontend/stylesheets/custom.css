@@ -196,7 +196,7 @@ p.right:hover {
 	margin-top: 10px;
 }
 strong > i.title-addr {
-	text-decoration: underline;
+	text-decoration: none;
 }
 .owl-carousel {
 	width: 71%;
@@ -218,4 +218,36 @@ strong > i.title-addr {
     width: 125%;
     margin-top: -8px;
 	text-align: left;
+}
+a.pp_next {
+	width: 10% !important;
+}
+a.pp_previous {
+	width: 10% !important;
+}
+
+.btn_view_detail {
+	margin: 201px 0px 0 400px;
+	position: absolute;
+	/*<a href="#" class="but_small5 btn_view_detail"><i class="fa fa-paper-plane"></i>&nbsp; Small Size</a>*/
+}
+textarea {
+    resize: vertical;
+	max-height: 205px;
+}
+.but_fix_view_map {
+	float: right;
+	margin: 10px 0px 0px 0px !important;
+	padding-top: 14px !important;
+	padding-bottom: 14px !important;
+}
+@media only screen and (max-width: 479px) {
+    .cforms .button {
+		padding: 15px 10px;
+	}
+	.but_fix_view_map {
+		float: right;
+		margin: 10px 0px 0px 0px !important;
+		padding: 14px 10px 13px 10px !important;
+	}
 }

@@ -17,8 +17,24 @@
     <div class="page_title1 sty13">
         <div class="container">
 
-            <h1><%= t(:google_apps_for_bussiness) %></h1>
-            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_4_path %> <i>/</i> <%= t(:google_apps_for_bussiness) %></div>
+            <h1>
+                <% if @google_apps_for_bussiness.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @google_apps_for_bussiness.first.title_vi if !@google_apps_for_bussiness.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @google_apps_for_bussiness.first.title if !@google_apps_for_bussiness.first.title.nil? %>
+                    <% end %>
+                <% end %>
+            </h1>
+            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_4_path %> <i>/</i> 
+                <% if @google_apps_for_bussiness.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @google_apps_for_bussiness.first.title_vi if !@google_apps_for_bussiness.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @google_apps_for_bussiness.first.title if !@google_apps_for_bussiness.first.title.nil? %>
+                    <% end %>
+                <% end %>
+            </div>
 
         </div>
     </div>
@@ -61,7 +77,9 @@
 
                 <div class="clearfix divider_line9 lessm"></div>
                 
-                <%= render 'modules/related_project' %>
+                <% if @google_apps_for_bussiness.first.present? and @google_apps_for_bussiness.first.projects.present? %>
+                    <%= render 'modules/related_project', related_projects: @google_apps_for_bussiness %>
+                <% end %>
 
             </div>
             <!-- end content left side -->

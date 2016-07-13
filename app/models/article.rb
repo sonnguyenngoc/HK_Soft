@@ -321,12 +321,7 @@ class Article < ActiveRecord::Base
     
     return records
   end
-  
-  #related_projects
-  def self.get_related_projects
-    records = self
-  end
-  
+
   #get footer about us
   def self.get_footer_about_us
     records = self.get_active_articles

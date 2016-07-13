@@ -17,8 +17,24 @@
     <div class="page_title1 sty13">
         <div class="container">
 
-            <h1><%= t(:outsourcing) %></h1>
-            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_5_path %> <i>/</i> <%= t(:outsourcing) %></div>
+            <h1>
+                <% if @outsourcing.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @outsourcing.first.title_vi if !@outsourcing.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @outsourcing.first.title if !@outsourcing.first.title.nil? %>
+                    <% end %>
+                <% end %>
+            </h1>
+            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_5_path %> <i>/</i>
+                <% if @outsourcing.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @outsourcing.first.title_vi if !@outsourcing.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @outsourcing.first.title if !@outsourcing.first.title.nil? %>
+                    <% end %>
+                <% end %>
+            </div>
 
         </div>
     </div>
@@ -61,7 +77,9 @@
 
                 <div class="clearfix divider_line9 lessm"></div>
                 
-                <%= render 'modules/related_project' %>
+                <% if @outsourcing.first.present? and @outsourcing.first.projects.present? %>
+                    <%= render 'modules/related_project', related_projects: @outsourcing %>
+                <% end %>
 
             </div>
             <!-- end content left side -->
