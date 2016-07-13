@@ -6,7 +6,6 @@ class ServicesController < ApplicationController
     def services_sub_1
         @program_languages = ProgramLanguage.all
         @web_design_and_development = Article.get_web_design_and_development
-        @related_projects = Article.get_web_design_and_development
     end
     
     def services_sub_2
