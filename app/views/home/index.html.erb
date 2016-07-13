@@ -263,7 +263,7 @@
                                 </figure>
                                 <div class="details">
                                     <%= link_to "Xem Tour", tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "button btn-mini" %>
-                                    <h4 class="box-title"><%= link_to item.name, tour_detail_path(tour_id: item, tour_name: item.url_friendly) %><small>Giá: <% if item.new_price == 0 %>Liên hệ<% else %><%= format_number(item.new_price) %> VND<% end %></small></h4>
+                                    <h4 class="box-title"><%= link_to truncate(strip_tags(item.name), length: 30), tour_detail_path(tour_id: item, tour_name: item.url_friendly), title: item.name %><small>Giá: <% if item.new_price == 0 %>Liên hệ<% else %><%= format_number(item.new_price) %> VND<% end %></small></h4>
                                 </div>
                             </article>
                         </div>
@@ -282,7 +282,7 @@
                                 </figure>
                                 <div class="details">
                                     <%= link_to "Xem Tour", tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "button btn-mini" %>
-                                    <h4 class="box-title"><%= link_to item.name, tour_detail_path(tour_id: item, tour_name: item.url_friendly) %><small>Giá: <% if item.new_price == 0 %>Liên hệ<% else %><%= format_number(item.new_price) %> VND<% end %></small></h4>
+                                    <h4 class="box-title"><%= link_to truncate(strip_tags(item.name), length: 30), tour_detail_path(tour_id: item, tour_name: item.url_friendly), title: item.name %><small>Giá: <% if item.new_price == 0 %>Liên hệ<% else %><%= format_number(item.new_price) %> VND<% end %></small></h4>
                                 </div>
                             </article>
                         </div>
