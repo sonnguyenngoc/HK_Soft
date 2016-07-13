@@ -19,16 +19,16 @@
 
             <h1>
                 <% if params[:locale] == "vi" %>
-                    <%= @google_apps_for_bussiness.title_vi %>
+                    <%= @google_apps_for_bussiness.title_vi if !@google_apps_for_bussiness.title_vi.nil? %>
                 <% else %>
-                    <%= @google_apps_for_bussiness.title %>
+                    <%= @google_apps_for_bussiness.title if !@google_apps_for_bussiness.title.nil? %>
                 <% end %>    
             </h1>
             <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_4_path %> <i>/</i> 
                 <% if params[:locale] == "vi" %>
-                    <%= @google_apps_for_bussiness.title_vi %>
+                    <%= @google_apps_for_bussiness.title_vi if !@google_apps_for_bussiness.title_vi.nil? %>
                 <% else %>
-                    <%= @google_apps_for_bussiness.title %>
+                    <%= @google_apps_for_bussiness.title if !@google_apps_for_bussiness.title.nil? %>
                 <% end %>
             </div>
 

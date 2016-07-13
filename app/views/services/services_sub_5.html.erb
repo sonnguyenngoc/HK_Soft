@@ -18,15 +18,15 @@
         <div class="container">
 
             <h1><% if params[:locale] == "vi" %>
-                    <%= @outsourcing.title_vi %>
+                    <%= @outsourcing.title_vi if !@outsourcing.title_vi.nil? %>
                 <% else %>
-                    <%= @outsourcing.title %>
+                    <%= @outsourcing.title if !@outsourcing.title.nil? %>
                 <% end %></h1>
             <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_5_path %> <i>/</i>
                 <% if params[:locale] == "vi" %>
-                    <%= @outsourcing.title_vi %>
+                    <%= @outsourcing.title_vi if !@outsourcing.title_vi.nil? %>
                 <% else %>
-                    <%= @outsourcing.title %>
+                    <%= @outsourcing.title if !@outsourcing.title.nil? %>
                 <% end %>
             </div>
 

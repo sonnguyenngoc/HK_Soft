@@ -19,16 +19,16 @@
 
             <h1>
                 <% if params[:locale] == "vi" %>
-                    <%= @content_management_system.title_vi %>
+                    <%= @content_management_system.title_vi if !@content_management_system.title_vi.nil? %>
                 <% else %>
-                    <%= @content_management_system.title %>
+                    <%= @content_management_system.title if !@content_management_system.title.nil? %>
                 <% end %>
             </h1>
             <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_1_path %> <i>/</i>
                 <% if params[:locale] == "vi" %>
-                    <%= @content_management_system.title_vi %>
+                    <%= @content_management_system.title_vi if !@content_management_system.title_vi.nil? %>
                 <% else %>
-                    <%= @content_management_system.title %>
+                    <%= @content_management_system.title if !@content_management_system.title.nil? %>
                 <% end %>
             </div>
 
