@@ -77,7 +77,9 @@
 
                 <div class="clearfix divider_line9 lessm"></div>
                 
-                <%= render 'modules/related_project' %>
+                <% if @email_marketing.first.present? and @email_marketing.first.projects.present? %>
+                    <%= render 'modules/related_project', related_projects: @email_marketing %>
+                <% end %>
 
             </div>
             <!-- end content left side -->

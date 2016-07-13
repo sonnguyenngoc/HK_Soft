@@ -77,7 +77,9 @@
 
                 <div class="clearfix divider_line9 lessm"></div>
                 
-                <%= render 'modules/related_project' %>
+                <% if @research_and_development.first.present? and @research_and_development.first.projects.present? %>
+                    <%= render 'modules/related_project', related_projects: @research_and_development %>
+                <% end %>
 
             </div>
             <!-- end content left side -->

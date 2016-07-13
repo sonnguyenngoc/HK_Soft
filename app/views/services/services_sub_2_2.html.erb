@@ -81,7 +81,9 @@
 
                 <div class="clearfix divider_line9 lessm"></div>
                 
-                <%= render 'modules/related_project' %>
+                <% if @education_and_school_system.first.present? and @education_and_school_system.first.projects.present? %>
+                    <%= render 'modules/related_project', related_projects: @education_and_school_system %>
+                <% end %>
                 
                 <%= render 'modules/quotation_services' %>
 

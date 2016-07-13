@@ -179,7 +179,9 @@
                 
                 <div class="clearfix divider_line9 lessm"></div>
                 
-                <%= render 'modules/related_project' %>
+                <% if @content_management_system.first.present? and @content_management_system.first.projects.present? %>
+                    <%= render 'modules/related_project', related_projects: @content_management_system %>
+                <% end %>
 
             </div>
             <!-- end content left side -->

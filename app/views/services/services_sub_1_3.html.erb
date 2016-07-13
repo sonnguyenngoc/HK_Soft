@@ -242,7 +242,9 @@
 
                 <div class="clearfix divider_line9 lessm"></div>
                 
-                <%= render 'modules/related_project' %>
+                <% if @b2c_e_commerce_site.first.present? and @b2c_e_commerce_site.first.projects.present? %>
+                    <%= render 'modules/related_project', related_projects: @b2c_e_commerce_site %>
+                <% end %>
 
             </div>
             <!-- end content left side -->

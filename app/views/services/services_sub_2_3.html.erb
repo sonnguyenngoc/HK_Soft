@@ -81,7 +81,9 @@
 
                 <div class="clearfix divider_line9 lessm"></div>
                 
-                <%= render 'modules/related_project' %>
+                <% if @real_estale_agent_monitor.first.present? and @real_estale_agent_monitor.first.projects.present? %>
+                    <%= render 'modules/related_project', related_projects: @real_estale_agent_monitor %>
+                <% end %>
                 
                 <%= render 'modules/quotation_services' %>
 
