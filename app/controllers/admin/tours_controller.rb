@@ -5,7 +5,7 @@ class Admin::ToursController < ApplicationController
   # GET /tours.json
   def index
     authorize! :read, Tour
-    @tours = Tour.paginate(:page => params[:page], :per_page => 10)
+    @tours = Tour.order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /tours/1
@@ -94,6 +94,26 @@ class Admin::ToursController < ApplicationController
     flash[:notice] = 'Xóa tour du lịch thành công.'
   end
   
+  def hidden
+    @tour = Tour.find(params[:id])
+    @tour.hidden = true
+    @tour.save
+    respond_to do |format|
+      format.html { redirect_to :back, notice: 'Ẩn tour thành công.' }
+      format.json { head :no_content }
+    end
+  end
+  
+  def un_hidden
+    @tour = Tour.find(params[:id])
+    @tour.hidden = false
+    @tour.save
+    respond_to do |format|
+      format.html { redirect_to :back, notice: 'Hiện tour thành công.' }
+      format.json { head :no_content }
+    end
+  end
+  
   def approve
     @tour = Tour.find(params[:id])
     authorize! :approve, @tour
@@ -113,6 +133,6 @@ class Admin::ToursController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tour_params
-      params.require(:tour).permit(:image_url, :approved, :article_category_id, :type_name, :name, :description, :content, :is_sale, :discount_percent, :new_price, :old_price, :services, :duration, :position, :hotel, :transportation, tour_schedules_attributes: [:id, :from_date, :to_date, :depart, :arrive, :seat, :_destroy], tour_images_attributes: [:id, :image_url, :_destroy])
+      params.require(:tour).permit(:image_url, :approved, :article_category_id, :type_name, :name, :description, :content, :is_sale, :discount_percent, :new_price, :old_price, :surcharge_1, :surcharge_2, :services, :duration, :position, :hotel, :transportation, tour_schedules_attributes: [:id, :from_date, :to_date, :depart, :arrive, :seat, :_destroy], tour_images_attributes: [:id, :image_url, :_destroy])
     end
 end
