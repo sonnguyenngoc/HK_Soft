@@ -7,7 +7,7 @@
 
 <p>Tour: <%= @booking_tour.tour_name %></p>
 <p>Giá tour: <% if @booking_tour.price == 0 %>Liên hệ<% else %><%= @booking_tour.price %> VND<% end %></p>
-<p>Ngày đặt tour: <%= @booking_tour.tour_schedule.from_date.strftime("%d/%m/%Y") %> - <%= @booking_tour.tour_schedule.to_date.strftime("%d/%m/%Y") %></p>
+<p>Ngày đặt tour: <% if !@booking_tour.tour_schedule.from_date.nil? %><%= @booking_tour.tour_schedule.from_date.strftime("%d/%m/%Y") %><% end %> - <% if !@booking_tour.tour_schedule.to_date.nil? %><%= @booking_tour.tour_schedule.to_date.strftime("%d/%m/%Y") %><% end %></p>
 <p>Số người lớn: <%= @booking_tour.adult %></p>
 <p>Số trẻ em (Từ 11 tuổi trở lên): <%= @booking_tour.child %></p>
 <p>Số trẻ em (Từ 5 tuổi đến dưới 11 tuổi): <%= @booking_tour.child_2 %></p>
