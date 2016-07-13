@@ -25,8 +25,8 @@
                             <div class="description">
                                 <small>Hỗ trợ khách hàng</small>
                                 <h5>
-                                    HOTLINE 1: <%= Company.get_company.hotline %><br />
-                                    HOTLINE 2: <%= Company.get_company.hotline_2 %>
+                                    HOTLINE 1: <a href="tel:<%= Company.get_company.hotline %>"><%= Company.get_company.hotline %></a><br />
+                                    HOTLINE 2: <a href="tel:<%= Company.get_company.hotline %>"><%= Company.get_company.hotline_2 %></a>
                                 </h5>
                             </div>
                         </div>
@@ -36,8 +36,8 @@
                             <i class="soap-icon-message"></i>
                             <div class="description">
                                 <small>Email</small>
-                                <h5><%= Company.get_company.email %></a><br/>
-                                <%= Company.get_company.email %></a>
+                                <h5><a href="mailto:<%= Company.get_company.email %>"><%= Company.get_company.email %></a><br/>
+                                    <a href="mailto:<%= Company.get_company.email_2 %>"><%= Company.get_company.email_2 %></a>
                                 </h5>
                             </div>
                         </div>
