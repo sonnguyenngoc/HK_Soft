@@ -7,7 +7,7 @@ class Tour < ActiveRecord::Base
     accepts_nested_attributes_for :tour_images, :reject_if => lambda { |a| a[:image_url].blank? && a[:id].blank? }, :allow_destroy => true
     
     def self.get_discount_tours
-        self.where("tours.is_sale = true").order("created_at DESC")
+        self.where("tours.is_sale = true and tours.hidden = false").order("created_at DESC")
     end
     
     def url_friendly
@@ -32,6 +32,7 @@ class Tour < ActiveRecord::Base
     
     def self.get_tour_listing(params)
         records = self.order("created_at DESC")
+        records = records.where(hidden: false)
         
         if params[:name].present?
             records = records.where("LOWER(tours.name) LIKE ?", "%#{params[:name].downcase.strip}%")
@@ -76,6 +77,7 @@ class Tour < ActiveRecord::Base
     
     def self.get_domestic_tour(params)
         records = self.where(type_name: "Tour Trong Nước").order("created_at DESC")
+        records = records.where(hidden: false)
         
         if params[:name].present?
             records = records.where("LOWER(tours.name) LIKE ?", "%#{params[:name].downcase.strip}%")
@@ -94,6 +96,7 @@ class Tour < ActiveRecord::Base
     
     def self.get_foreign_tour(params)
         records = self.where(type_name: "Tour Nước Ngoài").order("created_at DESC")
+        records = records.where(hidden: false)
         
         if params[:name].present?
             records = records.where("LOWER(tours.name) LIKE ?", "%#{params[:name].downcase.strip}%")
@@ -111,15 +114,16 @@ class Tour < ActiveRecord::Base
     end
     
     def self.get_lastest_domestic_tour
-        self.where(type_name: "Tour Trong Nước").order("created_at DESC").first(8)
+        self.where(type_name: "Tour Trong Nước").where(hidden: false).order("created_at DESC").first(8)
     end
     
     def self.get_lastest_foreign_tour
-        self.where(type_name: "Tour Nước Ngoài").order("created_at DESC").first(8)
+        self.where(type_name: "Tour Nước Ngoài").where(hidden: false).order("created_at DESC").first(8)
     end
     
     def self.get_tour_packages(params)
-        records = Tour.order("created_at DESC")
+        records = self.order("created_at DESC")
+        records = records.where(hidden: false)
         
         if params[:search_name].present?
             records = records.where("LOWER(tours.name) LIKE ?", "%#{params[:search_name].downcase.strip}%")
@@ -137,7 +141,9 @@ class Tour < ActiveRecord::Base
     end
     
     def self.get_related_tours(article_category_id)
-        records = Tour.order("created_at DESC")
+        records = self.order("created_at DESC")
+        records = records.where(hidden: false)
+        
         records = records.where(article_category_id: article_category_id)
         
         return records.first(5)

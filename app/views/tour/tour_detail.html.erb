@@ -93,6 +93,8 @@
                                             <dt>Thời gian chuyến tour</dt><dd>2 ngày 3 đêm</dd>
                                             <dt>Phương tiện</i></dt><dd>Tàu, Máy bay</dd>
                                             <dt>Khách sạn</i></dt><dd><%= @tour.hotel %></dd>
+                                            <dt>Phụ thu cuối tuần</i></dt><dd><% if @tour.surcharge_1 == 0 %>Liên hệ<% else %><%= format_number(@tour.surcharge_1) %> VND/Khách<% end %></dd>
+                                            <dt>Phụ thu lễ tết</i></dt><dd><% if @tour.surcharge_2 == 0 %>Liên hệ<% else %><%= format_number(@tour.surcharge_2) %> VND/Khách<% end %></dd>
                                         </dl>
                                     </div>
                                 </div>

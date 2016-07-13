@@ -215,6 +215,8 @@ Rails.application.routes.draw do
         resources :tours, path: "tour-du-lich" do
           collection do
             get 'approve'
+            get 'hidden'
+            get 'un_hidden'
           end
         end
         resources :hotels, path: "danh-sach-khach-san"
