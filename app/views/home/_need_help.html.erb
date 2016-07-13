@@ -1,8 +1,8 @@
 <div class="travelo-box contact-box">
     <h4>Hỗ Trợ Khách Hàng</h4>
     <address class="contact-details">
-        <span class="contact-phone"><i class="soap-icon-phone"></i> <%= Company.get_company.hotline %></span><br/>
-        <span class="contact-phone"><i class="soap-icon-phone"></i> <%= Company.get_company.hotline_2 %></span><br>
+        <span class="contact-phone"><i class="soap-icon-phone"></i> <a href="tel:<%= Company.get_company.hotline %>"><%= Company.get_company.hotline %></a></span><br/>
+        <span class="contact-phone"><i class="soap-icon-phone"></i> <a href="tel:<%= Company.get_company.hotline_2 %>"><%= Company.get_company.hotline_2 %></a></span><br>
         <a href="mailto:<%= Company.get_company.email %>" target="_top" class="contact-email"><%= Company.get_company.email %></a>
         <a href="mailto:<%= Company.get_company.email_2 %>" target="_top" class="contact-email"><%= Company.get_company.email_2 %></a>
     </address>
