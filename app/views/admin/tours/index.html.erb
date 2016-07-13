@@ -117,6 +117,9 @@
                                                     </a>
                                                     <ul class="dropdown-menu dropdown-menu-right">
                                                         <% if can? :update, item %>
+                                                            <li>
+                                                                <%= link_to '<i class="glyphicon glyphicon-edit"></i> Copy tour'.html_safe, {controller: "admin/tours", action: "copy", id: item.id} %>
+                                                            </li>
                                                             <% if item.hidden == false %>
                                                                 <li>
                                                                     <%= link_to '<i class="glyphicon glyphicon-eye-close"></i> Ẩn tour'.html_safe, {controller: "admin/tours", action: "hidden", id: item.id} %>

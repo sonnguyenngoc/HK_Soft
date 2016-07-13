@@ -176,6 +176,8 @@ class Tour < ActiveRecord::Base
             CopyCarrierwaveFile::CopyFileService.new(ti, new_ti, :image_url).set_file
             new_tour.tour_images << new_ti
         end
+        
+        return new_tour
     end
     
     def self.service_listing

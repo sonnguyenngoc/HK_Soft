@@ -214,6 +214,7 @@ Rails.application.routes.draw do
         end
         resources :tours, path: "tour-du-lich" do
           collection do
+            get 'copy'
             get 'approve'
             get 'hidden'
             get 'un_hidden'
