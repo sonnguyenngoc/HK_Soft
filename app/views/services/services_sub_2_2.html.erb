@@ -18,17 +18,21 @@
         <div class="container">
 
             <h1>
-                <% if params[:locale] == "vi" %>
-                    <%= @education_and_school_system.title_vi if !@education_and_school_system.title_vi.nil? %>
-                <% else %>
-                    <%= @education_and_school_system.title if !@education_and_school_system.title.nil? %>
-                <% end %>    
+                <% if @education_and_school_system.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @education_and_school_system.first.title_vi if !@education_and_school_system.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @education_and_school_system.first.title if !@education_and_school_system.first.title.nil? %>
+                    <% end %>
+                <% end %>
             </h1>
             <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_2_path %> <i>/</i>
-                <% if params[:locale] == "vi" %>
-                    <%= @education_and_school_system.title_vi if !@education_and_school_system.title_vi.nil? %>
-                <% else %>
-                    <%= @education_and_school_system.title if !@education_and_school_system.title.nil? %>
+                <% if @education_and_school_system.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @education_and_school_system.first.title_vi if !@education_and_school_system.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @education_and_school_system.first.title if !@education_and_school_system.first.title.nil? %>
+                    <% end %>
                 <% end %>
             </div>
 

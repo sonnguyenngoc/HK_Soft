@@ -18,17 +18,21 @@
         <div class="container">
 
             <h1>
-                <% if params[:locale] == "vi" %>
-                    <%= @b2b_trade_portal.title_vi if !@b2b_trade_portal.title_vi.nil? %>
-                <% else %>
-                    <%= @b2b_trade_portal.title if !@b2b_trade_portal.title.nil? %>
+                <% if @b2b_trade_portal.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @b2b_trade_portal.first.title_vi if !@b2b_trade_portal.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @b2b_trade_portal.first.title if !@b2b_trade_portal.first.title.nil? %>
+                    <% end %>
                 <% end %>
             </h1>
             <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_1_path %> <i>/</i>
-                <% if params[:locale] == "vi" %>
-                    <%= @b2b_trade_portal.title_vi if !@b2b_trade_portal.title_vi.nil? %>
-                <% else %>
-                    <%= @b2b_trade_portal.title if !@b2b_trade_portal.title.nil? %>
+                <% if @b2b_trade_portal.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @b2b_trade_portal.first.title_vi if !@b2b_trade_portal.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @b2b_trade_portal.first.title if !@b2b_trade_portal.first.title.nil? %>
+                    <% end %>
                 <% end %>
             </div>
 

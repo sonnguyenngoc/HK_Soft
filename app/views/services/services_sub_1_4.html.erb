@@ -18,17 +18,21 @@
         <div class="container">
 
             <h1>
-                <% if params[:locale] == "vi" %>
-                    <%= @real_estate_site.title_vi if !@real_estate_site.title_vi.nil? %>
-                <% else %>
-                    <%= @real_estate_site.title if !@real_estate_site.title.nil? %>
+                <% if @real_estate_site.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @real_estate_site.first.title_vi if !@real_estate_site.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @real_estate_site.first.title if !@real_estate_site.first.title.nil? %>
+                    <% end %>
                 <% end %>
             </h1>
             <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_2_path %> <i>/</i> 
-                <% if params[:locale] == "vi" %>
-                    <%= @real_estate_site.title_vi if !@real_estate_site.title_vi.nil? %>
-                <% else %>
-                    <%= @real_estate_site.title if !@real_estate_site.title.nil? %>
+                <% if @real_estate_site.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @real_estate_site.first.title_vi if !@real_estate_site.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @real_estate_site.first.title if !@real_estate_site.first.title.nil? %>
+                    <% end %>
                 <% end %>
             </div>
 

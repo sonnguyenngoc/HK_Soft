@@ -18,18 +18,22 @@
         <div class="container">
 
             <h1>
-                <% if params[:locale] == "vi" %>
-                    <%= @email_marketing.title_vi if !@email_marketing.title_vi.nil? %>
-                <% else %>
-                    <%= @email_marketing.title if !@email_marketing.title.nil? %>
-                <% end %>      
+                <% if @email_marketing.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @email_marketing.first.title_vi if !@email_marketing.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @email_marketing.first.title if !@email_marketing.first.title.nil? %>
+                    <% end %>
+                <% end %>
             </h1>
             <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_8_path %> <i>/</i>
-                <% if params[:locale] == "vi" %>
-                    <%= @email_marketing.title_vi if !@email_marketing.title_vi.nil? %>
-                <% else %>
-                    <%= @email_marketing.title if !@email_marketing.title.nil? %>
-                <% end %>  
+                <% if @email_marketing.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @email_marketing.first.title_vi if !@email_marketing.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @email_marketing.first.title if !@email_marketing.first.title.nil? %>
+                    <% end %>
+                <% end %>
             </div>
 
         </div>

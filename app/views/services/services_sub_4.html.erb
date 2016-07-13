@@ -18,17 +18,21 @@
         <div class="container">
 
             <h1>
-                <% if params[:locale] == "vi" %>
-                    <%= @google_apps_for_bussiness.title_vi if !@google_apps_for_bussiness.title_vi.nil? %>
-                <% else %>
-                    <%= @google_apps_for_bussiness.title if !@google_apps_for_bussiness.title.nil? %>
-                <% end %>    
+                <% if @google_apps_for_bussiness.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @google_apps_for_bussiness.first.title_vi if !@google_apps_for_bussiness.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @google_apps_for_bussiness.first.title if !@google_apps_for_bussiness.first.title.nil? %>
+                    <% end %>
+                <% end %>
             </h1>
             <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_4_path %> <i>/</i> 
-                <% if params[:locale] == "vi" %>
-                    <%= @google_apps_for_bussiness.title_vi if !@google_apps_for_bussiness.title_vi.nil? %>
-                <% else %>
-                    <%= @google_apps_for_bussiness.title if !@google_apps_for_bussiness.title.nil? %>
+                <% if @google_apps_for_bussiness.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @google_apps_for_bussiness.first.title_vi if !@google_apps_for_bussiness.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @google_apps_for_bussiness.first.title if !@google_apps_for_bussiness.first.title.nil? %>
+                    <% end %>
                 <% end %>
             </div>
 

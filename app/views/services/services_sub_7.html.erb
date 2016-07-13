@@ -18,18 +18,22 @@
         <div class="container">
 
             <h1>
-                <% if params[:locale] == "vi" %>
-                    <%= @systems_integration.title_vi if !@systems_integration.title_vi.nil? %>
-                <% else %>
-                    <%= @systems_integration.title if !@systems_integration.title.nil? %>
-                <% end %>      
+                <% if @systems_integration.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @systems_integration.first.title_vi if !@systems_integration.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @systems_integration.first.title if !@systems_integration.first.title.nil? %>
+                    <% end %>
+                <% end %>
             </h1>
             <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_7_path %> <i>/</i>
-                <% if params[:locale] == "vi" %>
-                    <%= @systems_integration.title_vi if !@systems_integration.title_vi.nil? %>
-                <% else %>
-                    <%= @systems_integration.title if !@systems_integration.title.nil? %>
-                <% end %>  
+                <% if @systems_integration.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @systems_integration.first.title_vi if !@systems_integration.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @systems_integration.first.title if !@systems_integration.first.title.nil? %>
+                    <% end %>
+                <% end %>
             </div>
 
         </div>
