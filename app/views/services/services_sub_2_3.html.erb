@@ -17,8 +17,20 @@
     <div class="page_title1 sty13">
         <div class="container">
 
-            <h1><%= t(:real_estale_agent_monitor) %></h1>
-            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_2_path %> <i>/</i> <%= t(:real_estale_agent_monitor) %></div>
+            <h1>
+                <% if params[:locale] == "vi" %>
+                    <%= @real_estale_agent_monitor.title_vi %>
+                <% else %>
+                    <%= @real_estale_agent_monitor.title %>
+                <% end %>    
+            </h1>
+            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_2_path %> <i>/</i>
+                <% if params[:locale] == "vi" %>
+                    <%= @real_estale_agent_monitor.title_vi %>
+                <% else %>
+                    <%= @real_estale_agent_monitor.title %>
+                <% end %>
+            </div>
 
         </div>
     </div>

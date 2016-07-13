@@ -17,8 +17,20 @@
     <div class="page_title1 sty13">
         <div class="container">
 
-            <h1><%= t(:b2c_e_commerce_site) %></h1>
-            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_1_3_path %> <i>/</i> <%= t(:b2c_e_commerce_site) %></div>
+            <h1>
+                <% if params[:locale] == "vi" %>
+                    <%= @b2c_e_commerce_site.title_vi %>
+                <% else %>
+                    <%= @b2c_e_commerce_site.title %>
+                <% end %>
+            </h1>
+            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_1_3_path %> <i>/</i>
+                <% if params[:locale] == "vi" %>
+                    <%= @b2c_e_commerce_site.title_vi %>
+                <% else %>
+                    <%= @b2c_e_commerce_site.title %>
+                <% end %>
+            </div>
 
         </div>
     </div>

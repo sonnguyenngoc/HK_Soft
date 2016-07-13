@@ -17,8 +17,20 @@
     <div class="page_title1 sty13">
         <div class="container">
 
-            <h1><%= t(:google_apps_for_bussiness) %></h1>
-            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_4_path %> <i>/</i> <%= t(:google_apps_for_bussiness) %></div>
+            <h1>
+                <% if params[:locale] == "vi" %>
+                    <%= @google_apps_for_bussiness.title_vi %>
+                <% else %>
+                    <%= @google_apps_for_bussiness.title %>
+                <% end %>    
+            </h1>
+            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_4_path %> <i>/</i> 
+                <% if params[:locale] == "vi" %>
+                    <%= @google_apps_for_bussiness.title_vi %>
+                <% else %>
+                    <%= @google_apps_for_bussiness.title %>
+                <% end %>
+            </div>
 
         </div>
     </div>
