@@ -1,0 +1,12 @@
+<article class="detailed-logo">
+    <div class="details">
+        <h2 class="box-title"><%= @car_detail.manufacturer.name %></h2>
+        <span class="price clearfix">
+            <small class="pull-left">Giá thuê</small>
+            <span class="pull-right"><% if @car_detail.price == 0 %>Liên Hệ<% else %><%= format_number(@car_detail.price) %> VND<% end %></span>
+        </span>
+        <%= link_to "Chọn thuê xe", car_booking_path(car_book_id: @car_detail, car_name: @car_detail.url_friendly), class: "button yellow full-width uppercase btn-small" %>
+    </div>
+</article>
+<%= render "/home/need_help" %>
+<%= render "/tour_handbook/right_sidebar" %>

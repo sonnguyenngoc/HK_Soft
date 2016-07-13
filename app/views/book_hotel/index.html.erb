@@ -1,0 +1,164 @@
+<div id="page-wrapper">
+    
+    <!-- HEADER -->
+    <%= render "/home/header" %>
+    
+    <div class="page-title-container style2">
+        <div class="container">
+            <div class="page-title pull-left">
+                <h2 class="entry-title"><%= @page_name.name %></h2>
+            </div>
+            <ul class="breadcrumbs pull-right">
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <li><%= link_to @page_name.name, service_path %></li>
+                <li class="active">Khách Sạn</li>
+            </ul>
+        </div>
+    </div>
+    
+    <section id="content">
+        <div class="container">
+            <div id="main">
+                <div class="row">
+                    <div class="col-sm-4 col-md-3">
+                        <div class="toggle-container filters-container">
+                            <div class="panel style1 arrow-right">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#price-filter" class="collapsed">Giá tiền</a>
+                                </h4>
+                                <div id="price-filter" class="panel-collapse collapse">
+                                    <div class="panel-content">
+                                        <div id="price-range"></div>
+                                        <br />
+                                        <span class="min-price-label pull-left"></span>
+                                        <span class="max-price-label pull-right"></span>
+                                        <div class="clearer"></div>
+                                    </div><!-- end content -->
+                                </div>
+                            </div>
+                            
+                            <div class="panel style1 arrow-right">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#accomodation-type-filter" class="collapsed">Loại Khách Sạn</a>
+                                </h4>
+                                <div id="accomodation-type-filter" class="panel-collapse collapse">
+                                    <div class="panel-content">
+                                        <ul class="check-square filters-option">
+                                            <li><a href="#">Khách sạn 1 sao<small>(0)</small></a></li>
+                                            <li><a href="#">Khách sạn 2 sao<small>(0)</small></a></li>
+                                            <li><a href="#">Khách sạn 3 sao<small>(0)</small></a></li>
+                                            <li><a href="#">Khách sạn 4 sao<small>(0)</small></a></li>
+                                            <li><a href="#">Khách sạn 5 sao<small>(0)</small></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="panel style1 arrow-right">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#amenities-filter" class="collapsed">Khu Vực</a>
+                                </h4>
+                                <div id="amenities-filter" class="panel-collapse collapse">
+                                    <div class="panel-content">
+                                        <ul class="check-square filters-option">
+                                            <li><a href="#">Phú Quốc<small>(0)</small></a></li>
+                                            <li><a href="#">Đà Lạt<small>(0)</small></a></li>
+                                            <li><a href="#">Côn Đảo<small>(0)</small></a></li>
+                                            <li><a href="#">Nha Trang<small>(0)</small></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8 col-md-9">
+                        <div class="hotel-list">
+                            <div class="row image-box hotel listing-style3">
+                                <% @hotels.each do |item| %>
+                                    <article class="box">
+                                        <figure class="col-sm-5 col-md-4">
+                                            <a title="" href="<%= slideshow_popup_path(hotel_id: item.id) %>" class="hover-effect popup-gallery"><img width="270" height="160" alt="" src="<%= item.image_url.medium_image %>"></a>
+                                        </figure>
+                                        <div class="details col-sm-7 col-md-8">
+                                            <div>
+                                                <div>
+                                                    <h4 class="box-title"><%= item.name %><small><i class="soap-icon-departure yellow-color"></i> <%= item.area.name %></small></h4>
+                                                    <div class="amenities">
+                                                        <i class="soap-icon-wifi circle"></i>
+                                                        <i class="soap-icon-fitnessfacility circle"></i>
+                                                        <i class="soap-icon-fork circle"></i>
+                                                        <i class="soap-icon-television circle"></i>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="five-stars-container">
+                                                        <% if item.hotel_type == "Khách sạn 1 sao" %>
+                                                            <span class="five-stars" style="width: 20%;"></span>
+                                                        <% end %>
+                                                        <% if item.hotel_type == "Khách sạn 2 sao" %>
+                                                            <span class="five-stars" style="width: 40%;"></span>
+                                                        <% end %>
+                                                        <% if item.hotel_type == "Khách sạn 3 sao" %>
+                                                            <span class="five-stars" style="width: 60%;"></span>
+                                                        <% end %>
+                                                        <% if item.hotel_type == "Khách sạn 4 sao" %>
+                                                            <span class="five-stars" style="width: 80%;"></span>
+                                                        <% end %>
+                                                        <% if item.hotel_type == "Khách sạn 5 sao" %>
+                                                            <span class="five-stars" style="width: 100%;"></span>
+                                                        <% end %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <p class="text-justify"><%= truncate(strip_tags(item.content.html_safe), length: 170) %></p>
+                                                <div>
+                                                    <%= link_to "XEM THÊM", book_hotel_detail_path(hotel_id: item, name: item.url_friendly), class: "button btn-small full-width text-center" %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                <% end %>
+                            </div>
+                        </div>
+                        <%= will_paginate @hotels, previous_label: 'TRANG TRƯỚC', next_label: 'TRANG SAU', renderer: BootstrapPagination::Rails %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <%= render "/home/footer" %>
+    
+</div>
+
+<!-- Javascript -->
+<%= render "/home/js_files" %>
+
+<script type="text/javascript">
+    tjq(document).ready(function() {
+        tjq("#price-range").slider({
+            range: true,
+            min: 0,
+            max: 1000,
+            values: [ 100, 800 ],
+            slide: function( event, ui ) {
+                tjq(".min-price-label").html( "$" + ui.values[ 0 ]);
+                tjq(".max-price-label").html( "$" + ui.values[ 1 ]);
+            }
+        });
+        tjq(".min-price-label").html( "$" + tjq("#price-range").slider( "values", 0 ));
+        tjq(".max-price-label").html( "$" + tjq("#price-range").slider( "values", 1 ));
+        
+        tjq("#rating").slider({
+            range: "min",
+            value: 40,
+            min: 0,
+            max: 50,
+            slide: function( event, ui ) {
+                
+            }
+        });
+    });
+</script>

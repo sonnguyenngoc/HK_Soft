@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  full_name: MyString
+  address: MyString
+  phone: MyString
+  email: MyString
+  passport: MyString
+  tour_schedule_id: 1
+  adult: 1
+  child: 1
+  message: MyText
+  tour_id: 1
+  tour_name: MyString
+  price: MyString
+
+two:
+  full_name: MyString
+  address: MyString
+  phone: MyString
+  email: MyString
+  passport: MyString
+  tour_schedule_id: 1
+  adult: 1
+  child: 1
+  message: MyText
+  tour_id: 1
+  tour_name: MyString
+  price: MyString

@@ -1,0 +1,74 @@
+<div id="page-wrapper">
+    
+    <%= render "/home/header" %>
+
+    <div class="page-title-container style2">
+        <div class="container">
+            <div class="page-title pull-left">
+                <h2 class="entry-title"><%= @page_name.name %></h2>
+            </div>
+            <ul class="breadcrumbs pull-right">
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <li class="active"><%= @page_name.name %></li>
+            </ul>
+        </div>
+    </div>
+
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div id="main" class="col-sm-8 col-md-9">
+                    <div class="page">
+                        <span style="display: none;" class="entry-title page-title"><%= @page_name.name %></span>
+                        <span style="display: none;" class="vcard"><span class="fn"><a rel="author" title="Đăng Bởi Du Lịch Khám Phá Mới" href="#">Du Lịch Khám Phá Mới</a></span></span>
+                        <% if @blogs.count > 0 %>
+                            <span style="display:none;" class="updated"><%= @blogs.first.created_at.strftime("%d/%m/%Y %H:%M") %></span>
+                        <% end %>
+                        <div class="post-content">
+                            <div class="blog-infinite">
+                                <% @blogs.each do |item| %>
+                                    <div class="post">
+                                        <div class="post-content-wrapper">
+                                            <figure class="image-container">
+                                                <%= link_to image_tag(item.image_url.large_image, alt: item.title), tour_handbook_detail_path(tour_handbook_detail_id: item, name: item.url_friendly), class: "hover-effect" %>
+                                            </figure>
+                                            <div class="details">
+                                                <h2 class="entry-title"><%= link_to item.title, tour_handbook_detail_path(tour_handbook_detail_id: item, name: item.url_friendly) %></h2>
+                                                <div class="excerpt-container">
+                                                    <div class="text-justify"><%= truncate(strip_tags(item.content.html_safe), length: 400) %></div>
+                                                </div>
+                                                <div class="post-meta">
+                                                    <div class="entry-date">
+                                                        <label class="date"><%= item.created_at.strftime("%d") %></label>
+                                                        <label class="month"><%= item.created_at.strftime("%m") %></label>
+                                                    </div>
+                                                    <div class="entry-author fn">
+                                                        <i class="icon soap-icon-user"></i> Đăng bởi: <%= link_to "Du Lịch Khám Phá Mới", about_us_path, class: "author" %>
+                                                    </div>
+                                                    <div class="entry-action">
+                                                        <span class="entry-tags"><i class="soap-icon-features"></i><span><%= link_to @page_name.name, tour_handbook_path %>, <%= link_to "Du lịch khám phá mới", about_us_path %></span></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <% end %>
+                            </div>
+                            <%= will_paginate @blogs, previous_label: 'TRANG TRƯỚC', next_label: 'TRANG SAU', renderer: BootstrapPagination::Rails %>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar col-sm-4 col-md-3">
+                    <%= render "/tour_handbook/right_sidebar" %>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <%= render "/home/footer" %>
+    
+</div>
+
+<!-- Javascript -->
+<%= render "/home/js_files" %>

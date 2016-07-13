@@ -1,0 +1,2 @@
+module CarHireHelper
+end

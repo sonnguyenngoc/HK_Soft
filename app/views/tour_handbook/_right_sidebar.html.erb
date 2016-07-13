@@ -1,0 +1,45 @@
+<div class="tab-container box">
+    <ul class="tabs full-width">
+        <li class="active"><a data-toggle="tab" href="#events">Cẩm Nang Du Lịch</a></li>
+        <li><a data-toggle="tab" href="#travel_news">Tin Tức Du Lịch</a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="events" class="tab-pane fade in active">
+            <div class="image-box style14">
+                <% ArticleCategory.get_tour_handbook_blogs.limit(8).each do |item| %>
+                    <article class="box">
+                        <figure><%= link_to image_tag(item.image_url.small_footer_image, width: "63", height: "63", alt: item.title), travel_news_detail_path(travel_news_id: item) %></figure>
+                        <div class="details">
+                            <h5 class="box-title"><%= link_to item.title, tour_handbook_detail_path(tour_handbook_detail_id: item) %></h5>
+                        </div>
+                    </article>
+                <% end %>
+            </div>
+        </div>
+        
+        <div id="travel_news" class="tab-pane fade">
+            <div class="image-box style14">
+                <% ArticleCategory.get_travel_news.limit(8).each do |item| %>
+                    <article class="box">
+                        <figure><%= link_to image_tag(item.image_url.small_footer_image, width: "63", height: "63", alt: item.title), travel_news_detail_path(travel_news_id: item, title: item.url_friendly) %></figure>
+                        <div class="details">
+                            <h5 class="box-title"><%= link_to item.title, travel_news_detail_path(travel_news_id: item, title: item.url_friendly) %></h5>
+                        </div>
+                    </article>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="travelo-box">
+    <h5 class="box-title"><strong>Cẩm Nang Du Lịch</strong></h5>
+    <ul class="check box">
+        <% ArticleCategory.all.each do |item| %>
+            <% if item.description == "tour_handbook" %>
+                <% item.children.order("created_at ASC").each do |child_1| %>
+                    <li><%= link_to child_1.name, tour_handbook_sub_1_path(tour_handbook_sub_1: child_1) %></li>
+                <% end %>
+            <% end %>
+        <% end %>
+    </ul>
+</div>

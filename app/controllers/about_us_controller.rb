@@ -1,0 +1,20 @@
+class AboutUsController < ApplicationController
+  def index
+    @about_us = Article.get_about_us_blog
+  end
+  
+  def info_system_1
+  end
+  
+  def info_system_2
+  end
+  
+  def info_system_3
+  end
+  
+  def info_system_4
+  end
+  
+  def info_system_5
+  end
+end

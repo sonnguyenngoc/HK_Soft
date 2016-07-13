@@ -1,0 +1,62 @@
+<div id="page-wrapper">
+    
+    <!-- HEADER -->
+    <%= render "/home/header" %>
+
+    <div class="page-title-container style2">
+        <div class="container">
+            <div class="page-title">
+                <h2 class="entry-title">BẢNG GIÁ TOUR</h2>
+            </div>
+            <ul class="breadcrumbs">
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <li class="active">BẢNG GIÁ TOUR</li>
+            </ul>
+        </div>
+    </div>
+
+    <section id="content">
+        <div class="container">
+            <div id="main">
+                <div class="post-content text-justify">
+                    <div class="panel-body">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>LỊCH TRÌNH TOUR</th>
+                                    <th>LỊCH KHỞI HÀNH</th>
+                                    <th>GIÁ TOUR</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% Tour.get_tour_listing(params).each do |item| %>
+                                    <tr>
+                                        <td><%= link_to item.name, tour_detail_path(tour_id: item) %></td>
+                                        <td>
+                                            <div class="selector">
+                                                <select class="full-width">
+                                                    <option value="">Lịch khởi hành - [<%= item.get_count_tour_schedules %>]</option>
+                                                    <% item.tour_schedules.each do |schedule| %>
+                                                        <option value=""><% if !schedule.from_date.nil? %><%= schedule.from_date.strftime("%d/%m/%Y") %><% end %><% if !schedule.to_date.nil? %> - <%= schedule.to_date.strftime("%d/%m/%Y") %><% end %></option>
+                                                    <% end %>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td><% if item.new_price == 0 %>Liên hệ<% else %><%= format_number(item.new_price) %> VND<% end %></td>
+                                    </tr>
+                                <% end %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div> <!-- end main -->
+        </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <%= render "/home/footer" %>
+    
+</div>
+
+<!-- Javascript -->
+<%= render "/home/js_files" %>

@@ -1,0 +1,65 @@
+<%= form_for(@booking_tour) do |f| %>
+  <% if @booking_tour.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@booking_tour.errors.count, "error") %> prohibited this booking_tour from being saved:</h2>
+
+      <ul>
+      <% @booking_tour.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :full_name %><br>
+    <%= f.text_field :full_name %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :passport %><br>
+    <%= f.text_field :passport %>
+  </div>
+  <div class="field">
+    <%= f.label :tour_schedule_id %><br>
+    <%= f.number_field :tour_schedule_id %>
+  </div>
+  <div class="field">
+    <%= f.label :adult %><br>
+    <%= f.number_field :adult %>
+  </div>
+  <div class="field">
+    <%= f.label :child %><br>
+    <%= f.number_field :child %>
+  </div>
+  <div class="field">
+    <%= f.label :message %><br>
+    <%= f.text_area :message %>
+  </div>
+  <div class="field">
+    <%= f.label :tour_id %><br>
+    <%= f.number_field :tour_id %>
+  </div>
+  <div class="field">
+    <%= f.label :tour_name %><br>
+    <%= f.text_field :tour_name %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,269 @@
+<!-- Main navbar -->
+<%= render "/admin/main/main_navbar" %>
+<!-- /main navbar -->
+
+<!-- Page container -->
+<div class="page-container">
+
+    <!-- Page content -->
+    <div class="page-content">
+
+        <!-- Main sidebar -->
+        <div class="sidebar sidebar-main">
+            <div class="sidebar-content">
+
+                <!-- User menu -->
+                <%= render "/admin/main/user_menu" %>
+                <!-- /user menu -->
+
+                <!-- Main navigation -->
+                <%= render "/admin/main/main_menu" %>
+                <!-- /main navigation -->
+
+            </div>
+        </div>
+        <!-- /main sidebar -->
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+        
+            <!-- Page header -->
+            <div class="page-header">
+                <div class="page-header-content">
+                    <div class="page-title">
+                        <h4><span class="text-semibold"><%= t(:orders) %></span></h4>
+                    </div>
+                </div>
+            
+                <div class="breadcrumb-line">
+                    <ul class="breadcrumb">
+                        <li><%= link_to '<i class="icon-home2 position-left"></i>'.html_safe + t(:home), { controller: "main", action: "index" } %></li>
+                        <li><a href="<%= admin_orders_path %>"><%= t(:order) %></a></li>
+                        <li class="active"><%= t(:orders) %></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /page header -->
+            
+            <!-- Content area -->
+            <div class="content">
+            
+                <!-- Basic datatable -->
+                <div class="panel panel-flat">
+                    <div class="panel-heading col-md-12">
+                        <h5 class="panel-title col-md-6"><span class="text-semibold"><%= t(:listing_orders) %></span></h5>
+                    </div>
+                    
+                    <div class="filter-box">
+                        <%= form_for("", url: {controller: 'orders', action: 'search'}, method: "get") do |f| %>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" ><%= t(:customer) %></label>
+                                        <div>
+                                            <%= select_tag(:customer_id, options_for_select(Customer.all.collect {|c| [c.name,c.id]}, params[:customer_id]), include_blank: t(:all), class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" ><%= t(:user) %></label>
+                                        <div>
+                                            <%= select_tag(:user_id, options_for_select(User.all.collect {|u| [u.email,u.id]}, params[:user_id]), include_blank: t(:all), class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" ><%= t(:product) %></label>
+                                        <div>
+                                            <%= select_tag(:product_id, options_from_collection_for_select(Product.all.order("name"), :id, :name, :selected => params[:product_id]), include_blank: t(:all), class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" ><%= t(:status) %></label>
+                                        <div>
+                                            <select name="status" class="select">
+                                                <option <%= "selected" if params[:status] == "pending" %> value="pending"><%= t(:select_pending) %></option>
+                                                <option <%= "selected" if params[:status] == "finished" %> value="finished"><%= t(:select_finished) %></option>
+                                                <option <%= "selected" if params[:status] == "cancel" %> value="cancel"><%= t(:select_cancel) %></option>
+                                                <option <%= "selected" if params[:status] == "all" %> value="all"><%= t(:all) %></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-2">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" ><%= t(:from_date) %></label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="icon-calendar"></i></span>
+                                            <input type="text" class="form-control pickadate-accessibility date-select" name="from_date" value="<%= params[:from_date] %>" placeholder="From date&hellip;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" ><%= t(:to_date) %></label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="icon-calendar"></i></span>
+                                            <input type="text" class="form-control pickadate-accessibility date-select" name="to_date" value="<%= params[:to_date] %>" placeholder="To date&hellip;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" ><%= t(:sort_by) %></label>
+                                        <div>
+                                            <%= select_tag(:sort_by, options_for_select(Order.sort_by, :selected => params[:sort_by]), class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="" ><%= t(:sort_order) %></label>
+                                        <div>
+                                            <%= select_tag(:sort_order, options_for_select(Order.sort_order, :selected => params[:sort_order]), class: "select") %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                    
+                    <table class="table">
+                        <thead>
+                            <tr class="bg-teal-800">
+                                <th><%= t(:customer) %></th>
+                                <th><%= t(:items) %></th>
+                                <th><%= t(:total) %></th>
+                                <th><%= t(:status) %></th>
+                                <th><%= t(:created_at) %></th>
+                                <th class="text-center"><%= t(:actions) %></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% @orders.each do |item| %>
+                                <tr>
+                                    <td>
+                                        <% if can? :read, item %>
+                                            <strong><%= link_to item.customer.name, [:admin, item] %></strong>
+                                        <% else %>
+                                            <strong><%= item.customer.name %></strong>
+                                        <% end %>
+                                    </td>
+                                    <td>
+                                        <% item.order_details.each do |detail| %>
+                                            <%= detail.product_name %> - (x<%= detail.quantity %>)
+                                            <br />
+                                        <% end %>
+                                    </td>
+                                    <td><%= format_number(item.total) %> đ</td>
+                                    <td><span class="<%= item.display_class_status %>"><%= t(item.status) %></span></td>
+                                    <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
+                                    <td class="text-center">
+                                        <% if can?(:read, item) or can?(:update, item) or can?(:delete, item) %>
+                                            <ul class="icons-list">
+                                                <li class="dropdown">
+                                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                        <i class="icon-menu9"></i>
+                                                    </a>
+                    
+                                                    <ul class="dropdown-menu dropdown-menu-right">
+                                                        <% if can? :read, item %>
+                                                            <li>
+                                                                <%= link_to '<i class="glyphicon glyphicon-file"></i>'.html_safe + t(:view), [:admin, item] %>
+                                                            </li>
+                                                        <% end %>
+                                                        <% if can? :update, item %>
+                                                            <% if item.status != "finished" %>
+                                                                <li>
+                                                                    <%= link_to '<i class="glyphicon glyphicon-check"></i> '.html_safe + t(:finish), {controller: "admin/orders", action: "finish", id: item.id} %>
+                                                                </li>
+                                                            <% end %>
+                                                            <% if item.status != "pending" %>
+                                                                <li>
+                                                                    <%= link_to '<i class="icon-reload-alt"></i> '.html_safe + t(:pending), {controller: "admin/orders", action: "pending", id: item.id} %>
+                                                                </li>
+                                                            <% end %>
+                                                            <% if item.status != "cancel" %>
+                                                                <li>
+                                                                    <%= link_to '<i class="glyphicon glyphicon-ban-circle"></i> '.html_safe + t(:cancel), {controller: "admin/orders", action: "cancel", id: item.id} %>
+                                                                </li>
+                                                            <% end %>
+                                                        <% end %>
+                                                        <% if can? :delete, item %>
+                                                            <li>
+                                                                <%= link_to '<i class="icon-cross2"></i>'.html_safe + t(:delete), "#delete_order", url: admin_order_path(item) , class: "backend_delete_item" %>
+                                                            </li>
+                                                        <% end %>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        <% end %>
+                                    </td>
+                                </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+                    <div class="dataTables_wrapper no-footer">
+                        <div class="datatable-footer showed">
+                            <div class="dataTables_info" ><%= page_entries_info @orders %></div>
+                            <div class="dataTables_paginate paging_simple_numbers">
+                                <%= will_paginate @orders, previous_label: '←', next_label: '→', renderer: BootstrapPagination::Rails %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /basic datatable -->
+            
+                <!-- Footer -->
+                <%= render '/admin/main/footer' %>
+                <!-- /footer -->
+            
+            </div>
+            <!-- /content area -->
+        
+        </div>
+        <!-- /main content -->
+
+    </div>
+    <!-- /page content -->
+
+</div>
+<!-- /page container -->
+
+<!-- Theme JS files -->
+<%= javascript_include_tag '/backend/assets/js/plugins/tables/datatables/datatables.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/select2.min.js' %>
+<%= javascript_include_tag '/backend/assets/javascripts/datatables_categories.js' %>
+
+<!-- Theme JS files -->
+<%= javascript_include_tag '/backend/assets/js/core/libraries/jquery_ui/datepicker.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/pickers/daterangepicker.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/pickers/pickadate/picker.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/pickers/pickadate/picker.date.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/pickers/pickadate/picker.time.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/pickers/pickadate/legacy.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/pickers/anytime.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/core/libraries/jquery_ui/effects.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/notifications/jgrowl.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/ui/moment/moment.min.js' %>
+
+<%= javascript_include_tag '/backend/assets/js/core/app.js' %>
+<script>    
+    // Accessibility labels
+    $('.pickadate-accessibility').pickadate({
+        labelMonthNext: 'Go to the next month',
+        labelMonthPrev: 'Go to the previous month',
+        labelMonthSelect: 'Pick a month from the dropdown',
+        labelYearSelect: 'Pick a year from the dropdown',
+        selectMonths: true,
+        selectYears: true
+    });
+</script>
+
+<!-- /theme JS files -->

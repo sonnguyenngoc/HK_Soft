@@ -1,0 +1,102 @@
+/*
+ * Title:   Custom Style File
+ * Author:  http://themeforest.net/user/soaptheme 
+ */
+#header .logo {
+    margin: 10px 0 5px 0;
+}
+#main-menu ul.menu, .chaser ul.menu {
+    margin: 15px 0;
+}
+#footer .footer-wrapper {
+    padding: 20px 0;
+}
+#footer .bottom .copyright, #footer .bottom #back-to-top {
+    margin-top: 45px;
+}
+#footer .bottom .container {
+    margin-bottom: 10px;
+}
+.selector span.custom-select:before {
+    background: #01b7f2;
+}
+.time {
+    font-size: 1em;
+    margin-top: 5px;
+}
+.tour-locations .box .box-title {
+    height: 44px;
+}
+#tour-details .price-section .details:last-child {
+    float: left;
+}
+.toggle-container .panel.style1 .panel-content {
+    padding: 10px 15px 15px 15px;
+}
+.article_content table {
+    border: solid 1px !important;
+}
+.box-title {
+    line-height: 1.3em;
+}
+.chaser .logo {
+    margin-top: 12px;
+}
+.chaser .logo a {
+    background-size: auto 48px;
+}
+.chaser .logo img {
+    height: 48px;
+}
+.post-content img {
+    max-width: 100%;
+    height: auto;
+}
+label.error {
+    display: none !important;
+}
+#form-validate input.error, #form-validate textarea.error {
+    border: 1px solid red;
+    border-radius: 2px;
+}
+#booking_plane_validate input.error, #booking_plane_validate textarea.error {
+    border: 1px solid red;
+    border-radius: 2px;
+}
+#booking_visa_validate input.error, #booking_visa_validate textarea.error {
+    border: 1px solid red;
+    border-radius: 2px;
+}
+#booking_car input.error, #booking_car textarea.error {
+    border: 1px solid red;
+    border-radius: 2px;
+}
+#booking_hotel input.error, #booking_hotel textarea.error {
+    border: 1px solid red;
+    border-radius: 2px;
+}
+#booking_tour input.error, #booking_tour textarea.error {
+    border: 1px solid red;
+    border-radius: 2px;
+}
+.color-red {
+    color: red !important;
+}
+.image-box.style14 .details {
+    padding: 0px 15px 0;
+}
+@media only screen and (max-width: 900px) {   
+    .page-title-container.style2 .page-title .entry-title {
+        display: none !important;
+    }
+    .tour_sale_color h1 {
+        color: red !important;
+    }
+    .post-content table {
+        max-width: 100% !important;
+        width: auto !important;
+    }
+}
+.post-content td, .post-content th {
+    border: 1px solid black;
+}

@@ -1,0 +1,156 @@
+<div id="page-wrapper">
+    
+    <!-- HEADER -->
+    <%= render "/home/header" %>
+    
+    <div class="page-title-container style2">
+        <div class="container">
+            <div class="page-title pull-left">
+                <h2 class="entry-title">Đặt Tour</h2>
+            </div>
+            <ul class="breadcrumbs pull-right">
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <li><%= link_to "Tour Du Lịch", tour_path %></li>
+                <li>
+                    <% if @tour.article_category.parent.first.description == "domestic_tour" %>
+                        <%= link_to @tour.article_category.parent.first.name, domestic_tour_path %>
+                    <% else %>
+                        <%= link_to @tour.article_category.parent.first.name, foreign_tour_path %>
+                    <% end %>
+                </li>
+                <li><%= link_to @tour.article_category.name, tour_packages_path(tour_packages_id: @tour.article_category) %></li>
+                <li><%= link_to @tour.name, tour_detail_path(tour_id: @tour) %></li>
+                <li class="active">Đặt Tour</li>
+            </ul>
+        </div>
+    </div>
+    <section id="content" class="gray-area">
+        <div class="container">
+            <div class="row">
+                <div id="main" class="col-sms-6 col-sm-8 col-md-9">
+                    <div class="booking-section travelo-box">
+                        
+                        <%= form_for @booking_tour, html: {class: "booking-form", id: "booking_tour"} do |f| %>  
+                            <%= f.hidden_field :tour_id, value: @tour.id %>
+                            <div class="person-information">
+                                <h2>Thông Tin Khách Hàng</h2>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 col-md-10">
+                                        <label>Tên Khách Hàng *</label>
+                                        <%= f.text_field :full_name, class: "input-text full-width required" %>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 col-md-10">
+                                        <label>Địa Chỉ *</label>
+                                        <%= f.text_field :address, class: "input-text full-width required" %>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Số Điện Thoại *</label>
+                                        <%= f.text_field :phone, class: "input-text full-width required" %>
+                                    </div>
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Địa Chỉ Email *</label>
+                                        <%= f.text_field :email, class: "input-text full-width required" %>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>ID/Passport</label>
+                                        <%= f.text_field :passport, class: "input-text full-width" %>
+                                    </div>
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Ngày đặt tour *</label>
+                                        <div class="selector">
+                                            <select name="booking_tour[tour_schedule_id]" id="booking_tour_tour_schedule_id" class="full-width required">
+                                                <option value="">Lịch khởi hành - [<%= @tour.get_count_tour_schedules %>]</option>
+                                                <% @tour.tour_schedules.get_tour_schedules.each do |schedule| %>
+                                                    <option value="<%= schedule.id %>"><% if !schedule.from_date.nil? %><%= schedule.from_date.strftime("%d/%m/%Y") %><% end %><% if !schedule.to_date.nil? %> - <%= schedule.to_date.strftime("%d/%m/%Y") %><% end %></option>
+                                                <% end %>
+                                            </select>
+                                        </div>
+                                    </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Số Người Lớn *</label>
+                                        <%= f.text_field :adult, class: "input-text full-width required", placeholder: "Mặc định số  người lớn: 1" %>
+                                    </div>
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Số Trẻ Em (Từ 11 tuổi trở lên) *</label>
+                                        <%= f.text_field :child, class: "input-text full-width required", placeholder: "Nhập 0 nếu không có trẻ em" %>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Số Trẻ Em (Từ 5 tuổi đến dưới 11 tuổi) *</label>
+                                        <%= f.text_field :child_2, class: "input-text full-width required", placeholder: "Nhập 0 nếu không có trẻ em" %>
+                                    </div>
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Số Trẻ Em (Dưới 5 tuổi)</label>
+                                        <%= f.text_field :child_3, class: "input-text full-width required", placeholder: "Nhập 0 nếu không có trẻ em" %>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-10">
+                                        <label>Lời Nhắn</label>
+                                        <%= f.text_area :message, rows: '8', class: "input-text full-width" %>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 col-md-5">
+                                    <button type="submit" class="full-width btn-large">ĐẶT TOUR</button>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="sidebar col-sms-6 col-sm-4 col-md-3">
+                    <div class="booking-details travelo-box">
+                        <h4><%= @tour.name %></h4>
+                        <article class="tour-detail">
+                            <figure class="clearfix">
+                                <small class="uppercase"><strong>Loại: </strong> <%= @tour.type_name %></small><br/>
+                                <small class="uppercase"><strong>Chuyên mục: </strong> <%= @tour.article_category.name %></small><br/>
+                                <small class="uppercase"><strong>Khởi hành: </strong> <%= @tour.duration %></small><br/>
+                                <small class="uppercase"><strong>Thời gian chuyến tour: </strong> 3 ngày 2 đêm</small><br/>
+                                <small class="uppercase"><strong>Loại khách sạn: </strong> <%= @tour.hotel %></small><br/></br>
+                                <%= link_to "Xem Tour", tour_detail_path(tour_id: @tour), class: "button green" %>
+                            </figure>
+                            <div class="details">
+                            </div>
+                        </article>
+                        
+                        <h4>Phương Tiện & Dịch Vụ</h4>
+                        <dl class="other-details">
+                            <dt class="feature">Phương Tiện:</dt><% Tour.transportation_listing.each do |item| %><% if @tour.get_transportations.include?(item) %><dd class="value"><%= t(item) %></dd><% end %><% end %>
+                            <dt class="feature">Dịch Vụ:</dt><% Tour.service_listing.each do |item| %><% if @tour.get_services.include?(item) %><dd class="value"><%= t(item) %></dd><% end %><% end %>
+                        </dl>
+                        <dl class="other-details">
+                            <dt class="total-price">Giá: </dt><dd class="total-price-value"><% if @tour.new_price == 0 %>Liên hệ<% else %><%= format_number(@tour.new_price) %> VND<% end %></dd>
+                        </dl>
+                    </div>
+                    
+                    <%= render "/home/need_help" %>
+                
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <%= render "/home/footer" %>
+    
+</div>
+
+<!-- Javascript -->
+<%= render "/home/js_files" %>
+
+<script>
+    jQuery(document).ready(function($){
+        $("#booking_tour").validate();
+    });
+</script>

@@ -1,0 +1,51 @@
+<div id="page-wrapper">
+    
+    <!-- HEADER -->
+    <%= render "/home/header" %>
+    
+    <div class="page-title-container style2">
+        <div class="container">
+            <div class="page-title pull-left">
+                <h2 class="entry-title"><%= @car_detail.name %></h2>
+            </div>
+            <ul class="breadcrumbs pull-right">
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <li><%= link_to @page_name.name, car_hire_path %></li>
+                <li><%= link_to @car_detail.article_category.name, car_grid_view_path(car_category_id: @car_detail.article_category_id) %></li>
+                <li class="active"><%= @car_detail.name %></li>
+            </ul>
+        </div>
+    </div>
+    <section id="content" class="gray-area">
+        <div class="container car-detail-page">
+            <div class="row">
+                <div id="main" class="col-md-9">
+                    <div class="featured-image box">
+                        <img src="<%= @car_detail.image_url.big_image %>" alt="" />
+                    </div>
+                    <div class="tab-container">
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active" id="car-details">
+                                <h2>Giới thiệu</h2>
+                                <p class="text-justify"><%= @car_detail.description %></p>
+                                <hr/>
+                                <h2>Bảng giá chi tiết</h2>
+                                <div class="text-justify article_content"><%= @car_detail.content.html_safe %></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar col-md-3">
+                    <%= render "/car_hire/right_sidebar" %>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <%= render "/home/footer" %>
+    
+</div>
+
+<!-- Javascript -->
+<%= render "/home/js_files" %>

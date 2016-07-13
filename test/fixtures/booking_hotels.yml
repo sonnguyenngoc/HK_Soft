@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  full_name: MyString
+  phone: MyString
+  email: MyString
+  date_from: 2016-07-05 08:18:01
+  date_to: 2016-07-05 08:18:01
+  adult: 1
+  child: 1
+  room_number: 1
+  hotel_room_id: 1
+  hotel_room_name: MyString
+  price: 9.99
+
+two:
+  full_name: MyString
+  phone: MyString
+  email: MyString
+  date_from: 2016-07-05 08:18:01
+  date_to: 2016-07-05 08:18:01
+  adult: 1
+  child: 1
+  room_number: 1
+  hotel_room_id: 1
+  hotel_room_name: MyString
+  price: 9.99

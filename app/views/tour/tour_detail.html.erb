@@ -1,0 +1,147 @@
+<div id="page-wrapper">
+    
+    <!-- HEADER -->
+    <%= render "/home/header" %>
+
+    <div class="page-title-container style2">
+        <div class="container">
+            <div class="page-title pull-left">
+                <h2 class="entry-title"><%= @tour.name %></h2>
+            </div>
+            <ul class="breadcrumbs pull-right">
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <li><%= link_to "Tour Du Lịch", tour_path %></li>
+                <li>
+                    <% if @tour.article_category.parent.first.description == "domestic_tour" %>
+                        <%= link_to @tour.article_category.parent.first.name, domestic_tour_path %>
+                    <% else %>
+                        <%= link_to @tour.article_category.parent.first.name, foreign_tour_path %>
+                    <% end %>
+                </li>
+                <li><%= link_to @tour.article_category.name, tour_packages_path(tour_packages_id: @tour.article_category) %></li>
+            </ul>
+        </div>
+    </div>
+
+    <section id="content">
+        <div class="container tour-detail-page">
+            <div class="row">
+                <div id="main" class="col-md-9">
+                    <div class="tab-container style1" id="hotel-main-content">
+                        <ul class="tabs">
+                            <li class="pull-right"><a class="button btn-small yellow-bg white-color popup-map" href="#" data-box="<%= @tour.position %>">Xem Bản Đồ</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="photos-tab" class="tab-pane fade in active">
+                                <div class="photo-gallery style1" data-animation="slide" data-sync="#photos-tab .image-carousel">
+                                    <ul class="slides">
+                                        <li><img src="<%= @tour.image_url.big_image %>" alt="" /></li>
+                                        <% @tour.tour_images.each do |item| %>
+                                            <li><img src="<%= item.image_url.big_image %>" alt="" /></li>
+                                        <% end %>
+                                    </ul>
+                                </div>
+                                <div class="image-carousel style1" data-animation="slide" data-item-width="70" data-item-margin="10" data-sync="#photos-tab .photo-gallery">
+                                    <ul class="slides">
+                                        <li><img src="<%= @tour.image_url.small_image %>" alt="" /></li>
+                                        <% @tour.tour_images.each do |item| %>
+                                            <li><img src="<%= item.image_url.small_image %>" alt="" /></li>
+                                        <% end %>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tour-details" class="travelo-box">
+                        <div class="intro small-box table-wrapper full-width hidden-table-sms">
+                            <div class="col-sm-5 table-cell travelo-box">
+                                <h4>Dịch vụ đính kèm</h4>
+                                <dl class="term-description">
+                                    <dt><i class="soap-icon-card"></i></dt><dd>Vé tham quan</dd>
+                                    <dt><i class="soap-icon-doorman"></i></dt><dd>Hướng dẩn viên</dd>
+                                    <dt><i class="soap-icon-food"></i></dt><dd>Ăn uống</dd>
+                                    <dt><i class="soap-icon-plane-right"></i></dt><dd>Phương tiện đi lại</dd>
+                                    <dt><i class="soap-icon-card"></i></dt><dd>Bảo hiểm</dd>
+                                    <dt><i class="soap-icon-hotel-1"></i></dt><dd>Khách sạn</dd>
+                                </dl>
+                                <div class="selector">
+                                    <select class="full-width">
+                                        <option value="">Lịch khởi hành - [<%= @tour.get_count_tour_schedules %>]</option>
+                                        <% @tour.tour_schedules.get_tour_schedules.each do |schedule| %>
+                                            <option value=""><% if !schedule.from_date.nil? %><%= schedule.from_date.strftime("%d/%m/%Y") %><% end %><% if !schedule.to_date.nil? %> - <%= schedule.to_date.strftime("%d/%m/%Y") %><% end %></option>
+                                        <% end %>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-7 table-cell">
+                                <div class="detailed-features">
+                                    <div class="price-section clearfix">
+                                        <div class="details">
+                                            <h4 class="box-title"><%= @tour.name %><small>Khởi hành:<%= @tour.duration %></small></h4>
+                                        </div>
+                                        <div class="details">
+                                            <span class="price">Giá: <% if @tour.new_price == 0 %>Liên hệ<% else %><%= format_number(@tour.new_price) %> VND<% end %></span>
+                                            <%= link_to "ĐẶT TOUR", tour_booking_path(tour_booking_id: @tour, tour_name: @tour.url_friendly), class: "button green btn-small uppercase" %>
+                                        </div>
+                                    </div>
+                                    <div class="price-section clearfix">
+                                        <div class="details text-justify">
+                                            <%= @tour.description %>
+                                        </div>
+                                        <dl class="term-description">
+                                            <dt>Thời gian chuyến tour</dt><dd>2 ngày 3 đêm</dd>
+                                            <dt>Phương tiện</i></dt><dd>Tàu, Máy bay</dd>
+                                            <dt>Khách sạn</i></dt><dd><%= @tour.hotel %></dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="tour-google-map block"></div>
+
+                        <h2>Lịch Trình Tour</h2>
+                        <div class="post-content text-justify">
+                            <%= @tour.content.html_safe %>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar col-md-3">
+                    <%= render "/tour/related_tours" %>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <%= render "/home/footer" %>
+    
+</div>
+
+<!-- Javascript -->
+<%= render "/home/js_files" %>
+
+<script type="text/javascript">
+    tjq(".tour-google-map").gmap3({
+        map: {
+            options: {
+                center: [<%= @tour.position %>],
+                zoom: 12
+            }
+        },
+        marker:{
+            values: [
+                {latLng:[<%= @tour.position %>], data:"<%= @tour.name %>"}
+
+            ],
+            options: {
+                draggable: false
+            },
+        }
+    });
+
+    function showTourDetailedDiscount() {
+        tjq(".featured-gallery .discount").css("visibility", "visible");
+    }
+</script>

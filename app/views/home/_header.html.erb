@@ -1,0 +1,326 @@
+<header id="header" class="navbar-static-top">
+    
+    <div class="topnav hidden-xs">
+        
+        <div class="container">
+            
+            <ul class="quick-menu pull-right">
+                
+                <li><a href="<%= tour_pricing_path %>" class="button yellow btn-small" style="height: 30px; font-size: 1em;"><i class="soap-icon-beach"></i> BẢNG GIÁ TOUR</a></li>
+                
+                <li class="ribbon">
+                    
+                    <a href="#">Tiếng Việt</a>
+                    
+                    <ul class="menu mini">
+
+                        <li class="active"><a href="#" title="Tiếng Việt">Tiếng Việt</a></li>
+                        
+                    </ul>
+                    
+                </li>
+                
+            </ul>
+            
+        </div>
+        
+    </div>
+
+    <div class="main-header">
+
+        <a href="#mobile-menu-01" data-toggle="collapse" class="mobile-menu-toggle">
+            Mobile Menu Toggle
+        </a>
+
+        <div class="container">
+            
+            <h1 class="logo navbar-brand">
+                
+                <%= link_to image_tag("/frontend/images/logo_new_discovery.png", alt: "Khám Phá Mới Travel"), root_path %>
+
+            </h1>
+
+            <nav id="main-menu" role="navigation">
+                <ul class="menu">
+                    <% Category.all.order("ordered").each do |item| %>
+                        <% if item.level == 1 %>
+                            
+                            <% if item.description == "home" %>
+                                <li<% if params[:controller] == "home" %> class="active"<% end %>><%= link_to item.name, root_path %></li>
+                            <% end %>
+                            
+                            <% if item.description == "about_us" %>
+                                <li<% if (params[:controller] == "about_us" && params[:action] == "index") %> class="active"<% end %>><%= link_to item.name, about_us_path %></li>
+                            <% end %>
+                            
+                            <% if item.description == "tour" %>
+                                <li class="menu-item-has-children megamenu-menu <%= "active" if params[:controller] == "tour" %>">
+                                    <%= link_to item.name, tour_path %>
+                                    <div class="megamenu-wrapper container" data-items-per-column="5">
+                                        <div class="megamenu-holder">
+                                            <ul class="megamenu">
+                                                <% ArticleCategory.get_menu_tours.each do |tours| %>
+                                                    <% tours.children.order("created_at ASC").each do |child_1| %>
+                                                        <li class="menu-item-has-children">
+                                                            <% if child_1.description == "domestic_tour" %>
+                                                                <%= link_to child_1.name, domestic_tour_path %>
+                                                            <% else %>
+                                                                <%= link_to child_1.name, foreign_tour_path %>
+                                                            <% end %>
+                                                            <ul class="clearfix">
+                                                                <% child_1.children.order("created_at ASC").each do |child_2| %>
+                                                                    <li><%= link_to child_2.name, tour_packages_path(tour_packages_id: child_2, name: child_2.url_friendly) %></li>
+                                                                <% end %>
+                                                            </ul>
+                                                        </li>
+                                                    <% end %>
+                                                <% end %>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            <% end %>
+                            
+                            <% if item.description == "services" %>
+                                <li class="menu-item-has-children megamenu-menu <%= "active" if params[:controller] == "service" || params[:controller] == "book_hotel" || params[:controller] == "car_hire" %>">
+                                    <%= link_to item.name, service_path %>
+                                    <div class="megamenu-wrapper container" data-items-per-column="4">
+                                        <div class="megamenu-holder">
+                                            <ul class="megamenu">
+                                                <% ArticleCategory.get_menu_services.each do |service| %>
+                                                    <% service.children.order("created_at ASC").each do |child_1| %>
+                                                        <li class="menu-item-has-children">
+                                                            <% if child_1.description == "car_hire" %>
+                                                                <%= link_to child_1.name, car_hire_path %>
+                                                                <ul class="clearfix">
+                                                                    <% child_1.children.order("created_at ASC").each do |child_2| %>
+                                                                        <li><%= link_to child_2.name, car_grid_view_path(car_category_id: child_2, car_category_name: child_2.url_friendly) %></li>
+                                                                    <% end %>
+                                                                </ul>
+                                                            <% end %>
+                                                            <% if child_1.description == "hotel" %>
+                                                                <%= link_to child_1.name, hotel_listing_path %>
+                                                                <ul class="clearfix">
+                                                                    <% child_1.children.order("created_at ASC").each do |child_2| %>
+                                                                        <li><%= link_to child_2.name, hotel_listing_path %></li>
+                                                                    <% end %>
+                                                                </ul>
+                                                            <% end %>
+                                                            <% if child_1.description == "plane_ticket" %>
+                                                                <%= link_to child_1.name, plane_ticket_path %>
+                                                                <ul class="clearfix">
+                                                                    <% child_1.children.order("created_at ASC").each do |child_2| %>
+                                                                        <li><%= link_to child_2.name, plane_ticket_path %></li>
+                                                                    <% end %>
+                                                                </ul>
+                                                            <% end %>
+                                                            <% if child_1.description == "visa_card" %>
+                                                                <%= link_to child_1.name, visa_card_path %>
+                                                                <ul class="clearfix">
+                                                                    <% child_1.children.order("created_at ASC").each do |child_2| %>
+                                                                        <li><%= link_to child_2.name, visa_card_path %></li>
+                                                                    <% end %>
+                                                                </ul>
+                                                            <% end %>
+                                                        </li>
+                                                    <% end %>
+                                                <% end %>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            <% end %>
+                            
+                            <% if item.description == "event" %>
+                                <li class="menu-item-has-children <%= "active" if params[:controller] == "event" %>">
+                                    <% ArticleCategory.get_menu_events.each do |events| %>
+                                        <%= link_to events.name, event_path %>
+                                        <ul>
+                                            <% events.children.each do |child_1| %>
+                                                <li><%= link_to child_1.name, event_listing_path(event_id: child_1, name: child_1.url_friendly) %></li>
+                                            <% end %>
+                                        </ul>
+                                    <% end %>
+                                </li>
+                            <% end %>
+                            
+                            <% if item.description == "tour_handbook" %>
+                                <li class="menu-item-has-children megamenu-menu <%= "active" if params[:controller] == "tour_handbook" %>">
+                                    <%= link_to item.name, tour_handbook_path %>
+                                    <div class="megamenu-wrapper container" data-items-per-column="4">
+                                        <div class="megamenu-holder">
+                                            <ul class="megamenu">
+                                                <% ArticleCategory.get_menu_tour_handbooks.each do |tour_handbook| %>
+                                                    <% tour_handbook.children.order("created_at ASC").each do |child_1| %>
+                                                        <li class="menu-item-has-children">
+                                                            <%= link_to child_1.name, tour_handbook_sub_1_path(tour_handbook_sub_1: child_1, name: child_1.url_friendly) %>
+                                                            <ul class="clearfix">
+                                                                <% child_1.children.order("created_at ASC").each do |child_2| %>
+                                                                    <li><%= link_to child_2.name, tour_handbook_sub_2_path(tour_handbook_sub_2: child_2, parent_name: child_1.url_friendly, name: child_2.url_friendly) %></li>
+                                                                <% end %>
+                                                            </ul>
+                                                        </li>
+                                                    <% end %>
+                                                <% end %>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            <% end %>
+                            
+                            <% if item.description == "travel_news" %>
+                                <li class="menu-item-has-children <%= "active" if params[:controller] == "travel_news" %>"><%= link_to item.name, travel_news_path %></li>
+                            <% end %>
+                            
+                            <% if item.description == "contact" %>
+                                <li class="menu-item-has-children <%= "active" if params[:controller] == "contact" %>"><%= link_to item.name, contact_path %></li>
+                            <% end %>
+                            
+                        <% end %>
+                    <% end %>
+                </ul>
+            </nav>
+        </div>
+
+        <nav id="mobile-menu-01" class="mobile-menu collapse">
+            <ul id="mobile-primary-menu" class="menu">
+                <% Category.all.order("ordered").each do |item| %>
+                    <% if item.level == 1 %>
+                        <% if item.description == "home" %>
+                            <li><%= link_to item.name, root_path %></li>
+                        <% end %>
+                            
+                        <% if item.description == "about_us" %>
+                            <li><%= link_to item.name, about_us_path %></li>
+                        <% end %>
+                        
+                        <% if item.description == "tour" %>
+                            <li class="menu-item-has-children">
+                                <%= link_to item.name, tour_path %>
+                                <ul>
+                                    <% ArticleCategory.get_menu_tours.each do |tours| %>
+                                        <% tours.children.order("created_at ASC").each do |child_1| %>
+                                            <li class="menu-item-has-children">
+                                                <% if child_1.description == "domestic_tour" %>
+                                                    <%= link_to child_1.name, domestic_tour_path %>
+                                                <% else %>
+                                                    <%= link_to child_1.name, foreign_tour_path %>
+                                                <% end %>
+                                                <ul class="clearfix">
+                                                    <% child_1.children.order("created_at ASC").each do |child_2| %>
+                                                        <li><%= link_to child_2.name, tour_packages_path(tour_packages_id: child_2, name: child_2.url_friendly) %></li>
+                                                    <% end %>
+                                                </ul>
+                                            </li>
+                                        <% end %>
+                                    <% end %>
+                                </ul>
+                            </li>
+                        <% end %>
+                        
+                        <% if item.description == "services" %>
+                            <li class="menu-item-has-children">
+                                <%= link_to item.name, service_path %>
+                                <ul>
+                                    <% ArticleCategory.get_menu_services.each do |service| %>
+                                        <% service.children.order("created_at ASC").each do |child_1| %>
+                                            <li class="menu-item-has-children">
+                                                <% if child_1.description == "car_hire" %>
+                                                    <%= link_to child_1.name, car_hire_path %>
+                                                    <ul class="clearfix">
+                                                        <% child_1.children.order("created_at ASC").each do |child_2| %>
+                                                            <li><%= link_to child_2.name, car_grid_view_path(car_category_id: child_2, car_category_name: child_2.url_friendly) %></li>
+                                                        <% end %>
+                                                    </ul>
+                                                <% end %>
+                                                <% if child_1.description == "hotel" %>
+                                                    <%= link_to child_1.name, hotel_listing_path %>
+                                                    <ul class="clearfix">
+                                                        <% child_1.children.order("created_at ASC").each do |child_2| %>
+                                                            <li><%= link_to child_2.name, hotel_listing_path %></li>
+                                                        <% end %>
+                                                    </ul>
+                                                <% end %>
+                                                <% if child_1.description == "plane_ticket" %>
+                                                    <%= link_to child_1.name, plane_ticket_path %>
+                                                    <ul class="clearfix">
+                                                        <% child_1.children.order("created_at ASC").each do |child_2| %>
+                                                            <li><%= link_to child_2.name, plane_ticket_path %></li>
+                                                        <% end %>
+                                                    </ul>
+                                                <% end %>
+                                                <% if child_1.description == "visa_card" %>
+                                                    <%= link_to child_1.name, visa_card_path %>
+                                                    <ul class="clearfix">
+                                                        <% child_1.children.order("created_at ASC").each do |child_2| %>
+                                                            <li><%= link_to child_2.name, visa_card_path %></li>
+                                                        <% end %>
+                                                    </ul>
+                                                <% end %>
+                                            </li>
+                                        <% end %>
+                                    <% end %>
+                                </ul>
+                            </li>
+                        <% end %>
+                        
+                        <% if item.description == "event" %>
+                            <li class="menu-item-has-children">
+                                <% ArticleCategory.get_menu_events.each do |events| %>
+                                    <%= link_to events.name, event_path %>
+                                    <ul>
+                                        <% events.children.each do |child_1| %>
+                                            <li><%= link_to child_1.name, event_listing_path(event_id: child_1, name: child_1.url_friendly) %></li>
+                                        <% end %>
+                                    </ul>
+                                <% end %>
+                            </li>
+                        <% end %>
+                        
+                        <% if item.description == "tour_handbook" %>
+                            <li class="menu-item-has-children">
+                                <%= link_to item.name, tour_handbook_path %>
+                                <ul>
+                                    <% ArticleCategory.get_menu_tour_handbooks.each do |tour_handbook| %>
+                                        <% tour_handbook.children.order("created_at ASC").each do |child_1| %>
+                                            <li class="menu-item-has-children">
+                                                <%= link_to child_1.name, tour_handbook_sub_1_path(tour_handbook_sub_1: child_1, name: child_1.url_friendly) %>
+                                                <ul class="clearfix">
+                                                    <% child_1.children.order("created_at ASC").each do |child_2| %>
+                                                        <li><%= link_to child_2.name, tour_handbook_sub_2_path(tour_handbook_sub_2: child_2, parent_name: child_1.url_friendly, name: child_2.url_friendly) %></li>
+                                                    <% end %>
+                                                </ul>
+                                            </li>
+                                        <% end %>
+                                    <% end %>
+                                </ul>
+                            </li>
+                        <% end %>
+                        
+                        <% if item.description == "travel_news" %>
+                            <li><%= link_to item.name, travel_news_path %></li>
+                        <% end %>
+                        
+                        <% if item.description == "contact" %>
+                            <li><%= link_to item.name, contact_path %></li>
+                        <% end %>
+                        
+                    <% end %>  
+                <% end %>
+                <li>
+                    <%= link_to '<i class="soap-icon-shopping"></i> BẢNG GIÁ TOUR'.html_safe, tour_pricing_path %>
+                </li>
+            </ul>
+
+            <ul class="mobile-topnav container">
+                <li class="ribbon language menu-color-skin">
+                    <a href="#" data-toggle="collapse">Tiếng Việt</a>
+                    <ul class="menu mini">
+                        <li class="active"><a href="#" title="English">Tiếng Việt</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+        </nav>
+    </div>
+</header>

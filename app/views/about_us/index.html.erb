@@ -1,0 +1,113 @@
+<div id="page-wrapper">
+    
+    <!-- HEADER -->
+    <%= render "/home/header" %>
+
+    <div class="page-title-container style2">
+        <div class="container">
+            <div class="page-title">
+                <h2 class="entry-title">Giới thiệu</h2>
+            </div>
+            <ul class="breadcrumbs">
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <li class="active">Giới thiệu</li>
+            </ul>
+        </div>
+    </div>
+
+    <section id="content">
+        <div class="container">
+            <div class="col-sm-12">
+                
+                <div id="main">
+                    <div class="post-content text-justify">
+                        <% if @about_us.present? %>
+                        <%= @about_us.content.html_safe %>
+                        <% end %>
+                    </div>
+                </div> <!-- end main -->
+                
+                <h1 class="text-center"><strong>VÌ SAO CHỌN THƯƠNG HIỆU "DU LỊCH KHÁM PHÁ MỚI"</strong></h1>
+                <div class="toggle-container box" id="accordion1">
+                    <div class="panel style1">
+                        <h4 class="panel-title">
+                            <a href="#acc1" data-toggle="collapse" data-parent="#accordion1">Cam kết uy tín, chất lượng dịch vụ</a>
+                        </h4>
+                        <div class="panel-collapse collapse in" id="acc1">
+                            <div class="panel-content">
+                                <p class="text-justify">Khám Phá Mới mong muốn mang lại những giá trị dịch vụ tốt nhất cho khách hàng và đối tác.</p>
+                            </div><!-- end content -->
+                        </div>
+                    </div>
+                    
+                    <div class="panel style1">
+                        <h4 class="panel-title">
+                            <a class="collapsed" href="#acc2" data-toggle="collapse" data-parent="#accordion1">Nguồn lực dồi dào, đội ngũ chuyên nghiệp</a>
+                        </h4>
+                        <div class="panel-collapse collapse" id="acc2">
+                            <div class="panel-content">
+                                <p class="text-justify">Với đội ngũ nhân viên đang làm việc tại trụ sở chính và các chi nhánh trong thành phố , nhiều năm kinh nghiệm và đầy sáng tạo.<br/>
+                                Đội ngũ Khám Phá Mới luôn được đào tạo nhằm nâng cao trình độ nghiệp vụ, lắng nghe & am hiểu khách hàng, tinh thần trách nhiệm và sự tận tâm phục vụ.</p>
+                            </div><!-- end content -->
+                        </div>
+                    </div>
+                    
+                    <div class="panel style1">
+                        <h4 class="panel-title">
+                            <a class="collapsed" href="#acc3" data-toggle="collapse" data-parent="#accordion1">Có đối tác tin cậy</a>
+                        </h4>
+                        <div class="panel-collapse collapse" id="acc3">
+                            <div class="panel-content">
+                                <p class="text-justify">Khám Phá Mới đã và đang mở rộng thêm nhiều quan hệ đối tác chặt chẽ với các công ty, dịch vụ du lịch trên toàn quốc.<br/>
+                                Tạo điều kiện cho Khám Phá Mới phát triển nhiều loại hình tour đa dạng với chất lượng và chi phí dịch vụ tốt nhất.</p>
+                            </div><!-- end content -->
+                        </div>
+                    </div>
+                    
+                    <div class="panel style1">
+                        <h4 class="panel-title">
+                            <a class="collapsed" href="#acc4" data-toggle="collapse" data-parent="#accordion1">Sản phẩm độc đáo, mới lạ</a>
+                        </h4>
+                        <div class="panel-collapse collapse" id="acc4">
+                            <div class="panel-content">
+                                <p class="text-justify">Khám Phá Mới luôn sáng tạo, đổi mới đưa ra những sản phẩm mới mang tính đột phá, thân thiện với cộng đồng & môi trường.<br/>
+                                Các gói dịch vụ du lịch đa dạng, từ tiết kiệm đến cao cấp, đáp ứng nhu cầu phục vụ cho các đoàn khách lớn, quy mô lên đến hàng ngàn khách đến các đoàn khách lẻ.</p>
+                            </div><!-- end content -->
+                        </div>
+                    </div>
+                    
+                    <div class="panel style1">
+                        <h4 class="panel-title">
+                            <a class="collapsed" href="#acc5" data-toggle="collapse" data-parent="#accordion1">Uy tín thương hiệu</a>
+                        </h4>
+                        <div class="panel-collapse collapse" id="acc5">
+                            <div class="panel-content">
+                                <p class="text-justify">Qua hơn 10 năm, liên tục phát triển từ khi mới thành lập đến nay, cty du lịch Khám Phá Mới đã có những bước chuyển biến mạnh mẽ và tích cực trong các dịch vụ : du lịch trong nước, cung ứng xe nhiều chỗ đời mới.<br/>
+                                Trải qua bao khó khăn và thử thách, Khám Phá Mới hiện nay là "Thương hiệu xuất sắc & nhà lãnh đạo tiêu biểu thời hội nhập năm 2016".<br/>
+                                Sự phát triển toàn diện, không ngừng đổi mới sáng tạo, phong cách phục vụ cùng nguồn nhân lực dồi dào, nhiều kinh nghiệm, yêu nghề.</p>
+                            </div><!-- end content -->
+                        </div>
+                    </div>
+                    
+                    <div class="panel style1">
+                        <h4 class="panel-title">
+                            <a class="collapsed" href="#acc6" data-toggle="collapse" data-parent="#accordion1">Sự yêu quý của khách hàng dành cho Khám Phá Mới</a>
+                        </h4>
+                        <div class="panel-collapse collapse" id="acc6">
+                            <div class="panel-content">
+                                <p class="text-justify">Là một phần sức mạnh để  Khám Phá Mới phục vụ tốt hơn và ngày càng vươn xa.</p>
+                            </div><!-- end content -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <%= render "/home/footer" %>
+    
+</div>
+
+<!-- Javascript -->
+<%= render "/home/js_files" %>

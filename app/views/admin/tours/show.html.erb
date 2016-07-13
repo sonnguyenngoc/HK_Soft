@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @tour.type %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @tour.name %>
+</p>
+
+<p>
+  <strong>Is sale:</strong>
+  <%= @tour.is_sale %>
+</p>
+
+<p>
+  <strong>Discount percent:</strong>
+  <%= @tour.discount_percent %>
+</p>
+
+<p>
+  <strong>New price:</strong>
+  <%= @tour.new_price %>
+</p>
+
+<p>
+  <strong>Old price:</strong>
+  <%= @tour.old_price %>
+</p>
+
+<p>
+  <strong>Services:</strong>
+  <%= @tour.services %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @tour.duration %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @tour.position %>
+</p>
+
+<p>
+  <strong>Hotel:</strong>
+  <%= @tour.hotel %>
+</p>
+
+<p>
+  <strong>Transportation:</strong>
+  <%= @tour.transportation %>
+</p>
+
+<%= link_to 'Edit', edit_tour_path(@tour) %> |
+<%= link_to 'Back', tours_path %>

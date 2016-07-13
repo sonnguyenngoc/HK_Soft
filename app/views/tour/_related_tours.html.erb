@@ -1,0 +1,16 @@
+<div class="travelo-box">
+    <h4 class="box-title">Tour Liên Quan</h4>
+    <div class="image-box style14">
+        <% Tour.get_related_tours(@tour.article_category_id).each do |item| %>
+            <article class="box">
+                <figure><%= link_to image_tag(item.image_url.smaller_image, height: "59", width: "63"), tour_detail_path(tour_id: item, tour_name: item.url_friendly) %></figure>
+                <div class="details">
+                    <h5 class="box-title"><%= link_to item.name, tour_detail_path(tour_id: item, tour_name: item.url_friendly) %></h5>
+                    <label class="price-wrapper"><span class="price-per-unit"><% if @tour.new_price == 0 %>Liên hệ<% else %><%= format_number(@tour.new_price) %> VND<% end %></span></label>
+                </div>
+            </article>
+        <% end %>
+    </div>
+</div>
+<%= render "/tour_handbook/right_sidebar" %>
+<%= render "/home/need_help" %>

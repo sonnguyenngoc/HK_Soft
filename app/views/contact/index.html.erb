@@ -1,0 +1,103 @@
+<div id="page-wrapper">
+    
+    <!-- HEADER -->
+    <%= render "/home/header" %>
+
+    <div class="page-title-container style2">
+        <div class="container">
+            <div class="page-title">
+                <h2 class="entry-title">Liên Hệ</h2>
+            </div>
+            <ul class="breadcrumbs">
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <li class="active">Liên Hệ</li>
+            </ul>
+        </div>
+    </div>
+    
+    <section id="content">
+        <div class="container">
+            <div id="main">
+                <div class="contact-address row block">
+                    <div class="col-md-4">
+                        <div class="icon-box style5">
+                            <i class="soap-icon-phone"></i>
+                            <div class="description">
+                                <small>Hỗ trợ khách hàng</small>
+                                <h5>
+                                    HOTLINE 1: <a href="tel:<%= Company.get_company.hotline %>"><%= Company.get_company.hotline %></a><br />
+                                    HOTLINE 2: <a href="tel:<%= Company.get_company.hotline %>"><%= Company.get_company.hotline_2 %></a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="icon-box style5">
+                            <i class="soap-icon-message"></i>
+                            <div class="description">
+                                <small>Email</small>
+                                <h5><a href="mailto:<%= Company.get_company.email %>"><%= Company.get_company.email %></a><br/>
+                                    <a href="mailto:<%= Company.get_company.email_2 %>"><%= Company.get_company.email_2 %></a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="icon-box style5">
+                            <i class="soap-icon-address"></i>
+                            <div class="description">
+                                <small>Địa chỉ chi nhánh</small>
+                                <h5><%= Company.get_company.sales_office_address %></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="travelo-box box-full">
+                    <div class="contact-form">
+                        <h2>Liên Hệ</h2>
+                       <%= form_for @contact, html: {id: "form-validate"} do |f| %>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label>Họ & Tên</label>
+                                        <%= f.text_field :name, class: "input-text full-width required" %>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <%= f.text_field :email, class: "input-text full-width required email" %>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Số Điện Thoại</label>
+                                        <%= f.text_field :phone, class: "input-text full-width required" %>
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label>Lời Nhắn</label>
+                                        <%= f.text_area :message, rows: '8', class: "input-text full-width required" %>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sms-offset-6 col-sm-offset-6 col-md-offset-8 col-lg-offset-9">
+                                <button class="btn-medium full-width">GỬI LỜI NHẮN</button>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <%= render "/home/footer" %>
+    
+</div>
+
+<!-- Javascript -->
+<%= render "/home/js_files" %>
+
+<script>
+    jQuery(document).ready(function($){
+        $("#form-validate").validate();
+    });
+</script>

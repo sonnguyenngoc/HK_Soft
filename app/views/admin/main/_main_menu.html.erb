@@ -1,0 +1,138 @@
+<div class="sidebar-category sidebar-category-visible">
+    <div class="category-content no-padding">
+        <ul class="navigation navigation-main navigation-accordion">
+
+            <!-- Main -->
+            <li class="navigation-header"><span></span> <i class="icon-menu"></i></li>
+            <li class="<%= "active" if ["admin/main"].include?(params[:controller]) %>"><%= link_to '<i class="icon-home4"></i> <span>'.html_safe + t(:dashboard) +'</span>'.html_safe, { controller: "main", action: "index" } %></li>
+            <% if can?(:read, Tour) or can?(:read, Hotel) or can?(:read, Car) or can?(:read, Manufacturer) %>
+                <li>
+                    <a href="#"><i class="icon-stack2"></i> <span>Quản lý</span></a>
+                    <ul>
+                        <% if can? :read, Tour %>
+                            <li class="<%= "active" if ["admin/tours"].include?(params[:controller]) %>">
+                                <%= link_to "Danh sách tour du lịch", admin_tours_path %>
+                            </li>
+                        <% end %>
+                        <% if can? :read, Hotel %>
+                            <li class="<%= "active" if ["admin/hotels"].include?(params[:controller]) %>">
+                                <%= link_to "Danh sách khách sạn", admin_hotels_path %>
+                            </li>
+                        <% end %>
+                        <% if can? :read, Car %>
+                            <li class="<%= "active" if ["admin/cars"].include?(params[:controller]) %>">
+                                <%= link_to "Danh sách xe", admin_cars_path %>
+                            </li>
+                        <% end %>
+                        <% if can? :read, Manufacturer %>
+                            <li class="<%= "active" if ["admin/manufacturers"].include?(params[:controller]) %>">
+                                <%= link_to "Danh sách loại xe", admin_manufacturers_path %>
+                            </li>
+                        <% end %>
+                    </ul>
+                </li>
+            <% end %>
+            <% if can?(:read, Article) or can?(:read, ArticleCategory) or can?(:read, Category) %>
+                <li>
+                    <a href="#"><i class="glyphicon glyphicon-pencil"></i> <span><%= t(:article) %></span></a>
+                    <ul>
+                        <% if can? :read, Article %>
+                            <li class="<%= "active" if ["admin/articles"].include?(params[:controller]) %>">
+                                <%= link_to t(:articles), admin_articles_path %>
+                            </li>
+                        <% end %>
+                        <% if can? :read, Category %>
+                            <li class="<%= "active" if ["admin/categories"].include?(params[:controller]) %>">
+                                <%= link_to "Menu chính", admin_categories_path %>
+                            </li>
+                        <% end %>
+                        <% if can? :read, ArticleCategory %>
+                            <li class="<%= "active" if ["admin/article_categories"].include?(params[:controller]) %>">
+                                <%= link_to "Chuyên mục / Menu con", admin_article_categories_path %>
+                            </li>
+                        <% end %>
+                    </ul>
+                </li>
+            <% end %>
+            
+            <% if can?(:read, BookingTour) or can?(:read, BookingCar) or can?(:read, BookingHotel) or can?(:read, BookingPlane) or can?(:read, BookingVisa) %>
+                <li>
+                    <a href="#"><i class="icon-stack2"></i> <span>Quản lý đăng ký</span></a>
+                    <ul>
+                        <% if can? :read, BookingTour %>
+                            <li class="<%= "active" if ["admin/booking_tours"].include?(params[:controller]) %>">
+                                <%= link_to "Danh sách đặt tour", admin_booking_tours_path %>
+                            </li>
+                        <% end %>
+                        <% if can? :read, BookingCar %>
+                            <li class="<%= "active" if ["admin/booking_cars"].include?(params[:controller]) %>">
+                                <%= link_to "Danh sách đặt xe", admin_booking_cars_path %>
+                            </li>
+                        <% end %>
+                        <% if can? :read, BookingHotel %>
+                            <li class="<%= "active" if ["admin/booking_hotels"].include?(params[:controller]) %>">
+                                <%= link_to "Danh sách đặt khách sạn", admin_booking_hotels_path %>
+                            </li>
+                        <% end %>
+                        <% if can? :read, BookingPlane %>
+                            <li class="<%= "active" if ["admin/booking_planes"].include?(params[:controller]) %>">
+                                <%= link_to "Danh sách đặt vé máy bay", admin_booking_planes_path %>
+                            </li>
+                        <% end %>
+                        <% if can? :read, BookingVisa %>
+                            <li class="<%= "active" if ["admin/booking_visas"].include?(params[:controller]) %>">
+                                <%= link_to "Danh sách làm thẻ visa", admin_booking_visas_path %>
+                            </li>
+                        <% end %>
+                    </ul>
+                </li>
+            <% end %>
+            
+            <% if can?(:read, Contact) %>
+                <li>
+                    <a href="#"><i class="icon-people"></i> <span><%= t(:customer) %></span></a>
+                    <ul>
+                        <% if can? :read, Contact %>
+                            <li class="<%= "active" if ["admin/contacts"].include?(params[:controller]) %>">
+                                <%= link_to t(:contact), admin_contacts_path %>
+                            </li>
+                        <% end %>
+                    </ul>
+                </li>
+            <% end %>
+            
+            <% if can?(:read, User) or can?(:read, UserGroup) %>
+                
+                <li>
+                    <a href="#"><i class="icon-users"></i> <span><%= t(:user) %></span></a>
+                    <ul>
+                        <% if can? :read, User %>
+                            <li class="<%= "active" if ["admin/users"].include?(params[:controller]) %>">
+                                <%= link_to t(:users), admin_users_path %>
+                            </li>
+                        <% end %>
+                        <% if can? :read, UserGroup %>
+                            <li class="<%= "active" if ["admin/user_groups"].include?(params[:controller]) %>">
+                                <%= link_to t(:user_groups), admin_user_groups_path %>
+                            </li>
+                        <% end %>
+                    </ul>
+                </li>
+            
+            <% end %>
+            
+            <% if can?(:read, Company) %>
+                <li>
+                    <a href="#"><i class="icon-office"></i> <span><%= t(:company) %></span></a>
+                    <ul>
+                        <% if can? :read, Company %>
+                            <li class="<%= "active" if ["admin/companies"].include?(params[:controller]) %>">
+                                <%= link_to "Thông tin công ty", admin_companies_path %>
+                            </li>
+                        <% end %>
+                    </ul>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+</div>

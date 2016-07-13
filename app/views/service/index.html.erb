@@ -1,0 +1,126 @@
+<div id="page-wrapper" class="service-page">
+    
+    <!-- HEADER -->
+    <%= render "/home/header" %>
+
+    <div class="page-title-container style2">
+        <div class="container">
+            <div class="page-title">
+                <h2 class="entry-title">Dịch Vụ</h2>
+            </div>
+            <ul class="breadcrumbs">
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <li class="active">Dịch Vụ</li>
+            </ul>
+        </div>
+    </div>
+
+    <section id="content">
+        <div class="container">
+            <div id="main">
+                <div class="section service-list">
+                    <div class="row">
+                        <div class="box col-sm-6 col-md-3">
+                            <div class="icon-box box style8 style12">
+                                <div class="icon-wrapper">
+                                    <i class="soap-icon-car"></i>
+                                </div>
+                                <div class="details">
+                                    <h4 class="m-title"><%= link_to "Dịch Vụ Thuê Xe Du Lịch", car_hire_path %></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box col-sm-6 col-md-3">
+                            <div class="icon-box box style8 style12">
+                                <div class="icon-wrapper">
+                                    <i class="soap-icon-hotel"></i>
+                                </div>
+                                <div class="details">
+                                    <h4 class="m-title"><%= link_to "Đặt Phòng Khách Sạn", hotel_listing_path %></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box col-sm-6 col-md-3">
+                            <div class="icon-box box style8 style12">
+                                <div class="icon-wrapper">
+                                    <i class="soap-icon-plane-right takeoff-effect"></i>
+                                </div>
+                                <div class="details">
+                                    <h4 class="m-title"><%= link_to "Dịch Vụ Đặt Vé Máy Bay", plane_ticket_path %></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box col-sm-6 col-md-3">
+                            <div class="icon-box box style8 style12">
+                                <div class="icon-wrapper">
+                                    <i class="soap-icon-card"></i>
+                                </div>
+                                <div class="details">
+                                    <h4 class="m-title"><%= link_to "Dịch Vụ Làm Thẻ Visa", visa_card_path %></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="large-block row image-box style2">
+                    <div class="col-md-6">
+                        <article class="box">
+                            <figure>
+                                <a href="<%= car_hire_path %>" title=""><img src="/frontend/images/booking_car.jpg" alt="" width="272" height="192" /></a>
+                            </figure>
+                            <div class="details">
+                                <h4>Dịch Vụ Thuê Xe Du Lịch</h4>
+                                <p>Nunc cursus libero purus ac congue ar lorem cursus ut sed vitae pulvinar massa idend porta nequetiam elerisque mi id.</p>
+                                <a href="<%= car_hire_path %>" title="" class="button btn-mini">XEM</a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-6">
+                        <article class="box">
+                            <figure>
+                                <a href="<%= hotel_listing_path %>" title=""><img src="/frontend/images/booking_room.jpg" alt="" width="272" height="192" /></a>
+                            </figure>
+                            <div class="details">
+                                <h4>Dịch Vụ Đặt Phòng Khách Sạn</h4>
+                                <p>Nunc cursus libero purus ac congue ar lorem cursus ut sed vitae pulvinar massa idend porta nequetiam elerisque mi id.</p>
+                                <a href="<%= hotel_listing_path %>" title="" class="button btn-mini">XEM</a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-6">
+                        <article class="box">
+                            <figure>
+                                <a href="<%= plane_ticket_path %>" title=""><img src="/frontend/images/booking_plane.jpg" alt="" width="272" height="192" /></a>
+                            </figure>
+                            <div class="details">
+                                <h4>Dịch Vụ Đặt Vé Máy Bay</h4>
+                                <p>Nunc cursus libero purus ac congue ar lorem cursus ut sed vitae pulvinar massa idend porta nequetiam elerisque mi id.</p>
+                                <a href="<%= plane_ticket_path %>" title="" class="button btn-mini">XEM</a>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-6">
+                        <article class="box">
+                            <figure>
+                                <a href="<%= visa_card_path %>" title=""><img src="/frontend/images/booking_visa.jpg" alt="" width="272" height="192" /></a>
+                            </figure>
+                            <div class="details">
+                                <h4>Dịch Vụ Làm Thẻ Visa</h4>
+                                <p>Nunc cursus libero purus ac congue ar lorem cursus ut sed vitae pulvinar massa idend porta nequetiam elerisque mi id.</p>
+                                <a href="<%= visa_card_path %>" title="" class="button btn-mini">XEM</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FOOTER -->
+    <%= render "/home/footer" %>
+    
+</div>
+
+<!-- Javascript -->
+<%= render "/home/js_files" %>

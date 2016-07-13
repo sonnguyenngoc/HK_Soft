@@ -1,0 +1,16 @@
+<p>-------- NewDiscovery.vn - Đăng ký đặt tour --------</p>
+<p>Họ & Tên: <%= @booking_tour.full_name %></p>
+<p>Email: <%= @booking_tour.email %></p>
+<p>Số điện thoại: <%= @booking_tour.phone %></p>
+<p>Địa chỉ: <%= @booking_tour.address %></p>
+<p>ID/Passport: <%= @booking_tour.passport %></p>
+
+<p>Tour: <%= @booking_tour.tour_name %></p>
+<p>Giá tour: <% if @booking_tour.price == 0 %>Liên hệ<% else %><%= @booking_tour.price %> VND<% end %></p>
+<p>Ngày đặt tour: <% if !@booking_tour.tour_schedule.from_date.nil? %><%= @booking_tour.tour_schedule.from_date.strftime("%d/%m/%Y") %><% end %> - <% if !@booking_tour.tour_schedule.to_date.nil? %><%= @booking_tour.tour_schedule.to_date.strftime("%d/%m/%Y") %><% end %></p>
+<p>Số người lớn: <%= @booking_tour.adult %></p>
+<p>Số trẻ em (Từ 11 tuổi trở lên): <%= @booking_tour.child %></p>
+<p>Số trẻ em (Từ 5 tuổi đến dưới 11 tuổi): <%= @booking_tour.child_2 %></p>
+<p>Số trẻ em (Dưới 5 tuổi): <%= @booking_tour.child_3 %></p>
+<p>Lời nhắn: <%= @booking_tour.message.html_safe %></p>
+<p>Ngày gửi: <%= @booking_tour.created_at.in_time_zone("Asia/Bangkok").strftime("%d/%m/%Y %H:%M") %> (GMT+07:00)</p>

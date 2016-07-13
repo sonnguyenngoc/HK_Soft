@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Full name:</strong>
+  <%= @booking_tour.full_name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @booking_tour.address %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @booking_tour.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @booking_tour.email %>
+</p>
+
+<p>
+  <strong>Passport:</strong>
+  <%= @booking_tour.passport %>
+</p>
+
+<p>
+  <strong>Tour schedule:</strong>
+  <%= @booking_tour.tour_schedule_id %>
+</p>
+
+<p>
+  <strong>Adult:</strong>
+  <%= @booking_tour.adult %>
+</p>
+
+<p>
+  <strong>Child:</strong>
+  <%= @booking_tour.child %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @booking_tour.message %>
+</p>
+
+<p>
+  <strong>Tour:</strong>
+  <%= @booking_tour.tour_id %>
+</p>
+
+<p>
+  <strong>Tour name:</strong>
+  <%= @booking_tour.tour_name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @booking_tour.price %>
+</p>
+
+<%= link_to 'Edit', edit_booking_tour_path(@booking_tour) %> |
+<%= link_to 'Back', booking_tours_path %>
