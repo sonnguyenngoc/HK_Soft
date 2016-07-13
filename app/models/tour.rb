@@ -160,8 +160,8 @@ class Tour < ActiveRecord::Base
     def copy
         new_tour = self.dup
         new_tour.name += " (Copy)"
-        #new_tour.image_url.download!(self.image_url)
-        #new_tour.store_image_url!
+        CopyCarrierwaveFile::CopyFileService.new(self, new_tour, :image_url).set_file
+        # :image_url represents mount point (field)
         new_tour.save
         
         # copy tour schedules - 1-n
@@ -170,6 +170,12 @@ class Tour < ActiveRecord::Base
             new_tour.tour_schedules << new_ts
         end
         
+        # copy tour images - 1-n
+        self.tour_images.each do |ti|
+            new_ti = ti.dup
+            CopyCarrierwaveFile::CopyFileService.new(ti, new_ti, :image_url).set_file
+            new_tour.tour_images << new_ti
+        end
     end
     
     def self.service_listing
