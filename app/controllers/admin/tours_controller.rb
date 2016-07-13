@@ -1,5 +1,5 @@
 class Admin::ToursController < ApplicationController
-  before_action :set_tour, only: [:show, :edit, :update, :destroy]
+  before_action :set_tour, only: [:copy, :show, :edit, :update, :destroy]
 
   # GET /tours
   # GET /tours.json
@@ -100,6 +100,14 @@ class Admin::ToursController < ApplicationController
     @tour.save
     respond_to do |format|
       format.html { redirect_to :back, notice: 'Ẩn tour thành công.' }
+      format.json { head :no_content }
+    end
+  end
+  
+  def copy
+    @new_tour = @tour.copy
+    respond_to do |format|
+      format.html { redirect_to edit_admin_tour_path(@new_tour.id), notice: 'Copy tour thành công.' }
       format.json { head :no_content }
     end
   end
