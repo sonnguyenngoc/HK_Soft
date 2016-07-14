@@ -1,0 +1,161 @@
+<div class="pageWrap">
+
+    <%= render "/home/tp_bar" %>
+    <!-- /tp-bar -->
+
+    <%= render "/home/main_bar" %>
+    <!-- /main-bar -->
+
+    <section class="section-banner">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <li>Bông mút đa năng Soft Cream Puff</li>
+            </ul>
+        </div>
+    </section>
+    <!-- /section-banner -->
+
+    <section class="section-compact">
+        <div class="container">
+
+            <div class="single-container">
+                <div class="product-single">
+                    <div class="featured-box">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <figure class="image">
+                                    <img src="/frontend/images/resource/img-20.jpg" alt="image">
+                                </figure>
+                            </div>
+                            <div class="col-sm-7">
+                                <div class="text">
+                                    <h4>Bông mút đa năng Soft Cream Puff</h4><br/>
+                                    <div class="collapse in">
+                                        <p>Xuất xứ: Hàn Quốc</p>
+                                        <p>Thương hiệu: Soft Cream Puff</p>
+                                        <p>Giá: 20.000 VNĐ</p>
+                                        <p class="text-justify">Mô tả ngắn: The times are just approximate, estimated according to the previous delivery times of shipping companies.</p>
+                                        <input type="text" class="form-control" placeholder="Nhập số lượng cần mua" value="1"><br/>
+                                        <a href="#" class="btn btn-default">Add to Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /featured-box -->
+                    
+                    <div class="other-products">
+                        <header class="heading">
+                            <span class="caro-prev other-prev"><i class="flaticon-arrowhead7"></i></span>
+                            <span class="caro-next other-next"><i class="flaticon-arrow487"></i></span>
+                            <h4>Hình Ảnh Liên Quan</h4>
+                        </header>
+                        <div class="carousel-multiple owl-carousel">
+                            <% (1..5).each do |item| %>
+                            <div class="item">
+                                <div class="thumbnail thumbnail-product">
+                                    <figure class="image-zoom">
+                                        <img alt="image" src="/frontend/images/resource/img-18.jpg">
+                                    </figure>
+                                </div>
+                                <!-- /thumbail -->
+                            </div>
+                            <% end %>
+                        </div>
+                    </div>
+                    <!-- /other-products -->
+                </div>
+                <!-- /product-single -->
+
+                <div class="product-description">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="prod-desc-box">
+                                <h4>Mô Tả Sản Phẩm</h4>
+                                <p class="text-justify">
+                                Sensual. Mysteriously glamourous. Illuminous. Experience the mystery of euphoria with a luminescent, more delicate and sensual interpretation of the original fragrance. It is inspired by a new found freedom, about living one's dream.
+                                Sensual. Mysteriously glamourous. Illuminous. Experience the mystery of euphoria with a luminescent, more delicate and sensual interpretation of the original fragrance. It is inspired by a new found freedom, about living one's dream.
+                                Sensual. Mysteriously glamourous. Illuminous. Experience the mystery of euphoria with a luminescent, more delicate and sensual interpretation of the original fragrance. It is inspired by a new found freedom, about living one's dream.
+                                Sensual. Mysteriously glamourous. Illuminous. Experience the mystery of euphoria with a luminescent, more delicate and sensual interpretation of the original fragrance. It is inspired by a new found freedom, about living one's dream.
+                                Sensual. Mysteriously glamourous. Illuminous. Experience the mystery of euphoria with a luminescent, more delicate and sensual interpretation of the original fragrance. It is inspired by a new found freedom, about living one's dream.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /product-description -->
+
+                <div class="pic-vid-box">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="video-box">
+                                <h4>Video Cho Sản Phẩm</h4>
+                                <iframe width="560" height="350" src="https://www.youtube.com/embed/wiKRVP8xGvA" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /pic-vid-box -->
+                
+                <div class="other-products">
+                    <header class="heading">
+                        <span class="caro-prev other-prev"><i class="flaticon-arrowhead7"></i></span>
+                        <span class="caro-next other-next"><i class="flaticon-arrow487"></i></span>
+                        <h4>Sản Phẩm Liên Quan</h4>
+                    </header>
+                    <div class="carousel-multiple owl-carousel">
+                        <% (1..6).each do |item| %>
+                        <div class="item">
+                            <div class="thumbnail thumbnail-product">
+                                <figure class="image-zoom">
+                                    <img alt="image" src="/frontend/images/resource/img-18.jpg">
+                                </figure>
+                                <div class="caption text-center">
+                                    <h5><%= link_to "Bông mút đa năng Soft Cream Puff", product_detail_path %></h5>
+                                    <!-- /rating-star -->
+                                    <p class="prod-price text-primary">Giá: 100.000 VNĐ</p>
+                                </div>
+                            </div>
+                            <!-- /thumbail -->
+                        </div>
+                        <% end %>
+                    </div>
+                </div>
+                <!-- /other-products -->
+
+            </div>
+            <!-- /single-container -->
+        </div>
+    </section>
+    
+    <%= render "/home/footer" %>
+
+</div>
+<!-- /pageWrap -->
+
+
+<div class="preloader-container">
+    <div id="loading-center-absolute">
+        <div class="object" id="object_one"></div>
+        <div class="object" id="object_two"></div>
+        <div class="object" id="object_three"></div>
+        <div class="object" id="object_four"></div>
+        <div class="object" id="object_five"></div>
+        <div class="object" id="object_six"></div>
+        <div class="object" id="object_seven"></div>
+        <div class="object" id="object_eight"></div>
+        <div class="object" id="object_big"></div>
+    </div>
+    <!-- /loading-center-absolute -->
+</div>
+<!-- /preloader-container -->
+
+
+<!-- JavaScript
+================================================== -->
+<%= javascript_include_tag "/frontend/js/jquery-1.11.2.min.js" %>
+<%= javascript_include_tag "/frontend/js/bootstrap.min.js" %>
+<%= javascript_include_tag "/frontend/js/owl.carousel.min.js" %>
+<%= javascript_include_tag "/frontend/js/script.js" %>
+
+<%= javascript_include_tag "/frontend/js/ie10-viewport-bug-workaround.js" %>

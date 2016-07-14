@@ -1,8 +1,29 @@
 Rails.application.routes.draw do
-  root "home#index"
+  get 'cart/index'
+
+  get 'cart/checkout'
+
+  get 'cart/finish'
+
+  get 'product/index'
+
+  get 'category/index'
+
+  get 'category/product_detail'
+
   devise_for :users
   
-  scope "(:locale)", locale: /vi|en/ do
+  scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
+    root "home#index"
+    get "lien-he.html" => "contact#index", as: :contact
+    get "chuyen-muc.html" => "category#index", as: :category
+    get "chuyen-muc/chuyen-muc-1.html" => "category#category_sub_1", as: :category_sub_1
+    get "chuyen-muc/chuyen-muc-1/chuyen-muc-2.html" => "category#category_sub_2", as: :category_sub_2
+    get "chi-tiet-san-pham.html" => "product#index", as: :product_detail
+    get "gio-hang.html" => "cart#index", as: :cart
+    get "gio-hang/dat-hang.html" => "cart#checkout", as: :checkout
+    get "gio-hang/dat-hang/dat-hang-thanh-cong.html" => "cart#finish", as: :finish
+    
     namespace :admin, path: "quan-tri" do
       get "/" => "main#index"
       scope(:path_names => { :new => "tao-moi", :edit => "chinh-sua" }) do

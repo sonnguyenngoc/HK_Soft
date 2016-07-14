@@ -1,0 +1,145 @@
+<div class="pageWrap">
+
+    <%= render "/home/tp_bar" %>
+    <!-- /tp-bar -->
+
+    <%= render "/home/main_bar" %>
+    <!-- /main-bar -->
+
+    <section class="section-banner">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <li class="active">Giỏ Hàng</li>
+            </ul>
+        </div>
+    </section>
+    <!-- /section-banner -->
+
+    <section class="section-compact">
+        <div class="container">
+            <div class="cart-block">
+                <header class="heading-3 page-heading">
+                    <h4><%= link_to '<i class="flaticon-arrowhead7"></i>Trở về trang chủ'.html_safe, root_path, class: "back-btn" %></h4>
+                </header>
+
+                <div class="steps-holder">
+                    <div class="step">
+                        <span>1</span>
+                        <p>Mua hàng</p>
+                    </div>
+                    <div class="step active">
+                        <span>2</span>
+                        <p>Xem giỏ hàng</p>
+                    </div>
+                    <!-- /step -->
+                    <div class="step">
+                        <span>3</span>
+                        <p>Đặt hàng</p>
+                    </div>
+                    <!-- /step -->
+                    <div class="step">
+                        <span>4</span>
+                        <p>Thành công</p>
+                    </div>
+                    <!-- /step -->
+                </div>
+                <!-- /steps-holder -->
+                <p class="text-right"><a href="#" class="btn btn-default btn-lg">Cập nhật giỏ hàng</a></p>
+
+                <div class="cart-main-container">
+
+                    <div class="cart-table table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Số lượng</th>
+                                    <th>Tổng giá</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% (1..5).each do |item| %>
+                                <tr>
+                                    <td>
+                                        <div class="prod-list-thumb media">
+                                            <figure class="media-left">
+                                                <a href="#"><img src="/frontend/images/resource/img-15.jpg" alt="image"></a>
+                                            </figure>
+                                            <div class="media-body">
+                                                <h4 class="text-primary"><a href="#">Son Môi YSL Rouge Pur Couture Lipstick</a></h4>
+                                                <p>Giá: 750.000 VNĐ</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="prod-qty" style="text-align: center;"><input type="text" value="1"></div>
+                                    </td>
+                                    <td>
+                                        <div class="prod-del"><strong>750.000 VNĐ</strong></div>
+                                    </td>
+                                    <td><a href="#" class="prod-del"><i class="flaticon-close9"></i>Xóa sản phẩm</a></td>
+                                </tr>
+                            <% end %>
+                            <tr>
+                                <td colspan="4">
+                                    <div class="prod-list-thumb media">
+                                        <div class="media-body">
+                                            <h3 class="text-primary sum_price">TỔNG TIỀN: 7.750.000 VNĐ</h3>
+                                        </div>
+                                    </div>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <!-- /cart-table -->
+
+                    <div class="row cart-actions">
+                        <div class="col-sm-6">
+                            <%= link_to '<i class="flaticon-arrow83"></i>Tiếp tục mua hàng'.html_safe, root_path, class: "go-back" %>
+                        </div>
+                        <div class="col-sm-6">
+                            <%= link_to "Đặt hàng", checkout_path, class: "btn btn-default btn-lg" %>
+                        </div>
+                    </div>
+                </div>
+                <!-- /cart-main-container -->
+
+
+            </div>
+            <!-- /cart-block -->
+        </div>
+
+    </section>
+
+    <%= render "/home/footer" %>
+
+</div>
+<!-- /pageWrap -->
+
+<div class="preloader-container">
+    <div id="loading-center-absolute">
+        <div class="object" id="object_one"></div>
+        <div class="object" id="object_two"></div>
+        <div class="object" id="object_three"></div>
+        <div class="object" id="object_four"></div>
+        <div class="object" id="object_five"></div>
+        <div class="object" id="object_six"></div>
+        <div class="object" id="object_seven"></div>
+        <div class="object" id="object_eight"></div>
+        <div class="object" id="object_big"></div>
+    </div>
+    <!-- /loading-center-absolute -->
+</div>
+<!-- /preloader-container -->
+
+
+<!-- JavaScript
+================================================== -->
+<%= javascript_include_tag "/frontend/js/jquery-1.11.2.min.js"  %>
+<%= javascript_include_tag "/frontend/js/bootstrap.min.js"  %>
+<%= javascript_include_tag "/frontend/js/script.js"  %>
+
+<%= javascript_include_tag "/frontend/js/ie10-viewport-bug-workaround.js"  %>

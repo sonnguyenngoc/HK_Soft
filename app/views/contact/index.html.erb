@@ -1,0 +1,116 @@
+<div class="pageWrap">
+
+    <%= render "/home/tp_bar" %>
+    <!-- /tp-bar -->
+
+    <%= render "/home/main_bar" %>
+    <!-- /main-bar -->
+
+    <section class="section-banner">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <li class="active">Liên Hệ</li>
+            </ul>
+        </div>
+    </section>
+    <!-- /section-banner -->
+
+    <section class="section-compact">
+        <div class="container">
+            <div class="cart-block">
+
+                <div class="form-main-container">
+                    <div class="row">
+                        <div class="col-sm-5 col-lg-4">
+                            <header class="heading-5">
+                                <h4>01/</h4>
+                                <span>Thông Tin <br>Liên Hệ</span>
+                            </header>
+                            <ul class="contact-list">
+                                <li><span class="iconic"><i class="flaticon-call36"></i></span>(012) 345-6789</li>
+                                <li><span class="iconic"><i class="flaticon-email15"></i></span><a href="#">info@perfumesupport.com</a></li>
+                                <li><span class="iconic"><i class="flaticon-twitter16"></i></span><a href="#">@followperfume</a></li>
+                                <li><span class="iconic"><i class="flaticon-facebook43"></i></span><a href="#">facebook.com/perfume</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-7 col-lg-8">
+                            <div class="form-section-box">
+                                <header class="heading-5 text-center">
+                                    <h4>02/</h4>
+                                    <span>Gửi Tin Nhắn<br> Liên Hệ</span>
+                                </header>
+                                <div id="message"></div>
+                                <form id="contactform_forms" class="checkout-form" method="post" action="#">
+
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-md">Họ & Tên *</label>
+                                        <div class="col-md-9">
+                                            <input type="text" id="contact_name" class="form-control" required placeholder="Nhập họ & tên.....">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-md">Email *</label>
+                                        <div class="col-md-9">
+                                            <input type="email" id="contact_email" class="form-control" required placeholder="Nhập địa chỉ email.....">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-md">Số Điện Thoại *</label>
+                                        <div class="col-md-9">
+                                            <input type="text" id="contact_phone" class="form-control" required placeholder="Nhập số điện thoại.....">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-md">Tin Nhắn *</label>
+                                        <div class="col-md-9">
+                                            <textarea id="contact_message" class="form-control" required placeholder="Nhập nội dung cần gửi....."></textarea>
+                                        </div>
+                                    </div>
+                                    <p class="text-center"><input type="submit" id="submit_btns" class="btn btn-default btn-lg" value="GỬI TIN NHẮN"></p>
+
+                                </form>
+                            </div>
+                            <!-- /form-section-box -->
+                        </div>
+                    </div>
+                </div>
+                <!-- /form-main-container -->
+
+
+            </div>
+            <!-- /cart-block -->
+        </div>
+
+    </section>
+
+    <%= render "/home/footer" %>
+
+</div>
+<!-- /pageWrap -->
+
+
+<div class="preloader-container">
+    <div id="loading-center-absolute">
+        <div class="object" id="object_one"></div>
+        <div class="object" id="object_two"></div>
+        <div class="object" id="object_three"></div>
+        <div class="object" id="object_four"></div>
+        <div class="object" id="object_five"></div>
+        <div class="object" id="object_six"></div>
+        <div class="object" id="object_seven"></div>
+        <div class="object" id="object_eight"></div>
+        <div class="object" id="object_big"></div>
+    </div>
+    <!-- /loading-center-absolute -->
+</div>
+<!-- /preloader-container -->
+
+
+<!-- JavaScript
+================================================== -->
+<%= javascript_include_tag "/frontend/js/jquery-1.11.2.min.js" %>
+<%= javascript_include_tag "/frontend/js/bootstrap.min.js" %>
+<%= javascript_include_tag "/frontend/js/script.js" %>
+
+<%= javascript_include_tag "/frontend/js/ie10-viewport-bug-workaround.js" %>

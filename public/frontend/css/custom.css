@@ -1,0 +1,23 @@
+/*!
+ * 
+ * Custom CSS
+ * 
+ */
+.main-nav > li > a, .footer-links li a {
+    padding: 18px 17px !important;
+}
+.text-justify {
+    text-align: justify
+}
+.sum_price {
+    margin-top: 15px;
+}
+.text-red {
+    color: #e32a53;
+}
+.error-content {
+    padding: 40px 0;
+}
+.section {
+    padding-bottom: 40px;
+}

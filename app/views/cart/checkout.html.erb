@@ -1,0 +1,203 @@
+<div class="pageWrap">
+
+    <%= render "/home/tp_bar" %>
+    <!-- /tp-bar -->
+
+    <%= render "/home/main_bar" %>
+    <!-- /main-bar -->
+
+    <section class="section-banner">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <li><%= link_to "Giỏ Hàng", cart_path %></li>
+                <li class="active">Đặt Hàng</li>
+            </ul>
+        </div>
+    </section>
+    <!-- /section-banner -->
+
+    <section class="section-compact">
+        <div class="container">
+            <div class="cart-block">
+                <header class="heading-3 page-heading">
+                    <h4><%= link_to '<i class="flaticon-arrowhead7"></i>Trở về trang giỏ hàng'.html_safe, cart_path, class: "back-btn" %></h4>
+                </header>
+
+                <div class="steps-holder">
+                    <div class="step">
+                        <span>1</span>
+                        <p>Mua hàng</p>
+                    </div>
+                    <div class="step">
+                        <span>2</span>
+                        <p>Xem giỏ hàng</p>
+                    </div>
+                    <!-- /step -->
+                    <div class="step active">
+                        <span>3</span>
+                        <p>Đặt hàng</p>
+                    </div>
+                    <!-- /step -->
+                    <div class="step">
+                        <span>4</span>
+                        <p>Thành công</p>
+                    </div>
+                    <!-- /step -->
+                </div>
+                <!-- /steps-holder -->
+
+                <div class="form-main-container">
+                    <form class="checkout-form" method="post" action="#">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div class="form-section-box">
+                                    <h5>Thông Tin Đặt Hàng</h5>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-md">Họ & Tên *</label>
+                                        <div class="col-md-9">
+                                            <input type="text" placeholder="Nhập họ & tên....." class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-md">Điện Thoại *</label>
+                                        <div class="col-md-9">
+                                            <input type="text" placeholder="Nhập số điện thoại....." class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-md">Địa Chỉ *</label>
+                                        <div class="col-md-9">
+                                            <input type="text" placeholder="Nhập địa chỉ....." class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-md">Email *</label>
+                                        <div class="col-md-9">
+                                            <input type="email" placeholder="Nhập địa chỉ email....." class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <div class="checkbox">
+                                                <label><input type="checkbox" id="different_delivery_checkbox" value=""><strong>Giống thông tin đặt hàng</strong></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /form-section-box -->
+                                <div class="form-section-box different_delivery_box">
+                                    <h5>Thông Tin Giao Hàng</h5>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-md">Họ & Tên *</label>
+                                        <div class="col-md-9">
+                                            <input type="text" placeholder="Nhập họ & tên....." class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-md">Điện Thoại *</label>
+                                        <div class="col-md-9">
+                                            <input type="text" placeholder="Nhập số điện thoại....." class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-md">Địa Chỉ *</label>
+                                        <div class="col-md-9">
+                                            <input type="text" placeholder="Nhập địa chỉ....." class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-md-3 label-md">Email *</label>
+                                        <div class="col-md-9">
+                                            <input type="email" placeholder="Nhập địa chỉ email....." class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /form-section-box -->
+
+                                <div class="form-section-box">
+                                    <h5>Lời Nhắn (Nếu có)</h5>
+                                    <div class="form-group">
+                                        <textarea placeholder="Nhập lời nhắn tại đây......" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <!-- /form-section-box -->
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="widget widget-shipping-info">
+                                    <ul>
+                                        <li><%= link_to "Son Môi YSL Rouge Pur Couture Lipstick", product_detail_path, class: "text-red" %> x 2 <span><strong>150.000 VNĐ</strong></span></li>
+                                        <li><%= link_to "Son Môi YSL Rouge Pur Couture Lipstick", product_detail_path, class: "text-red" %> x 2 <span><strong>150.000 VNĐ</strong></span></li>
+                                        <li><%= link_to "Son Môi YSL Rouge Pur Couture Lipstick", product_detail_path, class: "text-red" %> x 2 <span><strong>150.000 VNĐ</strong></span></li>
+                                        <li><%= link_to "Son Môi YSL Rouge Pur Couture Lipstick", product_detail_path, class: "text-red" %> x 2 <span><strong>150.000 VNĐ</strong></span></li>
+                                        <li><%= link_to "Son Môi YSL Rouge Pur Couture Lipstick", product_detail_path, class: "text-red" %> x 2 <span><strong>150.000 VNĐ</strong></span></li>
+                                        <li><%= link_to "Son Môi YSL Rouge Pur Couture Lipstick", product_detail_path, class: "text-red" %> x 2 <span><strong>150.000 VNĐ</strong></span></li>
+                                        <li><%= link_to "Son Môi YSL Rouge Pur Couture Lipstick", product_detail_path, class: "text-red" %> x 2 <span><strong>150.000 VNĐ</strong></span></li>
+                                        <li>TỔNG TIỀN <strong>12.000.000 VNĐ</strong></li>
+                                    </ul>
+                                </div>
+                                <!-- /widget-shipping-info -->
+                            </div>
+                        </div>
+                        <!-- /row -->
+                        <div class="row cart-actions">
+                            <div class="col-sm-6">
+                                <%= link_to '<i class="flaticon-arrow83"></i>Quay về trang giỏ hàng'.html_safe, cart_path, class: "go-back" %>
+                            </div>
+                            <div class="col-sm-6">
+                                <!--<%= button_tag "ĐẶT HÀNG", class: "btn btn-default" %>-->
+                                <%= link_to "ĐẶT HÀNG", finish_path, class: "btn btn-default" %>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- /form-main-container -->
+
+
+            </div>
+            <!-- /cart-block -->
+        </div>
+
+    </section>
+
+    <%= render "/home/footer" %>
+
+</div>
+<!-- /pageWrap -->
+
+<div class="preloader-container">
+    <div id="loading-center-absolute">
+        <div class="object" id="object_one"></div>
+        <div class="object" id="object_two"></div>
+        <div class="object" id="object_three"></div>
+        <div class="object" id="object_four"></div>
+        <div class="object" id="object_five"></div>
+        <div class="object" id="object_six"></div>
+        <div class="object" id="object_seven"></div>
+        <div class="object" id="object_eight"></div>
+        <div class="object" id="object_big"></div>
+    </div>
+    <!-- /loading-center-absolute -->
+</div>
+<!-- /preloader-container -->
+
+
+<!-- JavaScript
+================================================== -->
+<%= javascript_include_tag "/frontend/js/jquery-1.11.2.min.js"  %>
+<%= javascript_include_tag "/frontend/js/bootstrap.min.js"  %>
+<%= javascript_include_tag "/frontend/js/script.js"  %>
+
+<%= javascript_include_tag "/frontend/js/ie10-viewport-bug-workaround.js"  %>
+<script>
+    $('#different_delivery_checkbox').change(function() {
+        var val = $(this).is(":checked");
+        if(val) {
+            $('.different_delivery_box').hide();
+        }
+        else {
+            $('.different_delivery_box').show();
+        }
+    });
+    $('#different_delivery_checkbox').trigger("change");
+</script>

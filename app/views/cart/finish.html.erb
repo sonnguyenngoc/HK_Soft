@@ -1,0 +1,70 @@
+<div class="pageWrap">
+    
+    <%= render "/home/tp_bar" %>
+    <!-- /tp-bar -->
+
+    <%= render "/home/main_bar" %>
+    <!-- /main-bar -->
+
+    <section class="section-banner">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li class="active">404 page</li>
+            </ul>
+        </div>
+    </section>
+    <!-- /section-banner -->
+
+    <section class="section-compact">
+        <div class="container">
+            <header class="heading-3 page-heading">
+                <h4>ĐẶT HÀNG THÀNH CÔNG</h4>
+            </header>
+            <div class="steps-holder">
+                <div class="step">
+                    <span>1</span>
+                    <p>Mua hàng</p>
+                </div>
+                <div class="step">
+                    <span>2</span>
+                    <p>Xem giỏ hàng</p>
+                </div>
+                <!-- /step -->
+                <div class="step">
+                    <span>3</span>
+                    <p>Đặt hàng</p>
+                </div>
+                <!-- /step -->
+                <div class="step active">
+                    <span>4</span>
+                    <p>Thành công</p>
+                </div>
+                <!-- /step -->
+            </div>
+            <!-- /steps-holder -->
+            
+            <!-- /heading-3 -->
+            <div class="error-content">
+                <p>Thông tin đặt hàng của quý khách đã được gửi đi thành công. Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.<br/> Cảm ơn quý khách hàng đã tin tưởng và đặt hàng tại website của chúng tôi.</p>
+                <%= link_to "QUAY VỀ TRANG CHỦ", root_path, class: "btn btn-default btn-lg" %>
+            </div>
+            <!-- /success-content -->
+            
+        </div>
+        
+    </section>
+
+    <%= render "/home/footer" %>
+
+</div>
+<!-- /pageWrap -->
+
+
+<!-- JavaScript
+================================================== -->
+<%= javascript_include_tag "/frontend/js/jquery-1.11.2.min.js"  %>
+<%= javascript_include_tag "/frontend/js/bootstrap.min.js"  %>
+<%= javascript_include_tag "/frontend/js/script.js"  %>
+
+<%= javascript_include_tag "/frontend/js/ie10-viewport-bug-workaround.js"  %>

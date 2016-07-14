@@ -1,0 +1,125 @@
+<div class="pageWrap">
+    
+    <%= render "/home/tp_bar" %>
+    <!-- /tp-bar -->
+
+    <%= render "/home/main_bar" %>
+    <!-- /main-bar -->
+
+	<div class="section-banner">
+		<div class="container">
+			<ul class="breadcrumb">
+				<li><%= link_to "Trang Chủ", root_path %></li>
+				<li>Chăm Sóc Da</li>
+			</ul>
+		</div>
+	</div><!-- /section-banner -->
+
+	<section class="section-compact">
+		<div class="container">
+			<header class="heading-3 page-heading">
+				<h4> CHĂM SÓC DA <small>(0)</small></h4>
+			</header>
+			
+			<div class="row">
+				<div class="col-md-3">
+                    
+					<% (1..9).each do |item| %>
+                    <div class="widget widget-prod-categrories">
+						<header class="widget-heading-3">
+							<h4>
+								<span class="caret"></span>
+								The Face Shop
+								<em>0</em>
+							</h4>
+						</header>
+						<ul class="list-align">
+							<li><a href="#">Các Bộ Dưỡng Da <span class="right">0</span></a></li>
+                            <li><a href="#">Các Bộ Dưỡng Da <span class="right">0</span></a></li>
+                            <li><a href="#">Các Bộ Dưỡng Da <span class="right">0</span></a></li>
+                            <li><a href="#">Các Bộ Dưỡng Da <span class="right">0</span></a></li>
+                            <li><a href="#">Các Bộ Dưỡng Da <span class="right">0</span></a></li>
+                            <li><a href="#">Các Bộ Dưỡng Da <span class="right">0</span></a></li>
+                            <li><a href="#">Các Bộ Dưỡng Da <span class="right">0</span></a></li>
+                            <li><a href="#">Các Bộ Dưỡng Da <span class="right">0</span></a></li>
+                            <li><a href="#">Các Bộ Dưỡng Da <span class="right">0</span></a></li>
+                            <li><a href="#">Các Bộ Dưỡng Da <span class="right">0</span></a></li>
+                        </ul>
+					</div><!-- /widget-prod-categrories -->
+					<% end %>
+                    
+				</div>
+				<div class="col-md-9">
+					
+					<div class="filter-head">
+						
+					</div><!-- /filter-head -->
+                    
+					<ul class="filter-list">
+                        <% (1..21).each do |item| %>
+						<li class="mix rating pricefresh">
+							<div class="thumbnail thumbnail-product">
+							  <figure class="image-zoom">
+							    <img src="/frontend/images/resource/img-5.jpg" alt="image">
+							  </figure>
+								<div class="caption">
+									<div class="text-wrap">
+										<h5><%= link_to "Herb day Massage Cream THE FACE SHOP", product_detail_path %></h5>
+										<p class="prod-price text-primary">100.000 VNĐ</p>
+										<div class="filter-list-disp">
+											<%= link_to "Xem Sản Phẩm", product_detail_path, class: "btn btn-default view-detail" %>
+										</div>
+									</div><!-- /text-wrap -->
+								</div>
+							</div><!-- /thumbail -->
+						</li>
+						<% end %>
+					</ul><!-- filter-list -->
+					
+					<div class="pagination-right">
+						<ul class="pagination pagination-lg">
+							<li class="prev disabled"><a href="#"><i class="flaticon-arrowhead7"></i></a></li>
+							<li class="active"><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li><li class="prev"><a href="#"><i class="flaticon-arrow487"></i></a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li class="next"><a href="#"><i class="flaticon-arrow487"></i></a></li>
+						</ul>
+					</div><!-- /pagination-right -->
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<%= render "/home/footer" %>
+
+</div><!-- /pageWrap -->
+
+<div class="preloader-container">
+  <div id="loading-center-absolute">
+    <div class="object" id="object_one"></div>
+    <div class="object" id="object_two"></div>
+    <div class="object" id="object_three"></div>
+    <div class="object" id="object_four"></div>
+    <div class="object" id="object_five"></div>
+    <div class="object" id="object_six"></div>
+    <div class="object" id="object_seven"></div>
+    <div class="object" id="object_eight"></div>
+    <div class="object" id="object_big"></div>
+  </div><!-- /loading-center-absolute -->
+</div><!-- /preloader-container -->
+
+
+<!-- JavaScript
+================================================== -->
+<%= javascript_include_tag "/frontend/js/jquery-1.11.2.min.js" %>
+<%= javascript_include_tag "/frontend/js/bootstrap.min.js" %>
+<%= javascript_include_tag "/frontend/js/jquery.mixitup.min.js" %>
+
+<%= javascript_include_tag "/frontend/js/jquery-ui.min.js" %>
+
+<%= javascript_include_tag "/frontend/js/script.js" %>
+
+<%= javascript_include_tag "/frontend/js/ie10-viewport-bug-workaround.js" %>

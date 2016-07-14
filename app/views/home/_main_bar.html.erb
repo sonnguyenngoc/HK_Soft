@@ -1,0 +1,145 @@
+<div class="main-bar">
+    <div class="logo">
+        <%= link_to image_tag("/frontend/images/logo.png"), root_path %>
+    </div>
+    <!-- /logo -->
+    <div class="user-controls-bar">
+        <ul class="user-controls">
+            <li>
+                <span class="site-search-btn dropBox-btn"><i class="flaticon-magnifier56"></i></span>
+                <div class="dropBox">
+                    <div class="box-section">
+                        <form class="accounts-form clearfix">
+                            <div class="form-left">
+                                <div class="form-group">
+                                    <input type="search" class="form-control" placeholder="Nhập tên sản phẩm cần tìm.....">
+                                </div>
+                            </div>
+                            <input type="submit" class="btn btn-default text-uppercase" value="TÌM KIẾM">
+                        </form><!-- /accounts-form -->
+                    </div><!-- /box-section -->
+                </div><!-- /dropBox -->
+            </li>
+            <li>
+                <span class="cart-btn dropBox-btn"><i class="flaticon-shopping191"></i><span class="badge">0</span></span>
+                <div class="dropBox">
+                    <div class="box-section">
+                        <ul class="cart-info-list">
+                            <li class="cart-item">
+                                <div class="cart-item-bx">
+                                    <figure><img src="/frontend/images/resource/img-1.jpg" alt="image"></figure>
+                                    <div class="text">
+                                        <h6><a href="#">Sản phẩm</a></h6>
+                                        <p>Giá tiền</p>
+                                        <p class="tot">Tổng giá giá tiền</p>
+                                    </div>
+                                    <button type="button" class="close">&times;</button>
+                                </div>
+                                <!-- /cart-item-bx -->
+                            </li>
+                            <li class="cart-item">
+                                <div class="cart-item-bx">
+                                    <figure><img src="/frontend/images/resource/img-1.jpg" alt="image"></figure>
+                                    <div class="text">
+                                        <h6><a href="#">Sản phẩm</a></h6>
+                                        <p>Giá tiền</p>
+                                        <p class="tot">Tổng giá giá tiền</p>
+                                    </div>
+                                    <button type="button" class="close">&times;</button>
+                                </div>
+                                <!-- /cart-item-bx -->
+                            </li>
+                        </ul>
+                        <!--/ cart-info-list -->
+                        <%= link_to "XEM GIỎ HÀNG", cart_path, class: "btn btn-default btn-block dismiss-button" %>
+                        <%= link_to "ĐẶT HÀNG", checkout_path, class: "btn btn-dark btn-block dismiss-button" %>
+                    </div>
+                    <!-- /cart-info-box -->
+
+                    <!-- empty cart message -->
+                    <!-- <div class="box-section">
+                        <h6>Your Cart is empty</h6>
+                        <a href="#" class="btn btn-dark btn-block dismiss-button">Continue Shopping</a>
+                        <p>Enjoy complimentary shipping on all orders over $75 and also complimentary samples and returns with every order.</p>
+                    </div> -->
+                    <!-- /cart-info-box -->
+                </div>
+                <!-- /dropBox -->
+            </li>
+            <li class="toggle-menu">
+                <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </li>
+        </ul>
+        <!-- /user-controls -->
+    </div>
+    <!-- /user-controls -->
+
+    <div class="main-nav-bar">
+        <nav class="navbar-collapse collapse">
+            <ul class="main-nav">
+                <li><%= link_to "Trang chủ", root_path %></li>
+                <li>
+                    <%= link_to "Chăm Sóc Da", category_path %>
+                    <ul>
+                        <li>
+                            <%= link_to "The Face Shop", category_sub_1_path %>
+                            <ul>
+                                <li><%= link_to "Các Bộ Dưỡng Da", category_sub_2_path %></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <%= link_to "Trang Điểm", category_path %>
+                    <ul>
+                        <li>
+                            <%= link_to "The Face Shop", category_sub_1_path %>
+                            <ul>
+                                <li><%= link_to "Các Bộ Dưỡng Da", category_sub_2_path %></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <%= link_to "Mỹ Phẩm Mỹ-Pháp-Nhật", category_path %>
+                    <ul>
+                        <li>
+                            <%= link_to "The Face Shop", category_sub_1_path %>
+                            <ul>
+                                <li><%= link_to "Các Bộ Dưỡng Da", category_sub_2_path %></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <%= link_to "Thời Trang", category_path %>
+                    <ul>
+                        <li>
+                            <%= link_to "The Face Shop", category_sub_1_path %>
+                            <ul>
+                                <li><%= link_to "Các Bộ Dưỡng Da", category_sub_2_path %></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <%= link_to "Hàng Sale", category_path %>
+                    <ul>
+                        <li>
+                            <%= link_to "The Face Shop", category_sub_1_path %>
+                            <ul>
+                                <li><%= link_to "Các Bộ Dưỡng Da", category_sub_2_path %></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><%= link_to "Liên Hệ", contact_path %></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- /main-nav-bar -->
+</div>
