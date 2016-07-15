@@ -36,7 +36,7 @@ class ArticleUploader < CarrierWave::Uploader::Base
   #   process :resize_to_fit => [50, 50]
   # end
   version :big_image do
-    process :resize_to_fit => [808, 511]
+    process :resize_to_fit => [848, 350]
   end
   version :medium_image do
     process :resize_to_fill => [202, 128]

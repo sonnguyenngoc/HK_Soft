@@ -30,7 +30,7 @@
                     <% @blogs.each do |blog| %>
                     <div class="blog-box">
                         <figure class="image image-zoom">
-                            <img src="/frontend/images/resource/img-27.jpg" alt="Tiêu đề bài viết">
+                            <%= image_tag(blog.image_url.big_image) %>
                             <div class="post-date">
                                 <span><%= blog.created_at.in_time_zone("Asia/Bangkok").strftime("%Y") %></span><%= blog.created_at.in_time_zone("Asia/Bangkok").strftime("%d/%m") %>
                             </div>
