@@ -82,61 +82,30 @@
         <nav class="navbar-collapse collapse">
             <ul class="main-nav">
                 <li><%= link_to "Trang chủ", root_path %></li>
-                <li>
-                    <%= link_to "Chăm Sóc Da", category_path %>
-                    <ul>
+                <% Category.get_by_level(1).each do |category| %>
+                    <% if category.children.order(:ordered).count == 0 %>
+                        <li><%= link_to category.name, { controller: "category", action: "index", category_id: category.id } %></li>
+                    <% else %>
                         <li>
-                            <%= link_to "The Face Shop", category_sub_1_path %>
+                            <%= link_to category.name, { controller: "category", action: "index", category_id: category.id } %>
                             <ul>
-                                <li><%= link_to "Các Bộ Dưỡng Da", category_sub_2_path %></li>
+                                <% category.children.order(:ordered).each do |child_1| %>
+                                    <li>
+                                        <%= link_to child_1.name, { controller: "category", action: "category_sub_1", category_id: child_1.id } %>
+                                        <ul>
+                                            <% child_1.children.order(:ordered).each do |child_2| %>
+                                                <li>
+                                                    <%= link_to child_2.name, { controller: "category", action: "category_sub_2", category_id: child_2.id } %>
+                                                </li>
+                                            <% end %>
+                                        </ul>
+                                    </li>
+                                <% end %>
                             </ul>
                         </li>
-                    </ul>
-                </li>
-                <li>
-                    <%= link_to "Trang Điểm", category_path %>
-                    <ul>
-                        <li>
-                            <%= link_to "The Face Shop", category_sub_1_path %>
-                            <ul>
-                                <li><%= link_to "Các Bộ Dưỡng Da", category_sub_2_path %></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <%= link_to "Mỹ Phẩm Mỹ-Pháp-Nhật", category_path %>
-                    <ul>
-                        <li>
-                            <%= link_to "The Face Shop", category_sub_1_path %>
-                            <ul>
-                                <li><%= link_to "Các Bộ Dưỡng Da", category_sub_2_path %></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <%= link_to "Thời Trang", category_path %>
-                    <ul>
-                        <li>
-                            <%= link_to "The Face Shop", category_sub_1_path %>
-                            <ul>
-                                <li><%= link_to "Các Bộ Dưỡng Da", category_sub_2_path %></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <%= link_to "Hàng Sale", category_path %>
-                    <ul>
-                        <li>
-                            <%= link_to "The Face Shop", category_sub_1_path %>
-                            <ul>
-                                <li><%= link_to "Các Bộ Dưỡng Da", category_sub_2_path %></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
+                    <% end %>
+                <% end %>
+                
                 <li><%= link_to "Liên Hệ", contact_path %></li>
             </ul>
         </nav>

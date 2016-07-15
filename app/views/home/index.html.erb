@@ -133,11 +133,9 @@
 
             <div class="features-list-box">
                 <ul class="feautes-list">
-                    <li><%= link_to "Chăm Sóc Da", category_path %></li>
-                    <li><%= link_to "Trang Điểm", category_path %></li>
-                    <li><%= link_to "Mỹ Phẩm Mỹ-Pháp-Nhật", category_path %></li>
-                    <li><%= link_to "Thời Trang", category_path %></li>
-                    <li><%= link_to "Hàng Sale", category_path %></li>
+                    <% Category.get_all_categories(params).each do |category| %>
+                        <li><%= link_to category.name, { controller: "category", action: "index", category_id: category.id } %></li>
+                    <% end %>
                 </ul>
                 <!-- /features-list -->
             </div>

@@ -30,12 +30,18 @@
                             </div>
                             <div class="col-sm-7">
                                 <div class="text">
-                                    <h4>Bông mút đa năng Soft Cream Puff</h4><br/>
+                                    <h4><%= @product.name %></h4><br/>
                                     <div class="collapse in">
                                         <p>Xuất xứ: Hàn Quốc</p>
-                                        <p>Thương hiệu: Soft Cream Puff</p>
-                                        <p>Giá: 20.000 VNĐ</p>
-                                        <p class="text-justify">Mô tả ngắn: The times are just approximate, estimated according to the previous delivery times of shipping companies.</p>
+                                        <p>Thương hiệu:
+                                            <% if !@product.manufacturer.nil? %>
+                                                <%= @product.manufacturer.name %>
+                                            <% else %>
+                                                Đang cập nhật
+                                            <% end %>
+                                        </p>
+                                        <p>Giá: <%= @product.price %> VNĐ</p>
+                                        <p class="text-justify">Mô tả ngắn: <%= @product.short_description %></p>
                                         <input type="text" class="form-control" placeholder="Nhập số lượng cần mua" value="1"><br/>
                                         <a href="#" class="btn btn-default">Add to Cart</a>
                                     </div>
