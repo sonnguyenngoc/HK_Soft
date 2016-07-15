@@ -10,7 +10,7 @@
         <div class="container">
             <ul class="breadcrumb">
                 <li><%= link_to "Trang Chủ", root_path %></li>
-                <li><%= link_to "Giỏ Hàng", cart_path %></li>
+                <li><%= link_to "Giỏ Hàng", shopping_cart_path %></li>
                 <li class="active">Đặt Hàng</li>
             </ul>
         </div>
@@ -21,7 +21,7 @@
         <div class="container">
             <div class="cart-block">
                 <header class="heading-3 page-heading">
-                    <h4><%= link_to '<i class="flaticon-arrowhead7"></i>Trở về trang giỏ hàng'.html_safe, cart_path, class: "back-btn" %></h4>
+                    <h4><%= link_to '<i class="flaticon-arrowhead7"></i>Trở về trang giỏ hàng'.html_safe, shopping_cart_path, class: "back-btn" %></h4>
                 </header>
 
                 <div class="steps-holder">
@@ -48,7 +48,8 @@
                 <!-- /steps-holder -->
 
                 <div class="form-main-container">
-                    <form class="checkout-form" id="form_validate" method="post" action="#">
+                    <%= form_for @order, html: {class: "checkout-form", id: "form_validate"} do |f| %>
+
                         <div class="row">
                             <div class="col-sm-8">
                                 <div class="form-section-box">
@@ -56,31 +57,33 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 label-md">Họ & Tên *</label>
                                         <div class="col-md-9">
-                                            <input type="text" placeholder="Nhập họ & tên....." class="form-control required">
+                                            <input type="text" name="customer[last_name]" id="customer_last_name" placeholder="Nhập họ & tên....." class="form-control required">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 label-md">Điện Thoại *</label>
                                         <div class="col-md-9">
-                                            <input type="text" placeholder="Nhập số điện thoại....." class="form-control required">
+                                            <input type="text" name="customer[phone]" id="customer_phone" placeholder="Nhập số điện thoại....." class="form-control required">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 label-md">Địa Chỉ *</label>
                                         <div class="col-md-9">
-                                            <input type="text" placeholder="Nhập địa chỉ....." class="form-control required">
+                                            <input type="text" name="customer[address]" id="customer_address" placeholder="Nhập địa chỉ....." class="form-control required">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 label-md">Email *</label>
                                         <div class="col-md-9">
-                                            <input type="email" placeholder="Nhập địa chỉ email....." class="form-control email required">
+                                            <input type="email" name="customer[email]" id="customer_email" placeholder="Nhập địa chỉ email....." class="form-control email required">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-md-12">
                                             <div class="checkbox">
-                                                <label><input type="checkbox" id="different_delivery_checkbox" value=""><strong>Giống thông tin đặt hàng</strong></label>
+                                                <label>
+                                                    <input checked type="checkbox" name="order[different_delivery]" id="different_delivery_checkbox" value="true"><strong>Giống thông tin đặt hàng</strong>
+                                                </label>
                                             </div>
                                         </div>
                                     </div>
@@ -91,25 +94,25 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 label-md">Họ & Tên *</label>
                                         <div class="col-md-9">
-                                            <input type="text" placeholder="Nhập họ & tên....." class="form-control required">
+                                            <input type="text" name="order_delivery[last_name]" id="order_delivery_last_name" placeholder="Nhập họ & tên....." class="form-control required">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 label-md">Điện Thoại *</label>
                                         <div class="col-md-9">
-                                            <input type="text" placeholder="Nhập số điện thoại....." class="form-control required">
+                                            <input type="text" name="order_delivery[phone]" id="order_delivery_phone" placeholder="Nhập số điện thoại....." class="form-control required">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 label-md">Địa Chỉ *</label>
                                         <div class="col-md-9">
-                                            <input type="text" placeholder="Nhập địa chỉ....." class="form-control email required">
+                                            <input type="text" name="order_delivery[address]" id="order_delivery_address" placeholder="Nhập địa chỉ....." class="form-control required">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 label-md">Email *</label>
                                         <div class="col-md-9">
-                                            <input type="email" placeholder="Nhập địa chỉ email....." class="form-control required">
+                                            <input type="email" name="order_delivery[email]" id="order_delivery_email" placeholder="Nhập địa chỉ email....." class="form-control email required">
                                         </div>
                                     </div>
                                 </div>
@@ -118,7 +121,7 @@
                                 <div class="form-section-box">
                                     <h5>Lời Nhắn (Nếu có)</h5>
                                     <div class="form-group">
-                                        <textarea placeholder="Nhập lời nhắn tại đây......" class="form-control"></textarea>
+                                        <textarea name="order_delivery[message]" id="order_delivery_message" placeholder="Nhập lời nhắn tại đây......" class="form-control"></textarea>
                                     </div>
                                 </div>
                                 <!-- /form-section-box -->
@@ -126,14 +129,10 @@
                             <div class="col-sm-4">
                                 <div class="widget widget-shipping-info">
                                     <ul>
-                                        <li><%= link_to "Son Môi YSL Rouge Pur Couture Lipstick", product_detail_path, class: "text-red" %> x 2 <span><strong>150.000 VNĐ</strong></span></li>
-                                        <li><%= link_to "Son Môi YSL Rouge Pur Couture Lipstick", product_detail_path, class: "text-red" %> x 2 <span><strong>150.000 VNĐ</strong></span></li>
-                                        <li><%= link_to "Son Môi YSL Rouge Pur Couture Lipstick", product_detail_path, class: "text-red" %> x 2 <span><strong>150.000 VNĐ</strong></span></li>
-                                        <li><%= link_to "Son Môi YSL Rouge Pur Couture Lipstick", product_detail_path, class: "text-red" %> x 2 <span><strong>150.000 VNĐ</strong></span></li>
-                                        <li><%= link_to "Son Môi YSL Rouge Pur Couture Lipstick", product_detail_path, class: "text-red" %> x 2 <span><strong>150.000 VNĐ</strong></span></li>
-                                        <li><%= link_to "Son Môi YSL Rouge Pur Couture Lipstick", product_detail_path, class: "text-red" %> x 2 <span><strong>150.000 VNĐ</strong></span></li>
-                                        <li><%= link_to "Son Môi YSL Rouge Pur Couture Lipstick", product_detail_path, class: "text-red" %> x 2 <span><strong>150.000 VNĐ</strong></span></li>
-                                        <li>TỔNG TIỀN <strong>12.000.000 VNĐ</strong></li>
+                                        <% @cart.line_items.each do |item| %>
+                                        <li><%= link_to truncate(strip_tags(item.product.name), length: 20), product_detail_path(product_id: item.product.name), class: "text-red", title: item.product.name %> x <%= item.quantity %> <span><strong><%= format_number(item.total_item) %> VNĐ</strong></span></li>
+                                        <% end %>
+                                        <li>TỔNG TIỀN <strong><%= format_number(@cart.total_order_sale) %> VNĐ</strong></li>
                                     </ul>
                                 </div>
                                 <!-- /widget-shipping-info -->
@@ -142,14 +141,13 @@
                         <!-- /row -->
                         <div class="row cart-actions">
                             <div class="col-sm-6">
-                                <%= link_to '<i class="flaticon-arrow83"></i>Quay về trang giỏ hàng'.html_safe, cart_path, class: "go-back" %>
+                                <%= link_to '<i class="flaticon-arrow83"></i>Quay về trang giỏ hàng'.html_safe, shopping_cart_path, class: "go-back" %>
                             </div>
                             <div class="col-sm-6">
-                                <!--<%= button_tag "ĐẶT HÀNG", class: "btn btn-default" %>-->
-                                <%= link_to "ĐẶT HÀNG", finish_path, class: "btn btn-default" %>
+                                <%= button_tag "ĐẶT HÀNG", class: "btn btn-default" %>
                             </div>
                         </div>
-                    </form>
+                    <% end %>
                 </div>
                 <!-- /form-main-container -->
 
@@ -202,6 +200,9 @@
     });
     $('#different_delivery_checkbox').trigger("change");
         jQuery(document).ready(function($){
+        $("#form_validate").validate();
+    });
+    jQuery(document).ready(function($){
         $("#form_validate").validate();
     });
 </script>

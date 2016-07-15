@@ -42,8 +42,7 @@
                                         </p>
                                         <p>Giá: <%= @product.price %> VNĐ</p>
                                         <p class="text-justify">Mô tả ngắn: <%= @product.short_description %></p>
-                                        <input type="text" class="form-control" placeholder="Nhập số lượng cần mua" value="1"><br/>
-                                        <a href="#" class="btn btn-default">Add to Cart</a>
+                                        <%= link_to 'Thêm vào giỏ hàng', add_to_cart_line_items_path(product_id: @product), class: "btn btn-default add_to_cart_button" %>
                                     </div>
                                 </div>
                             </div>
