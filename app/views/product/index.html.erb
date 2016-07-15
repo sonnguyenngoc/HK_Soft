@@ -10,7 +10,7 @@
         <div class="container">
             <ul class="breadcrumb">
                 <li><%= link_to "Trang Chủ", root_path %></li>
-                <li>Bông mút đa năng Soft Cream Puff</li>
+                <li><%= @product.name %></li>
             </ul>
         </div>
     </section>
@@ -103,33 +103,35 @@
                 </div>
                 <!-- /pic-vid-box -->
                 
-                <div class="other-products">
-                    <header class="heading">
-                        <span class="caro-prev other-prev"><i class="flaticon-arrowhead7"></i></span>
-                        <span class="caro-next other-next"><i class="flaticon-arrow487"></i></span>
-                        <h4>Sản Phẩm Liên Quan</h4>
-                    </header>
-                    <div class="carousel-multiple owl-carousel">
-                        <% @product.get_related_products.each do |product| %>
-                        <div class="item">
-                            <div class="thumbnail thumbnail-product">
-                                <figure class="image-zoom">
-                                    <img alt="image" src="/frontend/images/resource/img-18.jpg">
-                                </figure>
-                                <div class="caption text-center">
-                                    <h5>
-                                        <%= link_to product.name, { controller: "product", action: "index", product_id: product.id }, title: product.name %>
-                                    </h5>
-                                    <!-- /rating-star -->
-                                    <p class="prod-price text-primary">Giá: <%= format_number(product.price) %> VNĐ</p>
+                <% if !@product.get_related_products.nil? %>
+                    <div class="other-products">
+                        <header class="heading">
+                            <span class="caro-prev other-prev"><i class="flaticon-arrowhead7"></i></span>
+                            <span class="caro-next other-next"><i class="flaticon-arrow487"></i></span>
+                            <h4>Sản Phẩm Liên Quan</h4>
+                        </header>
+                        <div class="carousel-multiple owl-carousel">
+                            <% @product.get_related_products.each do |product| %>
+                                <div class="item">
+                                    <div class="thumbnail thumbnail-product">
+                                        <figure class="image-zoom">
+                                            <img alt="image" src="/frontend/images/resource/img-18.jpg">
+                                        </figure>
+                                        <div class="caption text-center">
+                                            <h5>
+                                                <%= link_to product.name, { controller: "product", action: "index", product_id: product.id }, title: product.name %>
+                                            </h5>
+                                            <!-- /rating-star -->
+                                            <p class="prod-price text-primary">Giá: <%= format_number(product.price) %> VNĐ</p>
+                                        </div>
+                                    </div>
+                                    <!-- /thumbail -->
                                 </div>
-                            </div>
-                            <!-- /thumbail -->
+                            <% end %>
                         </div>
-                        <% end %>
                     </div>
-                </div>
-                <!-- /other-products -->
+                    <!-- /other-products -->
+                <% end %>
 
             </div>
             <!-- /single-container -->
