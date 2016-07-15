@@ -5,14 +5,15 @@
     <div class="widget-tabular-content tab-content">
 
         <div id="widget-popular" class="tab-pane fade in active">
-            <% (1..6).each do |item| %>
+            <!--< (1..6).each do |item| %>-->
+            <% @lastest_blogs.each do |blog| %>
             <div class="media">
                 <div class="media-left">
                     <%= link_to image_tag("/frontend/images/resource/img-31.jpg", alt: "Tiêu đề bài viết"), blog_detail_path, class: "media-object" %>
                 </div>
                 <div class="media-body">
-                    <h5 class="media-heading"><%= link_to "Tiêu đề bài viết", blog_detail_path %></h5>
-                    <p>Lorem ipsum dolor sit amet...</p>
+                    <h5 class="media-heading"><%= link_to truncate(strip_tags(blog.title_vi.html_safe), length: 30), { controller: "blog", action: "detail", blog_id: blog.id } %></h5>
+                    <p>﻿<%= truncate(strip_tags(blog.content_vi.html_safe), length: 35) %></p>
                 </div>
             </div>
             <!-- /media -->
