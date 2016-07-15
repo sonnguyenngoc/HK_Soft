@@ -32,28 +32,23 @@
 			<div class="row">
 				<div class="col-md-3">
                     
-					<% (1..9).each do |item| %>
-                    <div class="widget widget-prod-categrories">
-						<header class="widget-heading-3">
-							<h4>
-								<span class="caret"></span>
-								The Face Shop
-								<em>0</em>
-							</h4>
-						</header>
-						<ul class="list-align">
-							<li><a href="#">Các Bộ Dưỡng Da <span class="right">0</span></a></li>
-                            <li><a href="#">Các Bộ Dưỡng Da <span class="right">0</span></a></li>
-                            <li><a href="#">Các Bộ Dưỡng Da <span class="right">0</span></a></li>
-                            <li><a href="#">Các Bộ Dưỡng Da <span class="right">0</span></a></li>
-                            <li><a href="#">Các Bộ Dưỡng Da <span class="right">0</span></a></li>
-                            <li><a href="#">Các Bộ Dưỡng Da <span class="right">0</span></a></li>
-                            <li><a href="#">Các Bộ Dưỡng Da <span class="right">0</span></a></li>
-                            <li><a href="#">Các Bộ Dưỡng Da <span class="right">0</span></a></li>
-                            <li><a href="#">Các Bộ Dưỡng Da <span class="right">0</span></a></li>
-                            <li><a href="#">Các Bộ Dưỡng Da <span class="right">0</span></a></li>
-                        </ul>
-					</div><!-- /widget-prod-categrories -->
+					<!--< (1..9).each do |item| %>-->
+					<% Category.get_all_categories(params).each do |category| %>
+							<div class="widget widget-prod-categrories">
+								<header class="widget-heading-3">
+									<h4>
+										<span class="caret"></span>
+										<%= category.name %>
+										<em><%= category.children.order(:ordered).count %></em>
+									</h4>
+								</header>
+								<ul class="list-align">
+									<% category.children.order(:ordered).each do |child_2| %>
+										<!--<li><a href="#">Các Bộ Dưỡng Da <span class="right">0</span></a></li>-->
+										<li><%= link_to child_2.name, { controller: "category", action: "category_sub_2", category_id: child_2.id } %></li>
+									<% end %>
+								</ul>
+							</div><!-- /widget-prod-categrories -->
 					<% end %>
                     
 				</div>
@@ -66,22 +61,22 @@
 					<ul class="filter-list">
                         <!-- (1..21).each do |item| -->
 						<% @products.each do |product| %>
-						<li class="mix rating pricefresh">
-							<div class="thumbnail thumbnail-product">
-							  <figure class="image-zoom">
-							    <img src="/frontend/images/resource/img-5.jpg" alt="image">
-							  </figure>
-								<div class="caption">
-									<div class="text-wrap">
-										<h5><%= link_to product.name, { controller: "product", action: "index", product_id: product.id }, title: product.name %></h5>
-										<p class="prod-price text-primary"><%= format_number(product.price) %> VNĐ</p>
-										<div class="filter-list-disp">
-											<%= link_to "Xem Sản Phẩm", { controller: "product", action: "index", product_id: product.id }, class: "btn btn-default view-detail" %>
-										</div>
-									</div><!-- /text-wrap -->
-								</div>
-							</div><!-- /thumbail -->
-						</li>
+							<li class="mix rating pricefresh">
+								<div class="thumbnail thumbnail-product">
+								  <figure class="image-zoom">
+									<img src="/frontend/images/resource/img-5.jpg" alt="image">
+								  </figure>
+									<div class="caption">
+										<div class="text-wrap">
+											<h5><%= link_to product.name, { controller: "product", action: "index", product_id: product.id }, title: product.name %></h5>
+											<p class="prod-price text-primary"><%= format_number(product.price) %> VNĐ</p>
+											<div class="filter-list-disp">
+												<%= link_to "Xem Sản Phẩm", { controller: "product", action: "index", product_id: product.id }, class: "btn btn-default view-detail" %>
+											</div>
+										</div><!-- /text-wrap -->
+									</div>
+								</div><!-- /thumbail -->
+							</li>
 						<% end %>
 					</ul><!-- filter-list -->
 					
