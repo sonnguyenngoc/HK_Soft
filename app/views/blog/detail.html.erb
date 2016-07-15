@@ -32,16 +32,17 @@
                         <figure class="image image-zoom">
                             <img src="/frontend/images/resource/img-27.jpg" alt="image">
                             <div class="post-date">
-                                <span>15</span>07
+                                <span><%= @blog.created_at.in_time_zone("Asia/Bangkok").strftime("%Y") %></span><%= @blog.created_at.in_time_zone("Asia/Bangkok").strftime("%d/%m") %>
                             </div>
                         </figure>
                         <div class="blog-text">
-                            <h3>10 Years of Bois de Jasmin</h3>
-                            <div class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum risus accumsan nibh vulputate viverra. Vivamus vitae tincidunt lorem, sit amet placerat ex. Phasellus fringilla lorem at eros tempus tristique. Cras sed ligula posuere, feugiat eros id, venenatis ante. Aenean nibh leo, condimentum vitae felis at, egestas faucibus ligula. Nunc ultrices ex sit amet purus condimentum, id dictum nisl posuere. Sed finibus accumsan orci, sed aliquam dolor congue et. Quisque id felis tincidunt, condimentum nisi at, facilisis felis. Aenean venenatis risus magna, vitae egestas metus porta id.
-                            Aenean sollicitudin risus fermentum facilisis fringilla. Proin vitae arcu ac metus posuere sodales id at nulla. Proin ac venenatis massa, ut ullamcorper erat. Sed laoreet lorem eget vehicula cursus. Phasellus bibendum diam eget elit tincidunt rhoncus vitae ac dui. Duis euismod felis quis fringilla bibendum. Sed vestibulum, sem vel tincidunt condimentum, tellus magna faucibus neque, eu luctus turpis orci eget diam. Mauris congue massa ut mauris luctus dapibus. Suspendisse imperdiet ullamcorper quam eu vulputate. Suspendisse ut lacus in enim cursus lacinia.
-                            Vestibulum odio purus, rhoncus sed elit ut, efficitur accumsan risus. Quisque quam mauris, sollicitudin id dapibus ac, finibus at tortor. Donec a metus et erat vehicula dapibus. Integer ullamcorper posuere egestas. Donec laoreet varius nisi sit amet varius. Cras quis scelerisque sem. Integer tempor interdum libero id eleifend. Phasellus tristique auctor justo sed gravida. Phasellus tristique justo vel erat ultrices, quis porta orci vestibulum. Nam sapien nisi, fringilla vel tristique nec, volutpat a odio.</div>
-
-
+                            
+                            <h3><%= @blog.title %></h3>
+                            
+                            <div class="text-justify">
+                                <%= @blog.content_vi.html_safe %>
+                            </div>
+                            
                             <div class="blog-bottom-bar">
                                 <p class="posted">Đăng bởi: <%= link_to "lumlabeauty.com", "http://lumlabeauty.com/", class: "text-primary", target: "_blank" %></p>
                                 <ul class="meta-list">

@@ -20,7 +20,7 @@ class Article < ActiveRecord::Base
   end
   
   def self.get_lastest_blog_posts
-    self.joins(:code_status).where("code_statuses.title = 'news' and articles.approved = true").first(4)
+    self.all.order("created_at DESC").first(6)
   end
   
   def split_tags
@@ -28,7 +28,7 @@ class Article < ActiveRecord::Base
   end
   
   def self.get_all_blogs
-    self.all.joins(:code_status).where("code_statuses.title = 'news' and articles.approved = true").order("created_at DESC")
+    self.all.order("created_at DESC")
   end
   
   def self.get_blog_about_us
