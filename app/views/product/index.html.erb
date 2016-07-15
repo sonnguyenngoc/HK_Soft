@@ -58,15 +58,15 @@
                             <h4>Hình Ảnh Liên Quan</h4>
                         </header>
                         <div class="carousel-multiple owl-carousel">
-                            <% (1..5).each do |item| %>
-                            <div class="item">
-                                <div class="thumbnail thumbnail-product">
-                                    <figure class="image-zoom">
-                                        <img alt="image" src="/frontend/images/resource/img-18.jpg">
-                                    </figure>
+                            <% @product.product_images.each do |item| %>
+                                <div class="item">
+                                    <div class="thumbnail thumbnail-product">
+                                        <figure class="image-zoom">
+                                            <img alt="image" src="/frontend/images/resource/img-18.jpg">
+                                        </figure>
+                                    </div>
+                                    <!-- /thumbail -->
                                 </div>
-                                <!-- /thumbail -->
-                            </div>
                             <% end %>
                         </div>
                     </div>
@@ -80,11 +80,12 @@
                             <div class="prod-desc-box">
                                 <h4>Mô Tả Sản Phẩm</h4>
                                 <p class="text-justify">
-                                Sensual. Mysteriously glamourous. Illuminous. Experience the mystery of euphoria with a luminescent, more delicate and sensual interpretation of the original fragrance. It is inspired by a new found freedom, about living one's dream.
-                                Sensual. Mysteriously glamourous. Illuminous. Experience the mystery of euphoria with a luminescent, more delicate and sensual interpretation of the original fragrance. It is inspired by a new found freedom, about living one's dream.
-                                Sensual. Mysteriously glamourous. Illuminous. Experience the mystery of euphoria with a luminescent, more delicate and sensual interpretation of the original fragrance. It is inspired by a new found freedom, about living one's dream.
-                                Sensual. Mysteriously glamourous. Illuminous. Experience the mystery of euphoria with a luminescent, more delicate and sensual interpretation of the original fragrance. It is inspired by a new found freedom, about living one's dream.
-                                Sensual. Mysteriously glamourous. Illuminous. Experience the mystery of euphoria with a luminescent, more delicate and sensual interpretation of the original fragrance. It is inspired by a new found freedom, about living one's dream.</p>
+                                    <% if !@product.description.empty? %>
+                                        <%= @product.description %>
+                                    <% else %>
+                                        Hiện tại chưa có mô tả cho sản phẩm này
+                                    <% end %>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -110,16 +111,18 @@
                         <h4>Sản Phẩm Liên Quan</h4>
                     </header>
                     <div class="carousel-multiple owl-carousel">
-                        <% (1..6).each do |item| %>
+                        <% @product.get_related_products.each do |product| %>
                         <div class="item">
                             <div class="thumbnail thumbnail-product">
                                 <figure class="image-zoom">
                                     <img alt="image" src="/frontend/images/resource/img-18.jpg">
                                 </figure>
                                 <div class="caption text-center">
-                                    <h5><%= link_to "Bông mút đa năng Soft Cream Puff", product_detail_path %></h5>
+                                    <h5>
+                                        <%= link_to product.name, { controller: "product", action: "index", product_id: product.id }, title: product.name %>
+                                    </h5>
                                     <!-- /rating-star -->
-                                    <p class="prod-price text-primary">Giá: 100.000 VNĐ</p>
+                                    <p class="prod-price text-primary">Giá: <%= format_number(product.price) %> VNĐ</p>
                                 </div>
                             </div>
                             <!-- /thumbail -->
