@@ -4,7 +4,7 @@
  * 
  */
 .main-nav > li > a, .footer-links li a {
-    padding: 18px 17px !important;
+    padding: 18px 15px !important;
 }
 .text-justify {
     text-align: justify
@@ -20,4 +20,10 @@
 }
 .section {
     padding-bottom: 40px;
+}
+label.error {
+	display: none !important;
+}
+#form_validate input.error, #form_validate textarea.error {
+    border: 1px solid red;
 }

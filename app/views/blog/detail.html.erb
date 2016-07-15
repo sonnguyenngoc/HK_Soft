@@ -1,0 +1,100 @@
+<div class="pageWrap">
+
+    <%= render "/home/tp_bar" %>
+    <!-- /tp-bar -->
+
+    <%= render "/home/main_bar" %>
+    <!-- /main-bar -->
+
+    <div class="section-banner">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <li><%= link_to "Tin Tức", blog_path %></li>
+                <li class="active">Chi Tiết Bài Viết</li>
+            </ul>
+        </div>
+    </div>
+    <!-- /section-banner -->
+
+    <section class="section-compact">
+        <div class="container">
+            <header class="heading-3 page-heading">
+                <h4> Chi Tiết Bài Viết</h4>
+            </header>
+
+            <div class="row">
+
+                <div class="col-md-9">
+
+
+                    <div class="blog-box blog-box-single">
+                        <figure class="image image-zoom">
+                            <img src="/frontend/images/resource/img-27.jpg" alt="image">
+                            <div class="post-date">
+                                <span>15</span>07
+                            </div>
+                        </figure>
+                        <div class="blog-text">
+                            <h3>10 Years of Bois de Jasmin</h3>
+                            <div class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vestibulum risus accumsan nibh vulputate viverra. Vivamus vitae tincidunt lorem, sit amet placerat ex. Phasellus fringilla lorem at eros tempus tristique. Cras sed ligula posuere, feugiat eros id, venenatis ante. Aenean nibh leo, condimentum vitae felis at, egestas faucibus ligula. Nunc ultrices ex sit amet purus condimentum, id dictum nisl posuere. Sed finibus accumsan orci, sed aliquam dolor congue et. Quisque id felis tincidunt, condimentum nisi at, facilisis felis. Aenean venenatis risus magna, vitae egestas metus porta id.
+                            Aenean sollicitudin risus fermentum facilisis fringilla. Proin vitae arcu ac metus posuere sodales id at nulla. Proin ac venenatis massa, ut ullamcorper erat. Sed laoreet lorem eget vehicula cursus. Phasellus bibendum diam eget elit tincidunt rhoncus vitae ac dui. Duis euismod felis quis fringilla bibendum. Sed vestibulum, sem vel tincidunt condimentum, tellus magna faucibus neque, eu luctus turpis orci eget diam. Mauris congue massa ut mauris luctus dapibus. Suspendisse imperdiet ullamcorper quam eu vulputate. Suspendisse ut lacus in enim cursus lacinia.
+                            Vestibulum odio purus, rhoncus sed elit ut, efficitur accumsan risus. Quisque quam mauris, sollicitudin id dapibus ac, finibus at tortor. Donec a metus et erat vehicula dapibus. Integer ullamcorper posuere egestas. Donec laoreet varius nisi sit amet varius. Cras quis scelerisque sem. Integer tempor interdum libero id eleifend. Phasellus tristique auctor justo sed gravida. Phasellus tristique justo vel erat ultrices, quis porta orci vestibulum. Nam sapien nisi, fringilla vel tristique nec, volutpat a odio.</div>
+
+
+                            <div class="blog-bottom-bar">
+                                <p class="posted">Đăng bởi: <%= link_to "lumlabeauty.com", "http://lumlabeauty.com/", class: "text-primary", target: "_blank" %></p>
+                                <ul class="meta-list">
+                                    <li><a href="#"><i class="flaticon-tag31"></i>chăm sóc da, the face shop</a></li>
+                                </ul>
+                            </div>
+                            <!-- /blog-bottom-bar -->
+
+                        </div>
+                        <!-- /blog-text -->
+                    </div>
+                    <!-- /blog-box -->
+
+                </div>
+
+                <div class="col-md-3">
+                    
+                    <%= render "/blog/right_sidebar" %>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <%= render "/home/footer" %>
+
+</div>
+<!-- /pageWrap -->
+
+<div class="preloader-container">
+    <div id="loading-center-absolute">
+        <div class="object" id="object_one"></div>
+        <div class="object" id="object_two"></div>
+        <div class="object" id="object_three"></div>
+        <div class="object" id="object_four"></div>
+        <div class="object" id="object_five"></div>
+        <div class="object" id="object_six"></div>
+        <div class="object" id="object_seven"></div>
+        <div class="object" id="object_eight"></div>
+        <div class="object" id="object_big"></div>
+    </div>
+    <!-- /loading-center-absolute -->
+</div>
+<!-- /preloader-container -->
+
+<!-- JavaScript
+================================================== -->
+<%= javascript_include_tag "/frontend/js/jquery-1.11.2.min.js" %>
+<%= javascript_include_tag "/frontend/js/bootstrap.min.js" %>
+<%= javascript_include_tag "/frontend/js/owl.carousel.min.js" %>
+<%= javascript_include_tag "/frontend/js/script.js" %>
+
+<%= javascript_include_tag "/frontend/js/ie10-viewport-bug-workaround.js"  %>
+<%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>

@@ -19,7 +19,7 @@
     <% if params[:controller] == "category" %>
     <%= stylesheet_link_tag "/frontend/css/jquery-ui.css" %>
     <% end %>
-    <% if params[:controller] == "product" %>
+    <% if params[:controller] == "product" || params[:controller] == "blog" %>
     <%= stylesheet_link_tag "/frontend/css/owl.carousel.css" %>
     <% end %>
     <% if params[:controller] == "home" %>
@@ -41,7 +41,7 @@
 <body>
     
     <%= yield %>
-
+    
 </body>
 
 </html>

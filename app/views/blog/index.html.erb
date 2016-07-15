@@ -1,0 +1,97 @@
+<div class="pageWrap">
+
+    <%= render "/home/tp_bar" %>
+    <!-- /tp-bar -->
+
+    <%= render "/home/main_bar" %>
+    <!-- /main-bar -->
+
+    <div class="section-banner">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <li class="active">Tin Tức</li>
+            </ul>
+        </div>
+    </div>
+    <!-- /section-banner -->
+
+    <section class="section-compact">
+        <div class="container">
+            <header class="heading-3 page-heading">
+                <h4> Tin Tức</h4>
+            </header>
+
+            <div class="row">
+
+                <div class="col-md-9">
+                    
+                    <% (1..3).each do |item| %>
+                    <div class="blog-box">
+                        <figure class="image image-zoom">
+                            <img src="/frontend/images/resource/img-27.jpg" alt="Tiêu đề bài viết">
+                            <div class="post-date">
+                                <span>15</span>07
+                            </div>
+                        </figure>
+                        <div class="blog-text">
+                            <h3><%= link_to "Tiêu đề bài viết", blog_detail_path %></h3>
+                            <p>Nội dung ngắn......</p>
+                            <div class="blog-bottom-bar">
+                                <p class="posted">Đăng bởi: <%= link_to "lumlabeauty.com", "http://lumlabeauty.com/", class: "text-primary", target: "_blank" %></p>
+                                <ul class="meta-list">
+                                    <li><a href="#"><i class="flaticon-tag31"></i>chăm sóc da, the face shop</a></li>
+                                </ul>
+                            </div>
+                            <!-- /blog-bottom-bar -->
+                            <%= link_to "XEM TIẾP", blog_detail_path, class: "btn btn-default" %>
+                        </div>
+                    </div>
+                    <!-- /blog-box -->
+                    <% end %>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <%= render "/blog/right_sidebar" %>
+
+                </div>
+
+            </div>
+
+        </div>
+        
+    </section>
+
+    <%= render "/home/footer" %>
+
+</div>
+<!-- /pageWrap -->
+
+<div class="preloader-container">
+    <div id="loading-center-absolute">
+        <div class="object" id="object_one"></div>
+        <div class="object" id="object_two"></div>
+        <div class="object" id="object_three"></div>
+        <div class="object" id="object_four"></div>
+        <div class="object" id="object_five"></div>
+        <div class="object" id="object_six"></div>
+        <div class="object" id="object_seven"></div>
+        <div class="object" id="object_eight"></div>
+        <div class="object" id="object_big"></div>
+    </div>
+    <!-- /loading-center-absolute -->
+</div>
+<!-- /preloader-container -->
+
+
+<!-- JavaScript
+================================================== -->
+<%= javascript_include_tag "/frontend/js/jquery-1.11.2.min.js" %>
+<%= javascript_include_tag "/frontend/js/bootstrap.min.js" %>
+<%= javascript_include_tag "/frontend/js/owl.carousel.min.js" %>
+<%= javascript_include_tag "/frontend/js/script.js" %>
+
+<%= javascript_include_tag "/frontend/js/ie10-viewport-bug-workaround.js"  %>
+<%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>

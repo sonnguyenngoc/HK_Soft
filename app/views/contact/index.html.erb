@@ -41,30 +41,30 @@
                                     <span>Gửi Tin Nhắn<br> Liên Hệ</span>
                                 </header>
                                 <div id="message"></div>
-                                <form id="contactform_forms" class="checkout-form" method="post" action="#">
+                                <form id="form_validate" class="checkout-form" method="post" action="#">
 
                                     <div class="form-group row">
                                         <label class="col-md-3 label-md">Họ & Tên *</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="contact_name" class="form-control" required placeholder="Nhập họ & tên.....">
+                                            <input type="text" id="contact_name" class="form-control required" required placeholder="Nhập họ & tên.....">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 label-md">Email *</label>
                                         <div class="col-md-9">
-                                            <input type="email" id="contact_email" class="form-control" required placeholder="Nhập địa chỉ email.....">
+                                            <input type="email" id="contact_email" class="form-control email required" required placeholder="Nhập địa chỉ email.....">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 label-md">Số Điện Thoại *</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="contact_phone" class="form-control" required placeholder="Nhập số điện thoại.....">
+                                            <input type="text" id="contact_phone" class="form-control required" required placeholder="Nhập số điện thoại.....">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 label-md">Tin Nhắn *</label>
                                         <div class="col-md-9">
-                                            <textarea id="contact_message" class="form-control" required placeholder="Nhập nội dung cần gửi....."></textarea>
+                                            <textarea id="contact_message" class="form-control required" required placeholder="Nhập nội dung cần gửi....."></textarea>
                                         </div>
                                     </div>
                                     <p class="text-center"><input type="submit" id="submit_btns" class="btn btn-default btn-lg" value="GỬI TIN NHẮN"></p>
@@ -114,3 +114,9 @@
 <%= javascript_include_tag "/frontend/js/script.js" %>
 
 <%= javascript_include_tag "/frontend/js/ie10-viewport-bug-workaround.js" %>
+<%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>
+<script>
+    jQuery(document).ready(function($){
+        $("#form_validate").validate();
+    });
+</script>
