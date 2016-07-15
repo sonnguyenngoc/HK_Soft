@@ -201,57 +201,25 @@
             </header>
             <!-- /heading-2 -->
             <div class="row">
-                <div class="col-sm-4">
-                    <div class="thumbnail thumbnail-blog">
-                        <figure class="image-zoom">
-                            <img src="frontend/images/resource/img-9.jpg" alt="image">
-                        </figure>
-                        <div class="caption text-center">
-                            <ul class="meta-post">
-                                <li>perfume packaging</li>
-                                <li>january 5, 2015</li>
-                            </ul>
-                            <!-- /meta-post -->
-                            <h4 class="text-uppercase"><a href="blog-single.html">beautiful women perfume</a></h4>
-                            <p>Lorem ipsum dolor sit amt, consectetur adipiscin elit. Morbi tempor malesuada lectus sed esuani da. Donec lectus leo, consectetur conat <a href="blog-single.html" class="text-primary">[...]</a></p>
+                <% @lastest_blogs.last(3).each do |blog| %>
+                    <div class="col-sm-4">
+                        <div class="thumbnail thumbnail-blog">
+                            <figure class="image-zoom">
+                                <img src="frontend/images/resource/img-9.jpg" alt="image">
+                            </figure>
+                            <div class="caption text-center">
+                                <ul class="meta-post">
+                                    <li>lumlabeauty.com</li>
+                                    <li><%= blog.created_at.in_time_zone("Asia/Bangkok").strftime("%b %d, %Y") %></li>
+                                </ul>
+                                <!-- /meta-post -->
+                                <h4 class="text-uppercase"><%= link_to blog.title, { controller: "blog", action: "detail", blog_id: blog.id } %></h4>
+                                <p><%= truncate(strip_tags(blog.content_vi.html_safe), length: 140, omission: '') %> <%= link_to "[...]", { controller: "blog", action: "detail", blog_id: blog.id }, class: "text-primary" %></p>
+                            </div>
                         </div>
+                        <!-- /thumbail -->
                     </div>
-                    <!-- /thumbail -->
-                </div>
-                <div class="col-sm-4">
-                    <div class="thumbnail thumbnail-blog">
-                        <figure class="image-zoom">
-                            <img src="frontend/images/resource/img-10.jpg" alt="image">
-                        </figure>
-                        <div class="caption text-center">
-                            <ul class="meta-post">
-                                <li>black ribbon</li>
-                                <li>january 4, 2015</li>
-                            </ul>
-                            <!-- /meta-post -->
-                            <h4 class="text-uppercase"><a href="blog-single.html">ribbon around perfume</a></h4>
-                            <p>Vivamus vel consectetur metus, quis tincidunt felis. Morbi pulvinar id arcu tristique dictum. Phasellus condimentum eget lorem vitae <a href="blog-single.html" class="text-primary">[...]</a></p>
-                        </div>
-                    </div>
-                    <!-- /thumbail -->
-                </div>
-                <div class="col-sm-4">
-                    <div class="thumbnail thumbnail-blog">
-                        <figure class="image-zoom">
-                            <img src="frontend/images/resource/img-11.jpg" alt="image">
-                        </figure>
-                        <div class="caption text-center">
-                            <ul class="meta-post">
-                                <li>yellow flowered</li>
-                                <li>january 3, 2015</li>
-                            </ul>
-                            <!-- /meta-post -->
-                            <h4 class="text-uppercase"><a href="blog-single.html">flowered perfume</a></h4>
-                            <p>Ut ac velit quam. Ut est ipsum, eleifend nec laoreet sed, elementum vel velit. Nunc ligula lectus, tempor sed diam bibendum, semper <a href="blog-single.html" class="text-primary">[...]</a></p>
-                        </div>
-                    </div>
-                    <!-- /thumbail -->
-                </div>
+                <% end %>
             </div>
         </div>
     </section>
