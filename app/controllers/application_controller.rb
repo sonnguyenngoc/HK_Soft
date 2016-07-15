@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :set_locale
-  
+  include CurrentCart
+  before_action :get_cart
   protect_from_forgery
   
   layout :layout_by_resource
