@@ -1,0 +1,902 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.3
+-- Dumped by pg_dump version 9.5.3
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for Name: areas; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY areas (id, name, level, description, created_at, updated_at, parent_id, areatype_id, display_order) FROM stdin;
+\.
+
+
+--
+-- Data for Name: areas_articles; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY areas_articles (id, area_id, article_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: areas_articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('areas_articles_id_seq', 1, false);
+
+
+--
+-- Name: areas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('areas_id_seq', 1, false);
+
+
+--
+-- Data for Name: areas_products; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY areas_products (id, area_id, product_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: areas_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('areas_products_id_seq', 1, false);
+
+
+--
+-- Data for Name: article_categories; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY article_categories (id, name, description, created_at, updated_at, level, meta_keywords, meta_description, name_vi, description_vi) FROM stdin;
+\.
+
+
+--
+-- Data for Name: article_categories_articles; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY article_categories_articles (id, article_id, article_category_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: article_categories_articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('article_categories_articles_id_seq', 1, false);
+
+
+--
+-- Name: article_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('article_categories_id_seq', 1, false);
+
+
+--
+-- Data for Name: articles; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY articles (id, image_url, title, content, tags, article_category_id, created_at, updated_at, code_status_id, meta_keywords, meta_description, is_show, page_layout, user_id, approved, image_url_full_width, title_vi, content_vi) FROM stdin;
+\.
+
+
+--
+-- Name: articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('articles_id_seq', 1, false);
+
+
+--
+-- Data for Name: articles_products; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY articles_products (id, article_id, product_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: articles_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('articles_products_id_seq', 1, false);
+
+
+--
+-- Data for Name: articles_projects; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY articles_projects (id, article_id, project_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: articles_projects_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('articles_projects_id_seq', 1, false);
+
+
+--
+-- Data for Name: carts; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY carts (id, created_at, updated_at, voucher_code, coupon_code) FROM stdin;
+\.
+
+
+--
+-- Name: carts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('carts_id_seq', 1, false);
+
+
+--
+-- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY categories (id, name, level, description, created_at, updated_at, ordered, meta_keywords, meta_description) FROM stdin;
+2	Hàng Sale	1	\N	2016-07-15 02:12:25.345534	2016-07-15 02:15:05.85644	\N	\N	\N
+3	Thời Trang	1	\N	2016-07-15 02:12:39.974981	2016-07-15 02:15:16.878729	\N	\N	\N
+4	Mỹ Phẩm Mỹ-Pháp-Nhật	1	\N	2016-07-15 02:12:51.152123	2016-07-15 02:15:28.071185	\N	\N	\N
+5	Trang Điểm	1	\N	2016-07-15 02:13:25.142175	2016-07-15 02:15:51.771707	\N	\N	\N
+6	Chăm Sóc Da	1	\N	2016-07-15 02:13:39.766958	2016-07-15 02:15:59.10819	\N	\N	\N
+7	The Face Shop	2	\N	2016-07-15 02:31:42.077537	2016-07-15 02:31:42.077537	\N	\N	\N
+\.
+
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('categories_id_seq', 7, true);
+
+
+--
+-- Data for Name: categories_products; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY categories_products (id, product_id, category_id, created_at, updated_at) FROM stdin;
+1	1	2	2016-07-15 03:37:52.759891	2016-07-15 03:37:52.759891
+3	2	2	2016-07-15 03:39:45.250278	2016-07-15 03:39:45.250278
+\.
+
+
+--
+-- Name: categories_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('categories_products_id_seq', 3, true);
+
+
+--
+-- Data for Name: code_statuses; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY code_statuses (id, title, description, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: code_statuses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('code_statuses_id_seq', 1, false);
+
+
+--
+-- Data for Name: comment_articles; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY comment_articles (id, name, email, content, user_id, article_id, created_at, updated_at, parent_id) FROM stdin;
+\.
+
+
+--
+-- Name: comment_articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('comment_articles_id_seq', 1, false);
+
+
+--
+-- Data for Name: comments; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY comments (id, product_id, name, content, star, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('comments_id_seq', 1, false);
+
+
+--
+-- Data for Name: companies; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY companies (id, image_url, name, head_office_address, certificate_no, date_of_issue, sales_office_address, phone, hotline, email, created_at, updated_at, head_area_id, branch_area_id, type_company, fax) FROM stdin;
+\.
+
+
+--
+-- Name: companies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('companies_id_seq', 1, false);
+
+
+--
+-- Data for Name: compares; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY compares (id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: compares_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('compares_id_seq', 1, false);
+
+
+--
+-- Data for Name: contacts; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY contacts (id, name, email, message, created_at, updated_at, user_id, phone, subject) FROM stdin;
+\.
+
+
+--
+-- Name: contacts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('contacts_id_seq', 1, false);
+
+
+--
+-- Data for Name: conversations; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY conversations (id, sender_id, recipient_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: conversations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('conversations_id_seq', 1, false);
+
+
+--
+-- Data for Name: coupons; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY coupons (id, name, code, from_date, to_date, description, quantity, created_at, updated_at, price) FROM stdin;
+\.
+
+
+--
+-- Name: coupons_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('coupons_id_seq', 1, false);
+
+
+--
+-- Data for Name: customers; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY customers (id, first_name, last_name, email, phone, company, address, city, zip_code, country, province, created_at, updated_at, order_id, area_id) FROM stdin;
+\.
+
+
+--
+-- Name: customers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('customers_id_seq', 1, false);
+
+
+--
+-- Data for Name: delivery_methods; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY delivery_methods (id, title, description, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: delivery_methods_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('delivery_methods_id_seq', 1, false);
+
+
+--
+-- Data for Name: feedbacks; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY feedbacks (id, email, content, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: feedbacks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('feedbacks_id_seq', 1, false);
+
+
+--
+-- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY products (id, name, code, quantity, unit, price, short_description, description, manufacturer_id, product_image_id, created_at, updated_at, tags, status, old_price, discount_percent, meta_keywords, meta_description, is_show, stock, approved, user_id) FROM stdin;
+1	Herb day Massage Cream THE FACE SHOP	AAAA	123.0	ml	100000.0	mo ta ngan		1	\N	2016-07-15 03:37:52.68976	2016-07-15 03:37:52.68976		\N	\N	\N			t	1	f	1
+2	Herb day Massage Cream	BBBB	125.0	ml	120000.0	mo ta ngan hang cao cap		1	\N	2016-07-15 03:39:08.633537	2016-07-15 03:39:08.633537		\N	\N	\N			t	1	f	1
+\.
+
+
+--
+-- Data for Name: line_item_compares; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY line_item_compares (id, product_id, compare_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: line_item_compares_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('line_item_compares_id_seq', 1, false);
+
+
+--
+-- Data for Name: line_items; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY line_items (id, product_id, cart_id, created_at, updated_at, quantity) FROM stdin;
+\.
+
+
+--
+-- Name: line_items_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('line_items_id_seq', 1, false);
+
+
+--
+-- Data for Name: manufacturers; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY manufacturers (id, image_url, name, address, description, created_at, updated_at) FROM stdin;
+1	favicon_hksoft.png	Hoang Khang			2016-07-15 03:36:46.001528	2016-07-15 03:36:46.001528
+\.
+
+
+--
+-- Name: manufacturers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('manufacturers_id_seq', 1, true);
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at, first_name, last_name, phone, fax, company, address_1, address_2, zip_code, country, province, city, provider, uid, password_reset_token, password_reset_sent_at, oauth_token, oauth_expires_at, last_seen, is_admin, area_id, role, user_group_id) FROM stdin;
+1	admin@hoangkhang.com.vn	$2a$11$tDaJPMZf.v81Yas0/2rXXuJkW79Kw30/BAGpreF3YAse03KfhcnDC	\N	\N	\N	2	2016-07-15 01:54:52.003696	2016-07-14 08:37:28.667768	192.168.211.1	192.168.211.1	2016-07-14 08:37:10.864376	2016-07-15 03:39:08.524907	Quản trị	viên	01644046123	\N	\N	54/3, Tăng NHơn Phú B, Quận 9	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-07-15 03:39:08.521216	t	\N	\N	2
+\.
+
+
+--
+-- Data for Name: messages; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY messages (id, body, conversation_id, user_id, created_at, updated_at, seen) FROM stdin;
+\.
+
+
+--
+-- Name: messages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('messages_id_seq', 1, false);
+
+
+--
+-- Data for Name: newsletters; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY newsletters (id, email, created_at, updated_at, status, user_id) FROM stdin;
+\.
+
+
+--
+-- Name: newsletters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('newsletters_id_seq', 1, false);
+
+
+--
+-- Data for Name: options; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY options (id, created_at, updated_at, code, tag, value, note, title, accept_email) FROM stdin;
+\.
+
+
+--
+-- Name: options_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('options_id_seq', 1, false);
+
+
+--
+-- Data for Name: order_deliveries; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY order_deliveries (id, first_name, last_name, company, address, city, zip_code, country, province, delivery_method_id, payment_method_id, message, created_at, updated_at, order_id, email, phone) FROM stdin;
+\.
+
+
+--
+-- Name: order_deliveries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('order_deliveries_id_seq', 1, false);
+
+
+--
+-- Data for Name: order_details; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY order_details (id, order_id, product_id, quantity, price, created_at, updated_at, product_name) FROM stdin;
+\.
+
+
+--
+-- Name: order_details_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('order_details_id_seq', 1, false);
+
+
+--
+-- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY orders (id, created_at, updated_at, user_id, status, different_delivery, voucher_code, voucher_price, coupon_code, coupon_price) FROM stdin;
+\.
+
+
+--
+-- Name: orders_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('orders_id_seq', 1, false);
+
+
+--
+-- Data for Name: parent_article_categories; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY parent_article_categories (id, parent_id, article_category_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: parent_article_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('parent_article_categories_id_seq', 1, false);
+
+
+--
+-- Data for Name: parent_categories; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY parent_categories (id, parent_id, category_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: parent_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('parent_categories_id_seq', 1, false);
+
+
+--
+-- Data for Name: payment_methods; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY payment_methods (id, title, description, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: payment_methods_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('payment_methods_id_seq', 1, false);
+
+
+--
+-- Data for Name: product_images; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY product_images (id, product_id, image_url, created_at, updated_at, is_main) FROM stdin;
+\.
+
+
+--
+-- Name: product_images_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('product_images_id_seq', 1, false);
+
+
+--
+-- Name: products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('products_id_seq', 2, true);
+
+
+--
+-- Data for Name: program_languages; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY program_languages (id, name, description, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: program_languages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('program_languages_id_seq', 1, false);
+
+
+--
+-- Data for Name: program_languages_projects; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY program_languages_projects (id, program_language_id, project_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: program_languages_projects_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('program_languages_projects_id_seq', 1, false);
+
+
+--
+-- Data for Name: project_categories; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY project_categories (id, name, description, created_at, updated_at, name_vi, description_vi) FROM stdin;
+\.
+
+
+--
+-- Name: project_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('project_categories_id_seq', 1, false);
+
+
+--
+-- Data for Name: project_categories_projects; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY project_categories_projects (id, project_category_id, project_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: project_categories_projects_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('project_categories_projects_id_seq', 1, false);
+
+
+--
+-- Data for Name: project_images; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY project_images (id, image_url, project_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: project_images_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('project_images_id_seq', 1, false);
+
+
+--
+-- Data for Name: projects; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY projects (id, image_url, author, name, start_date, end_date, description, website, created_at, updated_at, author_vi, name_vi, description_vi) FROM stdin;
+\.
+
+
+--
+-- Name: projects_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('projects_id_seq', 1, false);
+
+
+--
+-- Data for Name: questions; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY questions (id, name, email, content, product_id, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: questions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('questions_id_seq', 1, false);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY schema_migrations (version) FROM stdin;
+20160406035423
+20160406060729
+20160406061501
+20160406072632
+20160406090918
+20160406093710
+20160407021915
+20160407022242
+20160407033416
+20160407034556
+20160407040834
+20160407041811
+20160407063600
+20160407071755
+20160407073929
+20160407090029
+20160407092753
+20160411022035
+20160411070126
+20160411090637
+20160412090455
+20160412091031
+20160412091620
+20160412092036
+20160413013557
+20160414070432
+20160414071647
+20160414071935
+20160414072251
+20160414072336
+20160414111647
+20160415024108
+20160415034338
+20160415045331
+20160415070403
+20160418084816
+20160419063009
+20160419063732
+20160419073354
+20160419084034
+20160419084328
+20160420021407
+20160420025319
+20160420031013
+20160420035639
+20160420071851
+20160420083852
+20160420083904
+20160421014453
+20160421023948
+20160421032607
+20160422075657
+20160422084139
+20160422092821
+20160425011612
+20160425011627
+20160425031932
+20160425042302
+20160425043159
+20160425043209
+20160425075501
+20160429043324
+20160429062814
+20160505042346
+20160505065936
+20160505084631
+20160505090509
+20160505092039
+20160506024000
+20160506084612
+20160506090959
+20160510030159
+20160510030222
+20160510094925
+20160512092157
+20160512092324
+20160514031109
+20160516073144
+20160516073152
+20160516073236
+20160516073244
+20160516080558
+20160516082039
+20160516085116
+20160516085213
+20160516090119
+20160517032825
+20160517033437
+20160517083909
+20160518035417
+20160518070327
+20160520062835
+20160521024747
+20160527042708
+20160527083046
+20160531021437
+20160531021445
+20160601013031
+20160601065702
+20160601091343
+20160601100102
+20160601111606
+20160602071024
+20160602083515
+20160602083819
+20160603025541
+20160603071216
+20160603080430
+20160607034151
+20160607034155
+20160615074814
+20160616023635
+20160616034218
+20160616034542
+20160616040953
+20160616063534
+20160616064623
+20160616073753
+20160623013507
+20160623013627
+20160623013757
+20160623013859
+20160712020307
+\.
+
+
+--
+-- Data for Name: slideshows; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY slideshows (id, image_url, title_1, title_2, name_button, link, created_at, updated_at, color_1, color_2, style) FROM stdin;
+\.
+
+
+--
+-- Name: slideshows_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('slideshows_id_seq', 1, false);
+
+
+--
+-- Data for Name: testimonials; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY testimonials (id, name, city, email, content, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: testimonials_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('testimonials_id_seq', 1, false);
+
+
+--
+-- Data for Name: user_groups; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY user_groups (id, name, permission, created_at, updated_at) FROM stdin;
+3	Quản lý cấp cao	\N	2016-07-14 08:37:10.906025	2016-07-14 08:37:10.906025
+1	Thành viên	{"Product":{"read":["yes"],"create":["yes"],"update":["yes","own","not_approved"],"delete":["yes","own","not_approved"],"approve":["no"]},"Category":{"read":["yes"],"create":["no"],"update":["no"],"delete":["no"]},"Manufacturer":{"read":["yes"],"create":["no"],"update":["no"],"delete":["no"]},"Area":{"read":["yes"],"create":["no"],"update":["no"],"delete":["no"]},"ArticleCategory":{"read":["yes"],"create":["no"],"update":["no"],"delete":["no"]},"Article":{"read":["yes"],"create":["yes"],"update":["yes","own","not_approved"],"delete":["yes","own","not_approved"],"approve":["no"]},"CodeStatus":{"read":["yes"],"create":["no"],"update":["no"],"delete":["no"]},"Slideshow":{"read":["yes"],"create":["no"],"update":["yes"],"delete":["no"]},"Order":{"read":["no"],"update":["no"],"delete":["no"]},"DeliveryMethod":{"read":["no"],"create":["no"],"update":["no"],"delete":["no"]},"PaymentMethod":{"read":["no"],"create":["no"],"update":["no"],"delete":["no"]},"Comment":{"read":["yes"],"delete":["no"]},"Question":{"read":["yes"],"delete":["no"]},"Testimonial":{"read":["yes"],"delete":["no"]},"CommentArticle":{"read":["no"],"delete":["no"]},"Voucher":{"read":["yes"],"create":["no"],"update":["no"],"delete":["no"]},"Coupon":{"read":["yes"],"create":["no"],"update":["no"],"delete":["no"]},"Customer":{"read":["no"],"create":["no"],"update":["no"],"delete":["no"]},"Contact":{"read":["no"],"delete":["no"]},"Newsletter":{"read":["no"],"delete":["no"]},"User":{"read":["no"],"create":["no"],"update":["no"],"delete":["no"]},"UserGroup":{"read":["no"],"create":["no"],"update":["no"],"delete":["no"]},"Company":{"read":["no"],"create":["no"],"update":["no"],"delete":["no"]},"Option":{"read":["no"],"create":["no"],"update":["no"],"delete":["no"]}}	2016-07-14 08:37:10.895557	2016-07-14 08:37:10.895557
+2	Quản trị viên	{"Product":{"read":["yes"],"create":["yes"],"update":["yes","own","not_approved"],"delete":["yes","own","not_approved"],"approve":["no"]},"Category":{"read":["yes"],"create":["no"],"update":["no"],"delete":["no"]},"Manufacturer":{"read":["yes"],"create":["yes"],"update":["no"],"delete":["no"]},"Area":{"read":["yes"],"create":["no"],"update":["no"],"delete":["no"]},"ArticleCategory":{"read":["yes"],"create":["no"],"update":["no"],"delete":["no"]},"Article":{"read":["yes"],"create":["yes"],"update":["yes","own","not_approved"],"delete":["yes","own","not_approved"],"approve":["no"]},"CodeStatus":{"read":["yes"],"create":["no"],"update":["no"],"delete":["no"]},"Slideshow":{"read":["yes"],"create":["no"],"update":["yes"],"delete":["no"]},"Order":{"read":["no"],"update":["no"],"delete":["no"]},"DeliveryMethod":{"read":["no"],"create":["no"],"update":["no"],"delete":["no"]},"PaymentMethod":{"read":["no"],"create":["no"],"update":["no"],"delete":["no"]},"Comment":{"read":["yes"],"delete":["no"]},"Question":{"read":["yes"],"delete":["no"]},"Testimonial":{"read":["yes"],"delete":["no"]},"CommentArticle":{"read":["no"],"delete":["no"]},"Voucher":{"read":["yes"],"create":["no"],"update":["no"],"delete":["no"]},"Coupon":{"read":["yes"],"create":["no"],"update":["no"],"delete":["no"]},"Customer":{"read":["no"],"create":["no"],"update":["no"],"delete":["no"]},"Contact":{"read":["no"],"delete":["no"]},"Newsletter":{"read":["no"],"delete":["no"]},"User":{"read":["no"],"create":["no"],"update":["no"],"delete":["no"]},"UserGroup":{"read":["no"],"create":["no"],"update":["no"],"delete":["no"]},"Company":{"read":["no"],"create":["no"],"update":["no"],"delete":["no"]},"Option":{"read":["no"],"create":["no"],"update":["no"],"delete":["no"]}}	2016-07-14 08:37:10.902328	2016-07-14 08:37:10.902328
+\.
+
+
+--
+-- Name: user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('user_groups_id_seq', 3, true);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('users_id_seq', 1, true);
+
+
+--
+-- Data for Name: vouchers; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY vouchers (id, name, code, from_date, to_date, description, quantity, created_at, updated_at, price) FROM stdin;
+\.
+
+
+--
+-- Name: vouchers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('vouchers_id_seq', 1, false);
+
+
+--
+-- Data for Name: wish_lists; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY wish_lists (id, product_id, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: wish_lists_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('wish_lists_id_seq', 1, false);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
