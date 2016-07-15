@@ -60,7 +60,7 @@
         <nav>
             <ul class="footer-links">
                 <li><%= link_to "Trang Chủ", root_path %></li>
-                <% Category.get_all_categories(params).each do |category| %>
+                <% Category.get_by_level(1).each do |category| %>
                     <li>
                         <%= link_to category.name, { controller: "category", action: "index", category_id: category.id } %>
                     </li>
