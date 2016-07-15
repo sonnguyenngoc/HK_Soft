@@ -48,7 +48,7 @@
                 <!-- /steps-holder -->
 
                 <div class="form-main-container">
-                    <form class="checkout-form" method="post" action="#">
+                    <form class="checkout-form" id="form_validate" method="post" action="#">
                         <div class="row">
                             <div class="col-sm-8">
                                 <div class="form-section-box">
@@ -56,25 +56,25 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 label-md">Họ & Tên *</label>
                                         <div class="col-md-9">
-                                            <input type="text" placeholder="Nhập họ & tên....." class="form-control">
+                                            <input type="text" placeholder="Nhập họ & tên....." class="form-control required">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 label-md">Điện Thoại *</label>
                                         <div class="col-md-9">
-                                            <input type="text" placeholder="Nhập số điện thoại....." class="form-control">
+                                            <input type="text" placeholder="Nhập số điện thoại....." class="form-control required">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 label-md">Địa Chỉ *</label>
                                         <div class="col-md-9">
-                                            <input type="text" placeholder="Nhập địa chỉ....." class="form-control">
+                                            <input type="text" placeholder="Nhập địa chỉ....." class="form-control required">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 label-md">Email *</label>
                                         <div class="col-md-9">
-                                            <input type="email" placeholder="Nhập địa chỉ email....." class="form-control">
+                                            <input type="email" placeholder="Nhập địa chỉ email....." class="form-control email required">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -91,25 +91,25 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 label-md">Họ & Tên *</label>
                                         <div class="col-md-9">
-                                            <input type="text" placeholder="Nhập họ & tên....." class="form-control">
+                                            <input type="text" placeholder="Nhập họ & tên....." class="form-control required">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 label-md">Điện Thoại *</label>
                                         <div class="col-md-9">
-                                            <input type="text" placeholder="Nhập số điện thoại....." class="form-control">
+                                            <input type="text" placeholder="Nhập số điện thoại....." class="form-control required">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 label-md">Địa Chỉ *</label>
                                         <div class="col-md-9">
-                                            <input type="text" placeholder="Nhập địa chỉ....." class="form-control">
+                                            <input type="text" placeholder="Nhập địa chỉ....." class="form-control email required">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-md-3 label-md">Email *</label>
                                         <div class="col-md-9">
-                                            <input type="email" placeholder="Nhập địa chỉ email....." class="form-control">
+                                            <input type="email" placeholder="Nhập địa chỉ email....." class="form-control required">
                                         </div>
                                     </div>
                                 </div>
@@ -189,6 +189,7 @@
 <%= javascript_include_tag "/frontend/js/script.js"  %>
 
 <%= javascript_include_tag "/frontend/js/ie10-viewport-bug-workaround.js"  %>
+<%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>
 <script>
     $('#different_delivery_checkbox').change(function() {
         var val = $(this).is(":checked");
@@ -200,4 +201,7 @@
         }
     });
     $('#different_delivery_checkbox').trigger("change");
+        jQuery(document).ready(function($){
+        $("#form_validate").validate();
+    });
 </script>

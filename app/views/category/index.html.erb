@@ -11,6 +11,14 @@
 			<ul class="breadcrumb">
 				<li><%= link_to "Trang Chủ", root_path %></li>
 				<li>Chăm Sóc Da</li>
+				<li>
+					<div class="bar-form">
+						<form method="post" action="#">
+							<input type="search" placeholder="Tìm kiếm sản phẩm">
+							<input type="submit">
+						</form>
+					</div><!-- /bar-form -->
+				</li>
 			</ul>
 		</div>
 	</div><!-- /section-banner -->
@@ -123,3 +131,4 @@
 <%= javascript_include_tag "/frontend/js/script.js" %>
 
 <%= javascript_include_tag "/frontend/js/ie10-viewport-bug-workaround.js" %>
+<%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>

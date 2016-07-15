@@ -1,16 +1,4 @@
 Rails.application.routes.draw do
-  get 'cart/index'
-
-  get 'cart/checkout'
-
-  get 'cart/finish'
-
-  get 'product/index'
-
-  get 'category/index'
-
-  get 'category/product_detail'
-
   devise_for :users
   
   scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
@@ -23,6 +11,8 @@ Rails.application.routes.draw do
     get "gio-hang.html" => "cart#index", as: :cart
     get "gio-hang/dat-hang.html" => "cart#checkout", as: :checkout
     get "gio-hang/dat-hang/dat-hang-thanh-cong.html" => "cart#finish", as: :finish
+    get "tin-tuc.html" => "blog#index", as: :blog
+    get "tin-tuc/chi-tiet.html" => "blog#detail", as: :blog_detail
     
     namespace :admin, path: "quan-tri" do
       get "/" => "main#index"

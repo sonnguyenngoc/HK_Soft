@@ -1,0 +1,40 @@
+<div class="widget widget-tabular">
+    <ul class="widget-tab-head">
+        <li class="active"><a data-toggle="tab" href="#widget-popular" aria-expanded="true">Tin tức mới nhất</a></li>
+    </ul>
+    <div class="widget-tabular-content tab-content">
+
+        <div id="widget-popular" class="tab-pane fade in active">
+            <% (1..6).each do |item| %>
+            <div class="media">
+                <div class="media-left">
+                    <%= link_to image_tag("/frontend/images/resource/img-31.jpg", alt: "Tiêu đề bài viết"), blog_detail_path, class: "media-object" %>
+                </div>
+                <div class="media-body">
+                    <h5 class="media-heading"><%= link_to "Tiêu đề bài viết", blog_detail_path %></h5>
+                    <p>Lorem ipsum dolor sit amet...</p>
+                </div>
+            </div>
+            <!-- /media -->
+            <% end %>
+        </div>
+        <!-- /tab-pane -->
+
+    </div>
+</div>
+<!-- /widget-search-site -->
+
+<div class="widget widget_categories">
+    <header class="widget-heading-4">
+        <h4>Chuyên mục bài viết</h4>
+    </header>
+    <ul>
+        <li><a href="#">Tất cả</a> (0)</li>
+        <li><a href="#">Chăm sóc da</a> (0)</li>
+        <li><a href="#">Trang điểm</a> (0)</li>
+        <li><a href="#">Mỹ phẩm Mỹ-Pháp-Nhật</a> (0)</li>
+        <li><a href="#">Thời trang</a> (0)</li>
+        <li><a href="#">Hàng sale</a> (0)</li>
+    </ul>
+</div>
+<!-- /widget_categories -->
