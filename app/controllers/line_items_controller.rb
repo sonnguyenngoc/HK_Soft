@@ -54,10 +54,7 @@ class LineItemsController < ApplicationController
   # DELETE /line_items/1.json
   def destroy
     @line_item.destroy
-    respond_to do |format|
-      format.html { redirect_to controller: "cart", action: "index" }
-      format.json { head :no_content }
-    end
+    redirect_to :back
   end
 
   private
