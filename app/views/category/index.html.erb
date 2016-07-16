@@ -10,7 +10,7 @@
 		<div class="container">
 			<ul class="breadcrumb">
 				<li><%= link_to "Trang Chủ", root_path %></li>
-				<li>Chăm Sóc Da</li>
+				<li><%= @category.name %></li>
 				<li>
 					<div class="bar-form">
 						<form method="post" action="#">
@@ -26,26 +26,24 @@
 	<section class="section-compact">
 		<div class="container">
 			<header class="heading-3 page-heading">
-				<h4> CHĂM SÓC DA <small>(0)</small></h4>
+				<h4> <%= @category.name %> <small>(<%= @category.get_products_for_categories(params).count %>)</small></h4>
 			</header>
 			
 			<div class="row">
 				<div class="col-md-3">
                     
-					<!--< (1..9).each do |item| %>-->
 					<% Category.get_all_categories(params).each do |category| %>
 							<div class="widget widget-prod-categrories">
 								<header class="widget-heading-3">
 									<h4>
 										<span class="caret"></span>
 										<%= category.name %>
-										<em><%= category.children.order(:ordered).count %></em>
+										<em><%= category.get_products_for_categories(params).count %></em>
 									</h4>
 								</header>
 								<ul class="list-align">
-									<% category.children.order(:ordered).each do |child_2| %>
-										<!--<li><a href="#">Các Bộ Dưỡng Da <span class="right">0</span></a></li>-->
-										<li><%= link_to child_2.name, { controller: "category", action: "category_sub_2", category_id: child_2.id } %></li>
+									<% category.children.order(:ordered).each do |child| %>
+										<li><%= link_to (child.name + " <span class=\"right\">#{child.get_products_for_categories(params).count}</span>").html_safe, { controller: "category", action: "category_sub_2", category_id: child.id } %></li>
 									<% end %>
 								</ul>
 							</div><!-- /widget-prod-categrories -->

@@ -10,12 +10,22 @@
 		<div class="container">
 			<ul class="breadcrumb">
 				<li><%= link_to "Trang Chủ", root_path %></li>
-				<li><%= link_to "Chăm Sóc Da", category_path %></li>
+				<li>
+					<% if !@category.parent.empty? %>
+						<%= link_to @category.parent.first.name, { controller: "category", action: "index", category_id: @category.parent.first.id } %>
+					<% end %>
+				</li>
 				<li class="dropdown active breadcrumb-search">
-					<a href="#" id="one" data-toggle="dropdown">The Face Shop <i class="caret"></i></a>
+					<% if Category.get_all_categories(params).count == 0%>
+						<%= link_to @category.name, "#" %>
+					<% else %>
+						<%= link_to (@category.name + '<i class="caret"></i>').html_safe, "#", "data-toggle" => "dropdown", "id" => "one" %>
+					<% end %>
 					<ul class="dropdown-menu" aria-labelledby="one">
-                        <% (1..9).each do |item| %>
-						<li><%= link_to "Các Bộ Dưỡng Da", category_sub_2_path %></li>
+                        <% Category.get_all_categories(params).each do |item| %>
+							<li>
+								<%= link_to item.name, { controller: "category", action: "category_sub_2", category_id: item.id } %>
+							</li>
                         <% end %>
 					</ul>
 				</li>
@@ -34,7 +44,7 @@
 	<section class="section-compact">
 		<div class="container">
 			<header class="heading-3 page-heading">
-				<h4> THE FACE SHOP <small>(0)</small></h4>
+				<h4> <%= @category.name %> <small>(<%= @category.get_products_for_categories(params).count %>)</small></h4>
 			</header>
 			
 			<div class="row">
