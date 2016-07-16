@@ -142,20 +142,20 @@
             <!-- /features-list-box -->
 
             <div class="row">
-                <% (1..12).each do |item| %>
-                <div class="col-sm-6 col-md-3">
-                    <div class="thumbnail thumbnail-product">
-                        <figure class="image-zoom">
-                            <img src="frontend/images/resource/img-5.jpg" alt="image">
-                        </figure>
-                        <div class="caption text-center">
-                            <h5><%= link_to "Son lì cực Hót Matte Charlotte Tilbury", product_detail_path %></h5>
-                            <!-- /rating-star -->
-                            <p class="prod-price text-primary">750.000 VNĐ</p>
+                <% @new_products.each do |item| %>
+                    <div class="col-sm-6 col-md-3">
+                        <div class="thumbnail thumbnail-product">
+                            <figure class="image-zoom">
+                                <img src="frontend/images/resource/img-5.jpg" alt="image">
+                            </figure>
+                            <div class="caption text-center">
+                                <h5><%= link_to item.name, { controller: "product", action: "index", product_id: item.id }, title: item.name %></h5>
+                                <!-- /rating-star -->
+                                <p class="prod-price text-primary"><%= format_number(item.price) %> VNĐ</p>
+                            </div>
                         </div>
+                        <!-- /thumbail -->
                     </div>
-                    <!-- /thumbail -->
-                </div>
                 <% end %>
             </div>
             <div class="features-list-box">
@@ -191,38 +191,40 @@
         </div>
     </section>
 
-    <section class="section pattern-1">
-        <div class="container">
-            <header class="heading-2">
-                <h3>
-                <em>Bài viết</em>
-                <span>mới nhất</span>
-            </h3>
-            </header>
-            <!-- /heading-2 -->
-            <div class="row">
-                <% @lastest_blogs.last(3).each do |blog| %>
-                    <div class="col-sm-4">
-                        <div class="thumbnail thumbnail-blog">
-                            <figure class="image-zoom">
-                                <img src="frontend/images/resource/img-9.jpg" alt="image">
-                            </figure>
-                            <div class="caption text-center">
-                                <ul class="meta-post">
-                                    <li>lumlabeauty.com</li>
-                                    <li><%= blog.created_at.in_time_zone("Asia/Bangkok").strftime("%b %d, %Y") %></li>
-                                </ul>
-                                <!-- /meta-post -->
-                                <h4 class="text-uppercase"><%= link_to blog.title, { controller: "blog", action: "detail", blog_id: blog.id } %></h4>
-                                <p><%= truncate(strip_tags(blog.content_vi.html_safe), length: 140, omission: '') %> <%= link_to "[...]", { controller: "blog", action: "detail", blog_id: blog.id }, class: "text-primary" %></p>
+    <% if !@lastest_blogs.nil? %>
+        <section class="section pattern-1">
+            <div class="container">
+                <header class="heading-2">
+                    <h3>
+                    <em>Bài viết</em>
+                    <span>mới nhất</span>
+                </h3>
+                </header>
+                <!-- /heading-2 -->
+                <div class="row">
+                    <% @lastest_blogs.last(3).each do |blog| %>
+                        <div class="col-sm-4">
+                            <div class="thumbnail thumbnail-blog">
+                                <figure class="image-zoom">
+                                    <img src="frontend/images/resource/img-9.jpg" alt="image">
+                                </figure>
+                                <div class="caption text-center">
+                                    <ul class="meta-post">
+                                        <li>lumlabeauty.com</li>
+                                        <li><%= blog.created_at.in_time_zone("Asia/Bangkok").strftime("%b %d, %Y") %></li>
+                                    </ul>
+                                    <!-- /meta-post -->
+                                    <h4 class="text-uppercase"><%= link_to blog.title, { controller: "blog", action: "detail", blog_id: blog.id } %></h4>
+                                    <p><%= truncate(strip_tags(blog.content_vi.html_safe), length: 140, omission: '') %> <%= link_to "[...]", { controller: "blog", action: "detail", blog_id: blog.id }, class: "text-primary" %></p>
+                                </div>
                             </div>
+                            <!-- /thumbail -->
                         </div>
-                        <!-- /thumbail -->
-                    </div>
-                <% end %>
+                    <% end %>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    <% end %>
 
     <%= render "/home/footer" %>
     

@@ -18,7 +18,8 @@ class Product < ActiveRecord::Base
   belongs_to :user
   
   def self.get_active_products
-    self.where("products.approved = true and products.is_show = true")
+    #self.where("products.approved = true and products.is_show = true")
+    self.where("products.is_show = true")
   end
   
   def self.get_products_for_manufacturer(params)
@@ -246,7 +247,7 @@ class Product < ActiveRecord::Base
   def self.get_by_new
     records = self.get_active_products
     records = records.order("created_at DESC")
-    return records
+    return records.limit(12)
   end
   
   def self.get_all_product_by_status(params)
