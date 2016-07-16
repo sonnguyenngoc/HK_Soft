@@ -8,9 +8,11 @@
                     </header>
                     <nav>
                         <ul>
-                            <li><i class="flaticon-phone72"></i>(0126) 216 9420 </li>
-                            <li><a href="mailto:info@lumlabeauty.com"><i class="flaticon-email15"></i>info@lumlabeauty.com</a></li>
-                            <li><a href="https://www.facebook.com/Lumla-shop-%C4%90%E1%BA%B9p-1401009733493121"><i class="flaticon-google125"></i>Liên kết trang Facebook</a></li>
+                            <% if !@info_contact.get_company.nil? %>
+                                <li><a href="tel:<%= @info_contact.get_company.phone %>"><i class="flaticon-phone72"></i><%= @info_contact.get_company.phone %></a></li>
+                                <li><a href="<%= @info_contact.get_company.email %>"><i class="flaticon-email15"></i><%= @info_contact.get_company.email %></a></li>
+                                <li><a href="https://www.facebook.com/Lumla-shop-%C4%90%E1%BA%B9p-1401009733493121"><i class="flaticon-google125"></i>Theo dõi trên FaceBook</a></li>
+                            <% end %>
                         </ul>
                     </nav>
                 </div>
