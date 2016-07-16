@@ -65,23 +65,23 @@
                         
 					</div><!-- /filter-head -->
 					<ul class="filter-list">
-						<% (1..21).each do |item| %>
-						<li class="mix rating pricefresh">
-							<div class="thumbnail thumbnail-product">
-							  <figure class="image-zoom">
-							    <img src="/frontend/images/resource/img-5.jpg" alt="image">
-							  </figure>
-								<div class="caption">
-									<div class="text-wrap">
-										<h5><%= link_to "Herb day Massage Cream THE FACE SHOP", product_detail_path %></h5>
-										<p class="prod-price text-primary">100.000 VNĐ</p>
-										<div class="filter-list-disp">
-											<%= link_to "Xem Sản Phẩm", product_detail_path, class: "btn btn-default view-detail" %>
-										</div>
-									</div><!-- /text-wrap -->
-								</div>
-							</div><!-- /thumbail -->
-						</li>
+						<% @products.each do |product| %>
+							<li class="mix rating pricefresh">
+								<div class="thumbnail thumbnail-product">
+								  <figure class="image-zoom">
+									<img src="/frontend/images/resource/img-5.jpg" alt="image">
+								  </figure>
+									<div class="caption">
+										<div class="text-wrap">
+											<h5><%= link_to product.name, { controller: "product", action: "index", product_id: product.id }, title: product.name %></h5>
+											<p class="prod-price text-primary"><%= format_number(product.price) %> VNĐ</p>
+											<div class="filter-list-disp">
+												<%= link_to "Xem Sản Phẩm", { controller: "product", action: "index", product_id: product.id }, class: "btn btn-default view-detail" %>
+											</div>
+										</div><!-- /text-wrap -->
+									</div>
+								</div><!-- /thumbail -->
+							</li>
 						<% end %>
 					</ul><!-- filter-list -->
 					
