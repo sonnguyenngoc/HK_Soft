@@ -1,5 +1,8 @@
 class ContactController < ApplicationController
     def index
+        @info_contact = Company.all
+        
+        #contact form send message
         if params[:contact].present?
             @contact = Contact.new(contact_params)
             respond_to do |format|
