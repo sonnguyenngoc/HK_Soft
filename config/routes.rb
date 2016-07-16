@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
     root "home#index"
     get "lien-he.html" => "contact#index", as: :contact
+    post "lien-he.html" => "contact#index"
+    get "lien-he/gui-tin-thanh-cong.html" => "contact#send_success", as: :send_success
     get "chuyen-muc.html" => "category#index", as: :category
     get "chuyen-muc/chuyen-muc-1.html" => "category#category_sub_1", as: :category_sub_1
     get "chuyen-muc/chuyen-muc-1/chuyen-muc-2.html" => "category#category_sub_2", as: :category_sub_2

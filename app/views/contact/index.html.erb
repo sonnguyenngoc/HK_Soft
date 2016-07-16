@@ -28,10 +28,10 @@
                                 <span>Thông Tin <br>Liên Hệ</span>
                             </header>
                             <ul class="contact-list">
-                                <li><span class="iconic"><i class="flaticon-call36"></i></span>(012) 345-6789</li>
-                                <li><span class="iconic"><i class="flaticon-email15"></i></span><a href="#">info@perfumesupport.com</a></li>
-                                <li><span class="iconic"><i class="flaticon-twitter16"></i></span><a href="#">@followperfume</a></li>
-                                <li><span class="iconic"><i class="flaticon-facebook43"></i></span><a href="#">facebook.com/perfume</a></li>
+                                <li><span class="iconic"><i class="flaticon-call36"></i></span>(0126) 216 9420</li>
+                                <li><span class="iconic"><i class="flaticon-email15"></i></span><a href="#">dongocdung@gmail.com</a></li>
+                                <!--<li><span class="iconic"><i class="flaticon-twitter16"></i></span><a href="#">@followperfume</a></li>-->
+                                <li><span class="iconic"><i class="flaticon-facebook43"></i></span><a href="https://www.facebook.com/Lumla-shop-Đẹp-1401009733493121">Lumla Shop-Đẹp+</a></li>
                             </ul>
                         </div>
                         <div class="col-sm-7 col-lg-8">
@@ -41,35 +41,38 @@
                                     <span>Gửi Tin Nhắn<br> Liên Hệ</span>
                                 </header>
                                 <div id="message"></div>
-                                <form id="form_validate" class="checkout-form" method="post" action="#">
+                                <%= form_for Contact.new, url: {controller: "contact", action: "index"}, html: {class: "checkout-form", "id" => "form_validate" } do |f| %>
 
                                     <div class="form-group row">
-                                        <label class="col-md-3 label-md">Họ & Tên *</label>
+                                        <%= f.label "Họ và Tên *", class: "col-md-3 label-md" %>
                                         <div class="col-md-9">
-                                            <input type="text" id="contact_name" class="form-control required" required placeholder="Nhập họ & tên.....">
+                                            <%= f.text_field :name, class: "form-control name required", required: true, placeholder: "Nhập họ & tên.....", id: "contact_name" %>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-3 label-md">Email *</label>
+                                        <%= f.label "Email *", class: "col-md-3 label-md" %>
                                         <div class="col-md-9">
-                                            <input type="email" id="contact_email" class="form-control email required" required placeholder="Nhập địa chỉ email.....">
+                                            <%= f.text_field :email, class: "form-control email required", required: true, placeholder: "Nhập địa chỉ email.....", id: "contact_email" %>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-3 label-md">Số Điện Thoại *</label>
+                                        <%= f.label "Số Điện Thoại *", class: "col-md-3 label-md" %>
                                         <div class="col-md-9">
-                                            <input type="text" id="contact_phone" class="form-control required" required placeholder="Nhập số điện thoại.....">
+                                            <%= f.text_field :phone, class: "form-control phone required", required: true, placeholder: "Nhập số điện thoại.....", id: "contact_phone" %>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-md-3 label-md">Tin Nhắn *</label>
+                                        <%= f.label "Tin Nhắn *", class: "col-md-3 label-md" %>
                                         <div class="col-md-9">
-                                            <textarea id="contact_message" class="form-control required" required placeholder="Nhập nội dung cần gửi....."></textarea>
+                                            <%= f.text_area :message, rows: '5', class: "form-control required", required: true, placeholder: "Nhập nội dung cần gửi.....", id: "contact_message" %>
                                         </div>
                                     </div>
-                                    <p class="text-center"><input type="submit" id="submit_btns" class="btn btn-default btn-lg" value="GỬI TIN NHẮN"></p>
+                                    
+                                    <p class="text-center">
+                                        <%= f.submit 'GỬI TIN NHẮN', class: 'btn btn-default btn-lg', id: "submit_btns" %>
+                                    </p>
 
-                                </form>
+                                <% end %>
                             </div>
                             <!-- /form-section-box -->
                         </div>

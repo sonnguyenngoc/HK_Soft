@@ -27,3 +27,6 @@ label.error {
 #form_validate input.error, #form_validate textarea.error {
     border: 1px solid red;
 }
+.send-success-contact {
+    padding: 0px 0px !important;
+}
