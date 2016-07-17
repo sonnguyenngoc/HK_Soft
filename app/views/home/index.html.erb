@@ -146,7 +146,11 @@
                     <div class="col-sm-6 col-md-3">
                         <div class="thumbnail thumbnail-product">
                             <figure class="image-zoom">
-                                <img src="frontend/images/resource/img-5.jpg" alt="image">
+                                <% if item.get_main_image.present? %>
+                                    <%= image_tag(item.get_main_image.image_url.medium_image) %>
+                                <% else %>
+                                    <img src="frontend/images/resource/no-image.png" alt="image">
+                                <% end %>
                             </figure>
                             <div class="caption text-center">
                                 <h5><%= link_to item.name, { controller: "product", action: "index", product_id: item.id }, title: item.name %></h5>

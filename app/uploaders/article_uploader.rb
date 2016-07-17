@@ -41,9 +41,9 @@ class ArticleUploader < CarrierWave::Uploader::Base
   version :medium_image do
     process :resize_to_fill => [348, 211]
   end
-  #version :small_image do
-  #  process :resize_to_fill => [83, 83]
-  #end
+  version :small_image do
+    process :resize_to_fill => [83, 83]
+  end
   #version :smaller_image do
   #  process :resize_to_fill => [83, 53]
   #end

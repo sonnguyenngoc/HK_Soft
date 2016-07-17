@@ -62,7 +62,11 @@
 							<li class="mix rating pricefresh">
 								<div class="thumbnail thumbnail-product">
 								  <figure class="image-zoom">
-									<img src="/frontend/images/resource/img-5.jpg" alt="image">
+									<% if product.get_main_image.present? %>
+										<%= image_tag(product.get_main_image.image_url.medium_image) %>
+									<% else %>
+										<img src="frontend/images/resource/no-image.png" alt="image">
+									<% end %>
 								  </figure>
 									<div class="caption">
 										<div class="text-wrap">
