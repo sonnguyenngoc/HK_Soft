@@ -27,12 +27,14 @@
                                 <h4>01/</h4>
                                 <span>Thông Tin <br>Liên Hệ</span>
                             </header>
-                            <ul class="contact-list">
-                                <li><span class="iconic"><i class="flaticon-call36"></i></span><a href="tel:<%= @info_contact.get_company.phone %>"><%= @info_contact.get_company.phone %></a></li>
-                                <li><span class="iconic"><i class="flaticon-email15"></i></span><a href="mailto:<%= @info_contact.get_company.email %>"><%= @info_contact.get_company.email %></a></li>
-                                <!--<li><span class="iconic"><i class="flaticon-twitter16"></i></span><a href="#">@followperfume</a></li>-->
-                                <li><span class="iconic"><i class="flaticon-facebook43"></i></span><a href="https://www.facebook.com/Lumla-shop-Đẹp-1401009733493121">Lumla Shop-Đẹp+</a></li>
-                            </ul>
+                            <% if !@info_contact.get_company.nil? %>
+                                <ul class="contact-list">
+                                    <li><span class="iconic"><i class="flaticon-call36"></i></span><a href="tel:<%= @info_contact.get_company.phone %>"><%= @info_contact.get_company.phone %></a></li>
+                                    <li><span class="iconic"><i class="flaticon-email15"></i></span><a href="mailto:<%= @info_contact.get_company.email %>"><%= @info_contact.get_company.email %></a></li>
+                                    <!--<li><span class="iconic"><i class="flaticon-twitter16"></i></span><a href="#">@followperfume</a></li>-->
+                                    <li><span class="iconic"><i class="flaticon-facebook43"></i></span><a href="https://www.facebook.com/Lumla-shop-Đẹp-1401009733493121">Lumla Shop-Đẹp+</a></li>
+                                </ul>
+                            <% end %>
                         </div>
                         <div class="col-sm-7 col-lg-8">
                             <div class="form-section-box">
