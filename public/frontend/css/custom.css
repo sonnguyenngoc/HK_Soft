@@ -30,3 +30,6 @@ label.error {
 .send-success-contact {
     padding: 0px 0px !important;
 }
+.new_blogs {
+    border: solid 1px #999;
+}

@@ -205,8 +205,8 @@
                     <% @lastest_blogs.last(3).each do |blog| %>
                         <div class="col-sm-4">
                             <div class="thumbnail thumbnail-blog">
-                                <figure class="image-zoom">
-                                    <img src="frontend/images/resource/img-9.jpg" alt="image">
+                                <figure class="image-zoom new_blogs">
+                                    <%= image_tag(blog.image_url.medium_image) %>
                                 </figure>
                                 <div class="caption text-center">
                                     <ul class="meta-post">

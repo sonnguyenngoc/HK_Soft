@@ -36,32 +36,32 @@ class ArticleUploader < CarrierWave::Uploader::Base
   #   process :resize_to_fit => [50, 50]
   # end
   version :big_image do
-    process :resize_to_fit => [848, 350]
+    process :resize_to_fill => [848, 350]
   end
   version :medium_image do
-    process :resize_to_fill => [202, 128]
+    process :resize_to_fill => [348, 211]
   end
-  version :small_image do
-    process :resize_to_fill => [83, 83]
-  end
-  version :smaller_image do
-    process :resize_to_fill => [83, 53]
-  end
-  version :advertise_image do
-    process :resize_to_fill => [1356, 271]
-  end
-  version :banner_small_top_image do
-    process :resize_to_fill => [1496, 80]
-  end
+  #version :small_image do
+  #  process :resize_to_fill => [83, 83]
+  #end
+  #version :smaller_image do
+  #  process :resize_to_fill => [83, 53]
+  #end
+  #version :advertise_image do
+  #  process :resize_to_fill => [1356, 271]
+  #end
+  #version :banner_small_top_image do
+  #  process :resize_to_fill => [1496, 80]
+  #end
   
   # set version website hksoft
-  version :hksoft_large_image do
-    process :resize_to_fit => [1170, 520]
-  end
-  
-  version :hksoft_square_image do
-    process :resize_to_fill => [50, 50]
-  end
+  #version :hksoft_large_image do
+  #  process :resize_to_fit => [1170, 520]
+  #end
+  #
+  #version :hksoft_square_image do
+  #  process :resize_to_fill => [50, 50]
+  #end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
