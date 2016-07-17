@@ -1,0 +1,54 @@
+<div class="pageWrap">
+
+    <%= render "/home/tp_bar" %>
+    <!-- /tp-bar -->
+
+    <%= render "/home/main_bar" %>
+    <!-- /main-bar -->
+    
+    <section class="section">
+    <div class="container">
+      <div class="error-content send-success-contact">
+        <h2><b>CẢM ƠN!</b></h2>
+        <p>BẠN ĐÃ ĐĂNG KÝ NHẬN TIN THÀNH CÔNG</p>
+        <a href="<%= root_path %>" class="btn btn-default btn-lg">Trở lại trang chủ</a>
+      </div><!-- /error-content -->
+    </div>
+  </section>
+
+    <%= render "/home/footer" %>
+
+</div>
+<!-- /pageWrap -->
+
+
+<div class="preloader-container">
+    <div id="loading-center-absolute">
+        <div class="object" id="object_one"></div>
+        <div class="object" id="object_two"></div>
+        <div class="object" id="object_three"></div>
+        <div class="object" id="object_four"></div>
+        <div class="object" id="object_five"></div>
+        <div class="object" id="object_six"></div>
+        <div class="object" id="object_seven"></div>
+        <div class="object" id="object_eight"></div>
+        <div class="object" id="object_big"></div>
+    </div>
+    <!-- /loading-center-absolute -->
+</div>
+<!-- /preloader-container -->
+
+
+<!-- JavaScript
+================================================== -->
+<%= javascript_include_tag "/frontend/js/jquery-1.11.2.min.js" %>
+<%= javascript_include_tag "/frontend/js/bootstrap.min.js" %>
+<%= javascript_include_tag "/frontend/js/script.js" %>
+
+<%= javascript_include_tag "/frontend/js/ie10-viewport-bug-workaround.js" %>
+<%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>
+<script>
+    jQuery(document).ready(function($){
+        $("#form_validate").validate();
+    });
+</script>

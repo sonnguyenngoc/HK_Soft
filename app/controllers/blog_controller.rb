@@ -3,10 +3,12 @@ class BlogController < ApplicationController
     @title_head = "Danh sách bài viết"
     @blogs = Article.get_all_blogs.paginate(:page => params[:page], :per_page => 3)
     @lastest_blogs = Article.get_lastest_blog_posts
+    @info_contact = Company.all
   end
 
   def detail
     @blog = Article.find(params[:blog_id])
     @lastest_blogs = Article.get_lastest_blog_posts
+    @info_contact = Company.all
   end
 end

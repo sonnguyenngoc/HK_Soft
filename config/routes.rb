@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get "gio-hang/dat-hang/dat-hang-thanh-cong.html" => "cart#finish", as: :finish
     get "tin-tuc.html" => "blog#index", as: :blog
     get "tin-tuc/chi-tiet.html" => "blog#detail", as: :blog_detail
+    get "nhan-ban-tin/dang-ky-thanh-cong.html" => "home#newsletter_success", as: :newsletter_success
     
     resources :carts
     resources :line_items do

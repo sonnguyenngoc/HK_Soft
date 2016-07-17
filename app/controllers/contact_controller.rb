@@ -12,9 +12,13 @@ class ContactController < ApplicationController
         end
     end
     
+    def send_success
+        @info_contact = Company.all
+    end
+    
     private
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
-      params.require(:contact).permit(:name, :email, :message, :phone)
+        params.require(:contact).permit(:name, :email, :message, :phone)
     end
 end

@@ -4,4 +4,8 @@ class HomeController < ApplicationController
         @lastest_blogs = Article.get_lastest_blog_posts
         @info_contact = Company.all
     end
+    
+    def newsletter_success
+        @info_contact = Company.all
+    end
 end
