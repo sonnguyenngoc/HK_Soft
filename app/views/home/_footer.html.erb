@@ -45,12 +45,12 @@
                 <div class="widget widget-contact">
                     <h4>Nhận tin mới</h4>
                     <p>Đăng ký email để nhận được những thông tin mới nhất về sản phẩm.</p>
-                    <form class="contact-widget-form">
+                    <%= form_for Newsletter.new, html: {class: "contact-widget-form validate-form" } do |f| %>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Nhập email đăng ký....." required>
+                            <%= f.text_field :email, class: "form-control required email", required: true, placeholder: "Nhập email đăng ký....." %>
                         </div>
-                        <input type="submit" class="btn btn-primary btn-block" value="ĐĂNG KÝ">
-                    </form>
+                        <%= f.submit 'ĐĂNG KÝ', class: 'btn btn-primary btn-block' %>
+                    <% end %>
                 </div>
             </div>
         </div>

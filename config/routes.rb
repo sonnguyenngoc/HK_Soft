@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     get "tin-tuc/chi-tiet.html" => "blog#detail", as: :blog_detail
     get "nhan-ban-tin/dang-ky-thanh-cong.html" => "home#newsletter_success", as: :newsletter_success
     
+    resources :newsletters
     resources :carts
     resources :line_items do
       collection do
