@@ -43,7 +43,7 @@
                                     <span>Gửi Tin Nhắn<br> Liên Hệ</span>
                                 </header>
                                 <div id="message"></div>
-                                <%= form_for Contact.new, url: {controller: "contact", action: "index"}, html: {class: "checkout-form validate-form", "id" => "form_validate" } do |f| %>
+                                <%= form_for Contact.new, url: {controller: "contact", action: "index"}, html: {class: "checkout-form validate-form-contact", "id" => "form_validate" } do |f| %>
 
                                     <div class="form-group row">
                                         <%= f.label "Họ và Tên *", class: "col-md-3 label-md" %>

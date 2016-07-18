@@ -45,7 +45,7 @@
                 <div class="widget widget-contact">
                     <h4>Nhận tin mới</h4>
                     <p>Đăng ký email để nhận được những thông tin mới nhất về sản phẩm.</p>
-                    <%= form_for Newsletter.new, html: {class: "contact-widget-form validate-form" } do |f| %>
+                    <%= form_for Newsletter.new, html: {class: "contact-widget-form validate-form-newsletter" } do |f| %>
                         <div class="form-group">
                             <%= f.text_field :email, class: "form-control required email", required: true, placeholder: "Nhập email đăng ký....." %>
                         </div>
