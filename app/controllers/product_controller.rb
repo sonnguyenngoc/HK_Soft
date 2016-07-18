@@ -5,6 +5,6 @@ class ProductController < ApplicationController
   end
   def product_search
     @info_contact = Company.all
-    @products = Product.search_all_product(params).paginate(:page => params[:page], :per_page => 20)
+    @products = Product.search_all_product(params).paginate(:page => params[:page], :per_page => 15)
   end
 end

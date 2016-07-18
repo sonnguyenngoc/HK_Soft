@@ -18,7 +18,7 @@
 	<section class="section-compact">
 		<div class="container">
 			<header class="heading-3 page-heading">
-				<h4> Kết quả tìm kiếm <small>(Có 2 sản phẩm)</small></h4>
+				<h4> Kết quả tìm kiếm <small>(Có <%= @products.count %> sản phẩm)</small></h4>
 			</header>
 			
 			<div class="row">
@@ -73,7 +73,7 @@
 					</ul><!-- filter-list -->
 					
 					<div class="pagination-right">
-						
+						<%= will_paginate @products.get_active_products, previous_label: '<i class="flaticon-arrowhead7"></i>', next_label: '<i class="flaticon-arrow487"></i>', renderer: BootstrapPagination::Rails %>
 					</div><!-- /pagination-right -->
 
 				</div>
