@@ -80,8 +80,12 @@
                 
                 <div class="form-group field">
                     <label class="col-lg-2 control-label" ><%= t(:list_categories) %> <span class='text-danger'>*</span></label>
-                    <div class="col-lg-10 three_cols_select">
-                        <%= render "admin/categories/three_cols_select" %>
+                    <div class="col-lg-10">
+                        <select name="category_ids[]" class="select select-item-color" data-placeholder="<%= t(:list_categories) %>.....">
+                            <% Category.all.each do |item| %>
+                                <option <%= "selected" if @product.categories.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
+                            <% end %>
+                        </select>
                     </div>
                 </div>
                 

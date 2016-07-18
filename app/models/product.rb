@@ -72,6 +72,14 @@ class Product < ActiveRecord::Base
   end
   
   #Filter, Sort
+  def self.search_all_product(params)
+    records = self.get_active_products
+    if params[:key].present?
+        records = records.where("LOWER(CONCAT(products.name,' ',products.code)) LIKE ?", "%#{params[:key].downcase.strip}%")
+    end
+    return records
+  end
+  
   def self.search(params)
     records = self.get_active_products
     
@@ -115,8 +123,8 @@ class Product < ActiveRecord::Base
     end
     
     #Search keyword filter
-    if params[:keyword].present?
-        records = records.where("LOWER(CONCAT(products.name,' ',products.code)) LIKE ?", "%#{params[:keyword].downcase.strip}%")
+    if params[:key].present?
+        records = records.where("LOWER(CONCAT(products.name,' ',products.code)) LIKE ?", "%#{params[:key].downcase.strip}%")
     end
     
     # for sorting
