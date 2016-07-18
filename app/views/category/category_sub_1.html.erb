@@ -100,7 +100,9 @@
 					</ul><!-- filter-list -->
 					
 					<div class="pagination-right">
+						
 						<%= will_paginate @products.get_active_products, previous_label: '<i class="flaticon-arrowhead7"></i>', next_label: '<i class="flaticon-arrow487"></i>', renderer: BootstrapPagination::Rails %>
+					
 					</div><!-- /pagination-right -->
 
 				</div>
