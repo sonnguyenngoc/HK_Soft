@@ -10,16 +10,7 @@
 		<div class="container">
 			<ul class="breadcrumb">
 				<li><%= link_to "Trang Chủ", root_path %></li>
-				<li><%= @category.name %></li>
-				<li>
-					<div class="bar-form">
-						<%= form_tag({controller: "category", action: "index"}, method: "get") do %>
-							<%= hidden_field_tag "category_id", params[:category_id] %>
-							<input type="search" name="key" value="<%= params[:key] if params[:key].present? %>" placeholder="Tìm sản phẩm trong chuyên mục">
-							<input type="submit">
-						<% end %>
-					</div><!-- /bar-form -->
-				</li>
+				<li>Tìm kiếm sản phẩm</li>
 			</ul>
 		</div>
 	</div><!-- /section-banner -->
@@ -27,24 +18,23 @@
 	<section class="section-compact">
 		<div class="container">
 			<header class="heading-3 page-heading">
-				<h4> <%= @category.name %> <small>(<%= @category.get_products_for_categories(params).count %>)</small></h4>
+				<h4> Kết quả tìm kiếm <small>(Có 2 sản phẩm)</small></h4>
 			</header>
 			
 			<div class="row">
 				<div class="col-md-3">
                     
-					<% Category.get_all_categories(params).each do |category| %>
+					<% Category.get_by_level(1).each do |category| %>
 							<div class="widget widget-prod-categrories">
 								<header class="widget-heading-3">
 									<h4>
 										<span class="caret"></span>
-										<%= category.name %>
-										<em><%= category.get_products_for_categories(params).count %></em>
+										<%= link_to category.name.html_safe, { controller: "category", action: "category_sub_2", category_id: category.id } %>
 									</h4>
 								</header>
 								<ul class="list-align">
 									<% category.children.order(:ordered).each do |child| %>
-										<li><%= link_to (child.name + " <span class=\"right\">#{child.get_products_for_categories(params).count}</span>").html_safe, { controller: "category", action: "category_sub_2", category_id: child.id } %></li>
+										<li><%= link_to child.name.html_safe, { controller: "category", action: "category_sub_2", category_id: child.id } %></li>
 									<% end %>
 								</ul>
 							</div><!-- /widget-prod-categrories -->
@@ -61,13 +51,13 @@
 						<% @products.each do |product| %>
 							<li class="mix rating pricefresh">
 								<div class="thumbnail thumbnail-product">
-								  <figure class="image-zoom">
-									<% if product.get_main_image.present? %>
-										<%= image_tag(product.get_main_image.image_url.medium_image) %>
-									<% else %>
-										<img src="frontend/images/resource/no-image.png" alt="image">
-									<% end %>
-								  </figure>
+                                    <figure class="image-zoom">
+                                        <% if product.get_main_image.present? %>
+                                            <%= image_tag(product.get_main_image.image_url.medium_image) %>
+                                        <% else %>
+                                            <img src="/frontend/images/resource/no-image.png" alt="">
+                                        <% end %>
+                                    </figure>
 									<div class="caption">
 										<div class="text-wrap">
 											<h5><%= link_to product.name, { controller: "product", action: "index", product_id: product.id }, title: product.name %></h5>
@@ -83,7 +73,7 @@
 					</ul><!-- filter-list -->
 					
 					<div class="pagination-right">
-						<%= will_paginate @products.get_active_products, previous_label: '<i class="flaticon-arrowhead7"></i>', next_label: '<i class="flaticon-arrow487"></i>', renderer: BootstrapPagination::Rails %>
+						
 					</div><!-- /pagination-right -->
 
 				</div>

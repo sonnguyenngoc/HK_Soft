@@ -31,10 +31,11 @@
 				</li>
 				<li>
 					<div class="bar-form">
-						<form method="post" action="#">
-							<input type="search" placeholder="Tìm kiếm sản phẩm">
+						<%= form_tag({controller: "category", action: "category_sub_1"}, method: "get") do %>
+							<%= hidden_field_tag "category_id", params[:category_id] %>
+							<input type="search" name="key" value="<%= params[:key] if params[:key].present? %>" placeholder="Tìm sản phẩm trong chuyên mục">
 							<input type="submit">
-						</form>
+						<% end %>
 					</div><!-- /bar-form -->
 				</li>
 			</ul>

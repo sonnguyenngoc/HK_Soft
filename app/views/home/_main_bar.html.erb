@@ -9,14 +9,14 @@
                 <span class="site-search-btn dropBox-btn"><i class="flaticon-magnifier56"></i></span>
                 <div class="dropBox">
                     <div class="box-section">
-                        <form class="accounts-form clearfix">
+                        <%= form_tag({controller: "product", action: "product_search"}, class: "accounts-form clearfix", method: "get") do %>
                             <div class="form-left">
                                 <div class="form-group">
-                                    <input type="search" class="form-control" placeholder="Nhập tên sản phẩm cần tìm.....">
+                                    <input type="search" name="key" value="<%= params[:key] if params[:key].present? %>" placeholder="Tìm tất cả sản phẩm trong hệ thống" class="form-control">
                                 </div>
                             </div>
                             <input type="submit" class="btn btn-default text-uppercase" value="TÌM KIẾM">
-                        </form><!-- /accounts-form -->
+                        <% end %><!-- /accounts-form -->
                     </div><!-- /box-section -->
                 </div><!-- /dropBox -->
             </li>

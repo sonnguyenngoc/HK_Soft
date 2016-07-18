@@ -66,12 +66,9 @@ class Admin::ProductsController < ApplicationController
     
     # update category id    
     if params[:category_ids].present?
-      catid = nil
       params[:category_ids].each do |id|      
-        catid = id if id.present? 
+        @product.categories << Category.find(id)
       end
-      @category = Category.find(catid) if catid.present?
-      @product.categories << Category.find(catid) if catid.present?
     end    
     
     
@@ -110,14 +107,10 @@ class Admin::ProductsController < ApplicationController
     @categories = Category.all
 
     if params[:category_ids].present?
-        @product.categories.clear
-        # update category id
-        catid = nil
-        params[:category_ids].each do |id|      
-          catid = id if id.present?
-        end
-        @category = Category.find(catid) if catid.present?
-        @product.categories << Category.find(catid) if catid.present?
+      @product.categories.clear
+      params[:category_ids].each do |id|      
+        @product.categories << Category.find(id)
+      end
     end   
     
     @product.areas.clear

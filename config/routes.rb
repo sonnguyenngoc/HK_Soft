@@ -9,13 +9,14 @@ Rails.application.routes.draw do
     get "chuyen-muc.html" => "category#index", as: :category
     get "chuyen-muc/chuyen-muc-1.html" => "category#category_sub_1", as: :category_sub_1
     get "chuyen-muc/chuyen-muc-1/chuyen-muc-2.html" => "category#category_sub_2", as: :category_sub_2
-    get "chi-tiet-san-pham.html" => "product#index", as: :product_detail
+    get "san-pham/chi-tiet-san-pham.html" => "product#index", as: :product_detail
     get "gio-hang.html" => "cart#index", as: :shopping_cart
     get "gio-hang/dat-hang.html" => "cart#checkout", as: :checkout
     get "gio-hang/dat-hang/dat-hang-thanh-cong.html" => "cart#finish", as: :finish
     get "tin-tuc.html" => "blog#index", as: :blog
     get "tin-tuc/chi-tiet.html" => "blog#detail", as: :blog_detail
     get "nhan-ban-tin/dang-ky-thanh-cong.html" => "home#newsletter_success", as: :newsletter_success
+    get "san-pham/tim-kiem.html" => "product#product_search", as: :product_search
     
     resources :newsletters
     resources :carts
