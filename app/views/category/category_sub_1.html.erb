@@ -100,15 +100,7 @@
 					</ul><!-- filter-list -->
 					
 					<div class="pagination-right">
-						<ul class="pagination pagination-lg">
-							<li class="prev disabled"><a href="#"><i class="flaticon-arrowhead7"></i></a></li>
-							<li class="active"><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li><li class="prev"><a href="#"><i class="flaticon-arrow487"></i></a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li class="next"><a href="#"><i class="flaticon-arrow487"></i></a></li>
-						</ul>
+						<%= will_paginate @products.get_active_products, previous_label: '<i class="flaticon-arrowhead7"></i>', next_label: '<i class="flaticon-arrow487"></i>', renderer: BootstrapPagination::Rails %>
 					</div><!-- /pagination-right -->
 
 				</div>

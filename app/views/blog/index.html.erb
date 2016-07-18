@@ -50,6 +50,12 @@
                     </div>
                     <!-- /blog-box -->
                     <% end %>
+                
+                    <div class="pagination-right">
+                        
+                        <%= will_paginate @blogs, previous_label: '<i class="flaticon-arrowhead7"></i>', next_label: '<i class="flaticon-arrow487"></i>', renderer: BootstrapPagination::Rails %>
+                        
+                    </div>
 
                 </div>
 
@@ -60,6 +66,7 @@
                 </div>
 
             </div>
+            
 
         </div>
         

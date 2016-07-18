@@ -36,3 +36,30 @@ label.error {
 input.form-control.error, textarea.form-control.error {
         border: solid 1px red;
 }
+/*css pagination*/
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    color: #fff;
+    background-color: #141414;
+    border-color: #141414;
+}
+.pagination > li > a, .pagination > li > span {
+    padding: 7px 13px;
+    margin: 0 2px;
+    font-size: 11px;
+    color: #6a6a6a;
+    background-color: #ededed;
+    border: 2px solid #ededed;
+}
+.pagination-lg > li > a, .pagination-lg > li > span {
+    padding: 7px 13px;
+    margin: 0 2px;
+    font-size: 11px;
+    color: #6a6a6a;
+    background-color: #ededed;
+    border: 2px solid #ededed;
+}
+.pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus {
+    background-color: #ededed;
+    border-color: #141414;
+}
+/*end css Pagination*/
