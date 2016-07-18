@@ -39,9 +39,16 @@
 </head>
 
 <body>
-    
+    <!--<% if notice.present? %>-->
+    <!--	notice-->
+    <!--<% end %>-->
     <%= yield %>
     
+    <script>
+        $(document).ready(function() {
+            $('.validate-form').validate();
+        });
+    </script>
 </body>
 
 </html>

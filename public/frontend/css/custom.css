@@ -33,3 +33,6 @@ label.error {
 .new_blogs {
     border: solid 1px #999;
 }
+input.form-control.error, textarea.form-control.error {
+        border: solid 1px red;
+}
