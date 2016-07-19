@@ -53,10 +53,12 @@ class Tour < ActiveRecord::Base
         records = self.tour_schedules.where("from_date > ?", Time.now)
         if records.count > 0
             if !records.first.from_date.nil?
-            records = records.order("created_at ASC").first.from_date.strftime("%d/%m/%Y")
+                records = records.order("created_at ASC").first.from_date.strftime("%d/%m/%Y")
             else
                 records = nil
             end
+        else
+            records =  nil
         end
         
         return records
@@ -70,6 +72,8 @@ class Tour < ActiveRecord::Base
             else
                 records = nil
             end
+        else
+            records =  nil
         end
         
         return records
