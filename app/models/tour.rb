@@ -62,10 +62,12 @@ class Tour < ActiveRecord::Base
     
     def get_lastest_tour_to_date
         records = self.tour_schedules.where("from_date > ?", Time.now)
-        if !records.first.to_date.nil?
-            records = records.order("created_at ASC").first.to_date.strftime("%d/%m/%Y")
-        else
-            records = nil
+        if records.count > 0
+            if !records.first.to_date.nil?
+                records = records.order("created_at ASC").first.to_date.strftime("%d/%m/%Y")
+            else
+                records = nil
+            end
         end
         
         return records
