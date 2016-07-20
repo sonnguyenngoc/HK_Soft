@@ -12,6 +12,10 @@ class Category < ActiveRecord::Base
     self.save
   end
   
+  def self.get_by_level(lvl)
+    self.where(level: 1)
+  end
+  
   def self.get_all_categories(params)
       if params[:category_id].present?
         self.find(params[:category_id]).children
