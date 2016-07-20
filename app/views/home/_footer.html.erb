@@ -1,114 +1,95 @@
-<footer>
+<footer id="footWrapper" class="footer-bg dark">
 
-    <div class="footer">
-
-        <div class="ftop">
-            <div class="container">
-
-                <div class="left">
-                    
-                    <h4 class="caps light"><strong><%= t(:need_help) %></strong> <%= t(:call_us) %></h4>
-                    <h1><%= Company.get_company.hotline %></h1>
-                
-                </div>
-                <!-- end left -->
-
-                <div class="right">
-                    
-                    <p><%= t(:sign_up_newsletter) %></p>
-                    
-                    <%= form_for Newsletter.new, html: {id: 'newsletter_form_validate'} do |f| %>
-                        <%= f.email_field :email, placeholder: t(:placeholder_newsletter), class: "newsle_eminput required email" %>
-                        <input value="<%= t(:sign_up) %>" class="input_submit" type="submit">
-                    <% end %>
-                
-                </div>
-                <!-- end right -->
-
-            </div>
+    <div class="footer-top">
+        <div class="container">
+            <p class="lg-txt f-left white">
+                Our Main Goal is to Create New Design Trends For Your Next Website, It is <span class="main-color heavy">BOOKRA</span> All You Need.
+            </p>
+            <a class="f-right btn uppercase main-gradient skew-btn" href="#"><span>Buy Now</span></a>
         </div>
-        <!-- end top section -->
-
-        <div class="clearfix"></div>
-
-        <div class="secarea">
-            <div class="container">
-
-                <div class="one_fourth">
-                    <h4 class="white"><%= t(:follow_us) %></h4>
-                    <ul class="foosocial">
-                        <li class="faceboox"><a href="https://www.facebook.com/Global-Naturesoft-623551254472451/"><i class="fa fa-facebook"></i></a></li>
-                        <li class="twitter"><a href="https://twitter.com/GNaturesoft"><i class="fa fa-twitter"></i></a></li>
-                        <li class="gplus"><a href="https://plus.google.com/u/2/113600395564379102837"><i class="fa fa-google-plus"></i></a></li>
-                        <li class="youtube"><a href="https://www.youtube.com/channel/UCd0uK1eQ_PtRJ1AppsUiqhw"><i class="fa fa-youtube-play"></i></a></li>
-                        <li class="linkdin"><a href="https://www.linkedin.com/in/global-naturesoft-4493aa122"><i class="fa fa-linkedin"></i></a></li>
-                    </ul>
-                </div>
-                <!-- end section -->
-
-                <div class="one_fourth">
-                    <h4 class="white"><%= t(:resources) %></h4>
-                    <ul class="foolist">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Our Company Vision, Values & Mission</a></li>
-                        <li><a href="#">Our Case Studies</a></li>
-                        <li><a href="#">Vacancies at Total Solutions</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">Acount/Login/Register</a></li>
-                        <li><a href="#">Site Map</a></li>
-                    </ul>
-                </div>
-                <!-- end section -->
-
-                <div class="one_fourth">
-                    <h4 class="white"><%= t(:our_services) %></h4>
-                    <ul class="foolist">
-                        <li><%= link_to t(:website_development), services_sub_1_path %></li>
-                        <li><%= link_to t(:web_based_software_development), services_sub_2_path %></li>
-                        <li><%= link_to t(:e_commerce), services_sub_1_3_path %></li>
-                        <li><%= link_to t(:google_apps_for_bussiness), services_sub_4_path %></li>
-                        <li><%= link_to t(:outsourcing), services_sub_5_path %></li>
-                        <li><%= link_to t(:research_and_development), services_sub_6_path %></li>
-                        <li><%= link_to t(:systems_integration), services_sub_7_path %></li>
-                        <li><%= link_to t(:email_marketing), services_sub_8_path %></li>
-                    </ul>
-                </div>
-                <!-- end section -->
-                
-                <div class="one_fourth last aliright">
-                    <div class="address">
-                        <img src="/frontend/images/logo_hksoft.png" alt="" />
-                        <br />
-                        <div class="slogan"><%= t(:slogan) %></div>
-                        <br /> <%= Company.get_company.head_office_address %>
-                        <div class="clearfix margin_bottom1"></div>
-                        <strong><i class="fa fa-phone"></i></strong> <b> <%= Company.get_company.phone %></b><br />
-                        <strong><i class="fa fa-envelope-o"></i></strong> <a href="mailto:<%= Company.get_company.email %>"><%= Company.get_company.email %></a><br />
-                        <%= link_to t(:view_directions), contact_path, class: "smbut" %>
-
-                    </div>
-
-                </div>
-                <!-- end section -->
-
-            </div>
-        </div>
-
-
-        <div class="clearfix"></div>
-
-
-        <div class="copyrights">
-            <div class="container">
-        
-                <div class="one_half">Copyright &copy; 2016 Global Naturesoft. All rights reserved.</div>
-                <div class="one_half last aliright"><%= link_to t(:home_page), root_path %>|<%= link_to t(:home_support), support_path %>|<%= link_to t(:home_contact), contact_path %></div>
-        
-            </div>
-        </div>
-        <!-- end copyrights -->
-
-
     </div>
 
+    <div class="footer-middle no-bg">
+        <div class="container">
+            <div class="row">
+                
+                <div class="clearfix over-hidden">
+                    
+                    <!-- Our Friends footer cell start -->
+                    <div class="col-md-3">
+                        <h3>SERVICES</h3>
+                        <ul class="menu-widget">
+                            <li><a href="#">Software Development</a></li>
+                            <li><a href="#">Software Testing</a></li>
+                            <li><a href="#">Production Support</a></li>
+                            <li><a href="#">IT Managed Services</a></li>
+                        </ul>
+                    </div>
+                    <!-- Our Friends footer cell start -->
+                    
+                    <!-- Our Friends footer cell start -->
+                    <div class="col-md-3">
+                        <h3>INDUSTRIES</h3>
+                        <ul class="menu-widget">
+                            <li><a href="#">Finance & Insurance</a></li>
+                            <li><a href="#">E-commerce & Retail</a></li>
+                            <li><a href="#">Media & Publishing</a></li>
+                            <li><a href="#">Healthcare</a></li>
+                            <li><a href="#">Education</a></li>
+                            <li><a href="#">Hospitality & Travel</a></li>
+                            <li><a href="#">Real Estate</a></li>
+                            <li><a href="#">Logistics & Transportation</a></li>
+                        </ul>
+                    </div>
+                    <!-- Our Friends footer cell start -->
+                    
+                    <!-- Our Friends footer cell start -->
+                    <div class="col-md-3">
+                        <h3>COMPENTENCIES</h3>
+                        <ul class="menu-widget">
+                            <li><a href="#">Telecom & Network</a></li>
+                            <li><a href="#">Microsoft Technologies</a></li>
+                            <li><a href="#">Ruby on Rails</a></li>
+                            <li><a href="#">Open Source</a></li>
+                            <li><a href="#">Mobile Applications</a></li>
+                            <li><a href="#">Big Data & Analytics</a></li>
+                            <li><a href="#">Embedded Software</a></li>
+                            <li><a href="#">Software Testing</a></li>
+                        </ul>
+                    </div>
+                    <!-- Our Friends footer cell start -->
+                    
+                    <!-- Tags Cloud footer cell start -->
+                    <div class="col-md-3 last contact-widget">
+                        <h3>Contact Us</h3>
+                        <ul class="details">
+                            <li><i class="fa fa-map-marker"></i><span>188, Street 1, Ward 16, Go Vap District, Ho Chi Minh City, Viet Nam</span></li>
+                            <li><i class="fa fa-envelope"></i><span><a href="mailto:soft.support@hoangkhang.com.vn">soft.support@hoangkhang.com.vn</a></span></li>
+                            <li><i class="fa fa-phone"></i><span><a href="tel:+84839847690">Office: +84 83 984 7690</a> - Ext: 204</span></li>
+                            <li><i class="fa fa-phone"></i><span><a href="tel:+84976009003">Technical: +84 97 600 9003</a></span></li>
+                            <li><i class="fa fa-phone"></i><span><a href="tel:+84979744764">Hotline: +84 97 974 4764</a></span></li>
+                            <li><i class="fa fa-skype"></i><span><a href="skype:luanpm88?chat">Live support - Chat now</a></span></li>
+                        </ul>
+                    </div>
+                    <!-- Tags Cloud footer cell start --> 
+                </div>
+                
+            </div>
+        </div>	
+    </div>
+                    
+    <!-- footer bottom bar start -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="copyrights f-left white">© Copyrights <b class="main-color">GLOBAL NATURESOFT</b> 2016. All rights reserved.</div>
+            <div class="social-list f-right">
+                <a href="#" data-toggle="tooltip" data-placement="top" data-original-title="Facebook"><i class="fa fa-facebook ic-facebook no-border sm-icon"></i></a>
+                <a href="#" data-toggle="tooltip" data-placement="top" data-original-title="Twitter"><i class="fa fa-twitter ic-twitter no-border sm-icon"></i></a>
+                <a href="#" data-toggle="tooltip" data-placement="top" data-original-title="Linkedin"><i class="fa fa-linkedin ic-linkedin no-border sm-icon"></i></a>
+                <a href="#" data-toggle="tooltip" data-placement="top" data-original-title="Dribbble"><i class="fa fa-dribbble ic-dribbble no-border sm-icon"></i></a>
+                <a href="#" data-toggle="tooltip" data-placement="top" data-original-title="Google Plus"><i class="fa fa-google-plus ic-gplus no-border sm-icon"></i></a>
+            </div>
+        </div>
+    </div>
+    <!-- footer bottom bar end -->
 </footer>

@@ -1,507 +1,330 @@
-<div class="site_wrapper">
-
-    <%= render "/home/top_navigation" %>
-    <!-- end top navigation links -->
-
-
-    <div class="clearfix"></div>
-
+<div class="pageWrapper">
     
-    <%= render "/home/header" %>
-    <!-- end header -->
-
+    <!-- Top bar start -->
+    <%= render "/home/top_bar" %>
+    <!-- Top bar end -->
     
-    <div class="clearfix"></div>
-
-    
-    <!-- Slider ======================================= -->
-
-    <div class="slidermar">
-        
-        <div class="master-slider ms-skin-default" id="masterslider">
-
-            <div class="ms-slide slide-1" data-delay="5">
-
-                <div class="slide-pattern"></div>
-
-                <img src="/frontend/js/masterslider/blank.gif" data-src="/frontend/images/sliders/master/01.jpg" alt="" />
-
-                <h3 class="ms-layer text1 caps" style="left: 115px; top: 160px;" data-type="text" data-effect="top(45)" data-duration="1800" data-delay="0" data-ease="easeOutExpo">
-                    
-                    <strong><%= t(:our_services) %></strong>
-                
-                </h3>
-
-                <h4 class="ms-layer text2 caps" style="left: 115px; top: 196px;" data-type="text" data-effect="top(45)" data-duration="1800" data-delay="300" data-ease="easeOutExpo">
-                    
-                    <strong><em><%= t(:e_commerce) %></em> </strong>
-                
-                </h4>
-
-                <h5 class="ms-layer text3" style="left: 115px; top: 295px;" data-type="text" data-effect="bottom(45)" data-duration="1800" data-delay="500" data-ease="easeOutExpo">
-                    
-                    <%= t(:slider1_content).html_safe %>
-                
-                </h5>
-                
-                <% if params[:locale] == "vi" %>
-                    <a href="vi/e-commerce.html" class="ms-layer sbut1" style="left: 115px; top: 390px;" data-type="text" data-delay="700" data-ease="easeOutExpo" data-duration="1800" data-effect="scale(1.5,1.6)">
-                        
-                        <%= t(:more_info) %>
-                        
-                    </a>
-                <% else %>
-                    <a href="en/e-commerce.html" class="ms-layer sbut1" style="left: 115px; top: 390px;" data-type="text" data-delay="700" data-ease="easeOutExpo" data-duration="1800" data-effect="scale(1.5,1.6)">
-                    
-                        <%= t(:more_info) %>
-                        
-                    </a>
-                <% end %>
-
-            </div>
-            <!-- end slide 1 -->
-            
-
-            <div class="ms-slide slide-2" data-delay="5">
-
-                <div class="slide-pattern"></div>
-
-                <img src="/frontend/js/masterslider/blank.gif" data-src="/frontend/images/sliders/master/bg.jpg" alt="" />
-
-                <img src="/frontend/js/masterslider/blank.gif" data-src="/frontend/images/sliders/master/02.png" alt="" style="left:810px; top:140px;" class="ms-layer" data-type="image" data-delay="0" data-duration="2000" data-ease="easeOutExpo" data-effect="scalefrom(1.1,1.1,100,0)" />
-
-                <h3 class="ms-layer text1 caps" style="left: 115px; top: 120px;" data-type="text" data-effect="top(45)" data-duration="1800" data-delay="0" data-ease="easeOutExpo">
-                    <strong><%= t(:our_services) %></strong>
-                </h3>
-
-                <h4 class="ms-layer text2 caps" style="left: 115px; top: 156px;" data-type="text" data-effect="top(45)" data-duration="1800" data-delay="300" data-ease="easeOutExpo">
-                    <strong><em><%= t(:domains_and_hosting) %></em></strong>
-                </h4>
-
-                <h6 class="ms-layer" style="left: 115px; top: 265px;" data-type="text" data-effect="bottom(45)" data-duration="1800" data-delay="500" data-ease="easeOutExpo">
-                    <i class="fa fa-check"></i> <%= t(:domain_info_1) %>
-                </h6>
-
-                <h6 class="ms-layer" style="left: 115px; top: 300px;" data-type="text" data-effect="bottom(45)" data-duration="1800" data-delay="600" data-ease="easeOutExpo">
-                    <i class="fa fa-check"></i> <%= t(:domain_info_3) %>
-                </h6>
-
-                <h6 class="ms-layer" style="left: 115px; top: 335px;" data-type="text" data-effect="bottom(45)" data-duration="1800" data-delay="700" data-ease="easeOutExpo">
-                    <i class="fa fa-check"></i> <%= t(:domain_info_3) %>
-                </h6>
-
-
-                <h6 class="ms-layer" style="left: 115px; top: 370px;" data-type="text" data-effect="bottom(45)" data-duration="1800" data-delay="800" data-ease="easeOutExpo">
-                    <i class="fa fa-check"></i> <%= t(:domain_info_4) %>
-                </h6>
-
-                <h6 class="ms-layer" style="left: 405px; top: 265px;" data-type="text" data-effect="bottom(45)" data-duration="1800" data-delay="500" data-ease="easeOutExpo">
-                    <i class="fa fa-check"></i> <%= t(:domain_info_5) %>
-                </h6>
-
-                <h6 class="ms-layer" style="left: 405px; top: 300px;" data-type="text" data-effect="bottom(45)" data-duration="1800" data-delay="600" data-ease="easeOutExpo">
-                    <i class="fa fa-check"></i> <%= t(:domain_info_6) %>
-                </h6>
-
-                <h6 class="ms-layer" style="left: 405px; top: 335px;" data-type="text" data-effect="bottom(45)" data-duration="1800" data-delay="700" data-ease="easeOutExpo">
-                    <i class="fa fa-check"></i> <%= t(:domain_info_7) %>
-                </h6>
-
-
-                <h6 class="ms-layer" style="left: 405px; top: 370px;" data-type="text" data-effect="bottom(45)" data-duration="1800" data-delay="800" data-ease="easeOutExpo">
-                    <i class="fa fa-check"></i> <%= t(:domain_info_8) %>
-                </h6>
-
-
-                <!--<div class="ms-layer cirbox1 colored" style="left: 820px; top: 110px;" data-type="text" data-effect="top(45)" data-duration="2500" data-delay="350" data-ease="easeOutExpo">
-
-                    <span class="dncfont">Starts at</span><br /> 36.000vnđ <em>/month</em>
-
-                </div>-->
-                <% if params[:locale] == "vi" %>
-                    <a href="vi/domains-hosting.html" class="ms-layer sbut1" style="left: 115px; top: 430px;" data-type="text" data-delay="700" data-ease="easeOutExpo" data-duration="1800" data-effect="scale(1.5,1.6)">
-                        <%= t(:more_info) %>
-                    </a>
-                <% else %>
-                    <a href="en/domains-hosting.html" class="ms-layer sbut1" style="left: 115px; top: 430px;" data-type="text" data-delay="700" data-ease="easeOutExpo" data-duration="1800" data-effect="scale(1.5,1.6)">
-                        <%= t(:more_info) %>
-                    </a>
-                <% end %>
-
-            </div>
-            <!-- end slide 2 -->
-
-
-            <div class="ms-slide slide-3" data-delay="5">
-
-                <div class="slide-pattern"></div>
-
-                <img src="/frontend/js/masterslider/blank.gif" data-src="/frontend/images/sliders/master/bg.jpg" alt="" />
-
-                <img src="/frontend/js/masterslider/blank.gif" data-src="/frontend/images/sliders/master/03.png" alt="" style="left:740px; top:95px;" class="ms-layer" data-type="image" data-delay="0" data-duration="2000" data-ease="easeOutExpo" data-effect="scalefrom(1.1,1.1,0,0)" />
-
-                <img src="/frontend/js/masterslider/blank.gif" data-src="/frontend/images/sliders/master/04.png" alt="" style="right:70px; top:140px;" class="ms-layer" data-type="image" data-delay="200" data-duration="2000" data-ease="easeOutExpo" data-effect="scalefrom(1.1,1.1,70,0)" />
-
-                <h3 class="ms-layer text1 caps" style="left: 115px; top: 160px;" data-type="text" data-effect="top(45)" data-duration="1800" data-delay="0" data-ease="easeOutExpo">
-                    <strong><%= t(:our_services) %></strong>
-                </h3>
-
-                <h4 class="ms-layer text2 caps" style="left: 115px; top: 196px;" data-type="text" data-effect="top(45)" data-duration="1800" data-delay="200" data-ease="easeOutExpo">
-                    <strong><em><%= t(:slider_web_based_software_development) %></em></strong>
-                </h4>
-
-                <h6 class="ms-layer" style="left: 115px; top: 265px;" data-type="text" data-effect="bottom(45)" data-duration="1800" data-delay="500" data-ease="easeOutExpo">
-                    <i class="fa fa-check"></i> <%= t(:erp_system) %>
-                </h6>
-
-                <h6 class="ms-layer" style="left: 115px; top: 300px;" data-type="text" data-effect="bottom(45)" data-duration="1800" data-delay="600" data-ease="easeOutExpo">
-                    <i class="fa fa-check"></i> <%= t(:management_systems) %>
-                </h6>
-
-                <h6 class="ms-layer" style="left: 115px; top: 335px;" data-type="text" data-effect="bottom(45)" data-duration="1800" data-delay="700" data-ease="easeOutExpo">
-                    <i class="fa fa-check"></i> <%= t(:cost_effective_solutions) %>
-                </h6>
-                
-                <% if params[:locale] == "vi" %>
-                    <a href="vi/web-based-software-development.html" class="ms-layer sbut1" style="left: 115px; top: 390px;" data-type="text" data-delay="700" data-ease="easeOutExpo" data-duration="1800" data-effect="scale(1.5,1.6)">
-                        <%= t(:more_info) %>
-                    </a>
-                <% else %>
-                    <a href="en/web-based-software-development.html" class="ms-layer sbut1" style="left: 115px; top: 390px;" data-type="text" data-delay="700" data-ease="easeOutExpo" data-duration="1800" data-effect="scale(1.5,1.6)">
-                        <%= t(:more_info) %>
-                    </a>
-                <% end %>
-
-            </div>
-            <!-- end slide 3 -->
-
-
-            <div class="ms-slide slide-4" data-delay="5">
-
-                <div class="slide-pattern"></div>
-
-                <img src="/frontend/js/masterslider/blank.gif" data-src="/frontend/images/sliders/master/bg.jpg" alt="" />
-
-                <img src="/frontend/js/masterslider/blank.gif" data-src="/frontend/images/sliders/master/05.png" alt="" style="right:140px; top:145px;" class="ms-layer" data-type="image" data-delay="0" data-duration="2000" data-ease="easeOutExpo" data-effect="scalefrom(1.1,1.1,-50,0)" />
-
-                <img src="/frontend/js/masterslider/blank.gif" data-src="/frontend/images/sliders/master/06.png" alt="" style="right:110px; top:220px;" class="ms-layer" data-type="image" data-delay="200" data-duration="2000" data-ease="easeOutExpo" data-effect="scalefrom(1.1,1.1,70,0)" />
-                
-                <h3 class="ms-layer text1 caps" style="left: 115px; top: 120px;" data-type="text" data-effect="top(45)" data-duration="1800" data-delay="0" data-ease="easeOutExpo">
-                    <strong><%= t(:our_services) %></strong>
-                </h3>
-
-                <h4 class="ms-layer text2 caps" style="left: 115px; top: 156px;" data-type="text" data-effect="top(45)" data-duration="1800" data-delay="300" data-ease="easeOutExpo">
-                    <strong><em><%= t(:website_development) %></em></strong>
-                </h4>
-
-                <h6 class="ms-layer" style="left: 115px; top: 265px;" data-type="text" data-effect="bottom(45)" data-duration="1800" data-delay="500" data-ease="easeOutExpo">
-                    <i class="fa fa-check"></i> <%= t(:web_development_sub_1) %>
-                </h6>
-
-                <h6 class="ms-layer" style="left: 115px; top: 300px;" data-type="text" data-effect="bottom(45)" data-duration="1800" data-delay="600" data-ease="easeOutExpo">
-                    <i class="fa fa-check"></i> <%= t(:web_development_sub_2) %>
-                </h6>
-
-                <h6 class="ms-layer" style="left: 115px; top: 335px;" data-type="text" data-effect="bottom(45)" data-duration="1800" data-delay="700" data-ease="easeOutExpo">
-                    <i class="fa fa-check"></i> <%= t(:web_development_sub_3) %>
-                </h6>
-
-
-                <h6 class="ms-layer" style="left: 115px; top: 370px;" data-type="text" data-effect="bottom(45)" data-duration="1800" data-delay="800" data-ease="easeOutExpo">
-                    <i class="fa fa-check"></i> <%= t(:web_development_sub_4) %>
-                </h6>
-
-                <h6 class="ms-layer" style="left: 405px; top: 265px;" data-type="text" data-effect="bottom(45)" data-duration="1800" data-delay="500" data-ease="easeOutExpo">
-                    <i class="fa fa-check"></i> <%= t(:web_development_sub_5) %>
-                </h6>
-
-                <h6 class="ms-layer" style="left: 405px; top: 300px;" data-type="text" data-effect="bottom(45)" data-duration="1800" data-delay="600" data-ease="easeOutExpo">
-                    <i class="fa fa-check"></i> <%= t(:web_development_sub_6) %>
-                </h6>
-
-                <h6 class="ms-layer" style="left: 405px; top: 335px;" data-type="text" data-effect="bottom(45)" data-duration="1800" data-delay="700" data-ease="easeOutExpo">
-                    <i class="fa fa-check"></i> <%= t(:web_development_sub_7) %>
-                </h6>
-
-
-                <h6 class="ms-layer" style="left: 405px; top: 370px;" data-type="text" data-effect="bottom(45)" data-duration="1800" data-delay="800" data-ease="easeOutExpo">
-                    <i class="fa fa-check"></i> <%= t(:web_development_sub_8) %>
-                </h6>
-                
-                <% if params[:locale] == "vi" %>
-                    <a href="vi/website-development.html" class="ms-layer sbut1" style="left: 115px; top: 430px;" data-type="text" data-delay="700" data-ease="easeOutExpo" data-duration="1800" data-effect="scale(1.5,1.6)">
-                        More Info !
-                    </a>
-                <% else %>
-                    <a href="en/website-development.html" class="ms-layer sbut1" style="left: 115px; top: 430px;" data-type="text" data-delay="700" data-ease="easeOutExpo" data-duration="1800" data-effect="scale(1.5,1.6)">
-                        More Info !
-                    </a>
-                <% end %>
-
-            </div>
-            <!-- end slide 4 -->
-
-        </div>
-    </div>
-    <!-- end of masterslider -->
-
-    <div class="clearfix"></div>
-
-    <div class="parallax_section5">
+    <!-- Header start -->
+    <header class="top-head minimal">
         <div class="container">
+            
+            <!-- Logo start -->
+            <%= render "/home/logo" %>
+            <!-- Logo end -->
 
-            <h1 class="caps white"><strong><%= t(:what_do_we_offer) %></strong></h1>
-
-            <div class="clearfix margin_bottom1"></div>
-
-            <div class="tabs detached hide-title cross-fade">
+            <div class="responsive-nav">
                 
-                <section id="nested-instance"  style="background: white !important">
-                    <h1><span><%= t(:website) %></span></h1>
-                    <img src="/frontend/images/main-services-website-development.png" alt="" />
-                    <h2><%= t(:website_sub_1) %></h2>
-                    <p class="bigtfont dark text-justify"><%= t(:website_sub_2) %></p>
-                    <br /><br />
-                    <%= link_to t(:more_info), services_sub_1_path, class: "button two" %>
-                </section>
-                <!-- end section -->
+                <!-- top navigation menu start -->
+                <%= render "/home/top_navigation_menu" %>
+                <!-- top navigation menu end -->
                 
-                <section style="background: white !important">
-                    <h1><span><%= t(:web_based_app) %></span></h1>
-                    <img src="/frontend/images/main-services-software-development.png" alt="" />
-                    <h2><%= t(:software_development_sub_1) %></h2>
-                    <p class="bigtfont dark text-justify"><%= t(:software_development_sub_2) %></p>
-                    <br /><br />
-                    <%= link_to t(:more_info), services_sub_2_path, class: "button two" %>
-                </section>
-                <!-- end section -->
+                <div class="f-right">
+                    <!-- top search start -->
+                    <%= render "/home/top_search" %>
+                    <!-- top search end -->
+                </div>
                 
-                <section style="background: white !important">
-                    <h1><span><%= t(:email_marketing) %></span></h1>
-                    <img src="/frontend/images/main-services-email-marketing.png" alt="" />
-                    <h2><%= t(:email_marketing_sub_1) %></h2>
-                    <p class="bigtfont dark text-justify"><%= t(:email_marketing_sub_2) %></p>
-                    <br /><br />
-                    <%= link_to t(:more_info), services_sub_8_path, class: "button two" %>
-                </section>
-                <!-- end section -->
-                
-                <section style="background: white !important">
-                    <h1><span><%= t(:domains_and_hosting) %></span></h1>
-                    <img src="/frontend/images/main-services-domains-hosting.png" alt="" />
-                    <h2><%= t(:domains_and_hosting_sub_1) %></h2>
-                    <p class="bigtfont dark text-justify"><%= t(:domains_and_hosting_sub_2) %></p>
-                    <br /><br />
-                    <%= link_to t(:more_info), domains_hosting_path, class: "button two" %>
-                </section>
-                <!-- end section -->
-
             </div>
-
         </div>
-    </div>
-    <!-- end parallax section 1 -->
+    </header>
+    <!-- Header start -->
 
+    <!-- Content start -->
+    <div class="pageContent">
 
-    <div class="clearfix"></div>
-    <div class="margin_bottom9"></div>
+        <div class="page-title lg-padding">
+            <div class="container">
+                <h1 class="t-center font-50 uppercase bolder">Welcome To <span class="main-color">Global Naturesoft</span></h1>
+                <h3 class="t-center">Now you can check all our work and work in progress, it is amazing and Awesome.</h3>
+            </div>
+        </div>
 
+        <div class="md-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
 
-    <div class="alicent">
-        
-        <h1 class="caps"><strong><%= t(:recent_works) %></strong></h1>
-    
-    </div>
-
-    <div class="clearfix margin_bottom2"></div>
-
-
-    <div id="slider-outline">
-
-        <div id="slider">
-
-            <div id="sl-view" class="clearfix">
-
-                <div id="sl-wrap">
-                    
-                    <% @projects.each do |item| %>
-                        
-                        <div class="sl-div">
-                            
-                            <%= link_to t(:view_detail), work_detail_path(project_id: item) %>
-                            
-                            <img src="<%= item.image_url.fill_small %>" alt="<%= item.name %>" /></a>
-                        
+                        <div class="filter-by style4">
+                            <ul id="filters">
+                                <li class="selected"><a href="#" class="filter" data-filter="*"><span>All</span></a></li>
+                                <li><a href="#" class="filter" data-filter=".design"><span>Web Design</span></a></li>
+                                <li><a href="#" class="filter" data-filter=".develop"><span>Web Development</span></a></li>
+                                <li><a href="#" class="filter" data-filter=".computers"><span>Computers</span></a></li>
+                            </ul>
                         </div>
-                       
-                        <!-- end section -->
-                    
-                    <% end %>
 
+                        <div class="portfolio masonry p-3-cols p-style3" id="masonry">
+
+                            <div class="portfolio-item design">
+                                <figure>
+                                    <img alt="" src="frontend/assets/images/portfolio/masonry/1.jpg">
+                                    <figcaption>
+                                        <div class="port-captions">
+                                            <h4><a href="portfolio-single.html">Quality Products for Companies</a></h4>
+                                            <p class="description"><a href="#">Design</a>, <a href="#">Development</a></p>
+                                        </div>
+                                        <div class="icon-links">
+                                            <a href="portfolio-single.html" class="link"><i class="fa fa-link"></i></a>
+                                            <a href="frontend/assets/images/portfolio/masonry/1.jpg" class="zoom" title="Quality Products for Companies"><i class="fa fa-search-plus"></i></a>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div class="portfolio-item develop">
+                                <figure>
+                                    <img alt="" src="frontend/assets/images/portfolio/masonry/2.jpg">
+                                    <figcaption>
+                                        <div class="port-captions">
+                                            <h4><a href="portfolio-single.html">Nature vs. Man</a></h4>
+                                            <p class="description"><a href="#">Design</a>, <a href="#">Development</a></p>
+                                        </div>
+                                        <div class="icon-links">
+                                            <a href="portfolio-single.html" class="link"><i class="fa fa-link"></i></a>
+                                            <a href="frontend/assets/images/portfolio/masonry/2.jpg" class="zoom" title="Nature vs. Man"><i class="fa fa-search-plus"></i></a>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div class="portfolio-item computers">
+                                <figure>
+                                    <img alt="" src="frontend/assets/images/portfolio/masonry/3.jpg">
+                                    <figcaption>
+                                        <div class="port-captions">
+                                            <h4><a href="portfolio-single.html">A Day with Sunshine & Bliss</a></h4>
+                                            <p class="description"><a href="#">Design</a>, <a href="#">Development</a></p>
+                                        </div>
+                                        <div class="icon-links">
+                                            <a href="portfolio-single.html" class="link"><i class="fa fa-link"></i></a>
+                                            <a href="frontend/assets/images/portfolio/masonry/3.jpg" class="zoom" title="A Day with Sunshine & Bliss"><i class="fa fa-search-plus"></i></a>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div class="portfolio-item develop">
+                                <figure>
+                                    <img alt="" src="frontend/assets/images/portfolio/masonry/4.jpg">
+                                    <figcaption>
+                                        <div class="port-captions">
+                                            <h4><a href="portfolio-single.html">A Workplace for Champions</a></h4>
+                                            <p class="description"><a href="#">Design</a>, <a href="#">Development</a></p>
+                                        </div>
+                                        <div class="icon-links">
+                                            <a href="portfolio-single.html" class="link"><i class="fa fa-link"></i></a>
+                                            <a href="frontend/assets/images/portfolio/masonry/4.jpg" class="zoom" title="A Workplace for Champions"><i class="fa fa-search-plus"></i></a>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div class="portfolio-item design">
+                                <figure>
+                                    <img alt="" src="frontend/assets/images/portfolio/masonry/5.jpg">
+                                    <figcaption>
+                                        <div class="port-captions">
+                                            <h4><a href="portfolio-single.html">Doing it the Chilled Way</a></h4>
+                                            <p class="description"><a href="#">Design</a>, <a href="#">Development</a></p>
+                                        </div>
+                                        <div class="icon-links">
+                                            <a href="portfolio-single.html" class="link"><i class="fa fa-link"></i></a>
+                                            <a href="frontend/assets/images/portfolio/masonry/5.jpg" class="zoom" title="Doing it the Chilled Way"><i class="fa fa-search-plus"></i></a>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div class="portfolio-item computers">
+                                <figure>
+                                    <img alt="" src="frontend/assets/images/portfolio/masonry/6.jpg">
+                                    <figcaption>
+                                        <div class="port-captions">
+                                            <h4><a href="portfolio-single.html">Take a Ride in a Luxury Car</a></h4>
+                                            <p class="description"><a href="#">Design</a>, <a href="#">Development</a></p>
+                                        </div>
+                                        <div class="icon-links">
+                                            <a href="portfolio-single.html" class="link"><i class="fa fa-link"></i></a>
+                                            <a href="frontend/assets/images/portfolio/masonry/6.jpg" class="zoom" title="Take a Ride in a Luxury Car"><i class="fa fa-search-plus"></i></a>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                            <div class="portfolio-item develop">
+                                <figure>
+                                    <img alt="" src="frontend/assets/images/portfolio/masonry/7.jpg">
+                                    <figcaption>
+                                        <div class="port-captions">
+                                            <h4><a href="portfolio-single.html">A Workplace for Champions</a></h4>
+                                            <p class="description"><a href="#">Design</a>, <a href="#">Development</a></p>
+                                        </div>
+                                        <div class="icon-links">
+                                            <a href="portfolio-single.html" class="link"><i class="fa fa-link"></i></a>
+                                            <a href="frontend/assets/images/portfolio/masonry/7.jpg" class="zoom" title="A Workplace for Champions"><i class="fa fa-search-plus"></i></a>
+                                        </div>
+                                    </figcaption>
+                                </figure>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="no-padding">
+            <div class="container">
+                <div class="cta_btn outlined gry-border p-a-3">
+
+                    <div class="cta-icon cta-left">
+                        <i class="fa fa-heart gry-border main-color"></i>
+                    </div>
+
+                    <div class="cta-left">
+                        <h2 class="cta_heading">Discover the exciting world of outside. <span class="main-color uppercase">Subscribe today</span></h2>
+                        <h4 class="cta_heading">So if you were waiting for the perfect time to seize this opportunity, the time is now. Call us at <span class="main-color bolder">+2(888)123-4567</span>.</h4>
+                    </div>
+
+                    <div class="cta-right cta-small">
+                        <a class="btn btn-xl btn-outlined btn-grey" href="#">Purchase Now</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="md-padding">
+            <div class="container">
+
+                <div class="heading style2">
+                    <h4 class="uppercase">Some Of <span class="main-color">Our Clients</span></h4>
+                </div>
+
+                <div class="horizontal-slider" data-slides_count="6" data-scroll_amount="6" data-slider-speed="300" data-slider-infinite="1" data-slider-dots="1" data-slider-arrows="0">
+                    <div>
+                        <a href="#"><img alt="" src="frontend/assets/images/clients/1.png"></a>
+                    </div>
+                    <div>
+                        <a href="#"><img alt="" src="frontend/assets/images/clients/2.png"></a>
+                    </div>
+                    <div>
+                        <a href="#"><img alt="" src="frontend/assets/images/clients/3.png"></a>
+                    </div>
+                    <div>
+                        <a href="#"><img alt="" src="frontend/assets/images/clients/4.png"></a>
+                    </div>
+                    <div>
+                        <a href="#"><img alt="" src="frontend/assets/images/clients/5.png"></a>
+                    </div>
+                    <div>
+                        <a href="#"><img alt="" src="frontend/assets/images/clients/6.png"></a>
+                    </div>
+                    <div>
+                        <a href="#"><img alt="" src="frontend/assets/images/clients/7.png"></a>
+                    </div>
+                    <div>
+                        <a href="#"><img alt="" src="frontend/assets/images/clients/8.png"></a>
+                    </div>
+                    <div>
+                        <a href="#"><img alt="" src="frontend/assets/images/clients/9.png"></a>
+                    </div>
                 </div>
 
             </div>
-
-            <div id="sl-next"><span>&raquo;</span></div>
-            <div id="sl-prev"><span>&laquo;</span></div>
-
         </div>
 
     </div>
-    <!-- end portfolio works section -->
-    
-    <div class="clearfix margin_bottom9"></div>
+    <!-- Content start -->
 
-    <div class="alicent">
-        
-        <h1 class="caps"><strong><%= t(:our_services) %></strong></h1>
-    
-    </div>
-    
-    <ul class="pop-wrapper">
-
-        <li>
-            <a href="<%= services_sub_1_path %>"> <img src="/frontend/images/our-services-website-development.png" alt="Website Development">
-            <h6><%= t(:website_development) %></h6></a>
-        </li>
-
-        <li>
-            <a href="<%= services_sub_2_path %>"> <img src="/frontend/images/our-services-software-development.png" alt="Web-based Software Development">
-            <h6><%= t(:web_based_software_development) %></h6></a>
-        </li>
-
-        <li>
-            <a href="<%= services_sub_1_3_path %>"> <img src="/frontend/images/our-services-e-commerce.png" alt="E-Commerce">
-            <h6><%= t(:e_commerce) %></h6></a>
-        </li>
-
-        <li>
-            <a href="<%= services_sub_4_path %>"> <img src="/frontend/images/our-services-google-apps.png" alt="Google Apps for Business">
-            <h6><%= t(:google_apps_for_bussiness) %></h6></a>
-        </li>
-
-        <li>
-            <a href="<%= services_sub_5_path %>"> <img src="/frontend/images/our-services-outsourcing.jpg" alt="Outsourcing">
-            <h6><%= t(:outsourcing) %></h6></a>
-        </li>
-
-        <li>
-            <a href="<%= services_sub_6_path %>"> <img src="/frontend/images/our-services-research-development.png" alt="Research & Development">
-            <h6><%= t(:research_and_development) %></h6></a>
-        </li>
-        
-        <li>
-            <a href="<%= services_sub_7_path %>"> <img src="/frontend/images/our-services-systems-integration.png" alt="Systems Integration">
-            <h6><%= t(:systems_integration) %></h6></a>
-        </li>
-        
-        <li>
-            <a href="<%= services_sub_8_path %>"> <img src="/frontend/images/our-services-email-marketing.png" alt="Email Marketing">
-            <h6><%= t(:email_marketing) %></h6></a>
-        </li>
-
-    </ul>
-
-    <div class="clearfix margin_bottom5"></div>
-    
-    <div class="feature_section5">
-        
-        <div class="container">
-
-            <ul>
-                <li><img src="/frontend/images/scripts-logo12.png" alt="" /></li>
-                <li><img src="/frontend/images/scripts-logo11.png" alt="" /></li>
-                <li><img src="/frontend/images/scripts-logo1.jpg" alt="" /></li>
-                <li><img src="/frontend/images/scripts-logo2.jpg" alt="" /></li>
-                <li><img src="/frontend/images/scripts-logo3.jpg" alt="" /></li>
-                <li><img src="/frontend/images/scripts-logo7.jpg" alt="" /></li>
-                
-                <li><img src="/frontend/images/scripts-logo8.jpg" alt="" /></li>
-                <li><img src="/frontend/images/scripts-logo4.jpg" alt="" /></li>
-                <li><img src="/frontend/images/scripts-logo10.png" alt="" /></li>
-                <li><img src="/frontend/images/scripts-logo5.jpg" alt="" /></li>
-                <li><img src="/frontend/images/scripts-logo6.jpg" alt="" /></li>
-                <li><img src="/frontend/images/scripts-logo9.jpg" alt="" /></li>
-                
-            </ul>
-            
-        </div>
-        
-    </div>
-    <!-- end featured section 5-->
- 
-    <%= render "footer" %>
-    <!-- end footer -->
-
-    <div class="clearfix"></div>
-
-    <a href="#" class="scrollup">Scroll</a>
-    <!-- end scroll to top of the page-->
+    <!-- Footer start -->
+    <%= render "/home/footer" %>
+    <!-- Footer end -->
 
 </div>
 
-<!-- ######### JS FILES ######### -->
-<!-- get jQuery used for the theme -->
+<!-- Back to top Link -->
+<a id="to-top" href="#"><span class="fa fa fa-angle-up"></span></a>
+
 <%= render "/home/js_files" %>
 
-<!-- get jQuery used for the theme - only home page -->
-<script src="/frontend/js/masterslider/masterslider.min.js"></script>
-<script src="/frontend/js/loopslider/jquery.loopslider.js"></script>
-<script src="/frontend/js/tabs2/index.js"></script>
-<script>
-    (function($) {
-        "use strict";
-        var slider = new MasterSlider();
-        // adds Arrows navigation control to the slider.
-        slider.control('arrows');
-        slider.control('bullets');
+<!-- SLIDER REVOLUTION  -->
+<script type="text/javascript" src="/frontend/assets/revolution/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="/frontend/assets/revolution/js/jquery.themepunch.revolution.min.js"></script>
 
-        slider.setup('masterslider', {
-            width: 1400, // slider standard width
-            height: 580, // slider standard height
-            space: 0,
-            speed: 45,
-            layout: 'fullwidth',
-            loop: true,
-            preload: 0,
-            overPause: true,
-            autoplay: true,
-            view: "fade"
-        });
-    })(jQuery);
-    var slider = new MasterSlider();
-    slider.setup('masterslider2', {
-        width: 1400, // slider standard width
-        height: 580, // slider standard height
-        space: 1,
-        layout: 'fullwidth',
-        loop: true,
-        preload: 0,
-        autoplay: true
+<script type="text/javascript">
+    var tpj = jQuery;
+    var revapi429;
+    tpj(window).load(function() {
+        if (tpj("#rev_slider_429_1").revolution == undefined) {
+            revslider_showDoubleJqueryError("#rev_slider_429_1");
+        } else {
+            revapi429 = tpj("#rev_slider_429_1").show().revolution({
+                sliderType: "standard",
+                jsFileLocation: "/frontend/assets/revolution/js/",
+                sliderLayout: "fullwidth",
+                dottedOverlay: "none",
+                delay: 9000,
+                navigation: {
+                    keyboardNavigation: "on",
+                    keyboard_direction: "vertical",
+                    mouseScrollNavigation: "off",
+                    mouseScrollReverse: "default",
+                    onHoverStop: "off",
+                    touch: {
+                        touchenabled: "on",
+                        swipe_threshold: 75,
+                        swipe_min_touches: 1,
+                        swipe_direction: "vertical",
+                        drag_block_vertical: false
+                    },
+                    arrows: {
+                        style: "metis",
+                        enable: true,
+                        hide_onmobile: false,
+                        hide_onleave: true,
+                        tmp: '',
+                        left: {
+                            h_align: "left",
+                            v_align: "center",
+                            h_offset: 10,
+                            v_offset: 0
+                        },
+                        right: {
+                            h_align: "right",
+                            v_align: "center",
+                            h_offset: 10,
+                            v_offset: 0
+                        }
+                    },
+                    bullets: {
+                        enable: false,
+                        hide_onmobile: true,
+                        hide_under: 778,
+                        style: "hermes",
+                        hide_onleave: false,
+                        direction: "vertical",
+                        h_align: "right",
+                        v_align: "center",
+                        h_offset: 20,
+                        v_offset: 0,
+                        space: 5,
+                        tmp: ''
+                    }
+                },
+                responsiveLevels: [1240, 1024, 778, 480],
+                visibilityLevels: [1240, 1024, 778, 480],
+                gridwidth: [1200, 1024, 768, 480],
+                gridheight: [650, 650, 960, 720],
+                lazyType: "smart",
+                shadow: 0,
+                spinner: "spinner2",
+                autoHeight: "off",
+                disableProgressBar: "on",
+                hideThumbsOnMobile: "off",
+                hideSliderAtLimit: 0,
+                hideCaptionAtLimit: 0,
+                hideAllCaptionAtLilmit: 0,
+                debugMode: false,
+                fallbacks: {
+                    simplifyAll: "off",
+                    disableFocusListener: false,
+                }
+            });
+        }
     });
-    (function($) {
-        "use strict";
-        $('.accordion, .tabs').TabsAccordion({
-            hashWatch: true,
-            pauseMedia: true,
-            responsiveSwitch: 'tablist',
-            saveState: sessionStorage,
-        });
-
-    })(jQuery);
-    $('#slider').loopSlider({
-        autoMove: true,
-        mouseOnStop: true,
-        turn: 9000,
-        motion: 'swing',
-        delay: 500,
-        width: 750,
-        height: 500,
-        marginLR: 5,
-        viewSize: 100,
-        viewOverflow: 'visible',
-        navPositionBottom: 30,
-        navibotton: true,
-        navbtnImage: ''
-    }); 
 </script>
