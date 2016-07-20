@@ -4,3 +4,13 @@
 .md-padding, .section {
     padding-top: 20px;
 }
+.mega-content > div > ul > li > span {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.tools {
+    display: none;
+}
+.top-nav ul li ul {
+    min-width: 250px;
+}

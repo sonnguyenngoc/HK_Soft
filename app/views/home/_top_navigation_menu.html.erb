@@ -1,10 +1,10 @@
 <nav class="top-nav">
     <ul>
-        <li class="selected"><%= link_to "<span>Home</span>".html_safe, root_path %></li>
+        <li<% if params[:controller] == "home" %> class="selected"<% end %>><%= link_to "<span>Home</span>".html_safe, root_path %></li>
         
         <% ArticleCategory.get_by_level(1).each do |menu| %>
             <% if menu.children.count == 0 %>
-                <li><%= link_to "#('<span>' + menu.name + '</span>').html_safe", { controller: "post_detail", action: "index", category_id: menu.id } %></li>
+                <li><%= link_to "#{'<span>' + menu.name + '</span>'}".html_safe, { controller: "post_detail", action: "index", category_id: menu.id } %></li>
             <% else %>
                 <li>
                     <%= link_to "#{'<span>' + menu.name + '</span>'}".html_safe, { controller: "post_detail", action: "index", category_id: menu.id } %>
@@ -107,6 +107,7 @@
         <!--        </li>-->
         <!--    </ul>-->
         <!--</li>-->
-        <li><%= link_to "<span>Contact</span>".html_safe, contact_path %></li>
+        <li<% if params[:controller] == "contact" %> class="selected"<% end %>><%= link_to "<span>Contact</span>".html_safe, contact_path %></li>
+
     </ul>
 </nav>

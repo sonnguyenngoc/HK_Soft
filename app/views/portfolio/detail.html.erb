@@ -1,0 +1,155 @@
+<div class="pageWrapper">
+
+    <!-- Header start -->
+    <header class="top-head minimal">
+        <div class="container">
+            <!-- Logo start -->
+            <%= render "/home/logo" %>
+            <!-- Logo end -->
+            
+            <div class="responsive-nav">
+                <!-- top navigation menu start -->
+                <%= render "/home/top_navigation_menu" %>
+                <!-- top navigation menu end -->
+                <div class="f-right">
+                    <!-- top search start -->
+                    <%= render "/home/top_search" %>
+                    <!-- top search end -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header start -->
+    
+    <!-- Content start -->
+    <div class="pageContent">
+            
+        <div class="xl-padding parallax portfolio single-pro-img" style="background-image: url(/frontend/assets/images/bgs/girls.jpg);" data-stellar-background-ratio="0.65" data-overlay="rgba(0,0,0,.7)">
+            <div class="container">
+                <div class="row">
+                    <div class="t-center margin-top-100">
+                        <h1 class="white font-50">Quality Products for Companies</h1>
+                        <p class="white font-15">Lorem ipsum dolor sit amet, co sectetur adipiscing elit. Nullam convallis euismod mollis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nlis euismod mollis. Nullam convallis euismod mollis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nlis euismod mollis.Lorem ipsum dolor sit amet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+                        
+        <div class="md-padding">
+            <div class="container">
+                <div class="row row-eq-height">
+                    <div class="col-md-4">
+                        <div class="heading style3">
+                            <h3 class="uppercase"><i class="fa fa-info-circle"></i><span class="main-color">Project </span>Info</h3>
+                        </div>
+                        <ul class="list lg-v-pad">
+                            <li>
+                                <i class="fa fa-tag"></i> <span class="bold main-color">Category:</span> <a href="#">Computers</a>, <a href="#">Just food</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-user"></i> <span class="bold main-color">Added By:</span> John Martin
+                            </li>
+                            <li>
+                                <i class="fa fa-calendar"></i> <span class="bold main-color">Date Added:</span> Jan 15, 2014
+                            </li>
+                            <li><i class="fa fa-check"></i> <span class="bold main-color">Customer:</span> ThemeForest.</li>
+                            <li class="social-list">
+                                <span class="f-left m-r-1" style="margin-top: 5px"><i class="fa fa-share-alt"></i> <span class="bold main-color">Share Project:</span> </span>
+                                    <a href="#" data-toggle="tooltip" data-placement="top" data-original-title="Facebook"><i class="fa fa-facebook ic-facebook sm-icon no-border"></i></a>
+                                    <a href="#" data-toggle="tooltip" data-placement="top" data-original-title="Twitter"><i class="fa fa-twitter ic-twitter sm-icon no-border"></i></a>
+                                    <a href="#" data-toggle="tooltip" data-placement="top" data-original-title="Linkedin"><i class="fa fa-linkedin ic-linkedin sm-icon no-border"></i></a>
+                                    <a href="#" data-toggle="tooltip" data-placement="top" data-original-title="Dribbble"><i class="fa fa-dribbble ic-dribbble sm-icon no-border"></i></a>
+                                    <a href="#" data-toggle="tooltip" data-placement="top" data-original-title="Google Plus"><i class="fa fa-google-plus ic-gplus sm-icon no-border"></i></a>
+
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="vertical-sep"></div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="heading style3">
+                            <h3 class="uppercase"><i class="fa fa-desktop"></i><span class="main-color">Case </span>Study</h3>
+                        </div>
+                        <p>
+                        
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget lacus sit amet neque posuere aliquet. In interdum nisl sapien, vel dignissim nulla porta at. Sed accumsan nunc vitae mollis consequat. Fusce mollis massa vel leo imperdiet ultrices. Cras ut tristique tellus. 
+                        <br><br>
+                        Vivamus sit amet odio pellentesque odio faucibus tristique. Morbi facilisis, ligula a faucibus pellentesque, orci justo consequat massa, sit amet dapibus dolor diam viverra mi. Aenean porttitor, lectus atfacilisis, ligula a faucibus pellentesque, orci justo consequat massa, sit amet dapibus dolor diam viverra mi. Aenean porttitor, lectus atfacilisis, ligula a faucibus pellentesque, orci justo consequat massa, sit amet dapibus dolor diam viverra mi.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="md-padding gry-bg">
+            <div class="container">
+                <div class="heading style3">
+                    <h3 class="uppercase"><i class="fa fa-desktop"></i><span class="main-color">Related </span>Projects</h3>
+                </div>
+                <div class="row">
+                    <div class="portfolio p-style3">
+                        <div class="portfolio-item col-md-4">
+                            <figure>
+                                <img alt="" src="/frontend/assets/images/portfolio/grid/1.jpg">
+                                <figcaption>
+                                    <div class="port-captions">
+                                        <h4><%= link_to "Quality Products for Companies", portfolio_detail_path %></h4>
+                                        <p class="description"><a href="#">Design</a>, <a href="#">Development</a></p>
+                                    </div>
+                                    <div class="icon-links">
+                                        <%= link_to '<i class="fa fa-link"></i>'.html_safe, portfolio_detail_path, class: "link" %>
+                                        <a href="/frontend/assets/images/portfolio/grid/1.jpg" class="zoom" title="Quality Products for Companies"><i class="fa fa-search-plus"></i></a>
+                                    </div>
+                                </figcaption>			
+                            </figure>
+                        </div>
+                        <div class="portfolio-item col-md-4">
+                            <figure>
+                                <img alt="" src="/frontend/assets/images/portfolio/grid/2.jpg">
+                                <figcaption>
+                                    <div class="port-captions">
+                                        <h4><%= link_to "Nature vs. Man", portfolio_detail_path %></h4>
+                                        <p class="description"><a href="#">Design</a>, <a href="#">Development</a></p>
+                                    </div>
+                                    <div class="icon-links">
+                                        <%= link_to '<i class="fa fa-link"></i>'.html_safe, portfolio_detail_path, class: "link" %>
+                                        <a href="/frontend/assets/images/portfolio/grid/2.jpg" class="zoom" title="Nature vs. Man"><i class="fa fa-search-plus"></i></a>
+                                    </div>
+                                </figcaption>			
+                            </figure>
+                        </div>
+                        <div class="portfolio-item col-md-4">
+                            <figure>
+                                <img alt="" src="/frontend/assets/images/portfolio/grid/3.jpg">
+                                <figcaption>
+                                    <div class="port-captions">
+                                        <h4><%= link_to "A Day with Sunshine & Bliss", portfolio_detail_path %></h4>
+                                        <p class="description"><a href="#">Design</a>, <a href="#">Development</a></p>
+                                    </div>
+                                    <div class="icon-links">
+                                        <%= link_to '<i class="fa fa-link"></i>'.html_safe, portfolio_detail_path, class: "link" %>
+                                        <a href="/frontend/assets/images/portfolio/grid/3.jpg" class="zoom" title="A Day with Sunshine & Bliss"><i class="fa fa-search-plus"></i></a>
+                                    </div>
+                                </figcaption>			
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>			    
+    <!-- Content start -->
+
+    <!-- Footer start -->
+    <%= render "/home/footer" %>
+    <!-- Footer end -->
+
+</div>
+
+<!-- Back to top Link -->
+<a id="to-top" href="#"><span class="fa fa fa-angle-up"></span></a>
+
+<%= render "/home/js_files" %>
