@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Home | Global Naturesoft</title>
+    <meta name="description" content="Global Naturesoft | Hoang Khang Incotech">
+    <meta name="author" content="Naturesoft">
+
+    <!-- Devices Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Put favicon.ico and apple-touch-icon(s).png in the images folder -->
+    <link rel="shortcut icon" href="/frontend/assets/images/favicon.ico">
+    
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Oswald:400,100,300,500,700%7CLato:400,300,700,900&subset=latin,latin-ext" %>
+    <!-- Plugins CSS files -->
+    <link rel="stylesheet" href="/frontend/assets/css/assets.css">
+
+    <!-- REVOLUTION SLIDER STYLES -->
+    <link rel="stylesheet" href="/frontend/assets/revolution/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" type="text/css">
+    <link rel="stylesheet" href="/frontend/assets/revolution/css/settings.css" type="text/css">
+    <link rel="stylesheet" href="/frontend/assets/revolution/css/navigation.css" type="text/css">
+
+    <link id="theme_css" rel="stylesheet" href="/frontend/assets/css/light.css">
+    <link id="theme_css" rel="stylesheet" href="/frontend/assets/css/custom.css">
+    <link id="skin_css" rel="stylesheet" href="/frontend/assets/css/skins/default.css">
+
+    <script type="text/javascript">
+        $SA = {
+            s: 259314,
+            asynch: 1,
+            useBlacklistUrl: 1
+        };
+        (function() {
+            var sa = document.createElement("script");
+            sa.type = "text/javascript";
+            sa.async = true;
+            sa.src = ("https:" == document.location.protocol ? "https://" + $SA.s + ".sa" : "http://" + $SA.s + ".a") + ".siteapps.com/" + $SA.s + ".js";
+            var t = document.getElementsByTagName("script")[0];
+            t.parentNode.insertBefore(sa, t);
+        })();
+    </script>
+</head>
+
+<body>
+
+    <!-- site preloader start -->
+    <div class="page-loader"></div>
+    <!-- site preloader end -->
+
+    <%= yield %>
+
+</body>
+
+</html>

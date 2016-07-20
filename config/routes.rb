@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  root "home#index"
+  get 'post_detail/index'
+
   devise_for :users
-  
-  scope "(:locale)", locale: /vi|en/ do
+  scope "(:locale)", locale: /vi|en/, defaults: {locale: "en"} do
+    
+    root "home#index"
+    get "contact-us.html" => "contact#index", as: :contact
+    get "post-detail.html" => "post_detail#index", as: :post_detail
+    
     namespace :admin, path: "quan-tri" do
       get "/" => "main#index"
       scope(:path_names => { :new => "tao-moi", :edit => "chinh-sua" }) do

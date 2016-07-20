@@ -1,0 +1,194 @@
+<div class="pageWrapper">
+    <!-- Top bar start -->
+    <%= render "/home/top_bar" %>
+    <!-- Top bar end -->
+    
+    <!-- Header start -->
+    <header class="top-head minimal">
+        <div class="container">
+            <!-- Logo start -->
+            <%= render "/home/logo" %>
+            <!-- Logo end -->
+            
+            <div class="responsive-nav">
+                <!-- top navigation menu start -->
+                <%= render "/home/top_navigation_menu" %>
+                <!-- top navigation menu end -->
+                <div class="f-right">
+                    <!-- top search start -->
+                    <%= render "/home/top_search" %>
+                    <!-- top search end -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header start -->
+    
+    <!-- Content start -->
+    <div class="pageContent">
+        
+        <div class="page-title tbg">
+            <div class="container">
+                <h1>Blog post title with Image</h1>
+            </div>
+        </div>
+        <div class="breadcrumbs">
+            <div class="container">
+                <%= link_to "Home", root_path %><i class="fa fa-long-arrow-right main-color"></i><%= link_to "Category", "#" %><i class="fa fa-long-arrow-right main-color"></i><span>Blog post title with Image</span>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="row row-eq-height">
+                <div class="col-md-9 md-padding main-content">
+
+                    <div class="blog-single">
+                        
+                        <div class="post-item">
+                            
+                            <article class="post-content">
+                                
+                                <p class="text-justify">
+                                    Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.<br><br>
+                                    Phasellus tristique libero vel justo aliquam pellentesque. Maecenas vestibulum velit est, in tincidunt arcu fermentum id. Morbi ipsum arcu, iaculis nec sapien vel, egestas viverra eros. Phasellus ac dolor elit. Donec nisl tellus, posuere in commodo ac, placerat a elit. Nulla fringilla venenatis metus, sed laoreet nisi varius non. Nunc placerat tempor orci id mattis. Suspendisse pulvinar nisl neque, rutrum pellentesque neque commodo non. Maecenas ultrices tortor sit amet suscipit tempor. Aenean et nunc pharetra, pulvinar nibh sed, mattis urna. Morbi vel lectus convallis, tristique mi non, feugiat eros.<br><br>
+                                    Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.<br><br>
+                                </p>
+                                
+                                <div class="post-tools">
+                                    <div class="post-tags">
+                                        <i class="fa fa-tags"></i><span class="main-color"><strong>Tags: </strong> </span>
+                                        <a href="#">Responsive</a>, 
+                                        <a href="#"> Business</a>, 
+                                        <a href="#"> HTML</a>, 
+                                        <a href="#"> Design</a>, 
+                                        <a href="#"> WordPress</a>
+                                    </div>
+
+                                    <div class="share-post">
+                                        <div class="f-left m-t-2 custom-font font-15 main-color">Share This Post on :</div>
+                                        <div class="f-right" id="share_btns" data-easyshare data-easyshare-url="">
+                                            
+                                            <button class="facebook" data-easyshare-button="facebook">
+                                                <span class="fa fa-facebook"></span>
+                                                <span class="share_num" data-easyshare-button-count="facebook"></span>
+                                            </button>
+                                            
+                                            <button class="twitter" data-easyshare-button="twitter" data-easyshare-tweet-text="">
+                                                <span class="fa fa-twitter"></span>
+                                                <span class="share_num" data-easyshare-button-count="twitter"></span>
+                                            </button>
+                                            
+                                            <button class="googleplus" data-easyshare-button="google">
+                                                <span class="fa fa-google-plus"></span>
+                                                <span class="share_num" data-easyshare-button-count="google"></span>
+                                            </button>
+                                            
+                                            <button class="linkedin" data-easyshare-button="linkedin">
+                                                  <span class="fa fa-linkedin"></span>
+                                                  <span class="share_num" data-easyshare-button-count="linkedin"></span>
+                                            </button>
+                                            
+                                            <button class="pinterest" data-easyshare-button="pinterest">
+                                                  <span class="fa fa-pinterest-p"></span>
+                                                  <span class="share_num" data-easyshare-button-count="pinterest"></span>
+                                            </button>
+                                            
+                                            <button class="xing" data-easyshare-button="xing">
+                                                  <span class="fa fa-xing"></span>
+                                                  <span class="share_num" data-easyshare-button-count="xing"></span>
+                                            </button>
+
+                                            <button class="total-shrs" data-easyshare-button="total">
+                                                <span data-easyshare-total-count>0</span>
+                                                <span class="share_num">Shares</span>
+                                            </button>
+                                            
+                                            <div data-easyshare-loader>Loading...</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </article>
+                        </div><!-- .post-item end -->
+
+                    </div>
+
+                </div>
+                
+                <div class="col-md-3 md-padding sidebar">
+                    <div class="sidebar-widgets">
+                        <ul>
+                            
+                            <li class="widget w-recent-posts">
+                                <h4 class="widget-title"><span class="main-color">Recent </span>Posts</h4>
+                                <div class="widget-content">
+                                    <ul>
+                                        <li>
+                                            <div class="post-img">
+                                                <a href="blog-single.html"><img src="/frontend/assets/images/blog/small/1.jpg" alt=""></a>
+                                            </div>
+                                            <div class="widget-post-info">
+                                                <h5><a href="blog-single.html">Blog post title with Image</a></h5>
+                                                <div class="meta">
+                                                    <span><i class="fa fa-clock-o"></i>Dec 28, 2013,</span><a href="blog-single.html"><i class="fa fa-comments"></i>15</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="post-img">
+                                                <a href="blog-single.html"><img src="/frontend/assets/images/blog/small/2.jpg" alt=""></a>
+                                            </div>
+                                            <div class="widget-post-info">
+                                                <h5><a href="blog-single.html">Blog post title</a></h5>
+                                                <div class="meta">
+                                                    <span><i class="fa fa-clock-o"></i>Dec 28, 2013,</span><a href="blog-single.html"><i class="fa fa-comments"></i>15</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="post-img">
+                                                <a href="blog-single.html"><img src="/frontend/assets/images/blog/small/3.jpg" alt=""></a>
+                                            </div>
+                                            <div class="widget-post-info">
+                                                <h5><a href="blog-single.html">Blog post title with Image</a></h5>
+                                                <div class="meta">
+                                                    <span><i class="fa fa-clock-o"></i>Dec 28, 2013,</span><a href="blog-single.html"><i class="fa fa-comments"></i>15</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            
+                            <li class="widget widget-categories">
+                                <h4 class="widget-title"><span class="main-color">Blog</span> Categories</h4>
+                                <div class="widget-content">
+                                    <ul>
+                                        <li><a href="blog-single.html">Corporate news</a><span>[12]</span></li>
+                                        <li><a href="blog-single.html">Information technology</a><span>[5]</span></li>
+                                        <li><a href="blog-single.html">Web development</a><span>[3]</span></li>
+                                        <li><a href="blog-single.html">Sports News</a><span>[25]</span></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>			    			    
+    <!-- Content start -->
+
+    <!-- Footer start -->
+    <%= render "/home/footer" %>
+    <!-- Footer end -->
+
+</div>
+
+<!-- Back to top Link -->
+<a id="to-top" href="#"><span class="fa fa fa-angle-up"></span></a>
+
+<%= render "/home/js_files" %>
+
+<%= javascript_include_tag "/frontend/assets/js/easyshare.js" %>
