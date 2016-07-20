@@ -2407,6 +2407,29 @@ COPY article_categories (id, name, description, created_at, updated_at, level, m
 38	Software Testing		2016-07-20 14:29:02.507841	2016-07-20 14:29:02.507841	\N				
 39	Front-End Development		2016-07-20 14:29:15.582999	2016-07-20 14:29:15.582999	\N				
 40	Open Source		2016-07-20 14:29:28.909446	2016-07-20 14:29:28.909446	\N				
+41	SERVICES	Case Studies -- SERVICES	2016-07-20 16:41:40.739328	2016-07-20 16:41:40.739328	\N				
+42	INDUSTRIES	Case Studies -- INDUSTRIES	2016-07-20 16:42:20.917879	2016-07-20 16:42:20.917879	\N				
+43	COMPETENCIES	Case Studies -- COMPETENCIES	2016-07-20 16:42:59.535832	2016-07-20 16:42:59.535832	\N				
+44	Software Development		2016-07-20 16:57:32.165781	2016-07-20 16:57:32.165781	\N				
+45	Software Testing	Case Studies -- SERVICEs -- Software Testing	2016-07-20 17:01:25.977673	2016-07-20 17:01:39.840149	\N				
+46	Production Support		2016-07-20 17:02:16.296508	2016-07-20 17:02:16.296508	\N				
+47	IT Managed Services		2016-07-20 17:02:41.484183	2016-07-20 17:02:41.484183	\N				
+48	Finance & Insurance		2016-07-20 17:03:13.511572	2016-07-20 17:03:13.511572	\N				
+49	E-commerce & Retail		2016-07-20 17:03:31.599571	2016-07-20 17:03:31.599571	\N				
+50	Media & Publishing		2016-07-20 17:03:55.237503	2016-07-20 17:03:55.237503	\N				
+51	Healthcare		2016-07-20 17:04:22.632423	2016-07-20 17:04:22.632423	\N				
+52	Education		2016-07-20 17:04:41.03521	2016-07-20 17:04:41.03521	\N				
+53	Hospitality & Travel		2016-07-20 17:05:05.764173	2016-07-20 17:05:05.764173	\N				
+54	Real Estate		2016-07-20 17:05:23.541464	2016-07-20 17:05:23.541464	\N				
+55	Logistics & Transportation		2016-07-20 17:05:46.331524	2016-07-20 17:05:46.331524	\N				
+56	Telecom & Network		2016-07-20 17:06:51.519113	2016-07-20 17:06:51.519113	\N				
+57	Microsoft Technologies		2016-07-20 17:07:11.303584	2016-07-20 17:07:11.303584	\N				
+58	Ruby on Rails		2016-07-20 17:07:32.072672	2016-07-20 17:07:32.072672	\N				
+59	Open Source		2016-07-20 17:09:34.570459	2016-07-20 17:09:34.570459	\N				
+60	Mobile Applications		2016-07-20 17:10:28.943678	2016-07-20 17:10:28.943678	\N				
+61	Big Data & Analytics		2016-07-20 17:10:48.075761	2016-07-20 17:10:48.075761	\N				
+62	Embedded Software		2016-07-20 17:11:09.040372	2016-07-20 17:11:09.040372	\N				
+63	Software Testing		2016-07-20 17:11:29.059196	2016-07-20 17:11:29.059196	\N				
 \.
 
 
@@ -2469,7 +2492,7 @@ SELECT pg_catalog.setval('article_categories_articles_id_seq', 53, true);
 -- Name: article_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
 --
 
-SELECT pg_catalog.setval('article_categories_id_seq', 40, true);
+SELECT pg_catalog.setval('article_categories_id_seq', 63, true);
 
 
 --
@@ -2941,6 +2964,29 @@ COPY parent_article_categories (id, parent_id, article_category_id, created_at, 
 32	15	38	2016-07-20 14:29:02.560787	2016-07-20 14:29:02.560787
 33	15	39	2016-07-20 14:29:15.6201	2016-07-20 14:29:15.6201
 34	15	40	2016-07-20 14:29:28.957666	2016-07-20 14:29:28.957666
+35	16	41	2016-07-20 16:41:40.772997	2016-07-20 16:41:40.772997
+36	16	42	2016-07-20 16:42:20.99273	2016-07-20 16:42:20.99273
+37	16	43	2016-07-20 16:42:59.572436	2016-07-20 16:42:59.572436
+38	41	44	2016-07-20 16:57:32.195106	2016-07-20 16:57:32.195106
+40	41	45	2016-07-20 17:01:39.871952	2016-07-20 17:01:39.871952
+41	41	46	2016-07-20 17:02:16.326615	2016-07-20 17:02:16.326615
+42	41	47	2016-07-20 17:02:41.535762	2016-07-20 17:02:41.535762
+43	42	48	2016-07-20 17:03:13.541614	2016-07-20 17:03:13.541614
+44	42	49	2016-07-20 17:03:31.630392	2016-07-20 17:03:31.630392
+45	42	50	2016-07-20 17:03:55.287535	2016-07-20 17:03:55.287535
+46	42	51	2016-07-20 17:04:22.662475	2016-07-20 17:04:22.662475
+47	42	52	2016-07-20 17:04:41.065968	2016-07-20 17:04:41.065968
+48	42	53	2016-07-20 17:05:05.800028	2016-07-20 17:05:05.800028
+49	42	54	2016-07-20 17:05:23.574111	2016-07-20 17:05:23.574111
+50	42	55	2016-07-20 17:05:46.36157	2016-07-20 17:05:46.36157
+51	43	56	2016-07-20 17:06:51.560574	2016-07-20 17:06:51.560574
+52	43	57	2016-07-20 17:07:11.334635	2016-07-20 17:07:11.334635
+53	43	58	2016-07-20 17:07:32.11427	2016-07-20 17:07:32.11427
+54	43	59	2016-07-20 17:09:34.600544	2016-07-20 17:09:34.600544
+55	43	60	2016-07-20 17:10:29.040349	2016-07-20 17:10:29.040349
+56	43	61	2016-07-20 17:10:48.105876	2016-07-20 17:10:48.105876
+57	43	62	2016-07-20 17:11:09.070886	2016-07-20 17:11:09.070886
+58	43	63	2016-07-20 17:11:29.108186	2016-07-20 17:11:29.108186
 \.
 
 
@@ -2948,7 +2994,7 @@ COPY parent_article_categories (id, parent_id, article_category_id, created_at, 
 -- Name: parent_article_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
 --
 
-SELECT pg_catalog.setval('parent_article_categories_id_seq', 34, true);
+SELECT pg_catalog.setval('parent_article_categories_id_seq', 58, true);
 
 
 --
@@ -3300,7 +3346,7 @@ SELECT pg_catalog.setval('user_groups_id_seq', 3, true);
 --
 
 COPY users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at, first_name, last_name, phone, fax, company, address_1, address_2, zip_code, country, province, city, provider, uid, password_reset_token, password_reset_sent_at, oauth_token, oauth_expires_at, last_seen, is_admin, area_id, role, user_group_id) FROM stdin;
-1	admin@hoangkhang.com.vn	$2a$11$Ph6fh7uIaTE.lUiPgrqC/OZPwl83tI13yoFAsuzVr2WxHcIFeheIe	\N	\N	\N	3	2016-07-20 13:58:34.865632	2016-07-20 13:04:50.420524	192.168.211.1	192.168.211.1	2016-07-20 09:19:19.529939	2016-07-20 15:17:41.241546	Quản trị	viên	01644046123	\N	\N	54/3, Tăng NHơn Phú B, Quận 9	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-07-20 15:17:41.234154	t	\N	\N	\N
+1	admin@hoangkhang.com.vn	$2a$11$Ph6fh7uIaTE.lUiPgrqC/OZPwl83tI13yoFAsuzVr2WxHcIFeheIe	\N	\N	\N	3	2016-07-20 13:58:34.865632	2016-07-20 13:04:50.420524	192.168.211.1	192.168.211.1	2016-07-20 09:19:19.529939	2016-07-20 17:19:41.884938	Quản trị	viên	01644046123	\N	\N	54/3, Tăng NHơn Phú B, Quận 9	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-07-20 17:19:41.879196	t	\N	\N	\N
 \.
 
 
