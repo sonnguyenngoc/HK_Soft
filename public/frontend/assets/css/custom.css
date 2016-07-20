@@ -11,3 +11,6 @@
 .tools {
     display: none;
 }
+.top-nav ul li ul {
+    min-width: 250px;
+}
