@@ -1,0 +1,125 @@
+<div class="site_wrapper">
+
+    <%= render "/home/top_navigation" %>
+    <!-- end top navigation links -->
+
+
+    <div class="clearfix"></div>
+
+
+    <%= render "/home/header" %>
+    <!-- end header -->
+
+
+    <div class="clearfix"></div>
+
+
+    <div class="page_title1 sty13">
+        <div class="container">
+
+            <h1>
+                <% if @travel_and_tourism_site.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @travel_and_tourism_site.first.title_vi if !@travel_and_tourism_site.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @travel_and_tourism_site.first.title if !@travel_and_tourism_site.first.title.nil? %>
+                    <% end %>
+                <% end %>
+            </h1>
+            <div class="pagenation">&nbsp;<%= link_to t(:home_page), root_path %> <i>/</i> <%= link_to t(:services), services_sub_2_path %> <i>/</i>
+                <% if @travel_and_tourism_site.present? %>
+                    <% if params[:locale] == "vi" %>
+                        <%= @travel_and_tourism_site.first.title_vi if !@travel_and_tourism_site.first.title_vi.nil? %>
+                    <% else %>
+                        <%= @travel_and_tourism_site.first.title if !@travel_and_tourism_site.first.title.nil? %>
+                    <% end %>
+                <% end %>
+            </div>
+
+        </div>
+    </div>
+    <!-- end page title -->
+
+
+    <div class="clearfix"></div>
+
+
+    <div class="content_fullwidth less2">
+        <div class="container">
+
+            <div class="content_left">
+
+                <div class="blog_post">
+                    <% @travel_and_tourism_site.each do |item| %>
+                    <div class="blog_postcontent">
+                        <div class="image_frame">
+                            <%= image_tag item.image_url.hksoft_large_image %>
+                        </div>
+                        <% if params[:locale] == "vi" %>
+                            <h3><%= item.title_vi %></h3>
+                        <% else %>
+                            <h3><%= item.title %></h3>
+                        <% end %>
+                        <ul class="post_meta_links">
+                            <li><a href="#created_at" class="date">
+                            <% if params[:locale] == "en" %><%= item.created_at.strftime("%d %B %Y") %><% else %><%= item.created_at.strftime("%d/%m/%Y") %><% end %>
+                            </a></li>
+                            <li class="post_by"><i><%= t(:by) %>:</i> <a href="#global_naturesoft">Global Naturesoft</a></li>
+                            <li class="post_categoty"><i><%= t(:in) %>:</i> <a href="#web_based_software_development"><%= t(:web_based_software_development) %></a></li>
+                        </ul>
+                        <div class="clearfix"></div>
+                        <div class="margin_top1"></div>
+                        <% if params[:locale] == "vi" %>
+                            <div class="text-justify"><%= item.content_vi.html_safe if !item.content_vi.nil? %></div>
+                        <% else %>
+                            <div class="text-justify"><%= item.content.html_safe if !item.content.nil? %></div>
+                        <% end %>
+                    </div>
+                    <% end %>
+                </div>
+                <!-- /# end post -->
+
+                <div class="clearfix divider_line9 lessm"></div>
+                
+                <% if @travel_and_tourism_site.first.present? and @travel_and_tourism_site.first.projects.present? %>
+                    <%= render 'modules/related_project', related_projects: @travel_and_tourism_site %>
+                <% end %>
+                
+                <%= render 'modules/quotation_services' %>
+
+            </div>
+            <!-- end content left side -->
+
+
+            <!-- right sidebar starts -->
+            <div class="right_sidebar">
+
+                <%= render "/services/right_sidebar" %>
+
+            </div>
+            <!-- end right sidebar -->
+
+        </div>
+        
+    </div>
+
+
+    <div class="clearfix"></div>
+
+
+    <%= render "/home/footer" %>
+    <!-- end footer -->
+
+
+    <div class="clearfix"></div>
+
+
+    <a href="#" class="scrollup">Scroll</a>
+    <!-- end scroll to top of the page-->
+
+</div>
+
+
+<!-- ######### JS FILES ######### -->
+<!-- get jQuery used for the theme -->
+<%= render "/home/js_files" %>

@@ -1,0 +1,145 @@
+<header class="header">
+
+    <div class="container">
+
+        <!-- Logo -->
+        <div class="logo">
+            <%= link_to "", root_path, id: "logo" %>
+        </div>
+
+        <!-- Navigation Menu -->
+        <div class="menu_main">
+
+            <div class="navbar yamm navbar-default">
+
+                <div class="navbar-header">
+                    <div class="navbar-toggle .navbar-collapse .pull-right " data-toggle="collapse" data-target="#navbar-collapse-1">
+                        <button type="button"> <i class="fa fa-bars"></i></button>
+                    </div>
+                </div>
+
+                <div id="navbar-collapse-1" class="navbar-collapse collapse pull-right">
+
+                    <nav>
+
+                        <ul class="nav navbar-nav">
+
+                            <li class="dropdown"> <%= link_to "Home", root_path, class: ("active" if params[:controller] == "home").to_s %></li>
+
+                            <li class="dropdown yamm-fw"><%= link_to "Hosting", hosting1_path, class: "dropdown-toggle" %>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <div class="yamm-content">
+                                            <div class="row">
+
+                                                <div class="mega-menu-contnew">
+
+                                                    <div class="section-box">
+                                                        
+                                                        <%= link_to '<span aria-hidden="true" class="icon-users"></span> <strong>Shared Hosting</strong> Web sites versions the years'.html_safe, hosting1_path, class: ("active" if params[:controller] == "hosting1").to_s %>
+
+                                                        <p class="clearfix margin_bottom4"></p>
+                                                        
+                                                        <%= link_to '<span aria-hidden="true" class="icon-like"></span> <strong>Reseller Hosting</strong> Web sites versions the years'.html_safe, hosting2_path, class: ("active" if params[:controller] == "hosting2").to_s %>
+
+                                                        <p class="clearfix margin_bottom4"></p>
+                                                        
+                                                        <%= link_to '<span aria-hidden="true" class="icon-cloud-upload"></span> <strong>Cloud Hosting</strong> Web sites versions the years'.html_safe, hosting2_path, class: ("active" if params[:controller] == "hosting3").to_s %>
+
+                                                    </div>
+                                                    <!-- -->
+
+                                                    <div class="section-box">
+                                                        
+                                                        <%= link_to '<span aria-hidden="true" class="icon-layers"></span> <strong>VPS Hosting</strong> Web sites versions the years'.html_safe, hosting4_path, class: ("active" if params[:controller] == "hosting4").to_s %>
+
+                                                        <p class="clearfix margin_bottom4"></p>
+                                                        
+                                                        <%= link_to '<i class="fa fa-wordpress"></i> <strong>WordPress Hosting</strong> Web sites versions the years'.html_safe, hosting5_path, class: ("active" if params[:controller] == "hosting5").to_s %>
+
+                                                        <p class="clearfix margin_bottom4"></p>
+                                                        
+                                                        <%= link_to '<i class="fa fa-server"></i> <strong>Dedicated Hosting</strong> Web sites versions the years'.html_safe, hosting6_path, class: ("active" if params[:controller] == "hosting6").to_s %>
+
+                                                    </div>
+                                                    <!-- -->
+
+                                                    <div class="section-box last">
+
+                                                        Starting at
+                                                        <strong>$1.75<em>/mo</em></strong>
+                                                        <b>$4.75/mo</b>
+                                                        <p class="clearfix margin_bottom1"></p>
+                                                            Nobody Does it Better than us!
+                                                        <p class="clearfix margin_bottom2"></p>
+                                                        <a href="#">Purchase Now!</a>
+
+                                                    </div>
+                                                    <!-- -->
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li><%= link_to "Domains", domains_path, class: (" active" if params[:controller] == "domains").to_s %></li>
+
+                            <li class="dropdown"> <%= link_to "Pages", about_us_path, class: "dropdown-toggle" %>
+                                <ul class="dropdown-menu multilevel" role="menu">
+                                    <li><%= link_to "About Us", about_us_path, class: ("active" if params[:controller] == "about_us").to_s %></li>
+                                    <li><%= link_to "Services", services_path, class: ("active" if params[:controller] == "services").to_s %></li>
+                                    <li><%= link_to "Our Team", our_team_path, class: ("active" if params[:controller] == "our_team").to_s %></li>
+                                    <li><%= link_to "Left Sidebar", left_sidebar_path, class: ("active" if params[:controller] == "left_sidebar").to_s %></li>
+                                    <li><%= link_to "Right Sidebar", right_sidebar_path, class: ("active" if params[:controller] == "right_sidebar").to_s %></li>
+                                    <li><%= link_to "Left Navigation", left_nav_path, class: ("active" if params[:controller] == "left_nav").to_s %></li>
+                                    <li><%= link_to "Right Navigation", right_nav_path, class: ("active" if params[:controller] == "right_nav").to_s %></li>
+                                    <li><%= link_to "FAQs Page", faq_path, class: ("active" if params[:controller] == "domains").to_s, class: (" active" if params[:controller] == "faq").to_s %></li>
+                                    <li><%= link_to "Video Backgrounds", video_bg_path, class: ("active" if params[:controller] == "video_bg").to_s %></li>
+                                    <li><%= link_to "Coming Soon", coming_soon_path, target: "_blank" %></li>
+                                    <li><%= link_to "History Timeline", history_path, class: ("active" if params[:controller] == "history").to_s %></li>
+                                    <li><%= link_to "Login Form", login_path, class: ("active" if params[:controller] == "login").to_s %></li>
+                                    <li><%= link_to "Registration Form", register_path, class: ("active" if params[:controller] == "register").to_s %></li>
+                                    <li><%= link_to "404 Error Page", error_page_path, class: ("active" if params[:controller] == "error_page").to_s %></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown"> <%= link_to "Blog", blog1_path, class: "dropdown-toggle" %>
+                                
+                                <ul class="dropdown-menu multilevel" role="menu">
+                                    <li> <%= link_to "With Large Image", blog1_path, class: ("active" if params[:controller] == "blog1").to_s %></li>
+                                    <li> <%= link_to "With Medium Image", blog2_path, class: ("active" if params[:controller] == "blog2").to_s %></li>
+                                    <li> <%= link_to "With Small Image", blog3_path, class: ("active" if params[:controller] == "blog3").to_s %></li>
+                                    <li> <%= link_to "Single Post", blog_post_path, class: ("active" if params[:controller] == "blog_post").to_s %></li>
+                                </ul>
+                            
+                            </li>
+
+                            <li><%= link_to "Support", support_path, class: ("active" if params[:controller] == "support").to_s %></li>
+
+                            <li class="dropdown"> <%= link_to "Contact", contact_path, class: "dropdown-toggle" %></a>
+                                
+                                <ul class="dropdown-menu multilevel" role="menu">
+                                    <li> <%= link_to "Contact Version 1", contact_path, class: ("active" if params[:controller] == "contact").to_s %></li>
+                                    <li> <%= link_to "Contact Version 2", contact2_path, class: ("active" if params[:controller] == "contact2").to_s %></li>
+                                    <li> <%= link_to "Contact Version 3", contact3_path, class: ("active" if params[:controller] == "contact3").to_s %></li>
+                                </ul>
+                            
+                            </li>
+
+                        </ul>
+
+                    </nav>
+
+                </div>
+
+            </div>
+        
+        </div>
+        <!-- end Navigation Menu -->
+
+    </div>
+
+</header>

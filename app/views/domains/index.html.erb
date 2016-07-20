@@ -1,0 +1,626 @@
+<div class="site_wrapper">
+
+    <%= render "/home/top_navigation" %>
+    <!-- end top navigation links -->
+
+
+    <div class="clearfix"></div>
+
+
+    <%= render "/home/header" %>
+    <!-- end header -->
+
+
+    <div class="clearfix"></div>
+
+
+    <div class="page_title1 sty7">
+
+        <h1><%= t(:find_domain_name) %>
+        <em><%= t(:register_domain_name) %></em></h1>
+
+        <div class="serch_area">
+            
+            <% if params[:enter_domain_name].present? %>
+            
+                <% if @domain_name == "0" %>
+                
+                    <div id="div2" class="successmes">
+                        <div class="message-box-wrap">
+                        <a class="close-but" id="colosebut2"><%= t(:close) %></a> <strong><%= params[:enter_domain_name] %></strong> <%= t(:is_available) %> <%= link_to t(:call_us), contact_path, class: "but_small1" %></div>
+                    </div>
+                    <br/>
+                    
+                <% end %>
+                
+                <% if @domain_name == "1" %>
+                    <div id="div4" class="errormes">
+                        <div class="message-box-wrap">
+                        <a class="close-but" id="colosebut4"><%= t(:close) %></a> <strong><%= params[:enter_domain_name] %></strong> <%= t(:is_already_registered) %></div>
+                    </div>
+                    <br/>
+                <% end %>
+                
+            <% end %>
+            
+            <%= form_for("", url: {controller: 'domains', action: 'index'}, html: {id: 'enter_domain_name'}, method: "get") do |f| %>
+                <%= text_field_tag :enter_domain_name, nil, class: "enter_email_input required", placeholder: t(:enter_your_domain) %>
+                <input name="" value="<%= t(:search_domain) %>" class="input_submit" type="submit">
+            <% end %>
+            
+        </div>
+        <!-- end section -->
+
+    </div>
+    <!-- end search section -->
+
+
+    <div class="clearfix"></div>
+
+
+    <div class="feature_section10">
+        <div class="container">
+
+            <div class="one_fifth_less">
+                <div class="box">
+                    <h1 class="sitecolor"><strong>.com</strong></h1>
+                    
+                    <h1><strong>280.000đ</strong><em>/<%= t(:year) %></em></h1>
+                </div>
+            </div>
+
+            <div class="one_fifth_less">
+                <div class="box">
+                    <h1 class="sitecolor"><strong>.net</strong></h1>
+                    
+                    <h1><strong>280.000đ</strong><em>/<%= t(:year) %></em></h1>
+                </div>
+            </div>
+
+            <div class="one_fifth_less">
+                <div class="box">
+                    <h1 class="sitecolor"><strong>.org</strong></h1>
+                    
+                    <h1><strong>300.000đ</strong><em>/<%= t(:year) %></em></h1>
+                </div>
+            </div>
+
+            <div class="one_fifth_less last">
+                <div class="box">
+                    <h1 class="sitecolor"><strong>.info</strong></h1>
+                   
+                    <h1><strong>300.000đ</strong><em>/<%= t(:year) %></em></h1>
+                </div>
+            </div>
+
+            <div class="one_fifth_less">
+                <div class="box">
+                    <h1 class="sitecolor"><strong>.vn</strong></h1>
+                    
+                    <h1><strong>480.000đ</strong><em>/<%= t(:year) %></em></h1>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- end featured section 10 -->
+
+
+    <div class="clearfix"></div>
+
+
+    <div class="feature_section12">
+        <div class="container">
+
+            <div class="one_fourth">
+
+                <i class="fa fa-check"></i>
+                <h4 class="light"><%= t(:domain_info_1) %></h4>
+
+                <div class="clearfix margin_bottom4"></div>
+
+                <i class="fa fa-check"></i>
+                <h4 class="light"><%= t(:domain_info_2) %></h4>
+
+            </div>
+            <!-- end section -->
+
+            <div class="one_fourth">
+
+                <i class="fa fa-check"></i>
+                <h4 class="light"><%= t(:domain_info_3) %></h4>
+
+                <div class="clearfix margin_bottom4"></div>
+
+                <i class="fa fa-check"></i>
+                <h4 class="light"><%= t(:domain_info_4) %></h4>
+
+            </div>
+            <!-- end section -->
+
+            <div class="one_fourth">
+
+                <i class="fa fa-check"></i>
+                <h4 class="light"><%= t(:domain_info_5) %></h4>
+
+                <div class="clearfix margin_bottom4"></div>
+
+                <i class="fa fa-check"></i>
+                <h4 class="light"><%= t(:domain_info_6) %></h4>
+
+            </div>
+            <!-- end section -->
+
+            <div class="one_fourth last">
+
+                <i class="fa fa-check"></i>
+                <h4 class="light"><%= t(:domain_info_7) %></h4>
+
+                <div class="clearfix margin_bottom4"></div>
+
+                <i class="fa fa-check"></i>
+                <h4 class="light"><%= t(:domain_info_8) %></h4>
+
+            </div>
+            <!-- end section -->
+
+        </div>
+    </div>
+    <!-- end featured section 12 -->
+
+
+    <div class="clearfix"></div>
+
+
+    <div class="feature_section11">
+        <div class="container">
+
+            <h1 class="caps"><strong><%= t(:domain_pricing) %></strong></h1>
+            
+            <div class="clearfix margin_bottom5"></div>
+
+            <ul class="tabs">
+                <li class="active"><%= t(:vietnam_domains) %></li>
+                <li><%= t(:international_domains) %></li>
+            </ul>
+
+            <ul class="tab__content">
+
+                <li class="active">
+                    <div class="content__wrapper">
+
+                        <ul class="domlist1">
+                            <li class="title">
+                                <h6 class="caps gray"><strong><%= t(:domain_extension) %></strong></h6></li>
+                            <li><strong>.vn</strong></li>
+                            <li><strong>.com.vn</strong></li>
+                            <li><strong>.net.vn | .biz.vn</strong></li>
+                            <li><strong>.gov.vn | .org.vn | .edu.vn | .pro.vn</strong></li>
+                            <li><strong>.int.vn|.ac.vn|.info.vn|.health.vn</strong></li>
+                            <li><strong>.name.vn</strong></li>
+                            <li><strong>Tên miền theo địa giới hành chính</strong></li>
+                        </ul>
+                        <!-- end section -->
+
+                        <ul class="domlist1">
+                            <li class="title">
+                                <h6 class="caps gray"><strong><%= t(:initial_fee) %></strong></h6></li>
+                            <li><em></em> 350.000đ</li>
+                            <li><em></em> 350.000đ</li>
+                            <li>350.000đ</li>
+                            <li><em></em> 200.000đ</li>
+                            <li><em></em> 200.000đ</li>
+                            <li><em></em> 30.000đ</li>
+                            <li><em></em> 200.000đ</li>
+                        </ul>
+                        <!-- end section -->
+
+                        <ul class="domlist1">
+                            <li class="title">
+                                <h6 class="caps gray"><strong><%= t(:maintain_fee) %> / <%= t(:year) %></strong></h6></li>
+                            <li><em></em> 480.000đ</li>
+                            <li><em></em> 350.000đ</li>
+                            <li>350.000đ</li>
+                            <li><em></em> 200.000đ</li>
+                            <li><em></em> 200.000đ</li>
+                            <li><em></em> 30.000đ</li>
+                            <li><em></em> 200.000đ</li>
+                        </ul>
+                        <!-- end section -->
+
+                        <ul class="domlist1">
+                            <li class="title">
+                            <h6 class="caps gray"><strong><%= t(:transfer_fee) %></strong></h6></li>
+                            <% (1..7).each do |item| %>
+                                <li><div class="free_setup"><%= t(:free) %></div></li>
+                            <% end %>
+                        </ul>
+                        <!-- end section -->
+
+                    </div>
+                </li>
+                <!-- end tab 1 -->
+
+                <li>
+                    <div class="content__wrapper">
+
+                        <ul class="domlist1">
+                            <li class="title"><h6 class="caps gray"><strong><%= t(:domain_extension) %></strong></h6></li>
+                            <li><strong>.com | .net | .org</strong></li>
+                            <li><strong>.us</strong></li>
+                            <li><strong>.biz</strong></li>
+                            <li><strong>.info</strong></li>
+                            <li><strong>.co.in | .net.in | .org.in | .firm.in | .gen.in | .ind.in</strong></li>
+                            <li><strong>.cc</strong></li>
+                            <li><strong>.ws</strong></li>
+                            <li><strong>.tv</strong></li>
+                            <li><strong>.mobi</strong></li>
+                            <li><strong>.eu</strong></li>
+                            <li><strong>.asia</strong></li>
+                            <li><strong>.me</strong></li>
+                            <li><strong>.tel</strong></li>
+                            <li><strong>.co</strong></li>
+                            <li><strong>.com.co | .net.co | .nom.co</strong></li>
+                            <li><strong>.in</strong></li>
+                            <li><strong>.co.uk | .org.uk | .ltd.uk | .plc.uk | .me.uk</strong></li>
+                            <li><strong>.com.tw | .idv.tw | .game.tw | .ebiz.tw | .club.tw</strong></li>
+                            <li><strong>.tw</strong></li>
+                            <li><strong>.name</strong></li>
+                            <li><strong>.jp</strong></li>
+                            <li><strong>.bio</strong></li>
+                            <li><strong>.press | .bar | .build</strong></li>
+                            <li><strong>.tienda | .bayern | .viajes</strong></li>
+                            <li><strong>.partners | .limo | .ventures | .diamonds</strong></li>
+                            <li><strong>.voyage | .careers | .finance</strong></li>
+                            <li><strong>.financial | .fund | .furniture</strong></li>
+                            <li><strong>.holiday | .restaurant | .surgery</strong></li>
+                            <li><strong>.university | .cruises | .flights</strong></li>
+                            <li><strong>.black | .villas | .healthcare | .codes</strong></li>
+                            <li><strong>.holdings | .tax | .capital | .claims</strong></li>
+                            <li><strong>.clinic | .condos | .dating | .delivery</strong></li>
+                            <li><strong>.dental | .engineering | .expert</strong></li>
+                            <li><strong>.insure | .lease | .maison</strong></li>
+                            <li><strong>.hamburg | .london</strong></li>
+                            <li><strong>.mortgage | .degree</strong></li>
+                            <li><strong>.photography | .technology | .photos</strong></li>
+                            <li><strong>.equipment | .gallery | .graphics | .lighting</strong></li>
+                            <li><strong>.directory | .today | .tips | .company</strong></li>
+                            <li><strong>.systems | .management | .center</strong></li>
+                            <li><strong>.support | .email | .solutions</strong></li>
+                            <li><strong>.ninja | .reisen | .rip | .supply</strong></li>
+                            <li><strong>.agency | .exposed | .institute | .gratis</strong></li>
+                            <li><strong>.report | .schule | .supplies | .hiphop</strong></li>
+                            <li><strong>.education | .international | .city</strong></li>
+                            <li><strong>.network</strong></li>
+                            <li><strong>.guru | .land | .bike | .clothing</strong></li>
+                            <li><strong>.plumbing | .singles | .camera</strong></li>
+                            <li><strong>.estate | .contractors | .construction</strong></li>
+                            <li><strong>.kitchen | .enterprises | .tattoo</strong></li>
+                            <li><strong>.shoes | .sexy | .domains | .academy</strong></li>
+                            <li><strong>.computer | .training | .builders</strong></li>
+                            <li><strong>.toys | .trade | .coffee | .country</strong></li>
+                            <li><strong>.gift | .photo | .vacations | .bargains</strong></li>
+                            <li><strong>.cash | .media | .wtf | .webcam</strong></li>
+                            <li><strong>.co.com | .works | .digital</strong></li>
+                            <li><strong>.hosting</strong></li>
+                            <li><strong>.productions | .property | .navy | .republican</strong></li>
+                            <li><strong>.sarl | .services | .software | .guide</strong></li>
+                            <li><strong>.moda | .vet | .watch | .world | .marketing</strong></li>
+                            <li><strong>.yoga | .foundation | .place | .town</strong></li>
+                            <li><strong>.camp | .solar | .bid | .horse</strong></li>
+                            <li><strong>.house | .cab | .glass | .repair</strong></li>
+                            <li><strong>.boutique | .accountant | .gifts | .gives</strong></li>
+                            <li><strong>.gripe | .parts | .properties</strong></li>
+                            <li><strong>.tools | .vision | .guitars | .surf</strong></li>
+                            <li><strong>.zone | .florist | .rentals | .cheap</strong></li>
+                            <li><strong>.kaufen | .market | .airforce | .army</strong></li>
+                            <li><strong>auction | .cards | .care | .casa</strong></li>
+                            <li><strong>.catering | .church | .cleaning</strong></li>
+                            <li><strong>.community | .consulting | .cool | .deals</strong></li>
+                            <li><strong>.direct | .discount | .engineer</strong></li>
+                            <li><strong>.events | .exchange | .fail | .farm</strong></li>
+                            <li><strong>.fish | .fishing | .fitness | .immobilien</strong></li>
+                            <li><strong>.industries | .life | .limited</strong></li>
+                            <li><strong>.pics</strong></li>
+                            <li><strong>.link</strong></li>
+                            <li><strong>.click</strong></li>
+                            <li><strong>.pictures | .audio | .juegos</strong></li>
+                            <li><strong>.xyz</strong></li>
+                            <li><strong>.nagoya | .okinawa | .ryukyu | .club</strong></li>
+                            <li><strong>.red |.shiksha |.kim |.blue |.pink |.onl</strong></li>
+                            <li><strong>.uno</strong></li>
+                            <li><strong>.reviews |.diet |.band |.news |.help |.dance</strong></li>
+                            <li><strong>.rest |.haus |.actor |.blackfriday |.christmas</strong></li>
+                            <li><strong>.lawyer | .dentist | .attorney</strong></li>
+                            <li><strong>.ink</strong></li>
+                            <li><strong>.physio</strong></li>
+                            <li><strong>.host | .accountants | .credit</strong></li>
+                            <li><strong>.investments | .loans | .energy</strong></li>
+                            <li><strong>.creditcard</strong></li>
+                            <li><strong>.luxury</strong></li>
+                            <li><strong>.rich</strong></li>
+                            <li><strong>Giá trên chưa bao gồm 10% VAT</strong></li>
+                        </ul>
+                        <!-- end section -->
+
+                        <ul class="domlist1">
+                            <li class="title"><h6 class="caps gray"><strong><%= t(:initial_fee) %></strong></h6></li>
+                            <% (1..93).each do |item| %>
+                                <li><div class="free_setup"><%= t(:free) %></div></li>
+                            <% end %>
+                            <li></li>
+                        </ul>
+                        <!-- end section -->
+
+                        <ul class="domlist1">
+                            <li class="title">
+                                <h6 class="caps gray"><strong><%= t(:maitain_fee) %> / <%= t(:year) %></strong></h6></li>
+                            <li><em></em> 280.000đ</li>
+                            <li><em></em> 270.000đ</li>
+                            <li>290.000đ</li>
+                            <li><em></em> 300.000đ</li>
+                            <li><em></em> 260.000đ</li>
+                            <li><em></em> 800.000đ</li>
+                            <li><em></em> 290.000đ</li>
+                            <li><em></em> 940.000đ</li>
+                            <li><em></em> 480.000đ</li>
+                            <li>290.000đ</li>
+                            <li>420.000đ</li>
+                            <li>650.000đ</li>
+                            <li><em></em> 360.000đ</li>
+                            <li>820.000đ</li>
+                            <li>480.000đ</li>
+                            <li>500.000đ</li>
+                            <li>380.000đ</li>
+                            <li>840.000đ</li>
+                            <li>980.000đ</li>
+                            <li>290.000đ</li>
+                            <li>2.460.000đ</li>
+                            <li>1.932.000đ</li>
+                            <li>1.921.000đ</li>
+                            <% (1..11).each do |item| %>
+                                <li>1.198.000đ</li>
+                            <% end %>
+                            <li>1.514.000đ</li>
+                            <li>1.153.000đ</li>
+                            <% (1..10).each do |item| %>
+                                <li>475.000đ</li>
+                            <% end %>
+                            <% (1..10).each do |item| %>
+                                <li>723.000đ</li>
+                            <% end %>
+                            <% (1..19).each do |item| %>
+                                <li>775.000đ</li>
+                            <% end %>
+                            <li>576.000đ</li>
+                            <li>271.000đ</li>
+                            <li>237.000đ</li>
+                            <li>294.000đ</li>
+                            <li>300.000đ</li>
+                            <li>407.000đ</li>
+                            <li>441.000đ</li>
+                            <li>500.000đ</li>
+                            <li>576.000đ</li>
+                            <li>945.000đ</li>
+                            <li>983.000đ</li>
+                            <li>1.006.000đ</li>
+                            <li>2.339.000đ</li>
+                            <li>2.486.000đ</li>
+                            <li>2.486.000đ</li>
+                            <li>3.774.000đ</li>
+                            <li>15.000.000đ</li>
+                            <li>62.999.000đ</li>
+                            <li></li>
+                        </ul>
+                        <!-- end section -->
+
+                        <ul class="domlist1">
+                            <li class="title"><h6 class="caps gray"><strong><%= t(:transfer_fee) %></strong></h6></li>
+                            <li>230.000đ</li>
+                            <li>220.000đ</li>
+                            <li>240.000đ</li>
+                            <li>240.000đ</li>
+                            <li>210.000đ</li>
+                            <li>640.000đ</li>
+                            <li>240.000đ</li>
+                            <li>760.000đ</li>
+                            <li>390.000đ</li>
+                            <li>290.000đ</li>
+                            <li>340.000đ</li>
+                            <li>520.000đ</li>
+                            <li>290.000đ</li>
+                            <li>660.000đ</li>
+                            <li>390.000đ</li>
+                            <li>400.000đ</li>
+                            <li>310.000đ</li>
+                            <li>680.000đ</li>
+                            <li>580.000đ</li>
+                            <li>240.000đ</li>
+                            <li>1.970.000vnđ</li>
+                            <li>1.545.600vnđ</li>
+                            <li>1.536.800vnđ</li>
+                            <% (1..11).each do |item| %>
+                                <li>958.400vnđ</li>
+                            <% end %>
+                            <li>1.211.200vnđ</li>
+                            <li>922.400vnđ</li>
+                            <% (1..10).each do |item| %>
+                                <li>380.000vnđ</li>
+                            <% end %>
+                            <% (1..6).each do |item| %>
+                                <li>580.000vnđ</li>
+                            <% end %>
+                            <% (1..4).each do |item| %>
+                                <li>578.400vnđ</li>
+                            <% end %>
+                            <% (1..19).each do |item| %>
+                                <li>620.000vnđ</li>
+                            <% end %>
+                            <li>470.000vnđ</li>
+                            <li>220.000vnđ</li>
+                            <li>189.600vnđ</li>
+                            <li>235.200vnđ</li>
+                            <li></li>
+                            <li>326.000vnđ</li>
+                            <li>352.800vnđ</li>
+                            <li>400.000vnđ</li>
+                            <li>460.800vnđ</li>
+                            <li>756.000vnđ</li>
+                            <li>786.400vnđ</li>
+                            <li>804.800vnđ</li>
+                            <li>1.871.200vnđ</li>
+                            <li>1.988.800vnđ</li>
+                            <li>1.988.800vnđ</li>
+                            <li>3.019.200vnđ</li>
+                            <li>12.000.000vnđ</li>
+                            <li>50.399.200vnđ</li>
+                            <li></li>
+                        </ul>
+                        <!-- end section -->
+
+                    </div>
+                </li>
+                <!-- end tab 2 -->
+
+            </ul>
+
+        </div>
+    </div>
+    <!-- end featured section -->
+
+
+    <div class="clearfix"></div>
+
+    <div class="content_fullwidth">
+        
+    <div class="container">
+
+        <div class="stcode_title11">
+            
+            <h1 class="caps"><strong><%= t(:high_quality_hosting) %></strong></h1>
+
+        </div>
+        <!-- end section -->
+
+        <div class="pritable ltp">
+            <div class="container">
+
+                <div class="pacdetails">
+
+                    <div class="title">
+                        <h2>Start</h2>
+                        <strong>63.000đ<sub> / <%= t(:month) %></sub></strong>
+                    </div>
+
+                    <ul>
+                        <li><strong>600MB</strong> <%= t(:web_space) %></li>
+                        <li><strong>15GB</strong> <%= t(:bandwidth) %></li>
+                        <li><strong>15</strong> <%= t(:email_accounts) %></li>
+                        <li><strong>0</strong> <%= t(:addon_domain) %></li>
+                        <li><strong><%= t(:unlimited) %></strong> <%= t(:sub_domain) %></li>
+                        <li><strong><%= t(:unlimited) %></strong> <%= t(:park_alias_domain) %></li>
+                        <li><strong>1</strong> <%= t(:my_sql) %></li>
+                    </ul>
+
+                    <div class="bottom"><%= link_to t(:call_us), contact_path %></div>
+
+                </div>
+                <!-- end section -->
+
+                <div class="pacdetails two">
+
+                    <div class="title">
+                        <h2>Silver</h2>
+                        <strong>90.000đ<sub> / <%= t(:month) %></sub></strong>
+                    </div>
+
+                    <ul>
+                        <li><strong>800MB</strong> <%= t(:web_space) %></li>
+                        <li><strong><%= t(:unlimited) %></strong> <%= t(:bandwidth) %></li>
+                        <li><strong>25</strong> <%= t(:email_accounts) %></li>
+                        <li><strong>0</strong> <%= t(:addon_domain) %></li>
+                        <li><strong><%= t(:unlimited) %></strong> <%= t(:sub_domain) %></li>
+                        <li><strong><%= t(:unlimited) %></strong> <%= t(:park_alias_domain) %></li>
+                        <li><strong>3</strong> <%= t(:my_sql) %></li>
+                    </ul>
+
+                    <div class="bottom"><%= link_to t(:call_us), contact_path %></div>
+
+                </div>
+                <!-- end section -->
+
+                <div class="pacdetails three">
+
+                    <div class="title">
+                        <h6>hot</h6>
+                        <h2>Silver Plus</h2>
+                        <strong>135.000đ<sub> / <%= t(:month) %></sub></strong>
+                    </div>
+
+                    <ul>
+                        <li><strong>1.100MB</strong> <%= t(:web_space) %></li>
+                        <li><strong><%= t(:unlimited) %></strong> <%= t(:bandwidth) %></li>
+                        <li><strong>40</strong> <%= t(:email_accounts) %></li>
+                        <li><strong>1</strong> <%= t(:addon_domain) %></li>
+                        <li><strong><%= t(:unlimited) %></strong> <%= t(:sub_domain) %></li>
+                        <li><strong><%= t(:unlimited) %></strong> <%= t(:park_alias_domain) %></li>
+                        <li><strong>5</strong> <%= t(:my_sql) %></li>
+                    </ul>
+
+                    <div class="bottom"><%= link_to t(:call_us), contact_path %></div>
+
+                </div>
+                <!-- end section -->
+
+                <div class="pacdetails four">
+
+                    <div class="title">
+                        <h2>Gold</h2>
+                        <strong>160.000đ<sub> / <%= t(:month) %></sub></strong>
+                    </div>
+
+                    <ul>
+                        <li><strong>1.5000MB</strong> <%= t(:web_space) %></li>
+                        <li><strong><%= t(:unlimited) %></strong> <%= t(:bandwidth) %></li>
+                        <li><strong><%= t(:unlimited) %></strong> <%= t(:email_accounts) %></li>
+                        <li><strong>2</strong> <%= t(:addon_domain) %></li>
+                        <li><strong><%= t(:unlimited) %></strong> <%= t(:sub_domain) %></li>
+                        <li><strong><%= t(:unlimited) %></strong> <%= t(:park_alias_domain) %></li>
+                        <li><strong>7</strong> <%= t(:my_sql) %></li>
+                    </ul>
+
+                    <div class="bottom"><%= link_to t(:call_us), contact_path %></div>
+
+                </div>
+                <!-- end section -->
+
+            </div>
+        </div>
+        <!-- end section -->
+
+    </div>
+    
+    <div class="clearfix"></div>
+
+
+    <%= render "/home/footer" %>
+    <!-- end footer -->
+
+
+    <div class="clearfix"></div>
+
+
+    <a href="#" class="scrollup">Scroll</a>
+    <!-- end scroll to top of the page-->
+
+</div>
+
+
+<!-- ######### JS FILES ######### -->
+<!-- get jQuery used for the theme -->
+<%= render "/home/js_files" %>
+<script>
+    $(document).ready(function(){
+        $("#enter_domain_name").validate();
+    });
+</script>

@@ -1,0 +1,2 @@
+module RightSidebarHelper
+end

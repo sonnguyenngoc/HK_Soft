@@ -1,0 +1,159 @@
+<div class="site_wrapper">
+
+    <%= render "/home/top_navigation" %>
+    <!-- end top navigation links -->
+
+
+    <div class="clearfix"></div>
+
+
+    <%= render "/home/header" %>
+    <!-- end header -->
+
+
+    <div class="clearfix"></div>
+
+
+    <div class="page_title1 sty13">
+        <div class="container alileft">
+
+            <h1><%= t(:home_contact) %></h1>
+
+        </div>
+    </div>
+    <!-- end page title -->
+
+
+    <div class="clearfix"></div>
+
+
+    <div class="content_fullwidth less2">
+        <div class="container">
+
+            <div class="one_half">
+                
+                <h4 class="caps"><strong><%= t(:contact) %></strong></h4>
+
+                <div class="cforms">
+                    
+                    <%= form_for @contact, html: {id: "contact_form_validate"} do |f| %>
+                        
+                        <label class="label"><%= t(:name) %> <em>*</em></label>
+                        <label class="input">
+                            <%= f.text_field :name, class: "required" %>
+                        </label>
+
+                        <div class="clearfix"></div>
+
+                        <label class="label"><%= t(:e_mail) %> <em>*</em></label>
+                        <label class="input">
+                            <%= f.text_field :email, class: "required email" %>
+                        </label>
+
+                        <div class="clearfix"></div>
+
+                        <label class="label"><%= t(:phone) %></label>
+                        <label class="input">
+                            <%= f.text_field :phone %>
+                        </label>
+
+                        <div class="clearfix"></div>
+
+                        <label class="label"><%= t(:subject) %> <em>*</em></label>
+                        <label class="input">
+                            <%= f.text_field :subject, class: "required" %>
+                        </label>
+
+                        <div class="clearfix"></div>
+
+                        <label class="label"><%= t(:message) %> <em>*</em></label>
+                        <label class="textarea">
+                            <%= f.text_area :message, rows: '5', class: "required" %>
+                        </label>
+
+                        <div class="clearfix"></div>
+                        
+                        <button type="submit" class="button"><i class="fa fa-paper-plane"></i> <%= t(:send_message) %></button>
+                        
+                        <a class="but_thumbs_down but_fix_view_map" href="https://www.google.com/maps/place/45%2F22C+L%C3%AA+V%C4%83n+Th%E1%BB%8D,+ph%C6%B0%E1%BB%9Dng+16,+G%C3%B2+V%E1%BA%A5p,+H%E1%BB%93+Ch%C3%AD+Minh,+Vietnam/@10.8476616,106.6564857,18z/data=!4m5!3m4!1s0x317529bc96b68a43:0x417a67c38124ede3!8m2!3d10.847659!4d106.65758?hl=en-US" target="_blank"> <%= t(:view_location_map) %></a>
+
+                    <% end %>
+
+                </div>
+
+            </div>
+
+            <div class="one_half last">
+
+                <div class="address_info">
+
+                    <h4 class="caps"><strong><%= t(:company_info) %></strong></h4>
+                    <ul>
+                        <li>
+                            <strong>Branch - <%= @company.name %></strong> (Transaction Office)<br />
+                            <%= @company.head_office_address %><br />
+                            <%= t(:phone) %>: <%= @company.phone %><br />
+                            <%= t(:hotline) %>: <%= @company.hotline %><br />
+                            <%= t(:fax) %>: <%= @company.fax %><br />
+                            <%= t(:tax_code) %>: 0 3 0 6 1 4 6 7 3 6 - 0 0 1<br />
+                            <%= t(:e_mail) %>: <a href="mailto:<%= @company.email %>"><%= @company.email %></a><br />
+                            <%= t(:website) %>: <%= link_to "http://hoangkhang.com.vn/", root_path, target: "_blank" %>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="address_info">
+
+                    <h4 class="caps"><strong><%= t(:billing_informations) %></strong></h4>
+                    <ul>
+                        <li>
+                            <i>Billing address: (use 1 of 2 content below)</i> <br />
+                            <div class="margin-top-10"></div>
+                            <strong><i class="title-addr">Address 1: </i></strong><br />
+                            <strong>Hoang Khang Infomation And Communication Technology Solutions Company Limited</strong><br />
+                            Add: 138/10, Street 20, Ward 5, Go Vap District, Ho Chi Minh City, Viet Nam<br />
+                            <%= t(:tax_code) %>: 0 3 0 6 1 4 6 7 3 6<br />
+                            <div class="margin-top-10"></div>
+                            <strong><i class="title-addr">Address 2: </i></strong><br />
+                            <strong>The Branch Hoang Khang Infomation And Communication Technology Solutions Company Limited</strong><br />
+                            Add: <%= @company.head_office_address %><br />
+                            <%= t(:tax_code) %>: 0 3 0 6 1 4 6 7 3 6 - 0 0 1<br />
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="clearfix"></div>
+                
+                <%= render 'map_center' %>
+
+        </div>
+    </div>
+
+
+    <div class="clearfix"></div>
+
+
+    <%= render "/home/footer" %>
+    <!-- end footer -->
+
+
+    <div class="clearfix"></div>
+
+
+    <a href="#" class="scrollup">Scroll</a>
+    <!-- end scroll to top of the page-->
+
+</div>
+
+
+<!-- ######### JS FILES ######### -->
+<!-- get jQuery used for the theme -->
+<%= render "/home/js_files" %>
+
+
+<!-- get jQuery used for the theme - contact form validate -->
+<script>
+    $(document).ready(function(){
+        $("#contact_form_validate").validate();
+    });
+</script>

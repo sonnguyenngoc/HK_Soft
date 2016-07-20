@@ -1,0 +1,192 @@
+<div class="site_wrapper">
+
+    <%= render "/home/top_navigation" %>
+    <!-- end top navigation links -->
+
+
+    <div class="clearfix"></div>
+
+
+    <%= render "/home/header" %>
+    <!-- end header -->
+
+
+    <div class="clearfix"></div>
+
+
+    <div class="page_title1 sty13">
+        <div class="container">
+
+            <h1>
+                <% if params[:locale] == "en" %>
+                    <%= @news.title %>
+                <% else %>
+                    <%= @news.title %>
+                <% end %>
+            </h1>
+            <div class="pagenation">&nbsp;<%= link_to t(:home), root_path %> <i>/</i> <%= link_to t(:news), blog3_path %> <i>/</i> <% if params[:locale] == "en" %><%= @news.title %><% else %><%= @news.title %><% end %></div>
+
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="clearfix"></div>
+
+    <div class="content_fullwidth less2">
+        
+        <div class="container">
+
+            <div class="content_left">
+
+                <div class="blog_post">
+                    
+                    <div class="blog_postcontent">
+                        
+                        <div class="image_frame">
+                            
+                            <img src="<%= @news.image_url.hksoft_large_image %>" alt="<%= @news.title %>" />
+                        
+                        </div>
+                        
+                        <% if params[:locale] == "en" %>
+                        
+                            <h3><a href="#news"><%= @news.title %></a></h3>
+                            
+                            <ul class="post_meta_links">
+                                
+                                <li><a href="#createdt_at" class="date"><%= @news.created_at.strftime("%d %B %Y") %></a></li>
+                                <li class="post_by"><i><%= t(:by) %>:</i> <a href="#global_naturesoft">Global Naturesoft</a></li>
+                                <li class="post_categoty"><i><%= t(:in) %>:</i><% @news.article_categories.each do |item| %> <a href="#category"><%= item.name %></a><% end %></li>
+                            
+                            </ul>
+                            
+                            <div class="clearfix"></div>
+                            
+                            <div class="margin_top1"></div>
+                            
+                            <div class="text-justify"><%= @news.content.html_safe %></div>
+                            
+                        <% else %>
+                            
+                            <h3><a href="#news"><%= @news.title %></a></h3>
+                            
+                            <ul class="post_meta_links">
+                                
+                                <li><a href="#createdt_at" class="date"><%= @news.created_at.strftime("%d/%m/%Y") %></a></li>
+                                <li class="post_by"><i><%= t(:by) %>:</i> <a href="#global_naturesoft">Global Naturesoft</a></li>
+                                <li class="post_categoty"><i><%= t(:in) %>:</i><% @news.article_categories.each do |item| %> <a href="#category"><%= item.name_vi %></a><% end %></li>
+                            
+                            </ul>
+                            
+                            <div class="clearfix"></div>
+                            
+                            <div class="margin_top1"></div>
+                            
+                            <div class="text-justify"><%= @news.content.html_safe %></div>
+                            
+                        <% end %>
+                        
+                    </div>
+                
+                </div>
+                <!-- /# end post -->
+
+                <div class="clearfix divider_line9 lessm"></div>
+
+            </div>
+            <!-- end content left side -->
+
+
+            <!-- right sidebar starts -->
+            <div class="right_sidebar">
+
+                <div class="sidebar_widget">
+
+                    <div id="tabs">
+
+                        <ul class="tabs">
+                            
+                            <li class="active"><a href="#tab1"><%= t(:lastest_news) %></a></li>
+                            <li class="last"><a href="#tab2"><%= t(:tags) %></a></li>
+                        
+                        </ul>
+                        <!-- /# end tab links -->
+
+                        <div class="tab_container">
+                            
+                            <div id="tab1" class="tab_content">
+
+                                <ul class="recent_posts_list">
+                                    
+                                    <% @lastest_news.limit(8).each do |item| %>
+                                       
+                                        <li>
+                                            
+                                            <span><%= link_to image_tag(item.image_url.hksoft_square_image, alt: item.title), blog_post_path(news_id: item) %></span>
+                                            <% if params[:locale] == "en" %>
+                                                <%= link_to item.title, blog_post_path(news_id: item), class: "text-justify" %>
+                                                <i><%= @news.created_at.strftime("%d %B %Y") %></i>
+                                            <% else %>
+                                                <%= link_to item.title, blog_post_path(news_id: item), class: "text-justify" %>
+                                                <i><%= @news.created_at.strftime("%d/%m/%Y") %></i>
+                                            <% end %>
+                                        
+                                        </li>
+                                        
+                                    <% end %>
+                                
+                                </ul>
+
+                            </div>
+                            <!-- end popular posts -->
+
+                            <div id="tab2" class="tab_content">
+                                
+                                <ul class="tags">
+
+                                    <% @program_languages.each do |item| %>
+                                    <li><a href="#<%= item.name %>"><%= item.name %></a></li>
+                                    <% end %>
+                
+                                </ul>
+
+                            </div>
+                            <!-- end popular articles -->
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- end section -->
+
+                <div class="clearfix margin_top4"></div>
+
+
+            </div>
+            <!-- end right sidebar -->
+
+
+        </div>
+    </div>
+
+
+    <div class="clearfix"></div>
+
+
+    <%= render "/home/footer" %>
+    <!-- end footer -->
+
+
+    <div class="clearfix"></div>
+
+
+    <a href="#" class="scrollup">Scroll</a>
+    <!-- end scroll to top of the page-->
+
+</div>
+
+
+<!-- ######### JS FILES ######### -->
+<!-- get jQuery used for the theme -->
+<%= render "/home/js_files" %>

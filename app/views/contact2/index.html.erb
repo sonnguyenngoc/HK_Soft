@@ -1,0 +1,146 @@
+<div class="site_wrapper">
+
+    <%= render "/home/top_navigation" %>
+    <!-- end top navigation links -->
+
+
+    <div class="clearfix"></div>
+
+
+    <%= render "/home/header" %>
+    <!-- end header -->
+
+
+    <div class="clearfix"></div>
+
+
+    <div class="page_title1 sty12">
+        <div class="container alileft">
+
+            <h1>Contact Us</h1>
+
+        </div>
+    </div>
+    <!-- end page title -->
+
+
+    <div class="clearfix"></div>
+
+
+    <div class="content_fullwidth less">
+
+        <div class="one_full">
+            <iframe class="google-map2" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Washington,+DC,+United+States&amp;aq=2&amp;oq=was&amp;sll=40.714353,-74.005973&amp;sspn=0.765069,1.674042&amp;ie=UTF8&amp;hq=&amp;hnear=Washington,+District+of+Columbia&amp;t=m&amp;z=11&amp;ll=38.907231,-77.036464&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Washington,+DC,+United+States&amp;aq=2&amp;oq=was&amp;sll=40.714353,-74.005973&amp;sspn=0.765069,1.674042&amp;ie=UTF8&amp;hq=&amp;hnear=Washington,+District+of+Columbia&amp;t=m&amp;z=11&amp;ll=38.907231,-77.036464" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+        </div>
+        <!-- end google map -->
+
+        <div class="clearfix margin_top7"></div>
+
+        <div class="container">
+
+            <div class="two_third">
+
+                <p>Feel free to talk to our online representative at any time you please using our Live Chat system on our website or one of the below instant messaging programs.</p>
+                <br />
+                <p>Please be patient while waiting for response. (24/7 Support!) <strong>Phone General Inquiries: 1-888-123-4567-8900</strong></p>
+                <br /><br />
+
+                <div class="cforms">
+
+
+                    <div id="form_status"></div>
+                    <form type="POST" id="gsr-contact" onSubmit="return valid_datas( this );">
+                        <label class="label">Name <em>*</em></label>
+                        <label class="input">
+            <input type="text" name="name" id="name">
+        </label>
+
+                        <div class="clearfix"></div>
+
+                        <label class="label">E-mail <em>*</em></label>
+                        <label class="input">
+            <input type="email" name="email" id="email">
+        </label>
+
+                        <!-- <div class="clearfix"></div>
+
+
+        <label class="label">Phone <em>*</em></label>
+        <label class="input">
+            <input type="text" name="phone" id="phone">
+        </label> -->
+
+                        <div class="clearfix"></div>
+
+                        <label class="label">Subject <em>*</em></label>
+                        <label class="input">
+            <input type="text" name="subject" id="subject">
+        </label>
+
+                        <div class="clearfix"></div>
+
+                        <label class="label">Message <em>*</em></label>
+                        <label class="textarea">
+            <textarea rows="5" name="message" id="message"></textarea>
+        </label>
+
+                        <div class="clearfix"></div>
+                        <input type="hidden" name="token" value="FsWga4&@f6aw" />
+                        <button type="submit" class="button">Send Message</button>
+
+                    </form>
+
+
+                </div>
+
+            </div>
+            <!-- end section -->
+
+            <div class="one_third last">
+
+                <div class="address_info two">
+
+                    <h4 class="caps">Address One</h4>
+                    <ul>
+                        <li> <strong>Company Name</strong><br /> 2901 Marmora Road, Glassgow, Seattle, WA 98122-1090<br /> Telephone: +1 1234-567-89000<br /> FAX: +1 0123-4567-8900<br /> E-mail: <a href="mailto:mail@companyname.com">mail@companyname.com</a><br /> Website: <a href="index.html">www.yoursitename.com</a> </li>
+                    </ul>
+
+                </div>
+                <!-- end section -->
+
+                <div class="address_info two">
+
+                    <h4 class="caps">Address Two</h4>
+                    <ul>
+                        <li> <strong>Company Name</strong><br /> 2901 Marmora Road, Glassgow, Seattle, WA 98122-1090<br /> Telephone: +1 1234-567-89000<br /> FAX: +1 0123-4567-8900<br /> E-mail: <a href="mailto:mail@companyname.com">mail@companyname.com</a><br /> Website: <a href="index.html">www.yoursitename.com</a> </li>
+                    </ul>
+
+                </div>
+                <!-- end section -->
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div class="clearfix"></div>
+
+
+    <%= render "/home/footer" %>
+    <!-- end footer -->
+
+
+    <div class="clearfix"></div>
+
+
+    <a href="#" class="scrollup">Scroll</a>
+    <!-- end scroll to top of the page-->
+
+</div>
+
+
+<!-- ######### JS FILES ######### -->
+<!-- get jQuery used for the theme -->
+<%= render "/home/js_files" %>
