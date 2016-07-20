@@ -1,6 +1,6 @@
 <nav class="top-nav">
     <ul>
-        <li class="selected"><%= link_to "<span>Home</span>".html_safe, root_path %></li>
+        <li<% if params[:controller] == "home" %> class="selected"<% end %>><%= link_to "<span>Home</span>".html_safe, root_path %></li>
         <li><a href="#"><span>About Us</span></a>
             <ul>
                 <li><%= link_to "Who We Are", post_detail_path %></li>
@@ -99,6 +99,6 @@
                 </li>
             </ul>
         </li>
-        <li><%= link_to "<span>Contact</span>".html_safe, contact_path %></li>
+        <li<% if params[:controller] == "contact" %> class="selected"<% end %>><%= link_to "<span>Contact</span>".html_safe, contact_path %></li>
     </ul>
 </nav>
