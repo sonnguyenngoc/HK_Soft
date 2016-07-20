@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
+gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -16,8 +17,6 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -45,8 +44,24 @@ group :development do
   gem 'spring'
 end
 
+gem 'therubyracer'
+gem 'omniauth-digitalocean'
 gem 'mini_magick'
 gem 'carrierwave'
 gem "devise"
 gem "cancan"
 gem 'rails-i18n', '~> 4.0.0'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-github'
+gem 'omniauth-google-oauth2'
+gem "recaptcha", require: "recaptcha/rails"
+gem 'dotenv-rails', :groups => [:production, :development, :test]
+gem 'private_pub'
+gem 'thin'
+gem 'onliner'
+gem 'devise_lastseenable'
+gem 'cancan'

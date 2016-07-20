@@ -1,0 +1,174 @@
+<% if @project.errors.any? %>
+    <div id="error_explanation">
+        <span class="label label-warning"></span>
+        <div class="alert alert-warning alert-styled-left">
+            <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+            <% @project.errors.full_messages.each do |message| %>
+                - <%= message %><br/>
+            <% end %>
+        </div>
+    </div>
+<% end %>
+
+<%= form_for [:admin, @project], html: {class: "form-horizontal", id: "validate_checking"} do |f| %>
+
+    <div class="tabbable tab-content-bordered">
+        
+        <ul class="nav nav-tabs bg-primary">
+            <li class="active"><a href="#control-tab1" data-toggle="tab"><%= t(:en_info) %></a></li>
+            <li><a href="#control-tab2" data-toggle="tab"><%= t(:vi_info) %> </a></li>
+        </ul>
+        
+        <div class="tab-content">
+            <div class="tab-pane has-padding active" id="control-tab1">
+              
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:image) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-10">
+                        <div class="uploader bg-teal-400">
+                            <%= f.file_field :image_url, class: "file-styled", accept: ".png, .jpg, .jpeg, .gif" %>
+                            <span class="action" style="-webkit-user-select: none;"><i class="icon-googleplus5"></i></span>
+                        </div>
+                        <span class="help-block"><%= t(:accepted_formats)%>: *.gif, *.png, *.jpg, *.jpeg.</span>
+                        <%= image_tag(@project.image_url.medium, size: "180x110", class: "img-rouded") %>
+                    </div>
+                </div>
+              
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:author_name) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-10">
+                        <%= f.text_field :author, class: "form-control required" %>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:name_project) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-10">
+                        <%= f.text_field :name, class: "form-control required" %>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:website_url) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-10">
+                        <%= f.text_field :website, class: "form-control required" %>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:start_date) %></label>
+                    <div class="col-lg-10">
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="icon-calendar5"></i></span>
+                          <input type="text" value="<%= @start_date %>" name="project[start_date]" id="project_start_date" class="form-control" placeholder="Start date...">
+                        </div>
+                    </div>
+                </div>
+                        
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:end_date) %></label>
+                    <div class="col-lg-10">
+                        <div class="input-group">
+                          <span class="input-group-addon"><i class="icon-calendar5"></i></span>
+                          <input type="text" value="<%= @end_date %>" name="project[end_date]" id="project_end_date" class="form-control" placeholder="End date...">
+                        </div>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:description) %> </label>
+                    <div class="col-lg-10">
+                        <%= f.text_area :description, rows: "5", cols: "5", class: "form-control" %>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:project_category) %></label>
+                    <div class="col-lg-10">
+                        <select name="project_category_ids[]" id="project_category_ids" class="select-item-color required" data-placeholder="<%= t(:choose_project_category) %>..." multiple="multiple">
+                            <% @project_categories.each do |item| %>
+                                <option <%= "selected" if @project.project_categories.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
+                            <% end %>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:program_language) %></label>
+                    <div class="col-lg-10">
+                        <select name="program_language_ids[]" id="project_language_ids" class="select-item-color required" data-placeholder="<%= t(:choose_language) %>..." multiple="multiple">
+                            <% @program_languages.each do |item| %>
+                                <option <%= "selected" if @project.program_languages.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
+                            <% end %>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:related_articles) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-10">
+                        <select name="article_ids[]" id="project_article_ids" class="select-item-color required" data-placeholder="<%= t(:related_articles) %>..." multiple="multiple">
+                            <% @articles.each do |item| %>
+                                <option <%= "selected" if @project.articles.include?(item) %> value="<%= item.id %>"><%= item.title %></option>
+                            <% end %>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <%= f.label "#{t(:related_images)}: ", class: "col-lg-2 control-label" %>
+                    <div class="col-lg-10">
+                        <% index = 0 %>
+                        <%= f.fields_for :project_images do |ff| %>
+                            <% g = @project.project_images[index] %>
+                            <%= ff.hidden_field :id %>
+                            
+                            <div class="col-lg-8 padding-bottom">
+                                <%= ff.file_field :image_url, class: "file-styled margin-bottom" %>
+                                <br /><br />
+                            </div>
+                            <% if g.image_url? %>
+                              <div class="col-lg-3 padding-bottom">
+                                  <img style="width: 100%; margin-bottom: 10px;" src="<%= g.image_url.medium if g.image_url? %>" />
+                              </div>
+                            <% end %>
+                            <% if g.image_url? %>
+                              <div class="col-lg-1 padding-bottom">
+                                  <%= ff.check_box :_destroy, class: "check_remove" %>
+                                  <%= ff.label :_destroy, 'Remove' %>
+                              </div>
+                            <% end %>
+                          <% index += 1 %>
+                        <% end %>
+                    </div>
+                </div>
+                    
+                <div class="text-right">
+                    <%= button_tag "#{t(:save)} <i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
+                    <%= link_to "#{t(:cancel)} <i class=\"icon-cross3 position-right\"></i>".html_safe, admin_projects_path, class: "btn btn-danger"%>
+                </div>
+            </div>
+            <div class="tab-pane has-padding" id="control-tab2">
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:author_name) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-10">
+                        <%= f.text_field :author_vi, class: "form-control required" %>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:name_project) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-10">
+                        <%= f.text_field :name_vi, class: "form-control required" %>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:description_vi) %> </label>
+                    <div class="col-lg-10">
+                        <%= f.text_area :description_vi, rows: "5", cols: "5", class: "form-control" %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>   
+<% end %>

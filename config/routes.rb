@@ -1,56 +1,149 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  root "home#index"
+  devise_for :users
+  
+  scope "(:locale)", locale: /vi|en/ do
+    namespace :admin, path: "quan-tri" do
+      get "/" => "main#index"
+      scope(:path_names => { :new => "tao-moi", :edit => "chinh-sua" }) do
+        resources :shopping_carts, path: "gio-hang"
+        resources :products, path: "danh-sach-san-pham" do
+          collection do
+            get 'search'
+            get 'search_backend'
+            get 'approve'
+            get 'add_related_articles'
+          end
+        end
+        resources :categories, path: "chuyen-muc-san-pham" do
+          collection do
+            get 'search'
+            get 'update_parent_order'
+            get 'three_cols_select'
+          end
+        end
+        resources :manufacturers, path: "nha-cung-cap" do
+          collection do
+            get 'search'
+          end
+        end
+        resources :articles, path: "bai-viet" do
+          collection do
+            get 'search'
+            post 'upload_image_video'
+            get 'approve'
+            get 'add_related_products'
+          end
+        end
+        resources :article_categories, path: "chuyen-muc-bai-viet" do
+          collection do
+            get 'search'
+          end
+        end
+        resources :areas, path: "khu-vuc" do
+          collection do
+            get 'search'
+          end
+        end
+        resources :orders, path: "don-hang" do
+          collection do
+            get 'search'
+          end
+          collection do
+            get 'pending'
+          end
+          collection do
+            get 'finish'
+          end
+          collection do
+            get 'cancel'
+          end
+        end
+        resources :newsletters, path: "dang-ky-nhan-tin-moi" do
+          collection do
+            get 'search'
+          end
+        end
+        resources :contacts, path: "lien-he" do
+          collection do
+            get 'search'
+          end
+        end
+        resources :wish_lists, path: "san-pham-yeu-thich" do
+          collection do
+            get 'search'
+          end
+        end
+        resources :comments, path: "binh-luan-san-pham" do
+          collection do
+            get 'search'
+          end
+        end
+        resources :users , path: "nguoi-dung" do
+          collection do
+            get 'search'
+          end
+        end
+        resources :questions, path: "cau-hoi-san-pham" do
+          collection do
+            get 'search'
+          end
+        end
+        resources :customers, path: "khach-hang" do
+          collection do
+            get 'search'
+          end
+        end
+        resources :payment_methods, path: "hinh-thuc-thanh-toan" do
+          collection do
+            get 'search'
+          end
+        end
+        resources :delivery_methods, path: "hinh-thuc-giao-hang" do
+          collection do
+            get 'search'
+          end
+        end
+        resources :comment_articles, path: "binh-luan-bai-viet" do
+          collection do
+            get 'search'
+          end
+        end
+        resources :slideshows, path: "trinh-chieu" do
+          collection do
+            get 'search'
+          end
+        end
+        resources :vouchers, path: "phieu-mua-hang" do
+          collection do
+            get 'search'
+          end
+        end
+        resources :coupons, path: "ma-giam-gia" do
+          collection do
+            get 'search'
+          end
+        end
+        resources :testimonials, path: "y-kien-khach-hang" do
+          collection do
+            get 'search'
+          end
+        end
+        resources :companies, path: "chi-nhanh"
+        resources :user_groups, path: "nhom-nguoi-dung"
+        get "tru-so-chinh" => "companies#head_office", as: :head_office
+        resources :options, path: "cai-dat"
+        resources :code_statuses, path: "ma-bai-viet" do
+          collection do
+            get 'search'
+          end
+        end
+        
+        # projects
+        resources :projects
+        resources :project_categories
+        resources :program_languages
+      end
+    end
+  end
 end
