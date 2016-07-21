@@ -34,14 +34,14 @@
         </div>
         <div class="breadcrumbs">
             <div class="container">
-                <%= link_to "Home", root_path %><i class="fa fa-long-arrow-right main-color"></i><span><%= @article_category.parent.first.name %></span><i class="fa fa-long-arrow-right main-color"></i><span><%= @article_category.name %></span>
+                <%= link_to "Home", root_path %>
                 <% if @article_category.parent.first.present? and !@article_category.parent.first.parent.empty? %>
                     <i class="fa fa-long-arrow-right main-color"></i>
-					<%= link_to @article_category.parent.first.parent.first.name, { controller: "post_detail", action: "index", category_id: @article_category.parent.first.parent.first.id } %>
+					<%= @article_category.parent.first.parent.first.name %>
 				<% end %>
                 <% if !@article_category.parent.empty? %>
                     <i class="fa fa-long-arrow-right main-color"></i>
-					<%= link_to @article_category.parent.first.name, { controller: "post_detail", action: "index", category_id: @article_category.parent.first.id } %>
+					<%= @article_category.parent.first.name %>
 				<% end %>
 				<% if !@article_category.nil? %>
                     <i class="fa fa-long-arrow-right main-color"></i>
