@@ -102,9 +102,9 @@
                         <div class="white-bg lg-box t-center light-gry-border rect-angles">
                             <i class="fa fa-map-marker main-color lg-icon"></i>
                             <h4>Address</h4>
-                            <p>123, Second Sunrise Avenue
+                            <p>188, Street 1, Ward 16, Go Vap District
                             <br>
-                            New York,USA</p>
+                             Ho Chi Minh City, Viet Nam</p>
                         </div>
                     </div>
                     
@@ -113,8 +113,8 @@
                             <i class="fa fa-phone-square main-color lg-icon"></i>
                             <h4>Phone</h4>
                             <p>
-                                Phone: +2 012 000 0000<br>
-                                Mobile: +2 012 000 0000<br>
+                                Phone: +84 8 3984 7690 - Ext: 204<br>
+                                Mobile: +84 97 974 4764<br>
                             </p>
                         </div>
                     </div>
@@ -124,8 +124,8 @@
                             <i class="fa fa-envelope main-color lg-icon"></i>
                             <h4>E-mail Address</h4>
                             <p>
-                                info@it-rays.net<br>
-                                email@domain.com
+                                soft.support@hoangkhang.com.vn<br>
+                                <span><a href="skype:luanpm88?chat">Live support - Chat now</a></span>
                             </p>
                         </div>
                     </div>
@@ -134,7 +134,7 @@
             </div>
         </div>
 
-        <div class="container md-padding">
+        <div class="">
             <div id="ROADMAP" class="gmap full" style="height: 400px">
                 <p>This will be replaced with the Google Map.</p>
             </div>
@@ -159,25 +159,27 @@
 <%= javascript_include_tag "http://maps.google.com/maps/api/js?sensor=false" %>
 <script type="text/javascript">
     $(".form-validate-contact").validate();
+    
     $(function(){
        $('#ROADMAP').gMap({
-            latitude: -2.206,
-            longitude: -79.897,
+            latitude: 10.847561,
+            longitude: 106.657725,
             maptype: 'ROADMAP', // 'HYBRID', 'SATELLITE', 'ROADMAP' or 'TERRAIN'
             zoom: 12,
             markers:[
                 {
-                    latitude: -2.2014,
-                    longitude: -80.9763,
-                    html: "_latlng"
+                    address: "",
+                    html: "",
+                    popup: false
                 },
                 {
-                    address: "Guayaquil, Ecuador",
-                    html: "My Hometown",
-                    popup: true
+                    latitude: 10.847561,
+                    longitude: 106.657725,
+                    html:
+                    "<b>GLOBAL NATURESOFT</b></br>188, Street 1, Ward 16, Go Vap District, </br> Ho Chi Minh City, Viet Nam"
                 },
                 {
-                    address: "Galapagos, Ecuador",
+                    address: "",
                     html: "_address"
                 }
             ],
@@ -188,7 +190,7 @@
             },
             controls: {
                 panControl: true,
-                zoomControl: false,
+                zoomControl: true,
                 mapTypeControl: true,
                 scaleControl: false,
                 streetViewControl: false,
