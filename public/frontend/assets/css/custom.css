@@ -14,6 +14,13 @@
 .top-nav ul li ul {
     min-width: 250px;
 }
+.blog-single .post-item .post-info-container, .blog-single .post-item .post-content p {
+    font-size: 16px;
+    color: #333;
+}
+.post-content h3 {
+    margin-top: 35px;
+}
 .span-uppercase {
     text-transform: uppercase;
 }
