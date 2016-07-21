@@ -14,3 +14,6 @@
 .top-nav ul li ul {
     min-width: 250px;
 }
+label.error {
+    display: none !important;
+}
