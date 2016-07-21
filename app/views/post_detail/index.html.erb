@@ -29,7 +29,9 @@
         
         <div class="page-title tbg">
             <div class="container">
-                <h1>Blog post title with Image</h1>
+                <% if @article.present? %>
+                    <h1><%= @article.title %></h1>
+                <% end %>
             </div>
         </div>
         <div class="breadcrumbs">
@@ -49,9 +51,9 @@
                             <article class="post-content">
                                 
                                 <p class="text-justify">
-                                    Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.<br><br>
-                                    Phasellus tristique libero vel justo aliquam pellentesque. Maecenas vestibulum velit est, in tincidunt arcu fermentum id. Morbi ipsum arcu, iaculis nec sapien vel, egestas viverra eros. Phasellus ac dolor elit. Donec nisl tellus, posuere in commodo ac, placerat a elit. Nulla fringilla venenatis metus, sed laoreet nisi varius non. Nunc placerat tempor orci id mattis. Suspendisse pulvinar nisl neque, rutrum pellentesque neque commodo non. Maecenas ultrices tortor sit amet suscipit tempor. Aenean et nunc pharetra, pulvinar nibh sed, mattis urna. Morbi vel lectus convallis, tristique mi non, feugiat eros.<br><br>
-                                    Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.<br><br>
+                                    <% if @article.present? %>
+                                        <%= @article.content.html_safe %>
+                                    <% end %>
                                 </p>
                                 
                                 <div class="post-tools">

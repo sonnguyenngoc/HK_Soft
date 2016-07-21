@@ -1,104 +1,46 @@
 <nav class="top-nav">
     <ul>
         <li<% if params[:controller] == "home" %> class="selected"<% end %>><%= link_to "<span>Home</span>".html_safe, root_path %></li>
-        <li><a href="#"><span>About Us</span></a>
-            <ul>
-                <li><%= link_to "Who We Are", post_detail_path %></li>
-                <li><a href="#">Company History</a></li>
-                <li><a href="#">Image Gallery</a></li>
-                <li><a href="#">Leadership</a></li>
-            </ul>
-        </li>
-        <li><a href="#"><span>Why Us</span></a>
-            <ul>
-                <li><a href="#">Strategic Software Partner</a></li>
-                <li><a href="#">Security & IP Protection</a></li>
-                <li><a href="#">End-to-end Solutions</a></li>
-                <li><a href="#">Established Engineering Process</a></li>
-                <li><a href="#">Innovation As A Service</a></li>
-                <li><a href="#">Open Communication</a></li>
-            </ul>
-        </li>
-        <li><a href="#"><span>Services</span></a>
-            <ul>
-                <li><a href="#">Website Design & Development</a></li>
-                <li><a href="#">Web-based Software Development</a></li>
-                <li><a href="#">Porting & Migration</a></li>
-                <li><a href="#">IT Managed Services</a></li>
-                <li><a href="#">Software Testing</a></li>
-                <li><a href="#">Production Support</a></li>
-                <li><a href="#">Visual Design</a></li>
-            </ul>
-        </li>
-        <li><a href="#"><span>Industries</span></a>
-            <ul>
-                <li><a href="#">E-commerce & Retail</a></li>
-                <li><a href="#">Education</a></li>
-                <li><a href="#">Media & Publishing</a></li>
-                <li><a href="#">Hospitality & Travel</a></li>
-                <li><a href="#">Finance & Insurance</a></li>
-                <li><a href="#">Healthcare</a></li>
-                <li><a href="#">Logistics & Transportation</a></li>
-                <li><a href="#">Real Estate</a></li>
-            </ul>
-        </li>
-        <li><a href="#"><span>Compentencies</span></a>
-            <ul>
-                <li><a href="#">Telecom & Network</a></li>
-                <li><a href="#">Microsoft</a></li>
-                <li><a href="#">Cloud Applications</a></li>
-                <li><a href="#">Embedded Software</a></li>
-                <li><a href="#">Mobile Applications</a></li>
-                <li><a href="#">Big Data & Analytics</a></li>
-                <li><a href="#">Software Testing</a></li>
-                <li><a href="#">Front-End Development</a></li>
-                <li><a href="#">Open Source</a></li>
-            </ul>
-        </li>
-        <li class="mega-menu"><a href="#"><span>Case Studies</span></a>
-            <ul>
+        
+        <% ArticleCategory.get_by_level(1).each do |menu| %>
+            <% if !menu.children.present? and menu.id != 16 %>
+                <li><%= link_to "#{'<span>' + menu.name + '</span>'}".html_safe, { controller: "post_detail", action: "index", category_id: menu.id } %></li>
+            <% elsif menu.children.present? and menu.id != 16 %>
                 <li>
-                    <div class="mega-content">
-                        <div class="row">
-                            <ul>
-                                <li class="col-md-4"><span>Services</span>
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Software Development</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Software Testing</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Production Support</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>IT Managed Services</a></li>
-                                    </ul>
-                                </li>
-                                <li class="col-md-4"><span>Industries</span>
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Finance & Insurance</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>E-commerce & Retail</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Media & Publishing</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Healthcare</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Education</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Hospitality & Travel</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Real Estate</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Logistics & Transportation</a></li>
-                                    </ul>
-                                </li>
-                                <li class="col-md-4"><span>Competencies</span>
-                                    <ul>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Telecom & Network</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Microsoft Technologies</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Ruby on Rails</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Open Source</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Mobile Applications</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Big Data & Analytics</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Embedded Software</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right"></i>Software Testing</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    <%= link_to "#{'<span>' + menu.name + '</span>'}".html_safe, { controller: "post_detail", action: "index", category_id: menu.id } %>
+                    <ul>
+                        <% menu.children.each do |child_1| %>
+                            <li><%= link_to child_1.name, { controller: "post_detail", action: "index", category_id: child_1.id } %></li>
+                        <% end %>
+                    </ul>
                 </li>
-            </ul>
-        </li>
+            <% elsif menu.children.present? and menu.id == 16 %>
+                <li class="mega-menu">
+                    <%= link_to "#{'<span>' + menu.name + '</span>'}".html_safe, { controller: "post_detail", action: "index", category_id: menu.id } %>
+                    <ul>
+                        <li>
+                            <div class="mega-content">
+                                <div class="row">
+                                    <ul>
+                                        <% menu.children.each do |child_1| %>
+                                            <li class="col-md-4"><span><%= child_1.name %></span>
+                                                <ul>
+                                                    <% child_1.children.each do |child_2| %>
+                                                        <li><%= link_to ('<i class="fa fa-caret-right"></i>' + child_2.name).html_safe, { controller: "post_detail", action: "index", category_id: child_2.id } %></li>
+                                                    <% end %>
+                                                </ul>
+                                            </li>
+                                        <% end %>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            <% end %>
+        <% end %>
+        
         <li<% if params[:controller] == "contact" %> class="selected"<% end %>><%= link_to "<span>Contact</span>".html_safe, contact_path %></li>
+
     </ul>
 </nav>

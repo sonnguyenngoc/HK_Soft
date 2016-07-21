@@ -59,18 +59,50 @@
                                 <label for="article_category_none"><%= t(:none) %></label>
                             </div>
                         </div>
+                        <!--<% ArticleCategory.all.each do |article_category| %>-->
+                        <!--    <% if @article_category.id != article_category.id %>-->
+                        <!--      <% if article_category.level == 1 %>-->
+                        <!--        <% if @article_category.id != article_category.id %>-->
+                        <!--            <div class="row-fluid">-->
+                        <!--                <div class="radio">-->
+                        <!--                    <%= radio_button_tag 'parent_id', article_category.id, @article_category.parent.include?(article_category), id: "article_category", class: "styled-level-1" %>-->
+                        <!--                    <label for="article_category_<%= article_category.id %>"><%= article_category.name %></label>-->
+                        <!--                </div>-->
+                        <!--            </div>-->
+                        <!--        <% end %>-->
+                        <!--      <% end %>-->
+                        <!--    <% end %>-->
+                        <!--<% end %>-->
                         <% ArticleCategory.all.each do |article_category| %>
-                            <% if @article_category.id != article_category.id %>
-                              <% if article_category.level == 1 %>
+                            <% if article_category.level == 1 %>
                                 <% if @article_category.id != article_category.id %>
                                     <div class="row-fluid">
                                         <div class="radio">
-                                            <%= radio_button_tag 'parent_id', article_category.id, @article_category.parent.include?(article_category), id: "article_category", class: "styled-level-1" %>
-                                            <label for="article_category_<%= article_category.id %>"><%= article_category.name %></label>
+                                            <%= radio_button_tag 'parent_id', article_category.id, @article_category.parent.include?(article_category), id: "category_#{article_category.id}", class: "styled-level-1" %>
+                                            <label for="category_<%= article_category.id %>"><%= article_category.name %></label>
                                         </div>
                                     </div>
                                 <% end %>
-                              <% end %>
+                                <% article_category.children.each do |child_1| %>                        
+                                    <% if @article_category.id != child_1.id %>
+                                        <div class="row-fluid" style="margin-left: 30px">
+                                            <div class="radio">
+                                                <%= radio_button_tag 'parent_id', child_1.id, @article_category.parent.include?(child_1), :id => "category_#{child_1.id}", class: "styled-level-1" %>
+                                                <label for="category_<%= child_1.id %>"><%= child_1.name %></label>
+                                            </div>
+                                        </div>
+                                    <% end %>
+                                    <% child_1.children.each do |child_2| %>
+                                        <% if @article_category.id != child_2.id %>
+                                            <div class="row-fluid" style="margin-left: 60px">
+                                                <div class="radio">
+                                                    <%= radio_button_tag 'category[parent_id]', child_2.id, @article_category.parent.include?(child_2), :id => "category_#{child_2.id}", class: "styled-level-1" %>
+                                                    <label for="category_<%= child_2.id %>"><%= child_2.name %></label>
+                                                </div>
+                                            </div>
+                                        <% end %>
+                                    <% end %>
+                                <% end %>
                             <% end %>
                         <% end %>
                     </div>
