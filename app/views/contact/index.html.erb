@@ -45,16 +45,7 @@
                         <h3 class="uppercase lg-title"><span class="main-color">Contact </span> Form</h3>
                     </div>
 
-                    <%= form_for Contact.new, url: contact_path, html: {class: "ajax-form" } do |f| %>
-
-                        <div class="contact-msg">
-                            <div class="alert alert-success">
-                                <div class="success-msg">
-                                    <i class="fa fa-thumbs-o-up ico-block"></i>
-                                    <p>Thanks for getting in touch with us, We'll check your message and get back to you shortly!</p>
-                                </div>
-                            </div>
-                        </div>
+                    <%= form_for Contact.new, url: contact_path, html: {class: "form-validate-contact" } do |f| %>
 
                         <div class="row form-group over-hidden">
                             
@@ -65,7 +56,7 @@
 
                             <div class="col-md-4">
                                 <%= f.label "Email *", for: "contact-email" %>
-                                <%= f.text_field :email, class: "form-control required", id: "contact-email" %>
+                                <%= f.text_field :email, class: "form-control email required", id: "contact-email" %>
                             </div>
 
                             <div class="col-md-4">
@@ -164,8 +155,10 @@
 <%= render "/home/js_files" %>
 
 <%= javascript_include_tag "/frontend/assets/js/jquery.gmap.js" %>
+<%= javascript_include_tag "/frontend/assets/js/jquery.validate.js" %>
 <%= javascript_include_tag "http://maps.google.com/maps/api/js?sensor=false" %>
 <script type="text/javascript">
+    $(".form-validate-contact").validate();
     $(function(){
        $('#ROADMAP').gMap({
             latitude: -2.206,

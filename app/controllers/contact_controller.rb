@@ -7,7 +7,7 @@ class ContactController < ApplicationController
             @contact = Contact.new(contact_params)
             respond_to do |format|
                 @contact.save
-                format.html { redirect_to controller: "contact", action: "index" }
+                format.html { redirect_to controller: "contact", action: "success" }
             end
         end
     end

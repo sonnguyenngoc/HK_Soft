@@ -1,0 +1,149 @@
+<div class="pageWrapper">
+    
+    <!-- Top bar start -->
+    <%= render "/home/top_bar" %>
+    <!-- Top bar end -->
+    
+    <!-- Header start -->
+    <header class="top-head minimal">
+        <div class="container">
+            
+            <!-- Logo start -->
+            <%= render "/home/logo" %>
+            <!-- Logo end -->
+
+            <div class="responsive-nav">
+                
+                <!-- top navigation menu start -->
+                <%= render "/home/top_navigation_menu" %>
+                <!-- top navigation menu end -->
+                
+                <div class="f-right">
+                    <!-- top search start -->
+                    <%= render "/home/top_search" %>
+                    <!-- top search end -->
+                </div>
+                
+            </div>
+        </div>
+    </header>
+    <!-- Header start -->
+
+    <!-- Content start -->
+    <div class="pageContent">
+
+        <div class="page-title lg-padding">
+            <div class="container">
+                <h1 class="t-center font-50 uppercase bolder"><span class="main-color">successfully!</span></h1>
+                <h3 class="t-center">Thanks for getting in touch with us, We'll check your message and get back to you shortly!</h3>
+            </div>
+            
+            <div class="tbl">
+                <div class="form-group m-t-2">
+                    <a href="<%= root_path %>" class="btn main-bg btn-block btn-lg btn-3d uppercase">Back to Home</a>
+                </div>
+            </div>
+        </div>
+        
+        
+
+    </div>
+    <!-- Content start -->
+
+    <!-- Footer start -->
+    <%= render "/home/footer" %>
+    <!-- Footer end -->
+
+</div>
+
+<!-- Back to top Link -->
+<a id="to-top" href="#"><span class="fa fa fa-angle-up"></span></a>
+
+<%= render "/home/js_files" %>
+
+<!-- SLIDER REVOLUTION  -->
+<script type="text/javascript" src="/frontend/assets/revolution/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="/frontend/assets/revolution/js/jquery.themepunch.revolution.min.js"></script>
+
+<script type="text/javascript">
+    var tpj = jQuery;
+    var revapi429;
+    tpj(window).load(function() {
+        if (tpj("#rev_slider_429_1").revolution == undefined) {
+            revslider_showDoubleJqueryError("#rev_slider_429_1");
+        } else {
+            revapi429 = tpj("#rev_slider_429_1").show().revolution({
+                sliderType: "standard",
+                jsFileLocation: "/frontend/assets/revolution/js/",
+                sliderLayout: "fullwidth",
+                dottedOverlay: "none",
+                delay: 9000,
+                navigation: {
+                    keyboardNavigation: "on",
+                    keyboard_direction: "vertical",
+                    mouseScrollNavigation: "off",
+                    mouseScrollReverse: "default",
+                    onHoverStop: "off",
+                    touch: {
+                        touchenabled: "on",
+                        swipe_threshold: 75,
+                        swipe_min_touches: 1,
+                        swipe_direction: "vertical",
+                        drag_block_vertical: false
+                    },
+                    arrows: {
+                        style: "metis",
+                        enable: true,
+                        hide_onmobile: false,
+                        hide_onleave: true,
+                        tmp: '',
+                        left: {
+                            h_align: "left",
+                            v_align: "center",
+                            h_offset: 10,
+                            v_offset: 0
+                        },
+                        right: {
+                            h_align: "right",
+                            v_align: "center",
+                            h_offset: 10,
+                            v_offset: 0
+                        }
+                    },
+                    bullets: {
+                        enable: false,
+                        hide_onmobile: true,
+                        hide_under: 778,
+                        style: "hermes",
+                        hide_onleave: false,
+                        direction: "vertical",
+                        h_align: "right",
+                        v_align: "center",
+                        h_offset: 20,
+                        v_offset: 0,
+                        space: 5,
+                        tmp: ''
+                    }
+                },
+                responsiveLevels: [1240, 1024, 778, 480],
+                visibilityLevels: [1240, 1024, 778, 480],
+                gridwidth: [1200, 1024, 768, 480],
+                gridheight: [650, 650, 960, 720],
+                lazyType: "smart",
+                shadow: 0,
+                spinner: "spinner2",
+                autoHeight: "off",
+                disableProgressBar: "on",
+                hideThumbsOnMobile: "off",
+                hideSliderAtLimit: 0,
+                hideCaptionAtLimit: 0,
+                hideAllCaptionAtLilmit: 0,
+                debugMode: false,
+                fallbacks: {
+                    simplifyAll: "off",
+                    disableFocusListener: false,
+                }
+            });
+        }
+    });
+</script>
