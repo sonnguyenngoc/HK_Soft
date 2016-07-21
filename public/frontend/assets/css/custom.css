@@ -31,3 +31,6 @@ li.active > a {
     color: #25aae2;
     cursor: default;
 }
+.cssload-lt:before, .cssload-rt:before, .cssload-lb:before, .cssload-rb:before {
+    border-top-color: #25aae2;
+}

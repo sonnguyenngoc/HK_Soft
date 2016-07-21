@@ -15,31 +15,10 @@
                     </ul>
                 </li>
             <% elsif menu.children.present? and menu.id == 16 %>
-                <li class="mega-menu<% if params[:category_id].present? && ArticleCategory.find(params[:category_id].to_i).family_ids.include?(menu.id) %> selected<% end %>">
-                    <%= link_to "#{'<span>' + menu.name + '</span>'}".html_safe, "#" %>
-                    <ul>
-                        <li>
-                            <div class="mega-content">
-                                <div class="row">
-                                    <ul>
-                                        <% menu.children.each do |child_1| %>
-                                            <li class="col-md-4"><span class="span-uppercase"><%= child_1.name %></span>
-                                                <ul>
-                                                    <% child_1.children.each do |child_2| %>
-                                                        <li<% if params[:category_id] == child_2.id.to_s %> class="selected"<% end %>><%= link_to ('<i class="fa fa-caret-right"></i>' + child_2.name).html_safe, post_detail_path(category_id: child_2.id, parent_name: child_2.parent.first.url_friendly, name: child_2.url_friendly) %></li>
-                                                    <% end %>
-                                                </ul>
-                                            </li>
-                                        <% end %>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
+                
             <% end %>
         <% end %>
-        
+        <li<% if params[:controller] == "portfolio" %> class="selected"<% end %>><%= link_to "<span>Portfolio</span>".html_safe, portfolio_path %></li>
         <li<% if params[:controller] == "contact" %> class="selected"<% end %>><%= link_to "<span>Contact</span>".html_safe, contact_path %></li>
 
     </ul>
