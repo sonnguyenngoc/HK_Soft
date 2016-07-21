@@ -16,47 +16,48 @@
                 <div class="clearfix over-hidden">
                     
                     <!-- Our Friends footer cell start -->
-                    <div class="col-md-3">
-                        <h3>SERVICES</h3>
-                        <ul class="menu-widget">
-                            <li><a href="#">Software Development</a></li>
-                            <li><a href="#">Software Testing</a></li>
-                            <li><a href="#">Production Support</a></li>
-                            <li><a href="#">IT Managed Services</a></li>
-                        </ul>
-                    </div>
+                    <% ArticleCategory.get_by_level(1).each do |menu| %>
+                        <% if menu.children.present? and menu.id == 13 %>
+                            <div class="col-md-3">
+                                <h3><%= menu.name %></h3>
+                                <ul class="menu-widget">
+                                    <% menu.children.each do |child_1| %>
+                                        <li><%= link_to child_1.name, post_detail_path(category_id: child_1.id) %></li>
+                                    <% end %>
+                                </ul>
+                            </div>
+                        <% end %>
+                    <% end %>
                     <!-- Our Friends footer cell start -->
                     
                     <!-- Our Friends footer cell start -->
-                    <div class="col-md-3">
-                        <h3>INDUSTRIES</h3>
-                        <ul class="menu-widget">
-                            <li><a href="#">Finance & Insurance</a></li>
-                            <li><a href="#">E-commerce & Retail</a></li>
-                            <li><a href="#">Media & Publishing</a></li>
-                            <li><a href="#">Healthcare</a></li>
-                            <li><a href="#">Education</a></li>
-                            <li><a href="#">Hospitality & Travel</a></li>
-                            <li><a href="#">Real Estate</a></li>
-                            <li><a href="#">Logistics & Transportation</a></li>
-                        </ul>
-                    </div>
+                    <% ArticleCategory.get_by_level(1).each do |menu| %>
+                        <% if menu.children.present? and menu.id == 14 %>
+                            <div class="col-md-3">
+                                <h3><%= menu.name %></h3>
+                                <ul class="menu-widget">
+                                    <% menu.children.each do |child_1| %>
+                                        <li><%= link_to child_1.name, post_detail_path(category_id: child_1.id) %></li>
+                                    <% end %>
+                                </ul>
+                            </div>
+                        <% end %>
+                    <% end %>
                     <!-- Our Friends footer cell start -->
                     
                     <!-- Our Friends footer cell start -->
-                    <div class="col-md-3">
-                        <h3>COMPENTENCIES</h3>
-                        <ul class="menu-widget">
-                            <li><a href="#">Telecom & Network</a></li>
-                            <li><a href="#">Microsoft Technologies</a></li>
-                            <li><a href="#">Ruby on Rails</a></li>
-                            <li><a href="#">Open Source</a></li>
-                            <li><a href="#">Mobile Applications</a></li>
-                            <li><a href="#">Big Data & Analytics</a></li>
-                            <li><a href="#">Embedded Software</a></li>
-                            <li><a href="#">Software Testing</a></li>
-                        </ul>
-                    </div>
+                    <% ArticleCategory.get_by_level(1).each do |menu| %>
+                        <% if menu.children.present? and menu.id == 15 %>
+                            <div class="col-md-3">
+                                <h3><%= menu.name %></h3>
+                                <ul class="menu-widget">
+                                    <% menu.children.each do |child_1| %>
+                                        <li><%= link_to child_1.name, post_detail_path(category_id: child_1.id) %></li>
+                                    <% end %>
+                                </ul>
+                            </div>
+                        <% end %>
+                    <% end %>
                     <!-- Our Friends footer cell start -->
                     
                     <!-- Tags Cloud footer cell start -->
