@@ -12,6 +12,21 @@ class ArticleCategory < ActiveRecord::Base
     self.save
   end
   
+  def self.find_selected(params)
+    self.find(params[:category_id])
+  end
+  
+  def family_ids
+      arr = [self.id]
+      arr << self.parent.first.id if !self.parent.empty?
+      arr << self.parent.first.parent.first.id if !self.parent.empty? and !self.parent.first.parent.empty?
+      return arr
+  end
+  
+  def url_friendly
+    self.name.unaccent.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip
+  end
+  
   def self.get_by_level(lvl)
     self.where(level: 1)
   end
