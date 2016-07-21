@@ -237,11 +237,11 @@
                             <li>
                                 <article class="box">
                                     <figure>
-                                        <%= link_to image_tag(item.image_url.medium_image, width: "270", height: "160"), car_detail_path(car_id: item), class: "hover-effect" %>
+                                        <%= link_to image_tag(item.image_url.medium_image, width: "270", height: "160"), car_detail_path(car_id: item, name: item.url_friendly), class: "hover-effect" %>
                                     </figure>
                                     <div class="details">
                                         <h4 class="box-title">
-                                            <%= link_to item.name, car_detail_path(car_id: item) %>
+                                            <%= link_to item.name, car_detail_path(car_id: item, name: item.url_friendly) %>
                                             <small>Giá: <% if item.price == 0 %>Liên Hệ<% else %><%= format_number(item.price) %> VND<% end %></small>
                                         </h4>
                                     </div>
