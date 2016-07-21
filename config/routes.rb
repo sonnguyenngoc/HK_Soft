@@ -4,9 +4,11 @@ Rails.application.routes.draw do
     
     root "home#index"
     get "contact-us.html" => "contact#index", as: :contact
-    get "(:parent_name)/(:name)-:category_id.html" => "post_detail#index", as: :post_detail
-    get "portfolio.html" => "portfolio#index", as: :portfolio
-    get "portfolio/portfolio-detail.html" => "portfolio#detail", as: :portfolio_detail
+    post "contact-us.html" => "contact#index"
+    get "contact-us/success.html" => "contact#success", as: :success
+    get "(:parent_name)/detail/(:name)-:category_id.html" => "post_detail#index", as: :post_detail
+    get "project.html" => "portfolio#index", as: :portfolio
+    get "project/project-detail.html" => "portfolio#detail", as: :portfolio_detail
     
     namespace :admin, path: "quan-tri" do
       get "/" => "main#index"

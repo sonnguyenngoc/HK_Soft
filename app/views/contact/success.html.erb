@@ -34,90 +34,18 @@
 
         <div class="page-title lg-padding">
             <div class="container">
-                <h1 class="t-center font-50 uppercase bolder">Welcome To <span class="main-color">Global Naturesoft</span></h1>
-                <h3 class="t-center">Now you can check all our work and work in progress, it is amazing and Awesome.</h3>
+                <h1 class="t-center font-50 uppercase bolder"><span class="main-color">successfully!</span></h1>
+                <h3 class="t-center">Thanks for getting in touch with us, We'll check your message and get back to you shortly!</h3>
             </div>
-        </div>
-
-        <div class="md-padding">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="filter-by style2">
-                            <ul id="filters">
-                                <li class="selected"><a href="#" class="filter" data-filter="*"><span>All</span></a></li>
-                                <% @project_categories.each do |item| %>
-                                    <% if item.projects.count > 0 %>
-                                         <li><a href="#" class="filter" data-filter=".<%= item.description %>"><span><%= item.name %></span></a></li>
-                                    <% end %>
-                                <% end %>
-                            </ul>
-                        </div>
-
-                        <div class="portfolio grid p-3-cols p-style1" id="masonry">
-                            <% @projects.each do |item| %>
-                            <div class="portfolio-item <%= item.project_type %>">
-                                <figure>
-                                    <div class="port-img">
-                                        <div class="icon-links">
-                                            <%= link_to '<i class="fa fa-link"></i>'.html_safe, portfolio_detail_path(project_id: item.id), class: "link white-bg" %>
-                                            <a href="/frontend/assets/images/portfolio/grid/1.jpg" class="zoom main-bg" title="<%= item.name %>"><i class="fa fa-search-plus"></i></a>
-                                        </div>
-                                        <img alt="" src="/frontend/assets/images/portfolio/grid/1.jpg">
-                                    </div>
-                                    <figcaption>
-                                        <div class="port-captions">
-                                            <h4 class="uppercase"><%= link_to item.name, portfolio_detail_path(project_id: item.id), class: "main-color" %></h4>
-                                        </div>
-                                    </figcaption>				
-                                </figure>
-                            </div>
-                            <% end %>
-                        </div>
-                    </div>
+            
+            <div class="tbl">
+                <div class="form-group m-t-2">
+                    <a href="<%= root_path %>" class="btn main-bg btn-block btn-lg btn-3d uppercase">Back to Home</a>
                 </div>
             </div>
         </div>
-
-        <div class="md-padding">
-            <div class="container">
-
-                <div class="heading style2">
-                    <h4 class="uppercase">Some Of <span class="main-color">Our Clients</span></h4>
-                </div>
-
-                <div class="horizontal-slider" data-slides_count="6" data-scroll_amount="6" data-slider-speed="300" data-slider-infinite="1" data-slider-dots="1" data-slider-arrows="0">
-                    <div>
-                        <a href="#"><img alt="" src="frontend/assets/images/clients/1.png"></a>
-                    </div>
-                    <div>
-                        <a href="#"><img alt="" src="frontend/assets/images/clients/2.png"></a>
-                    </div>
-                    <div>
-                        <a href="#"><img alt="" src="frontend/assets/images/clients/3.png"></a>
-                    </div>
-                    <div>
-                        <a href="#"><img alt="" src="frontend/assets/images/clients/4.png"></a>
-                    </div>
-                    <div>
-                        <a href="#"><img alt="" src="frontend/assets/images/clients/5.png"></a>
-                    </div>
-                    <div>
-                        <a href="#"><img alt="" src="frontend/assets/images/clients/6.png"></a>
-                    </div>
-                    <div>
-                        <a href="#"><img alt="" src="frontend/assets/images/clients/7.png"></a>
-                    </div>
-                    <div>
-                        <a href="#"><img alt="" src="frontend/assets/images/clients/8.png"></a>
-                    </div>
-                    <div>
-                        <a href="#"><img alt="" src="frontend/assets/images/clients/9.png"></a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+        
+        
 
     </div>
     <!-- Content start -->

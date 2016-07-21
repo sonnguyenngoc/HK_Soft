@@ -83,6 +83,13 @@
                 </div>
                     
                 <div class="form-group">
+                    <label class="col-lg-2 control-label" >Project Type <span class='text-danger'>*</span></label>
+                    <div class="col-lg-10">
+                        <%= f.select(:project_type, ['design', 'web-based'], {}, { :class => 'select_project_type' })%>
+                    </div>
+                </div>
+                                
+                <div class="form-group">
                     <label class="col-lg-2 control-label" ><%= t(:project_category) %></label>
                     <div class="col-lg-10">
                         <select name="project_category_ids[]" id="project_category_ids" class="select-item-color required" data-placeholder="<%= t(:choose_project_category) %>..." multiple="multiple">
