@@ -27,3 +27,7 @@ label.error {
 .span-uppercase {
     text-transform: uppercase;
 }
+li.active > a {
+    color: #25aae2;
+    cursor: default;
+}
