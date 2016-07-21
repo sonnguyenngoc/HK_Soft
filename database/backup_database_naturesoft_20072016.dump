@@ -1,0 +1,3920 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.3
+-- Dumped by pg_dump version 9.5.3
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: areas; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE areas (
+    id integer NOT NULL,
+    name character varying,
+    level integer,
+    description text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    parent_id integer,
+    areatype_id integer,
+    display_order integer
+);
+
+
+ALTER TABLE areas OWNER TO hungnt;
+
+--
+-- Name: areas_articles; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE areas_articles (
+    id integer NOT NULL,
+    area_id integer,
+    article_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE areas_articles OWNER TO hungnt;
+
+--
+-- Name: areas_articles_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE areas_articles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE areas_articles_id_seq OWNER TO hungnt;
+
+--
+-- Name: areas_articles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE areas_articles_id_seq OWNED BY areas_articles.id;
+
+
+--
+-- Name: areas_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE areas_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE areas_id_seq OWNER TO hungnt;
+
+--
+-- Name: areas_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE areas_id_seq OWNED BY areas.id;
+
+
+--
+-- Name: areas_products; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE areas_products (
+    id integer NOT NULL,
+    area_id integer,
+    product_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE areas_products OWNER TO hungnt;
+
+--
+-- Name: areas_products_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE areas_products_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE areas_products_id_seq OWNER TO hungnt;
+
+--
+-- Name: areas_products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE areas_products_id_seq OWNED BY areas_products.id;
+
+
+--
+-- Name: article_categories; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE article_categories (
+    id integer NOT NULL,
+    name character varying,
+    description text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    level integer,
+    meta_keywords character varying,
+    meta_description text,
+    name_vi character varying,
+    description_vi character varying
+);
+
+
+ALTER TABLE article_categories OWNER TO hungnt;
+
+--
+-- Name: article_categories_articles; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE article_categories_articles (
+    id integer NOT NULL,
+    article_id integer,
+    article_category_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE article_categories_articles OWNER TO hungnt;
+
+--
+-- Name: article_categories_articles_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE article_categories_articles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE article_categories_articles_id_seq OWNER TO hungnt;
+
+--
+-- Name: article_categories_articles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE article_categories_articles_id_seq OWNED BY article_categories_articles.id;
+
+
+--
+-- Name: article_categories_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE article_categories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE article_categories_id_seq OWNER TO hungnt;
+
+--
+-- Name: article_categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE article_categories_id_seq OWNED BY article_categories.id;
+
+
+--
+-- Name: articles; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE articles (
+    id integer NOT NULL,
+    image_url character varying,
+    title character varying,
+    content text,
+    tags character varying,
+    article_category_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    code_status_id integer,
+    meta_keywords character varying,
+    meta_description text,
+    is_show boolean DEFAULT false,
+    page_layout character varying,
+    user_id integer,
+    approved boolean DEFAULT false,
+    image_url_full_width character varying,
+    title_vi character varying,
+    content_vi character varying
+);
+
+
+ALTER TABLE articles OWNER TO hungnt;
+
+--
+-- Name: articles_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE articles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE articles_id_seq OWNER TO hungnt;
+
+--
+-- Name: articles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE articles_id_seq OWNED BY articles.id;
+
+
+--
+-- Name: articles_products; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE articles_products (
+    id integer NOT NULL,
+    article_id integer,
+    product_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE articles_products OWNER TO hungnt;
+
+--
+-- Name: articles_products_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE articles_products_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE articles_products_id_seq OWNER TO hungnt;
+
+--
+-- Name: articles_products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE articles_products_id_seq OWNED BY articles_products.id;
+
+
+--
+-- Name: articles_projects; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE articles_projects (
+    id integer NOT NULL,
+    article_id integer,
+    project_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE articles_projects OWNER TO hungnt;
+
+--
+-- Name: articles_projects_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE articles_projects_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE articles_projects_id_seq OWNER TO hungnt;
+
+--
+-- Name: articles_projects_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE articles_projects_id_seq OWNED BY articles_projects.id;
+
+
+--
+-- Name: carts; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE carts (
+    id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    voucher_code character varying,
+    coupon_code character varying
+);
+
+
+ALTER TABLE carts OWNER TO hungnt;
+
+--
+-- Name: carts_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE carts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE carts_id_seq OWNER TO hungnt;
+
+--
+-- Name: carts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE carts_id_seq OWNED BY carts.id;
+
+
+--
+-- Name: categories; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE categories (
+    id integer NOT NULL,
+    name character varying,
+    level integer,
+    description text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    ordered integer,
+    meta_keywords character varying,
+    meta_description text
+);
+
+
+ALTER TABLE categories OWNER TO hungnt;
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE categories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE categories_id_seq OWNER TO hungnt;
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE categories_id_seq OWNED BY categories.id;
+
+
+--
+-- Name: categories_products; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE categories_products (
+    id integer NOT NULL,
+    product_id integer,
+    category_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE categories_products OWNER TO hungnt;
+
+--
+-- Name: categories_products_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE categories_products_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE categories_products_id_seq OWNER TO hungnt;
+
+--
+-- Name: categories_products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE categories_products_id_seq OWNED BY categories_products.id;
+
+
+--
+-- Name: code_statuses; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE code_statuses (
+    id integer NOT NULL,
+    title character varying,
+    description text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE code_statuses OWNER TO hungnt;
+
+--
+-- Name: code_statuses_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE code_statuses_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE code_statuses_id_seq OWNER TO hungnt;
+
+--
+-- Name: code_statuses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE code_statuses_id_seq OWNED BY code_statuses.id;
+
+
+--
+-- Name: comment_articles; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE comment_articles (
+    id integer NOT NULL,
+    name character varying,
+    email character varying,
+    content text,
+    user_id integer,
+    article_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    parent_id integer DEFAULT '-1'::integer
+);
+
+
+ALTER TABLE comment_articles OWNER TO hungnt;
+
+--
+-- Name: comment_articles_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE comment_articles_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE comment_articles_id_seq OWNER TO hungnt;
+
+--
+-- Name: comment_articles_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE comment_articles_id_seq OWNED BY comment_articles.id;
+
+
+--
+-- Name: comments; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE comments (
+    id integer NOT NULL,
+    product_id integer,
+    name character varying,
+    content text,
+    star integer,
+    user_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE comments OWNER TO hungnt;
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE comments_id_seq OWNER TO hungnt;
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
+
+
+--
+-- Name: companies; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE companies (
+    id integer NOT NULL,
+    image_url character varying,
+    name character varying,
+    head_office_address character varying,
+    certificate_no character varying,
+    date_of_issue timestamp without time zone,
+    sales_office_address character varying,
+    phone character varying,
+    hotline character varying,
+    email character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    head_area_id integer,
+    branch_area_id integer,
+    type_company character varying,
+    fax character varying
+);
+
+
+ALTER TABLE companies OWNER TO hungnt;
+
+--
+-- Name: companies_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE companies_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE companies_id_seq OWNER TO hungnt;
+
+--
+-- Name: companies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE companies_id_seq OWNED BY companies.id;
+
+
+--
+-- Name: compares; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE compares (
+    id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE compares OWNER TO hungnt;
+
+--
+-- Name: compares_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE compares_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE compares_id_seq OWNER TO hungnt;
+
+--
+-- Name: compares_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE compares_id_seq OWNED BY compares.id;
+
+
+--
+-- Name: contacts; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE contacts (
+    id integer NOT NULL,
+    name character varying,
+    email character varying,
+    message text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    user_id integer,
+    phone character varying,
+    subject character varying
+);
+
+
+ALTER TABLE contacts OWNER TO hungnt;
+
+--
+-- Name: contacts_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE contacts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE contacts_id_seq OWNER TO hungnt;
+
+--
+-- Name: contacts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE contacts_id_seq OWNED BY contacts.id;
+
+
+--
+-- Name: conversations; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE conversations (
+    id integer NOT NULL,
+    sender_id integer,
+    recipient_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE conversations OWNER TO hungnt;
+
+--
+-- Name: conversations_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE conversations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE conversations_id_seq OWNER TO hungnt;
+
+--
+-- Name: conversations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE conversations_id_seq OWNED BY conversations.id;
+
+
+--
+-- Name: coupons; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE coupons (
+    id integer NOT NULL,
+    name character varying,
+    code character varying,
+    from_date timestamp without time zone,
+    to_date timestamp without time zone,
+    description text,
+    quantity integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    price numeric
+);
+
+
+ALTER TABLE coupons OWNER TO hungnt;
+
+--
+-- Name: coupons_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE coupons_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE coupons_id_seq OWNER TO hungnt;
+
+--
+-- Name: coupons_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE coupons_id_seq OWNED BY coupons.id;
+
+
+--
+-- Name: customers; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE customers (
+    id integer NOT NULL,
+    first_name character varying,
+    last_name character varying,
+    email character varying,
+    phone character varying,
+    company character varying,
+    address character varying,
+    city character varying,
+    zip_code integer,
+    country character varying,
+    province character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    order_id integer,
+    area_id integer
+);
+
+
+ALTER TABLE customers OWNER TO hungnt;
+
+--
+-- Name: customers_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE customers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE customers_id_seq OWNER TO hungnt;
+
+--
+-- Name: customers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE customers_id_seq OWNED BY customers.id;
+
+
+--
+-- Name: delivery_methods; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE delivery_methods (
+    id integer NOT NULL,
+    title character varying,
+    description text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE delivery_methods OWNER TO hungnt;
+
+--
+-- Name: delivery_methods_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE delivery_methods_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE delivery_methods_id_seq OWNER TO hungnt;
+
+--
+-- Name: delivery_methods_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE delivery_methods_id_seq OWNED BY delivery_methods.id;
+
+
+--
+-- Name: feedbacks; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE feedbacks (
+    id integer NOT NULL,
+    email character varying,
+    content text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE feedbacks OWNER TO hungnt;
+
+--
+-- Name: feedbacks_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE feedbacks_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE feedbacks_id_seq OWNER TO hungnt;
+
+--
+-- Name: feedbacks_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE feedbacks_id_seq OWNED BY feedbacks.id;
+
+
+--
+-- Name: line_item_compares; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE line_item_compares (
+    id integer NOT NULL,
+    product_id integer,
+    compare_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE line_item_compares OWNER TO hungnt;
+
+--
+-- Name: line_item_compares_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE line_item_compares_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE line_item_compares_id_seq OWNER TO hungnt;
+
+--
+-- Name: line_item_compares_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE line_item_compares_id_seq OWNED BY line_item_compares.id;
+
+
+--
+-- Name: line_items; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE line_items (
+    id integer NOT NULL,
+    product_id integer,
+    cart_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    quantity integer DEFAULT 1
+);
+
+
+ALTER TABLE line_items OWNER TO hungnt;
+
+--
+-- Name: line_items_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE line_items_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE line_items_id_seq OWNER TO hungnt;
+
+--
+-- Name: line_items_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE line_items_id_seq OWNED BY line_items.id;
+
+
+--
+-- Name: manufacturers; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE manufacturers (
+    id integer NOT NULL,
+    image_url character varying,
+    name character varying,
+    address character varying,
+    description text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE manufacturers OWNER TO hungnt;
+
+--
+-- Name: manufacturers_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE manufacturers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE manufacturers_id_seq OWNER TO hungnt;
+
+--
+-- Name: manufacturers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE manufacturers_id_seq OWNED BY manufacturers.id;
+
+
+--
+-- Name: messages; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE messages (
+    id integer NOT NULL,
+    body text,
+    conversation_id integer,
+    user_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    seen timestamp without time zone
+);
+
+
+ALTER TABLE messages OWNER TO hungnt;
+
+--
+-- Name: messages_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE messages_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE messages_id_seq OWNER TO hungnt;
+
+--
+-- Name: messages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE messages_id_seq OWNED BY messages.id;
+
+
+--
+-- Name: newsletters; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE newsletters (
+    id integer NOT NULL,
+    email character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    status boolean DEFAULT true,
+    user_id integer
+);
+
+
+ALTER TABLE newsletters OWNER TO hungnt;
+
+--
+-- Name: newsletters_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE newsletters_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE newsletters_id_seq OWNER TO hungnt;
+
+--
+-- Name: newsletters_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE newsletters_id_seq OWNED BY newsletters.id;
+
+
+--
+-- Name: options; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE options (
+    id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    code character varying,
+    tag character varying,
+    value text,
+    note text,
+    title character varying,
+    accept_email boolean DEFAULT false
+);
+
+
+ALTER TABLE options OWNER TO hungnt;
+
+--
+-- Name: options_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE options_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE options_id_seq OWNER TO hungnt;
+
+--
+-- Name: options_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE options_id_seq OWNED BY options.id;
+
+
+--
+-- Name: order_deliveries; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE order_deliveries (
+    id integer NOT NULL,
+    first_name character varying,
+    last_name character varying,
+    company character varying,
+    address character varying,
+    city character varying,
+    zip_code integer,
+    country character varying,
+    province character varying,
+    delivery_method_id integer,
+    payment_method_id integer,
+    message text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    order_id integer,
+    email character varying,
+    phone character varying
+);
+
+
+ALTER TABLE order_deliveries OWNER TO hungnt;
+
+--
+-- Name: order_deliveries_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE order_deliveries_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE order_deliveries_id_seq OWNER TO hungnt;
+
+--
+-- Name: order_deliveries_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE order_deliveries_id_seq OWNED BY order_deliveries.id;
+
+
+--
+-- Name: order_details; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE order_details (
+    id integer NOT NULL,
+    order_id integer,
+    product_id integer,
+    quantity integer,
+    price numeric,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    product_name character varying
+);
+
+
+ALTER TABLE order_details OWNER TO hungnt;
+
+--
+-- Name: order_details_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE order_details_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE order_details_id_seq OWNER TO hungnt;
+
+--
+-- Name: order_details_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE order_details_id_seq OWNED BY order_details.id;
+
+
+--
+-- Name: orders; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE orders (
+    id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    user_id integer,
+    status character varying DEFAULT 'Pending'::character varying,
+    different_delivery boolean DEFAULT false,
+    voucher_code character varying,
+    voucher_price numeric,
+    coupon_code character varying,
+    coupon_price numeric
+);
+
+
+ALTER TABLE orders OWNER TO hungnt;
+
+--
+-- Name: orders_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE orders_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE orders_id_seq OWNER TO hungnt;
+
+--
+-- Name: orders_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE orders_id_seq OWNED BY orders.id;
+
+
+--
+-- Name: parent_article_categories; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE parent_article_categories (
+    id integer NOT NULL,
+    parent_id integer,
+    article_category_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE parent_article_categories OWNER TO hungnt;
+
+--
+-- Name: parent_article_categories_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE parent_article_categories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE parent_article_categories_id_seq OWNER TO hungnt;
+
+--
+-- Name: parent_article_categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE parent_article_categories_id_seq OWNED BY parent_article_categories.id;
+
+
+--
+-- Name: parent_categories; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE parent_categories (
+    id integer NOT NULL,
+    parent_id integer,
+    category_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE parent_categories OWNER TO hungnt;
+
+--
+-- Name: parent_categories_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE parent_categories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE parent_categories_id_seq OWNER TO hungnt;
+
+--
+-- Name: parent_categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE parent_categories_id_seq OWNED BY parent_categories.id;
+
+
+--
+-- Name: payment_methods; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE payment_methods (
+    id integer NOT NULL,
+    title character varying,
+    description text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE payment_methods OWNER TO hungnt;
+
+--
+-- Name: payment_methods_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE payment_methods_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE payment_methods_id_seq OWNER TO hungnt;
+
+--
+-- Name: payment_methods_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE payment_methods_id_seq OWNED BY payment_methods.id;
+
+
+--
+-- Name: product_images; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE product_images (
+    id integer NOT NULL,
+    product_id integer,
+    image_url character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    is_main character varying DEFAULT 'False'::character varying
+);
+
+
+ALTER TABLE product_images OWNER TO hungnt;
+
+--
+-- Name: product_images_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE product_images_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE product_images_id_seq OWNER TO hungnt;
+
+--
+-- Name: product_images_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE product_images_id_seq OWNED BY product_images.id;
+
+
+--
+-- Name: products; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE products (
+    id integer NOT NULL,
+    name character varying,
+    code character varying,
+    quantity numeric,
+    unit character varying,
+    price numeric,
+    short_description text,
+    description text,
+    manufacturer_id integer,
+    product_image_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    tags character varying,
+    status text,
+    old_price numeric,
+    discount_percent numeric,
+    meta_keywords character varying,
+    meta_description text,
+    is_show boolean DEFAULT false,
+    stock integer DEFAULT 1,
+    approved boolean DEFAULT false,
+    user_id integer
+);
+
+
+ALTER TABLE products OWNER TO hungnt;
+
+--
+-- Name: products_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE products_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE products_id_seq OWNER TO hungnt;
+
+--
+-- Name: products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE products_id_seq OWNED BY products.id;
+
+
+--
+-- Name: program_languages; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE program_languages (
+    id integer NOT NULL,
+    name character varying,
+    description text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE program_languages OWNER TO hungnt;
+
+--
+-- Name: program_languages_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE program_languages_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE program_languages_id_seq OWNER TO hungnt;
+
+--
+-- Name: program_languages_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE program_languages_id_seq OWNED BY program_languages.id;
+
+
+--
+-- Name: program_languages_projects; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE program_languages_projects (
+    id integer NOT NULL,
+    program_language_id integer,
+    project_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE program_languages_projects OWNER TO hungnt;
+
+--
+-- Name: program_languages_projects_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE program_languages_projects_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE program_languages_projects_id_seq OWNER TO hungnt;
+
+--
+-- Name: program_languages_projects_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE program_languages_projects_id_seq OWNED BY program_languages_projects.id;
+
+
+--
+-- Name: project_categories; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE project_categories (
+    id integer NOT NULL,
+    name character varying,
+    description text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    name_vi character varying,
+    description_vi text
+);
+
+
+ALTER TABLE project_categories OWNER TO hungnt;
+
+--
+-- Name: project_categories_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE project_categories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE project_categories_id_seq OWNER TO hungnt;
+
+--
+-- Name: project_categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE project_categories_id_seq OWNED BY project_categories.id;
+
+
+--
+-- Name: project_categories_projects; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE project_categories_projects (
+    id integer NOT NULL,
+    project_category_id integer,
+    project_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE project_categories_projects OWNER TO hungnt;
+
+--
+-- Name: project_categories_projects_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE project_categories_projects_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE project_categories_projects_id_seq OWNER TO hungnt;
+
+--
+-- Name: project_categories_projects_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE project_categories_projects_id_seq OWNED BY project_categories_projects.id;
+
+
+--
+-- Name: project_images; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE project_images (
+    id integer NOT NULL,
+    image_url character varying,
+    project_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE project_images OWNER TO hungnt;
+
+--
+-- Name: project_images_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE project_images_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE project_images_id_seq OWNER TO hungnt;
+
+--
+-- Name: project_images_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE project_images_id_seq OWNED BY project_images.id;
+
+
+--
+-- Name: projects; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE projects (
+    id integer NOT NULL,
+    image_url character varying,
+    author character varying,
+    name character varying,
+    start_date timestamp without time zone,
+    end_date timestamp without time zone,
+    description text,
+    website character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    author_vi character varying,
+    name_vi character varying,
+    description_vi character varying
+);
+
+
+ALTER TABLE projects OWNER TO hungnt;
+
+--
+-- Name: projects_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE projects_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE projects_id_seq OWNER TO hungnt;
+
+--
+-- Name: projects_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE projects_id_seq OWNED BY projects.id;
+
+
+--
+-- Name: questions; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE questions (
+    id integer NOT NULL,
+    name character varying,
+    email character varying,
+    content text,
+    product_id integer,
+    user_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE questions OWNER TO hungnt;
+
+--
+-- Name: questions_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE questions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE questions_id_seq OWNER TO hungnt;
+
+--
+-- Name: questions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE questions_id_seq OWNED BY questions.id;
+
+
+--
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE schema_migrations (
+    version character varying NOT NULL
+);
+
+
+ALTER TABLE schema_migrations OWNER TO hungnt;
+
+--
+-- Name: slideshows; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE slideshows (
+    id integer NOT NULL,
+    image_url character varying,
+    title_1 character varying,
+    title_2 character varying,
+    name_button character varying,
+    link character varying,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    color_1 character varying,
+    color_2 character varying,
+    style character varying
+);
+
+
+ALTER TABLE slideshows OWNER TO hungnt;
+
+--
+-- Name: slideshows_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE slideshows_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE slideshows_id_seq OWNER TO hungnt;
+
+--
+-- Name: slideshows_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE slideshows_id_seq OWNED BY slideshows.id;
+
+
+--
+-- Name: testimonials; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE testimonials (
+    id integer NOT NULL,
+    name character varying,
+    city character varying,
+    email character varying,
+    content character varying,
+    user_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE testimonials OWNER TO hungnt;
+
+--
+-- Name: testimonials_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE testimonials_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE testimonials_id_seq OWNER TO hungnt;
+
+--
+-- Name: testimonials_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE testimonials_id_seq OWNED BY testimonials.id;
+
+
+--
+-- Name: user_groups; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE user_groups (
+    id integer NOT NULL,
+    name character varying,
+    permission text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE user_groups OWNER TO hungnt;
+
+--
+-- Name: user_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE user_groups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE user_groups_id_seq OWNER TO hungnt;
+
+--
+-- Name: user_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE user_groups_id_seq OWNED BY user_groups.id;
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    email character varying DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying,
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip text,
+    last_sign_in_ip text,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    first_name character varying,
+    last_name character varying,
+    phone character varying,
+    fax integer,
+    company character varying,
+    address_1 character varying,
+    address_2 character varying,
+    zip_code integer,
+    country character varying,
+    province character varying,
+    city character varying,
+    provider character varying,
+    uid character varying,
+    password_reset_token character varying,
+    password_reset_sent_at timestamp without time zone,
+    oauth_token character varying,
+    oauth_expires_at timestamp without time zone,
+    last_seen timestamp without time zone,
+    is_admin boolean DEFAULT false,
+    area_id integer,
+    role character varying,
+    user_group_id integer
+);
+
+
+ALTER TABLE users OWNER TO hungnt;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE users_id_seq OWNER TO hungnt;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: vouchers; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE vouchers (
+    id integer NOT NULL,
+    name character varying,
+    code character varying,
+    from_date timestamp without time zone,
+    to_date timestamp without time zone,
+    description text,
+    quantity integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    price numeric
+);
+
+
+ALTER TABLE vouchers OWNER TO hungnt;
+
+--
+-- Name: vouchers_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE vouchers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE vouchers_id_seq OWNER TO hungnt;
+
+--
+-- Name: vouchers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE vouchers_id_seq OWNED BY vouchers.id;
+
+
+--
+-- Name: wish_lists; Type: TABLE; Schema: public; Owner: hungnt
+--
+
+CREATE TABLE wish_lists (
+    id integer NOT NULL,
+    product_id integer,
+    user_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE wish_lists OWNER TO hungnt;
+
+--
+-- Name: wish_lists_id_seq; Type: SEQUENCE; Schema: public; Owner: hungnt
+--
+
+CREATE SEQUENCE wish_lists_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE wish_lists_id_seq OWNER TO hungnt;
+
+--
+-- Name: wish_lists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: hungnt
+--
+
+ALTER SEQUENCE wish_lists_id_seq OWNED BY wish_lists.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY areas ALTER COLUMN id SET DEFAULT nextval('areas_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY areas_articles ALTER COLUMN id SET DEFAULT nextval('areas_articles_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY areas_products ALTER COLUMN id SET DEFAULT nextval('areas_products_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY article_categories ALTER COLUMN id SET DEFAULT nextval('article_categories_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY article_categories_articles ALTER COLUMN id SET DEFAULT nextval('article_categories_articles_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY articles ALTER COLUMN id SET DEFAULT nextval('articles_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY articles_products ALTER COLUMN id SET DEFAULT nextval('articles_products_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY articles_projects ALTER COLUMN id SET DEFAULT nextval('articles_projects_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY carts ALTER COLUMN id SET DEFAULT nextval('carts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY categories ALTER COLUMN id SET DEFAULT nextval('categories_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY categories_products ALTER COLUMN id SET DEFAULT nextval('categories_products_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY code_statuses ALTER COLUMN id SET DEFAULT nextval('code_statuses_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY comment_articles ALTER COLUMN id SET DEFAULT nextval('comment_articles_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY companies ALTER COLUMN id SET DEFAULT nextval('companies_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY compares ALTER COLUMN id SET DEFAULT nextval('compares_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY contacts ALTER COLUMN id SET DEFAULT nextval('contacts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY conversations ALTER COLUMN id SET DEFAULT nextval('conversations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY coupons ALTER COLUMN id SET DEFAULT nextval('coupons_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY customers ALTER COLUMN id SET DEFAULT nextval('customers_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY delivery_methods ALTER COLUMN id SET DEFAULT nextval('delivery_methods_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY feedbacks ALTER COLUMN id SET DEFAULT nextval('feedbacks_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY line_item_compares ALTER COLUMN id SET DEFAULT nextval('line_item_compares_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY line_items ALTER COLUMN id SET DEFAULT nextval('line_items_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY manufacturers ALTER COLUMN id SET DEFAULT nextval('manufacturers_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY messages ALTER COLUMN id SET DEFAULT nextval('messages_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY newsletters ALTER COLUMN id SET DEFAULT nextval('newsletters_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY options ALTER COLUMN id SET DEFAULT nextval('options_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY order_deliveries ALTER COLUMN id SET DEFAULT nextval('order_deliveries_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY order_details ALTER COLUMN id SET DEFAULT nextval('order_details_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY orders ALTER COLUMN id SET DEFAULT nextval('orders_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY parent_article_categories ALTER COLUMN id SET DEFAULT nextval('parent_article_categories_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY parent_categories ALTER COLUMN id SET DEFAULT nextval('parent_categories_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY payment_methods ALTER COLUMN id SET DEFAULT nextval('payment_methods_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY product_images ALTER COLUMN id SET DEFAULT nextval('product_images_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY products ALTER COLUMN id SET DEFAULT nextval('products_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY program_languages ALTER COLUMN id SET DEFAULT nextval('program_languages_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY program_languages_projects ALTER COLUMN id SET DEFAULT nextval('program_languages_projects_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY project_categories ALTER COLUMN id SET DEFAULT nextval('project_categories_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY project_categories_projects ALTER COLUMN id SET DEFAULT nextval('project_categories_projects_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY project_images ALTER COLUMN id SET DEFAULT nextval('project_images_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY projects ALTER COLUMN id SET DEFAULT nextval('projects_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY questions ALTER COLUMN id SET DEFAULT nextval('questions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY slideshows ALTER COLUMN id SET DEFAULT nextval('slideshows_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY testimonials ALTER COLUMN id SET DEFAULT nextval('testimonials_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY user_groups ALTER COLUMN id SET DEFAULT nextval('user_groups_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY vouchers ALTER COLUMN id SET DEFAULT nextval('vouchers_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY wish_lists ALTER COLUMN id SET DEFAULT nextval('wish_lists_id_seq'::regclass);
+
+
+--
+-- Data for Name: areas; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY areas (id, name, level, description, created_at, updated_at, parent_id, areatype_id, display_order) FROM stdin;
+\.
+
+
+--
+-- Data for Name: areas_articles; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY areas_articles (id, area_id, article_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: areas_articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('areas_articles_id_seq', 1, false);
+
+
+--
+-- Name: areas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('areas_id_seq', 1, false);
+
+
+--
+-- Data for Name: areas_products; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY areas_products (id, area_id, product_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: areas_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('areas_products_id_seq', 1, false);
+
+
+--
+-- Data for Name: article_categories; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY article_categories (id, name, description, created_at, updated_at, level, meta_keywords, meta_description, name_vi, description_vi) FROM stdin;
+1	About Us		2016-07-20 09:34:44.834219	2016-07-20 09:35:04.787257	1				
+2	Who We Are		2016-07-20 09:35:14.606457	2016-07-20 09:35:26.359993	2				
+3	Company History		2016-07-20 09:35:42.321905	2016-07-20 09:35:48.933017	2				
+4	Image Gallery		2016-07-20 09:36:05.516047	2016-07-20 09:36:28.331469	2				
+5	Leadership		2016-07-20 09:36:24.952186	2016-07-20 09:36:28.35401	2				
+6	Why Us		2016-07-20 09:58:10.741784	2016-07-20 09:58:21.531668	1				
+7	Strategic Software Partner		2016-07-20 09:58:32.459918	2016-07-20 09:58:49.052373	2				
+8	Security & IP Protection		2016-07-20 09:59:01.973302	2016-07-20 09:59:10.096286	2				
+9	End-to-end Solutions		2016-07-20 09:59:20.740696	2016-07-20 13:58:58.112368	2				
+10	Established Engineering Process		2016-07-20 13:59:26.424357	2016-07-20 13:59:42.028409	2				
+11	Innovation As A Service		2016-07-20 13:59:49.732176	2016-07-20 14:00:53.398908	2				
+12	Open Communication		2016-07-20 14:00:12.472812	2016-07-20 14:00:53.420692	2				
+13	Services		2016-07-20 14:00:26.644339	2016-07-20 14:18:46.716312	1				
+14	Industries		2016-07-20 14:01:36.874082	2016-07-20 14:19:10.463246	1				
+15	Compentencies		2016-07-20 14:19:54.839272	2016-07-20 14:21:09.39115	1				
+16	Case Studies		2016-07-20 14:20:36.453494	2016-07-20 14:21:09.427392	1				
+17	Website Design & Development		2016-07-20 14:22:20.029314	2016-07-20 14:22:20.029314	\N				
+18	Web-based Software Development		2016-07-20 14:22:36.28692	2016-07-20 14:22:36.28692	\N				
+19	Porting & Migration		2016-07-20 14:22:50.406815	2016-07-20 14:22:50.406815	\N				
+20	IT Managed Services		2016-07-20 14:23:08.441039	2016-07-20 14:23:08.441039	\N				
+21	Software Testing		2016-07-20 14:23:24.594625	2016-07-20 14:23:24.594625	\N				
+22	Production Support		2016-07-20 14:23:38.715928	2016-07-20 14:23:38.715928	\N				
+23	Visual Design		2016-07-20 14:23:56.638597	2016-07-20 14:23:56.638597	\N				
+24	E-commerce & Retail		2016-07-20 14:24:40.463598	2016-07-20 14:24:40.463598	\N				
+25	Education		2016-07-20 14:24:59.902069	2016-07-20 14:24:59.902069	\N				
+26	Media & Publishing		2016-07-20 14:25:26.02924	2016-07-20 14:25:26.02924	\N				
+27	Hospitality & Travel		2016-07-20 14:25:41.974644	2016-07-20 14:25:41.974644	\N				
+28	Finance & Insurance		2016-07-20 14:25:58.919612	2016-07-20 14:25:58.919612	\N				
+29	Healthcare		2016-07-20 14:26:18.33611	2016-07-20 14:26:18.33611	\N				
+30	Logistics & Transportation		2016-07-20 14:26:32.450614	2016-07-20 14:26:32.450614	\N				
+31	Real Estate		2016-07-20 14:26:47.436242	2016-07-20 14:26:47.436242	\N				
+32	Telecom & Network		2016-07-20 14:27:29.391449	2016-07-20 14:27:29.391449	\N				
+33	Microsoft		2016-07-20 14:27:42.576629	2016-07-20 14:27:42.576629	\N				
+34	Cloud Applications		2016-07-20 14:27:58.100123	2016-07-20 14:27:58.100123	\N				
+35	Embedded Software		2016-07-20 14:28:10.263528	2016-07-20 14:28:10.263528	\N				
+36	Mobile Applications		2016-07-20 14:28:28.417348	2016-07-20 14:28:28.417348	\N				
+37	Big Data & Analytics		2016-07-20 14:28:44.780507	2016-07-20 14:28:44.780507	\N				
+38	Software Testing		2016-07-20 14:29:02.507841	2016-07-20 14:29:02.507841	\N				
+39	Front-End Development		2016-07-20 14:29:15.582999	2016-07-20 14:29:15.582999	\N				
+40	Open Source		2016-07-20 14:29:28.909446	2016-07-20 14:29:28.909446	\N				
+41	SERVICES	Case Studies -- SERVICES	2016-07-20 16:41:40.739328	2016-07-20 16:41:40.739328	\N				
+42	INDUSTRIES	Case Studies -- INDUSTRIES	2016-07-20 16:42:20.917879	2016-07-20 16:42:20.917879	\N				
+43	COMPETENCIES	Case Studies -- COMPETENCIES	2016-07-20 16:42:59.535832	2016-07-20 16:42:59.535832	\N				
+44	Software Development		2016-07-20 16:57:32.165781	2016-07-20 16:57:32.165781	\N				
+45	Software Testing	Case Studies -- SERVICEs -- Software Testing	2016-07-20 17:01:25.977673	2016-07-20 17:01:39.840149	\N				
+46	Production Support		2016-07-20 17:02:16.296508	2016-07-20 17:02:16.296508	\N				
+47	IT Managed Services		2016-07-20 17:02:41.484183	2016-07-20 17:02:41.484183	\N				
+48	Finance & Insurance		2016-07-20 17:03:13.511572	2016-07-20 17:03:13.511572	\N				
+49	E-commerce & Retail		2016-07-20 17:03:31.599571	2016-07-20 17:03:31.599571	\N				
+50	Media & Publishing		2016-07-20 17:03:55.237503	2016-07-20 17:03:55.237503	\N				
+51	Healthcare		2016-07-20 17:04:22.632423	2016-07-20 17:04:22.632423	\N				
+52	Education		2016-07-20 17:04:41.03521	2016-07-20 17:04:41.03521	\N				
+53	Hospitality & Travel		2016-07-20 17:05:05.764173	2016-07-20 17:05:05.764173	\N				
+54	Real Estate		2016-07-20 17:05:23.541464	2016-07-20 17:05:23.541464	\N				
+55	Logistics & Transportation		2016-07-20 17:05:46.331524	2016-07-20 17:05:46.331524	\N				
+56	Telecom & Network		2016-07-20 17:06:51.519113	2016-07-20 17:06:51.519113	\N				
+57	Microsoft Technologies		2016-07-20 17:07:11.303584	2016-07-20 17:07:11.303584	\N				
+58	Ruby on Rails		2016-07-20 17:07:32.072672	2016-07-20 17:07:32.072672	\N				
+59	Open Source		2016-07-20 17:09:34.570459	2016-07-20 17:09:34.570459	\N				
+60	Mobile Applications		2016-07-20 17:10:28.943678	2016-07-20 17:10:28.943678	\N				
+61	Big Data & Analytics		2016-07-20 17:10:48.075761	2016-07-20 17:10:48.075761	\N				
+62	Embedded Software		2016-07-20 17:11:09.040372	2016-07-20 17:11:09.040372	\N				
+63	Software Testing		2016-07-20 17:11:29.059196	2016-07-20 17:11:29.059196	\N				
+\.
+
+
+--
+-- Data for Name: article_categories_articles; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY article_categories_articles (id, article_id, article_category_id, created_at, updated_at) FROM stdin;
+2	1	1	2016-07-20 14:37:43.763908	2016-07-20 14:37:43.763908
+4	3	3	2016-07-20 14:39:48.583159	2016-07-20 14:39:48.583159
+5	4	4	2016-07-20 14:40:31.230979	2016-07-20 14:40:31.230979
+6	5	5	2016-07-20 14:41:10.656165	2016-07-20 14:41:10.656165
+7	6	6	2016-07-20 14:42:23.10631	2016-07-20 14:42:23.10631
+8	7	7	2016-07-20 14:43:48.212554	2016-07-20 14:43:48.212554
+13	12	12	2016-07-20 14:46:15.89437	2016-07-20 14:46:15.89437
+14	13	13	2016-07-20 14:46:55.385611	2016-07-20 14:46:55.385611
+18	17	20	2016-07-20 14:48:57.664881	2016-07-20 14:48:57.664881
+20	18	21	2016-07-20 14:51:51.313021	2016-07-20 14:51:51.313021
+22	20	23	2016-07-20 14:55:46.463519	2016-07-20 14:55:46.463519
+23	21	14	2016-07-20 14:56:25.798405	2016-07-20 14:56:25.798405
+24	22	24	2016-07-20 14:56:56.00216	2016-07-20 14:56:56.00216
+25	23	25	2016-07-20 14:57:52.145324	2016-07-20 14:57:52.145324
+26	24	26	2016-07-20 14:58:42.704457	2016-07-20 14:58:42.704457
+27	25	27	2016-07-20 14:59:08.798616	2016-07-20 14:59:08.798616
+28	26	28	2016-07-20 14:59:37.568638	2016-07-20 14:59:37.568638
+29	27	29	2016-07-20 15:00:10.353573	2016-07-20 15:00:10.353573
+30	28	30	2016-07-20 15:00:39.885959	2016-07-20 15:00:39.885959
+31	29	31	2016-07-20 15:01:07.526689	2016-07-20 15:01:07.526689
+32	30	15	2016-07-20 15:01:35.350738	2016-07-20 15:01:35.350738
+33	31	32	2016-07-20 15:02:03.834146	2016-07-20 15:02:03.834146
+34	32	33	2016-07-20 15:02:36.325296	2016-07-20 15:02:36.325296
+35	33	34	2016-07-20 15:03:06.369675	2016-07-20 15:03:06.369675
+36	34	34	2016-07-20 15:03:08.294865	2016-07-20 15:03:08.294865
+37	35	35	2016-07-20 15:03:40.208443	2016-07-20 15:03:40.208443
+38	36	36	2016-07-20 15:04:12.118713	2016-07-20 15:04:12.118713
+39	37	37	2016-07-20 15:04:38.570103	2016-07-20 15:04:38.570103
+41	38	38	2016-07-20 15:05:49.822374	2016-07-20 15:05:49.822374
+42	39	39	2016-07-20 15:07:43.472626	2016-07-20 15:07:43.472626
+43	40	40	2016-07-20 15:08:17.960587	2016-07-20 15:08:17.960587
+44	2	2	2016-07-20 15:10:31.947836	2016-07-20 15:10:31.947836
+45	8	8	2016-07-20 15:11:28.926181	2016-07-20 15:11:28.926181
+46	9	9	2016-07-20 15:13:04.170038	2016-07-20 15:13:04.170038
+47	10	10	2016-07-20 15:16:20.288891	2016-07-20 15:16:20.288891
+48	11	11	2016-07-20 15:17:05.643899	2016-07-20 15:17:05.643899
+49	14	17	2016-07-20 15:17:50.122293	2016-07-20 15:17:50.122293
+50	15	18	2016-07-20 15:18:29.902534	2016-07-20 15:18:29.902534
+51	16	19	2016-07-20 15:19:09.757284	2016-07-20 15:19:09.757284
+53	19	22	2016-07-20 15:20:19.912504	2016-07-20 15:20:19.912504
+\.
+
+
+--
+-- Name: article_categories_articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('article_categories_articles_id_seq', 53, true);
+
+
+--
+-- Name: article_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('article_categories_id_seq', 63, true);
+
+
+--
+-- Data for Name: articles; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY articles (id, image_url, title, content, tags, article_category_id, created_at, updated_at, code_status_id, meta_keywords, meta_description, is_show, page_layout, user_id, approved, image_url_full_width, title_vi, content_vi) FROM stdin;
+1	new-macbook-2016_thumb.jpg	About Us	<p>updating...</p>		\N	2016-07-20 13:05:55.685161	2016-07-20 14:37:43.882993	\N			t	normal	1	f	\N		
+3	no-image.png	Company History	<p>updating...</p>		\N	2016-07-20 14:39:48.568798	2016-07-20 14:39:48.568798	\N			f	normal	1	f	\N		
+4	no-image.png	Image Gallery	<p>updating...</p>		\N	2016-07-20 14:40:31.218486	2016-07-20 14:40:31.218486	\N			f	normal	1	f	\N		
+5	no-image.png	Leadership	<p>updating...</p>		\N	2016-07-20 14:41:10.645177	2016-07-20 14:41:10.645177	\N			f	normal	1	f	\N		
+6	no-image.png	Why Us	<p>updating...</p>		\N	2016-07-20 14:42:23.096035	2016-07-20 14:42:23.096035	\N			f	normal	1	f	\N		
+7	no-image.png	Strategic Software Partner	<p>updating...</p>		\N	2016-07-20 14:43:48.200715	2016-07-20 14:43:48.200715	\N			f	normal	1	f	\N		
+12	no-image.png	Open Communication	<p>updating...</p>		\N	2016-07-20 14:46:15.882637	2016-07-20 14:46:15.882637	\N			f	normal	1	f	\N		
+13	no-image.png	Services	<p>updating...</p>		\N	2016-07-20 14:46:55.373902	2016-07-20 14:46:55.373902	\N			t	normal	1	f	\N		
+17	no-image.png	IT Managed Services	<p>updating...</p>		\N	2016-07-20 14:48:57.652963	2016-07-20 14:48:57.652963	\N			t	normal	1	f	\N		
+18	no-image.png	Software Testing	<p>updating...</p>		\N	2016-07-20 14:51:00.282287	2016-07-20 14:51:00.282287	\N			f	normal	1	f	\N		
+20	no-image.png	Visual Design	<p>updating...</p>		\N	2016-07-20 14:55:46.450867	2016-07-20 14:55:46.450867	\N			f	normal	1	f	\N		
+21	no-image.png	Industries	<p>updating...</p>		\N	2016-07-20 14:56:25.788126	2016-07-20 14:56:25.788126	\N			f	normal	1	f	\N		
+22	no-image.png	E-commerce & Retail	<p>updating...</p>		\N	2016-07-20 14:56:55.990313	2016-07-20 14:56:55.990313	\N			f	normal	1	f	\N		
+23	no-image.png	Education	<p>updating...</p>		\N	2016-07-20 14:57:52.133168	2016-07-20 14:57:52.133168	\N			f	normal	1	f	\N		
+24	no-image.png	Media & Publishing	<p>updating...</p>		\N	2016-07-20 14:58:42.692691	2016-07-20 14:58:42.692691	\N			f	normal	1	f	\N		
+25	no-image.png	Hospitality & Travel	<p>updating...</p>		\N	2016-07-20 14:59:08.784487	2016-07-20 14:59:08.784487	\N			f	normal	1	f	\N		
+26	no-image.png	Finance & Insurance	<p>updating...</p>		\N	2016-07-20 14:59:37.557497	2016-07-20 14:59:37.557497	\N			f	normal	1	f	\N		
+27	no-image.png	Healthcare	<p>updating...</p>		\N	2016-07-20 15:00:10.343228	2016-07-20 15:00:10.343228	\N			f	normal	1	f	\N		
+28	no-image.png	Logistics & Transportation	<p>updating...</p>		\N	2016-07-20 15:00:39.87427	2016-07-20 15:00:39.87427	\N			f	normal	1	f	\N		
+29	no-image.png	Real Estate	<p>updating...</p>		\N	2016-07-20 15:01:07.513807	2016-07-20 15:01:07.513807	\N			f	normal	1	f	\N		
+30	no-image.png	Compentencies	<p>updating...</p>		\N	2016-07-20 15:01:35.338469	2016-07-20 15:01:35.338469	\N			f	normal	1	f	\N		
+31	no-image.png	Telecom & Network	<p>updaitng...</p>		\N	2016-07-20 15:02:03.82253	2016-07-20 15:02:03.82253	\N			f	normal	1	f	\N		
+32	no-image.png	Microsoft	<p>updating...</p>		\N	2016-07-20 15:02:36.314012	2016-07-20 15:02:36.314012	\N			f	normal	1	f	\N		
+33	no-image.png	Cloud Applications	<p>updating...</p>		\N	2016-07-20 15:03:06.358192	2016-07-20 15:03:06.358192	\N			f	normal	1	f	\N		
+34	no-image.png	Cloud Applications	<p>updating...</p>		\N	2016-07-20 15:03:08.282599	2016-07-20 15:03:08.282599	\N			f	normal	1	f	\N		
+35	no-image.png	Embedded Software	<p>updating...</p>		\N	2016-07-20 15:03:40.196028	2016-07-20 15:03:40.196028	\N			f	normal	1	f	\N		
+36	no-image.png	Mobile Applications	<p>updating...</p>		\N	2016-07-20 15:04:12.107343	2016-07-20 15:04:12.107343	\N			t	normal	1	f	\N		
+37	no-image.png	Big Data & Analytics	<p>updating...</p>		\N	2016-07-20 15:04:38.557844	2016-07-20 15:04:38.557844	\N			f	normal	1	f	\N		
+38	no-image.png	Software Testing	<p>updating.../</p>		\N	2016-07-20 15:05:18.699458	2016-07-20 15:05:49.848286	\N			f	normal	1	f	\N		
+39	no-image.png	Front-End Development	<p>updating...</p>		\N	2016-07-20 15:07:43.460337	2016-07-20 15:07:43.460337	\N			f	normal	1	f	\N		
+40	no-image.png	Open Source	<p>updating...</p>		\N	2016-07-20 15:08:17.94994	2016-07-20 15:08:17.94994	\N			f	normal	1	f	\N		
+2	lichvn-bg-5.png	Who We Are	<p>Founded in 2008, we started off pretty small, but grew quickly. We work with passionate individuals who are true<span> </span>experts<span> </span>in their own field and who, through extensive experience working with certain applications have developed a first-rate understanding of how they can help specific types of businesses. We actually enjoy what we do, so we want to make sure you enjoy working with us by making it an easy and first-class experience every time. Our passion also means that we get personally invested in your company’s success.</p>\r\n<p>By always imparting reliable, honest and expert advice, in all circumstances. We truly partner with our clients and provide them with the best solutions for their unique needs. We are able to do this thanks to the expertise we have in our own field, but also thanks to the in-depth knowledge we’ve developed about our clients’ industries.</p>\r\n<p>We provide service, not surprises. Our goal is to always be upfront and to explain things as simply and clearly as possible. We won’t try to be all mysterious about what we’re doing, and we won’t give you the runaround about prices. Our goal is to understand our client's objectives and fully commit your success.</p>		\N	2016-07-20 14:38:46.31767	2016-07-20 15:10:31.976127	\N			t	normal	1	f	\N		
+8	no-image.png	Security & IP Protection	<p>The intellectual property protection is critical to any company' success. One of the major concerns of companies outsourcing their development work is the security of their data, ideas and NatureSoft, fully aware of these concerns, has built and implemented a strict security policy to protect the client’s intellectual property and confidential information.</p>\r\n<p><strong>Security management</strong></p>\r\n<p>Our security management framework covers the following aspects:</p>\r\n<ul>\r\n<li>Management Framework</li>\r\n<li>Regular Audits</li>\r\n<li>Practices &amp; Enforcement</li>\r\n<li>Awareness</li>\r\n</ul>\r\n<p><strong>Data Protection</strong></p>\r\n<p>Naturesoft client data protection policies and procedures are:</p>\r\n<ul>\r\n<li>Data protection policy</li>\r\n<li>Data backup and disaster recovery plan</li>\r\n<li>Data access control protection and procedures</li>\r\n<li>Human resource data access protection</li>\r\n</ul>\r\n<p><strong>Data Protection Policy</strong></p>\r\n<p>We are using the RAID Data Protection Policy. We support high capacity and high speed mass storage with continuous data availability, ease of service, scalability and connectivity. The configuration is designed to handle very large databases, no active single point of component failure. It utilizes component and function redundancy to provide full fault-tolerance for all microprocessors, control storage, control and data busses, power supplies, and cooling fans. Thus, it can sustain multiple component failures and still continue to provide full access to stored data.</p>\r\n<p><strong>Data Backup and Disaster Recovery Plan</strong></p>\r\n<ul>\r\n<li>Data backup</li>\r\n<li>Redundancy setup on each main server to ensure uninterrupted service</li>\r\n<li>Real time on-site backup</li>\r\n<li>Regular off-site backup</li>\r\n<li>Incremental backup: 3 times per week</li>\r\n<li>Full backup: once per month</li>\r\n<li>Data disaster recovery plan</li>\r\n<li>Regular backup of all the data and information</li>\r\n<li>Backup servers in different locations</li>\r\n</ul>\r\n<p><strong>Human Resource Data Access Protection</strong></p>\r\n<ul>\r\n<li>Mandatory security training for all new hires</li>\r\n<li>NDA is signed by all staff</li>\r\n<li>Dedicated security group</li>\r\n</ul>\r\n<p>Security prime in each project and group</p>		\N	2016-07-20 14:44:17.987008	2016-07-20 15:11:28.952706	\N			f	normal	1	f	\N		
+16	no-image.png	Porting & Migration	<p>With intensive experience in product development, a wide range of technologies, and different enterprise architectures; our team has ported and migrated many legacy applications to the latest technologies, not only significantly improving the performance and scalability, but also reducing maintenance and supporting costs.</p>\r\n<p>Our common porting and migration services:</p>\r\n<ul>\r\n<li>Modernize the products and platforms based on latest technologies (.NET, Java, Ruby, etc.)</li>\r\n<li>Port from one platform to another (Desktop to Web, Windows 8, Linux, Mac, iOS, Android, Windows Phone, etc.)</li>\r\n<li>Re-engineer application (design, architecture)</li>\r\n<li>Migrate from one database to another (SQL Server, MySQL, Oracle, etc.)</li>\r\n</ul>\r\n<p>Migrate to cloud (Amazon EC, MS Azure, etc.)</p>		\N	2016-07-20 14:48:18.700721	2016-07-20 15:19:09.839822	\N			f	normal	1	f	\N		
+9	no-image.png	End-to-end Solutions	<p>Our work identifies the most effective solutions for you bussiness by exploring every option available end-to-end. Our solutions cover every aspect of a customer’s bussiness. A well-thought concept is the basis for a good solution. But operational excellence is only achieved through smooth implementation. Our end-to-end solutions provide all the hardware and/or software components and resources to meet the customer's requirement and no other supplier need be involved.</p>\r\n<p><strong>SOFTWARE DEVELOPMENT</strong></p>\r\n<ul>\r\n<li>Full-cycle development</li>\r\n<li>Implementation</li>\r\n<li>Maintenance and supporting</li>\r\n<li>Application porting</li>\r\n</ul>\r\n<p><strong>SOFTWARE TESTING</strong></p>\r\n<ul>\r\n<li>Test solution, planning and design</li>\r\n<li>Test execution and reporting</li>\r\n<li>Full product verification support</li>\r\n<li>Test automation</li>\r\n</ul>\r\n<p><strong>PORTING &amp; MIGRATION</strong></p>\r\n<ul>\r\n<li>Bring your legacy system to a new life</li>\r\n<li>Increase performance and reduce maintenance cost</li>\r\n<li>Support new platforms and technologies</li>\r\n</ul>\r\n<p><strong>PRODUCTION SUPPORT</strong></p>\r\n<ul>\r\n<li>User training and deployment</li>\r\n<li>Level 2/3 production support (24/7, On-call, Onsite)</li>\r\n<li>Troubleshooting, patching and hot fixes</li>\r\n</ul>\r\n<p><strong>VISUAL DESIGN</strong></p>\r\n<ul>\r\n<li>UX/UI designs on Web, mobile, tablet, desktop apps</li>\r\n<li>From idea to wireframe, mockup, and prototype</li>\r\n<li>Support development team throughout project life cycle</li>\r\n</ul>\r\n<p><strong>IT MANAGED SERVICES</strong></p>\r\n<ul>\r\n<li>IT services &amp; support</li>\r\n<li>Data networking</li>\r\n<li>Phone, video &amp; collaboration</li>\r\n</ul>\r\n<p>Cloud administration</p>		\N	2016-07-20 14:44:50.966546	2016-07-20 15:13:04.197472	\N			f	normal	1	f	\N		
+10	no-image.png	Established Engineering Process	<p><span>Agile/SCRUM is a management and control process that cuts through complexity to focus on building software that meets business needs. Management and teams are able to get their hands around the requirements and technologies, never let go, and deliver working software, incrementally and empirically.</span></p>\r\n<p>Agile/SCRUM itself is a simple framework for effective team collaboration on complex software projects. More than half of our projects now involve Agile/SCRUM methods. Based on many years of experience in applying Agile, we have built a NatureSoft application which has additional activities to minimize issues caused by standard Agile in the offshore model.</p>\r\n<p><span></span></p>		\N	2016-07-20 14:45:19.851249	2016-07-20 15:16:20.315896	\N			f	normal	1	f	\N		
+11	no-image.png	Innovation As A Service	<p>Companies are starting to recognize the tremendous value potential of third party innovation—as either ecosystem partners or acquisitions—which can help drive revenue growth, cost reduction and improve risk management. While there is no shortage of innovative start-ups that companies can consider, the challenge is finding the ones that fit with your company’s processes, systems and culture. Successfully filtering can be difficult and time consuming.</p>\r\n<p>Innovation-as-a-Service helps clients navigate this process by providing senior executives with direct access to the best digital innovators and entrepreneurs from across the globe. We work with clients to help them gain early access to the latest trends and technologies, filter and make sense of which start-ups and technologies could be most valuable, and help design the highest impact pilots and partnerships for their business.</p>		\N	2016-07-20 14:45:45.629392	2016-07-20 15:17:05.670227	\N			f	normal	1	f	\N		
+14	no-image.png	Website Design & Development	<p>In the last 6 years, Nature Soft has developed hundreds of custom websites from small to large portals, social networks, directories among others. Our expertise on web technologies, usability, design and platforms guarantees your full satisfaction.</p>\r\n<p>We understand that a great website starts with a great design, our consultants will work with you to gather your design requirements and expectations. We guarantee a website design you’ll love, or your money back.</p>\r\n<p><strong>Professional Design</strong></p>\r\n<p>Designing superior websites is less than a science, yet more than an art. Creating a website requires portions of science, art, computer programming, organization, artistic design and logic. You will have the benefit of all these ingredients when your website is designed by Hoang Khang Incotech.</p>\r\n<p><strong>Easy to edit/update website</strong></p>\r\n<p>Flexible control interface and Easy to customization</p>\r\n<p><strong>Fast-loading website</strong></p>\r\n<p>Remove unnecessary features to optimal website performance</p>\r\n<p><strong>Mobile Friendly Website</strong></p>\r\n<p>Website look as good on devices (desktop, laptop, tablet, smartphone, …)</p>\r\n<p><strong>Domain Name Registration</strong></p>\r\n<p>Hoang Khang Incotech provides domain name registration services at an attractive rate.</p>\r\n<p><strong>Free hosting</strong></p>\r\n<p>Get free hosting for each website package</p>\r\n<p><strong>Fully optimized with search engine</strong></p>\r\n<p>Clean, Fast and SEO-Friendly Code</p>\r\n<p><strong>Social media integrated</strong></p>\r\n<p>Extend and manage content, marketing &amp; promotional activities through social networks</p>\r\n<p><strong>Photo galleries &amp; slideshows</strong></p>\r\n<p>Photos enhancing and beautiful slideshows</p>		\N	2016-07-20 14:47:20.612506	2016-07-20 15:17:50.149427	\N			f	normal	1	f	\N		
+15	no-image.png	Web-based Software Development	<p>As a trusted custom software development firm, Nature Soft applies its vast industry knowledge and domain expertise to build applications for leading companies in the Insurance, Restoration, Financial, Law Enforcement, Advertising, Marketing, Entertainment, Training, Real Estate, Hospitality, amongst several other industries.</p>\r\n<p><strong>Who are our clients?</strong></p>\r\n<p>Nature Soft works with smart and innovative global companies who recognize the need for a skilled outsourcing partner to build custom solutions generating high returns with little risk.</p>\r\n<p>Our clients are organizations that demand a partner who has proven success in developing complex and innovative applications at reasonable costs.</p>\r\n<p>We’re engaged by firms looking for senior, highly skilled software development engineers who can provide a complement to their team and expand existing capabilities.</p>\r\n<p>Our customers look to Nature Soft to reduce expenses, develop applications which otherwise would be cost prohibited, automate processes, reduce time to market or modernize their operations.</p>\r\n<p><strong>What Do Customers Gain by Working with Nature Soft?</strong></p>\r\n<p>Our applications are unique, innovative and meant to solve our clients’ business challenges.</p>\r\n<p>No matter the type of application, our clients can trust Nature Soft for:</p>\r\n<p><strong>Innovative Solutions</strong></p>\r\n<p>Innovation is at the core of what we do, our unique approach to problem solving will put you ahead of your competition.</p>\r\n<p>Our clients can count on Nature Soft to develop solutions which are at the forefront of technology.</p>\r\n<p><strong>Fast Time to Market</strong></p>\r\n<p>Our proven methodology keeps the software development cycle on time at every stage, ensuring that your application is completed in time and budget.</p>\r\n<p><strong>Cost-Effective Solutions</strong></p>\r\n<p>An outsourced application development will always be more cost-effective. However, you can also count on, done right the first time around.</p>\r\n<p><strong>Peace of Mind</strong></p>\r\n<p>Because of our focus in understanding your business and requirements, once a project vision is created, you can expect us to deliver on that vision.</p>\r\n<p>Nature Soft take on your project from the idea’s conception, up to implementation, and do it right.</p>		\N	2016-07-20 14:47:54.294005	2016-07-20 15:18:29.929798	\N			f	normal	1	f	\N		
+19	no-image.png	Production Support	<p>At Nature Soft, we don't stop at product development services; our team can also support the software systems after launch, so our customers can focus on their core businesses:</p>\r\n<ul>\r\n<li>Server and application monitoring, maintenance and support</li>\r\n<li>User training and deployment</li>\r\n<li>Level 2/3 production support (24/7, On-call, Onsite)</li>\r\n<li>Troubleshooting, patching and hot fixes</li>\r\n</ul>\r\n<p>By leveraging time zone differences, our team can support your software systems while you are sleeping or support your clients with minimum cost.</p>		\N	2016-07-20 14:54:20.518472	2016-07-20 15:19:45.777329	\N			f	normal	1	f	\N		
+\.
+
+
+--
+-- Name: articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('articles_id_seq', 40, true);
+
+
+--
+-- Data for Name: articles_products; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY articles_products (id, article_id, product_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: articles_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('articles_products_id_seq', 1, false);
+
+
+--
+-- Data for Name: articles_projects; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY articles_projects (id, article_id, project_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: articles_projects_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('articles_projects_id_seq', 1, false);
+
+
+--
+-- Data for Name: carts; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY carts (id, created_at, updated_at, voucher_code, coupon_code) FROM stdin;
+\.
+
+
+--
+-- Name: carts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('carts_id_seq', 1, false);
+
+
+--
+-- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY categories (id, name, level, description, created_at, updated_at, ordered, meta_keywords, meta_description) FROM stdin;
+\.
+
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('categories_id_seq', 1, false);
+
+
+--
+-- Data for Name: categories_products; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY categories_products (id, product_id, category_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: categories_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('categories_products_id_seq', 1, false);
+
+
+--
+-- Data for Name: code_statuses; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY code_statuses (id, title, description, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: code_statuses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('code_statuses_id_seq', 1, false);
+
+
+--
+-- Data for Name: comment_articles; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY comment_articles (id, name, email, content, user_id, article_id, created_at, updated_at, parent_id) FROM stdin;
+\.
+
+
+--
+-- Name: comment_articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('comment_articles_id_seq', 1, false);
+
+
+--
+-- Data for Name: comments; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY comments (id, product_id, name, content, star, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('comments_id_seq', 1, false);
+
+
+--
+-- Data for Name: companies; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY companies (id, image_url, name, head_office_address, certificate_no, date_of_issue, sales_office_address, phone, hotline, email, created_at, updated_at, head_area_id, branch_area_id, type_company, fax) FROM stdin;
+\.
+
+
+--
+-- Name: companies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('companies_id_seq', 1, false);
+
+
+--
+-- Data for Name: compares; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY compares (id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: compares_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('compares_id_seq', 1, false);
+
+
+--
+-- Data for Name: contacts; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY contacts (id, name, email, message, created_at, updated_at, user_id, phone, subject) FROM stdin;
+\.
+
+
+--
+-- Name: contacts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('contacts_id_seq', 1, false);
+
+
+--
+-- Data for Name: conversations; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY conversations (id, sender_id, recipient_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: conversations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('conversations_id_seq', 1, false);
+
+
+--
+-- Data for Name: coupons; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY coupons (id, name, code, from_date, to_date, description, quantity, created_at, updated_at, price) FROM stdin;
+\.
+
+
+--
+-- Name: coupons_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('coupons_id_seq', 1, false);
+
+
+--
+-- Data for Name: customers; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY customers (id, first_name, last_name, email, phone, company, address, city, zip_code, country, province, created_at, updated_at, order_id, area_id) FROM stdin;
+\.
+
+
+--
+-- Name: customers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('customers_id_seq', 1, false);
+
+
+--
+-- Data for Name: delivery_methods; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY delivery_methods (id, title, description, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: delivery_methods_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('delivery_methods_id_seq', 1, false);
+
+
+--
+-- Data for Name: feedbacks; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY feedbacks (id, email, content, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: feedbacks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('feedbacks_id_seq', 1, false);
+
+
+--
+-- Data for Name: line_item_compares; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY line_item_compares (id, product_id, compare_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: line_item_compares_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('line_item_compares_id_seq', 1, false);
+
+
+--
+-- Data for Name: line_items; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY line_items (id, product_id, cart_id, created_at, updated_at, quantity) FROM stdin;
+\.
+
+
+--
+-- Name: line_items_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('line_items_id_seq', 1, false);
+
+
+--
+-- Data for Name: manufacturers; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY manufacturers (id, image_url, name, address, description, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: manufacturers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('manufacturers_id_seq', 1, false);
+
+
+--
+-- Data for Name: messages; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY messages (id, body, conversation_id, user_id, created_at, updated_at, seen) FROM stdin;
+\.
+
+
+--
+-- Name: messages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('messages_id_seq', 1, false);
+
+
+--
+-- Data for Name: newsletters; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY newsletters (id, email, created_at, updated_at, status, user_id) FROM stdin;
+\.
+
+
+--
+-- Name: newsletters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('newsletters_id_seq', 1, false);
+
+
+--
+-- Data for Name: options; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY options (id, created_at, updated_at, code, tag, value, note, title, accept_email) FROM stdin;
+\.
+
+
+--
+-- Name: options_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('options_id_seq', 1, false);
+
+
+--
+-- Data for Name: order_deliveries; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY order_deliveries (id, first_name, last_name, company, address, city, zip_code, country, province, delivery_method_id, payment_method_id, message, created_at, updated_at, order_id, email, phone) FROM stdin;
+\.
+
+
+--
+-- Name: order_deliveries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('order_deliveries_id_seq', 1, false);
+
+
+--
+-- Data for Name: order_details; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY order_details (id, order_id, product_id, quantity, price, created_at, updated_at, product_name) FROM stdin;
+\.
+
+
+--
+-- Name: order_details_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('order_details_id_seq', 1, false);
+
+
+--
+-- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY orders (id, created_at, updated_at, user_id, status, different_delivery, voucher_code, voucher_price, coupon_code, coupon_price) FROM stdin;
+\.
+
+
+--
+-- Name: orders_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('orders_id_seq', 1, false);
+
+
+--
+-- Data for Name: parent_article_categories; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY parent_article_categories (id, parent_id, article_category_id, created_at, updated_at) FROM stdin;
+1	1	2	2016-07-20 09:35:14.673413	2016-07-20 09:35:14.673413
+2	1	3	2016-07-20 09:35:42.380916	2016-07-20 09:35:42.380916
+3	1	4	2016-07-20 09:36:05.561581	2016-07-20 09:36:05.561581
+4	1	5	2016-07-20 09:36:24.995372	2016-07-20 09:36:24.995372
+5	6	7	2016-07-20 09:58:37.1339	2016-07-20 09:58:37.1339
+6	6	8	2016-07-20 09:59:02.012057	2016-07-20 09:59:02.012057
+7	6	9	2016-07-20 09:59:20.796274	2016-07-20 09:59:20.796274
+8	6	10	2016-07-20 13:59:26.518972	2016-07-20 13:59:26.518972
+9	6	11	2016-07-20 13:59:49.784071	2016-07-20 13:59:49.784071
+10	6	12	2016-07-20 14:00:12.522596	2016-07-20 14:00:12.522596
+11	13	17	2016-07-20 14:22:20.060237	2016-07-20 14:22:20.060237
+12	13	18	2016-07-20 14:22:36.318118	2016-07-20 14:22:36.318118
+13	13	19	2016-07-20 14:22:50.497877	2016-07-20 14:22:50.497877
+14	13	20	2016-07-20 14:23:08.496361	2016-07-20 14:23:08.496361
+15	13	21	2016-07-20 14:23:24.62684	2016-07-20 14:23:24.62684
+16	13	22	2016-07-20 14:23:38.744075	2016-07-20 14:23:38.744075
+17	13	23	2016-07-20 14:23:56.70421	2016-07-20 14:23:56.70421
+18	14	24	2016-07-20 14:24:40.510202	2016-07-20 14:24:40.510202
+19	14	25	2016-07-20 14:24:59.951308	2016-07-20 14:24:59.951308
+20	14	26	2016-07-20 14:25:26.066568	2016-07-20 14:25:26.066568
+21	14	27	2016-07-20 14:25:42.046703	2016-07-20 14:25:42.046703
+22	14	28	2016-07-20 14:25:58.953548	2016-07-20 14:25:58.953548
+23	14	29	2016-07-20 14:26:18.391343	2016-07-20 14:26:18.391343
+24	14	30	2016-07-20 14:26:32.484939	2016-07-20 14:26:32.484939
+25	14	31	2016-07-20 14:26:47.467666	2016-07-20 14:26:47.467666
+26	15	32	2016-07-20 14:27:29.435735	2016-07-20 14:27:29.435735
+27	15	33	2016-07-20 14:27:42.635449	2016-07-20 14:27:42.635449
+28	15	34	2016-07-20 14:27:58.140123	2016-07-20 14:27:58.140123
+29	15	35	2016-07-20 14:28:10.318117	2016-07-20 14:28:10.318117
+30	15	36	2016-07-20 14:28:28.453197	2016-07-20 14:28:28.453197
+31	15	37	2016-07-20 14:28:44.827221	2016-07-20 14:28:44.827221
+32	15	38	2016-07-20 14:29:02.560787	2016-07-20 14:29:02.560787
+33	15	39	2016-07-20 14:29:15.6201	2016-07-20 14:29:15.6201
+34	15	40	2016-07-20 14:29:28.957666	2016-07-20 14:29:28.957666
+35	16	41	2016-07-20 16:41:40.772997	2016-07-20 16:41:40.772997
+36	16	42	2016-07-20 16:42:20.99273	2016-07-20 16:42:20.99273
+37	16	43	2016-07-20 16:42:59.572436	2016-07-20 16:42:59.572436
+38	41	44	2016-07-20 16:57:32.195106	2016-07-20 16:57:32.195106
+40	41	45	2016-07-20 17:01:39.871952	2016-07-20 17:01:39.871952
+41	41	46	2016-07-20 17:02:16.326615	2016-07-20 17:02:16.326615
+42	41	47	2016-07-20 17:02:41.535762	2016-07-20 17:02:41.535762
+43	42	48	2016-07-20 17:03:13.541614	2016-07-20 17:03:13.541614
+44	42	49	2016-07-20 17:03:31.630392	2016-07-20 17:03:31.630392
+45	42	50	2016-07-20 17:03:55.287535	2016-07-20 17:03:55.287535
+46	42	51	2016-07-20 17:04:22.662475	2016-07-20 17:04:22.662475
+47	42	52	2016-07-20 17:04:41.065968	2016-07-20 17:04:41.065968
+48	42	53	2016-07-20 17:05:05.800028	2016-07-20 17:05:05.800028
+49	42	54	2016-07-20 17:05:23.574111	2016-07-20 17:05:23.574111
+50	42	55	2016-07-20 17:05:46.36157	2016-07-20 17:05:46.36157
+51	43	56	2016-07-20 17:06:51.560574	2016-07-20 17:06:51.560574
+52	43	57	2016-07-20 17:07:11.334635	2016-07-20 17:07:11.334635
+53	43	58	2016-07-20 17:07:32.11427	2016-07-20 17:07:32.11427
+54	43	59	2016-07-20 17:09:34.600544	2016-07-20 17:09:34.600544
+55	43	60	2016-07-20 17:10:29.040349	2016-07-20 17:10:29.040349
+56	43	61	2016-07-20 17:10:48.105876	2016-07-20 17:10:48.105876
+57	43	62	2016-07-20 17:11:09.070886	2016-07-20 17:11:09.070886
+58	43	63	2016-07-20 17:11:29.108186	2016-07-20 17:11:29.108186
+\.
+
+
+--
+-- Name: parent_article_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('parent_article_categories_id_seq', 58, true);
+
+
+--
+-- Data for Name: parent_categories; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY parent_categories (id, parent_id, category_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: parent_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('parent_categories_id_seq', 1, false);
+
+
+--
+-- Data for Name: payment_methods; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY payment_methods (id, title, description, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: payment_methods_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('payment_methods_id_seq', 1, false);
+
+
+--
+-- Data for Name: product_images; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY product_images (id, product_id, image_url, created_at, updated_at, is_main) FROM stdin;
+\.
+
+
+--
+-- Name: product_images_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('product_images_id_seq', 1, false);
+
+
+--
+-- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY products (id, name, code, quantity, unit, price, short_description, description, manufacturer_id, product_image_id, created_at, updated_at, tags, status, old_price, discount_percent, meta_keywords, meta_description, is_show, stock, approved, user_id) FROM stdin;
+\.
+
+
+--
+-- Name: products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('products_id_seq', 1, false);
+
+
+--
+-- Data for Name: program_languages; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY program_languages (id, name, description, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: program_languages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('program_languages_id_seq', 1, false);
+
+
+--
+-- Data for Name: program_languages_projects; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY program_languages_projects (id, program_language_id, project_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: program_languages_projects_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('program_languages_projects_id_seq', 1, false);
+
+
+--
+-- Data for Name: project_categories; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY project_categories (id, name, description, created_at, updated_at, name_vi, description_vi) FROM stdin;
+\.
+
+
+--
+-- Name: project_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('project_categories_id_seq', 1, false);
+
+
+--
+-- Data for Name: project_categories_projects; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY project_categories_projects (id, project_category_id, project_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: project_categories_projects_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('project_categories_projects_id_seq', 1, false);
+
+
+--
+-- Data for Name: project_images; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY project_images (id, image_url, project_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: project_images_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('project_images_id_seq', 1, false);
+
+
+--
+-- Data for Name: projects; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY projects (id, image_url, author, name, start_date, end_date, description, website, created_at, updated_at, author_vi, name_vi, description_vi) FROM stdin;
+\.
+
+
+--
+-- Name: projects_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('projects_id_seq', 1, false);
+
+
+--
+-- Data for Name: questions; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY questions (id, name, email, content, product_id, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: questions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('questions_id_seq', 1, false);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY schema_migrations (version) FROM stdin;
+20160406035423
+20160406060729
+20160406061501
+20160406072632
+20160406090918
+20160406093710
+20160407021915
+20160407022242
+20160407033416
+20160407034556
+20160407040834
+20160407041811
+20160407063600
+20160407071755
+20160407073929
+20160407090029
+20160407092753
+20160411022035
+20160411070126
+20160411090637
+20160412090455
+20160412091031
+20160412091620
+20160412092036
+20160413013557
+20160414070432
+20160414071647
+20160414071935
+20160414072251
+20160414072336
+20160414111647
+20160415024108
+20160415034338
+20160415045331
+20160415070403
+20160418084816
+20160419063009
+20160419063732
+20160419073354
+20160419084034
+20160419084328
+20160420021407
+20160420025319
+20160420031013
+20160420035639
+20160420071851
+20160420083852
+20160420083904
+20160421014453
+20160421023948
+20160421032607
+20160422075657
+20160422084139
+20160422092821
+20160425011612
+20160425011627
+20160425031932
+20160425042302
+20160425043159
+20160425043209
+20160425075501
+20160429043324
+20160429062814
+20160505042346
+20160505065936
+20160505084631
+20160505090509
+20160505092039
+20160506024000
+20160506084612
+20160506090959
+20160510030159
+20160510030222
+20160510094925
+20160512092157
+20160512092324
+20160514031109
+20160516073144
+20160516073152
+20160516073236
+20160516073244
+20160516080558
+20160516082039
+20160516085116
+20160516085213
+20160516090119
+20160517032825
+20160517033437
+20160517083909
+20160518035417
+20160518070327
+20160520062835
+20160521024747
+20160527042708
+20160527083046
+20160531021437
+20160531021445
+20160601013031
+20160601065702
+20160601091343
+20160601100102
+20160601111606
+20160602071024
+20160602083515
+20160602083819
+20160603025541
+20160603071216
+20160603080430
+20160607034151
+20160607034155
+20160615074814
+20160616023635
+20160616034218
+20160616034542
+20160616040953
+20160616063534
+20160616064623
+20160616073753
+20160623013507
+20160623013627
+20160623013757
+20160623013859
+20160712020307
+\.
+
+
+--
+-- Data for Name: slideshows; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY slideshows (id, image_url, title_1, title_2, name_button, link, created_at, updated_at, color_1, color_2, style) FROM stdin;
+\.
+
+
+--
+-- Name: slideshows_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('slideshows_id_seq', 1, false);
+
+
+--
+-- Data for Name: testimonials; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY testimonials (id, name, city, email, content, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: testimonials_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('testimonials_id_seq', 1, false);
+
+
+--
+-- Data for Name: user_groups; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY user_groups (id, name, permission, created_at, updated_at) FROM stdin;
+1	Thành viên	\N	2016-07-20 09:19:19.55488	2016-07-20 09:19:19.55488
+2	Quản trị viên	\N	2016-07-20 09:19:19.559817	2016-07-20 09:19:19.559817
+3	Quản lý cấp cao	\N	2016-07-20 09:19:19.563127	2016-07-20 09:19:19.563127
+\.
+
+
+--
+-- Name: user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('user_groups_id_seq', 3, true);
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at, first_name, last_name, phone, fax, company, address_1, address_2, zip_code, country, province, city, provider, uid, password_reset_token, password_reset_sent_at, oauth_token, oauth_expires_at, last_seen, is_admin, area_id, role, user_group_id) FROM stdin;
+1	admin@hoangkhang.com.vn	$2a$11$Ph6fh7uIaTE.lUiPgrqC/OZPwl83tI13yoFAsuzVr2WxHcIFeheIe	\N	\N	\N	3	2016-07-20 13:58:34.865632	2016-07-20 13:04:50.420524	192.168.211.1	192.168.211.1	2016-07-20 09:19:19.529939	2016-07-20 17:19:41.884938	Quản trị	viên	01644046123	\N	\N	54/3, Tăng NHơn Phú B, Quận 9	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-07-20 17:19:41.879196	t	\N	\N	\N
+\.
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('users_id_seq', 1, true);
+
+
+--
+-- Data for Name: vouchers; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY vouchers (id, name, code, from_date, to_date, description, quantity, created_at, updated_at, price) FROM stdin;
+\.
+
+
+--
+-- Name: vouchers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('vouchers_id_seq', 1, false);
+
+
+--
+-- Data for Name: wish_lists; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY wish_lists (id, product_id, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: wish_lists_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('wish_lists_id_seq', 1, false);
+
+
+--
+-- Name: areas_articles_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY areas_articles
+    ADD CONSTRAINT areas_articles_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: areas_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY areas
+    ADD CONSTRAINT areas_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: areas_products_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY areas_products
+    ADD CONSTRAINT areas_products_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: article_categories_articles_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY article_categories_articles
+    ADD CONSTRAINT article_categories_articles_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: article_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY article_categories
+    ADD CONSTRAINT article_categories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: articles_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY articles
+    ADD CONSTRAINT articles_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: articles_products_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY articles_products
+    ADD CONSTRAINT articles_products_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: articles_projects_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY articles_projects
+    ADD CONSTRAINT articles_projects_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: carts_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY carts
+    ADD CONSTRAINT carts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: categories_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY categories
+    ADD CONSTRAINT categories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: categories_products_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY categories_products
+    ADD CONSTRAINT categories_products_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: code_statuses_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY code_statuses
+    ADD CONSTRAINT code_statuses_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: comment_articles_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY comment_articles
+    ADD CONSTRAINT comment_articles_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY comments
+    ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: companies_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY companies
+    ADD CONSTRAINT companies_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: compares_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY compares
+    ADD CONSTRAINT compares_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: contacts_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY contacts
+    ADD CONSTRAINT contacts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: conversations_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY conversations
+    ADD CONSTRAINT conversations_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: coupons_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY coupons
+    ADD CONSTRAINT coupons_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: customers_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY customers
+    ADD CONSTRAINT customers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: delivery_methods_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY delivery_methods
+    ADD CONSTRAINT delivery_methods_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: feedbacks_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY feedbacks
+    ADD CONSTRAINT feedbacks_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: line_item_compares_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY line_item_compares
+    ADD CONSTRAINT line_item_compares_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: line_items_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY line_items
+    ADD CONSTRAINT line_items_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: manufacturers_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY manufacturers
+    ADD CONSTRAINT manufacturers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: messages_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY messages
+    ADD CONSTRAINT messages_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: newsletters_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY newsletters
+    ADD CONSTRAINT newsletters_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: options_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY options
+    ADD CONSTRAINT options_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: order_deliveries_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY order_deliveries
+    ADD CONSTRAINT order_deliveries_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: order_details_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY order_details
+    ADD CONSTRAINT order_details_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: orders_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY orders
+    ADD CONSTRAINT orders_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: parent_article_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY parent_article_categories
+    ADD CONSTRAINT parent_article_categories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: parent_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY parent_categories
+    ADD CONSTRAINT parent_categories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: payment_methods_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY payment_methods
+    ADD CONSTRAINT payment_methods_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: product_images_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY product_images
+    ADD CONSTRAINT product_images_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: products_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY products
+    ADD CONSTRAINT products_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: program_languages_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY program_languages
+    ADD CONSTRAINT program_languages_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: program_languages_projects_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY program_languages_projects
+    ADD CONSTRAINT program_languages_projects_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: project_categories_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY project_categories
+    ADD CONSTRAINT project_categories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: project_categories_projects_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY project_categories_projects
+    ADD CONSTRAINT project_categories_projects_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: project_images_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY project_images
+    ADD CONSTRAINT project_images_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: projects_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY projects
+    ADD CONSTRAINT projects_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: questions_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY questions
+    ADD CONSTRAINT questions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: slideshows_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY slideshows
+    ADD CONSTRAINT slideshows_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: testimonials_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY testimonials
+    ADD CONSTRAINT testimonials_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: user_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY user_groups
+    ADD CONSTRAINT user_groups_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: vouchers_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY vouchers
+    ADD CONSTRAINT vouchers_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: wish_lists_pkey; Type: CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY wish_lists
+    ADD CONSTRAINT wish_lists_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_conversations_on_recipient_id; Type: INDEX; Schema: public; Owner: hungnt
+--
+
+CREATE INDEX index_conversations_on_recipient_id ON conversations USING btree (recipient_id);
+
+
+--
+-- Name: index_conversations_on_sender_id; Type: INDEX; Schema: public; Owner: hungnt
+--
+
+CREATE INDEX index_conversations_on_sender_id ON conversations USING btree (sender_id);
+
+
+--
+-- Name: index_line_item_compares_on_compare_id; Type: INDEX; Schema: public; Owner: hungnt
+--
+
+CREATE INDEX index_line_item_compares_on_compare_id ON line_item_compares USING btree (compare_id);
+
+
+--
+-- Name: index_line_item_compares_on_product_id; Type: INDEX; Schema: public; Owner: hungnt
+--
+
+CREATE INDEX index_line_item_compares_on_product_id ON line_item_compares USING btree (product_id);
+
+
+--
+-- Name: index_line_items_on_cart_id; Type: INDEX; Schema: public; Owner: hungnt
+--
+
+CREATE INDEX index_line_items_on_cart_id ON line_items USING btree (cart_id);
+
+
+--
+-- Name: index_line_items_on_product_id; Type: INDEX; Schema: public; Owner: hungnt
+--
+
+CREATE INDEX index_line_items_on_product_id ON line_items USING btree (product_id);
+
+
+--
+-- Name: index_messages_on_conversation_id; Type: INDEX; Schema: public; Owner: hungnt
+--
+
+CREATE INDEX index_messages_on_conversation_id ON messages USING btree (conversation_id);
+
+
+--
+-- Name: index_messages_on_user_id; Type: INDEX; Schema: public; Owner: hungnt
+--
+
+CREATE INDEX index_messages_on_user_id ON messages USING btree (user_id);
+
+
+--
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: hungnt
+--
+
+CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
+
+
+--
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: hungnt
+--
+
+CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
+
+
+--
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: hungnt
+--
+
+CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- Name: fk_rails_11e15d5c6b; Type: FK CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY line_items
+    ADD CONSTRAINT fk_rails_11e15d5c6b FOREIGN KEY (product_id) REFERENCES products(id);
+
+
+--
+-- Name: fk_rails_273a25a7a6; Type: FK CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY messages
+    ADD CONSTRAINT fk_rails_273a25a7a6 FOREIGN KEY (user_id) REFERENCES users(id);
+
+
+--
+-- Name: fk_rails_7f927086d2; Type: FK CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY messages
+    ADD CONSTRAINT fk_rails_7f927086d2 FOREIGN KEY (conversation_id) REFERENCES conversations(id);
+
+
+--
+-- Name: fk_rails_af645e8e5f; Type: FK CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY line_items
+    ADD CONSTRAINT fk_rails_af645e8e5f FOREIGN KEY (cart_id) REFERENCES carts(id);
+
+
+--
+-- Name: fk_rails_d6929b2f50; Type: FK CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY line_item_compares
+    ADD CONSTRAINT fk_rails_d6929b2f50 FOREIGN KEY (compare_id) REFERENCES compares(id);
+
+
+--
+-- Name: fk_rails_d72071e038; Type: FK CONSTRAINT; Schema: public; Owner: hungnt
+--
+
+ALTER TABLE ONLY line_item_compares
+    ADD CONSTRAINT fk_rails_d72071e038 FOREIGN KEY (product_id) REFERENCES products(id);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+

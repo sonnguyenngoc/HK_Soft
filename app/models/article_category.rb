@@ -12,6 +12,17 @@ class ArticleCategory < ActiveRecord::Base
     self.save
   end
   
+  def self.get_by_level(lvl)
+    self.where(level: 1)
+  end
+  
+  def get_articles_for_categories(params)
+    article_category = ArticleCategory.find(params[:category_id])
+    records = Article.joins(:article_categories).where(article_categories: {id: article_category.get_all_related_ids}).uniq
+    
+    return records
+  end
+  
   def get_blogs_for_categories(params)
     article_category = ArticleCategory.find(params[:article_category_id])
     records = Article.joins(:code_status).where("code_statuses.title = 'news' and articles.approved = true")
