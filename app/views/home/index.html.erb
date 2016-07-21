@@ -43,30 +43,33 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="filter-by style4">
+                        <div class="filter-by style2">
                             <ul id="filters">
                                 <li class="selected"><a href="#" class="filter" data-filter="*"><span>All</span></a></li>
-                                <li><a href="#" class="filter" data-filter=".design"><span>Web Design</span></a></li>
-                                <li><a href="#" class="filter" data-filter=".develop"><span>Web Development</span></a></li>
-                                <li><a href="#" class="filter" data-filter=".computers"><span>Computers</span></a></li>
+                                <% @project_categories.each do |item| %>
+                                    <% if item.projects.count > 0 %>
+                                         <li><a href="#" class="filter" data-filter=".<%= item.description %>"><span><%= item.name %></span></a></li>
+                                    <% end %>
+                                <% end %>
                             </ul>
                         </div>
 
-                        <div class="portfolio masonry p-3-cols p-style3" id="masonry">
-                            <% (1..6).each do |item| %>
-                            <div class="portfolio-item design">
+                        <div class="portfolio grid p-3-cols p-style1" id="masonry">
+                            <% @projects.each do |item| %>
+                            <div class="portfolio-item <%= item.project_type %>">
                                 <figure>
-                                    <img alt="" src="/frontend/assets/images/portfolio/grid/1.jpg">
+                                    <div class="port-img">
+                                        <div class="icon-links">
+                                            <%= link_to '<i class="fa fa-link"></i>'.html_safe, portfolio_detail_path(project_id: item.id), class: "link white-bg" %>
+                                            <a href="/frontend/assets/images/portfolio/grid/1.jpg" class="zoom main-bg" title="<%= item.name %>"><i class="fa fa-search-plus"></i></a>
+                                        </div>
+                                        <img alt="" src="/frontend/assets/images/portfolio/grid/1.jpg">
+                                    </div>
                                     <figcaption>
                                         <div class="port-captions">
-                                            <h4><%= link_to "Quality Products for Companies", portfolio_detail_path %></h4>
-                                            <p class="description"><a href="#">Design</a>, <a href="#">Development</a></p>
+                                            <h4 class="uppercase"><%= link_to item.name, portfolio_detail_path(project_id: item.id), class: "main-color" %></h4>
                                         </div>
-                                        <div class="icon-links">
-                                            <%= link_to '<i class="fa fa-link"></i>'.html_safe, portfolio_detail_path, class: "link" %>
-                                            <a href="/frontend/assets/images/portfolio/grid/1.jpg" class="zoom" title="Quality Products for Companies"><i class="fa fa-search-plus"></i></a>
-                                        </div>
-                                    </figcaption>			
+                                    </figcaption>				
                                 </figure>
                             </div>
                             <% end %>
