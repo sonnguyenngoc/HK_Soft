@@ -24,3 +24,6 @@
 .span-uppercase {
     text-transform: uppercase;
 }
+.cssload-lt:before, .cssload-rt:before, .cssload-lb:before, .cssload-rb:before {
+    border-top-color: #25aae2;
+}
