@@ -14,3 +14,6 @@
 .top-nav ul li ul {
     min-width: 250px;
 }
+.span-uppercase {
+    text-transform: uppercase;
+}

@@ -4,29 +4,29 @@
         
         <% ArticleCategory.get_by_level(1).each do |menu| %>
             <% if !menu.children.present? and menu.id != 16 %>
-                <li><%= link_to "#{'<span>' + menu.name + '</span>'}".html_safe, { controller: "post_detail", action: "index", category_id: menu.id } %></li>
+                <li><%= link_to "#{'<span>' + menu.name + '</span>'}".html_safe, post_detail_path(category_id: menu.children.first.id, parent_name: menu.url_friendly, name: menu.children.first.url_friendly) %></li>
             <% elsif menu.children.present? and menu.id != 16 %>
-                <li>
-                    <%= link_to "#{'<span>' + menu.name + '</span>'}".html_safe, { controller: "post_detail", action: "index", category_id: menu.id } %>
+                <li<% if params[:category_id].present? %><% if ArticleCategory.find_selected(params).parent.first.id == menu.id %> class="selected"<% end %><% end %>>
+                    <%= link_to "#{'<span>' + menu.name + '</span>'}".html_safe, post_detail_path(category_id: menu.children.first.id, parent_name: menu.url_friendly, name: menu.children.first.url_friendly) %>
                     <ul>
                         <% menu.children.each do |child_1| %>
-                            <li><%= link_to child_1.name, { controller: "post_detail", action: "index", category_id: child_1.id } %></li>
+                            <li<% if params[:category_id] == child_1.id.to_s %> class="selected"<% end %>><%= link_to child_1.name, post_detail_path(category_id: child_1.id, parent_name: child_1.parent.first.url_friendly, name: child_1.url_friendly) %></li>
                         <% end %>
                     </ul>
                 </li>
             <% elsif menu.children.present? and menu.id == 16 %>
-                <li class="mega-menu">
-                    <%= link_to "#{'<span>' + menu.name + '</span>'}".html_safe, { controller: "post_detail", action: "index", category_id: menu.id } %>
+                <li class="mega-menu<% if params[:category_id].present? && ArticleCategory.find(params[:category_id].to_i).family_ids.include?(menu.id) %> selected<% end %>">
+                    <%= link_to "#{'<span>' + menu.name + '</span>'}".html_safe, "#" %>
                     <ul>
                         <li>
                             <div class="mega-content">
                                 <div class="row">
                                     <ul>
                                         <% menu.children.each do |child_1| %>
-                                            <li class="col-md-4"><span><%= child_1.name %></span>
+                                            <li class="col-md-4"><span class="span-uppercase"><%= child_1.name %></span>
                                                 <ul>
                                                     <% child_1.children.each do |child_2| %>
-                                                        <li><%= link_to ('<i class="fa fa-caret-right"></i>' + child_2.name).html_safe, { controller: "post_detail", action: "index", category_id: child_2.id } %></li>
+                                                        <li<% if params[:category_id] == child_2.id.to_s %> class="selected"<% end %>><%= link_to ('<i class="fa fa-caret-right"></i>' + child_2.name).html_safe, post_detail_path(category_id: child_2.id, parent_name: child_2.parent.first.url_friendly, name: child_2.url_friendly) %></li>
                                                     <% end %>
                                                 </ul>
                                             </li>

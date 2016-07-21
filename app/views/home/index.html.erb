@@ -43,7 +43,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-
                         <div class="filter-by style4">
                             <ul id="filters">
                                 <li class="selected"><a href="#" class="filter" data-filter="*"><span>All</span></a></li>
@@ -54,10 +53,10 @@
                         </div>
 
                         <div class="portfolio masonry p-3-cols p-style3" id="masonry">
-
+                            <% (1..6).each do |item| %>
                             <div class="portfolio-item design">
                                 <figure>
-                                    <img alt="" src="/frontend/assets/images/portfolio/masonry/1.jpg">
+                                    <img alt="" src="/frontend/assets/images/portfolio/grid/1.jpg">
                                     <figcaption>
                                         <div class="port-captions">
                                             <h4><%= link_to "Quality Products for Companies", portfolio_detail_path %></h4>
@@ -65,125 +64,14 @@
                                         </div>
                                         <div class="icon-links">
                                             <%= link_to '<i class="fa fa-link"></i>'.html_safe, portfolio_detail_path, class: "link" %>
-                                            <a href="/frontend/assets/images/portfolio/masonry/1.jpg" class="zoom" title="Quality Products for Companies"><i class="fa fa-search-plus"></i></a>
+                                            <a href="/frontend/assets/images/portfolio/grid/1.jpg" class="zoom" title="Quality Products for Companies"><i class="fa fa-search-plus"></i></a>
                                         </div>
-                                    </figcaption>
+                                    </figcaption>			
                                 </figure>
                             </div>
-                            <div class="portfolio-item develop">
-                                <figure>
-                                    <img alt="" src="/frontend/assets/images/portfolio/masonry/2.jpg">
-                                    <figcaption>
-                                        <div class="port-captions">
-                                            <h4><%= link_to "Nature vs. Man", portfolio_detail_path %></h4>
-                                            <p class="description"><a href="#">Design</a>, <a href="#">Development</a></p>
-                                        </div>
-                                        <div class="icon-links">
-                                            <%= link_to '<i class="fa fa-link"></i>'.html_safe, portfolio_detail_path, class: "link" %>
-                                            <a href="/frontend/assets/images/portfolio/masonry/2.jpg" class="zoom" title="Nature vs. Man"><i class="fa fa-search-plus"></i></a>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                            <div class="portfolio-item computers">
-                                <figure>
-                                    <img alt="" src="/frontend/assets/images/portfolio/masonry/3.jpg">
-                                    <figcaption>
-                                        <div class="port-captions">
-                                            <h4><%= link_to 'A Day with Sunshine & Bliss'.html_safe, portfolio_detail_path %></h4>
-                                            <p class="description"><a href="#">Design</a>, <a href="#">Development</a></p>
-                                        </div>
-                                        <div class="icon-links">
-                                            <%= link_to '<i class="fa fa-link"></i>'.html_safe, portfolio_detail_path, class: "link" %>
-                                            <a href="/frontend/assets/images/portfolio/masonry/3.jpg" class="zoom" title="A Day with Sunshine & Bliss"><i class="fa fa-search-plus"></i></a>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                            <div class="portfolio-item develop">
-                                <figure>
-                                    <img alt="" src="/frontend/assets/images/portfolio/masonry/4.jpg">
-                                    <figcaption>
-                                        <div class="port-captions">
-                                            <h4><%= link_to 'A Workplace for Champions'.html_safe, portfolio_detail_path %></h4>
-                                            <p class="description"><a href="#">Design</a>, <a href="#">Development</a></p>
-                                        </div>
-                                        <div class="icon-links">
-                                            <%= link_to '<i class="fa fa-link"></i>'.html_safe, portfolio_detail_path, class: "link" %>
-                                            <a href="/frontend/assets/images/portfolio/masonry/4.jpg" class="zoom" title="A Workplace for Champions"><i class="fa fa-search-plus"></i></a>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                            <div class="portfolio-item design">
-                                <figure>
-                                    <img alt="" src="/frontend/assets/images/portfolio/masonry/5.jpg">
-                                    <figcaption>
-                                        <div class="port-captions">
-                                            <h4><%= link_to 'Doing it the Chilled Way'.html_safe, portfolio_detail_path %></h4>
-                                            <p class="description"><a href="#">Design</a>, <a href="#">Development</a></p>
-                                        </div>
-                                        <div class="icon-links">
-                                            <%= link_to '<i class="fa fa-link"></i>'.html_safe, portfolio_detail_path, class: "link" %>
-                                            <a href="/frontend/assets/images/portfolio/masonry/5.jpg" class="zoom" title="Doing it the Chilled Way"><i class="fa fa-search-plus"></i></a>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                            <div class="portfolio-item computers">
-                                <figure>
-                                    <img alt="" src="/frontend/assets/images/portfolio/masonry/6.jpg">
-                                    <figcaption>
-                                        <div class="port-captions">
-                                            <h4><%= link_to 'Take a Ride in a Luxury Car'.html_safe, portfolio_detail_path %></h4>
-                                            <p class="description"><a href="#">Design</a>, <a href="#">Development</a></p>
-                                        </div>
-                                        <div class="icon-links">
-                                            <%= link_to '<i class="fa fa-link"></i>'.html_safe, portfolio_detail_path, class: "link" %>
-                                            <a href="/frontend/assets/images/portfolio/masonry/6.jpg" class="zoom" title="Take a Ride in a Luxury Car"><i class="fa fa-search-plus"></i></a>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                            <div class="portfolio-item develop">
-                                <figure>
-                                    <img alt="" src="/frontend/assets/images/portfolio/masonry/7.jpg">
-                                    <figcaption>
-                                        <div class="port-captions">
-                                            <h4><%= link_to 'A Workplace for Champions'.html_safe, portfolio_detail_path %></h4>
-                                            <p class="description"><a href="#">Design</a>, <a href="#">Development</a></p>
-                                        </div>
-                                        <div class="icon-links">
-                                            <%= link_to '<i class="fa fa-link"></i>'.html_safe, portfolio_detail_path, class: "link" %>
-                                            <a href="/frontend/assets/images/portfolio/masonry/7.jpg" class="zoom" title="A Workplace for Champions"><i class="fa fa-search-plus"></i></a>
-                                        </div>
-                                    </figcaption>
-                                </figure>
-                            </div>
+                            <% end %>
                         </div>
-
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="no-padding">
-            <div class="container">
-                <div class="cta_btn outlined gry-border p-a-3">
-
-                    <div class="cta-icon cta-left">
-                        <i class="fa fa-heart gry-border main-color"></i>
-                    </div>
-
-                    <div class="cta-left">
-                        <h2 class="cta_heading">Discover the exciting world of outside. <span class="main-color uppercase">Subscribe today</span></h2>
-                        <h4 class="cta_heading">So if you were waiting for the perfect time to seize this opportunity, the time is now. Call us at <span class="main-color bolder">+2(888)123-4567</span>.</h4>
-                    </div>
-
-                    <div class="cta-right cta-small">
-                        <a class="btn btn-xl btn-outlined btn-grey" href="#">Purchase Now</a>
-                    </div>
-
                 </div>
             </div>
         </div>
