@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     
     root "home#index"
     get "contact-us.html" => "contact#index", as: :contact
-    get "category/post-detail.html" => "post_detail#index", as: :post_detail
+    get "(:parent_name)/(:name)-:category_id.html" => "post_detail#index", as: :post_detail
     get "portfolio.html" => "portfolio#index", as: :portfolio
     get "portfolio/portfolio-detail.html" => "portfolio#detail", as: :portfolio_detail
     
