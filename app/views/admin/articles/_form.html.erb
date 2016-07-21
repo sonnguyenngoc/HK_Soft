@@ -44,7 +44,7 @@
                     <div class="col-lg-10">
                         <select name="category_ids[]" id="article_category_ids" class="select-item-color required" data-placeholder="<%= t(:placeholder_categories) %>..." multiple="multiple">
                             <% @article_categories.each do |item| %>
-                                <option <%= "selected" if @article.article_categories.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
+                                <option <%= "selected" if @article.article_categories.include?(item) %> value="<%= item.id %>"><%= item.parent.first.name + " - " if item.parent.present? %> <%= item.name %></option>
                             <% end %>
                         </select>
                     </div>
