@@ -22,7 +22,7 @@
                                 <h3><%= menu.name %></h3>
                                 <ul class="menu-widget">
                                     <% menu.children.each do |child_1| %>
-                                        <li><%= link_to child_1.name, post_detail_path(category_id: child_1.id) %></li>
+                                        <li><%= link_to child_1.name, post_detail_path(category_id: child_1.id, parent_name: child_1.parent.first.url_friendly, name: child_1.url_friendly) %></li>
                                     <% end %>
                                 </ul>
                             </div>
@@ -37,7 +37,7 @@
                                 <h3><%= menu.name %></h3>
                                 <ul class="menu-widget">
                                     <% menu.children.each do |child_1| %>
-                                        <li><%= link_to child_1.name, post_detail_path(category_id: child_1.id) %></li>
+                                        <li><%= link_to child_1.name, post_detail_path(category_id: child_1.id, parent_name: child_1.parent.first.url_friendly, name: child_1.url_friendly) %></li>
                                     <% end %>
                                 </ul>
                             </div>
@@ -52,7 +52,7 @@
                                 <h3><%= menu.name %></h3>
                                 <ul class="menu-widget">
                                     <% menu.children.each do |child_1| %>
-                                        <li><%= link_to child_1.name, post_detail_path(category_id: child_1.id) %></li>
+                                        <li><%= link_to child_1.name, post_detail_path(category_id: child_1.id, parent_name: child_1.parent.first.url_friendly, name: child_1.url_friendly) %></li>
                                     <% end %>
                                 </ul>
                             </div>
@@ -84,11 +84,11 @@
         <div class="container">
             <div class="copyrights f-left white">© Copyrights <b class="main-color">GLOBAL NATURESOFT</b> 2016. All rights reserved.</div>
             <div class="social-list f-right">
-                <a href="https://www.facebook.com/Global-Naturesoft-623551254472451/" data-toggle="tooltip" data-placement="top" data-original-title="Facebook"><i class="fa fa-facebook ic-facebook no-border sm-icon"></i></a>
-                <a href="https://twitter.com/GNaturesoft" data-toggle="tooltip" data-placement="top" data-original-title="Twitter"><i class="fa fa-twitter ic-twitter no-border sm-icon"></i></a>
-                <a href="https://www.linkedin.com/in/global-naturesoft-4493aa122" data-toggle="tooltip" data-placement="top" data-original-title="Linkedin"><i class="fa fa-linkedin ic-linkedin no-border sm-icon"></i></a>
-                <a href="https://www.youtube.com/channel/UCd0uK1eQ_PtRJ1AppsUiqhw" data-toggle="tooltip" data-placement="top" data-original-title="YouTube"><i class="fa fa-youtube-play ic-youtube no-border sm-icon"></i></a>
-                <a href="https://plus.google.com/u/2/113600395564379102837" data-toggle="tooltip" data-placement="top" data-original-title="Google Plus"><i class="fa fa-google-plus ic-gplus no-border sm-icon"></i></a>
+                <a href="https://www.facebook.com/Global-Naturesoft-623551254472451/" target="_blank" data-toggle="tooltip" data-placement="top" data-original-title="Facebook"><i class="fa fa-facebook ic-facebook no-border sm-icon"></i></a>
+                <a href="https://twitter.com/GNaturesoft" target="_blank" data-toggle="tooltip" data-placement="top" data-original-title="Twitter"><i class="fa fa-twitter ic-twitter no-border sm-icon"></i></a>
+                <a href="https://www.linkedin.com/in/global-naturesoft-4493aa122" target="_blank" data-toggle="tooltip" data-placement="top" data-original-title="Linkedin"><i class="fa fa-linkedin ic-linkedin no-border sm-icon"></i></a>
+                <a href="https://www.youtube.com/channel/UCd0uK1eQ_PtRJ1AppsUiqhw" target="_blank" data-toggle="tooltip" data-placement="top" data-original-title="YouTube"><i class="fa fa-youtube-play ic-youtube no-border sm-icon"></i></a>
+                <a href="https://plus.google.com/u/2/113600395564379102837" target="_blank" data-toggle="tooltip" data-placement="top" data-original-title="Google Plus"><i class="fa fa-google-plus ic-gplus no-border sm-icon"></i></a>
             </div>
         </div>
     </div>

@@ -29,24 +29,12 @@
         
         <div class="page-title tbg">
             <div class="container">
-                <h1><%=@article_category.name %></h1>
+                <h1><%= @article_category.name %></h1>
             </div>
         </div>
         <div class="breadcrumbs">
             <div class="container">
                 <%= link_to "Home", root_path %><i class="fa fa-long-arrow-right main-color"></i><span><%= @article_category.parent.first.name %></span><i class="fa fa-long-arrow-right main-color"></i><span><%= @article_category.name %></span>
-                <% if @article_category.parent.first.present? and !@article_category.parent.first.parent.empty? %>
-                    <i class="fa fa-long-arrow-right main-color"></i>
-					<%= link_to @article_category.parent.first.parent.first.name, { controller: "post_detail", action: "index", category_id: @article_category.parent.first.parent.first.id } %>
-				<% end %>
-                <% if !@article_category.parent.empty? %>
-                    <i class="fa fa-long-arrow-right main-color"></i>
-					<%= link_to @article_category.parent.first.name, { controller: "post_detail", action: "index", category_id: @article_category.parent.first.id } %>
-				<% end %>
-				<% if !@article_category.nil? %>
-                    <i class="fa fa-long-arrow-right main-color"></i>
-                    <span><%= @article_category.name %></span>
-                <% end %>
             </div>
         </div>
         
@@ -116,15 +104,13 @@
                                 
                             </article>
                         </div><!-- .post-item end -->
-
                     </div>
-
                 </div>
                 
                 <div class="col-md-3 md-padding sidebar">
                     <div class="sidebar-widgets">
                         <ul>
-                            
+            
                             <li class="widget w-recent-posts">
                                 <h4 class="widget-title"><span class="main-color">Recent </span>Posts</h4>
                                 <div class="widget-content">
