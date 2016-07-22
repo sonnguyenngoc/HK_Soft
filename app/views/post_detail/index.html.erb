@@ -34,7 +34,9 @@
         </div>
         <div class="breadcrumbs">
             <div class="container">
+
                 <%= link_to "Home", root_path %><i class="fa fa-long-arrow-right main-color"></i><span><%= @article_category.parent.first.name %></span><i class="fa fa-long-arrow-right main-color"></i><span><%= @article_category.name %></span>
+
             </div>
         </div>
         
@@ -110,7 +112,20 @@
                 <div class="col-md-3 md-padding sidebar">
                     <div class="sidebar-widgets">
                         <ul>
-            
+							
+							<% if !@article_category.parent.first.nil? %>
+								<li class="widget widget-categories">
+									<h4 class="widget-title"><span class="main-color"></span><%= @article_category.parent.first.name %></h4>
+									<div class="widget-content">
+										<ul>
+											<% @article_category.parent.first.children.each do |child_1| %>
+												<li<% if params[:category_id] == child_1.id.to_s %> class="active"<% end %>><%= link_to child_1.name, post_detail_path(category_id: child_1.id, parent_name: child_1.parent.first.url_friendly, name: child_1.url_friendly) %></li>
+											<% end %>
+										</ul>
+									</div>
+								</li>
+							<% end %>
+							
                             <li class="widget w-recent-posts">
                                 <h4 class="widget-title"><span class="main-color">Recent </span>Posts</h4>
                                 <div class="widget-content">
@@ -151,18 +166,6 @@
                                     </ul>
                                 </div>
                             </li>
-                            
-                            <li class="widget widget-categories">
-                                <h4 class="widget-title"><span class="main-color">Blog</span> Categories</h4>
-                                <div class="widget-content">
-                                    <ul>
-                                        <li><a href="blog-single.html">Corporate news</a><span>[12]</span></li>
-                                        <li><a href="blog-single.html">Information technology</a><span>[5]</span></li>
-                                        <li><a href="blog-single.html">Web development</a><span>[3]</span></li>
-                                        <li><a href="blog-single.html">Sports News</a><span>[25]</span></li>
-                                    </ul>
-                                </div>
-                            </li>
                         </ul>
                     </div>
                     
@@ -175,7 +178,7 @@
     <!-- Footer start -->
     <%= render "/home/footer" %>
     <!-- Footer end -->
-
+	
 </div>
 
 <!-- Back to top Link -->

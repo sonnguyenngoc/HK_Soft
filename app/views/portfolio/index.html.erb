@@ -1,0 +1,95 @@
+<div class="pageWrapper">
+
+    <!-- Top bar start -->
+    <%= render "/home/top_bar" %>
+    <!-- Top bar end -->
+    
+    <!-- Header start -->
+    <header class="top-head minimal">
+        <div class="container">
+            
+            <!-- Logo start -->
+            <%= render "/home/logo" %>
+            <!-- Logo end -->
+
+            <div class="responsive-nav">
+                
+                <!-- top navigation menu start -->
+                <%= render "/home/top_navigation_menu" %>
+                <!-- top navigation menu end -->
+                
+                <div class="f-right">
+                    <!-- top search start -->
+                    <%= render "/home/top_search" %>
+                    <!-- top search end -->
+                </div>
+                
+            </div>
+        </div>
+    </header>
+    <!-- Header start -->
+    
+    <!-- Content start -->
+    <div class="pageContent">
+        
+        <div class="page-title tbg">
+            <div class="container">
+                <h1>Portfolio</h1>
+            </div>
+        </div>
+        <div class="breadcrumbs">
+            <div class="container">
+                <%= link_to "Home", root_path %><i class="fa fa-long-arrow-right main-color"></i><span>Portfolio</span>
+            </div>
+        </div>
+
+        <div class="md-padding">
+            <div class="container">
+                <div class="portfolio p-1-col simple" id="container">
+                    <% @projects.each do |item| %>
+                    <div class="portfolio-item develop">
+                        <div class="img-holder">
+                            <img alt="" src="/frontend/assets/images/portfolio/small/1.jpg">
+                        </div>
+                        <div class="name-holder">
+                            <h4><a href="portfolio-single.html">Quality Products for Companies</a></h4>
+                            <p class="description">Mauris in quam tristique, dignissim urna in, molestie felis. Fusce tristique, elit nec vehicula imperdiet, eros est egestas odio, at aliquet elit nulla sed.Mauris in quam tristique, dignissim urna in, molestie felis. Fusce tristique, elit nec vehicula imperdiet, eros est egestas odio, at aliquet elit nulla sed.</p>
+                            <div class="meta">
+                                <ul class="list">
+                                    <li><i class="fa fa-folder-open-o main-color"></i> <strong>Categories:</strong> <a href="#">Design</a>, <a href="#">Development</a></li>
+                                    <li><i class="fa fa-user main-color"></i> <strong>By:</strong> Mohamed Abdelfattah</li>
+                                    <li><i class="fa fa-clock-o main-color"></i> <strong>Created on:</strong> 01 / 25 / 2016</li>
+                                    <li><i class="fa fa-tags main-color"></i> <strong>Tags:</strong> <a href="#">News</a>, <a href="#">Computers</a>, <a href="#">Just Food</a></li>
+                                </ul>
+                            
+                            </div>
+                        </div>
+                    </div>
+                    <% end %>
+                </div>
+                <nav>
+                    <ul class="pagination style2">
+                        <li><a href="#" aria-label="Previous"><span aria-hidden="true"><i class="fa fa-long-arrow-left"></i></span></a></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#" aria-label="Next"><span aria-hidden="true"><i class="fa fa-long-arrow-right"></i></span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>			    
+    <!-- Content start -->
+
+    <!-- Footer start -->
+    <%= render "/home/footer" %>
+    <!-- Footer end -->
+
+</div>
+
+<!-- Back to top Link -->
+<a id="to-top" href="#"><span class="fa fa fa-angle-up"></span></a>
+
+<%= render "/home/js_files" %>
