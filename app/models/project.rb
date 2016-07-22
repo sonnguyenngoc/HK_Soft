@@ -12,4 +12,7 @@ class Project < ActiveRecord::Base
         "["+(self.project_categories.map{|item| '"a'+item.id.to_s+'"'}).join(",")+"]"
     end
     
+    def url_friendly
+        self.name.unaccent.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip
+    end
 end

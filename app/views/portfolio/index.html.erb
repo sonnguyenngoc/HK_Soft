@@ -49,16 +49,17 @@
                     <% @projects.each do |item| %>
                     <div class="portfolio-item develop">
                         <div class="img-holder">
-                            <img alt="" src="/frontend/assets/images/portfolio/small/1.jpg">
+                            <%= link_to image_tag("/frontend/assets/images/portfolio/small/1.jpg", alt: item.name), portfolio_detail_path(project_id: item.id, name: item.url_friendly) %>
                         </div>
                         <div class="name-holder">
-                            <h4><a href="portfolio-single.html">Quality Products for Companies</a></h4>
-                            <p class="description">Mauris in quam tristique, dignissim urna in, molestie felis. Fusce tristique, elit nec vehicula imperdiet, eros est egestas odio, at aliquet elit nulla sed.Mauris in quam tristique, dignissim urna in, molestie felis. Fusce tristique, elit nec vehicula imperdiet, eros est egestas odio, at aliquet elit nulla sed.</p>
+                            <h4><%= link_to item.name, portfolio_detail_path(project_id: item.id, name: item.url_friendly) %></h4>
+                            <p class="description"><%= truncate(strip_tags(item.description), length: 150) %></p>
                             <div class="meta">
                                 <ul class="list">
                                     <li><i class="fa fa-folder-open-o main-color"></i> <strong>Categories:</strong> <a href="#">Design</a>, <a href="#">Development</a></li>
-                                    <li><i class="fa fa-user main-color"></i> <strong>By:</strong> Mohamed Abdelfattah</li>
-                                    <li><i class="fa fa-clock-o main-color"></i> <strong>Created on:</strong> 01 / 25 / 2016</li>
+                                    <li><i class="fa fa-user main-color"></i> <strong>By:</strong> Global Naturesoft</li>
+                                    <li><i class="fa fa-clock-o main-color"></i> <strong>Start Date:</strong> <%= item.start_date.strftime("%d / %m / %Y") %></li>
+                                    <li><i class="fa fa-clock-o main-color"></i> <strong>End Date:</strong> <%= item.end_date.strftime("%d / %m / %Y") %></li>
                                     <li><i class="fa fa-tags main-color"></i> <strong>Tags:</strong> <a href="#">News</a>, <a href="#">Computers</a>, <a href="#">Just Food</a></li>
                                 </ul>
                             
