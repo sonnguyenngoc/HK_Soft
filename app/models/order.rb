@@ -44,8 +44,8 @@ class Order < ActiveRecord::Base
   end
   def self.sort_order
     [
-      [I18n.t('asc'),"asc"],
       [I18n.t('desc'),"desc"],
+      [I18n.t('asc'),"asc"],      
     ]
   end
   
