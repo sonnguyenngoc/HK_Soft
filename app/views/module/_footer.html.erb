@@ -403,10 +403,10 @@
                                 
                                 <div class="tags_container">
                                     
-                                    <% Article.get_keyword_article.keywords.each do |item| %>
-                                                
-                                        <a href="<%= search_path(keyword: item) %>" class=""><strong><%= item.html_safe %></strong></a>
-                                        
+                                    <% Product.all.each do |item| %>
+                                        <% if !item.tags.empty? %>       
+                                            <a href="<%= search_path(keyword: item.tags) %>" class=""><strong><%= item.tags %></strong></a>
+                                        <% end %>
                                     <% end %>
                                     
                                     <% if !Article.get_keyword_article.nil? and false %>
