@@ -1,0 +1,6 @@
+<div class="top-search short">
+    <a href="#" class="main-bg"><span class="fa fa-search"></span></a>
+    <div class="search-box">
+        <input type="text" name="t" placeHolder="Type And Hit Enter..." />
+    </div>
+</div>
