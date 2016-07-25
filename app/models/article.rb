@@ -23,6 +23,10 @@ class Article < ActiveRecord::Base
     self.joins(:code_status).where("code_statuses.title = 'news' and articles.approved = true").first(4)
   end
   
+  def self.get_lastest_news
+    self.order("created_at DESC").first(3)
+  end
+  
   def split_tags
     tags.split(",").map {|s| s.to_s }
   end

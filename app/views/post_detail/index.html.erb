@@ -112,7 +112,6 @@
                 <div class="col-md-3 md-padding sidebar">
                     <div class="sidebar-widgets">
                         <ul>
-							
 							<% if !@article_category.parent.first.nil? %>
 								<li class="widget widget-categories">
 									<h4 class="widget-title"><span class="main-color"></span><%= @article_category.parent.first.name %></h4>
@@ -125,47 +124,6 @@
 									</div>
 								</li>
 							<% end %>
-							
-                            <li class="widget w-recent-posts">
-                                <h4 class="widget-title"><span class="main-color">Recent </span>Posts</h4>
-                                <div class="widget-content">
-                                    <ul>
-                                        <li>
-                                            <div class="post-img">
-                                                <a href="blog-single.html"><img src="/frontend/assets/images/blog/small/1.jpg" alt=""></a>
-                                            </div>
-                                            <div class="widget-post-info">
-                                                <h5><a href="blog-single.html">Blog post title with Image</a></h5>
-                                                <div class="meta">
-                                                    <span><i class="fa fa-clock-o"></i>Dec 28, 2013,</span><a href="blog-single.html"><i class="fa fa-comments"></i>15</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="post-img">
-                                                <a href="blog-single.html"><img src="/frontend/assets/images/blog/small/2.jpg" alt=""></a>
-                                            </div>
-                                            <div class="widget-post-info">
-                                                <h5><a href="blog-single.html">Blog post title</a></h5>
-                                                <div class="meta">
-                                                    <span><i class="fa fa-clock-o"></i>Dec 28, 2013,</span><a href="blog-single.html"><i class="fa fa-comments"></i>15</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="post-img">
-                                                <a href="blog-single.html"><img src="/frontend/assets/images/blog/small/3.jpg" alt=""></a>
-                                            </div>
-                                            <div class="widget-post-info">
-                                                <h5><a href="blog-single.html">Blog post title with Image</a></h5>
-                                                <div class="meta">
-                                                    <span><i class="fa fa-clock-o"></i>Dec 28, 2013,</span><a href="blog-single.html"><i class="fa fa-comments"></i>15</a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
                         </ul>
                     </div>
                     
