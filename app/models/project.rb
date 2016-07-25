@@ -15,4 +15,12 @@ class Project < ActiveRecord::Base
     def url_friendly
         self.name.unaccent.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip
     end
+    
+    def self.get_related_project_designs
+        self.where("projects.project_type = 'design'").order("created_at DESC")
+    end
+    
+    def self.get_related_project_web_baseds
+        self.where("projects.project_type = 'web-based'").order("created_at DESC")
+    end
 end

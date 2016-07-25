@@ -24,12 +24,11 @@
     <!-- Content start -->
     <div class="pageContent">
             
-        <div class="xl-padding parallax portfolio single-pro-img" style="background-image: url(/frontend/assets/images/bgs/girls.jpg);" data-stellar-background-ratio="0.65" data-overlay="rgba(0,0,0,.7)">
+        <div class="xl-padding parallax portfolio single-pro-img" style="background-image: url(<%= @project.image_url %>);" data-stellar-background-ratio="0.65" data-overlay="rgba(0,0,0,.7)">
             <div class="container">
                 <div class="row">
                     <div class="t-center margin-top-100">
-                        <h1 class="white font-50">Quality Products for Companies</h1>
-                        <p class="white font-15">Lorem ipsum dolor sit amet, co sectetur adipiscing elit. Nullam convallis euismod mollis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nlis euismod mollis. Nullam convallis euismod mollis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nlis euismod mollis.Lorem ipsum dolor sit amet</p>
+                        <h1 class="white font-50"><%= @project.name %></h1>
                     </div>
                 </div>
             </div>
@@ -44,15 +43,18 @@
                         </div>
                         <ul class="list lg-v-pad">
                             <li>
-                                <i class="fa fa-tag"></i> <span class="bold main-color">Category:</span> <a href="#">Computers</a>, <a href="#">Just food</a>
+                                <i class="fa fa-tag"></i> <span class="bold main-color">Category:</span> <% @project.project_categories.each do |cat| %><%= cat.name %><% end %>
                             </li>
                             <li>
-                                <i class="fa fa-user"></i> <span class="bold main-color">Added By:</span> John Martin
+                                <i class="fa fa-user"></i> <span class="bold main-color">By:</span> Global Naturesoft
                             </li>
                             <li>
-                                <i class="fa fa-calendar"></i> <span class="bold main-color">Date Added:</span> Jan 15, 2014
+                                <i class="fa fa-calendar"></i> <span class="bold main-color">Start Date:</span> <%= @project.start_date.strftime("%d / %m / %Y") %>
                             </li>
-                            <li><i class="fa fa-check"></i> <span class="bold main-color">Customer:</span> ThemeForest.</li>
+                            <li>
+                                <i class="fa fa-calendar"></i> <span class="bold main-color">End Date:</span> <%= @project.end_date.strftime("%d / %m / %Y") %>
+                            </li>
+                            <li><i class="fa fa-check"></i> <span class="bold main-color">Customer:</span> <%= @project.author %></li>
                             <li class="social-list">
                                 <span class="f-left m-r-1" style="margin-top: 5px"><i class="fa fa-share-alt"></i> <span class="bold main-color">Share Project:</span> </span>
                                     <a href="#" data-toggle="tooltip" data-placement="top" data-original-title="Facebook"><i class="fa fa-facebook ic-facebook sm-icon no-border"></i></a>
@@ -71,12 +73,7 @@
                         <div class="heading style3">
                             <h3 class="uppercase"><i class="fa fa-desktop"></i><span class="main-color">Case </span>Study</h3>
                         </div>
-                        <p>
-                        
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eget lacus sit amet neque posuere aliquet. In interdum nisl sapien, vel dignissim nulla porta at. Sed accumsan nunc vitae mollis consequat. Fusce mollis massa vel leo imperdiet ultrices. Cras ut tristique tellus. 
-                        <br><br>
-                        Vivamus sit amet odio pellentesque odio faucibus tristique. Morbi facilisis, ligula a faucibus pellentesque, orci justo consequat massa, sit amet dapibus dolor diam viverra mi. Aenean porttitor, lectus atfacilisis, ligula a faucibus pellentesque, orci justo consequat massa, sit amet dapibus dolor diam viverra mi. Aenean porttitor, lectus atfacilisis, ligula a faucibus pellentesque, orci justo consequat massa, sit amet dapibus dolor diam viverra mi.
-                        </p>
+                        <p class="text-justify"><%= @project.description %></p>
                     </div>
                 </div>
             </div>
@@ -88,33 +85,11 @@
                     <h3 class="uppercase"><i class="fa fa-file-photo-o"></i><span class="main-color">Related </span>Images</h3>
                 </div>
                 <div class="horizontal-slider marginelements" data-slides_count="5" data-scroll_amount="1" data-slider-speed="600" data-center-mode="1" data-slider-infinite="1" data-slider-dots="0" data-slider-arrows="1">
+                    <% @project.project_images.each do |item| %>
                     <div>
-                        <a class="zoom" href="/frontend/assets/images/portfolio/grid/1.jpg"><img alt="" src="/frontend/assets/images/portfolio/grid/1.jpg"></a>
+                        <a class="zoom" href="<%= item.image_url %>"><img alt="" src="<%= item.image_url %>"></a>
                     </div>
-                    <div>
-                        <a class="zoom" href="/frontend/assets/images/portfolio/grid/2.jpg"><img alt="" src="/frontend/assets/images/portfolio/grid/2.jpg"></a>
-                    </div>
-                    <div>
-                        <a class="zoom" href="/frontend/assets/images/portfolio/grid/3.jpg"><img alt="" src="/frontend/assets/images/portfolio/grid/3.jpg"></a>
-                    </div>
-                    <div>
-                        <a class="zoom" href="/frontend/assets/images/portfolio/grid/4.jpg"><img alt="" src="/frontend/assets/images/portfolio/grid/4.jpg"></a>
-                    </div>
-                    <div>
-                        <a class="zoom" href="/frontend/assets/images/portfolio/grid/5.jpg"><img alt="" src="/frontend/assets/images/portfolio/grid/5.jpg"></a>
-                    </div>
-                    <div>
-                        <a class="zoom" href="/frontend/assets/images/portfolio/grid/6.jpg"><img alt="" src="/frontend/assets/images/portfolio/grid/6.jpg"></a>
-                    </div>
-                    <div>
-                        <a class="zoom" href="/frontend/assets/images/portfolio/grid/7.jpg"><img alt="" src="/frontend/assets/images/portfolio/grid/7.jpg"></a>
-                    </div>
-                    <div>
-                        <a class="zoom" href="/frontend/assets/images/portfolio/grid/8.jpg"><img alt="" src="/frontend/assets/images/portfolio/grid/8.jpg"></a>
-                    </div>
-                    <div>
-                        <a class="zoom" href="/frontend/assets/images/portfolio/grid/9.jpg"><img alt="" src="/frontend/assets/images/portfolio/grid/9.jpg"></a>
-                    </div>
+                    <% end %>
                 </div>
             </div>
         </div>
@@ -126,51 +101,43 @@
                 </div>
                 <div class="row">
                     <div class="portfolio p-style3">
-                        <div class="portfolio-item col-md-4">
-                            <figure>
-                                <img alt="" src="/frontend/assets/images/portfolio/grid/1.jpg">
-                                <figcaption>
-                                    <div class="port-captions">
-                                        <h4><%= link_to "Quality Products for Companies", portfolio_detail_path %></h4>
-                                        <p class="description"><a href="#">Design</a>, <a href="#">Development</a></p>
-                                    </div>
-                                    <div class="icon-links">
-                                        <%= link_to '<i class="fa fa-link"></i>'.html_safe, portfolio_detail_path, class: "link" %>
-                                        <a href="/frontend/assets/images/portfolio/grid/1.jpg" class="zoom" title="Quality Products for Companies"><i class="fa fa-search-plus"></i></a>
-                                    </div>
-                                </figcaption>			
-                            </figure>
-                        </div>
-                        <div class="portfolio-item col-md-4">
-                            <figure>
-                                <img alt="" src="/frontend/assets/images/portfolio/grid/2.jpg">
-                                <figcaption>
-                                    <div class="port-captions">
-                                        <h4><%= link_to "Nature vs. Man", portfolio_detail_path %></h4>
-                                        <p class="description"><a href="#">Design</a>, <a href="#">Development</a></p>
-                                    </div>
-                                    <div class="icon-links">
-                                        <%= link_to '<i class="fa fa-link"></i>'.html_safe, portfolio_detail_path, class: "link" %>
-                                        <a href="/frontend/assets/images/portfolio/grid/2.jpg" class="zoom" title="Nature vs. Man"><i class="fa fa-search-plus"></i></a>
-                                    </div>
-                                </figcaption>			
-                            </figure>
-                        </div>
-                        <div class="portfolio-item col-md-4">
-                            <figure>
-                                <img alt="" src="/frontend/assets/images/portfolio/grid/3.jpg">
-                                <figcaption>
-                                    <div class="port-captions">
-                                        <h4><%= link_to "A Day with Sunshine & Bliss", portfolio_detail_path %></h4>
-                                        <p class="description"><a href="#">Design</a>, <a href="#">Development</a></p>
-                                    </div>
-                                    <div class="icon-links">
-                                        <%= link_to '<i class="fa fa-link"></i>'.html_safe, portfolio_detail_path, class: "link" %>
-                                        <a href="/frontend/assets/images/portfolio/grid/3.jpg" class="zoom" title="A Day with Sunshine & Bliss"><i class="fa fa-search-plus"></i></a>
-                                    </div>
-                                </figcaption>			
-                            </figure>
-                        </div>
+                        <% if @project.project_type == "design" %>
+                            <% Project.get_related_project_designs.each do |item| %>
+                            <div class="portfolio-item col-md-4">
+                                <figure>
+                                    <img alt="" src="<%= item.image_url %>">
+                                    <figcaption>
+                                        <div class="port-captions">
+                                            <h4><%= link_to item.name, portfolio_detail_path(project_id: item.id, name: item.url_friendly) %></h4>
+                                            <p class="description"><% item.project_categories.each do |cat| %><%= cat.name %><% end %></p>
+                                        </div>
+                                        <div class="icon-links">
+                                            <%= link_to '<i class="fa fa-link"></i>'.html_safe, portfolio_detail_path(project_id: item.id, name: item.url_friendly), class: "link" %>
+                                            <a href="<%= item.image_url %>" class="zoom" title="<%= item.name %>"><i class="fa fa-search-plus"></i></a>
+                                        </div>
+                                    </figcaption>			
+                                </figure>
+                            </div>
+                            <% end %>
+                        <% else %>
+                            <% Project.get_related_project_web_baseds.each do |item| %>
+                            <div class="portfolio-item col-md-4">
+                                <figure>
+                                    <img alt="" src="<%= item.image_url %>">
+                                    <figcaption>
+                                        <div class="port-captions">
+                                            <h4><%= link_to item.name, portfolio_detail_path(project_id: item.id, name: item.url_friendly) %></h4>
+                                            <p class="description"><% item.project_categories.each do |cat| %><%= cat.name %><% end %></p>
+                                        </div>
+                                        <div class="icon-links">
+                                            <%= link_to '<i class="fa fa-link"></i>'.html_safe, portfolio_detail_path(project_id: item.id, name: item.url_friendly), class: "link" %>
+                                            <a href="<%= item.image_url %>" class="zoom" title="<%= item.name %>"><i class="fa fa-search-plus"></i></a>
+                                        </div>
+                                    </figcaption>			
+                                </figure>
+                            </div>
+                            <% end %>
+                        <% end %>
                     </div>
                 </div>
             </div>

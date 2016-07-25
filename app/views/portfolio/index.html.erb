@@ -49,18 +49,18 @@
                     <% @projects.each do |item| %>
                     <div class="portfolio-item develop">
                         <div class="img-holder">
-                            <%= link_to image_tag("/frontend/assets/images/portfolio/small/1.jpg", alt: item.name), portfolio_detail_path(project_id: item.id, name: item.url_friendly) %>
+                            <%= link_to image_tag(item.image_url.fit_small, alt: item.name), portfolio_detail_path(project_id: item.id, name: item.url_friendly) %>
                         </div>
                         <div class="name-holder">
                             <h4><%= link_to item.name, portfolio_detail_path(project_id: item.id, name: item.url_friendly) %></h4>
                             <p class="description"><%= truncate(strip_tags(item.description), length: 150) %></p>
                             <div class="meta">
                                 <ul class="list">
-                                    <li><i class="fa fa-folder-open-o main-color"></i> <strong>Categories:</strong> <a href="#">Design</a>, <a href="#">Development</a></li>
+                                    <li><i class="fa fa-folder-open-o main-color"></i> <strong>Categories:</strong> <% item.project_categories.each do |cat| %><%= cat.name %><% end %></li>
                                     <li><i class="fa fa-user main-color"></i> <strong>By:</strong> Global Naturesoft</li>
-                                    <li><i class="fa fa-clock-o main-color"></i> <strong>Start Date:</strong> <%= item.start_date.strftime("%d / %m / %Y") %></li>
-                                    <li><i class="fa fa-clock-o main-color"></i> <strong>End Date:</strong> <%= item.end_date.strftime("%d / %m / %Y") %></li>
-                                    <li><i class="fa fa-tags main-color"></i> <strong>Tags:</strong> <a href="#">News</a>, <a href="#">Computers</a>, <a href="#">Just Food</a></li>
+                                    <li><i class="fa fa-calendar main-color"></i> <strong>Start Date:</strong> <%= item.start_date.strftime("%d / %m / %Y") %></li>
+                                    <li><i class="fa fa-calendar main-color"></i> <strong>End Date:</strong> <%= item.end_date.strftime("%d / %m / %Y") %></li>
+                                    <li><i class="fa fa-check main-color"></i> <strong>Customer:</strong> <%= item.author %></li>
                                 </ul>
                             
                             </div>
