@@ -72,7 +72,7 @@
         <nav class="navbar-collapse collapse">
             <ul class="main-nav">
                 <li><%= link_to "Trang chủ", root_path %></li>
-                <% Category.get_by_level(1).each do |category| %>
+                <% Category.get_by_level(1).order("created_at DESC").each do |category| %>
                     <% if category.children.order(:ordered).count == 0 %>
                         <li><%= link_to category.name, { controller: "category", action: "index", category_id: category.id } %></li>
                     <% else %>
