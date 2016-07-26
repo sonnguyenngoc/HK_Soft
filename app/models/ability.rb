@@ -2,7 +2,7 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can :manage, :all
+    # can :manage, :all
     # get permission from group
     # Object.const_get("Article")
     UserGroup.permission_classes.each do |row|
