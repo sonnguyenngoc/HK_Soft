@@ -59,7 +59,7 @@ class InformationController < ApplicationController
   
   def terms_conditions
     @terms_information = Article.get_terms_conditions
-    @title_head = "Điều khoản & Điều kiện"
+    @title_head = "Chính sách và quy định trang"
   end
 
 end
