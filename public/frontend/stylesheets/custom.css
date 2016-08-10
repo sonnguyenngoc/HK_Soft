@@ -1063,3 +1063,10 @@ h3.care {
 .offset_title {
     line-height: 30px;
 }
+.bordered_content ul {
+    margin-left: 30px;
+}
+.bordered_content ul li {
+    list-style: square;
+    margin-bottom: 10px;
+}
