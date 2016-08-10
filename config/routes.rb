@@ -61,7 +61,7 @@ Rails.application.routes.draw do
     get "thong-tin/chinh-sach-thanh-toan" => "information#payment_policy", as: :payment_policy
     get "thong-tin/chinh-sach-giao-hang" => "information#delivery_policy", as: :delivery_policy
     get "thong-tin/chinh-sach-bao-hanh" => "information#warranty_policy", as: :warranty_policy
-    get "thong-tin/dieu-khoan-dieu-kien" => "information#terms_conditions", as: :terms_conditions
+    get "thong-tin/chinh-sach-va-quy-dinh-trang" => "information#terms_conditions", as: :terms_conditions
     get "thong-tin/so-do-website" => "information#sitemap", as: :sitemap
     # end information
     
