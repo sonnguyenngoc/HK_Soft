@@ -391,6 +391,8 @@ class Product < ActiveRecord::Base
   end
   
   def self.share_facebook
+    Product.where(fb_shared: true).update_all(fb_shared: false) if Product.where(fb_shared: false).empty?
+    
     last_shared = Product.where(fb_shared: true).order("products.updated_at DESC").first
     last_shared = last_shared.nil? ? Time.now - 1.year : last_shared.updated_at
     if last_shared < (Time.now - 3.hours)
