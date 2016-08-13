@@ -409,7 +409,7 @@ class Product < ActiveRecord::Base
       @article = Article.get_facebook_share_message
       if !@article.nil?
         #begin
-          @message = ActionView::Base.full_sanitizer.sanitize(@article.content)
+          @message = ActionView::Base.full_sanitizer.sanitize(@article.short_description)
           @message = @message.gsub("{ten_san_pham}", @share_item.name).gsub("{mo_ta}", ActionView::Base.full_sanitizer.sanitize(@share_item.description[0..100]))
           @user.put_connections("me", "feed", :message => @message, :link => 'http://dacsanvungmien.net/san-pham/chi-tiet-san-pham/' + @share_item.id.to_s, :picture => 'http://dacsanvungmien.net/uploads/product_image/image_url/'+@share_item.get_main_image.id.to_s+'/'+@share_item.get_main_image.image_url)
           @share_item.update_attribute(:fb_shared, true)
