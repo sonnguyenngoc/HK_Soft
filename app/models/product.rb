@@ -391,6 +391,8 @@ class Product < ActiveRecord::Base
   end
   
   def self.share_facebook
+    Product.where(fb_shared: true).update_all(fb_shared: false) if Product.where(fb_shared: false).empty?
+    
     last_shared = Product.where(fb_shared: true).order("products.updated_at DESC").first
     last_shared = last_shared.nil? ? Time.now - 1.year : last_shared.updated_at
     if last_shared < (Time.now - 3.hours)
@@ -401,12 +403,14 @@ class Product < ActiveRecord::Base
     
     # Sharing    
     if !@share_item.nil?
-      @user = Koala::Facebook::API.new('EAACEdEose0cBAErceaWRPnQDzdITApzR5wF1pY13FnRaz5MOq69UnFznwIfZAm1x3RNZAzlckMaTDPDHJvxhGO0tx1gkBs1vD7HAQeZBFGR2cz2mHKs0ZBaFIw13e4FURTmuIgBKSDLxU5P0BsObyBZBBlZCWxTbLcpZCicQzYIywZDZD')
+      # @user = Koala::Facebook::API.new('EAACEdEose0cBAErceaWRPnQDzdITApzR5wF1pY13FnRaz5MOq69UnFznwIfZAm1x3RNZAzlckMaTDPDHJvxhGO0tx1gkBs1vD7HAQeZBFGR2cz2mHKs0ZBaFIw13e4FURTmuIgBKSDLxU5P0BsObyBZBBlZCWxTbLcpZCicQzYIywZDZD')
+      @user = Koala::Facebook::API.new('EAAIl2ILpcl0BADLPsfZAXu0CqPttEiD0HDduCXjRW7GPUnlENCmckhGmZCbLTlhfj5y6Fa1iycbMW9PRvS63TZBKtyWLRRWi8sYFL14I5PlsNOMEvlhDGCxZCUdgPF2mvoAfRla8avjIoY8s4JSqFki9CKKjoxwZD')
+      
       @article = Article.get_facebook_share_message
       if !@article.nil?
         #begin
           @message = ActionView::Base.full_sanitizer.sanitize(@article.content)
-          @message = @message.gsub("{ten_san_pham}", @share_item.name).gsub("{mo_ta}", ActionView::Base.full_sanitizer.sanitize(@share_item.description[0..100]))
+          @message = @message.gsub("{ten_san_pham}", @share_item.name).gsub("{mo_ta}", ActionView::Base.full_sanitizer.sanitize(@share_item.short_description))
           @user.put_connections("me", "feed", :message => @message, :link => 'http://dacsanvungmien.net/san-pham/chi-tiet-san-pham/' + @share_item.id.to_s, :picture => 'http://dacsanvungmien.net/uploads/product_image/image_url/'+@share_item.get_main_image.id.to_s+'/'+@share_item.get_main_image.image_url)
           @share_item.update_attribute(:fb_shared, true)
           
