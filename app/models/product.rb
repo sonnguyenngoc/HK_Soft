@@ -401,7 +401,7 @@ class Product < ActiveRecord::Base
     
     # Sharing    
     if !@share_item.nil?
-      @user = Koala::Facebook::API.new('EAACEdEose0cBAErceaWRPnQDzdITApzR5wF1pY13FnRaz5MOq69UnFznwIfZAm1x3RNZAzlckMaTDPDHJvxhGO0tx1gkBs1vD7HAQeZBFGR2cz2mHKs0ZBaFIw13e4FURTmuIgBKSDLxU5P0BsObyBZBBlZCWxTbLcpZCicQzYIywZDZD')
+      @user = Koala::Facebook::API.new('EAAIl2ILpcl0BAOg4mt5csKsUEVkqDo4Y4kglSQZB1X6bDEBNLpf9ViqFucs06xf9l48sK4D1Xrowc3o3TMRqRX494TVun8TF3ZB9ZBqdXkx6HJNa6PtNWrlcYBs2Q4NjBA3ovQTCFedRXgEeqZAKEOn7drj8Hs0ZD')
       @article = Article.get_facebook_share_message
       if !@article.nil?
         #begin
