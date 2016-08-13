@@ -14,7 +14,7 @@
   
         <div class="secondary_page_wrapper">
   
-            <div class="container">
+            <div class="container page_checkout_action">
   
                 <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
   
@@ -35,9 +35,9 @@
                     <!-- - - - - - - - - - - - - - Login - - - - - - - - - - - - - - - - -->
       
                     <section class="section_offset checkout-quick-login-box" style="display: none;">
-      
+
                         <h3>Đăng nhập</h3>
-      
+                        
                         <div class="theme_box">
       
                             <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "type_2"}) do |f| %>
@@ -105,7 +105,7 @@
                             <div class="theme_box">
                                 
                                 <ul class="shipping_method">
-          
+
                                 <div class="type_2">
                                     
                                     <ul>
@@ -117,7 +117,7 @@
                                                 <label for="first_name" class="required">Họ:</label>
                                                 
                                                 <input class="required" readonly type="text" name="customer[first_name]" id="customer_first_name" value="<%= current_user.first_name %>">
-          
+                                                
                                             </div><!--/ [col] -->
           
                                             <div class="col-sm-6">
@@ -125,7 +125,7 @@
                                                 <label for="last_name" class="required">Tên:</label>
                                                 
                                                 <input class="required" readonly type="text" name="customer[last_name]" id="customer_last_name" value="<%= current_user.last_name %>">
-          
+                                                
                                             </div><!--/ [col] -->
           
                                         </li><!--/ .row -->
@@ -141,11 +141,11 @@
                                             </div><!--/ [col] -->
                                             
                                             <div class="col-xs-6">
-          
+                                
                                                 <label for="phone" class="required">Số điện thoại:</label>
                                                 
                                                 <input class="required" readonly type="text" name="customer[phone]" id="customer_phone" value="<%= current_user.phone %>">
-          
+                                                
                                             </div><!--/ [col] -->
           
                                         </li><!-- / .row -->
@@ -161,11 +161,11 @@
                                             </div><!--/ [col] -->
                                             
                                             <div class="col-xs-6">
-          
+
                                                 <label for="zip_code">Mã bưu chính ZIP CODE:</label>
                                                 
                                                 <input readonly type="text" name="customer[zip_code]" id="customer_zip_code" value="<%= current_user.zip_code %>">
-          
+                                                
                                             </div><!--/ [col] -->
           
                                         </li><!--/ .row -->
@@ -193,9 +193,9 @@
                                             </div><!--/ [col] -->
           
                                             <div class="col-sm-6">
-          
+
                                                 <label>Tỉnh/Thành phố</label>
-          
+                                                
                                                 <input readonly type="text" name="customer[province]" id="customer_province" value="<%= current_user.area.name %>">
           
                                             </div><!--/ [col] -->
@@ -203,15 +203,15 @@
                                         </li><!--/ .row -->
           
                                     </ul>
-          
+
                                 </div>
-          
+                                
                             </div>
           
                         </section><!--/ .section_offset -->
           
                         <!-- - - - - - - - - - - - - - End of billing information - - - - - - - - - - - - - - - - -->
-                        
+
                         <!-- - - - - - - - - - - - - - Delivery details - - - - - - - - - - - - - - - - -->
           
                         <section class="section_offset">
@@ -219,7 +219,7 @@
                             <h3>Thông tin giao hàng</h3>
           
                             <div class="theme_box">
-                                    
+                                
                                 <ul>
                                     
                                     <li class="row">
@@ -229,7 +229,7 @@
                                             <label for="first_name" class="required">Họ:</label>
                                             
                                             <input class="required" type="text" name="order_delivery[first_name]" id="order_delivery_first_name" value="<%= current_user.first_name %>">
-        
+                                            
                                         </div><!--/ [col] -->
         
                                         <div class="col-sm-6">
@@ -237,7 +237,7 @@
                                             <label for="last_name" class="required">Tên:</label>
                                             
                                             <input class="required" type="text" name="order_delivery[last_name]" id="order_delivery_last_name" value="<%= current_user.last_name %>">
-        
+                                            
                                         </div><!--/ [col] -->
         
                                     </li><!--/ .row -->
@@ -253,11 +253,11 @@
                                         </div><!--/ [col] -->
                                         
                                         <div class="col-xs-6">
-        
+
                                             <label for="phone" class="required">Số điện thoại:</label>
                                             
                                             <input class="required" type="text" name="order_delivery[phone]" id="order_delivery_phone" value="<%= current_user.phone %>">
-        
+                                            
                                         </div><!--/ [col] -->
         
                                     </li><!-- / .row -->
@@ -273,11 +273,11 @@
                                         </div><!--/ [col] -->
                                         
                                         <div class="col-xs-6">
-        
+
                                             <label for="zip_code">Mã bưu chính ZIP/CODE:</label>
                                             
                                             <input type="text" name="order_delivery[zip_code]" id="order_delivery_zip_code" value="<%= current_user.zip_code %>">
-        
+                                            
                                         </div><!--/ [col] -->
         
                                     </li><!--/ .row -->
@@ -313,9 +313,9 @@
                                         </div><!--/ [col] -->
         
                                         <div class="col-sm-6">
-        
+
                                             <label>Tỉnh/Thành phố</label>
-        
+                                            
                                             <div>
         
                                                 <select class="required" name="order_delivery[province]">
@@ -359,7 +359,7 @@
                                         <div class="col-sm-6">
                                             
                                             <label for="first_name" class="required">Họ:</label>
-                                            
+
                                             <input class="required" type="text" name="customer[first_name]" id="customer_first_name">
         
                                         </div><!--/ [col] -->
@@ -367,7 +367,7 @@
                                         <div class="col-sm-6">
                                             
                                             <label for="last_name" class="required">Tên:</label>
-                                            
+
                                             <input class="required" type="text" name="customer[last_name]" id="customer_last_name">
         
                                         </div><!--/ [col] -->
@@ -445,9 +445,9 @@
                                         </div><!--/ [col] -->
         
                                         <div class="col-sm-6">
-        
+
                                             <label class="required">Tỉnh/Thành phố</label>
-        
+                                            
                                             <div>
         
                                                 <select class="required" name="customer[province]">
@@ -587,9 +587,9 @@
                                         </div><!--/ [col] -->
         
                                         <div class="col-sm-6">
-        
+
                                             <label class="required">Tỉnh/Thành phố</label>
-        
+                                            
                                             <div>
         
                                                 <select class="required" name="order_delivery[province]">
