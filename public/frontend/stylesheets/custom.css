@@ -1070,3 +1070,8 @@ h3.care {
     list-style: square;
     margin-bottom: 10px;
 }
+@media only screen and (min-width: 1000px){
+    .page_checkout_action {
+        width: 1000px;
+    }
+}
