@@ -1064,10 +1064,10 @@ h3.care {
 .offset_title {
     line-height: 30px;
 }
-.bordered_content ul {
+.content_editor_fix ul {
     margin-left: 30px;
 }
-.bordered_content ul li {
+.content_editor_fix ul li {
     list-style: square;
     margin-bottom: 10px;
 }
