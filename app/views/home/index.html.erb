@@ -153,7 +153,7 @@
                                 <% end %>
                             </figure>
                             <div class="caption text-center">
-                                <h5><%= link_to item.name, { controller: "product", action: "index", product_id: item.id }, title: item.name %></h5>
+                                <h5 style="height:32px"><%= link_to (truncate(strip_tags(item.name), length: 40)), { controller: "product", action: "index", product_id: item.id }, title: item.name %></h5>
                                 <!-- /rating-star -->
                                 <p class="prod-price text-primary"><%= format_number(item.price) %> VNĐ</p>
                             </div>
@@ -164,11 +164,11 @@
             </div>
             <div class="features-list-box">
                 <ul class="feautes-list">
-                    <li><a href="#">Sản phẩm đa dạng</a></li>
-                    <li><a href="#">Chất lượng đảm bảo</a></li>
-                    <li><a href="#">Xuất xứ rõ ràng</a></li>
-                    <li><a href="#">Hỗ trợ khách hàng 24/7</a></li>
-                    <li><a href="#">Đa dạng nhà cung cấp</a></li>
+                    <li>Sản phẩm đa dạng</li>
+                    <li>Chất lượng đảm bảo</li>
+                    <li>Xuất xứ rõ ràng</li>
+                    <li>Hỗ trợ khách hàng 24/7</li>
+                    <li>Đa dạng nhà cung cấp</li>
                 </ul>
             </div>
             <!-- /features-list-box -->
