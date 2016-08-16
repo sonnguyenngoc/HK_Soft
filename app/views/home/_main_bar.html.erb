@@ -81,7 +81,7 @@
                             <ul>
                                 <% category.children.order(:ordered).each do |child_1| %>
                                     <% if child_1.children.order(:ordered).count == 0 %>
-                                        <%= link_to child_1.name, { controller: "category", action: "category_sub_1", category_id: child_1.id } %>
+                                        <li><%= link_to child_1.name, { controller: "category", action: "category_sub_1", category_id: child_1.id } %></li>
                                     <% else %>
                                         <li>
                                             <%= link_to child_1.name, { controller: "category", action: "category_sub_1", category_id: child_1.id } %>
