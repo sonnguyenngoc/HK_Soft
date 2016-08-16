@@ -1,0 +1,12 @@
+<div class="ad-box">
+  <!--<div class="ad-box-text">-->
+  <!--    <p class="text-left">new women</p>-->
+  <!--    <h4>Perfume</h4>-->
+  <!--    <p class="text-right">Sales</p>-->
+  <!--    <span class="tick"><i class="flaticon-arrowhead7"></i></span>-->
+  <!--</div>-->
+  <!--<!-- /ad-box-inner -->
+  <!--<figure><img src="frontend/images/resource/img-4.png" alt="image"></figure>-->
+  <!--<a href="#"></a>-->
+  <img src="/frontend/images/resource/product_box1.png" alt="image" width="390" height="230">
+</div>    

@@ -23,8 +23,9 @@
                                 <p class="text-left"> </p>
                                 <h1> <%= item.title_1 %></h1>
                                 <p class="text-right"> </p>
-                                <a class="btn btn-default slide_button" href="#"> START SHOPPING</a>
-    
+                                <% if !item.name_button.empty? and !item.link.empty? %>
+                                    <a class="btn btn-default slide_button" href="<%= item.link %>"> <%= item.name_button %></a>
+                                <% end %>
                             </div>
                         </div>
                     </li>
@@ -40,21 +41,13 @@
     </div>
     <!-- /tp-banner-container -->
 
-    <section class="section">
+    <section class="section section_product_box">
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
                     <div class="text-center">
                         <div class="ad-box">
-                            <div class="ad-box-text">
-                                <p class="text-left">new women</p>
-                                <h4>Perfume</h4>
-                                <p class="text-right">Sales</p>
-                                <span class="tick"><i class="flaticon-arrowhead7"></i></span>
-                            </div>
-                            <!-- /ad-box-inner -->
-                            <figure><img src="frontend/images/resource/img-4.png" alt="image"></figure>
-                            <a href="#"></a>
+                            <img src="/frontend/images/resource/product_box1.png" alt="image" width="390" height="230">
                         </div>
                         <!-- /ad-box -->
                     </div>
@@ -62,15 +55,7 @@
                 <div class="col-sm-4">
                     <div class="text-center">
                         <div class="ad-box">
-                            <div class="ad-box-text">
-                                <p class="text-left">new men</p>
-                                <h4>Cologne</h4>
-                                <p class="text-right">Sales</p>
-                                <span class="tick"><i class="flaticon-arrowhead7"></i></span>
-                            </div>
-                            <!-- /ad-box-inner -->
-                            <figure><img src="frontend/images/resource/img-3.png" alt="image"></figure>
-                            <a href="#"></a>
+                            <img src="/frontend/images/resource/product_box2.png" alt="image" width="390" height="230">
                         </div>
                         <!-- /ad-box -->
                     </div>
@@ -78,15 +63,7 @@
                 <div class="col-sm-4">
                     <div class="text-center">
                         <div class="ad-box">
-                            <div class="ad-box-text">
-                                <p class="text-left">new women</p>
-                                <h4>Perfume</h4>
-                                <p class="text-right">Sales</p>
-                                <span class="tick"><i class="flaticon-arrowhead7"></i></span>
-                            </div>
-                            <!-- /ad-box-inner -->
-                            <figure><img src="frontend/images/resource/img-4.png" alt="image"></figure>
-                            <a href="#"></a>
+                            <img src="/frontend/images/resource/product_box3.png" alt="image" width="390" height="230">
                         </div>
                         <!-- /ad-box -->
                     </div>
