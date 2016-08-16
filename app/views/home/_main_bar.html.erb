@@ -80,16 +80,20 @@
                             <%= link_to category.name, { controller: "category", action: "index", category_id: category.id } %>
                             <ul>
                                 <% category.children.order(:ordered).each do |child_1| %>
-                                    <li>
+                                    <% if child_1.children.order(:ordered).count == 0 %>
                                         <%= link_to child_1.name, { controller: "category", action: "category_sub_1", category_id: child_1.id } %>
-                                        <ul>
-                                            <% child_1.children.order(:ordered).each do |child_2| %>
-                                                <li>
-                                                    <%= link_to child_2.name, { controller: "category", action: "category_sub_2", category_id: child_2.id } %>
-                                                </li>
-                                            <% end %>
-                                        </ul>
-                                    </li>
+                                    <% else %>
+                                        <li>
+                                            <%= link_to child_1.name, { controller: "category", action: "category_sub_1", category_id: child_1.id } %>
+                                            <ul>
+                                                <% child_1.children.order(:ordered).each do |child_2| %>
+                                                    <li>
+                                                        <%= link_to child_2.name, { controller: "category", action: "category_sub_2", category_id: child_2.id } %>
+                                                    </li>
+                                                <% end %>
+                                            </ul>
+                                        </li>
+                                    <% end %>
                                 <% end %>
                             </ul>
                         </li>
