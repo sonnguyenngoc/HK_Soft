@@ -109,6 +109,9 @@ element.style {
 .format_name {
     height: 32px;
 }
+.active_color {
+    border: solid 1px #ddd !important;
+}
 .active_color.active {
     border: solid 2px red !important;
 }
