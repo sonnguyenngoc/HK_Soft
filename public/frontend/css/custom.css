@@ -115,7 +115,14 @@ element.style {
 .active_color.active {
     border: solid 2px red !important;
 }
-
+.media_image {
+    float: left;
+    width: 15%;
+}
+.media_image img {
+    margin-right: 20px;
+    width: 100px;
+}
 /*input-spinner*/
 .spinner {
   width: 100px;

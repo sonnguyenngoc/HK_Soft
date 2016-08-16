@@ -28,7 +28,13 @@
                             <% @cart.line_items.each do |item| %>
                             <li class="cart-item">
                                 <div class="cart-item-bx">
-                                    <figure><img src="/frontend/images/resource/img-1.jpg" alt="image"></figure>
+                                    <figure>
+                                        <% if item.product.get_main_image.present? %>
+                                            <%= image_tag(item.product.get_main_image.image_url.smaller_image) %>
+                                        <% else %>
+                                            <img src="frontend/images/resource/no-image.png" alt="image" width="60" height="60">
+                                        <% end %>
+                                    </figure>
                                     <div class="text">
                                         <h6><%= link_to truncate(strip_tags(item.product.name), length: 25), product_detail_path(product_id: item.product.name) %></h6>
                                         <p><%= format_number(item.product.price) %> VNĐ x <%= item.quantity %></p>

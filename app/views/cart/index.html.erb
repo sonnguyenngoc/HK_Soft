@@ -70,8 +70,12 @@
                                 <tr>
                                     <td>
                                         <div class="prod-list-thumb media">
-                                            <figure class="media-left">
-                                                <%= link_to image_tag("/frontend/images/resource/img-15.jpg", alt: item.product.name), product_detail_path(product_id: item.id) %>
+                                            <figure class="media_image">
+                                                <% if item.product.get_main_image.present? %>
+                                                    <%= image_tag(item.product.get_main_image.image_url.small_image, alt: item.product.name) %>
+                                                <% else %>
+                                                    <img src="frontend/images/resource/no-image.png" alt="image" width="83" height="83">
+                                                <% end %>
                                             </figure>
                                             <div class="media-body">
                                                 <h4 class="text-primary"><%= link_to item.product.name, product_detail_path(product_id: item.id) %></h4>
