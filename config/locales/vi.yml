@@ -51,6 +51,8 @@ vi:
   delete: "Xoá"
   view: "Xem"
   total: "Tổng cộng"
+  made_in: "Xuất xứ"
+  colors: "Màu sắc"
   #-------------------------------
   new_product: "Tạo sản phẩm"
   new_category: "Tạo chuyên mục"

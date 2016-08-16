@@ -165,7 +165,15 @@
                                         <br/><i class="icon-pin-alt"></i>  <%= item.manufacturer.name if !item.manufacturer.nil? %>
                                         <br/><i class="icon-stack"></i>  <%= item.categories.map(&:name).join("<br/>").html_safe %>
                                         <br/><i class="icon-cart-add2"></i>  <strong><%= item.sum_quantity %></strong>
-                                        <br/><i class="icon-thumbs-up2"></i>  <strong><%= item.wish_lists.count %></strong>
+                                        <!--<br/><i class="icon-thumbs-up2"></i>  <strong><%= item.wish_lists.count %></strong>-->
+                                        <% if !item.get_colors.empty? %>
+                                            <p>
+                                                <input type="hidden" name="color" value="" />
+                                                <% item.get_colors.each do |color| %>
+                                                    <a class="active_color" rel="<%= color %>" style="padding: 0 15px; background-color: <%= color %>; border: solid 1px <%= color %>; margin-right: 5px;" href="#color"></a>
+                                                <% end %>
+                                            </p>
+                                        <% end %>
                                     </td>
                                     <td><%= format_number(item.price) %><br/>(<%= format_number(item.quantity) %> <%= item.unit %>)</td>
 

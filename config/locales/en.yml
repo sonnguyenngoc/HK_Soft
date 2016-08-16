@@ -50,6 +50,8 @@ en:
   delete: "Delete"
   view: "View"
   total: "Total"
+  made_in: "Made in"
+  colors: "Colors"
   #------------------------------------
   new_product: "New Product"
   new_category: "New Category"

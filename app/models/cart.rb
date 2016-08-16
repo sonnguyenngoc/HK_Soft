@@ -1,16 +1,17 @@
 class Cart < ActiveRecord::Base
   has_many :line_items, dependent: :destroy
   
-  def add_product(product_id, quantity)
+  def add_product(product_id, quantity, color=nil)
     current_item = line_items.find_by(product_id: product_id)
     if !current_item.present?
-      current_item = line_items.build(product_id: product_id, quantity: 0)
+      current_item = line_items.build(product_id: product_id, quantity: 0, color: "")
     end
     if quantity.present?
       current_item.quantity += quantity.to_i  
     else
       current_item.quantity += 1
-    end  
+    end
+    current_item.color = color
     current_item
   end
   

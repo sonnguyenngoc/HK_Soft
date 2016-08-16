@@ -107,7 +107,11 @@
                             <% @order.order_details.each_with_index do |item, index| %>
                                 <tr>
                                     <td><%= index + 1 %></td>
-                                    <td><%= item.product_name %></td>
+                                    <td><%= item.product_name %>
+                                        <% if item.color.present? %>
+                                            <br />Màu sắc: <a class="active_color" style="padding: 0 15px; background-color: <%= item.color %>; border: solid 1px <%= item.color %>; margin-right: 5px;margin-left: 5px;" href="#color"></a>
+                                        <% end %>
+                                    </td>
                                     <td><%= item.quantity %></td>
                                     <td><%= format_number(item.price) %></td>
                                     <td><%= format_number(item.total) %></td>

@@ -75,7 +75,10 @@
                                             </figure>
                                             <div class="media-body">
                                                 <h4 class="text-primary"><%= link_to item.product.name, product_detail_path(product_id: item.id) %></h4>
-                                                <p>Giá: <%= format_number(item.product.price) %> VNĐ</p>
+                                                <p style="margin-bottom: 0">Giá: <%= format_number(item.product.price) %> VNĐ</p>
+                                                <% if item.color.present? %>
+                                                    Màu sắc: <a class="active_color" style="padding: 0 15px; background-color: <%= item.color %>; border: solid 1px <%= item.color %>; margin-right: 5px;margin-left: 10px;" href="#color"></a>
+                                                <% end %>
                                             </div>
                                         </div>
                                     </td>

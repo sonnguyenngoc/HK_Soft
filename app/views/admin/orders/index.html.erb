@@ -158,6 +158,9 @@
                                     <td>
                                         <% item.order_details.each do |detail| %>
                                             <%= detail.product_name %> - (x<%= detail.quantity %>)
+                                            <% if detail.color.present? %>
+                                                - (<a class="active_color" style="padding: 0 15px; background-color: <%= detail.color %>; border: solid 1px <%= detail.color %>;" href="#color"></a>)
+                                            <% end %>
                                             <br />
                                         <% end %>
                                     </td>

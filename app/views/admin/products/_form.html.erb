@@ -78,6 +78,17 @@
                     </div>
                 </div>
                 
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" ><%= t(:made_in) %> <span class='text-danger'>*</span></label>
+                    <div class="col-lg-5">
+                        <%= f.text_field :made_in, class: "form-control required" %>
+                    </div>
+                    <label class="col-lg-1 control-label" ><%= t(:colors) %> </label>
+                    <div class="col-lg-4">
+                        <%= f.text_field :colors, class: "form-control" %>
+                    </div>
+                </div>
+                
                 <div class="form-group field">
                     <label class="col-lg-2 control-label" ><%= t(:list_categories) %> <span class='text-danger'>*</span></label>
                     <div class="col-lg-10">

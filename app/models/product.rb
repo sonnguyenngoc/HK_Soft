@@ -223,6 +223,10 @@ class Product < ActiveRecord::Base
     statuses.join(@html).html_safe
   end
   
+  def get_colors
+    colors.to_s.split(/[\,\;\s]/).select {|c| c.present? }
+  end
+  
   #def self.get_by_category_status(category, area, status)
   #  records = self.joins(:areas).get_active_products
   #  

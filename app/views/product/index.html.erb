@@ -34,9 +34,15 @@
                             </div>
                             <div class="col-sm-7">
                                 <div class="text">
-                                    <h4><%= @product.name %></h4><br/>
+                                    <h4><a><%= @product.name %></a></h4><br/>
                                     <div class="collapse in">
-                                        <p>Xuất xứ: Hàn Quốc</p>
+                                        <p>Xuất xứ:
+											<% if !@product.made_in.nil? %>
+                                                <%= @product.made_in %>
+                                            <% else %>
+                                                Đang cập nhật
+                                            <% end %>
+										</p>
                                         <p>Thương hiệu:
                                             <% if !@product.manufacturer.nil? %>
                                                 <%= @product.manufacturer.name %>
@@ -44,9 +50,30 @@
                                                 Đang cập nhật
                                             <% end %>
                                         </p>
-                                        <p>Giá: <%= format_number(@product.price) %> VNĐ</p>
+                                        <p>Giá: <span class="text-primary"><%= format_number(@product.price) %> VNĐ</span></p>
                                         <p class="text-justify">Mô tả ngắn: <%= @product.short_description %></p>
-                                        <%= link_to 'Thêm vào giỏ hàng', add_to_cart_line_items_path(product_id: @product), class: "btn btn-default add_to_cart_button" %>
+										
+										<form action="<%= add_to_cart_line_items_path(product_id: @product) %>" method="get">
+											<input type="hidden" name="product_id" value="<%= @product.id %>" />
+											<% if !@product.get_colors.empty? %>
+												<p>Màu sắc: <br/>
+													<input type="hidden" name="color" value="" />
+													<% @product.get_colors.each do |color| %>
+														<a class="active_color" rel="<%= color %>" style="padding: 0 15px; background-color: <%= color %>; border: solid 1px <%= color %>; margin-right: 5px;" href="#color"></a>
+													<% end %>
+												</p>
+											<% end %>
+											<p>Số lượng: 
+												<div class="input-group spinner" data-trigger="spinner">
+													<input type="text" name="quantity" class="form-control text-center" value="1" data-rule="quantity">
+													<div class="input-group-addon">
+													  <a href="javascript:;" class="spin-up" data-spin="up"><i class="fa fa-caret-up"></i></a>
+													  <a href="javascript:;" class="spin-down" data-spin="down"><i class="fa fa-caret-down"></i></a>
+													</div>
+												</div>
+											</p>
+											<input type="submit" class="btn btn-default add_to_cart_button" value="Thêm vào giỏ hàng" />
+										</form>
                                     </div>
                                 </div>
                             </div>
@@ -116,7 +143,7 @@
                                             <% end %>
                                         </figure>
                                         <div class="caption text-center">
-                                            <h5>
+                                            <h5 class="format_name">
                                                 <%= link_to product.name, { controller: "product", action: "index", product_id: product.id }, title: product.name %>
                                             </h5>
                                             <!-- /rating-star -->
@@ -168,3 +195,23 @@
 
 <%= javascript_include_tag "/frontend/js/ie10-viewport-bug-workaround.js" %>
 <%= javascript_include_tag 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js' %>
+
+<%= javascript_include_tag "/frontend/dist/jquery.spinner.js" %>
+<%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' %>
+<script>
+    $(document).ready(function(){
+      $('#customize-spinner').spinner('changed',function(e, newVal, oldVal){
+        $('#old-val').text(oldVal);
+        $('#new-val').text(newVal);
+      });
+	  
+		// first select		
+		$('.active_color').click(function() {
+			var color = $(this).attr("rel");
+			$("input[name='color']").val(color);
+			$('.active_color').removeClass("active");
+			$(this).addClass("active");
+		});
+		$('.active_color').eq(0).click();
+    })
+</script>

@@ -92,7 +92,7 @@
                                 <% end %>
                             </figure>
                             <div class="caption text-center">
-                                <h5 style="height:32px"><%= link_to (truncate(strip_tags(item.name), length: 40)), { controller: "product", action: "index", product_id: item.id }, title: item.name %></h5>
+                                <h5 class="format_name"><%= link_to (truncate(strip_tags(item.name), length: 40)), { controller: "product", action: "index", product_id: item.id }, title: item.name %></h5>
                                 <!-- /rating-star -->
                                 <p class="prod-price text-primary"><%= format_number(item.price) %> VNĐ</p>
                             </div>
