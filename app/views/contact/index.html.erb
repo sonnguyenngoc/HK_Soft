@@ -44,10 +44,25 @@
                     </div>
                     <div class="col-md-4">
                         <div class="icon-box style5">
+                            <i class="soap-icon-conference"></i>
+                            <div class="description">
+                                <small>Thời gian làm việc</small>
+                                <h5>Sáng: 8h00 - 12h00<br>
+                                    Chiều: 13h00 - 17h30
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-address row block">
+                    <div class="col-md-12">
+                        <div class="icon-box style5">
                             <i class="soap-icon-address"></i>
                             <div class="description">
-                                <small>Địa chỉ chi nhánh</small>
-                                <h5><%= Company.get_company.sales_office_address %></h5>
+                                <small>Địa chỉ</small>
+                                <h5><strong><%= Company.get_company.name %></strong><br>
+                                    <%= Company.get_company.sales_office_address %>
+                                </h5>
                             </div>
                         </div>
                     </div>
