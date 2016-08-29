@@ -172,3 +172,6 @@ element.style {
     margin-left: auto;
     height: 450px;
 }
+.widget-prod-categrories > ul.list-align {
+    text-transform: capitalize;
+}

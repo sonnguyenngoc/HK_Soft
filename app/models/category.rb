@@ -51,6 +51,13 @@ class Category < ActiveRecord::Base
     return records.where(is_show: true)
   end
   
+  def count_products_for_categories(cat_id)
+    category = Category.find(cat_id)
+    records = Product.joins(:categories).where(categories: {id: category.get_all_related_ids}).uniq
+    
+    return records.where(is_show: true)
+  end
+  
   def get_current_level
     self.level
   end

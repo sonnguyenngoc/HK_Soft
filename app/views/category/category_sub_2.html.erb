@@ -56,24 +56,23 @@
 			<div class="row">
 				<div class="col-md-3">
                     
-                    <% Category.get_all_categories(params).each do |category| %>
-						<div class="widget widget-prod-categrories">
-							<header class="widget-heading-3">
-								<h4>
-									<span class="caret"></span>
-									<%= link_to category.name, { controller: "category", action: "category_sub_1", category_id: category.id } %>
-									<em><%= category.children.order(:ordered).count %></em>
-								</h4>
-							</header>
+					<div class="widget widget-prod-categrories">
+						
+						<header class="widget-heading-3">
+							<h4>
+								<span class="caret"></span>
+								<%= @category.parent.first.name %>
+								<em><%= @category.parent.first.count_products_for_categories(@category.parent.first.id).count %></em>
+							</h4>
+						</header>
+						<% @category.parent.first.children.order(:ordered).each do |child| %>
 							<ul class="list-align">
-								<% category.children.order(:ordered).each do |child_2| %>
-									<li><%= link_to child_2.name, { controller: "category", action: "category_sub_2", category_id: child_2.id } %></li>
-									<!--<li><a href="#">Các Bộ Dưỡng Da <span class="right">0</span></a></li>-->
-								<% end %>
+								<li><%= link_to (child.name + " <span class=\"right\">#{child.count_products_for_categories(child.id).count}</span>").html_safe, { controller: "category", action: "category_sub_2", category_id: child.id } %></li>
 							</ul>
-						</div><!-- /widget-prod-categrories -->
-					<% end %>
-
+						<% end %>
+						
+					</div><!-- /widget-prod-categrories -->
+					
 				</div>
 				<div class="col-md-9">
 					

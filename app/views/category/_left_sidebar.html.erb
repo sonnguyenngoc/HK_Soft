@@ -1,0 +1,14 @@
+<div class="widget widget-prod-categrories">
+    <header class="widget-heading-3">
+        <h4>
+            <span class="caret"></span>
+            <%= @category.name %>
+            <em><%= @category.get_products_for_categories(params).count %></em>
+        </h4>
+    </header>
+    <% Category.get_all_categories(params).each do |category| %>
+        <ul class="list-align">
+            <li><%= link_to (category.name + " <span class=\"right\">#{category.count_products_for_categories(category.id).count}</span>").html_safe, { controller: "category", action: "category_sub_1", category_id: category.id } %></li>
+        </ul>
+    <% end %>
+</div><!-- /widget-prod-categrories -->
