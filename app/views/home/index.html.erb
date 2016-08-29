@@ -14,7 +14,7 @@
 
                     <li data-transition="random" data-slotamount="7" data-masterspeed="300" data-saveperformance="off">
                         <!-- MAIN IMAGE -->
-                        <img src="<%= item.image_url.image %>" alt="slide4" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                        <img src="<%= item.image_url.image %>" alt="slide4" data-bgposition="center top" data-bgfit="initial" data-bgrepeat="no-repeat">
                         <!-- LAYERS -->
     
                         <!-- LAYER NR. 1 -->
@@ -134,7 +134,7 @@
     <!--    </div>-->
     <!--</section>-->
 
-    <% if !@lastest_blogs.empty? %>
+    <% if !@lastest_blogs.present? %>
         <section class="section pattern-1">
             <div class="container">
                 <header class="heading-2">

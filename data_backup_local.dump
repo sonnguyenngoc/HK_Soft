@@ -1,0 +1,1008 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.3
+-- Dumped by pg_dump version 9.5.3
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for Name: areas; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY areas (id, name, level, description, created_at, updated_at, parent_id, areatype_id, display_order) FROM stdin;
+1	HCM	\N		2016-07-15 17:55:32.88475	2016-07-15 17:57:11.492404	1	\N	1
+\.
+
+
+--
+-- Data for Name: areas_articles; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY areas_articles (id, area_id, article_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: areas_articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('areas_articles_id_seq', 1, false);
+
+
+--
+-- Name: areas_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('areas_id_seq', 1, false);
+
+
+--
+-- Data for Name: areas_products; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY areas_products (id, area_id, product_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: areas_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('areas_products_id_seq', 1, false);
+
+
+--
+-- Data for Name: article_categories; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY article_categories (id, name, description, created_at, updated_at, level, meta_keywords, meta_description, name_vi, description_vi) FROM stdin;
+1	Tin tức	\N	2016-07-15 08:21:11.368335	2016-07-15 08:21:11.368335	1	\N	\N	\N	\N
+\.
+
+
+--
+-- Data for Name: article_categories_articles; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY article_categories_articles (id, article_id, article_category_id, created_at, updated_at) FROM stdin;
+9	1	1	2016-07-17 06:57:26.860682	2016-07-17 06:57:26.860682
+10	2	1	2016-07-18 08:44:25.923317	2016-07-18 08:44:25.923317
+1	1	1	2016-06-15 09:15:52.916931	2016-06-15 09:15:52.916931
+2	2	1	2016-06-15 09:34:52.200024	2016-06-15 09:34:52.200024
+3	4	1	2016-06-15 09:41:39.353291	2016-06-15 09:41:39.353291
+\.
+
+
+--
+-- Name: article_categories_articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('article_categories_articles_id_seq', 3, true);
+
+
+--
+-- Name: article_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('article_categories_id_seq', 1, true);
+
+
+--
+-- Data for Name: articles; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY articles (id, image_url, title, content, tags, article_category_id, created_at, updated_at, code_status_id, meta_keywords, meta_description, is_show, page_layout, user_id, approved, image_url_full_width, title_vi, content_vi) FROM stdin;
+1	dsdsfdsfs.jpg	Những màu đẹp nhất của son kem Bourjois Vetvet	<p>âsấ</p>		\N	2016-07-15 08:24:42.930363	2016-07-17 06:57:27.144094	\N			t	normal	1	f	\N	Những màu đẹp nhất của son kem Bourjois Vetvet	<h6 style="text-align: left;"><strong><span>Bạn có đang băn khoăn không biết nên chọn màu son nào trong 17 màu son của Bourjois Velvet?</span></strong></h6>\r\n<div class="content-detail">\r\n<div style="text-align: left;"><span><span>Son kem hay còn gọi là son lì dạng nước <strong>Bourjois Rouge Edition Velvet</strong> chắc chắn không còn là cái tên xa lạ với các bạn gái yêu thích make up. Dù đã xuất hiện ở Việt Nam từ cách đây 2 - 3 năm nhưng đến giờ, thỏi son vuông này vẫn là dòng son được săn đón nhất nhì ở các shop mỹ phẩm.</span></span></div>\r\n<div style="text-align: center;"> </div>\r\n<div style="text-align: center;">\r\n<div>\r\n<p><img alt="son kem Bourjois Velvet " src="http://review.websosanh.net/Images/Uploaded/Share/2016/05/23/13876224053cfe4534dafz.jpg" title="" width="540" /></p>\r\n<p><span><em><span>Son kem Bourjois Velvet có ngoại hình rất đặc trưng</span></em></span> </p>\r\n</div>\r\n</div>\r\n<div style="text-align: left;"><span><span><strong>Bourjois Velvet</strong> là son kem dạng lỏng lên môi mềm mướt mà vẫn mang lại hiệu ứng lì, căng mọng cho môi, không sợ môi bị bóng nhẫy - rất hợp với khí hậu nóng ẩm của Việt Nam. Khi phai bớt màu, son để lại một lớp màu nhạt tiệp vào môi đẹp như môi tự nhiên chứ không bị loang lổ như một số dòng son matte khác.</span></span></div>\r\n<div style="text-align: center;"> </div>\r\n<div style="text-align: center;">\r\n<div>\r\n<div>\r\n<p><img alt="son kem Bourjois velvet" src="http://review.websosanh.net/Images/Uploaded/Share/2016/05/23/412.jpg" title="" width="600" /></p>\r\n<p><em><span><span>Son kem Bourjois Velvet của Pháp được cộng đồng làm đẹp thế giới đánh giá rất cao vì nhiều màu đẹp, là son matte mà vẫn mềm mịn trên môi</span></span></em> </p>\r\n</div>\r\n</div>\r\n</div>\r\n<div style="text-align: left;"><span><span>Đặc biệt, điều thu hút nhất ở son <strong>Boujois Velvet</strong> chính là bảng màu son tuyệt đẹp và phong phú, rất dễ đánh. Tính đến nay, hãng đã cho ra mắt 17 màu son kem Bourjois, đa dạng từ các màu đậm như đỏ thuần, hồng cánh sen đến các màu nhạt như hồng nhẹ, nude. Các màu son của Bourjois được cập nhật theo xu hướng và dễ dàng kết hợp với trang phục, dùng được trong mọi trường hợp.</span></span></div>\r\n<div style="text-align: center;"> </div>\r\n<div style="text-align: center;">\r\n<div>\r\n<p><img alt="bourjois velvet swatch" src="http://review.websosanh.net/Images/Uploaded/Share/2016/05/23/47a4557c07629aa6a5ccaf6fbf52e1080d9.jpg" title="" width="499" /></p>\r\n<p><em><span><span>Bảng màu son đa dạng của Bourjois Velvet</span></span></em> </p>\r\n</div>\r\n</div>\r\n<div style="text-align: left;"><em><span><span>Có 17 màu son nhưng không phải màu nào của Bourjois cũng được yêu thích và có những màu thuộc hàng best seller - luôn dẫn đầu trong mắt các tín đồ son môi dù hãng ra mắt thêm hàng chục màu mới. Nếu bạn chưa biết nên chọn màu son nào thì cùng tham khảo những gợi ý sau đây nhé!</span></span></em></div>\r\n<div style="text-align: center;"> </div>\r\n<h3 style="text-align: center;"><span><span><strong>Màu <span>2</span> - Frambourjoise</strong></span></span></h3>\r\n<div style="text-align: center;">\r\n<div>\r\n<div>\r\n<div>\r\n<p><img alt="" src="http://review.websosanh.net/Images/Uploaded/Share/2016/05/23/n2.PNG" title="" width="555" /></p>\r\n<p> </p>\r\n</div>\r\n<div>\r\n<div>\r\n<p><img alt="Bourjois Velvet no 2" src="http://review.websosanh.net/Images/Uploaded/Share/2016/05/23/4w.jpg" title="" width="520" /></p>\r\n<p><em><span><span>Son kem Bourjois Velvet #02 "Frambourjoise"</span></span></em></p>\r\n</div>\r\n</div>\r\n</div>\r\n</div>\r\n<div>\r\n<p><img alt="" src="http://review.websosanh.net/Images/Uploaded/Share/2016/05/23/140452025529d7f28b3e0b.jpg" title="" width="530" /> </p>\r\n</div>\r\n</div>\r\n<div style="text-align: center;"> </div>\r\n<div style="text-align: left;"><span><span>Màu số 2 là một hồng pha đỏ đậm lạ mắt của <strong>Boujois Velvet</strong>. Màu hồng đỏ này sẽ giúp da bạn nhìn sáng lên, khuôn mặt hồng hào hơn. Màu son này rất hợp với các bạn nữ yêu thích phong cách ngọt ngào, có thể dùng khi đi học, đi chơi hay cả khi đi tiệc cần một màu son nổi bật. Nếu sợ màu quá đậm bạn có thể gạt bớt son trên chổi đánh là tô một lớp nhẹ trên môi. Son sẽ lên màu hồng dâu cuốn hút, đáng yêu và không kém phần rực rỡ.</span></span> </div>\r\n<h3 style="text-align: center;"><span><span><strong>Màu<span> 3 </span>- Hot Pepper</strong></span></span></h3>\r\n<div style="text-align: center;">\r\n<div>\r\n<p><img alt="" src="http://review.websosanh.net/Images/Uploaded/Share/2016/05/23/03hotpepperDSCF2527zpsufrjkgi3.jpg" title="" width="555" /></p>\r\n<p> </p>\r\n</div>\r\n</div>\r\n<div style="text-align: center;">\r\n<div>\r\n<div>\r\n<p><img alt="bourjois velvet no 3 hot peper " src="http://review.websosanh.net/Images/Uploaded/Share/2016/05/23/no3.PNG" title="" width="543" /></p>\r\n<p><em><span><span>Son Bourjois velvet #03 "Hot Peper" rất được được lòng các cô gái Việt Nam</span></span></em> </p>\r\n</div>\r\n</div>\r\n</div>\r\n<div style="text-align: left;"><span><span>Màu 3 là màu đỏ cam siêu hot của <strong>Bourjois Velvet</strong> vì rất lạ và tôn da. Đây là một màu son rực rỡ và nổi bật, phù hợp để đánh khi đi chơi, đi tiệc. Chỉ cần đánh chút son lên thôi là giúp cả khuôn mặt bừng sáng. Các bạn da ngăm đánh màu này không sợ bị tối da nhưng sẽ hợp với các bạn da sáng hơn, màu son rực rỡ có thể làm rõ hơn các đốm đỏ trên khuôn mặt. Với các bạn không thích màu son đậm vẫn có thể "điều chỉnh" sắc cam đỏ này bằng cách đánh một lớp son nhẹ rồi dùng tay thoa đều lên cả môi - son sẽ lên màu nhẹ nhàng mà vẫn tươi tắn.</span></span></div>\r\n</div>
+2	hinh-2-fix.jpg	TOP 5 BB CREAM GIÁ “HẠT DẺ” ĐƯỢC LÒNG CÁC BẠN SINH VIÊN NHẤT	<p style="text-align: left;"><strong><span>BB cream được xem như “cuộc cách mạng của ngành công nghiệp mỹ phẩm”, bởi vì từ khi có BB cream, các chị em mỗi mê ngủ nướng không còn phải dậy từ trước hàng tiếng đồng hồ để thoa đủ các bước kem lót, kem nền, kem che khuyết điểm lên da nữa, mà thay vào đó, chỉ một lớp BB cream, mọi vấn đề về da của bạn sẽ được giải quyết hết thảy. Nhất là trong mùa hè nắng nóng, việc bôi tầng tầng lớp lớp các loại kem lên da sẽ gây nặng mặt, bít lỗ chân lông, dễ sinh ra mụn, vì vậy cứ đến mùa hè, các chị em lại “ngoại tình” với loại kem trang điểm siêu thần thánh này.</span></strong></p>\r\n<p style="text-align: left;"><em><span><span>Hàn Quốc là đất nước sản sinh ra BB cream, vì vậy mỗi khi nhắc đến BB cream, người ta không thể bỏ qua những thương hiệu đến từ Hàn Quốc. Nếu đang cân nhắc một loại BB cream cho hè năm nay, hãy để Himher gợi ý cho bạn nhé!</span></span></em></p>\r\n<p style="text-align: left;"><span><span><strong><span>T</span>he Face Shop Face It Power Perfection BB Cream SPF 37/PA++</strong></span></span></p>\r\n<p style="text-align: center;"><img alt="292" height="439" src="http://himher.vn/wp-content/uploads/2016/06/292-e1467140970247.jpg" width="600" /></p>\r\n<p style="text-align: center;"><img alt="" height="600" src="http://myphamminhphuong.com/wp-content/uploads/2015/11/kem-BB-cream-power-perfection-face-it-8.jpg" width="600" /></p>\r\n<p style="text-align: center;"><img alt="" height="349" src="http://myphamhoanggam.net/wp-content/uploads/2015/07/bb-cream-power-perfection-the-face-shop-20ml-5.jpg" width="600" /></p>\r\n<p style="text-align: left;"><span><span>BB cream này của The Face Shop được các bạn trẻ Việt Nam gọi với cái tên quen thuộc là “BB tím”. Sản phẩm này đã tạo nên một cơn sốt trong cộng đồng làm đẹp Việt Nam khoảng 2 năm trước đây và đến nay nó vẫn là một trong những loại BB cream Hàn được yêu thích nhất.</span></span></p>\r\n<p style="text-align: left;"><span><span>Face It Power Perfection BB Cream có độ che phủ “cực đỉnh”, hầu như các BB Hàn đều mỏng nhẹ, tự nhiên, phù hợp với lối trang điểm trong veo của các cô gái xứ sở kim chi nhưng BB tím là một ngoại lệ. Các vết thâm, sẹo, mụn, lỗ chân lông…đều biến mất sau khi bạn thoa một lớp BB. Ngoài khả năng che phủ, Face It Power Perfection BB Cream còn được yêu thích nhờ khả năng kiểm soát dầu ổn, lâu trôi và đặc biệt không làm mặt “tối sầm” vào cuối ngày. Tuy nhiên, với những làn da cực dầu hoặc hay đổ mồ hôi thì bạn nên chọn kem nền truyền thống thay cho BB cream.</span></span> </p>\r\n<p style="text-align: left;"><span><span><strong><span>H</span>olika Holika Aqua Petit Jelly BB Cream SPF20 PA++</strong></span></span></p>\r\n<p style="text-align: center;"><img alt="293" height="430" src="http://himher.vn/wp-content/uploads/2016/06/293-e1467140698919.jpg" width="600" /></p>\r\n<p style="text-align: center;"><img alt="" height="576" src="https://media3.scdn.vn/img1/2015/11_20/kem-trang-diem-bb-thach-holika-aqua-petit-jelly-bb-cream-1m4G3-f6d46e_simg_d0daf0_800x1200_max.jpg" width="600" /></p>\r\n<p style="text-align: left;"><span><span>Ai hay xem Youtube chắc đã một vài lần nghe nói đến hũ BB thạch đình đám một thời của Holika Holika, từ Michelle Phan cho đến các Beauty Guru Hàn Quốc đều nói rằng họ mê mẩn hũ BB màu xanh mát lạnh này.</span></span></p>\r\n<p style="text-align: left;"><span><span>Đúng như tên gọi, Aqua Petit Jelly BB Cream có kết cấu dạng thạch, thử tưởng tượng miếng thạch rau câu dừa như thế nào thì chất kem của sản phẩm này y như thế, điểm khác nhau là màu sắc mà thôi. Vì là thạch nên khi tán lên da có cảm giác mát lạnh, sảng khoái như bôi một lớp gel dưỡng ẩm. Chất kem mỏng nhẹ, dễ tán, độ che phủ ổn và kiềm dâu tốt. Nhược điểm duy nhất của sản phẩm này là chỉ có 2 màu để lựa chọn (đây là nhược điểm chung của BB cream), và ngay cả khi bạn chọn màu 2 thì nó cũng khá trắng so với làn da người Việt Nam.</span></span> </p>\r\n<p style="text-align: left;"><span><span><strong><span>M</span>issha M Signature Real Complete BB Cream SPF25 PA++</strong></span></span></p>\r\n<p style="text-align: center;"><img alt="294" height="473" src="http://himher.vn/wp-content/uploads/2016/06/294-e1467140935611.jpg" width="600" /></p>\r\n<p style="text-align: center;"><img alt="" height="338" src="http://muahanghieu.vn/wp-content/uploads/2015/12/sp1572.jpg" width="600" /></p>\r\n<p style="text-align: center;"><img alt="" height="351" src="http://media.bizwebmedia.net/Sites/2352/data/upload/before_after.jpg" width="600" /></p>\r\n<p style="text-align: left;"><span><span>Missha là một hãng rất chăm chỉ sản xuất BB Cream. Trong những loại BB nổi tiếng của Missha thì M Signature Real Complete BB Cream được yêu thích hơn cả nhờ thiết kế siêu sang chảnh, giá cả vừa phải và hiệu ứng trên da khá đẹp.</span></span></p>\r\n<p style="text-align: left;"><span><span>Là dòng cao cấp của Missha, sản phẩm này được quảng cáo là một loại kem nền che khuyết điểm nhưng vẫn mỏng nhẹ, tự nhiên, không gây nặng mặt, bít tắc lỗ chân lông. Lớp kết thúc trên da mịn màng, rạng rỡ, không lì hoàn toàn mà hơi glow. BB cream này phù hợp với trang điểm nhẹ nhàng cho các cô gái để đi học hoặc đi làm hằng ngày.</span></span> </p>\r\n<p style="text-align: left;"><span><span><strong><span>I</span>nnisfree Green Tea BB Cream </strong></span></span></p>\r\n<p style="text-align: center;"><img alt="" height="462" src="http://handlbeauty.com/image/data/Innisfree/innisfree-eco-natural-green-tea-bb-cream.jpg" width="600" /></p>\r\n<p style="text-align: center;"><img alt="" height="600" src="http://content.mery.jp/1100x2000/images/1212050/big_109397069553a1428c03050.jpg/original" width="600" /></p>\r\n<p style="text-align: left;"><span><span>Innisfree có cả một dòng sản phẩm trang điểm giá bình dân dành riêng cho da dầu bao gồm kem lót, nổi tiếng về độ lành tính trên mọi loại da, và Innisfree Green Tea BB Cream là một trong 3 sản phẩm đó.</span></span></p>\r\n<p style="text-align: left;"><span><span>Green Tea BB Cream có kết cấu lỏng, khi tán lên da ngay lập tức nó sẽ mang đến cho bạn làn da mịn màng, đều màu, mỏng nhẹ, không bết dính, cảm giác là không có cảm giác gì hết trên da. Đối với những làn da hỗn hợp dầu, Green Tea BB Cream có thể ở trên mặt bạn khoảng 6 – 8 tiếng mà không gây đổ dầu, tuy nhiên với những làn da siêu dầu, bạn cần dùng thêm phấn phủ để có lớp nền hoàn hảo hơn vào cuối ngày.</span></span> </p>\r\n<p style="text-align: left;"><span><span><strong><span>T</span>oocoolforschool After School BB Foundation Lunchbox</strong></span></span></p>\r\n<p style="text-align: center;"><img alt="290" height="600" src="http://himher.vn/wp-content/uploads/2016/06/290.jpg" width="600" /></p>\r\n<p style="text-align: left;"><span><span>After School BB Foundation Lunchbox của Toocoolforschool có thiết kế siêu dễ thương hướng đến đối tượng là các bạn nữ sinh yêu thích sự phù phiếm. After School BB Foundation là kem trang điểm với 3 sản phẩm được tích hợp trong một hộp tròn tròn, xinh xinh, gồm có: BB cream, kem che khuyết điểm và highlight.</span></span></p>\r\n<p style="text-align: left;"><span><span>Theo đánh giá của các beauty blogger, kết cấu của BB cream tương đối mỏng những vẫn che phủ được lỗ chân lông và các vết thâm mụn nhỏ. Đối với mụn và quầng thâm mắt, bạn có thể sử dụng ngay kem che khuyết điểm có trong hộp để cover. Highlight bắt sáng ở mức khá, nếu như ít trang điểm hoặc chỉ trang điểm mỏng nhẹ, phù hợp để đi học, đi làm hằng ngày thì bạn không nhất thiết phải mua thêm một hộp phấn highlight hoặc một cây che khuyết điểm làm gì. Một sản phẩm 3 trong 1 rất tiện dụng với cái giá khá hợp lý, tại sao bạn không thử vào mùa hè này nhỉ?</span></span></p>	kem duong da, my pham	\N	2016-07-16 18:54:09.519628	2016-07-18 08:44:25.993736	\N			t	normal	1	f	\N	TOP 5 BB CREAM GIÁ “HẠT DẺ” ĐƯỢC LÒNG CÁC BẠN SINH VIÊN NHẤT	<p style="text-align: left;"><strong><span>BB cream được xem như “cuộc cách mạng của ngành công nghiệp mỹ phẩm”, bởi vì từ khi có BB cream, các chị em mỗi mê ngủ nướng không còn phải dậy từ trước hàng tiếng đồng hồ để thoa đủ các bước kem lót, kem nền, kem che khuyết điểm lên da nữa, mà thay vào đó, chỉ một lớp BB cream, mọi vấn đề về da của bạn sẽ được giải quyết hết thảy. Nhất là trong mùa hè nắng nóng, việc bôi tầng tầng lớp lớp các loại kem lên da sẽ gây nặng mặt, bít lỗ chân lông, dễ sinh ra mụn, vì vậy cứ đến mùa hè, các chị em lại “ngoại tình” với loại kem trang điểm siêu thần thánh này.</span></strong></p>\r\n<p style="text-align: left;"><em><span><span>Hàn Quốc là đất nước sản sinh ra BB cream, vì vậy mỗi khi nhắc đến BB cream, người ta không thể bỏ qua những thương hiệu đến từ Hàn Quốc. Nếu đang cân nhắc một loại BB cream cho hè năm nay, hãy để Himher gợi ý cho bạn nhé!</span></span></em></p>\r\n<p style="text-align: left;"><span><span><strong><span>T</span>he Face Shop Face It Power Perfection BB Cream SPF 37/PA++</strong></span></span></p>\r\n<p style="text-align: center;"><img alt="292" height="439" src="http://himher.vn/wp-content/uploads/2016/06/292-e1467140970247.jpg" width="600" /></p>\r\n<p style="text-align: center;"><img alt="" height="600" src="http://myphamminhphuong.com/wp-content/uploads/2015/11/kem-BB-cream-power-perfection-face-it-8.jpg" width="600" /></p>\r\n<p style="text-align: center;"><img alt="" height="349" src="http://myphamhoanggam.net/wp-content/uploads/2015/07/bb-cream-power-perfection-the-face-shop-20ml-5.jpg" width="600" /></p>\r\n<p style="text-align: left;"><span><span>BB cream này của The Face Shop được các bạn trẻ Việt Nam gọi với cái tên quen thuộc là “BB tím”. Sản phẩm này đã tạo nên một cơn sốt trong cộng đồng làm đẹp Việt Nam khoảng 2 năm trước đây và đến nay nó vẫn là một trong những loại BB cream Hàn được yêu thích nhất.</span></span></p>\r\n<p style="text-align: left;"><span><span>Face It Power Perfection BB Cream có độ che phủ “cực đỉnh”, hầu như các BB Hàn đều mỏng nhẹ, tự nhiên, phù hợp với lối trang điểm trong veo của các cô gái xứ sở kim chi nhưng BB tím là một ngoại lệ. Các vết thâm, sẹo, mụn, lỗ chân lông…đều biến mất sau khi bạn thoa một lớp BB. Ngoài khả năng che phủ, Face It Power Perfection BB Cream còn được yêu thích nhờ khả năng kiểm soát dầu ổn, lâu trôi và đặc biệt không làm mặt “tối sầm” vào cuối ngày. Tuy nhiên, với những làn da cực dầu hoặc hay đổ mồ hôi thì bạn nên chọn kem nền truyền thống thay cho BB cream.</span></span> </p>\r\n<p style="text-align: left;"><span><span><strong><span>H</span>olika Holika Aqua Petit Jelly BB Cream SPF20 PA++</strong></span></span></p>\r\n<p style="text-align: center;"><img alt="293" height="430" src="http://himher.vn/wp-content/uploads/2016/06/293-e1467140698919.jpg" width="600" /></p>\r\n<p style="text-align: center;"><img alt="" height="576" src="https://media3.scdn.vn/img1/2015/11_20/kem-trang-diem-bb-thach-holika-aqua-petit-jelly-bb-cream-1m4G3-f6d46e_simg_d0daf0_800x1200_max.jpg" width="600" /></p>\r\n<p style="text-align: left;"><span><span>Ai hay xem Youtube chắc đã một vài lần nghe nói đến hũ BB thạch đình đám một thời của Holika Holika, từ Michelle Phan cho đến các Beauty Guru Hàn Quốc đều nói rằng họ mê mẩn hũ BB màu xanh mát lạnh này.</span></span></p>\r\n<p style="text-align: left;"><span><span>Đúng như tên gọi, Aqua Petit Jelly BB Cream có kết cấu dạng thạch, thử tưởng tượng miếng thạch rau câu dừa như thế nào thì chất kem của sản phẩm này y như thế, điểm khác nhau là màu sắc mà thôi. Vì là thạch nên khi tán lên da có cảm giác mát lạnh, sảng khoái như bôi một lớp gel dưỡng ẩm. Chất kem mỏng nhẹ, dễ tán, độ che phủ ổn và kiềm dâu tốt. Nhược điểm duy nhất của sản phẩm này là chỉ có 2 màu để lựa chọn (đây là nhược điểm chung của BB cream), và ngay cả khi bạn chọn màu 2 thì nó cũng khá trắng so với làn da người Việt Nam.</span></span> </p>\r\n<p style="text-align: left;"><span><span><strong><span>M</span>issha M Signature Real Complete BB Cream SPF25 PA++</strong></span></span></p>\r\n<p style="text-align: center;"><img alt="294" height="473" src="http://himher.vn/wp-content/uploads/2016/06/294-e1467140935611.jpg" width="600" /></p>\r\n<p style="text-align: center;"><img alt="" height="338" src="http://muahanghieu.vn/wp-content/uploads/2015/12/sp1572.jpg" width="600" /></p>\r\n<p style="text-align: center;"><img alt="" height="351" src="http://media.bizwebmedia.net/Sites/2352/data/upload/before_after.jpg" width="600" /></p>\r\n<p style="text-align: left;"><span><span>Missha là một hãng rất chăm chỉ sản xuất BB Cream. Trong những loại BB nổi tiếng của Missha thì M Signature Real Complete BB Cream được yêu thích hơn cả nhờ thiết kế siêu sang chảnh, giá cả vừa phải và hiệu ứng trên da khá đẹp.</span></span></p>\r\n<p style="text-align: left;"><span><span>Là dòng cao cấp của Missha, sản phẩm này được quảng cáo là một loại kem nền che khuyết điểm nhưng vẫn mỏng nhẹ, tự nhiên, không gây nặng mặt, bít tắc lỗ chân lông. Lớp kết thúc trên da mịn màng, rạng rỡ, không lì hoàn toàn mà hơi glow. BB cream này phù hợp với trang điểm nhẹ nhàng cho các cô gái để đi học hoặc đi làm hằng ngày.</span></span> </p>\r\n<p style="text-align: left;"><span><span><strong><span>I</span>nnisfree Green Tea BB Cream </strong></span></span></p>\r\n<p style="text-align: center;"><img alt="" height="462" src="http://handlbeauty.com/image/data/Innisfree/innisfree-eco-natural-green-tea-bb-cream.jpg" width="600" /></p>\r\n<p style="text-align: center;"><img alt="" height="600" src="http://content.mery.jp/1100x2000/images/1212050/big_109397069553a1428c03050.jpg/original" width="600" /></p>\r\n<p style="text-align: left;"><span><span>Innisfree có cả một dòng sản phẩm trang điểm giá bình dân dành riêng cho da dầu bao gồm kem lót, nổi tiếng về độ lành tính trên mọi loại da, và Innisfree Green Tea BB Cream là một trong 3 sản phẩm đó.</span></span></p>\r\n<p style="text-align: left;"><span><span>Green Tea BB Cream có kết cấu lỏng, khi tán lên da ngay lập tức nó sẽ mang đến cho bạn làn da mịn màng, đều màu, mỏng nhẹ, không bết dính, cảm giác là không có cảm giác gì hết trên da. Đối với những làn da hỗn hợp dầu, Green Tea BB Cream có thể ở trên mặt bạn khoảng 6 – 8 tiếng mà không gây đổ dầu, tuy nhiên với những làn da siêu dầu, bạn cần dùng thêm phấn phủ để có lớp nền hoàn hảo hơn vào cuối ngày.</span></span> </p>\r\n<p style="text-align: left;"><span><span><strong><span>T</span>oocoolforschool After School BB Foundation Lunchbox</strong></span></span></p>\r\n<p style="text-align: center;"><img alt="290" height="600" src="http://himher.vn/wp-content/uploads/2016/06/290.jpg" width="600" /></p>\r\n<p style="text-align: left;"><span><span>After School BB Foundation Lunchbox của Toocoolforschool có thiết kế siêu dễ thương hướng đến đối tượng là các bạn nữ sinh yêu thích sự phù phiếm. After School BB Foundation là kem trang điểm với 3 sản phẩm được tích hợp trong một hộp tròn tròn, xinh xinh, gồm có: BB cream, kem che khuyết điểm và highlight.</span></span></p>\r\n<p style="text-align: left;"><span><span>Theo đánh giá của các beauty blogger, kết cấu của BB cream tương đối mỏng những vẫn che phủ được lỗ chân lông và các vết thâm mụn nhỏ. Đối với mụn và quầng thâm mắt, bạn có thể sử dụng ngay kem che khuyết điểm có trong hộp để cover. Highlight bắt sáng ở mức khá, nếu như ít trang điểm hoặc chỉ trang điểm mỏng nhẹ, phù hợp để đi học, đi làm hằng ngày thì bạn không nhất thiết phải mua thêm một hộp phấn highlight hoặc một cây che khuyết điểm làm gì. Một sản phẩm 3 trong 1 rất tiện dụng với cái giá khá hợp lý, tại sao bạn không thử vào mùa hè này nhỉ?</span></span></p>
+\.
+
+
+--
+-- Name: articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('articles_id_seq', 4, true);
+
+
+--
+-- Data for Name: articles_products; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY articles_products (id, article_id, product_id, created_at, updated_at) FROM stdin;
+28	1	1	2016-07-18 08:36:27.77349	2016-07-18 08:36:27.77349
+29	2	1	2016-07-18 08:44:25.94417	2016-07-18 08:44:25.94417
+53	2	3	2016-08-16 08:44:12.006079	2016-08-16 08:44:12.006079
+54	1	3	2016-08-16 08:44:12.013786	2016-08-16 08:44:12.013786
+57	2	2	2016-08-16 08:44:58.027213	2016-08-16 08:44:58.027213
+58	1	2	2016-08-16 08:44:58.035143	2016-08-16 08:44:58.035143
+59	2	4	2016-08-27 01:26:23.960539	2016-08-27 01:26:23.960539
+60	1	4	2016-08-27 01:26:23.991537	2016-08-27 01:26:23.991537
+\.
+
+
+--
+-- Name: articles_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('articles_products_id_seq', 1, false);
+
+
+--
+-- Data for Name: articles_projects; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY articles_projects (id, article_id, project_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: articles_projects_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('articles_projects_id_seq', 1, false);
+
+
+--
+-- Data for Name: carts; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY carts (id, created_at, updated_at, voucher_code, coupon_code) FROM stdin;
+1	2016-07-15 09:47:23.151614	2016-07-15 09:47:23.151614	\N	\N
+2	2016-07-15 15:46:45.188886	2016-07-15 15:46:45.188886	\N	\N
+3	2016-07-16 01:12:23.246379	2016-07-16 01:12:23.246379	\N	\N
+4	2016-07-16 14:22:01.66584	2016-07-16 14:22:01.66584	\N	\N
+5	2016-07-17 06:05:41.752743	2016-07-17 06:05:41.752743	\N	\N
+7	2016-07-18 09:21:29.375597	2016-07-18 09:21:29.375597	\N	\N
+8	2016-07-18 16:17:21.385961	2016-07-18 16:17:21.385961	\N	\N
+9	2016-07-26 05:09:08.686944	2016-07-26 05:09:08.686944	\N	\N
+10	2016-07-26 05:09:10.59983	2016-07-26 05:09:10.59983	\N	\N
+11	2016-07-28 04:35:19.029378	2016-07-28 04:35:19.029378	\N	\N
+14	2016-08-16 08:52:36.481958	2016-08-16 08:52:36.481958	\N	\N
+15	2016-08-17 01:42:10.954694	2016-08-17 01:42:10.954694	\N	\N
+16	2016-08-27 01:21:10.833337	2016-08-27 01:21:10.833337	\N	\N
+17	2016-08-29 06:33:50.907948	2016-08-29 06:33:50.907948	\N	\N
+\.
+
+
+--
+-- Name: carts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('carts_id_seq', 1, false);
+
+
+--
+-- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY categories (id, name, level, description, created_at, updated_at, ordered, meta_keywords, meta_description) FROM stdin;
+15	Phụ Kiện Trang Điểm	2		2016-07-16 01:49:28.659565	2016-07-16 01:49:28.659565	\N		
+8	The Face Shop	2		2016-07-15 09:59:24.894118	2016-07-16 01:45:44.338059	\N		
+2	Hàng Sale	1	\N	2016-07-15 02:12:25.345534	2016-07-15 02:15:05.85644	\N	\N	\N
+3	Thời Trang	1	\N	2016-07-15 02:12:39.974981	2016-07-15 02:15:16.878729	\N	\N	\N
+4	Mỹ Phẩm Mỹ-Pháp-Nhật	1	\N	2016-07-15 02:12:51.152123	2016-07-15 02:15:28.071185	\N	\N	\N
+5	Trang Điểm	1	\N	2016-07-15 02:13:25.142175	2016-07-15 02:15:51.771707	\N	\N	\N
+6	Chăm Sóc Da	1	\N	2016-07-15 02:13:39.766958	2016-07-15 02:15:59.10819	\N	\N	\N
+9	Các Bộ Dưỡng Da	3		2016-07-15 10:00:00.120092	2016-07-15 10:00:00.120092	\N		
+10	Skinfood	2		2016-07-15 10:07:13.782864	2016-07-15 10:07:13.782864	\N		
+12	Sữa Rửa Mặt	3		2016-07-16 01:47:02.618412	2016-07-16 01:47:02.618412	\N		
+11	Dưỡng Da	3		2016-07-16 01:46:20.901147	2016-07-16 01:47:23.010252	\N		
+13	Xịt Khoáng	3		2016-07-16 01:48:10.126027	2016-07-16 01:48:10.126027	\N		
+14	Trị Mụn	3		2016-07-16 01:48:33.683803	2016-07-16 01:48:33.683803	\N		
+16	It's Skin	2		2016-07-16 01:50:00.367578	2016-07-16 01:50:00.367578	\N		
+\.
+
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('categories_id_seq', 1, false);
+
+
+--
+-- Data for Name: categories_products; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY categories_products (id, product_id, category_id, created_at, updated_at) FROM stdin;
+16	1	9	2016-07-18 08:36:27.747335	2016-07-18 08:36:27.747335
+27	3	2	2016-08-16 08:44:11.978816	2016-08-16 08:44:11.978816
+29	2	2	2016-08-16 08:44:58.009424	2016-08-16 08:44:58.009424
+30	4	2	2016-08-27 01:26:23.869297	2016-08-27 01:26:23.869297
+\.
+
+
+--
+-- Name: categories_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('categories_products_id_seq', 1, false);
+
+
+--
+-- Data for Name: code_statuses; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY code_statuses (id, title, description, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: code_statuses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('code_statuses_id_seq', 1, false);
+
+
+--
+-- Data for Name: comment_articles; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY comment_articles (id, name, email, content, user_id, article_id, created_at, updated_at, parent_id) FROM stdin;
+\.
+
+
+--
+-- Name: comment_articles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('comment_articles_id_seq', 1, false);
+
+
+--
+-- Data for Name: comments; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY comments (id, product_id, name, content, star, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('comments_id_seq', 1, false);
+
+
+--
+-- Data for Name: companies; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY companies (id, image_url, name, head_office_address, certificate_no, date_of_issue, sales_office_address, phone, hotline, email, created_at, updated_at, head_area_id, branch_area_id, type_company, fax) FROM stdin;
+1	\N	Lumla Shop-Đẹp+	Hồ Chí Minh		\N		(0126) 216 9420	(0126) 216 9420	dongocdung@gmail.com	2016-07-16 18:23:20.458407	2016-07-16 18:23:20.458407	1	\N	Head Office	(0126) 216 9420
+\.
+
+
+--
+-- Name: companies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('companies_id_seq', 1, true);
+
+
+--
+-- Data for Name: compares; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY compares (id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: compares_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('compares_id_seq', 1, false);
+
+
+--
+-- Data for Name: contacts; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY contacts (id, name, email, message, created_at, updated_at, user_id, phone, subject) FROM stdin;
+2	Nguyen Ton Hung	test@test.test	hgvhg	2016-07-16 05:10:53.311713	2016-07-16 05:10:53.311713	\N	hghgvhg	\N
+1	Nguyễn Ngọc Sơn	sonnn@hoangkhang.com.vn	Test contact function - Test message	2016-06-15 07:54:20.96019	2016-06-15 07:54:20.96019	\N	01644046123	Test contact function - Test subject
+\.
+
+
+--
+-- Name: contacts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('contacts_id_seq', 1, true);
+
+
+--
+-- Data for Name: conversations; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY conversations (id, sender_id, recipient_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: conversations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('conversations_id_seq', 1, false);
+
+
+--
+-- Data for Name: coupons; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY coupons (id, name, code, from_date, to_date, description, quantity, created_at, updated_at, price) FROM stdin;
+\.
+
+
+--
+-- Name: coupons_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('coupons_id_seq', 1, false);
+
+
+--
+-- Data for Name: customers; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY customers (id, first_name, last_name, email, phone, company, address, city, zip_code, country, province, created_at, updated_at, order_id, area_id) FROM stdin;
+1	\N	Nguyễn Tôn Hùng	hungnt@hoangkhang.com.vn	0938318714	\N	188 Đường số 1, P16, Gò Vấp, HCMC	\N	\N	\N	\N	2016-07-18 09:21:29.236861	2016-07-18 09:21:29.236861	1	\N
+2	\N	Hung	hungnt@hoangkhang.com.vn	0011222222	\N	48/8 Ung Van Khiem Str, Ward 16, Go Vap Dist.,	\N	\N	\N	\N	2016-08-16 08:37:20.089498	2016-08-16 08:37:20.089498	2	\N
+3	\N	Hung	hungnt@hoangkhang.com.vn	0011222222	\N	48/8 Ung Van Khiem Str, Ward 16, Go Vap Dist.,	\N	\N	\N	\N	2016-08-16 08:52:36.300494	2016-08-16 08:52:36.300494	3	\N
+\.
+
+
+--
+-- Name: customers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('customers_id_seq', 1, false);
+
+
+--
+-- Data for Name: delivery_methods; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY delivery_methods (id, title, description, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: delivery_methods_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('delivery_methods_id_seq', 1, false);
+
+
+--
+-- Data for Name: feedbacks; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY feedbacks (id, email, content, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: feedbacks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('feedbacks_id_seq', 1, false);
+
+
+--
+-- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY products (id, name, code, quantity, unit, price, short_description, description, manufacturer_id, product_image_id, created_at, updated_at, tags, status, old_price, discount_percent, meta_keywords, meta_description, is_show, stock, approved, user_id, made_in, colors) FROM stdin;
+1	Herb day Massage Cream THE FACE SHOP	AAAA	123.0	ml	100000.0	mo ta ngan		1	\N	2016-07-15 03:37:52.68976	2016-07-15 03:37:52.68976		\N	\N	\N			t	1	f	1	\N	\N
+4	Pour Homme Soir eau de toilette for men	ABC	35.0	ml	599000.0	ABC		1	\N	2016-07-17 17:54:58.489698	2016-08-16 07:03:54.184709		\N	\N	\N			t	1	f	1	Korea	#333333,#009688
+3	Giorgio Armani SI Body Cream		120.0	ml	150000.0	nước hoa hàng chính hãng		1	\N	2016-07-17 17:20:40.913477	2016-08-16 08:44:12.029996		\N	\N	\N			t	1	f	1	Korea	red, green, blue
+2	Herb day Massage Cream		125.0	ml	120000.0	mo ta ngan hang cao cap		1	\N	2016-07-15 03:39:08.633537	2016-08-16 08:44:58.048015		\N	\N	\N			t	1	f	1	Korea	pink, yellow
+\.
+
+
+--
+-- Data for Name: line_item_compares; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY line_item_compares (id, product_id, compare_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: line_item_compares_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('line_item_compares_id_seq', 1, false);
+
+
+--
+-- Data for Name: line_items; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY line_items (id, product_id, cart_id, created_at, updated_at, quantity, color) FROM stdin;
+11	4	14	2016-08-16 09:36:11.354148	2016-08-16 09:36:11.354148	1	#333333
+12	2	14	2016-08-16 09:44:27.795747	2016-08-16 09:44:27.795747	1	pink
+\.
+
+
+--
+-- Name: line_items_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('line_items_id_seq', 1, false);
+
+
+--
+-- Data for Name: manufacturers; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY manufacturers (id, image_url, name, address, description, created_at, updated_at) FROM stdin;
+1	favicon_hksoft.png	Hoang Khang			2016-07-15 03:36:46.001528	2016-07-15 03:36:46.001528
+2	\N	âsấ			2016-07-26 09:02:25.512344	2016-07-26 09:02:25.512344
+\.
+
+
+--
+-- Name: manufacturers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('manufacturers_id_seq', 1, false);
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at, first_name, last_name, phone, fax, company, address_1, address_2, zip_code, country, province, city, provider, uid, password_reset_token, password_reset_sent_at, oauth_token, oauth_expires_at, last_seen, is_admin, area_id, role, user_group_id) FROM stdin;
+1	admin@hoangkhang.com.vn	$2a$11$tDaJPMZf.v81Yas0/2rXXuJkW79Kw30/BAGpreF3YAse03KfhcnDC	\N	\N	\N	11	2016-08-27 01:24:22.682749	2016-08-15 17:30:22.727736	192.168.211.1	192.168.211.1	2016-07-14 08:37:10.864376	2016-08-27 01:24:23.054517	Quản trị	viên	01644046123	\N	\N	54/3, Tăng NHơn Phú B, Quận 9	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-08-27 01:24:23.043317	t	\N	\N	2
+\.
+
+
+--
+-- Data for Name: messages; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY messages (id, body, conversation_id, user_id, created_at, updated_at, seen) FROM stdin;
+\.
+
+
+--
+-- Name: messages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('messages_id_seq', 1, false);
+
+
+--
+-- Data for Name: newsletters; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY newsletters (id, email, created_at, updated_at, status, user_id) FROM stdin;
+1	contact@acb.com	2016-07-18 02:13:49.90162	2016-07-18 02:13:49.90162	t	\N
+2	hungnt@hoangkhang.com.vn	2016-07-18 02:30:18.064208	2016-07-18 02:30:18.064208	t	\N
+3	hungnt@hoangkhang.com.vn	2016-07-18 02:44:44.115486	2016-07-18 02:44:44.115486	t	\N
+4	contact@acb.com	2016-07-18 03:21:32.278158	2016-07-18 03:21:32.278158	t	\N
+\.
+
+
+--
+-- Name: newsletters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('newsletters_id_seq', 2, true);
+
+
+--
+-- Data for Name: options; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY options (id, created_at, updated_at, code, tag, value, note, title, accept_email) FROM stdin;
+\.
+
+
+--
+-- Name: options_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('options_id_seq', 1, false);
+
+
+--
+-- Data for Name: order_deliveries; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY order_deliveries (id, first_name, last_name, company, address, city, zip_code, country, province, delivery_method_id, payment_method_id, message, created_at, updated_at, order_id, email, phone) FROM stdin;
+1	\N	Nguyễn Tôn Hùng	\N	188 Đường số 1, P16, Gò Vấp, HCMC	\N	\N	\N	\N	\N	\N	\N	2016-07-18 09:21:29.244199	2016-07-18 09:21:29.244199	1	hungnt@hoangkhang.com.vn	0938318714
+2	\N	Hung	\N	48/8 Ung Van Khiem Str, Ward 16, Go Vap Dist.,	\N	\N	\N	\N	\N	\N	\N	2016-08-16 08:37:20.133205	2016-08-16 08:37:20.133205	2	hungnt@hoangkhang.com.vn	0011222222
+3	\N	Hung	\N	48/8 Ung Van Khiem Str, Ward 16, Go Vap Dist.,	\N	\N	\N	\N	\N	\N	\N	2016-08-16 08:52:36.303307	2016-08-16 08:52:36.303307	3	hungnt@hoangkhang.com.vn	0011222222
+\.
+
+
+--
+-- Name: order_deliveries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('order_deliveries_id_seq', 1, false);
+
+
+--
+-- Data for Name: order_details; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY order_details (id, order_id, product_id, quantity, price, created_at, updated_at, product_name, color) FROM stdin;
+1	1	3	1	150000.0	2016-07-18 09:21:29.296336	2016-07-18 09:21:29.296336	Giorgio Armani SI Body Cream	\N
+2	2	4	818	599000.0	2016-08-16 08:37:20.251753	2016-08-16 08:37:20.251753	Pour Homme Soir eau de toilette for men	#333333
+3	3	3	2	150000.0	2016-08-16 08:52:36.319592	2016-08-16 08:52:36.319592	Giorgio Armani SI Body Cream	red
+4	3	2	1	120000.0	2016-08-16 08:52:36.359328	2016-08-16 08:52:36.359328	Herb day Massage Cream	pink
+5	3	4	1	599000.0	2016-08-16 08:52:36.391682	2016-08-16 08:52:36.391682	Pour Homme Soir eau de toilette for men	#009688
+6	3	1	1	100000.0	2016-08-16 08:52:36.402475	2016-08-16 08:52:36.402475	Herb day Massage Cream THE FACE SHOP	\N
+\.
+
+
+--
+-- Name: order_details_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('order_details_id_seq', 1, false);
+
+
+--
+-- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY orders (id, created_at, updated_at, user_id, status, different_delivery, voucher_code, voucher_price, coupon_code, coupon_price) FROM stdin;
+2	2016-08-16 08:37:20.045236	2016-08-16 08:37:20.045236	\N	Pending	t	\N	\N	\N	\N
+3	2016-08-16 08:52:36.297337	2016-08-16 08:52:36.297337	\N	Pending	t	\N	\N	\N	\N
+1	2016-07-18 09:21:29.23294	2016-08-16 08:59:07.362364	\N	finished	t	\N	\N	\N	\N
+\.
+
+
+--
+-- Name: orders_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('orders_id_seq', 1, false);
+
+
+--
+-- Data for Name: parent_article_categories; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY parent_article_categories (id, parent_id, article_category_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: parent_article_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('parent_article_categories_id_seq', 1, false);
+
+
+--
+-- Data for Name: parent_categories; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY parent_categories (id, parent_id, category_id, created_at, updated_at) FROM stdin;
+2	8	9	2016-07-15 10:00:00.13371	2016-07-15 10:00:00.13371
+3	6	10	2016-07-15 10:07:13.796316	2016-07-15 10:07:13.796316
+5	6	8	2016-07-16 01:45:44.389043	2016-07-16 01:45:44.389043
+7	8	12	2016-07-16 01:47:02.635487	2016-07-16 01:47:02.635487
+8	8	11	2016-07-16 01:47:23.023461	2016-07-16 01:47:23.023461
+9	10	13	2016-07-16 01:48:10.137411	2016-07-16 01:48:10.137411
+10	10	14	2016-07-16 01:48:33.700668	2016-07-16 01:48:33.700668
+11	5	15	2016-07-16 01:49:28.671748	2016-07-16 01:49:28.671748
+12	5	16	2016-07-16 01:50:00.381336	2016-07-16 01:50:00.381336
+\.
+
+
+--
+-- Name: parent_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('parent_categories_id_seq', 1, false);
+
+
+--
+-- Data for Name: payment_methods; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY payment_methods (id, title, description, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: payment_methods_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('payment_methods_id_seq', 1, false);
+
+
+--
+-- Data for Name: product_images; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY product_images (id, product_id, image_url, created_at, updated_at, is_main) FROM stdin;
+2	1	img-24.jpg	2016-07-17 17:16:44.379101	2016-07-17 17:18:15.860813	True
+1	2	img-25.jpg	2016-07-17 17:15:05.364212	2016-07-17 17:18:35.496123	True
+3	3	img-5.jpg	2016-07-17 17:20:41.065337	2016-07-17 17:20:41.065337	True
+5	4	img-6.jpg	2016-07-17 18:02:45.932305	2016-07-17 18:02:45.932305	False
+6	4	img-25.jpg	2016-07-17 18:02:45.948849	2016-07-17 18:02:45.948849	False
+7	4	img-20.jpg	2016-07-17 18:02:45.965373	2016-07-17 18:02:45.965373	False
+4	4	hinh-2-fix.jpg	2016-07-17 18:02:45.915881	2016-08-27 01:26:24.021545	True
+\.
+
+
+--
+-- Name: product_images_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('product_images_id_seq', 1, false);
+
+
+--
+-- Name: products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('products_id_seq', 1, false);
+
+
+--
+-- Data for Name: program_languages; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY program_languages (id, name, description, created_at, updated_at) FROM stdin;
+1	HTML5		2016-06-16 04:25:24.062467	2016-06-16 04:25:24.062467
+2	CSS3		2016-06-16 04:25:30.402205	2016-06-16 04:25:30.402205
+3	JAVASCRIPTS		2016-06-16 04:25:41.282262	2016-06-16 04:25:41.282262
+4	RUBY ON RAILS		2016-06-16 04:25:52.706265	2016-06-16 04:25:52.706265
+5	PHP		2016-06-16 04:26:02.290112	2016-06-16 04:26:02.290112
+6	JQUERY		2016-06-16 04:26:11.137959	2016-06-16 04:26:11.137959
+7	BOOTSTRAP		2016-06-16 04:26:42.807506	2016-06-16 04:26:42.807506
+\.
+
+
+--
+-- Name: program_languages_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('program_languages_id_seq', 7, true);
+
+
+--
+-- Data for Name: program_languages_projects; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY program_languages_projects (id, program_language_id, project_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: program_languages_projects_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('program_languages_projects_id_seq', 1, false);
+
+
+--
+-- Data for Name: project_categories; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY project_categories (id, name, description, created_at, updated_at, name_vi, description_vi) FROM stdin;
+3	Website Development	Website Development	2016-06-16 04:04:55.040884	2016-06-16 04:04:55.040884	\N	\N
+4	Web-based Software Development	Web-based Software Development	2016-06-16 04:05:15.968135	2016-06-16 04:05:15.968135	\N	\N
+5	E-Commerce	E-Commerce	2016-06-16 04:06:53.817955	2016-06-16 04:06:53.817955	\N	\N
+6	Google Apps for Business	Google Apps for Business	2016-06-16 04:07:05.015075	2016-06-16 04:07:05.015075	\N	\N
+7	Outsourcing	Outsourcing	2016-06-16 04:07:19.17482	2016-06-16 04:07:19.17482	\N	\N
+8	Research & Development	Research & Development	2016-06-16 04:07:33.034102	2016-06-16 04:07:33.034102	\N	\N
+9	Systems Integration	Systems Integration	2016-06-16 04:07:43.247494	2016-06-16 04:07:43.247494	\N	\N
+10	Mobile Apps Development	Mobile Apps Development	2016-06-16 04:07:53.923717	2016-06-16 04:07:53.923717	\N	\N
+\.
+
+
+--
+-- Name: project_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('project_categories_id_seq', 11, true);
+
+
+--
+-- Data for Name: project_categories_projects; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY project_categories_projects (id, project_category_id, project_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: project_categories_projects_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('project_categories_projects_id_seq', 1, false);
+
+
+--
+-- Data for Name: project_images; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY project_images (id, image_url, project_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: project_images_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('project_images_id_seq', 1, false);
+
+
+--
+-- Data for Name: projects; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY projects (id, image_url, author, name, start_date, end_date, description, website, created_at, updated_at, author_vi, name_vi, description_vi) FROM stdin;
+\.
+
+
+--
+-- Name: projects_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('projects_id_seq', 1, false);
+
+
+--
+-- Data for Name: questions; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY questions (id, name, email, content, product_id, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: questions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('questions_id_seq', 1, false);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY schema_migrations (version) FROM stdin;
+20160406035423
+20160406060729
+20160406061501
+20160406072632
+20160406090918
+20160406093710
+20160407021915
+20160407022242
+20160407033416
+20160407034556
+20160407040834
+20160407041811
+20160407063600
+20160407071755
+20160407073929
+20160407090029
+20160407092753
+20160411022035
+20160411070126
+20160411090637
+20160412090455
+20160412091031
+20160412091620
+20160412092036
+20160413013557
+20160414070432
+20160414071647
+20160414071935
+20160414072251
+20160414072336
+20160414111647
+20160415024108
+20160415034338
+20160415045331
+20160415070403
+20160418084816
+20160419063009
+20160419063732
+20160419073354
+20160419084034
+20160419084328
+20160420021407
+20160420025319
+20160420031013
+20160420035639
+20160420071851
+20160420083852
+20160420083904
+20160421014453
+20160421023948
+20160421032607
+20160422075657
+20160422084139
+20160422092821
+20160425011612
+20160425011627
+20160425031932
+20160425042302
+20160425043159
+20160425043209
+20160425075501
+20160429043324
+20160429062814
+20160505042346
+20160505065936
+20160505084631
+20160505090509
+20160505092039
+20160506024000
+20160506084612
+20160506090959
+20160510030159
+20160510030222
+20160510094925
+20160512092157
+20160512092324
+20160514031109
+20160516073144
+20160516073152
+20160516073236
+20160516073244
+20160516080558
+20160516082039
+20160516085116
+20160516085213
+20160516090119
+20160517032825
+20160517033437
+20160517083909
+20160518035417
+20160518070327
+20160520062835
+20160521024747
+20160527042708
+20160527083046
+20160531021437
+20160531021445
+20160601013031
+20160601065702
+20160601091343
+20160601100102
+20160601111606
+20160602071024
+20160602083515
+20160602083819
+20160603025541
+20160603071216
+20160603080430
+20160607034151
+20160607034155
+20160615074814
+20160616023635
+20160616034218
+20160616034542
+20160616040953
+20160616063534
+20160616064623
+20160616073753
+20160623013507
+20160623013627
+20160623013757
+20160623013859
+20160712020307
+20160816043125
+20160816043231
+20160816082614
+20160816083700
+\.
+
+
+--
+-- Data for Name: slideshows; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY slideshows (id, image_url, title_1, title_2, name_button, link, created_at, updated_at, color_1, color_2, style) FROM stdin;
+3	IMG_3376.JPG	LUMLA BEAUTY				2016-08-15 17:41:02.450961	2016-08-15 17:41:02.450961			fade
+2	IMG_3379.JPG	   		ssss	asadsd	2016-08-15 17:40:37.823646	2016-08-16 02:29:06.231604			fade
+1	IMG_3378.JPG	LUMLA BEAUTY		Shopping Now	http://lumlabeauty.com	2016-08-15 17:32:04.899392	2016-08-16 02:35:30.367037			fade
+\.
+
+
+--
+-- Name: slideshows_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('slideshows_id_seq', 1, false);
+
+
+--
+-- Data for Name: testimonials; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY testimonials (id, name, city, email, content, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: testimonials_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('testimonials_id_seq', 1, false);
+
+
+--
+-- Data for Name: user_groups; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY user_groups (id, name, permission, created_at, updated_at) FROM stdin;
+3	Quản lý cấp cao	\N	2016-07-14 08:37:10.906025	2016-07-14 08:37:10.906025
+1	Thành viên	{"Product":{"read":["yes"],"create":["yes"],"update":["yes","own","not_approved"],"delete":["yes","own","not_approved"],"approve":["no"]},"Category":{"read":["yes"],"create":["no"],"update":["no"],"delete":["no"]},"Manufacturer":{"read":["yes"],"create":["no"],"update":["no"],"delete":["no"]},"Area":{"read":["yes"],"create":["no"],"update":["no"],"delete":["no"]},"ArticleCategory":{"read":["yes"],"create":["no"],"update":["no"],"delete":["no"]},"Article":{"read":["yes"],"create":["yes"],"update":["yes","own","not_approved"],"delete":["yes","own","not_approved"],"approve":["no"]},"CodeStatus":{"read":["yes"],"create":["no"],"update":["no"],"delete":["no"]},"Slideshow":{"read":["yes"],"create":["no"],"update":["yes"],"delete":["no"]},"Order":{"read":["no"],"update":["no"],"delete":["no"]},"DeliveryMethod":{"read":["no"],"create":["no"],"update":["no"],"delete":["no"]},"PaymentMethod":{"read":["no"],"create":["no"],"update":["no"],"delete":["no"]},"Comment":{"read":["yes"],"delete":["no"]},"Question":{"read":["yes"],"delete":["no"]},"Testimonial":{"read":["yes"],"delete":["no"]},"CommentArticle":{"read":["no"],"delete":["no"]},"Voucher":{"read":["yes"],"create":["no"],"update":["no"],"delete":["no"]},"Coupon":{"read":["yes"],"create":["no"],"update":["no"],"delete":["no"]},"Customer":{"read":["no"],"create":["no"],"update":["no"],"delete":["no"]},"Contact":{"read":["no"],"delete":["no"]},"Newsletter":{"read":["no"],"delete":["no"]},"User":{"read":["no"],"create":["no"],"update":["no"],"delete":["no"]},"UserGroup":{"read":["no"],"create":["no"],"update":["no"],"delete":["no"]},"Company":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Option":{"read":["no"],"create":["no"],"update":["no"],"delete":["no"]}}	2016-07-14 08:37:10.895557	2016-07-15 16:51:51.674537
+2	Quản trị viên	{"Product":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"],"approve":["yes"]},"Category":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Manufacturer":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Area":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"ArticleCategory":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Article":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"],"approve":["yes"]},"CodeStatus":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Slideshow":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Order":{"read":["yes"],"update":["yes"],"delete":["yes"]},"DeliveryMethod":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"PaymentMethod":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Comment":{"read":["yes"],"delete":["yes"]},"Question":{"read":["yes"],"delete":["yes"]},"Testimonial":{"read":["yes"],"delete":["yes"]},"CommentArticle":{"read":["yes"],"delete":["yes"]},"Voucher":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Coupon":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Customer":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Contact":{"read":["yes"],"delete":["yes"]},"Newsletter":{"read":["yes"],"delete":["yes"]},"User":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"UserGroup":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Company":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]},"Option":{"read":["yes"],"create":["yes"],"update":["yes"],"delete":["yes"]}}	2016-07-14 08:37:10.902328	2016-07-15 09:57:31.532938
+\.
+
+
+--
+-- Name: user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('user_groups_id_seq', 3, true);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('users_id_seq', 1, true);
+
+
+--
+-- Data for Name: vouchers; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY vouchers (id, name, code, from_date, to_date, description, quantity, created_at, updated_at, price) FROM stdin;
+\.
+
+
+--
+-- Name: vouchers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('vouchers_id_seq', 1, false);
+
+
+--
+-- Data for Name: wish_lists; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY wish_lists (id, product_id, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: wish_lists_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('wish_lists_id_seq', 1, false);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
