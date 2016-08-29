@@ -1,7 +1,7 @@
 class TourHandbookController < ApplicationController
   def index
     @page_name = Category.where(description: "tour_handbook").first
-    @blogs = ArticleCategory.get_tour_handbook_blogs.paginate(page: params[:page], per_page: 3)
+    @blogs = ArticleCategory.get_tour_handbook_blogs(params).paginate(page: params[:page], per_page: 3)
   end
 
   def tour_handbook_sub_1
