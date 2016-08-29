@@ -1,7 +1,7 @@
 class TravelNewsController < ApplicationController
   def index
     @page_name = Category.where(description: "travel_news").first
-    @blogs = ArticleCategory.get_travel_news.paginate(page: params[:page], per_page: 3)
+    @blogs = ArticleCategory.get_travel_news(params).paginate(page: params[:page], per_page: 3)
   end
 
   def travel_news_detail

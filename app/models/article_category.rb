@@ -55,10 +55,31 @@ class ArticleCategory < ActiveRecord::Base
     return records
   end
   
-  def self.get_tour_handbook_blogs
+  def self.get_tour_handbook_blogs(params)
     records = Article.get_active_articles
     records = records.joins(:article_categories).where(article_categories: {id: self.where(description: "tour_handbook").first.get_all_related_ids}).uniq
     
+    #Search
+      if params[:keyword].present?
+        records = records.where("LOWER(articles.title) LIKE ?", "%#{params[:keyword].downcase.strip}%")
+      end
+      
+      if params[:article_category_id].present?
+        article_category = ArticleCategory.find(params[:article_category_id])
+        records = records.joins(:article_categories).where(article_categories: {id: article_category.get_all_related_ids}).uniq
+      end
+      
+    return records
+  end
+  
+  def self.get_travel_news(params)
+    records = Article.get_active_articles
+    records = records.joins(:article_categories).where(article_categories: {id: self.where(description: "travel_news").first.get_all_related_ids}).uniq
+    #Search
+      if params[:keyword].present?
+        records = records.where("LOWER(articles.title) LIKE ?", "%#{params[:keyword].downcase.strip}%")
+      end
+      
     return records
   end
   
@@ -72,13 +93,6 @@ class ArticleCategory < ActiveRecord::Base
   def self.get_event_blogs
     records = Article.get_active_articles
     records = records.joins(:article_categories).where(article_categories: {id: self.where(description: "event").first.get_all_related_ids}).uniq
-    
-    return records
-  end
-  
-  def self.get_travel_news
-    records = Article.get_active_articles
-    records = records.joins(:article_categories).where(article_categories: {id: self.where(description: "travel_news").first.get_all_related_ids}).uniq
     
     return records
   end

@@ -1,3 +1,13 @@
+<div class="travelo-box">
+    <h5 class="box-title"><strong>Tìm kiếm</strong></h5>
+    <%= form_tag(tour_handbook_path, method: "get") do %>
+        <div class="with-icon full-width">
+            <% if @article_category.present? %><%= hidden_field_tag "article_category_id", @article_category.id %><% end %>
+            <input type="text" name="keyword" class="input-text full-width" placeholder="Nhập từ khóa cần tìm.....">
+            <button class="icon green-bg white-color"><i class="soap-icon-search"></i></button>
+        </div>
+    <% end %>
+</div>
 <div class="tab-container box">
     <ul class="tabs full-width">
         <li class="active"><a data-toggle="tab" href="#events">Cẩm Nang Du Lịch</a></li>
@@ -6,7 +16,7 @@
     <div class="tab-content">
         <div id="events" class="tab-pane fade in active">
             <div class="image-box style14">
-                <% ArticleCategory.get_tour_handbook_blogs.limit(8).each do |item| %>
+                <% ArticleCategory.get_tour_handbook_blogs(params).limit(8).each do |item| %>
                     <article class="box">
                         <figure><%= link_to image_tag(item.image_url.small_footer_image, width: "63", height: "63", alt: item.title), travel_news_detail_path(travel_news_id: item) %></figure>
                         <div class="details">
@@ -19,7 +29,7 @@
         
         <div id="travel_news" class="tab-pane fade">
             <div class="image-box style14">
-                <% ArticleCategory.get_travel_news.limit(8).each do |item| %>
+                <% ArticleCategory.get_travel_news(params).limit(8).each do |item| %>
                     <article class="box">
                         <figure><%= link_to image_tag(item.image_url.small_footer_image, width: "63", height: "63", alt: item.title), travel_news_detail_path(travel_news_id: item, title: item.url_friendly) %></figure>
                         <div class="details">
