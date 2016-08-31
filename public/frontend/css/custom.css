@@ -116,3 +116,6 @@ label.error {
     display: block;
     text-decoration: line-through;
 }
+.font-title {
+    font-family: Open Sans-serif;
+}
