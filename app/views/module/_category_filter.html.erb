@@ -1,6 +1,6 @@
 <section class="section_offset">
 
-    <h3>Tìm kiếm</h3>
+    <h3>Thương hiệu nổi bật</h3>
 
     <%= form_tag({controller: "product", action: "category"}, method: "get", class: "type_2") do %>
     <%= hidden_field_tag "number", params[:number] %>
@@ -16,7 +16,7 @@
 
                     <fieldset>
 
-                        <legend>Thương hiệu</legend>
+                        <!--<legend>Thương hiệu</legend>-->
 
                         <ul class="checkboxes_list">
                             
@@ -27,8 +27,9 @@
                                     <!--<input type="checkbox" <%= "checked" if manufacturer.id == params[:manufacturer_ids] %> name="manufacturer_ids[<%= manufacturer.id %>][]" value="<%= manufacturer.id %>" id="manufacturer_<%= manufacturer.id %>">
                                     <!--<= check_box_tag "manufacturer_ids[]", manufacturer.id, :id => "manufacturer_ids_#{manufacturer.id}" %>-->
                                     <!--<label for="manufacturer_<%= manufacturer.id %>"><%= manufacturer.name %></label>-->
-                                    <%= check_box_tag("manufacturer_ids[]", manufacturer.id, "#{manufacturer.id}") %>
-                                    <%= manufacturer.name %>
+                                    <!--<%= check_box_tag("manufacturer_ids[#{manufacturer.id}]", manufacturer.id, "#{manufacturer.id}") %>-->
+                                    <!--<label><%= manufacturer.name %></label>-->
+                                    <%= link_to manufacturer.name, { controller: "manufacturer", action: "products", manufacturer_id: manufacturer.id }, class: "button_grey" %>
                                 </li>
                             
                             <% end %>
@@ -47,17 +48,17 @@
 
         </div><!--/ .table_layout -->
 
-        <footer class="bottom_box">
-
-            <div class="buttons_row">
-
-                <button type="submit" class="button_blue middle_btn">Tìm kiếm</button>
-
-                <button type="reset" class="button_grey middle_btn filter_reset">Nhập lại</button>
-
-            </div>
-            
-        </footer>
+        <!--<footer class="bottom_box">-->
+        <!---->
+        <!--    <div class="buttons_row">-->
+        <!---->
+        <!--        <button type="submit" class="button_blue middle_btn">Tìm kiếm</button>-->
+        <!---->
+        <!--        <button type="reset" class="button_grey middle_btn filter_reset">Nhập lại</button>-->
+        <!---->
+        <!--    </div>-->
+        <!--    -->
+        <!--</footer>-->
         
     <% end %>
 
