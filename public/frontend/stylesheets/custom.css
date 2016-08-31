@@ -1076,3 +1076,6 @@ h3.care {
         width: 1000px;
     }
 }
+.theme-box-boder {
+    border: 3px solid #ddd;
+}
