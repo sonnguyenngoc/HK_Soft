@@ -51,7 +51,7 @@
                             <img src="/frontend/images/logo_new_discovery_tour.png" alt="">
                         </div>
                         <div class="heading box">
-                            <h1 class="title"><%= @article_category.name %></h1>
+                            <h1 class="title font-title"><%= @article_category.name %></h1>
                         </div>
                         <div class="search-box">
                             <%= form_tag(tour_packages_path(tour_packages_id: @article_category.id, name: @article_category.url_friendly), method: "get") do %>
