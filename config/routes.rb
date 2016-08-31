@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     
     # Tour du lịch
     get "tour-du-lich.html" => "tour#index", as: :tour
+    get "tour-khuyen-mai.html" => "tour#deal_tours", as: :deal_tours
     get "tour-du-lich/tim-kiem-tour.html" => "tour#tour_search", as: :tour_search
     get "bang-gia-tour.html" => "tour#tour_pricing", as: :tour_pricing
     get "tour-du-lich/tour-trong-nuoc.html" => "tour#domestic_tour", as: :domestic_tour

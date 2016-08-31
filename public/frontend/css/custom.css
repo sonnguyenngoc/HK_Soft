@@ -100,3 +100,19 @@ label.error {
 .post-content td, .post-content th {
     border: 1px solid black;
 }
+.discount-label .has-discount:before, .discount-label .discount {
+    left: 11px;
+}
+.price {
+    font-size: 1.4em;
+}
+.price-1 {
+    color: #777;
+    font-size: 1.4em;
+    text-transform: uppercase;
+    float: left;
+    text-align: right;
+    line-height: 1;
+    display: block;
+    text-decoration: line-through;
+}

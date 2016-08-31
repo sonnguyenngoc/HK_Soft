@@ -49,6 +49,10 @@ class Tour < ActiveRecord::Base
         return records
     end
     
+    def self.get_deal_tours_listing
+        self.where("tours.is_sale = true").order("created_at DESC")
+    end
+    
     def get_lastest_tour_from_date
         records = self.tour_schedules.where("from_date > ?", Time.now)
         if records.count > 0

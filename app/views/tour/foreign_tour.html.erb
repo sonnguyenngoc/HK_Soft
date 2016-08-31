@@ -94,9 +94,10 @@
                 </div>
                 
                 <div id="main">
-                    <div class="row add-clearfix image-box style1 tour-locations">
+                    <div class="row add-clearfix image-box discount-label style1 tour-locations">
                         <% @tours.each do |item| %>
                             <div class="col-sm-6 col-md-4 col-lg-3">
+                                <% if item.is_sale == true %><span class="discount"><span class="discount-text">Giảm giá <%= item.discount_percent %>%</span></span><% end %>
                                 <article class="box">
                                     <figure>
                                         <%= link_to image_tag(item.image_url.large_image), tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "hover-effect" %>
@@ -121,7 +122,7 @@
                                             </div>
                                             <div class="time">
                                                 <i class="soap-icon-passed yellow-color"></i>
-                                                Giá:<span> <% if item.new_price == 0 %>Liên hệ<% else %><%= format_number(item.new_price) %> VND<% end %></span>
+                                                Giá: <% if item.is_sale == true %><s><span><% if item.old_price == 0 %>Liên hệ<% else %><%= format_number(item.old_price) %> VND</s><% end %> - <% end %><span><% if item.new_price == 0 %>Liên hệ<% else %><%= format_number(item.new_price) %> VND<% end %></span>
                                             </div>
                                         </div>
                                         <%= link_to "XEM TOUR", tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "button btn-small full-width" %>

@@ -81,7 +81,7 @@
                                             <h4 class="box-title"><%= @tour.name %><small>Khởi hành:<%= @tour.duration %></small></h4>
                                         </div>
                                         <div class="details">
-                                            <span class="price">Giá: <% if @tour.new_price == 0 %>Liên hệ<% else %><%= format_number(@tour.new_price) %> VND<% end %></span>
+                                            <span class="price">Giá: <% if @tour.is_sale == true %><del><% if @tour.old_price == 0 %>Liên hệ<% else %><%= format_number(@tour.old_price) %> VND<% end %></del> - <% end %><% if @tour.new_price == 0 %>Liên hệ<% else %><%= format_number(@tour.new_price) %> VND<% end %></span>
                                             <%= link_to "ĐẶT TOUR", tour_booking_path(tour_booking_id: @tour, tour_name: @tour.url_friendly), class: "button green btn-small uppercase" %>
                                         </div>
                                     </div>
