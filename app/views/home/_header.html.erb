@@ -64,8 +64,12 @@
                                                         <li class="menu-item-has-children">
                                                             <% if child_1.description == "domestic_tour" %>
                                                                 <%= link_to child_1.name, domestic_tour_path %>
-                                                            <% else %>
+                                                            <% end %>
+                                                            <% if child_1.description == "foreign_tour" %>
                                                                 <%= link_to child_1.name, foreign_tour_path %>
+                                                            <% end %>
+                                                            <% if child_1.description == "deal_tours" %>
+                                                                <%= link_to child_1.name, deal_tours_path %>
                                                             <% end %>
                                                             <ul class="clearfix">
                                                                 <% child_1.children.order("created_at ASC").each do |child_2| %>
