@@ -115,7 +115,7 @@
                                     <% if !@product.description.empty? %>
                                         <%= @product.description %>
                                     <% else %>
-                                        Hiện tại chưa có mô tả cho sản phẩm này
+                                        Mô tả đang cập nhật...
                                     <% end %>
                                 </p>
                             </div>
@@ -137,10 +137,12 @@
                                     <div class="thumbnail thumbnail-product">
                                         <figure class="image-zoom">
                                             <% if product.get_main_image.present? %>
-                                                <%= image_tag(product.get_main_image.image_url.medium_image) %>
-                                            <% else %>
-                                                <img src="frontend/images/resource/no-image.png" alt="image">
-                                            <% end %>
+												<%= link_to image_tag(product.get_main_image.image_url.medium_image), product_detail_path(product_id: product.id) %>
+											<% else %>
+												<a href="<%= product_detail_path(product_id: product.id) %>">
+													<img src="frontend/images/resource/no-image.png" alt="image">
+												</a>
+											<% end %>
                                         </figure>
                                         <div class="caption text-center">
                                             <h5 class="format_name">
