@@ -19,8 +19,8 @@
                         <%= link_to @tour.article_category.parent.first.name, foreign_tour_path %>
                     <% end %>
                 </li>
-                <% end %>
                 <li><%= link_to @tour.article_category.name, tour_packages_path(tour_packages_id: @tour.article_category) %></li>
+                <% end %>
             </ul>
         </div>
     </div>
