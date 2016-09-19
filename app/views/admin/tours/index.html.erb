@@ -81,6 +81,12 @@
                                     <td>
                                         <strong><%= item.name %></strong><br/>
                                         <% if item.article_category.present? %><span class="label bg-success"><%= item.article_category.name %></span><br/><% end %>
+                                        <% if item.is_sale == true %>
+                                            <span class="label bg-teal-600">Tour đang khuyến mãi</span><br>
+                                        <% end %>
+                                        <% if item.is_hot == false %>
+                                            <span class="label bg-danger-600">Tour hot</span><br>
+                                        <% end %>
                                         <% if item.hidden == false %>
                                             <span class="label bg-info">Tour đang hiển thị</span>
                                         <% else %>
