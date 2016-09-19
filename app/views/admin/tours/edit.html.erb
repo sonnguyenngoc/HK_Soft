@@ -118,6 +118,12 @@
     });
     $(".select-hotel, .select-tour-category, .select-tour-type").select2();
     // Checkboxes and radios
+    $("#tour_is_hot").uniform({
+        radioClass: 'choice',
+        checkboxClass: 'checker',
+        wrapperClass: "border-danger text-danger-600"
+    });
+    // Checkboxes and radios
     $(".checkbox-related-articles, #tour_is_sale, .checkbox-transportations").uniform({
         radioClass: 'choice',
         checkboxClass: 'checker',

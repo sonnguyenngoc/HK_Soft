@@ -12,5 +12,51 @@
         <% end %>
     </div>
 </div>
-<%= render "/tour_handbook/right_sidebar" %>
+<div class="tab-container box">
+    <ul class="tabs full-width">
+        <li class="active"><a data-toggle="tab" href="#events">Tour Hot</a></li>
+        <li><a data-toggle="tab" href="#travel_news">Tour Khuyến Mãi</a></li>
+    </ul>
+    <div class="tab-content">
+        <div id="events" class="tab-pane fade in active">
+            <div class="image-box style14">
+                <% Tour.get_hot_tours.limit(8).each do |item| %>
+                    <article class="box">
+                        <figure><%= link_to image_tag(item.image_url.smaller_image, height: "59", width: "63"), tour_detail_path(tour_id: item, tour_name: item.url_friendly) %></figure>
+                        <div class="details">
+                            <h5 class="box-title"><%= link_to item.name, tour_detail_path(tour_id: item, tour_name: item.url_friendly) %></h5>
+                            <label class="price-wrapper"><span class="price-per-unit"><% if @tour.new_price == 0 %>Liên hệ<% else %><%= format_number(@tour.new_price) %> VND<% end %></span></label>
+                        </div>
+                    </article>
+                <% end %>
+            </div>
+        </div>
+        
+        <div id="travel_news" class="tab-pane fade">
+            <div class="image-box style14">
+                <% Tour.get_discount_tours.limit(8).each do |item| %>
+                    <article class="box">
+                        <figure><%= link_to image_tag(item.image_url.smaller_image, height: "59", width: "63"), tour_detail_path(tour_id: item, tour_name: item.url_friendly) %></figure>
+                        <div class="details">
+                            <h5 class="box-title"><%= link_to item.name, tour_detail_path(tour_id: item, tour_name: item.url_friendly) %></h5>
+                            <label class="price-wrapper"><span class="price-per-unit"><% if @tour.new_price == 0 %>Liên hệ<% else %><%= format_number(@tour.new_price) %> VND<% end %></span></label>
+                        </div>
+                    </article>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="travelo-box">
+    <h5 class="box-title"><strong>Cẩm Nang Du Lịch</strong></h5>
+    <ul class="check box">
+        <% ArticleCategory.all.each do |item| %>
+            <% if item.description == "tour_handbook" %>
+                <% item.children.order("created_at ASC").each do |child_1| %>
+                    <li><%= link_to child_1.name, tour_handbook_sub_1_path(tour_handbook_sub_1: child_1) %></li>
+                <% end %>
+            <% end %>
+        <% end %>
+    </ul>
+</div>
 <%= render "/home/need_help" %>

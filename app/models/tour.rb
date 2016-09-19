@@ -10,6 +10,10 @@ class Tour < ActiveRecord::Base
         self.where("tours.is_sale = true and tours.hidden = false").order("created_at DESC")
     end
     
+    def self.get_hot_tours
+        self.where("tours.is_hot = true and tours.hidden = false").order("created_at DESC")
+    end
+    
     def url_friendly
         self.name.unaccent.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip
     end
