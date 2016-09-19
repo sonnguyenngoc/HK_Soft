@@ -11,6 +11,7 @@
             <ul class="breadcrumbs pull-right">
                 <li><%= link_to "Trang Chủ", root_path %></li>
                 <li><%= link_to "Tour Du Lịch", tour_path %></li>
+                <% if @tour.article_category.present? %>
                 <li>
                     <% if @tour.article_category.parent.first.description == "domestic_tour" %>
                         <%= link_to @tour.article_category.parent.first.name, domestic_tour_path %>
@@ -19,6 +20,7 @@
                     <% end %>
                 </li>
                 <li><%= link_to @tour.article_category.name, tour_packages_path(tour_packages_id: @tour.article_category) %></li>
+                <% end %>
                 <li><%= link_to @tour.name, tour_detail_path(tour_id: @tour) %></li>
                 <li class="active">Đặt Tour</li>
             </ul>
@@ -115,7 +117,9 @@
                         <article class="tour-detail">
                             <figure class="clearfix">
                                 <small class="uppercase"><strong>Loại: </strong> <%= @tour.type_name %></small><br/>
+                                <% if @tour.article_category.present? %>
                                 <small class="uppercase"><strong>Chuyên mục: </strong> <%= @tour.article_category.name %></small><br/>
+                                <% end %>
                                 <small class="uppercase"><strong>Khởi hành: </strong> <%= @tour.duration %></small><br/>
                                 <small class="uppercase"><strong>Thời gian chuyến tour: </strong> 3 ngày 2 đêm</small><br/>
                                 <small class="uppercase"><strong>Loại khách sạn: </strong> <%= @tour.hotel %></small><br/></br>
