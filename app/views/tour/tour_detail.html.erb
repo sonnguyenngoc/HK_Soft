@@ -11,7 +11,7 @@
             <ul class="breadcrumbs pull-right">
                 <li><%= link_to "Trang Chủ", root_path %></li>
                 <li><%= link_to "Tour Du Lịch", tour_path %></li>
-                <% if @tour.article_category.count > 0 %>
+                <% if @tour.article_category.present? %>
                 <li>
                     <% if @tour.article_category.parent.first.description == "domestic_tour" %>
                         <%= link_to @tour.article_category.parent.first.name, domestic_tour_path %>
