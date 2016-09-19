@@ -11,6 +11,7 @@
             <ul class="breadcrumbs pull-right">
                 <li><%= link_to "Trang Chủ", root_path %></li>
                 <li><%= link_to "Tour Du Lịch", tour_path %></li>
+                <% if @tour.article_category.count > 0 %>
                 <li>
                     <% if @tour.article_category.parent.first.description == "domestic_tour" %>
                         <%= link_to @tour.article_category.parent.first.name, domestic_tour_path %>
@@ -18,6 +19,7 @@
                         <%= link_to @tour.article_category.parent.first.name, foreign_tour_path %>
                     <% end %>
                 </li>
+                <% end %>
                 <li><%= link_to @tour.article_category.name, tour_packages_path(tour_packages_id: @tour.article_category) %></li>
             </ul>
         </div>
