@@ -60,12 +60,12 @@
                             <div class="col-sm-5 table-cell travelo-box">
                                 <h4>Dịch vụ đính kèm</h4>
                                 <dl class="term-description">
-                                    <dt><i class="soap-icon-card"></i></dt><dd>Vé tham quan</dd>
-                                    <dt><i class="soap-icon-doorman"></i></dt><dd>Hướng dẩn viên</dd>
-                                    <dt><i class="soap-icon-food"></i></dt><dd>Ăn uống</dd>
-                                    <dt><i class="soap-icon-plane-right"></i></dt><dd>Phương tiện đi lại</dd>
-                                    <dt><i class="soap-icon-card"></i></dt><dd>Bảo hiểm</dd>
-                                    <dt><i class="soap-icon-hotel-1"></i></dt><dd>Khách sạn</dd>
+                                    <% if @tour.get_services.include?("entrance_fees") %><dt><i class="soap-icon-card"></i></dt><dd>Vé tham quan</dd><% end %>
+                                    <% if @tour.get_services.include?("guides") %><dt><i class="soap-icon-doorman"></i></dt><dd>Hướng dẩn viên</dd><% end %>
+                                    <% if @tour.get_services.include?("food") %><dt><i class="soap-icon-food"></i></dt><dd>Ăn uống</dd><% end %>
+                                    <% if @tour.get_services.include?("transportation") %><dt><i class="soap-icon-plane-right"></i></dt><dd>Phương tiện đi lại</dd><% end %>
+                                    <% if @tour.get_services.include?("insurrance") %><dt><i class="soap-icon-card"></i></dt><dd>Bảo hiểm</dd><% end %>
+                                    <% if @tour.get_services.include?("hotel") %><dt><i class="soap-icon-hotel-1"></i></dt><dd>Khách sạn</dd><% end %>
                                 </dl>
                                 <div class="selector">
                                     <select class="full-width">
@@ -92,8 +92,8 @@
                                             <%= @tour.description %>
                                         </div>
                                         <dl class="term-description">
-                                            <dt>Thời gian chuyến tour</dt><dd>2 ngày 3 đêm</dd>
-                                            <dt>Phương tiện</i></dt><dd>Tàu, Máy bay</dd>
+                                            <dt>Thời gian chuyến tour</dt><dd><%= @tour.time_line %></dd>
+                                            <dt>Phương tiện</i></dt><dd><% if @tour.get_transportations.include?("car") %>Xe du lịch. <% end %> <% if @tour.get_transportations.include?("plane") %>Máy bay. <% end %><% if @tour.get_transportations.include?("trunk") %>Tàu cao tốc. <% end %></dd>
                                             <dt>Khách sạn</i></dt><dd><%= @tour.hotel %></dd>
                                             <dt>Phụ thu cuối tuần</i></dt><dd><% if @tour.surcharge_1 == 0 %>Liên hệ<% else %><%= format_number(@tour.surcharge_1) %> VND/Khách<% end %></dd>
                                             <dt>Phụ thu lễ tết</i></dt><dd><% if @tour.surcharge_2 == 0 %>Liên hệ<% else %><%= format_number(@tour.surcharge_2) %> VND/Khách<% end %></dd>
