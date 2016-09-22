@@ -92,7 +92,7 @@
                                             <%= @tour.description %>
                                         </div>
                                         <dl class="term-description">
-                                            <dt>Thời gian chuyến tour</dt><dd><%= @tour.time_line %></dd>
+                                            <% if !@tour.time_line.nil? %><dt>Thời gian chuyến tour</dt><dd><%= @tour.time_line %></dd><% end %>
                                             <dt>Phương tiện</i></dt><dd><% if @tour.get_transportations.include?("car") %>Xe du lịch. <% end %> <% if @tour.get_transportations.include?("plane") %>Máy bay. <% end %><% if @tour.get_transportations.include?("trunk") %>Tàu cao tốc. <% end %></dd>
                                             <dt>Khách sạn</i></dt><dd><%= @tour.hotel %></dd>
                                             <dt>Phụ thu cuối tuần</i></dt><dd><% if @tour.surcharge_1 == 0 %>Liên hệ<% else %><%= format_number(@tour.surcharge_1) %> VND/Khách<% end %></dd>
