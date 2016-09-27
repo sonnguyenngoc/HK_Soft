@@ -28,7 +28,7 @@
 
                         <!-- - - - - - - - - - - - - - Filter - - - - - - - - - - - - - - - - -->
 
-                        <%= render "module/category_filter" %>
+                        <%= render "module/category_filter" if !@products.empty? %>
 
                         <!-- - - - - - - - - - - - - - End of filter - - - - - - - - - - - - - - - - -->
                         
