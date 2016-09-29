@@ -97,7 +97,7 @@
                             <figure class="clearfix">
                                 <a title="" href="<%= car_detail_path(car_id: @car_booking, name: @car_booking.url_friendly) %>" class="middle-block"><img class="middle-item" alt="" src="<%= @car_booking.image_url.square_small_image %>"></a>
                                 <div class="travel-title">
-                                    <h5 class="box-title"><%= @car_booking.name %><small><%= @car_booking.manufacturer.name %></small></h5>
+                                    <h5 class="box-title"><%= @car_booking.name %><% if !@car_booking.manufacturer_id.nil? %><small><%= @car_booking.manufacturer.name %></small><% end %></h5>
                                     <%= link_to "Chọn gói thuê khác", car_hire_path, class: "button" %>
                                 </div>
                             </figure>

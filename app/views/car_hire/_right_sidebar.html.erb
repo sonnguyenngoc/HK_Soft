@@ -1,6 +1,6 @@
 <article class="detailed-logo">
     <div class="details">
-        <h2 class="box-title"><%= @car_detail.manufacturer.name %></h2>
+        <% if !@car_detail.manufacturer_id.nil? %><h2 class="box-title"><%= @car_detail.manufacturer.name %></h2><% end %>
         <span class="price clearfix">
             <small class="pull-left">Giá thuê</small>
             <span class="pull-right"><% if @car_detail.price == 0 %>Liên Hệ<% else %><%= format_number(@car_detail.price) %> VND<% end %></span>
