@@ -6,7 +6,7 @@
                 <figure><%= link_to image_tag(item.image_url.smaller_image, height: "59", width: "63"), tour_detail_path(tour_id: item, tour_name: item.url_friendly) %></figure>
                 <div class="details">
                     <h5 class="box-title"><%= link_to item.name, tour_detail_path(tour_id: item, tour_name: item.url_friendly) %></h5>
-                    <label class="price-wrapper"><span class="price-per-unit"><% if @tour.new_price == 0 %>Liên hệ<% else %><%= format_number(@tour.new_price) %> VND<% end %></span></label>
+                    <label class="price-wrapper"><span class="price-per-unit"><% if item.new_price == 0 %>Liên hệ<% else %><%= format_number(item.new_price) %> VND<% end %></span></label>
                 </div>
             </article>
         <% end %>
@@ -25,7 +25,7 @@
                         <figure><%= link_to image_tag(item.image_url.smaller_image, height: "59", width: "63"), tour_detail_path(tour_id: item, tour_name: item.url_friendly) %></figure>
                         <div class="details">
                             <h5 class="box-title"><%= link_to item.name, tour_detail_path(tour_id: item, tour_name: item.url_friendly) %></h5>
-                            <label class="price-wrapper"><span class="price-per-unit"><% if @tour.new_price == 0 %>Liên hệ<% else %><%= format_number(@tour.new_price) %> VND<% end %></span></label>
+                            <label class="price-wrapper"><span class="price-per-unit"><% if item.new_price == 0 %>Liên hệ<% else %><%= format_number(item.new_price) %> VND<% end %></span></label>
                         </div>
                     </article>
                 <% end %>
@@ -39,7 +39,7 @@
                         <figure><%= link_to image_tag(item.image_url.smaller_image, height: "59", width: "63"), tour_detail_path(tour_id: item, tour_name: item.url_friendly) %></figure>
                         <div class="details">
                             <h5 class="box-title"><%= link_to item.name, tour_detail_path(tour_id: item, tour_name: item.url_friendly) %></h5>
-                            <label class="price-wrapper"><span class="price-per-unit"><% if @tour.new_price == 0 %>Liên hệ<% else %><%= format_number(@tour.new_price) %> VND<% end %></span></label>
+                            <label class="price-wrapper"><span class="price-per-unit"><% if item.new_price == 0 %>Liên hệ<% else %><%= format_number(item.new_price) %> VND<% end %></span></label>
                         </div>
                     </article>
                 <% end %>
