@@ -103,7 +103,7 @@
                                         <%= link_to image_tag(item.image_url.large_image), tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "hover-effect" %>
                                     </figure>
                                     <div class="details">
-                                        <h4 class="box-title text-justify"><%= item.name %></h4>
+                                        <h4 class="box-title text-justify"><%= link_to item.name, tour_detail_path(tour_id: item, tour_name: item.url_friendly) %></h4>
                                         <hr>
                                         <div class="text-justify"><%= truncate(strip_tags(item.description), length: 100) %></div>
                                         <hr>
