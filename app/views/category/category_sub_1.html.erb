@@ -75,7 +75,7 @@
 									<div class="caption">
 										<div class="text-wrap">
 											<h5 class="format_name"><%= link_to product.name, { controller: "product", action: "index", product_id: product.id }, title: product.name %></h5>
-											<p class="prod-price text-primary"><%= format_number(product.price) %> VNĐ</p>
+											<p class="prod-price text-primary"><%= format_number(product.display_old_price) %><%= format_number(product.price) %> VNĐ</p>
 											<div class="filter-list-disp">
 												<%= link_to "Xem Sản Phẩm", { controller: "product", action: "index", product_id: product.id }, class: "btn btn-default view-detail" %>
 											</div>

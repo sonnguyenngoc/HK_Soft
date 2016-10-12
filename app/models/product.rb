@@ -402,4 +402,12 @@ class Product < ActiveRecord::Base
     
     return sum
   end
+  # display html-css old price
+  def display_old_price
+    display=""
+    if self.old_price.present?
+      display="<span class=\"old-price\">#{self.old_price.to_i} VNĐ</span> "
+    end
+    return display.html_safe
+  end
 end

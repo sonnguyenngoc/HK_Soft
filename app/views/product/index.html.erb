@@ -50,7 +50,7 @@
                                                 Đang cập nhật
                                             <% end %>
                                         </p>
-                                        <p>Giá: <span class="text-primary"><%= format_number(@product.price) %> VNĐ</span></p>
+                                        <p>Giá: <span class="text-primary"><%= format_number(@product.display_old_price) %><%= format_number(@product.price) %> VNĐ</span></p>
                                         <p class="text-justify">Mô tả ngắn: <%= @product.short_description %></p>
 										
 										<form action="<%= add_to_cart_line_items_path(product_id: @product) %>" method="get">
@@ -113,7 +113,7 @@
                                 <h4>Mô Tả Sản Phẩm</h4>
                                 <p class="text-justify">
                                     <% if !@product.description.empty? %>
-                                        <%= @product.description %>
+                                        <%= @product.description.html_safe %>
                                     <% else %>
                                         Mô tả đang cập nhật...
                                     <% end %>
@@ -149,7 +149,7 @@
                                                 <%= link_to product.name, { controller: "product", action: "index", product_id: product.id }, title: product.name %>
                                             </h5>
                                             <!-- /rating-star -->
-                                            <p class="prod-price text-primary">Giá: <%= format_number(product.price) %> VNĐ</p>
+                                            <p class="prod-price text-primary"><%= format_number(product.display_old_price) %><%= format_number(product.price) %> VNĐ</p>
                                         </div>
                                     </div>
                                     <!-- /thumbail -->
