@@ -4,7 +4,7 @@
  * 
  */
 .main-nav > li > a, .footer-links li a {
-    padding: 18px 15px !important;
+    padding: 18px 8px !important;
 }
 .text-justify {
     text-align: justify
