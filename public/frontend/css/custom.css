@@ -183,3 +183,6 @@ span.old-price {
     color: #000;
     text-decoration: line-through;
 }
+strong.note {
+    color: red;
+}
