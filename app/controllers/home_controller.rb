@@ -7,5 +7,6 @@ class HomeController < ApplicationController
         @booking_tour = BookingTour.new
         @booking_car = BookingCar.new
         @booking_hotel = BookingHotel.new
+        @slides = Slideshow.get_all_slides
     end
 end

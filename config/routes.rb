@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     
     # Giới thiệu
     get "gioi-thieu.html" => "about_us#index", as: :about_us
+    get "hinh-anh-hoat-dong.html" => "about_us#activities_photos", as: :activities_photos
+    get "hinh-anh-hoat-dong/xem-nhanh/:activities_photo_id.html" => "about_us#image_popup", as: :image_popup
     get "chinh-sach-thanh-toan.html" => "about_us#info_system_1", as: :info_system_1
     get "chinh-sach-doi-tra-va-hoan-tien.html" => "about_us#info_system_2", as: :info_system_2
     get "chinh-sach-bao-mat-thong-tin-khach-hang.html" => "about_us#info_system_3", as: :info_system_3
@@ -17,6 +19,7 @@ Rails.application.routes.draw do
     # Tour du lịch
     get "tour-du-lich.html" => "tour#index", as: :tour
     get "tour-khuyen-mai.html" => "tour#deal_tours", as: :deal_tours
+    get "tour-hot.html" => "hot_tours#index", as: :hot_tours
     get "tour-du-lich/tim-kiem-tour.html" => "tour#tour_search", as: :tour_search
     get "bang-gia-tour.html" => "tour#tour_pricing", as: :tour_pricing
     get "tour-du-lich/tour-trong-nuoc.html" => "tour#domestic_tour", as: :domestic_tour
@@ -229,6 +232,7 @@ Rails.application.routes.draw do
         resources :booking_visas, path: "dang-ky-lam-visa"
         resources :booking_planes, path: "dat-ve-may-bay"
         resources :companies, path: "chi-nhanh"
+        resources :galleries, path: "hinh-anh-hoat-dong"
         resources :user_groups, path: "nhom-nguoi-dung"
         get "tru-so-chinh" => "companies#head_office", as: :head_office
         resources :options, path: "cai-dat"

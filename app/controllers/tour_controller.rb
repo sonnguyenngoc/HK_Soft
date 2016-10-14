@@ -33,6 +33,8 @@ class TourController < ApplicationController
   def tour_detail
     @page_name = Category.where(description: "tour").first
     @tour = Tour.find(params[:tour_id])
+    @meta_keywords = @tour.meta_keywords
+    @meta_description = @tour.meta_description
   end
 
   def tour_booking

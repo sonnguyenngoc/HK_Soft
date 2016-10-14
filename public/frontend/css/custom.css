@@ -119,3 +119,60 @@ label.error {
 .font-title {
     font-family: Open Sans-serif;
 }
+.transform-capitalize {
+    text-transform: capitalize;
+}
+.tab-container ul.tabs li.active>a, .tab-container ul.tabs li:hover>a {
+    background: #01b7f2;
+    color: #fff;
+}
+.star-custom {
+    font-size: 20px;
+    color: #01b7f2;
+}
+.image-box .box, .image-box.box {
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+.no-padding-bottom {
+    padding-bottom: 5px;
+}
+.image-box .has-discount:before, .image-box .discount {
+    top: 1px;
+}
+.tour-image-box .has-discount:before, .tour-image-box .discount {
+    top: -4px;
+}
+#tour-details .intro2 .term-description dt {
+    width: 160px;
+}
+#tour-details .intro2 .image-container {
+    width: 200px;
+}
+.detail-schedules {
+    margin-top: 10px;
+}
+.flexslider {
+    margin: 0 0 10px;
+}
+.custom-tour-price {
+    width: 200px !important;
+}
+.custom-tour-price .price small {
+    color: #ff3e3e;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+.custom-tour-price .price del {
+    color: #838383;
+}
+#tour-details .intro2 .price-section .price {
+    line-height: 1.2em;
+}
+.tour-locations .box .features li.tour-highlights {
+    line-height: 0.5em !important;
+    padding: 1.2em 0 0.5em 18px !important;
+}
+.line-height-short {
+    line-height: 1.5em;
+}

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160922081428) do
+ActiveRecord::Schema.define(version: 20161014091340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -337,6 +337,21 @@ ActiveRecord::Schema.define(version: 20160922081428) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "galleries", force: :cascade do |t|
+    t.string   "image_url"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "gallery_images", force: :cascade do |t|
+    t.string   "image_url"
+    t.integer  "gallery_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "hotel_images", force: :cascade do |t|
     t.string   "image_url"
     t.integer  "hotel_id"
@@ -594,11 +609,14 @@ ActiveRecord::Schema.define(version: 20160922081428) do
     t.string   "title_2"
     t.string   "name_button"
     t.string   "link"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "color_1"
     t.string   "color_2"
     t.string   "style"
+    t.boolean  "use_images",  default: true
+    t.integer  "position"
+    t.string   "title_3"
   end
 
   create_table "testimonials", force: :cascade do |t|
@@ -607,6 +625,13 @@ ActiveRecord::Schema.define(version: 20160922081428) do
     t.string   "email"
     t.string   "content"
     t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tour_highlights", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "tour_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -654,6 +679,12 @@ ActiveRecord::Schema.define(version: 20160922081428) do
     t.decimal  "surcharge_2"
     t.boolean  "is_hot",              default: false
     t.string   "time_line"
+    t.string   "meta_keywords"
+    t.text     "meta_description"
+    t.text     "tab_content_1"
+    t.text     "tab_content_2"
+    t.text     "tab_content_3"
+    t.text     "tab_content_4"
   end
 
   create_table "user_groups", force: :cascade do |t|

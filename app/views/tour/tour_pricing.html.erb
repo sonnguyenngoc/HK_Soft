@@ -31,12 +31,12 @@
                             <tbody>
                                 <% Tour.get_tour_listing(params).each do |item| %>
                                     <tr>
-                                        <td><%= link_to item.name, tour_detail_path(tour_id: item) %></td>
+                                        <td><%= link_to item.name, tour_detail_path(tour_id: item, tour_name: item.url_friendly), title: item.name, class: "transform-capitalize" %></td>
                                         <td>
                                             <div class="selector">
                                                 <select class="full-width">
                                                     <option value="">Lịch khởi hành - [<%= item.get_count_tour_schedules %>]</option>
-                                                    <% item.tour_schedules.each do |schedule| %>
+                                                    <% item.tour_schedules.get_tour_schedules.each do |schedule| %>
                                                         <option value=""><% if !schedule.from_date.nil? %><%= schedule.from_date.strftime("%d/%m/%Y") %><% end %><% if !schedule.to_date.nil? %> - <%= schedule.to_date.strftime("%d/%m/%Y") %><% end %></option>
                                                     <% end %>
                                                 </select>

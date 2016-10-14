@@ -23,6 +23,9 @@ class Admin::ToursController < ApplicationController
     30.times do
       @tour.tour_images.build
     end
+    5.times do
+      @tour.tour_highlights.build
+    end
   end
 
   # GET /tours/1/edit
@@ -33,6 +36,9 @@ class Admin::ToursController < ApplicationController
     end
     (30-@tour.tour_images.count).times do
       @tour.tour_images.build
+    end
+    (5-@tour.tour_highlights.count).times do
+      @tour.tour_highlights.build
     end
   end
 
@@ -141,6 +147,6 @@ class Admin::ToursController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tour_params
-      params.require(:tour).permit(:image_url, :approved, :article_category_id, :type_name, :name, :description, :content, :is_sale, :is_hot, :discount_percent, :new_price, :time_line, :old_price, :surcharge_1, :surcharge_2, :services, :duration, :position, :hotel, :transportation, tour_schedules_attributes: [:id, :from_date, :to_date, :depart, :arrive, :seat, :_destroy], tour_images_attributes: [:id, :image_url, :_destroy])
+      params.require(:tour).permit(:image_url, :tab_content_1, :tab_content_2, :tab_content_3, :tab_content_4, :meta_keywords, :meta_description, :approved, :article_category_id, :type_name, :name, :description, :content, :is_sale, :is_hot, :discount_percent, :new_price, :time_line, :old_price, :surcharge_1, :surcharge_2, :services, :duration, :position, :hotel, :transportation, tour_schedules_attributes: [:id, :from_date, :to_date, :depart, :arrive, :seat, :_destroy], tour_highlights_attributes: [:id, :title, :_destroy], tour_images_attributes: [:id, :image_url, :_destroy])
     end
 end

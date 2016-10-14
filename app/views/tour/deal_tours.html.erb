@@ -82,26 +82,39 @@
             <div class="container">
                 
                 <div class="text-center description block">
-                    <h1>DANH SÁCH TOUR DU LỊCH</h1>
+                    <h1>DANH SÁCH TOUR KHUYẾN MÃI</h1>
                 </div>
                 
                 <div id="main">
                     <div class="row add-clearfix image-box discount-label style1 tour-locations">
                         <% @tours.each do |item| %>
                             <div class="col-sm-6 col-md-4">
-                                <span class="discount"><span class="discount-text">Giảm giá <%= item.discount_percent %>%</span></span>
+                                <% if item.is_sale == true %><span class="discount"><span class="discount-text">Giảm giá <%= item.discount_percent %>%</span></span><% end %>
                                 <article class="box">
                                     <figure>
                                         <%= link_to image_tag(item.image_url.larger_image), tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "hover-effect" %>
                                     </figure>
                                     <div class="details">
-                                        <h4 class="box-title"><%= item.name %></h4>
-                                        <span class="price-1"><% if item.old_price == 0 %>Liên hệ<% else %><%= format_number(item.old_price) %> VND<% end %></span>
-                                        <span class="price"><% if item.new_price == 0 %>Liên hệ<% else %><%= format_number(item.new_price) %> VND<% end %></span>
+                                        <h4 class="box-title text-justify transform-capitalize"><%= link_to item.name, tour_detail_path(tour_id: item, tour_name: item.url_friendly) %></h4>
+                                        <% if item.is_sale == true %><span class="price-1"><% if item.old_price == 0 %>Liên hệ<% else %><%= format_number(item.old_price) %> VNĐ<% end %></span><% end %>
+                                        <span class="price"><% if item.new_price == 0 %>Liên hệ<% else %><%= format_number(item.new_price) %> VNĐ<% end %></span>
                                         <hr>
-                                        <div class="text-justify"><%= truncate(strip_tags(item.description), length: 150) %></div>
+                                        <div class="transform-capitalize line-height-short"><strong>Phương tiện: </strong><% if item.get_transportations.include?("car") %>Xe du lịch. <% end %> <% if item.get_transportations.include?("plane") %>Máy bay. <% end %><% if item.get_transportations.include?("trunk") %>Tàu cao tốc. <% end %></div>
+                                        <% if item.tour_highlights.count > 0 %>
+                                        <div class="transform-capitalize line-height-short"><strong>Điểm nổi bật: </strong></div>
+                                        <ul class="features check line-height-short">
+                                            <% item.tour_highlights.each do |item| %>
+                                            <li class="tour-highlights"><%= item.title %></li>
+                                            <% end %>
+                                        </ul>
+                                        <% end %>
+                                        <div class="transform-capitalize line-height-short"><strong>Thời gian: </strong><%= item.time_line %></div>
+                                        <div class="text-justify"><%= truncate(strip_tags(item.description), length: 160) %></div>
                                         <hr>
                                         <div class="text-center">
+                                            <div class="selector star-custom">
+                                                <i class="soap-icon-error"></i><i class="soap-icon-error"></i><i class="soap-icon-error"></i><i class="soap-icon-error"></i><i class="soap-icon-error"></i>
+                                            </div>
                                             <div class="selector">
                                                 <select class="full-width">
                                                     <option value="">Lịch khởi hành - [<%= item.get_count_tour_schedules %>]</option>
@@ -112,7 +125,7 @@
                                             </div>
                                             <div class="time">
                                                 <i class="soap-icon-clock yellow-color"></i>
-                                                Tour sớm nhất:<span> <% if item.tour_schedules.count > 0 %><% if !item.get_lastest_tour_from_date.nil? %><%= item.get_lastest_tour_from_date %><% end %><% if !item.get_lastest_tour_to_date.nil? %> - <%= item.get_lastest_tour_to_date %><% end %><% else %>Chưa có lịch cho tour<% end %></span>
+                                                Tour sớm nhất:<span> <% if item.tour_schedules.get_tour_schedules.count > 0 %><% if !item.get_lastest_tour_from_date.nil? %><%= item.get_lastest_tour_from_date %><% end %><% if !item.get_lastest_tour_to_date.nil? %> - <%= item.get_lastest_tour_to_date %><% end %><% else %>Chưa có lịch cho tour<% end %></span>
                                             </div>
                                         </div>
                                         <%= link_to "XEM TOUR", tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "button btn-small full-width" %>

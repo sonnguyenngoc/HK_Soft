@@ -51,7 +51,7 @@
                             <img src="/frontend/images/logo_new_discovery_tour.png" alt="">
                         </div>
                         <div class="heading box">
-                            <h1 class="title font-title"><%= @article_category.name %></h1>
+                            <h1 class="title"><%= @article_category.name %></h1>
                         </div>
                         <div class="search-box">
                             <%= form_tag(tour_packages_path(tour_packages_id: @article_category.id, name: @article_category.url_friendly), method: "get") do %>
@@ -94,11 +94,24 @@
                                         <%= link_to image_tag(item.image_url.large_image), tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "hover-effect" %>
                                     </figure>
                                     <div class="details">
-                                        <h4 class="box-title text-justify"><%= link_to item.name, tour_detail_path(tour_id: item, tour_name: item.url_friendly) %></h4>
+                                        <h4 class="box-title text-justify transform-capitalize"><%= link_to item.name, tour_detail_path(tour_id: item, tour_name: item.url_friendly), title: item.name %></h4>
                                         <hr>
+                                        <div class="transform-capitalize line-height-short"><strong>Phương tiện: </strong><% if item.get_transportations.include?("car") %>Xe du lịch. <% end %> <% if item.get_transportations.include?("plane") %>Máy bay. <% end %><% if item.get_transportations.include?("trunk") %>Tàu cao tốc. <% end %></div>
+                                        <% if item.tour_highlights.count > 0 %>
+                                        <div class="transform-capitalize line-height-short"><strong>Điểm nổi bật: </strong></div>
+                                        <ul class="features check">
+                                            <% item.tour_highlights.each do |item| %>
+                                            <li class="tour-highlights"><%= item.title %></li>
+                                            <% end %>
+                                        </ul>
+                                        <% end %>
+                                        <div class="transform-capitalize line-height-short"><strong>Thời gian: </strong><%= item.time_line %></div>
                                         <div class="text-justify"><%= truncate(strip_tags(item.description), length: 100) %></div>
                                         <hr>
                                         <div class="text-center">
+                                            <div class="selector star-custom">
+                                                <i class="soap-icon-error"></i><i class="soap-icon-error"></i><i class="soap-icon-error"></i><i class="soap-icon-error"></i><i class="soap-icon-error"></i>
+                                            </div>
                                             <div class="selector">
                                                 <select class="full-width">
                                                     <option value="">Lịch khởi hành - [<%= item.get_count_tour_schedules %>]</option>
@@ -109,7 +122,7 @@
                                             </div>
                                             <div class="time">
                                                 <i class="soap-icon-clock yellow-color"></i>
-                                                Tour sớm nhất:<span> <% if item.tour_schedules.count > 0 %><% if !item.get_lastest_tour_from_date.nil? %><%= item.get_lastest_tour_from_date %><% end %><% if !item.get_lastest_tour_to_date.nil? %> - <%= item.get_lastest_tour_to_date %><% end %><% else %>Chưa có lịch cho tour<% end %></span>
+                                                Tour sớm nhất:<span> <% if item.tour_schedules.get_tour_schedules.count > 0 %><% if !item.get_lastest_tour_from_date.nil? %><%= item.get_lastest_tour_from_date %><% end %><% if !item.get_lastest_tour_to_date.nil? %> - <%= item.get_lastest_tour_to_date %><% end %><% else %>Chưa có lịch cho tour<% end %></span>
                                             </div>
                                             <div class="time">
                                                 <i class="soap-icon-passed yellow-color"></i>

@@ -17,6 +17,9 @@
             <li><a href="#control-tab2" data-toggle="tab">Tổng quan hành trình</a></li>
             <li><a href="#control-tab3" data-toggle="tab">Lịch khởi hành tour du lịch</a></li>
             <li><a href="#control-tab4" data-toggle="tab">Hình ảnh tour du lịch</a></li>
+            <li><a href="#control-tab5" data-toggle="tab">SEO</a></li>
+            <li><a href="#control-tab6" data-toggle="tab">Điểm nổi bật</a></li>
+            <li><a href="#control-tab7" data-toggle="tab">Nội dung ngắn</a></li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane has-padding active" id="control-tab1">
@@ -61,7 +64,7 @@
                 <div class="form-group">
                     <label class="col-lg-3 control-label" >Tour <span class='text-danger'>*</span></label>
                     <div class="col-lg-9">
-                        <%= f.text_field :name, class: "form-control" %>
+                        <%= f.text_field :name, class: "form-control required" %>
                     </div>
                 </div>
                     
@@ -80,16 +83,16 @@
                 <div class="form-group">
                     <label class="col-lg-3 control-label" >Giá tiền của tour <span class='text-danger'>*</span></label>
                     <div class="col-lg-9">
-                        <%= f.text_field :new_price, class: "form-control" %>
+                        <%= f.text_field :new_price, class: "form-control required" %>
                     </div>
                 </div>
                     
                 <div class="form-group">
-                    <label class="col-lg-3 control-label" >Phụ thu cuối tuần <span class='text-danger'>*</span></label>
+                    <label class="col-lg-3 control-label" >Phụ thu cuối tuần</label>
                     <div class="col-lg-3">
                         <%= f.text_field :surcharge_1, class: "form-control", placeholder: "Phụ thu cuối tuần / khách" %>
                     </div>
-                    <label class="col-lg-3 control-label" >Phụ thu lễ tết <span class='text-danger'>*</span></label>
+                    <label class="col-lg-3 control-label" >Phụ thu lễ tết</label>
                     <div class="col-lg-3">
                         <%= f.text_field :surcharge_2, class: "form-control", placeholder: "Phụ thu lễ tết / khách" %>
                     </div>
@@ -110,7 +113,7 @@
                 <div class="form-group">
                     <label class="col-lg-3 control-label" >Thời gian chuyến tour <span class='text-danger'>*</span></label>
                     <div class="col-lg-9">
-                        <%= f.text_field :time_line, class: "form-control" %>
+                        <%= f.text_field :time_line, class: "form-control required" %>
                     </div>
                 </div>
                     
@@ -171,7 +174,6 @@
             </div>
             
             <div class="tab-pane has-padding" id="control-tab2">
-                
                 <div class="form-group">
                     <label class="col-lg-2 control-label" >Giới thiệu về tour <span class='text-danger'>*</span></label>
                 </div>
@@ -233,7 +235,6 @@
             </div>
             
             <div class="tab-pane has-padding" id="control-tab4">
-                
                 <div class="form-group">
                     <label class="col-lg-2 control-label" >Hình ảnh của tour</label>
                     <div class="col-lg-10">
@@ -260,6 +261,60 @@
                         <% index += 1 %>
                         <% end %>
                     </div>
+                </div>
+            </div>
+            <div class="tab-pane has-padding" id="control-tab5">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Từ khóa SEO</label>
+                    <div class="col-lg-9">
+                        <%= f.text_field :meta_keywords, class: "form-control", placeholder: "từ khóa 1, từ khóa 2, tu khoa 1, tu khoa 2,....." %>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Mô tả SEO</label>
+                    <div class="col-lg-9">
+                      <%= f.text_area :meta_description, rows: "5", cols: "5", class: "form-control" %>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane has-padding" id="control-tab6">
+                <% count = 1 %>
+                <%= f.fields_for :tour_highlights do |ff| %>
+                    <span class="label bg-info">Điểm nổi bật <%= count %></span>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label" >Thông tin:</label>
+                        <div class="col-lg-10">
+                            <%= ff.text_field :title, class: "form-control" %>
+                        </div>
+                    </div>
+                    <hr/><% count = count + 1 %>
+                <% end %>
+            </div>
+            <div class="tab-pane has-padding" id="control-tab7">
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" >Điểm nổi bật <span class='text-danger'>*</span></label>
+                </div>
+                <div class="form-group">
+                    <%= f.text_area :tab_content_1, rows: "3", cols: "3", id: "editor-full" %>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" >Lịch trình <span class='text-danger'>*</span></label>
+                </div>
+                <div class="form-group">
+                    <%= f.text_area :tab_content_2, rows: "3", cols: "3", id: "editor-full" %>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" >Điều kiện <span class='text-danger'>*</span></label>
+                </div>
+                <div class="form-group">
+                    <%= f.text_area :tab_content_3, rows: "3", cols: "3", id: "editor-full" %>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" >Lưu ý <span class='text-danger'>*</span></label>
+                </div>
+                <div class="form-group">
+                    <%= f.text_area :tab_content_4, rows: "3", cols: "3", id: "editor-full" %>
                 </div>
             </div>
         </div>

@@ -88,6 +88,32 @@
                 </li>
             <% end %>
             
+            <% if can?(:read, Gallery) %>
+                <li>
+                    <a href="#"><i class="icon-stack-picture"></i> <span><%= t(:gallery) %></span></a>
+                    <ul>
+                        <% if can? :read, Gallery %>
+                            <li class="<%= "active" if ["admin/galleries"].include?(params[:controller]) %>">
+                                <%= link_to t(:gallery), admin_galleries_path %>
+                            </li>
+                        <% end %>
+                    </ul>
+                </li>
+            <% end %>
+            
+            <% if can?(:read, Slideshow) %>
+                <li>
+                    <a href="#"><i class="icon-file-picture"></i> <span><%= t(:slideshow) %></span></a>
+                    <ul>
+                        <% if can? :read, Slideshow %>
+                            <li class="<%= "active" if ["admin/slideshows"].include?(params[:controller]) %>">
+                                <%= link_to t(:slideshows), admin_slideshows_path %>
+                            </li>
+                        <% end %>
+                    </ul>
+                </li>
+            <% end %>
+            
             <% if can?(:read, Contact) %>
                 <li>
                     <a href="#"><i class="icon-people"></i> <span><%= t(:customer) %></span></a>

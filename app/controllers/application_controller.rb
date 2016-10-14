@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   
   protected
     def layout_by_resource
-      if controller_name == "home" || controller_name == "about_us" || controller_name == "tour" || controller_name == "event" || controller_name == "car_hire" || controller_name == "book_hotel" || controller_name == "tour_handbook" || controller_name == "travel_news" || controller_name == "info" || controller_name == "service" || controller_name == "contact"
+      if controller_name == "home" || controller_name == "about_us" || controller_name == "tour" || controller_name == "event" || controller_name == "car_hire" || controller_name == "book_hotel" || controller_name == "tour_handbook" || controller_name == "travel_news" || controller_name == "info" || controller_name == "service" || controller_name == "contact" || controller_name == "hot_tours"
         "frontend"
       elsif (devise_controller? && resource_name == :user && action_name != 'edit') || controller_name == 'passwords'
         "login"
@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
             controller_name == "delivery_methods" || controller_name == "payment_methods" || controller_name == "comments" || controller_name == "questions" || controller_name == "customers" ||
             controller_name == "coupons" || controller_name == "vouchers" || controller_name == "comment_articles" || controller_name == "companies" || controller_name == "code_statuses" || controller_name == "testimonials" ||
             controller_name == "options" || controller_name == "users" || controller_name == "user_groups" || controller_name == "contacts" || controller_name == "newsletters" || controller_name == "tours" || controller_name == "hotels" || controller_name == "cars" ||
-            controller_name == "booking_cars" || controller_name == "booking_hotels" || controller_name == "booking_planes" || controller_name == "booking_tours" || controller_name == "booking_visas" 
+            controller_name == "booking_cars" || controller_name == "booking_hotels" || controller_name == "booking_planes" || controller_name == "booking_tours" || controller_name == "booking_visas" || controller_name == "galleries"
           authenticate_user!
           redirect_to root_path if current_user.is_admin != true
           "backend"

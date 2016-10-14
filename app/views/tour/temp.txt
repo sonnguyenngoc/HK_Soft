@@ -1,0 +1,44 @@
+<div class="intro small-box table-wrapper full-width hidden-table-sms">
+                            <div class="col-sm-5 table-cell travelo-box">
+                                <h4>Dịch vụ đính kèm</h4>
+                                <dl class="term-description">
+                                    <% if @tour.get_services.include?("entrance_fees") %><dt><i class="soap-icon-card"></i></dt><dd>Vé tham quan</dd><% end %>
+                                    <% if @tour.get_services.include?("guides") %><dt><i class="soap-icon-doorman"></i></dt><dd>Hướng dẩn viên</dd><% end %>
+                                    <% if @tour.get_services.include?("food") %><dt><i class="soap-icon-food"></i></dt><dd>Ăn uống</dd><% end %>
+                                    <% if @tour.get_services.include?("transportation") %><dt><i class="soap-icon-plane-right"></i></dt><dd>Phương tiện đi lại</dd><% end %>
+                                    <% if @tour.get_services.include?("insurrance") %><dt><i class="soap-icon-card"></i></dt><dd>Bảo hiểm</dd><% end %>
+                                    <% if @tour.get_services.include?("hotel") %><dt><i class="soap-icon-hotel-1"></i></dt><dd>Khách sạn</dd><% end %>
+                                </dl>
+                                <div class="selector">
+                                    <select class="full-width">
+                                        <option value="">Lịch khởi hành - [<%= @tour.get_count_tour_schedules %>]</option>
+                                        <% @tour.tour_schedules.get_tour_schedules.each do |schedule| %>
+                                            <option value=""><% if !schedule.from_date.nil? %><%= schedule.from_date.strftime("%d/%m/%Y") %><% end %><% if !schedule.to_date.nil? %> - <%= schedule.to_date.strftime("%d/%m/%Y") %><% end %></option>
+                                        <% end %>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-7 table-cell">
+                                <div class="detailed-features">
+                                    <div class="price-section clearfix">
+                                        <div class="details">
+                                            <h4 class="box-title transform-capitalize"><%= @tour.name %><small>Khởi hành: <%= @tour.duration %></small></h4>
+                                        </div>
+                                        <div class="details">
+                                            <span class="price">Giá: <% if @tour.is_sale == true %><del><% if @tour.old_price == 0 %>Liên hệ<% else %><%= format_number(@tour.old_price) %> VND<% end %></del> - <% end %><% if @tour.new_price == 0 %>Liên hệ<% else %><%= format_number(@tour.new_price) %> VND<% end %></span>
+                                            <%= link_to "ĐẶT TOUR", tour_booking_path(tour_booking_id: @tour, tour_name: @tour.url_friendly), class: "button green btn-small uppercase" %>
+                                        </div>
+                                    </div>
+                                    <div class="price-section clearfix">
+                                        <div class="details text-justify"><%= @tour.description %></div>
+                                        <dl class="term-description">
+                                            <% if !@tour.time_line.nil? %><dt>Thời gian chuyến tour</dt><dd><%= @tour.time_line %></dd><% end %>
+                                            <dt>Phương tiện</i></dt><dd><% if @tour.get_transportations.include?("car") %>Xe du lịch. <% end %> <% if @tour.get_transportations.include?("plane") %>Máy bay. <% end %><% if @tour.get_transportations.include?("trunk") %>Tàu cao tốc. <% end %></dd>
+                                            <dt>Khách sạn</i></dt><dd><%= @tour.hotel %></dd>
+                                            <dt>Phụ thu cuối tuần</i></dt><dd><% if @tour.surcharge_1 == 0 %>Liên hệ<% else %><%= format_number(@tour.surcharge_1) %> VND/Khách<% end %></dd>
+                                            <dt>Phụ thu lễ tết</i></dt><dd><% if @tour.surcharge_2 == 0 %>Liên hệ<% else %><%= format_number(@tour.surcharge_2) %> VND/Khách<% end %></dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>

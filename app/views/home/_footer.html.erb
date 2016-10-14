@@ -6,6 +6,7 @@
                     <h2>TRỢ GIÚP</h2>
                     <ul class="discover triangle hover row">
                         <li class="<%= "active" if (params[:controller] == "about_us" && params[:action] == "index") %> col-xs-12"><%= link_to "Giới thiệu", about_us_path %></li>
+                        <li class="<%= "active" if (params[:controller] == "about_us" && params[:action] == "activities_photos") %> col-xs-12"><%= link_to "Hình ảnh hoạt động", activities_photos_path %></li>
                         <li class="<%= "active" if (params[:controller] == "about_us" && params[:action] == "info_system_1") %> col-xs-12"><%= link_to "Chính sách thanh toán", info_system_1_path %></li>
                         <li class="<%= "active" if (params[:controller] == "about_us" && params[:action] == "info_system_2") %> col-xs-12"><%= link_to "Chính sách đổi trả voucher & hoàn tiền", info_system_2_path %></li>
                         <li class="<%= "active" if (params[:controller] == "about_us" && params[:action] == "info_system_3") %> col-xs-12"><%= link_to "Chính sách bảo mật thông tin khách hàng", info_system_3_path %></li>
@@ -33,7 +34,7 @@
                     </ul>
                     <h2>TIN TỨC DU LỊCH</h2>
                     <ul class="travel-news">
-                        <% ArticleCategory.get_travel_news(params).limit(4).each do |item| %>
+                        <% ArticleCategory.get_travel_news(params).limit(3).each do |item| %>
                             <li>
                                 <div class="thumb">
                                     <%= link_to image_tag(item.image_url.small_footer_image, width: "63", height: "63", alt: item.title), travel_news_detail_path(travel_news_id: item, title: item.url_friendly) %>

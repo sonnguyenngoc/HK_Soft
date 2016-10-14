@@ -61,8 +61,7 @@
                         <thead>
                             <tr class="bg-teal-800">
                                 <th><%= t(:image) %></th>
-                                <th><%= t(:title_1) %></th>
-                                <th><%= t(:title_2) %></th>
+                                <th><%= t(:title) %></th>
                                 <th><%= t(:button_name) %></th>
                                 <th><%= t(:link) %></th>
                                 <th><%= t(:created_at) %></th>
@@ -84,16 +83,13 @@
                                         <% end %>
                                     </td>
                                     <td>
-                                        <strong><%= item.title_1 %></strong>
-                                    </td>
-                                    <td>
-                                        <strong><%= item.title_2 %></strong>
+                                        <strong>Vị trí slide số <%= item.position %></strong>
                                     </td>
                                     <td>
                                         <%= item.name_button %>
                                     </td>
                                     <td>
-                                        <%= item.link %>
+                                        <%= link_to item.link, item.link, target: "_blank" %>
                                     </td>
                                     <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
                                     <td class="text-center">

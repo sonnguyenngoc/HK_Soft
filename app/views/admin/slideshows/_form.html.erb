@@ -26,35 +26,44 @@
     
     <div class="form-group">
         <label class="col-lg-2 control-label" ><%= t(:title_1) %> <span class='text-danger'>*</span></label>
-        <div class="col-lg-6">
+        <div class="col-lg-10">
             <%= f.text_field :title_1, class: "form-control required" %>
         </div>
-        
-        <label class="col-lg-2 control-label" ><%= t(:color_1) %> <span class='text-danger'>*</span></label>
-        <div class="col-lg-2">
-            <%= f.text_field :color_1, class: "form-control required" %>
-        </div>
     </div>
         
     <div class="form-group">
-        <label class="col-lg-2 control-label" ><%= t(:title_2) %> <span class='text-danger'>*</span></label>
-        <div class="col-lg-6">
-            <%= f.text_field :title_2, class: "form-control required" %>
-        </div>
-        
-        <label class="col-lg-2 control-label" ><%= t(:color_2) %> <span class='text-danger'>*</span></label>
-        <div class="col-lg-2">
-            <%= f.text_field :color_2, class: "form-control required" %>
-        </div>
-    </div>
-        
-    <div class="form-group">
-        <label class="col-lg-2 control-label" ><%= t(:style) %> <span class='text-danger'>*</span></label>
+        <label class="col-lg-2 control-label" ><%= t(:title_2) %> </label>
         <div class="col-lg-10">
-            <%= f.select(:style, ['fade', 'boxfade', 'boxslide', 'curtain-1', 'curtain-2', 'curtain-3', 'slidedown', 'slideup', 'slideleft', 'slideright', 'slotfade-hor', 'slotfade-ver', 'slotside-hor', 'slotside-ver', 'slotzoom-hor', 'slotzoom-ver', 'papercut', 'cubic', 'flyin', '3dcurtain-horizontal', '3dcurtain-vertical', 'turnoff'], {}, { :class => 'select' })%>
+            <%= f.text_field :title_2, class: "form-control" %>
         </div>
     </div>
         
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:title_3) %> </label>
+        <div class="col-lg-10">
+            <%= f.text_field :title_3, class: "form-control" %>
+        </div>
+    </div>
+        
+    <div class="form-group">
+        <label class="col-lg-2 control-label" >Dùng hình ảnh nhỏ <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <div class="row-fluid">
+                <div class="checkbox">
+                    <%= check_box 'slideshow', 'use_images', {}, 'true', 'false' %>
+                    <label for="slideshow_use_images">Có dùng những hình ảnh nhỏ không?</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label class="col-lg-2 control-label" >Vị trí slide <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <%= f.text_field :position, class: "form-control required", placeholder: "Nhập vị trí số 1,2,3,..." %>
+        </div>
+    </div>
+      
     <div class="form-group">
         <label class="col-lg-2 control-label" ><%= t(:button_name) %> </label>
         <div class="col-lg-10">

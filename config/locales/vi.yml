@@ -125,6 +125,7 @@ vi:
   image: "Hình ảnh"
   title_1: "Tiêu đề 1"
   title_2: "Tiêu đề 2"
+  title_3: "Tiêu đề 3"
   button_name: "Tên nút"
   link: "Liên kết"
   
@@ -382,6 +383,7 @@ vi:
   booking_plane: "Đặt vé máy bay"
   booking_tour: "Đặt tour"
   booking_visa: "Đặt làm visa"
+  gallery: "Hình ảnh hoạt động"
   
   activerecord:
     attributes:

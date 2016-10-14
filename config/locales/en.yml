@@ -125,6 +125,7 @@ en:
   image: "Image"
   title_1: "Title 1"
   title_2: "Title 2"
+  title_3: "Title 3"
   button_name: "Button Name"
   link: "Link"
         
@@ -381,6 +382,7 @@ en:
   booking_plane: "Booking Plane"
   booking_tour: "Booking Tour"
   booking_visa: "Booking Visa"
+  gallery: "Gallery"
   
   devise:
     sessions:

@@ -12,11 +12,16 @@
         <!-- Meta Tags -->
         <%= csrf_meta_tags %>
         <meta charset="utf-8">
+        <% if @meta_keywords.nil? %>
         <meta name="keywords" content="du lịch khám phá mới, du lich kham pha moi, tour miền tây, tour phú quốc, tour bình ba, tour bình hưng, tour nam du, tour hải tặc, tour đoàn, event, team building, sinh nhật, noel, trung thu" />
         <meta name="description" content="Du Lịch Khám Phá Mới - Chuyên tour Miền Tây, Phú Quốc, Bình Ba, Bình Hưng, Nam Du, Hải Tặc. Chuyên tour đoàn, tổ chức event, team building.">
+        <% else %>
+            <meta name="keywords" content="<%= @meta_keywords %>" />
+            <meta name="description" content="<%= @meta_description %>">
+        <% end %>
         <meta name="author" content="Khám Phá Mới Travel">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+        <meta property="fb:app_id" content="912090775561953" />
         <!-- Favicon -->
         <%= favicon_link_tag '/frontend/favicon.ico', rel: 'shortcut icon', type: 'image/x-icon' %>
     
@@ -76,7 +81,16 @@
           
             ga('create', 'UA-85156286-1', 'auto');
             ga('send', 'pageview');
-          
+        </script>
+        <script>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.8&appId=579569812209728";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
         </script>
         
     </head>

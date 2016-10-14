@@ -47,10 +47,7 @@
                             
                             <% if item.description == "home" %>
                                 <li<% if params[:controller] == "home" %> class="active"<% end %>><%= link_to item.name, root_path %></li>
-                            <% end %>
-                            
-                            <% if item.description == "about_us" %>
-                                <li<% if (params[:controller] == "about_us" && params[:action] == "index") %> class="active"<% end %>><%= link_to item.name, about_us_path %></li>
+                                <li<% if params[:controller] == "hot_tours" %> class="active"<% end %>><%= link_to "Tour Hot", hot_tours_path %></li>
                             <% end %>
                             
                             <% if item.description == "tour" %>

@@ -123,6 +123,26 @@ class UserGroup < ActiveRecord::Base
                         ]
             },
             {
+                class_name: "Slideshow",
+                display_name: I18n.t(:slideshow),
+                actions: [
+                            {name: "read", values: ["yes","no"], multiple: false},
+                            {name: "create", values: ["yes","no"], multiple: false},
+                            {name: "update", values: ["yes","no"], multiple: false},
+                            {name: "delete", values: ["yes","no"], multiple: false},
+                        ]
+            },
+            {
+                class_name: "Gallery",
+                display_name: I18n.t(:gallery),
+                actions: [
+                            {name: "read", values: ["yes","no"], multiple: false},
+                            {name: "create", values: ["yes","no"], multiple: false},
+                            {name: "update", values: ["yes","no"], multiple: false},
+                            {name: "delete", values: ["yes","no"], multiple: false},
+                        ]
+            },
+            {
                 class_name: "Contact",
                 display_name: I18n.t(:contact),
                 actions: [

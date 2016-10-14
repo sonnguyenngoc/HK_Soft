@@ -1,8 +1,10 @@
 class Tour < ActiveRecord::Base
     mount_uploader :image_url, TourImageUploader
     has_many :tour_schedules
+    has_many :tour_highlights
     has_many :tour_images
     belongs_to :article_category
+    accepts_nested_attributes_for :tour_highlights, :reject_if => lambda { |a| a[:title].blank? }, :allow_destroy => true
     accepts_nested_attributes_for :tour_schedules, :reject_if => lambda { |a| a[:from_date].blank? }, :allow_destroy => true
     accepts_nested_attributes_for :tour_images, :reject_if => lambda { |a| a[:image_url].blank? && a[:id].blank? }, :allow_destroy => true
     
@@ -35,7 +37,7 @@ class Tour < ActiveRecord::Base
     end
     
     def self.get_tour_listing(params)
-        records = self.order("created_at DESC")
+        records = self.where("tours.hidden = false").order("created_at DESC")
         records = records.where(hidden: false)
         
         if params[:name].present?
@@ -54,7 +56,11 @@ class Tour < ActiveRecord::Base
     end
     
     def self.get_deal_tours_listing
-        self.where("tours.is_sale = true").order("created_at DESC")
+        self.where("tours.is_sale = true and tours.hidden = false").order("created_at DESC")
+    end
+    
+    def self.get_hot_tours_listing
+        self.where("tours.is_hot = true and tours.hidden = false").order("created_at DESC")
     end
     
     def get_lastest_tour_from_date
