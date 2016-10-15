@@ -89,6 +89,7 @@
                     <div class="row add-clearfix image-box discount-label style1 tour-locations">
                         <% @tours.each do |item| %>
                             <div class="col-sm-6 col-md-4">
+                                <% if item.is_hot == true %><span class="discount"><span class="discount-text tour-hot">Tour hot</span></span><% end %>
                                 <article class="box">
                                     <figure>
                                         <%= link_to image_tag(item.image_url.larger_image), tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "hover-effect" %>

@@ -2,14 +2,14 @@ Rails.application.routes.draw do
   devise_for :users
   
   scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
-    
+    match "/404", :to => "errors#not_found", :via => :all
     # Trang chủ
     root "home#index"
     
     # Giới thiệu
     get "gioi-thieu.html" => "about_us#index", as: :about_us
     get "hinh-anh-hoat-dong.html" => "about_us#activities_photos", as: :activities_photos
-    get "hinh-anh-hoat-dong/xem-nhanh/:activities_photo_id.html" => "about_us#image_popup", as: :image_popup
+    post "hinh-anh-hoat-dong/xem-nhanh/:activities_photo_id.html" => "about_us#image_popup", as: :image_popup
     get "chinh-sach-thanh-toan.html" => "about_us#info_system_1", as: :info_system_1
     get "chinh-sach-doi-tra-va-hoan-tien.html" => "about_us#info_system_2", as: :info_system_2
     get "chinh-sach-bao-mat-thong-tin-khach-hang.html" => "about_us#info_system_3", as: :info_system_3

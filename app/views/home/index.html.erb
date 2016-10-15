@@ -262,7 +262,7 @@
                                     </figure>
                                     <div class="details">
                                         <h4 class="box-title">
-                                            <%= link_to item.name, car_detail_path(car_id: item, name: item.url_friendly), title: item.name %>
+                                            <%= link_to item.name, car_detail_path(car_id: item, name: item.url_friendly), title: item.name, class: "transform-capitalize" %>
                                             <small>Giá: <% if item.price == 0 %>Liên Hệ<% else %><%= format_number(item.price) %> VND<% end %></small>
                                         </h4>
                                     </div>
@@ -276,7 +276,7 @@
 
         <div class="global-map-area section parallax" data-stellar-background-ratio="0.5" style="background-position: 50% 78.5px;">
             <div class="container description">
-                <h1 class="text-center box">Vì Sao Chọn Thương Hiệu "Du Lịch Khám Phá Mới"</h1>
+                <h1 class="text-center box mobile-color">Vì Sao Chọn Thương Hiệu "Du Lịch Khám Phá Mới"</h1>
                 <div class="row">
                     <div class="col-xs-12 col-sm-4">
                         <div class="icon-box style8 animated slideInUp" data-animation-type="slideInUp" data-animation-delay="0" style="animation-duration: 1s; visibility: visible;">

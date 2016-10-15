@@ -1,4 +1,6 @@
 class AboutUsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: [:image_popup]
+  
   def index
     @about_us = Article.get_about_us_blog
   end

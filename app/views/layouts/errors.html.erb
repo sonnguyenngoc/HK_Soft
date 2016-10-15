@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<!--[if IE 8]>          <html class="ie ie8"> <![endif]-->
+<!--[if IE 9]>          <html class="ie ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->  <html class=""> <!--<![endif]-->
+<head>
+    <!-- Page Title -->
+    <title>Du Lịch Khám Phá Mới - Luôn Luôn Đổi Mới - Luôn Luôn Sáng Tạo</title>
+    
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="keywords" content="du lịch khám phá mới, du lich kham pha moi, tour miền tây, tour phú quốc, tour bình ba, tour bình hưng, tour nam du, tour hải tặc, tour đoàn, event, team building, sinh nhật, noel, trung thu" />
+    <meta name="description" content="Du Lịch Khám Phá Mới - Chuyên tour Miền Tây, Phú Quốc, Bình Ba, Bình Hưng, Nam Du, Hải Tặc. Chuyên tour đoàn, tổ chức event, team building.">
+    <meta name="author" content="Khám Phá Mới Travel">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<%= favicon_link_tag '/frontend/favicon.ico', rel: 'shortcut icon', type: 'image/x-icon' %>
+    
+    <!-- Theme Styles -->
+		<%= stylesheet_link_tag "/frontend/css/bootstrap.min.css" %>
+		<%= stylesheet_link_tag "/frontend/css/font-awesome.min.css" %>
+		<%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Lato:300,400,700,900" %>
+		<%= stylesheet_link_tag "/frontend/css/animate.min.css" %>
+    
+    <!-- Main Style -->
+    <%= stylesheet_link_tag "/frontend/css/style-light-blue.css" %>
+    
+    <!-- Updated Styles -->
+		<%= stylesheet_link_tag "/frontend/css/updates.css" %>
+
+    <!-- Custom Styles -->
+		<%= stylesheet_link_tag "/frontend/css/custom.css" %>
+    
+    <!-- Responsive Styles -->
+		<%= stylesheet_link_tag "/frontend/css/responsive.css" %>
+    
+    <!-- CSS for IE -->
+    <!--[if lte IE 9]>
+		<%= stylesheet_link_tag "/frontend/css/ie.css" %>
+    <![endif]-->
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <%= javascript_include_tag "http://html5shiv.googlecode.com/svn/trunk/html5.js" %>
+    <%= javascript_include_tag "http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js" %>
+    <![endif]-->
+		
+</head>
+<body class="post-404page style3 body-blank">
+    
+		<%= yield %>
+
+    <!-- Javascript -->
+		<%= javascript_include_tag "/frontend/js/jquery-1.11.1.min.js" %>
+		<%= javascript_include_tag "/frontend/js/jquery.noconflict.js" %>
+		<%= javascript_include_tag "/frontend/js/modernizr.2.7.1.min.js" %>
+		<%= javascript_include_tag "/frontend/js/jquery-migrate-1.2.1.min.js" %>
+		<%= javascript_include_tag "/frontend/js/jquery.placeholder.js" %>
+		<%= javascript_include_tag "/frontend/js/jquery-ui.1.10.4.min.js" %>
+    
+    <!-- Twitter Bootstrap -->
+		<%= javascript_include_tag "/frontend/js/bootstrap.js" %>
+    
+    <!-- parallax -->
+		<%= javascript_include_tag "/frontend/js/jquery.stellar.min.js" %>
+    
+    <!-- waypoint -->
+		<%= javascript_include_tag "/frontend/js/waypoints.min.js" %>
+
+    <!-- load page Javascript -->
+		<%= javascript_include_tag "/frontend/js/theme-scripts.js" %>
+		<%= javascript_include_tag "/frontend/js/scripts.js" %>
+    
+</body>
+</html>

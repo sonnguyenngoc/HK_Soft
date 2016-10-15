@@ -62,17 +62,5 @@ $(document).ready(function () {
         
     });
     
-    tinymce.init({
-        selector: '.editor-inlite',
-        height: 200,
-        menubar:false,
-        statusbar: false,
-        plugins: [
-          'advlist autolink lists link image charmap print preview anchor',
-          'searchreplace visualblocks code fullscreen',
-          'insertdatetime media table paste code textcolor'
-        ],
-        toolbar: 'styleselect | bold italic underline | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist ',
-        content_css: '//www.tinymce.com/css/codepen.min.css'
-    });
+    
 });

@@ -176,3 +176,15 @@ label.error {
 .line-height-short {
     line-height: 1.5em;
 }
+.image-box .discount .tour-hot {
+    text-indent: 10px;
+}
+@media (max-width: 490px) {
+    .section {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .mobile-color {
+        color: red !important;
+    }
+}

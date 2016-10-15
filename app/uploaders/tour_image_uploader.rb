@@ -41,6 +41,9 @@ class TourImageUploader < CarrierWave::Uploader::Base
   version :small_image do
     process :resize_to_fill => [83, 58]
   end
+  version :detail_image do
+    process :resize_to_fill => [166, 104]
+  end
   version :medium_image do
     process :resize_to_fill => [170, 161]
   end
