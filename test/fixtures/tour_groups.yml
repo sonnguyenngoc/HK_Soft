@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tour_name: MyString
+  number: 1
+  date_from: 2016-10-19 01:41:39
+  date_to: 2016-10-19 01:41:39
+  price: 9.99
+  message: MyText
+  address_from: MyString
+
+two:
+  tour_name: MyString
+  number: 1
+  date_from: 2016-10-19 01:41:39
+  date_to: 2016-10-19 01:41:39
+  price: 9.99
+  message: MyText
+  address_from: MyString

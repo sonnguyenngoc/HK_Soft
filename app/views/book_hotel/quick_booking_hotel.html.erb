@@ -1,0 +1,124 @@
+<div id="page-wrapper">
+    
+    <!-- HEADER -->
+    <%= render "/home/header" %>
+    
+    <div class="page-title-container style2">
+        <div class="container">
+            <div class="page-title pull-left">
+                <h2 class="entry-title">Dịch Vụ Đặt Khách Sạn</h2>
+            </div>
+            <ul class="breadcrumbs pull-right">
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <li class="active">Dịch Vụ Đặt Khách Sạn</li>
+            </ul>
+        </div>
+    </div>
+    <section id="content" class="gray-area">
+        <div class="container">
+            <div class="row">
+                <div id="main" class="col-sms-6 col-sm-8 col-md-9">
+                    <div class="booking-section travelo-box">
+                        <%= form_for @quick_booking_hotel, html: {class: "booking-form", id: "booking_hotel"} do |f| %>  
+                            <div class="person-information">
+                                <h2>ĐĂNG KÝ KHÁCH SẠN TẠI ĐÂY</h2>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 col-md-10">
+                                        <label>Tên Khách Hàng <span class="text-required">*</span></label>
+                                        <%= f.text_field :name, class: "input-text full-width required", placeholder: "Vui lòng nhập họ & tên khách hàng đăng ký tại đây....." %>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Số Điện Thoại <span class="text-required">*</span></label>
+                                        <%= f.text_field :phone, class: "input-text full-width required", placeholder: "Vui lòng nhập số điện thoại tại đây....." %>
+                                    </div>
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Địa Chỉ Email <span class="text-required">*</span></label>
+                                        <%= f.text_field :email, class: "input-text full-width required email", placeholder: "Vui lòng nhập địa chỉ email tại đây....." %>
+                                    </div>
+                                </div>
+																<div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Tên khách sạn <span class="text-required">*</span></label>
+                                        <%= f.text_field :hotel_name, class: "input-text full-width required", placeholder: "Vui lòng nhập tên khách sạn tại đây....." %>
+                                    </div>
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Tỉnh/Thành phố <span class="text-required">*</span></label>
+                                        <%= f.text_field :location, class: "input-text full-width required", placeholder: "Vui lòng nhập tỉnh/thành phố tại đây....." %>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Số Người Lớn <span class="text-required">*</span></label>
+                                        <%= f.text_field :adult, class: "input-text full-width required", placeholder: "Mặc định số người lớn: 1" %>
+                                    </div>
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Số Trẻ Em <span class="text-required">*</span></label>
+                                        <%= f.text_field :child, class: "input-text full-width required", placeholder: "Nhập 0 nếu không có trẻ em" %>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+																		<div class="col-sm-6 col-md-5">
+                                        <label>Số lượng phòng <span class="text-required">*</span></label>
+                                        <%= f.text_field :number, class: "input-text full-width required", placeholder: "Mặc định số phòng: 1....." %>
+                                    </div>	
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>ID/Passport</label>
+                                        <%= f.text_field :passport, class: "input-text full-width", placeholder: "Vui lòng nhập id/passport tại đây (nếu có)....." %>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Ngày nhận phòng <span class="text-required">*</span></label>
+                                        <div class="datepicker-wrap">
+                                            <input type="text" name="quick_booking_hotel[date_from]" id="quick_booking_hotel_date_from" class="input-text full-width required" placeholder="Chọn nhận phòng (yy/mm/dd)" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Ngày trả phòng <span class="text-required">*</span></label>
+                                        <div class="datepicker-wrap">
+                                            <input type="text" name="quick_booking_hotel[date_to]" id="quick_booking_hotel_date_to" class="input-text full-width required" placeholder="Chọn trả phòng (yy/mm/dd)" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-10">
+                                        <label>Lời Nhắn</label>
+                                        <%= f.text_area :message, rows: '8', class: "input-text full-width", placeholder: "Nhằm nâng cao chất lượng dịch vụ. Quý khách hàng vui lòng nhập lời nhắn (nếu có) tại đây....." %>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 col-md-5">
+                                    <button type="submit" class="full-width btn-large sky-blue1">ĐẶT PHÒNG KHÁCH SẠN</button>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="sidebar col-sms-6 col-sm-4 col-md-3">
+                    
+                    <%= render "/service/right_sidebar_visa_card" %>
+                    
+                    <%= render "/home/need_help" %>
+                    
+                    <%= render "/tour_handbook/right_sidebar" %>
+                
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <%= render "/home/footer" %>
+    
+</div>
+
+<!-- Javascript -->
+<%= render "/home/js_files" %>
+
+<script>
+    jQuery(document).ready(function($){
+        $("#booking_hotel").validate();
+    });
+</script>

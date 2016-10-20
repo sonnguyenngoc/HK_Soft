@@ -10,8 +10,7 @@
             </div>
             <ul class="breadcrumbs pull-right">
                 <li><%= link_to "Trang Chủ", root_path %></li>
-                <li><%= link_to @page_name.name, service_path %></li>
-                <li class="active">Khách Sạn</li>
+                <li class="active">Đặt Khách Sạn</li>
             </ul>
         </div>
     </div>
@@ -22,39 +21,13 @@
                 <div class="row">
                     <div class="col-sm-4 col-md-3">
                         <div class="toggle-container filters-container">
-                            
-                            <div class="panel style1 arrow-right">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#accomodation-type-filter" class="collapsed">Loại Khách Sạn</a>
-                                </h4>
-                                <div id="accomodation-type-filter" class="panel-collapse collapse">
-                                    <div class="panel-content">
-                                        <ul class="check-square filters-option">
-                                            <li><a href="#">Khách sạn 1 sao<small>(0)</small></a></li>
-                                            <li><a href="#">Khách sạn 2 sao<small>(0)</small></a></li>
-                                            <li><a href="#">Khách sạn 3 sao<small>(0)</small></a></li>
-                                            <li><a href="#">Khách sạn 4 sao<small>(0)</small></a></li>
-                                            <li><a href="#">Khách sạn 5 sao<small>(0)</small></a></li>
-                                        </ul>
-                                    </div>
+                            <article class="detailed-logo">
+                                <div class="details">
+                                    <h2 class="box-title">Đăng Ký Khách Sạn Khác</h2>
+                                    <%= link_to "ĐĂNG KÝ", quick_booking_hotel_path, class: "button sky-blue1 full-width uppercase btn-small" %>
                                 </div>
-                            </div>
-                            
-                            <div class="panel style1 arrow-right">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#amenities-filter" class="collapsed">Khu Vực</a>
-                                </h4>
-                                <div id="amenities-filter" class="panel-collapse collapse">
-                                    <div class="panel-content">
-                                        <ul class="check-square filters-option">
-                                            <li><a href="#">Phú Quốc<small>(0)</small></a></li>
-                                            <li><a href="#">Đà Lạt<small>(0)</small></a></li>
-                                            <li><a href="#">Côn Đảo<small>(0)</small></a></li>
-                                            <li><a href="#">Nha Trang<small>(0)</small></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                            </article>
+                            <%= render "/home/need_help" %>
                         </div>
                     </div>
                     <div class="col-sm-8 col-md-9">
@@ -68,7 +41,7 @@
                                         <div class="details col-sm-7 col-md-8">
                                             <div>
                                                 <div>
-                                                    <h4 class="box-title"><%= item.name %><small><i class="soap-icon-departure yellow-color"></i> <%= item.area.name %></small></h4>
+                                                    <h4 class="box-title"><%= link_to item.name, book_hotel_detail_path(hotel_id: item, name: item.url_friendly), class: "transform-capitalize" %><small><i class="soap-icon-departure yellow-color"></i> <%= item.area.name %></small></h4>
                                                     <div class="amenities">
                                                         <i class="soap-icon-wifi circle"></i>
                                                         <i class="soap-icon-fitnessfacility circle"></i>
@@ -99,7 +72,8 @@
                                             <div>
                                                 <p class="text-justify"><%= truncate(strip_tags(item.content.html_safe), length: 170) %></p>
                                                 <div>
-                                                    <%= link_to "XEM THÊM", book_hotel_detail_path(hotel_id: item, name: item.url_friendly), class: "button btn-small full-width text-center" %>
+                                                    <span class="price"><%= format_number(item.avg_price) %> VNĐ</span>
+                                                    <%= link_to "XEM THÊM", book_hotel_detail_path(hotel_id: item, name: item.url_friendly), class: "button btn-small full-width text-center sky-blue1" %>
                                                 </div>
                                             </div>
                                         </div>

@@ -10,7 +10,7 @@
             </div>
             <ul class="breadcrumbs pull-right">
                 <li><%= link_to "Trang Chủ", root_path %></li>
-                <li><%= link_to @page_name.name, hotel_listing_path %></li>
+                <li><%= link_to "Đặt Khách Sạn", hotel_listing_path %></li>
                 <li class="active"><%= @hotel.name %></li>
             </ul>
         </div>
@@ -104,13 +104,13 @@
                                                         </div>
                                                     </div>
                                                     <div class="price-section">
-                                                        <span class="price"><% if item.price == 0 %>Liên hệ<% else %><%= format_number(item.price) %> VND<% end %></span>
+                                                        <span class="price"><% if item.price == 0 %>Liên hệ<% else %><%= format_number(item.price) %> VNĐ<% end %></span>
                                                     </div>
                                                 </div>
                                                 <div>
                                                     <p class="text-justify"><%= item.description %></p>
                                                     <div class="action-section">
-                                                        <%= link_to "Đặt phòng", hotel_booking_path(hotel_booking_id: @hotel, hotel_name: @hotel.url_friendly, hotel_room_booking_id: item), class: "button btn-small full-width text-center" %>
+                                                        <%= link_to "Đặt phòng", hotel_booking_path(hotel_booking_id: @hotel, hotel_name: @hotel.url_friendly, hotel_room_booking_id: item), class: "button btn-small full-width text-center sky-blue1" %>
                                                     </div>
                                                 </div>
                                             </div>
@@ -350,7 +350,7 @@
                                     <div class="details">
                                         <h5 class="box-title"><%= link_to item.name, book_hotel_detail_path(hotel_id: item, name: item.url_friendly) %></h5>
                                         <label class="price-wrapper">
-                                            <span class="price-per-unit">$170</span>avg/night
+                                            <span class="price-per-unit"><%= format_number(item.avg_price) %> VNĐ</span>
                                         </label>
                                     </div>
                                 </article>

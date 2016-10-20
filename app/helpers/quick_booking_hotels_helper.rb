@@ -1,0 +1,2 @@
+module QuickBookingHotelsHelper
+end

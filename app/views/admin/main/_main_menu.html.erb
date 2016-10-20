@@ -37,28 +37,28 @@
                     <a href="#"><i class="glyphicon glyphicon-pencil"></i> <span><%= t(:article) %></span></a>
                     <ul>
                         <% if can? :read, Article %>
-                            <li class="<%= "active" if ["admin/articles"].include?(params[:controller]) %>">
-                                <%= link_to t(:articles), admin_articles_path %>
-                            </li>
-                        <% end %>
-                        <% if can? :read, Category %>
-                            <li class="<%= "active" if ["admin/categories"].include?(params[:controller]) %>">
-                                <%= link_to "Menu chính", admin_categories_path %>
-                            </li>
+                        <li class="<%= "active" if ["admin/articles"].include?(params[:controller]) %>">
+                            <%= link_to t(:articles), admin_articles_path %>
+                        </li>
                         <% end %>
                         <% if can? :read, ArticleCategory %>
-                            <li class="<%= "active" if ["admin/article_categories"].include?(params[:controller]) %>">
-                                <%= link_to "Chuyên mục / Menu con", admin_article_categories_path %>
-                            </li>
+                        <li class="<%= "active" if ["admin/article_categories"].include?(params[:controller]) %>">
+                            <%= link_to "Chuyên mục / Menu con", admin_article_categories_path %>
+                        </li>
                         <% end %>
                     </ul>
                 </li>
             <% end %>
             
-            <% if can?(:read, BookingTour) or can?(:read, BookingCar) or can?(:read, BookingHotel) or can?(:read, BookingPlane) or can?(:read, BookingVisa) %>
+            <% if can?(:read, TourGroup) or can?(:read, BookingTour) or can?(:read, BookingCar) or can?(:read, BookingHotel) or can?(:read, QuickBookingHotel) or can?(:read, BookingPlane) or can?(:read, BookingVisa) %>
                 <li>
                     <a href="#"><i class="icon-stack2"></i> <span>Quản lý đăng ký</span></a>
                     <ul>
+                        <% if can? :read, TourGroup %>
+                            <li class="<%= "active" if ["admin/tour_groups"].include?(params[:controller]) %>">
+                                <%= link_to "Danh sách đặt tour đoàn", admin_tour_groups_path %>
+                            </li>
+                        <% end %>
                         <% if can? :read, BookingTour %>
                             <li class="<%= "active" if ["admin/booking_tours"].include?(params[:controller]) %>">
                                 <%= link_to "Danh sách đặt tour", admin_booking_tours_path %>
@@ -72,6 +72,11 @@
                         <% if can? :read, BookingHotel %>
                             <li class="<%= "active" if ["admin/booking_hotels"].include?(params[:controller]) %>">
                                 <%= link_to "Danh sách đặt khách sạn", admin_booking_hotels_path %>
+                            </li>
+                        <% end %>
+                        <% if can? :read, QuickBookingHotel %>
+                            <li class="<%= "active" if ["admin/quick_booking_hotels"].include?(params[:controller]) %>">
+                                <%= link_to "Danh sách đặt khách sạn nhanh", admin_quick_booking_hotels_path %>
                             </li>
                         <% end %>
                         <% if can? :read, BookingPlane %>

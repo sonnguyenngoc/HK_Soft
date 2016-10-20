@@ -74,28 +74,28 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <label>Họ & Tên</label>
-                                        <%= f.text_field :name, class: "input-text full-width required" %>
+                                        <label>Họ & Tên <span class="text-required">*</span></label>
+                                        <%= f.text_field :name, class: "input-text full-width required", placeholder: "Nhập họ & tên tại đây....." %>
                                     </div>
                                     <div class="form-group">
-                                        <label>Email</label>
-                                        <%= f.text_field :email, class: "input-text full-width required email" %>
+                                        <label>Email <span class="text-required">*</span></label>
+                                        <%= f.text_field :email, class: "input-text full-width required email", placeholder: "Nhập địa chỉ email tại đây....." %>
                                     </div>
                                     <div class="form-group">
-                                        <label>Số Điện Thoại</label>
-                                        <%= f.text_field :phone, class: "input-text full-width required" %>
+                                        <label>Số Điện Thoại <span class="text-required">*</span><span class="text-required"></label>
+                                        <%= f.text_field :phone, class: "input-text full-width required", placeholder: "Nhập số điện thoại tại đây....." %>
                                     </div>
                                 </div>
                                 <div class="col-sm-8">
                                     <div class="form-group">
-                                        <label>Lời Nhắn</label>
-                                        <%= f.text_area :message, rows: '8', class: "input-text full-width required" %>
+                                        <label>Lời Nhắn <span class="text-required">*</span></label>
+                                        <%= f.text_area :message, rows: '8', class: "input-text full-width required", placeholder: "Nhập lời nhắn quý khách cần gửi tại đây....." %>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-sms-offset-6 col-sm-offset-6 col-md-offset-8 col-lg-offset-9">
-                                <button class="btn-medium full-width">GỬI LỜI NHẮN</button>
+                                <button class="btn-medium full-width sky-blue1">GỬI LỜI NHẮN</button>
                             </div>
                         <% end %>
                     </div>

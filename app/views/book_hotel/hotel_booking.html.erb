@@ -10,9 +10,9 @@
             </div>
             <ul class="breadcrumbs pull-right">
                 <li><%= link_to "Trang Chủ", root_path %></li>
-                <li><%= link_to @page_name.name, hotel_listing_path %></li>
+                <li><%= link_to "Đặt Khách Sạn", hotel_listing_path %></li>
                 <li><%= link_to @hotel_booking.name, book_hotel_detail_path(hotel_id: @hotel_booking) %></li>
-                <li class="active">Đặt Phòng</li>
+                <li class="active">Đặt Phòng Khách Sạn</li>
             </ul>
         </div>
     </div>
@@ -25,16 +25,16 @@
                         <%= form_for @hotel_checkout, html: {class: "booking-form", id: "booking_hotel"} do |f| %>
                             <%= f.hidden_field :hotel_id, value: @hotel_booking.id %>
                             <div class="person-information">
-                                <h2>Thông tin đặt phòng</h2>
+                                <h2>ĐĂNG KÝ KHÁCH SẠN TẠI ĐÂY</h2>
                                 <div class="form-group row">
                                     <div class="col-sm-12 col-md-10">
-                                        <label>Tên khách hàng *</label>
+                                        <label>Tên khách hàng <span class="text-required">*</span></label>
                                         <%= f.text_field :full_name, class: "input-text full-width required" %>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 col-md-5">
-                                        <label>Địa Chỉ *</label>
+                                        <label>Địa Chỉ <span class="text-required">*</span></label>
                                         <%= f.text_field :address, class: "input-text full-width required" %>
                                     </div>
                                     <div class="col-sm-6 col-md-5">
@@ -44,23 +44,23 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 col-md-5">
-                                        <label>Số điện thoại *</label>
+                                        <label>Số điện thoại <span class="text-required">*</span></label>
                                         <%= f.text_field :phone, class: "input-text full-width required" %>
                                     </div>
                                     <div class="col-sm-6 col-md-5">
-                                        <label>Địa chỉ email *</label>
+                                        <label>Địa chỉ email <span class="text-required">*</span></label>
                                         <%= f.text_field :email, class: "input-text full-width required email" %>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 col-md-5">
-                                        <label>Ngày nhận phòng *</label>
+                                        <label>Ngày nhận phòng <span class="text-required">*</span></label>
                                         <div class="datepicker-wrap">
                                             <input type="text" name="booking_hotel[date_from]" id="booking_hotel_date_from" class="input-text full-width required" placeholder="yy/mm/dd" />
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-md-5">
-                                        <label>Ngày giao phòng *</label>
+                                        <label>Ngày giao phòng <span class="text-required">*</span></label>
                                         <div class="datepicker-wrap">
                                             <input type="text" name="booking_hotel[date_to]" id="booking_hotel_date_to" class="input-text full-width required" placeholder="yy/mm/dd" />
                                         </div>
@@ -68,21 +68,21 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 col-md-5">
-                                        <label>Số người lớn *</label>
+                                        <label>Số người lớn <span class="text-required">*</span></label>
                                         <%= f.text_field :adult, class: "input-text full-width required", placeholder: "Mặc định số  người lớn: 1" %>
                                     </div>
                                     <div class="col-sm-6 col-md-5">
-                                        <label>Số trẻ em *</label>
+                                        <label>Số trẻ em <span class="text-required">*</span></label>
                                         <%= f.text_field :child, class: "input-text full-width required", placeholder: "Nhập 0 nếu không có trẻ em" %>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 col-md-5">
-                                        <label>Số phòng cần đặt *</label>
+                                        <label>Số phòng cần đặt <span class="text-required">*</span></label>
                                         <%= f.text_field :room_number, class: "input-text full-width required" %>
                                     </div>
                                     <div class="col-sm-6 col-md-5">
-                                        <label>Loại phòng *</label>
+                                        <label>Loại phòng <span class="text-required">*</span></label>
                                         <div class="selector">
                                             <select name="booking_hotel[hotel_room_id]" id="booking_hotel_hotel_room_id" class="full-width required">
                                                 <% @hotel_booking.hotel_rooms.each do |item| %>
@@ -105,7 +105,7 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 col-md-5">
-                                    <button type="submit" class="full-width btn-large">ĐẶT PHÒNG</button>
+                                    <button type="submit" class="full-width btn-large">ĐẶT PHÒNG KHÁCH SẠN</button>
                                 </div>
                             </div>
                         <% end %>

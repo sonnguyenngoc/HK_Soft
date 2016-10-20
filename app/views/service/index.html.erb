@@ -6,11 +6,11 @@
     <div class="page-title-container style2">
         <div class="container">
             <div class="page-title">
-                <h2 class="entry-title">Dịch Vụ</h2>
+                <h2 class="entry-title">Vé Máy Bay & Visa</h2>
             </div>
             <ul class="breadcrumbs">
                 <li><%= link_to "Trang Chủ", root_path %></li>
-                <li class="active">Dịch Vụ</li>
+                <li class="active">Vé Máy Bay & Visa</li>
             </ul>
         </div>
     </div>
@@ -18,112 +18,34 @@
     <section id="content">
         <div class="container">
             <div id="main">
-                <div class="section service-list">
-                    <div class="row">
-                        <div class="box col-sm-6 col-md-3">
-                            <div class="icon-box box style8 style12">
-                                <div class="icon-wrapper">
-                                    <i class="soap-icon-car"></i>
-                                </div>
-                                <div class="details">
-                                    <h4 class="m-title"><%= link_to "Dịch Vụ Thuê Xe Du Lịch", car_hire_path %></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box col-sm-6 col-md-3">
-                            <div class="icon-box box style8 style12">
-                                <div class="icon-wrapper">
-                                    <i class="soap-icon-hotel"></i>
-                                </div>
-                                <div class="details">
-                                    <h4 class="m-title"><%= link_to "Đặt Phòng Khách Sạn", hotel_listing_path %></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box col-sm-6 col-md-3">
-                            <div class="icon-box box style8 style12">
-                                <div class="icon-wrapper">
-                                    <i class="soap-icon-plane-right takeoff-effect"></i>
-                                </div>
-                                <div class="details">
-                                    <h4 class="m-title"><%= link_to "Dịch Vụ Đặt Vé Máy Bay", plane_ticket_path %></h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box col-sm-6 col-md-3">
-                            <div class="icon-box box style8 style12">
-                                <div class="icon-wrapper">
-                                    <i class="soap-icon-card"></i>
-                                </div>
-                                <div class="details">
-                                    <h4 class="m-title"><%= link_to "Dịch Vụ Làm Thẻ Visa", visa_card_path %></h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="large-block row image-box style2">
+                <div class="row image-box style2">
                     <div class="col-md-6">
                         <article class="box">
                             <figure>
-                                <a href="<%= car_hire_path %>" title=""><img src="/frontend/images/booking_car.jpg" alt="" width="272" height="192" /></a>
+                                <%= link_to image_tag("/frontend/images/booking_plane.jpg", alt: "Dịch Vụ Đặt Vé Máy Bay", size: "272x192"), plane_ticket_booking_path, title: "Dịch Vụ Đặt Vé Máy Bay" %>
                             </figure>
                             <div class="details">
-                                <h4>Dịch Vụ Thuê Xe Du Lịch</h4>
-                                <p class="text-justify">
-                                    - Phục vụ mọi nhu cầu của bạn, từ 4-7-16-29-45 chỗ, chất lượng, từ Tp.HCM đến các tỉnh.<br>
-                                    - Hay phục vụ công tác tháng, cưới hỏi, đưa rước sân bay, du lịch..v...v...<br>
-                                    - Giá cả phải chăng, phục vụ chu đáo, tận tình, vui vẻ, chuyên nghiệp, yên tâm.
-                                </p>
-                                <a href="<%= car_hire_path %>" title="" class="button btn-mini">XEM</a>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-md-6">
-                        <article class="box">
-                            <figure>
-                                <a href="<%= hotel_listing_path %>" title=""><img src="/frontend/images/booking_room.jpg" alt="" width="272" height="192" /></a>
-                            </figure>
-                            <div class="details">
-                                <h4>Dịch Vụ Đặt Phòng Khách Sạn</h4>
-                                <p class="text-justify">
-                                    - Giúp bạn lên kế hoạch cho chuyến đi dễ dàng.<br>
-                                    - Luôn cập nhật giá tốt nhất dành cho bạn.<br>
-                                    - Luôn sẵn lòng hỗ trợ 24/24.
-                                </p>
-                                <a href="<%= hotel_listing_path %>" title="" class="button btn-mini">XEM</a>
-                                <br><br><br><br><br>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-md-6">
-                        <article class="box">
-                            <figure>
-                                <a href="<%= plane_ticket_path %>" title=""><img src="/frontend/images/booking_plane.jpg" alt="" width="272" height="192" /></a>
-                            </figure>
-                            <div class="details">
-                                <h4>Dịch Vụ Đặt Vé Máy Bay</h4>
+                                <h4><%= link_to "Dịch Vụ Đặt Vé Máy Bay", plane_ticket_booking_path, title: "Dịch Vụ Đặt Vé Máy Bay" %></h4>
                                 <p class="text-justify">
                                     - Nhanh, gọn, dễ dàng, tiết kiệm thời gian mua vé.<br>
                                     - Hỗ trợ bạn mọi lúc, mọi nơi.
                                 </p>
-                                <a href="<%= plane_ticket_path %>" title="" class="button btn-mini">XEM</a>
+                                <%= link_to "CHỌN DỊCH VỤ", plane_ticket_booking_path, class: "button btn-small sky-blue1", title: "Dịch Vụ Đặt Vé Máy Bay" %>
                             </div>
                         </article>
                     </div>
                     <div class="col-md-6">
                         <article class="box">
                             <figure>
-                                <a href="<%= visa_card_path %>" title=""><img src="/frontend/images/booking_visa.jpg" alt="" width="272" height="192" /></a>
+                                <%= link_to image_tag("/frontend/images/booking_visa.jpg", alt: "Dịch Vụ Làm Thẻ Visa", size: "272x192"), visa_card_path, title: "Dịch Vụ Làm Thẻ Visa" %>
                             </figure>
                             <div class="details">
-                                <h4>Dịch Vụ Làm Thẻ Visa</h4>
+                                <h4><%= link_to "Dịch Vụ Làm Thẻ Visa", visa_card_path, title: "Dịch Vụ Làm Thẻ Visa" %></h4>
                                 <p class="text-justify">
                                     - Uy tín, nhanh chóng, chi phí hợp lí.<br>
                                     - Tư vấn miễn phí.
                                 </p>
-                                <a href="<%= visa_card_path %>" title="" class="button btn-mini">XEM</a>
+                                <%= link_to "CHỌN DỊCH VỤ", visa_card_path, class: "button btn-small sky-blue1", title: "Dịch Vụ Làm Thẻ Visa" %>
                             </div>
                         </article>
                     </div>

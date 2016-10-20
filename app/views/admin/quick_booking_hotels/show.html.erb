@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @quick_booking_hotel.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @quick_booking_hotel.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @quick_booking_hotel.email %>
+</p>
+
+<p>
+  <strong>Passport:</strong>
+  <%= @quick_booking_hotel.passport %>
+</p>
+
+<p>
+  <strong>Hotel name:</strong>
+  <%= @quick_booking_hotel.hotel_name %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @quick_booking_hotel.location %>
+</p>
+
+<p>
+  <strong>Date from:</strong>
+  <%= @quick_booking_hotel.date_from %>
+</p>
+
+<p>
+  <strong>Date to:</strong>
+  <%= @quick_booking_hotel.date_to %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @quick_booking_hotel.number %>
+</p>
+
+<p>
+  <strong>Adult:</strong>
+  <%= @quick_booking_hotel.adult %>
+</p>
+
+<p>
+  <strong>Child:</strong>
+  <%= @quick_booking_hotel.child %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @quick_booking_hotel.message %>
+</p>
+
+<%= link_to 'Edit', edit_quick_booking_hotel_path(@quick_booking_hotel) %> |
+<%= link_to 'Back', quick_booking_hotels_path %>

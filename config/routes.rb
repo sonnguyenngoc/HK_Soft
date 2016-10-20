@@ -18,8 +18,11 @@ Rails.application.routes.draw do
     
     # Tour du lịch
     get "tour-du-lich.html" => "tour#index", as: :tour
+    get "gia-hot-tour-doan.html" => "tour#booking_tour_group", as: :booking_tour_group
+    get "gia-hot-tour-doan/thanh-cong.html" => "tour#tour_group_thankyou", as: :tour_group_thankyou
     get "tour-khuyen-mai.html" => "tour#deal_tours", as: :deal_tours
     get "tour-hot.html" => "hot_tours#index", as: :hot_tours
+    get "tour-tet.html" => "tour#new_year_tours", as: :new_year_tours
     get "tour-du-lich/tim-kiem-tour.html" => "tour#tour_search", as: :tour_search
     get "bang-gia-tour.html" => "tour#tour_pricing", as: :tour_pricing
     get "tour-du-lich/tour-trong-nuoc.html" => "tour#domestic_tour", as: :domestic_tour
@@ -30,7 +33,7 @@ Rails.application.routes.draw do
     get "tour-du-lich/dat-tour/thanh-cong.html" => "tour#tour_thankyou", as: :tour_thankyou
     
     # Dịch vụ
-    get "dich-vu.html" => "service#index", as: :service
+    get "ve-may-bay-va-visa.html" => "service#index", as: :service
     get "dich-vu/dat-ve-may-bay.html" => "service#plane_ticket", as: :plane_ticket
     get "dich-vu/dat-ve-may-bay/(:title)-:plane_ticket_id.html" => "service#plane_ticket_detail", as: :plane_ticket_detail
     get "dich-vu/dat-ve-may-bay/chi-tiet/dang-ky.html" => "service#plane_ticket_booking", as: :plane_ticket_booking
@@ -50,6 +53,8 @@ Rails.application.routes.draw do
   
     # Khách sạn
     get "dich-vu/khach-san.html" => "book_hotel#index", as: :hotel_listing
+    get "dich-vu/dat-phong-khach-san-nhanh.html" => "book_hotel#quick_booking_hotel", as: :quick_booking_hotel
+    get "dich-vu/dat-phong-khach-san-nhanh/thanh-cong.html" => "book_hotel#quick_hotel_thankyou", as: :quick_hotel_thankyou
     get "dich-vu/khach-san/tim-kiem.html" => "book_hotel#hotel_search", as: :hotel_search
     get "dich-vu/khach-san/(:name)-:hotel_id.html" => "book_hotel#book_hotel_detail", as: :book_hotel_detail
     get "dich-vu/khach-san/(:hotel_name)-:hotel_booking_id/dat-phong.html" => "book_hotel#hotel_booking", as: :hotel_booking
@@ -89,6 +94,8 @@ Rails.application.routes.draw do
     resources :contacts
     resources :booking_visas
     resources :booking_planes
+    resources :tour_groups
+    resources :quick_booking_hotels
     
     namespace :admin, path: "quan-tri" do
       get "/" => "main#index"
@@ -234,6 +241,8 @@ Rails.application.routes.draw do
         resources :companies, path: "chi-nhanh"
         resources :galleries, path: "hinh-anh-hoat-dong"
         resources :user_groups, path: "nhom-nguoi-dung"
+        resources :tour_groups, path: "tour-doan"
+        resources :quick_booking_hotels, path: "dat-phong-nhanh"
         get "tru-so-chinh" => "companies#head_office", as: :head_office
         resources :options, path: "cai-dat"
         resources :code_statuses, path: "ma-bai-viet" do

@@ -21,6 +21,13 @@ class BookHotelController < ApplicationController
     @hotel_booking = Hotel.find(params[:hotel_booking_id])
     @hotel_checkout = BookingHotel.new
   end
+  
+  def quick_booking_hotel
+    @quick_booking_hotel = QuickBookingHotel.new
+  end
+  
+  def quick_hotel_thankyou
+  end
 
   def slideshow_popup
     @hotel_image = Hotel.find(params[:hotel_id])
@@ -28,6 +35,5 @@ class BookHotelController < ApplicationController
   
   def hotel_thankyou
     @page_name = Category.where(description: "services").first
-    
   end
 end

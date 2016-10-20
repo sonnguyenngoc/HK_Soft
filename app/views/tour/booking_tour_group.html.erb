@@ -1,0 +1,133 @@
+<div id="page-wrapper">
+    
+    <!-- HEADER -->
+    <%= render "/home/header" %>
+    
+    <div class="page-title-container style2">
+        <div class="container">
+            <div class="page-title pull-left">
+                <h2 class="entry-title">Giá hot tour đoàn</h2>
+            </div>
+            <ul class="breadcrumbs pull-right">
+                <li><%= link_to "Trang Chủ", root_path %></li>
+                <li class="active">Giá hot tour đoàn</li>
+            </ul>
+        </div>
+    </div>
+    <section id="content" class="gray-area">
+        <div class="container">
+            <div class="row">
+                <div id="main" class="col-sms-6 col-sm-8 col-md-9">
+                    <div class="booking-section travelo-box">
+                        <%= form_for @tour_group, html: {class: "booking-form", id: "tour_group"} do |f| %>  
+                            <div class="person-information">
+                                <h2>ĐĂNG KÝ TOUR ĐOÀN TẠI ĐÂY</h2>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 col-md-10">
+                                        <label>Tên Khách Hàng Đăng Ký <span class="text-required">*</span></label>
+                                        <%= f.text_field :name, class: "input-text full-width required", placeholder: "Vui lòng nhập họ & tên khách hàng đăng ký tại đây....." %>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Số Điện Thoại <span class="text-required">*</span></label>
+                                        <%= f.text_field :phone, class: "input-text full-width required", placeholder: "Vui lòng nhập số điện thoại tại đây....." %>
+                                    </div>
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Địa Chỉ Email <span class="text-required">*</span></label>
+                                        <%= f.text_field :email, class: "input-text full-width required email", placeholder: "Vui lòng nhập địa chỉ email tại đây....." %>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>ID/Passport</label>
+                                        <%= f.text_field :passport, class: "input-text full-width", placeholder: "Vui lòng nhập id/passport tại đây....." %>
+                                    </div>
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Số lượng hành khách <span class="text-required">*</span></label>
+                                        <%= f.text_field :number, class: "input-text full-width required", placeholder: "Vui lòng nhập số lượng cần đăng ký tour tại đây....." %>
+                                    </select>
+                                    </div>
+                                </div>
+								<div class="form-group row">
+                                    <div class="col-sm-12 col-md-10">
+                                        <label>Tour yêu cầu <span class="text-required">*</span></label>
+                                        <%= f.text_field :tour_name, class: "input-text full-width required", placeholder: "Vui lòng nhập tour yêu cầu tại đây....." %>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Ngày khởi hành tour <span class="text-required">*</span></label>
+                                        <div class="datepicker-wrap">
+                                            <input type="text" name="tour_group[date_from]" id="tour_group_date_from" class="input-text full-width required" placeholder="Chọn ngày khởi hành tour (yy/mm/dd)" />
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Ngày kết thúc tour <span class="text-required">*</span></label>
+                                        <div class="datepicker-wrap">
+                                            <input type="text" name="tour_group[date_to]" id="tour_group_date_to" class="input-text full-width required" placeholder="Chọn ngày kết thúc tour (yy/mm/dd)" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Giá mong muốn <span class="text-required">*</span></label>
+                                        <%= f.text_field :price, class: "input-text full-width required", placeholder: "Vui lòng nhập giá mong muốn tại đây....." %>
+                                    </div>
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Tiêu chuẩn khách sạn <span class="text-required">*</span></label>
+                                        <div class="selector">
+                                            <select name="tour_group[standard_hotel]" id="tour_group_standard_hotel" class="full-width">
+												<option value="0">Không có nhu cầu</option>
+                                                <option value="1">Tiêu chuẩn 1 sao</option>
+												<option value="2">Tiêu chuẩn 2 sao</option>
+												<option value="3">Tiêu chuẩn 3 sao</option>
+												<option value="4">Tiêu chuẩn 4 sao</option>
+												<option value="5">Tiêu chuẩn 5 sao</option>
+                                            </select>
+                                        </div>
+                                    </select>
+                                    </div>
+                                </div>
+								<div class="form-group row">
+                                    <div class="col-sm-12 col-md-10">
+                                        <label>Địa điểm đón khách <span class="text-required">*</span></label>
+                                        <%= f.text_field :address_from, class: "input-text full-width required", placeholder: "Vui lòng nhập địa điểm đón khách tại đây....." %>
+                                    </div>
+                                </div>
+								<div class="form-group row">
+                                    <div class="col-sm-10">
+                                        <label>Yêu cầu khác</label>
+                                        <%= f.text_area :message, rows: '8', class: "input-text full-width", placeholder: "Nhằm nâng cao chất lượng dịch vụ của chuyến tour. Quý khách hàng vui lòng nhập những yêu cầu khác cho chuyến tour (nếu có) tại đây....." %>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 col-md-5">
+                                    <button type="submit" class="full-width btn-large sky-blue1">ĐẶT TOUR ĐOÀN</button>
+                                </div>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="sidebar col-sms-6 col-sm-4 col-md-3">
+                    
+                    <%= render "/home/need_help" %>
+                
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <%= render "/home/footer" %>
+    
+</div>
+
+<!-- Javascript -->
+<%= render "/home/js_files" %>
+
+<script>
+    jQuery(document).ready(function($){
+        $("#tour_group").validate();
+    });
+</script>

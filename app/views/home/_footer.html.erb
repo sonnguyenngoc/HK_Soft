@@ -19,33 +19,35 @@
                 <div class="col-sm-6 col-md-4">
                     <h2>CẨM NANG DU LỊCH</h2>
                     <ul class="travel-news">
-                        <% ArticleCategory.get_tour_handbook_blogs(params).limit(4).each do |item| %>
-                            <li>
-                                <div class="thumb">
-                                    <%= link_to image_tag(item.image_url.small_footer_image, width: "63", height: "63", alt: item.title), tour_handbook_detail_path(tour_handbook_detail_id: item, name: item.url_friendly) %>
-                                </div>
-                                <div class="description">
-                                    <h5 class="s-title"><%= link_to item.title, tour_handbook_detail_path(tour_handbook_detail_id: item, name: item.url_friendly) %></h5>
-                                    <div class="text-justify"><%= truncate(strip_tags(item.content.html_safe), length: 50) %></div>
-                                    <span class="date"><%= item.created_at.strftime("%d/%m/%Y") %></span>
-                                </div>
-                            </li>
+                        <% ArticleCategory.get_tour_handbook_blogs(params).limit(3).each do |item| %>
+                        <li>
+                            <div class="thumb">
+                                <%= link_to image_tag(item.image_url.small_footer_image, width: "63", height: "63", alt: item.title), tour_handbook_detail_path(tour_handbook_detail_id: item, name: item.url_friendly) %>
+                            </div>
+                            <div class="description">
+                                <h5 class="s-title"><%= link_to item.title, tour_handbook_detail_path(tour_handbook_detail_id: item, name: item.url_friendly) %></h5>
+                                <div class="text-justify"><%= truncate(strip_tags(item.content.html_safe), length: 50) %></div>
+                                <span class="date"><%= item.created_at.strftime("%d/%m/%Y") %></span>
+                            </div>
+                        </li>
                         <% end %>
+                        <li><%= link_to "XEM THÊM", tour_handbook_path, class: "button btn-small sky-blue1" %></li>
                     </ul>
                     <h2>TIN TỨC DU LỊCH</h2>
                     <ul class="travel-news">
                         <% ArticleCategory.get_travel_news(params).limit(3).each do |item| %>
-                            <li>
-                                <div class="thumb">
-                                    <%= link_to image_tag(item.image_url.small_footer_image, width: "63", height: "63", alt: item.title), travel_news_detail_path(travel_news_id: item, title: item.url_friendly) %>
-                                </div>
-                                <div class="description">
-                                    <h5 class="s-title"><%= link_to item.title, travel_news_detail_path(travel_news_id: item, title: item.url_friendly) %></h5>
-                                    <div class="text-justify"><%= truncate(strip_tags(item.content.html_safe), length: 50) %></div>
-                                    <span class="date"><%= item.created_at.strftime("%d/%m/%Y") %></span>
-                                </div>
-                            </li>
+                        <li>
+                            <div class="thumb">
+                                <%= link_to image_tag(item.image_url.small_footer_image, width: "63", height: "63", alt: item.title), travel_news_detail_path(travel_news_id: item, title: item.url_friendly) %>
+                            </div>
+                            <div class="description">
+                                <h5 class="s-title"><%= link_to item.title, travel_news_detail_path(travel_news_id: item, title: item.url_friendly) %></h5>
+                                <div class="text-justify"><%= truncate(strip_tags(item.content.html_safe), length: 50) %></div>
+                                <span class="date"><%= item.created_at.strftime("%d/%m/%Y") %></span>
+                            </div>
+                        </li>
                         <% end %>
+                        <li><%= link_to "XEM THÊM", travel_news_path, class: "button btn-small sky-blue1" %></li>
                     </ul>
                 </div>
                 <div class="col-sm-6 col-md-4">

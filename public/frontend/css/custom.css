@@ -59,6 +59,10 @@ label.error {
     border: 1px solid red;
     border-radius: 2px;
 }
+#tour_group  input.error, #tour_group textarea.error {
+    border: 1px solid red;
+    border-radius: 2px;
+}
 #booking_plane_validate input.error, #booking_plane_validate textarea.error {
     border: 1px solid red;
     border-radius: 2px;
@@ -187,4 +191,14 @@ label.error {
     .mobile-color {
         color: red !important;
     }
+}
+.custom-home-icon {
+    width: 30px;
+    margin-bottom: 11px;
+}
+.back-to-home {
+    padding-right: 5px !important;
+}
+.text-required {
+    color: #ff0000;
 }

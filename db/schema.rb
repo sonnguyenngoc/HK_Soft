@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161014091340) do
+ActiveRecord::Schema.define(version: 20161019155034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -603,6 +603,23 @@ ActiveRecord::Schema.define(version: 20161014091340) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "quick_booking_hotels", force: :cascade do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "passport"
+    t.string   "hotel_name"
+    t.string   "location"
+    t.datetime "date_from"
+    t.datetime "date_to"
+    t.integer  "number",     default: 1
+    t.integer  "adult",      default: 1
+    t.integer  "child",      default: 0
+    t.text     "message"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "slideshows", force: :cascade do |t|
     t.string   "image_url"
     t.string   "title_1"
@@ -627,6 +644,23 @@ ActiveRecord::Schema.define(version: 20161014091340) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "tour_groups", force: :cascade do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "passport"
+    t.string   "tour_name"
+    t.integer  "number"
+    t.integer  "standard_hotel"
+    t.datetime "date_from"
+    t.datetime "date_to"
+    t.decimal  "price"
+    t.text     "message"
+    t.string   "address_from"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "tour_highlights", force: :cascade do |t|

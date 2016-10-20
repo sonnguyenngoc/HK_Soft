@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>-------- NewDiscovery.vn - Đăng ký tour đoàn --------</p>
+    <p>Tên khách hàng: <%= @tour_group.name %></p>
+    <p>Email: <%= @tour_group.email %></p>
+    <p>Số điện thoại: <%= @tour_group.phone %></p>
+    <p>ID/Passport: <%= @tour_group.passport %></p>
+    <p>Tour yêu cầu: <%= @tour_group.tour_name %></p>
+    <p>Số lượng hành khách: <%= @tour_group.number %></p>
+    <p>Giá mong muốn: <% if @tour_group.price == 0 %>Liên hệ<% else %><%= @tour_group.price %> VNĐ<% end %></p>
+    <p>Ngày khởi hành tour: <%= @tour_group.date_from.strftime("%d/%m/%Y") %></p>
+    <p>Ngày kết thúc tour: <%= @tour_group.date_to.strftime("%d/%m/%Y") %></p>
+    <p>Địa điểm đón khách: <%= @tour_group.address_from %></p>
+    <p>Tiêu chuẩn khách sạn: <% if @tour_group.standard_hotel == 0 %>Không có nhu cầu đặt khách sạn<% else %>Có nhu cầu đặt khách sạn <%= @tour_group.standard_hotel %> sao.<% end %></p>
+    <p>Yêu cầu khác: <%= @tour_group.message %></p>
+    <p>
+      Ngày gửi yêu cầu: <%= @tour_group.created_at.in_time_zone("Asia/Bangkok").strftime("%d/%m/%Y %H:%M") %> (GMT+07:00)
+    </p>
+  </body>
+</html>

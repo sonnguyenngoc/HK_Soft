@@ -22,6 +22,14 @@ class UserGroup < ActiveRecord::Base
                         ]
             },
             {
+                class_name: "TourGroup",
+                display_name: I18n.t(:tour_group),
+                actions: [
+                            {name: "read", values: ["yes","no"], multiple: false},
+                            {name: "delete", values: ["yes","no"], multiple: false},
+                        ]
+            },
+            {
                 class_name: "Hotel",
                 display_name: I18n.t(:hotel),
                 actions: [
@@ -52,6 +60,14 @@ class UserGroup < ActiveRecord::Base
             {
                 class_name: "BookingHotel",
                 display_name: I18n.t(:booking_hotel),
+                actions: [
+                            {name: "read", values: ["yes","no"], multiple: false},
+                            {name: "delete", values: ["yes","no"], multiple: false},
+                        ]
+            },
+            {
+                class_name: "QuickBookingHotel",
+                display_name: I18n.t(:quick_booking_hotel),
                 actions: [
                             {name: "read", values: ["yes","no"], multiple: false},
                             {name: "delete", values: ["yes","no"], multiple: false},

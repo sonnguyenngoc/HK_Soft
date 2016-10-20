@@ -384,6 +384,10 @@ vi:
   booking_tour: "Đặt tour"
   booking_visa: "Đặt làm visa"
   gallery: "Hình ảnh hoạt động"
+  tour_group: "Tour đoàn"
+  tour_groups: "Danh sách đặt tour đoàn"
+  quick_booking_hotel: "Đặt khách sạn nhanh"
+  quick_booking_hotels: "Danh sách đặt khách sạn nhanh"
   
   activerecord:
     attributes:

@@ -6,18 +6,23 @@ class AboutUsController < ApplicationController
   end
   
   def info_system_1
+    @style_body = "single single-pos"
   end
   
   def info_system_2
+    @style_body = "single single-pos"
   end
   
   def info_system_3
+    @style_body = "single single-pos"
   end
   
   def info_system_4
+    @style_body = "single single-pos"
   end
   
   def info_system_5
+    @style_body = "single single-pos"
   end
   
   def activities_photo

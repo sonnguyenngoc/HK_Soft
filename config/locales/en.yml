@@ -383,6 +383,10 @@ en:
   booking_tour: "Booking Tour"
   booking_visa: "Booking Visa"
   gallery: "Gallery"
+  tour_group: "Tour Group"
+  tour_groups: "Tour Groups"
+  quick_booking_hotel: "Quick Booking Hotel"
+  quick_booking_hotels: "Quick Booking Hotels"
   
   devise:
     sessions:
