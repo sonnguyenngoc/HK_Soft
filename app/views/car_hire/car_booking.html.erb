@@ -6,11 +6,11 @@
     <div class="page-title-container style2">
         <div class="container">
             <div class="page-title pull-left">
-                <h2 class="entry-title">Đặt Xe</h2>
+                <h2 class="entry-title">Thuê Xe Ô Tô</h2>
             </div>
             <ul class="breadcrumbs pull-right">
                 <li><%= link_to "Trang Chủ", root_path %></li>
-                <li><%= link_to @page_name.name, car_hire_path %></li>
+                <li><%= link_to "Thuê Xe Ô Tô", car_hire_path %></li>
                 <li><%= link_to @car_booking.article_category.name, car_grid_view_path(car_category_id: @car_booking.article_category_id) %></li>
                 <li><%= link_to @car_booking.name, car_detail_path(car_id: @car_booking) %></li>
             </ul>
@@ -24,67 +24,67 @@
                         <%= form_for @car_checkout, html: {class: "booking-form", id: "booking_car"} do |f| %>
                             <%= f.hidden_field :car_id, value: @car_booking.id %>
                             <div class="person-information">
-                                <h2>Thông Tin Khách Hàng</h2>
+                                <h2>ĐĂNG KÝ THUÊ XE Ô TÔ TẠI ĐÂY</h2>
                                 <div class="form-group row">
                                     <div class="col-sm-12 col-md-10">
-                                        <label>Tên Khách Hàng *</label>
-                                        <%= f.text_field :full_name, class: "input-text full-width required" %>
+                                        <label>Tên Khách Hàng <span class="text-required">*</span></label>
+                                        <%= f.text_field :full_name, class: "input-text full-width required", placeholder: "Vui lòng nhập họ & tên khách hàng đăng ký tại đây....." %>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 col-md-5">
-                                        <label>Địa Chỉ *</label>
-                                        <%= f.text_field :address, class: "input-text full-width required" %>
+                                        <label>Địa Chỉ <span class="text-required">*</span></label>
+                                        <%= f.text_field :address, class: "input-text full-width required", placeholder: "Vui lòng nhập địa chỉ tại đây....." %>
                                     </div>
                                     <div class="col-sm-6 col-md-5">
                                         <label>ID/Passport</label>
-                                        <%= f.text_field :passport, class: "input-text full-width" %>
+                                        <%= f.text_field :passport, class: "input-text full-width", placeholder: "Vui lòng nhập id/passport (nếu có) tại đây....." %>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 col-md-5">
-                                        <label>Số Điện Thoại *</label>
-                                        <%= f.text_field :phone, class: "input-text full-width required" %>
+                                        <label>Số Điện Thoại <span class="text-required">*</span></label>
+                                        <%= f.text_field :phone, class: "input-text full-width required", placeholder: "Vui lòng nhập số điện thoại tại đây....." %>
                                     </div>
                                     <div class="col-sm-6 col-md-5">
-                                        <label>Địa chỉ email *</label>
-                                        <%= f.text_field :email, class: "input-text full-width required email" %>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 col-md-5">
-                                        <label>Lộ Trình (Điểm khởi hành) *</label>
-                                        <%= f.text_field :address_from, class: "input-text full-width required" %>
-                                    </div>
-                                    <div class="col-sm-6 col-md-5">
-                                        <label>Lộ Trình (Điểm đến) *</label>
-                                        <%= f.text_field :address_to, class: "input-text full-width required" %>
+                                        <label>Địa chỉ email <span class="text-required">*</span></label>
+                                        <%= f.text_field :email, class: "input-text full-width required email", placeholder: "Vui lòng nhập địa chỉ email tại đây....." %>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 col-md-5">
-                                        <label>Ngày đi *</label>
+                                        <label>Lộ Trình (Điểm khởi hành) <span class="text-required">*</span></label>
+                                        <%= f.text_field :address_from, class: "input-text full-width required", placeholder: "Vui lòng nhập điểm khởi hành tại đây....." %>
+                                    </div>
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Lộ Trình (Điểm đến) <span class="text-required">*</span></label>
+                                        <%= f.text_field :address_to, class: "input-text full-width required", placeholder: "Vui lòng nhập điểm đến tại đây....." %>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 col-md-5">
+                                        <label>Ngày đi <span class="text-required">*</span></label>
                                         <div class="datepicker-wrap">
-                                            <input type="text" name="booking_car[date_from]" id="booking_car_date_from" class="input-text full-width required" placeholder="yy-mm-dd" />
+                                            <input type="text" name="booking_car[date_from]" id="booking_car_date_from" class="input-text full-width required" placeholder="Chọn ngày khởi hành (yy-mm-dd)" />
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-md-5">
-                                        <label>Ngày về *</label>
+                                        <label>Ngày về <span class="text-required">*</span></label>
                                         <div class="datepicker-wrap">
-                                            <input type="text" name="booking_car[date_to]" id="booking_car_date_to" class="input-text full-width required" placeholder="yy-mm-dd" />
+                                            <input type="text" name="booking_car[date_to]" id="booking_car_date_to" class="input-text full-width required" placeholder="Chọn ngày về (yy-mm-dd)" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-10">
                                         <label>Lời Nhắn</label>
-                                        <%= f.text_area :message, rows: '8', class: "input-text full-width" %>
+                                        <%= f.text_area :message, rows: '8', class: "input-text full-width", placeholder: "Nhằm nâng cao chất lượng dịch vụ của chuyến tour. Quý khách hàng vui lòng nhập những yêu cầu khác (nếu có) tại đây....." %>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 col-md-5">
-                                    <button type="submit" class="full-width btn-large">ĐẶT XE</button>
+                                    <button type="submit" class="full-width btn-large sky-blue1">THUÊ XE Ô TÔ</button>
                                 </div>
                             </div>
                         <% end %>
@@ -98,14 +98,12 @@
                                 <a title="" href="<%= car_detail_path(car_id: @car_booking, name: @car_booking.url_friendly) %>" class="middle-block"><img class="middle-item" alt="" src="<%= @car_booking.image_url.square_small_image %>"></a>
                                 <div class="travel-title">
                                     <h5 class="box-title"><%= @car_booking.name %><% if !@car_booking.manufacturer_id.nil? %><small><%= @car_booking.manufacturer.name %></small><% end %></h5>
-                                    <%= link_to "Chọn gói thuê khác", car_hire_path, class: "button" %>
+                                    <%= link_to "Chọn gói thuê khác", car_hire_path, class: "button sky-blue1" %>
                                 </div>
                             </figure>
                         </article>
-                        
-                        <h4>Giá thuê</h4>
                         <dl class="other-details">
-                            <dt class="total-price">Giá</dt><dd class="total-price-value"><% if @car_booking.price == 0 %>Liên Hệ<% else %><%= format_number(@car_booking.price) %> VND<% end %></dd>
+                            <dt class="total-price">Giá Thuê</dt><dd class="total-price-value"><% if @car_booking.price == 0 %>Liên Hệ<% else %><%= format_number(@car_booking.price) %> VNĐ<% end %></dd>
                         </dl>
                     </div>
                     

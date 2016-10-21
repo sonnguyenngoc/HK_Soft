@@ -71,9 +71,9 @@ class Article < ActiveRecord::Base
     return records
   end
   
-  def self.get_visa_card_blogs
+  def self.get_visa_card_blog
     records = self.get_active_articles
-    records = records.joins(:article_categories).where("article_categories.description = 'visa_card'")
+    records = records.joins(:article_categories).where("article_categories.description = 'visa_card'").first
     
     return records
   end

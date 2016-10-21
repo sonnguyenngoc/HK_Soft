@@ -18,8 +18,8 @@ Rails.application.routes.draw do
     
     # Tour du lịch
     get "tour-du-lich.html" => "tour#index", as: :tour
-    get "gia-hot-tour-doan.html" => "tour#booking_tour_group", as: :booking_tour_group
-    get "gia-hot-tour-doan/thanh-cong.html" => "tour#tour_group_thankyou", as: :tour_group_thankyou
+    get "gia-hot-tour-doan.html" => "tour_group#booking_tour_group", as: :booking_tour_group
+    get "gia-hot-tour-doan/thanh-cong.html" => "tour_group#tour_group_thankyou", as: :tour_group_thankyou
     get "tour-khuyen-mai.html" => "tour#deal_tours", as: :deal_tours
     get "tour-hot.html" => "hot_tours#index", as: :hot_tours
     get "tour-tet.html" => "tour#new_year_tours", as: :new_year_tours
@@ -44,12 +44,12 @@ Rails.application.routes.draw do
     get "dich-vu/lam-the-visa/chi-tiet/dang-ky/dang-ky-thanh-cong.html" => "service#visa_card_thankyou", as: :visa_card_thankyou
         
     # Thuê xe du lịch
-    get "dich-vu/thue-xe-du-lich.html" => "car_hire#index", as: :car_hire
-    get "dich-vu/thue-xe-du-lich/tim-kiem.html" => "car_hire#car_search", as: :car_search
-    get "dich-vu/thue-xe-du-lich/(:car_category_name)-:car_category_id.html" => "car_hire#car_grid_view", as: :car_grid_view
-    get "dich-vu/thue-xe-du-lich/chi-tiet/(:name)-:car_id.html" => "car_hire#car_detail", as: :car_detail
-    get "dich-vu/thue-xe-du-lich/(:car_name)-:car_book_id/dat-xe.html" => "car_hire#car_booking", as: :car_booking
-    get "dich-vu/thue-xe-du-lich/dat-xe/dat-xe-thanh-cong.html" => "car_hire#car_thankyou", as: :car_thankyou
+    get "thue-xe-o-to.html" => "car_hire#index", as: :car_hire
+    get "thue-xe-o-to/tim-kiem.html" => "car_hire#car_search", as: :car_search
+    get "thue-xe-o-to/(:car_category_name)-:car_category_id.html" => "car_hire#car_grid_view", as: :car_grid_view
+    get "thue-xe-o-to/chi-tiet/(:name)-:car_id.html" => "car_hire#car_detail", as: :car_detail
+    get "thue-xe-o-to/(:car_name)-:car_book_id/dat-xe.html" => "car_hire#car_booking", as: :car_booking
+    get "thue-xe-o-to/dat-xe/dat-thanh-cong.html" => "car_hire#car_thankyou", as: :car_thankyou
   
     # Khách sạn
     get "dich-vu/khach-san.html" => "book_hotel#index", as: :hotel_listing
@@ -242,6 +242,8 @@ Rails.application.routes.draw do
         resources :galleries, path: "hinh-anh-hoat-dong"
         resources :user_groups, path: "nhom-nguoi-dung"
         resources :tour_groups, path: "tour-doan"
+        resources :countries, path: "quoc-gia"
+        resources :visas, path: "visa"
         resources :quick_booking_hotels, path: "dat-phong-nhanh"
         get "tru-so-chinh" => "companies#head_office", as: :head_office
         resources :options, path: "cai-dat"

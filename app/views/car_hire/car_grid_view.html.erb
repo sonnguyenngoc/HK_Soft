@@ -10,7 +10,7 @@
             </div>
             <ul class="breadcrumbs pull-right">
                 <li><%= link_to "Trang Chủ", root_path %></li>
-                <li><%= link_to @page_name.name, car_hire_path %></li>
+                <li><%= link_to "Thuê Xe Ô Tô", car_hire_path %></li>
                 <li class="active"><%= @car_category.name %></li>
             </ul>
         </div>
@@ -71,9 +71,9 @@
                                                 <%= link_to image_tag(item.image_url.small_image), car_detail_path(car_id: item, name: item.url_friendly) %>
                                             </figure>
                                             <div class="details">
-                                                <h4 class="box-title"><%= item.name %><small>Giá: <% if item.price == 0 %>Liên Hệ<% else %><%= format_number(item.price) %> VND<% end %></small></h4>
+                                                <h4 class="box-title"><%= item.name %><small>Giá: <% if item.price == 0 %>Liên Hệ<% else %><%= format_number(item.price) %> VNĐ<% end %></small></h4>
                                                 <div class="action">
-                                                    <%= link_to "Xem Xe", car_detail_path(car_id: item, name: item.url_friendly), class: "button btn-small full-width" %>
+                                                    <%= link_to "Xem Xe", car_detail_path(car_id: item, name: item.url_friendly), class: "button btn-small full-width sky-blue1" %>
                                                 </div>
                                             </div>
                                         </article>

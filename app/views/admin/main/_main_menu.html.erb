@@ -49,7 +49,23 @@
                     </ul>
                 </li>
             <% end %>
-            
+            <% if can?(:read, Visa) or can?(:read, Country) %>
+                <li>
+                    <a href="#"><i class="icon-credit-card"></i> <span><%= t(:visa) %></span></a>
+                    <ul>
+                        <% if can? :read, Visa %>
+                            <li class="<%= "active" if ["admin/visas"].include?(params[:controller]) %>">
+                                <%= link_to t(:visa), admin_visas_path %>
+                            </li>
+                        <% end %>
+                        <% if can? :read, Country %>
+                            <li class="<%= "active" if ["admin/countries"].include?(params[:controller]) %>">
+                                <%= link_to t(:country), admin_countries_path %>
+                            </li>
+                        <% end %>
+                    </ul>
+                </li>
+            <% end %>
             <% if can?(:read, TourGroup) or can?(:read, BookingTour) or can?(:read, BookingCar) or can?(:read, BookingHotel) or can?(:read, QuickBookingHotel) or can?(:read, BookingPlane) or can?(:read, BookingVisa) %>
                 <li>
                     <a href="#"><i class="icon-stack2"></i> <span>Quản lý đăng ký</span></a>

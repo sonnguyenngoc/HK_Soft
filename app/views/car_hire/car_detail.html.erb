@@ -10,7 +10,7 @@
             </div>
             <ul class="breadcrumbs pull-right">
                 <li><%= link_to "Trang Chủ", root_path %></li>
-                <li><%= link_to @page_name.name, car_hire_path %></li>
+                <li><%= link_to "Thuê Xe Ô Tô", car_hire_path %></li>
                 <li><%= link_to @car_detail.article_category.name, car_grid_view_path(car_category_id: @car_detail.article_category_id) %></li>
                 <li class="active"><%= @car_detail.name %></li>
             </ul>

@@ -388,6 +388,10 @@ vi:
   tour_groups: "Danh sách đặt tour đoàn"
   quick_booking_hotel: "Đặt khách sạn nhanh"
   quick_booking_hotels: "Danh sách đặt khách sạn nhanh"
+  visa: "Visa"
+  visas: "Danh sách Visa"
+  country: "Quốc gia"
+  countries: "Danh sách các quốc gia"
   
   activerecord:
     attributes:

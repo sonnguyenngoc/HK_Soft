@@ -202,3 +202,15 @@ label.error {
 .text-required {
     color: #ff0000;
 }
+.country-size {
+    font-size: 1.2em !important;
+}
+.car-list {
+    margin-top: 0px;
+}
+.price small {
+    font-size: 0.6em;
+}
+a.button {
+    font-size: 0.9em;
+}

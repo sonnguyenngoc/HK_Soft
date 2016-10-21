@@ -6,7 +6,7 @@ class TourGroupsController < ApplicationController
 
     respond_to do |format|
       if @tour_group.save
-        #TourGroupMailer.tour_group_email(@tour_group).deliver_now
+        TourGroupMailer.tour_group_email(@tour_group).deliver_now
         format.html { redirect_to tour_group_thankyou_path }
       end
     end

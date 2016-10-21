@@ -7,7 +7,12 @@ class ServiceController < ApplicationController
   end
   
   def visa_card
-    @blogs = Article.get_visa_card_blogs.paginate(page: params[:page], per_page: 3)
+    @style_body = "single single-pos" if !params[:country_id].present?
+    @visa_card = Article.get_visa_card_blog
+    if params[:country_id].present?
+      @country = Country.find(params[:country_id])
+      @visa_detail = Visa.where(country_id: params[:country_id]).first
+    end
   end
   
   def plane_ticket_detail

@@ -1,11 +1,11 @@
-<p>-------- NewDiscovery.vn - Đăng ký đặt xe --------</p>
+<p>-------- NewDiscovery.vn - Thuê Xe Ô Tô --------</p>
 <p>Họ & Tên: <%= @booking_car.full_name %></p>
 <p>Email: <%= @booking_car.email %></p>
 <p>Số điện thoại: <%= @booking_car.phone %></p>
 <p>Địa chỉ: <%= @booking_car.address %></p>
-<p>ID/Passport: <%= @booking_car.passport %></p>
+<p>ID/Passport: #<%= @booking_car.passport %></p>
 <p>Loại xe: <%= @booking_car.car.name %></p>
-<p>Giá xe: <% if @booking_car.price == 0 %>Liên hệ<% else %><%= @booking_car.price %> VND<% end %></p>
+<p>Giá xe: <% if @booking_car.price == 0 %>Liên hệ<% else %><%= @booking_car.price %> VNĐ<% end %></p>
 <p>Lộ trình (Điểm khởi hành): <%= @booking_car.address_from %></p>
 <p>Lộ trình (Điểm đến): <%= @booking_car.address_to %></p>
 <p>Ngày đi: <%= @booking_car.date_from.strftime("%d/%m/%Y") %></p>

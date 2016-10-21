@@ -1,0 +1,126 @@
+<% if @visa.errors.any? %>
+    <div id="error_explanation">
+        <span class="label label-warning"></span>
+        <div class="alert alert-warning alert-styled-left">
+            <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+            <% @visa.errors.full_messages.each do |message| %>
+                - <%= message %>.<br/>
+            <% end %>
+        </div>
+    </div>
+<% end %>
+
+<%= form_for [:admin, @visa], html: {class: "form-horizontal", id: "validate_checking"} do |f| %>
+    <div class="tabbable tab-content-bordered">
+        <ul class="nav nav-tabs bg-primary">
+            <li class="active button_tab_product"><a href="#control-tab1" value="control-tab1" data-toggle="tab">Thông tin 1</a></li>
+            <li><a href="#control-tab2" data-toggle="tab">Thông tin 2</a></li>
+            <li><a href="#control-tab3" data-toggle="tab">Thông tin 3</a></li>
+            <li><a href="#control-tab4" data-toggle="tab">Thông tin 4</a></li>
+            <li><a href="#control-tab5" data-toggle="tab">Thông tin 5</a></li>
+            <li><a href="#control-tab6" data-toggle="tab">Thông tin 6</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane has-padding active" id="control-tab1">
+                <div class="form-group">
+                    <%= f.label "Quốc gia cần làm visa", class: "col-lg-3 control-label" %>
+                    <div class="col-lg-9">
+                        <%= f.collection_select(:country_id, Country.all, :id, :name, {:prompt=> "Chọn quốc gia làm visa....."}, {class: "select-country"}) %>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Tiêu đề 1</label>
+                    <div class="col-lg-9">
+                        <%= f.text_field :title_1, class: "form-control" %>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" >Nội dung 1</label>
+                </div>
+                <div class="form-group">
+                    <%= f.text_area :content_1, rows: "4", cols: "4", class: "editor-full" %>
+                </div>
+            </div>
+            <div class="tab-pane has-padding" id="control-tab2">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Tiêu đề 2</label>
+                    <div class="col-lg-9">
+                        <%= f.text_field :title_2, class: "form-control" %>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" >Nội dung 2</label>
+                </div>
+                <div class="form-group">
+                    <%= f.text_area :content_2, rows: "4", cols: "4", class: "editor-full" %>
+                </div>
+            </div>
+            <div class="tab-pane has-padding" id="control-tab3">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Tiêu đề 3</label>
+                    <div class="col-lg-9">
+                        <%= f.text_field :title_3, class: "form-control" %>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" >Nội dung 3</label>
+                </div>
+                <div class="form-group">
+                    <%= f.text_area :content_3, rows: "4", cols: "4", class: "editor-full" %>
+                </div>
+            </div>
+            <div class="tab-pane has-padding" id="control-tab4">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Tiêu đề 4</label>
+                    <div class="col-lg-9">
+                        <%= f.text_field :title_4, class: "form-control" %>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" >Nội dung 4</label>
+                </div>
+                <div class="form-group">
+                    <%= f.text_area :content_4, rows: "4", cols: "4", class: "editor-full" %>
+                </div>
+            </div>
+            <div class="tab-pane has-padding" id="control-tab5">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Tiêu đề 5</label>
+                    <div class="col-lg-9">
+                        <%= f.text_field :title_5, class: "form-control" %>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" >Nội dung 5</label>
+                </div>
+                <div class="form-group">
+                    <%= f.text_area :content_5, rows: "4", cols: "4", class: "editor-full" %>
+                </div>
+            </div>
+            <div class="tab-pane has-padding" id="control-tab6">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Tiêu đề 6</label>
+                    <div class="col-lg-9">
+                        <%= f.text_field :title_6, class: "form-control" %>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" >Nội dung 6</label>
+                </div>
+                <div class="form-group">
+                    <%= f.text_area :content_6, rows: "4", cols: "4", class: "editor-full" %>
+                </div>
+            </div>
+        </div>
+                    
+        <br />
+        <div class="text-right">
+            <%= button_tag "#{t(:save)}<i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
+            <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, admin_visas_path, class: "btn btn-danger"%>
+        </div>
+        
+    </div>
+    
+<% end %>
+
+<%= render "/admin/main/editor_upload" %>

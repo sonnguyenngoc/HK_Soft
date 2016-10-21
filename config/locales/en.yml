@@ -387,6 +387,10 @@ en:
   tour_groups: "Tour Groups"
   quick_booking_hotel: "Quick Booking Hotel"
   quick_booking_hotels: "Quick Booking Hotels"
+  visa: "Visa"
+  visas: "Visas"
+  country: "Country"
+  countries: "Countries"
   
   devise:
     sessions:

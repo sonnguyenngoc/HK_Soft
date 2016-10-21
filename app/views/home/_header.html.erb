@@ -85,8 +85,21 @@
                     </li>
                     </li>
                     <li><%= link_to "Đặt Khách Sạn", hotel_listing_path %></li>
-                    <li class="<%= "active" if (params[:controller] == "tour" && params[:action] == "booking_tour_group") %>"><%= link_to "Giá Hot Tour Đoàn", booking_tour_group_path %></li>
-                    <li><%= link_to "Thuê Xe Ô Tô", car_hire_path %></li>
+                    <li class="<%= "active" if params[:controller] == "tour_group" %>"><%= link_to "Giá Hot Tour Đoàn", booking_tour_group_path %></li>
+                    <li class="menu-item-has-children <%= "active" if params[:controller] == "car_hire" %>">
+                        <%= link_to "Thuê Xe Ô Tô", car_hire_path %>
+                        <ul>
+                            <% ArticleCategory.get_menu_services.each do |service| %>
+                            <% service.children.order("created_at ASC").each do |child_1| %>
+                            <% if child_1.description == "car_hire" %>
+                            <% child_1.children.order("created_at ASC").each do |child_2| %>
+                            <li><%= link_to child_2.name, car_grid_view_path(car_category_id: child_2, car_category_name: child_2.url_friendly) %></li>
+                            <% end %>
+                            <% end %>
+                            <% end %>
+                            <% end %>
+                        </ul>
+                    </li>
                     <li class="<%= "active" if params[:controller] == "contact" %>"><%= link_to "Liên Hệ", contact_path %></li>
                 </ul>
             </nav>

@@ -50,6 +50,26 @@ class UserGroup < ActiveRecord::Base
                         ]
             },
             {
+                class_name: "Visa",
+                display_name: I18n.t(:visa),
+                actions: [
+                            {name: "read", values: ["yes","no"], multiple: false},
+                            {name: "create", values: ["yes","no"], multiple: false},
+                            {name: "update", values: ["yes","no"], multiple: false},
+                            {name: "delete", values: ["yes","no"], multiple: false},
+                        ]
+            },
+            {
+                class_name: "Country",
+                display_name: I18n.t(:country),
+                actions: [
+                            {name: "read", values: ["yes","no"], multiple: false},
+                            {name: "create", values: ["yes","no"], multiple: false},
+                            {name: "update", values: ["yes","no"], multiple: false},
+                            {name: "delete", values: ["yes","no"], multiple: false},
+                        ]
+            },
+            {
                 class_name: "BookingCar",
                 display_name: I18n.t(:booking_car),
                 actions: [

@@ -6,12 +6,11 @@
     <div class="page-title-container style2">
         <div class="container">
             <div class="page-title">
-                <h2 class="entry-title"><%= @page_name.name %></h2>
+                <h2 class="entry-title">Thuê Xe Ô Tô</h2>
             </div>
             <ul class="breadcrumbs">
                 <li><%= link_to "Trang Chủ", root_path %></li>
-                <li><%= link_to @page_name.name, service_path %></li>
-                <li class="active">Thuê xe du lịch</li>
+                <li class="active">Thuê Xe Ô Tô</li>
             </ul>
         </div>
     </div>
@@ -32,7 +31,7 @@
                                             <ul class="check-square filters-option">
                                                 <% ArticleCategory.get_menu_car_hires.each do |item| %>
                                                     <% item.children.each do |child_1| %>
-                                                        <li><a href="#"><%= child_1.name %></a></li>
+                                                        <li><%= link_to item.name, "" %></li>
                                                     <% end %>
                                                 <% end %>
                                             </ul>
@@ -47,7 +46,7 @@
                                         <div class="panel-content">
                                             <ul class="check-square filters-option">
                                                 <% Manufacturer.all.each do |item| %>
-                                                    <li><a href="#"><%= item.name %></a></li>
+                                                    <li><%= link_to item.name, "" %></li>
                                                 <% end %>
                                             </ul>
                                         </div>
@@ -71,10 +70,10 @@
                                     <div class="details">
                                         <h4 class="box-title"><%= link_to item.name, car_detail_path(car_id: item, name: item.url_friendly) %></h4>
                                         <label class="price-wrapper">
-                                            Giá: <% if item.price == 0 %>Liên Hệ<% else %><%= format_number(item.price) %> VND<% end %>
+                                            Giá: <% if item.price == 0 %>Liên Hệ<% else %><%= format_number(item.price) %> VNĐ<% end %>
                                         </label>
                                         <div class="action">
-                                            <%= link_to "Xem Xe", car_detail_path(car_id: item, name: item.url_friendly), class: "button btn-small full-width" %>
+                                            <%= link_to "Xem Xe", car_detail_path(car_id: item, name: item.url_friendly), class: "button btn-small full-width sky-blue1" %>
                                         </div>
                                     </div>
                                 </article>
