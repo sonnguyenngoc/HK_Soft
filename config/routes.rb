@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get "chinh-sach-thanh-toan.html" => "about_us#info_system_1", as: :info_system_1
     get "chinh-sach-doi-tra-va-hoan-tien.html" => "about_us#info_system_2", as: :info_system_2
     get "chinh-sach-bao-mat-thong-tin-khach-hang.html" => "about_us#info_system_3", as: :info_system_3
-    get "chinh-sach-giai-quyet-tranh-cahp-khieu-nai.html" => "about_us#info_system_4", as: :info_system_4
+    get "chinh-sach-giai-quyet-tranh-chap-khieu-nai.html" => "about_us#info_system_4", as: :info_system_4
     get "dieu-khoan-mua-ban-hang-hoa.html" => "about_us#info_system_5", as: :info_system_5
     
     # Tour du lịch
@@ -21,8 +21,8 @@ Rails.application.routes.draw do
     get "gia-hot-tour-doan.html" => "tour_group#booking_tour_group", as: :booking_tour_group
     get "gia-hot-tour-doan/thanh-cong.html" => "tour_group#tour_group_thankyou", as: :tour_group_thankyou
     get "tour-khuyen-mai.html" => "tour#deal_tours", as: :deal_tours
-    get "tour-hot.html" => "hot_tours#index", as: :hot_tours
-    get "tour-tet.html" => "tour#new_year_tours", as: :new_year_tours
+    get "tour-tet-2017.html" => "tour#new_year_tours", as: :new_year_tours
+    get "tour-gia-sock.html" => "hot_tours#index", as: :hot_tours
     get "tour-du-lich/tim-kiem-tour.html" => "tour#tour_search", as: :tour_search
     get "bang-gia-tour.html" => "tour#tour_pricing", as: :tour_pricing
     get "tour-du-lich/tour-trong-nuoc.html" => "tour#domestic_tour", as: :domestic_tour
@@ -34,14 +34,13 @@ Rails.application.routes.draw do
     
     # Dịch vụ
     get "ve-may-bay-va-visa.html" => "service#index", as: :service
-    get "dich-vu/dat-ve-may-bay.html" => "service#plane_ticket", as: :plane_ticket
-    get "dich-vu/dat-ve-may-bay/(:title)-:plane_ticket_id.html" => "service#plane_ticket_detail", as: :plane_ticket_detail
-    get "dich-vu/dat-ve-may-bay/chi-tiet/dang-ky.html" => "service#plane_ticket_booking", as: :plane_ticket_booking
-    get "dich-vu/dat-ve-may-bay/chi-tiet/dang-ky/dang-ky-thanh-cong.html" => "service#plane_ticket_thankyou", as: :plane_ticket_thankyou
-    get "dich-vu/lam-the-visa.html" => "service#visa_card", as: :visa_card
-    get "dich-vu/lam-the-visa/(:title)-:visa_card_id.html" => "service#visa_card_detail", as: :visa_card_detail
-    get "dich-vu/lam-the-visa/chi-tiet/dang-ky.html" => "service#visa_card_booking", as: :visa_card_booking
-    get "dich-vu/lam-the-visa/chi-tiet/dang-ky/dang-ky-thanh-cong.html" => "service#visa_card_thankyou", as: :visa_card_thankyou
+    #get "dich-vu/dat-ve-may-bay.html" => "service#plane_ticket", as: :plane_ticket
+    #get "dich-vu/dat-ve-may-bay/(:title)-:plane_ticket_id.html" => "service#plane_ticket_detail", as: :plane_ticket_detail
+    get "ve-may-bay-va-visa/dat-ve-may-bay.html" => "service#plane_ticket_booking", as: :plane_ticket_booking
+    get "ve-may-bay-va-visa/dat-ve-may-bay/dat-thanh-cong.html" => "service#plane_ticket_thankyou", as: :plane_ticket_thankyou
+    get "ve-may-bay-va-visa/lam-the-visa.html" => "service#visa_card", as: :visa_card
+    #get "ve-may-bay-va-visa/lam-the-visa/dang-ky-(:title)-:country_id.html" => "service#visa_card_booking", as: :visa_card_booking
+    #get "ve-may-bay-va-visa/lam-the-visa/dang-ky/dang-ky-thanh-cong.html" => "service#visa_card_thankyou", as: :visa_card_thankyou
         
     # Thuê xe du lịch
     get "thue-xe-o-to.html" => "car_hire#index", as: :car_hire
@@ -52,13 +51,13 @@ Rails.application.routes.draw do
     get "thue-xe-o-to/dat-xe/dat-thanh-cong.html" => "car_hire#car_thankyou", as: :car_thankyou
   
     # Khách sạn
-    get "dich-vu/khach-san.html" => "book_hotel#index", as: :hotel_listing
-    get "dich-vu/dat-phong-khach-san-nhanh.html" => "book_hotel#quick_booking_hotel", as: :quick_booking_hotel
-    get "dich-vu/dat-phong-khach-san-nhanh/thanh-cong.html" => "book_hotel#quick_hotel_thankyou", as: :quick_hotel_thankyou
-    get "dich-vu/khach-san/tim-kiem.html" => "book_hotel#hotel_search", as: :hotel_search
-    get "dich-vu/khach-san/(:name)-:hotel_id.html" => "book_hotel#book_hotel_detail", as: :book_hotel_detail
-    get "dich-vu/khach-san/(:hotel_name)-:hotel_booking_id/dat-phong.html" => "book_hotel#hotel_booking", as: :hotel_booking
-    get "dich-vu/khach-san/dat-phong/dat-phong-thanh-cong.html" => "book_hotel#hotel_thankyou", as: :hotel_thankyou
+    get "dat-khach-san.html" => "book_hotel#index", as: :hotel_listing
+    get "dat-khach-san/dat-nhanh.html" => "book_hotel#quick_booking_hotel", as: :quick_booking_hotel
+    get "dat-khach-san/dat-nhanh/dat-thanh-cong.html" => "book_hotel#quick_hotel_thankyou", as: :quick_hotel_thankyou
+    get "dat-khach-san/danh-sach-khach-san/tim-kiem.html" => "book_hotel#hotel_search", as: :hotel_search
+    get "dat-khach-san/danh-sach-khach-san/(:name)-:hotel_id.html" => "book_hotel#book_hotel_detail", as: :book_hotel_detail
+    get "dat-khach-san/danh-sach-khach-san/(:hotel_name)-:hotel_booking_id/dat-phong.html" => "book_hotel#hotel_booking", as: :hotel_booking
+    get "dat-khach-san/danh-sach-khach-san/dat-phong/dat-thanh-cong.html" => "book_hotel#hotel_thankyou", as: :hotel_thankyou
     post "slideshow-popup.html" => "book_hotel#slideshow_popup", as: :slideshow_popup
     
     # Tổ chức sự kiện
@@ -75,14 +74,6 @@ Rails.application.routes.draw do
     # Tin tức du lịch
     get "tin-tuc-du-lich.html" => "travel_news#index", as: :travel_news
     get "tin-tuc-du-lich/(:title)-:travel_news_id.html" => "travel_news#travel_news_detail", as: :travel_news_detail
-  
-    # Bảng giá tour
-    # Tin từ công ty
-    get "chinh-sach-thanh-toan.html" => "info#info_sub_1", as: :info_sub_1
-    get "chinh-sach-doi-tra-voucher-va-hoan-tien.html" => "info#info_sub_2", as: :info_sub_2
-    get "chinh-sach-bao-mat-thong-tin-khach-hang.html" => "info#info_sub_3", as: :info_sub_3
-    get "chinh-sach-giai-quyet-tranh-chap-khieu-nai.html" => "info#info_sub_4", as: :info_sub_4
-    get "dieu-khoan-mua-ban-hang-hoa.html" => "info#info_sub_5", as: :info_sub_5
     
     get "lien-he.html" => "contact#index", as: :contact
     get "lien-he/gui-thanh-cong.html" => "contact#contact_thankyou", as: :contact_thankyou

@@ -87,6 +87,9 @@
                                         <% if item.is_hot == true %>
                                             <span class="label bg-danger-600">Tour hot</span><br>
                                         <% end %>
+                                        <% if item.is_new_year == true %>
+                                            <span class="label bg-pink-600">Tour Tết 2017</span><br>
+                                        <% end %>
                                         <% if item.hidden == false %>
                                             <span class="label bg-info">Tour đang hiển thị</span>
                                         <% else %>

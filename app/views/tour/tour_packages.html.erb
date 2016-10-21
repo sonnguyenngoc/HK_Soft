@@ -129,7 +129,7 @@
                                                 Giá: <% if item.is_sale == true %><s><span><% if item.old_price == 0 %>Liên hệ<% else %><%= format_number(item.old_price) %> VND</s><% end %> - <% end %><span><% if item.new_price == 0 %>Liên hệ<% else %><%= format_number(item.new_price) %> VND<% end %></span>
                                             </div>
                                         </div>
-                                        <%= link_to "XEM TOUR", tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "button btn-small full-width" %>
+                                        <%= link_to "XEM TOUR", tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "button btn-small full-width sky-blue1" %>
                                     </div>
                                 </article>
                             </div>

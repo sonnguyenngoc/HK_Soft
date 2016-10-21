@@ -6,7 +6,7 @@
     <div class="page-title-container style2">
         <div class="container">
             <div class="page-title pull-left">
-                <h2 class="entry-title">Đặt Phòng</h2>
+                <h2 class="entry-title">Đặt Phòng Khách Sạn</h2>
             </div>
             <ul class="breadcrumbs pull-right">
                 <li><%= link_to "Trang Chủ", root_path %></li>
@@ -29,47 +29,47 @@
                                 <div class="form-group row">
                                     <div class="col-sm-12 col-md-10">
                                         <label>Tên khách hàng <span class="text-required">*</span></label>
-                                        <%= f.text_field :full_name, class: "input-text full-width required" %>
+                                        <%= f.text_field :full_name, class: "input-text full-width required", placeholder: "Vui lòng nhập họ & tên khách hàng đăng ký tại đây....." %>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 col-md-5">
                                         <label>Địa Chỉ <span class="text-required">*</span></label>
-                                        <%= f.text_field :address, class: "input-text full-width required" %>
+                                        <%= f.text_field :address, class: "input-text full-width required", placeholder: "Vui lòng nhập địa chỉ tại đây....." %>
                                     </div>
                                     <div class="col-sm-6 col-md-5">
                                         <label>ID/Passport</label>
-                                        <%= f.text_field :passport, class: "input-text full-width" %>
+                                        <%= f.text_field :passport, class: "input-text full-width", placeholder: "Vui lòng nhập id/passport (nếu có) tại đây....." %>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 col-md-5">
                                         <label>Số điện thoại <span class="text-required">*</span></label>
-                                        <%= f.text_field :phone, class: "input-text full-width required" %>
+                                        <%= f.text_field :phone, class: "input-text full-width required", placeholder: "Vui lòng nhập số điện thoại tại đây....." %>
                                     </div>
                                     <div class="col-sm-6 col-md-5">
                                         <label>Địa chỉ email <span class="text-required">*</span></label>
-                                        <%= f.text_field :email, class: "input-text full-width required email" %>
+                                        <%= f.text_field :email, class: "input-text full-width required email", placeholder: "Vui lòng nhập địa chỉ email tại đây....." %>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 col-md-5">
                                         <label>Ngày nhận phòng <span class="text-required">*</span></label>
                                         <div class="datepicker-wrap">
-                                            <input type="text" name="booking_hotel[date_from]" id="booking_hotel_date_from" class="input-text full-width required" placeholder="yy/mm/dd" />
+                                            <input type="text" name="booking_hotel[date_from]" id="booking_hotel_date_from" class="input-text full-width required" placeholder="Chọn ngày nhận phòng (yy/mm/dd)" />
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-md-5">
-                                        <label>Ngày giao phòng <span class="text-required">*</span></label>
+                                        <label>Ngày trả phòng <span class="text-required">*</span></label>
                                         <div class="datepicker-wrap">
-                                            <input type="text" name="booking_hotel[date_to]" id="booking_hotel_date_to" class="input-text full-width required" placeholder="yy/mm/dd" />
+                                            <input type="text" name="booking_hotel[date_to]" id="booking_hotel_date_to" class="input-text full-width required" placeholder="Chọn ngày trả phòng (yy/mm/dd)" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 col-md-5">
                                         <label>Số người lớn <span class="text-required">*</span></label>
-                                        <%= f.text_field :adult, class: "input-text full-width required", placeholder: "Mặc định số  người lớn: 1" %>
+                                        <%= f.text_field :adult, class: "input-text full-width required", placeholder: "Mặc định số người lớn: 1" %>
                                     </div>
                                     <div class="col-sm-6 col-md-5">
                                         <label>Số trẻ em <span class="text-required">*</span></label>
@@ -79,7 +79,7 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 col-md-5">
                                         <label>Số phòng cần đặt <span class="text-required">*</span></label>
-                                        <%= f.text_field :room_number, class: "input-text full-width required" %>
+                                        <%= f.text_field :room_number, class: "input-text full-width required", placeholder: "Mặc định số phòng: 1" %>
                                     </div>
                                     <div class="col-sm-6 col-md-5">
                                         <label>Loại phòng <span class="text-required">*</span></label>
@@ -99,13 +99,13 @@
                                 <div class="form-group row">
                                     <div class="col-sm-10">
                                         <label>Lời Nhắn</label>
-                                        <%= f.text_area :message, rows: '8', class: "input-text full-width" %>
+                                        <%= f.text_area :message, rows: '8', class: "input-text full-width", placeholder: "Nhằm nâng cao chất lượng dịch vụ của chuyến tour. Quý khách hàng vui lòng nhập những yêu cầu khác (nếu có) tại đây....." %>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 col-md-5">
-                                    <button type="submit" class="full-width btn-large">ĐẶT PHÒNG KHÁCH SẠN</button>
+                                    <button type="submit" class="full-width btn-large sky-blue1">ĐẶT PHÒNG KHÁCH SẠN</button>
                                 </div>
                             </div>
                         <% end %>
@@ -120,7 +120,7 @@
                                 <small class="uppercase"><strong>Loại khách sạn:</strong> <%= @hotel_booking.hotel_type %></small><br/>
                                 <small class="uppercase"><strong>Khu vực:</strong> <%= @hotel_booking.area.name %></small><br/>
                                 <small class="uppercase"><strong>Địa chỉ:</strong> <%= @hotel_booking.address %></small><br/><br/>
-                                <%= link_to "Xem", book_hotel_detail_path(hotel_id: @hotel_booking), class: "button" %>
+                                <%= link_to "Xem", book_hotel_detail_path(hotel_id: @hotel_booking), class: "button sky-blue1" %>
                             </figure>
                             <div class="details">
                                 <div class="feedback">
@@ -148,7 +148,7 @@
                         <h4>THÔNG TIN CHI TIẾT</h4>
                         <dl class="other-details">
                             <% @hotel_booking.hotel_rooms.each do |item| %>
-                                <dt class="feature"><%= item.room_type %>:</dt><dd class="value"><% if item.price == 0 %>Liên hệ<% else %><%= format_number(item.price) %> VND<% end %>/<%= item.people_number.to_i %> khách</dd>
+                                <dt class="feature"><%= item.room_type %>:</dt><dd class="value"><% if item.price == 0 %>Liên hệ<% else %><%= format_number(item.price) %> VNĐ<% end %>/<%= item.people_number.to_i %> khách</dd>
                             <% end %>
                         </dl>
                     </div>

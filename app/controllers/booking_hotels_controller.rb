@@ -6,7 +6,7 @@ class BookingHotelsController < ApplicationController
     
     respond_to do |format|
       if @booking_hotel.save
-        #BookingHotelMailer.booking_hotel_email(@booking_hotel).deliver_now
+        BookingHotelMailer.booking_hotel_email(@booking_hotel).deliver_now
         format.html { redirect_to hotel_thankyou_path }
       end
     end

@@ -6,13 +6,12 @@
     <div class="page-title-container style2">
         <div class="container">
             <div class="page-title pull-left">
-                <h2 class="entry-title">Tìm kiếm</h2>
+                <h2 class="entry-title">Tìm Kiếm Khách Sạn</h2>
             </div>
             <ul class="breadcrumbs pull-right">
                 <li><%= link_to "Trang Chủ", root_path %></li>
-                <li><%= link_to @page_name.name, service_path %></li>
-                <li><%= link_to "Khách sạn", hotel_listing_path %></li>
-                <li class="active">Tìm kiếm</li>
+                <li><%= link_to "Đặt Khách sạn", hotel_listing_path %></li>
+                <li class="active">Tìm Kiếm</li>
             </ul>
         </div>
     </div>
@@ -22,55 +21,13 @@
             <div id="main">
                 <div class="row">
                     <div class="col-sm-4 col-md-3">
-                        <div class="toggle-container filters-container">
-                            <div class="panel style1 arrow-right">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#price-filter" class="collapsed">Giá tiền</a>
-                                </h4>
-                                <div id="price-filter" class="panel-collapse collapse">
-                                    <div class="panel-content">
-                                        <div id="price-range"></div>
-                                        <br />
-                                        <span class="min-price-label pull-left"></span>
-                                        <span class="max-price-label pull-right"></span>
-                                        <div class="clearer"></div>
-                                    </div><!-- end content -->
-                                </div>
+                        <article class="detailed-logo">
+                            <div class="details">
+                                <h2 class="box-title">Đăng Ký Khách Sạn Khác</h2>
+                                <%= link_to "ĐĂNG KÝ", quick_booking_hotel_path, class: "button sky-blue1 full-width uppercase btn-small" %>
                             </div>
-                            
-                            <div class="panel style1 arrow-right">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#accomodation-type-filter" class="collapsed">Loại Khách Sạn</a>
-                                </h4>
-                                <div id="accomodation-type-filter" class="panel-collapse collapse">
-                                    <div class="panel-content">
-                                        <ul class="check-square filters-option">
-                                            <li><a href="#">Khách sạn 1 sao<small>(982)</small></a></li>
-                                            <li><a href="#">Khách sạn 2 sao<small>(127)</small></a></li>
-                                            <li><a href="#">Khách sạn 3 sao<small>(222)</small></a></li>
-                                            <li><a href="#">Khách sạn 4 sao<small>(158)</small></a></li>
-                                            <li><a href="#">Khách sạn 5 sao<small>(439)</small></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="panel style1 arrow-right">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#amenities-filter" class="collapsed">Khu Vực</a>
-                                </h4>
-                                <div id="amenities-filter" class="panel-collapse collapse">
-                                    <div class="panel-content">
-                                        <ul class="check-square filters-option">
-                                            <li><a href="#">Phú Quốc<small>(722)</small></a></li>
-                                            <li><a href="#">Đà Lạt<small>(982)</small></a></li>
-                                            <li><a href="#">Côn Đảo<small>(127)</small></a></li>
-                                            <li><a href="#">Nha Trang<small>(222)</small></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </article>
+                        <%= render "/home/need_help" %>
                     </div>
                     <div class="col-sm-8 col-md-9">
                         <div class="hotel-list">

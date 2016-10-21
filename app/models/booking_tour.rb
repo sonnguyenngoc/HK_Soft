@@ -8,5 +8,7 @@ class BookingTour < ActiveRecord::Base
     def update_tour_info
         self.tour_name = tour.name
         self.price = tour.new_price
+        self.from_date = tour_schedule.from_date
+        self.to_date = tour_schedule.to_date
     end
 end

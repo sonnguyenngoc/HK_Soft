@@ -59,6 +59,10 @@ class Tour < ActiveRecord::Base
         self.where("tours.is_sale = true and tours.hidden = false").order("created_at DESC")
     end
     
+    def self.get_new_year_tours_listing
+        self.where("tours.is_new_year = true and tours.hidden = false").order("created_at DESC")
+    end
+    
     def self.get_hot_tours_listing
         self.where("tours.is_hot = true and tours.hidden = false").order("created_at DESC")
     end

@@ -6,7 +6,7 @@ class BookingToursController < ApplicationController
     @booking_tour = BookingTour.new(booking_tour_params)
     respond_to do |format|
       if @booking_tour.save
-        BookingTourMailer.booking_tour_email(@booking_tour).deliver_now
+        BookingTourMailer.booking_tour_email(@booking_tour).deliver_later
         format.html { redirect_to tour_thankyou_path }
       end
     end
@@ -15,6 +15,6 @@ class BookingToursController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_tour_params
-      params.require(:booking_tour).permit(:full_name, :address, :phone, :email, :passport, :tour_schedule_id, :adult, :child, :child_2, :child_3, :message, :tour_id, :tour_name, :price, :from_date, :to_date)
+      params.require(:booking_tour).permit(:full_name, :address, :phone, :email, :passport, :tour_schedule_id, :adult, :child, :child_2, :child_3, :message, :tour_id)
     end
 end

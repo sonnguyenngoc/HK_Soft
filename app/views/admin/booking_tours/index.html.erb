@@ -77,7 +77,7 @@
                                     <td>
                                         <strong>Tour:</strong> <%= item.tour_name %><br/>
                                         <strong>Giá tour:</strong> <% if item.price == 0 %>Liên hệ<% else %><%= format_number(item.price) %> VND<% end %><br/>
-                                        <strong>Ngày đặt tour:</strong> <% if !item.tour_schedule.from_date.nil? %><%= item.tour_schedule.from_date.strftime("%d/%m/%Y") %><% end %><% if !item.tour_schedule.to_date.nil? %> - <%= item.tour_schedule.to_date.strftime("%d/%m/%Y") %><% end %><br/>
+                                        <strong>Ngày đặt tour:</strong> <%= item.from_date.strftime("%d/%m/%Y") %> - <%= item.to_date.strftime("%d/%m/%Y") %><br/>
                                         <strong>Số người lớn:</strong> <%= item.adult %><br/>
                                         <strong>Số trẻ em (Từ 11 tuổi trở lên):</strong> <%= item.child %><br/>
                                         <strong>Số trẻ em (Từ 5 tuổi đến dưới 11 tuổi):</strong> <%= item.child_2 %><br/>

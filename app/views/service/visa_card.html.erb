@@ -9,6 +9,7 @@
             </div>
             <ul class="breadcrumbs pull-right">
                 <li><%= link_to "Trang Chủ", root_path %></li>
+                <li><%= link_to "Vé Máy Bay & Visa", service_path %></li>
                 <li class="active">Dịch Vụ Làm Thẻ Visa</li>
             </ul>
         </div>
@@ -33,7 +34,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div><br>
+                    <%= render "/service/right_sidebar_plane_ticket" %>
                     <%= render "/home/need_help" %>
                 </div>
                 <div id="main" class="col-sm-8 col-md-9">
@@ -142,7 +144,6 @@
                     </div>
                     <% end %>
                 </div>
-                
             </div>
         </div>
     </section>
