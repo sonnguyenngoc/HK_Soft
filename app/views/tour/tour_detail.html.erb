@@ -67,8 +67,8 @@
                                     <dt>Thời gian chuyến tour:</dt><dd><%= @tour.time_line %></dd>
                                     <dt>Phương tiện:</i></dt><dd><% if @tour.get_transportations.include?("car") %>Xe du lịch. <% end %> <% if @tour.get_transportations.include?("plane") %>Máy bay. <% end %><% if @tour.get_transportations.include?("trunk") %>Tàu cao tốc. <% end %></dd>
                                     <dt>Khách sạn:</i></dt><dd><%= @tour.hotel %></dd>
-                                    <dt>Phụ thu cuối tuần:</i></dt><dd><% if @tour.surcharge_1 == 0 %>Liên hệ<% else %><%= format_number(@tour.surcharge_1) %> VND/Khách<% end %></dd>
-                                    <dt>Phụ thu lễ tết:</i></dt><dd><% if @tour.surcharge_2 == 0 %>Liên hệ<% else %><%= format_number(@tour.surcharge_2) %> VND/Khách<% end %></dd>
+                                    <dt>Phụ thu cuối tuần:</i></dt><dd><% if !@tour.surcharge_1.nil? %><% if @tour.surcharge_1 == 0 %>Liên hệ<% else %><%= format_number(@tour.surcharge_1) %> VNĐ/Khách<% end %><% end %></dd>
+                                    <dt>Phụ thu lễ tết:</i></dt><dd><% if !@tour.surcharge_2.nil? %><% if @tour.surcharge_2 == 0 %>Liên hệ<% else %><%= format_number(@tour.surcharge_2) %> VNĐ/Khách<% end %><% end %></dd>
                                 </dl>
                             </div>
                             <div class="price-section table-cell custom-tour-price">
