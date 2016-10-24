@@ -128,7 +128,7 @@
                                                 Tour sớm nhất:<span> <% if item.tour_schedules.get_tour_schedules.count > 0 %><% if !item.get_lastest_tour_from_date.nil? %><%= item.get_lastest_tour_from_date %><% end %><% if !item.get_lastest_tour_to_date.nil? %> - <%= item.get_lastest_tour_to_date %><% end %><% else %>Chưa có lịch cho tour<% end %></span>
                                             </div>
                                         </div>
-                                        <%= link_to "XEM TOUR", tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "button btn-small full-width" %>
+                                        <%= link_to "XEM TOUR", tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "button btn-small full-width sky-blue1" %>
                                     </div>
                                 </article>
                             </div>

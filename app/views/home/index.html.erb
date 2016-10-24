@@ -184,8 +184,8 @@
                                     <%= link_to image_tag(item.image_url.large_image, width: "270", height: "160"), tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "hover-effect" %>
                                 </figure>
                                 <div class="details">
-                                    <%= link_to "Xem Tour", tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "button btn-mini" %>
-                                    <h4 class="box-title"><%= link_to truncate(strip_tags(item.name), length: 30), tour_detail_path(tour_id: item, tour_name: item.url_friendly), title: item.name, class: "transform-capitalize" %><small>Giá: <% if item.is_sale == true %><del><% if item.old_price == 0 %>Liên hệ<% else %><%= format_number(item.old_price) %> VND<% end %></del> - <% end %><% if item.new_price == 0 %>Liên hệ<% else %><%= format_number(item.new_price) %> VND<% end %></small></h4>
+                                    <%= link_to "Xem Tour", tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "button btn-mini sky-blue1" %>
+                                    <h4 class="box-title"><%= link_to truncate(strip_tags(item.name), length: 30), tour_detail_path(tour_id: item, tour_name: item.url_friendly), title: item.name, class: "transform-capitalize" %><small><strong>Giá:</strong> <% if item.is_sale == true %><del><% if item.old_price == 0 %>Liên hệ<% else %><%= format_number(item.old_price) %> VNĐ<% end %></del> - <% end %><% if item.new_price == 0 %>Liên hệ<% else %><%= format_number(item.new_price) %> VNĐ<% end %></small></h4>
                                 </div>
                             </article>
                         </div>
@@ -204,8 +204,8 @@
                                     <%= link_to image_tag(item.image_url.large_image, width: "270", height: "160"), tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "hover-effect" %>
                                 </figure>
                                 <div class="details">
-                                    <%= link_to "Xem Tour", tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "button btn-mini" %>
-                                    <h4 class="box-title"><%= link_to truncate(strip_tags(item.name), length: 30), tour_detail_path(tour_id: item, tour_name: item.url_friendly), title: item.name, class: "transform-capitalize" %><small>Giá: <% if item.is_sale == true %><del><% if item.old_price == 0 %>Liên hệ<% else %><%= format_number(item.old_price) %> VND<% end %></del> - <% end %><% if item.new_price == 0 %>Liên hệ<% else %><%= format_number(item.new_price) %> VND<% end %></small></h4>
+                                    <%= link_to "Xem Tour", tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "button btn-mini sky-blue1" %>
+                                    <h4 class="box-title"><%= link_to truncate(strip_tags(item.name), length: 30), tour_detail_path(tour_id: item, tour_name: item.url_friendly), title: item.name, class: "transform-capitalize" %><small><strong>Giá:</strong> <% if item.is_sale == true %><del><% if item.old_price == 0 %>Liên hệ<% else %><%= format_number(item.old_price) %> VNĐ<% end %></del> - <% end %><% if item.new_price == 0 %>Liên hệ<% else %><%= format_number(item.new_price) %> VNĐ<% end %></small></h4>
                                 </div>
                             </article>
                         </div>
@@ -234,10 +234,10 @@
                                         <div class="details">
                                             <h4 class="box-title">
                                                 <%= link_to item.name, tour_detail_path(tour_id: item, tour_name: item.url_friendly), title: item.name, class: "transform-capitalize" %>
-                                                <del><small><% if item.old_price == 0 %>Liên Hệ<% else %><%= format_number(item.old_price) %> VND<% end %></small></del>
-                                                <small><% if item.new_price == 0 %>Liên Hệ<% else %><%= format_number(item.new_price) %> VND<% end %></small>
+                                                <del><small><% if item.old_price == 0 %>Liên Hệ<% else %><%= format_number(item.old_price) %> VNĐ<% end %></small></del>
+                                                <small><% if item.new_price == 0 %>Liên Hệ<% else %><%= format_number(item.new_price) %> VNĐ<% end %></small>
                                             </h4>
-                                            <%= link_to "XEM TOUR", tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "button" %>
+                                            <%= link_to "XEM TOUR", tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "button sky-blue1" %>
                                         </div>
                                     </article>
                                 </li>
@@ -263,7 +263,7 @@
                                     <div class="details">
                                         <h4 class="box-title">
                                             <%= link_to item.name, car_detail_path(car_id: item, name: item.url_friendly), title: item.name, class: "transform-capitalize" %>
-                                            <small>Giá: <% if item.price == 0 %>Liên Hệ<% else %><%= format_number(item.price) %> VND<% end %></small>
+                                            <small><strong>Giá:</strong> <% if item.price == 0 %>Liên Hệ<% else %><%= format_number(item.price) %> VNĐ<% end %></small>
                                         </h4>
                                     </div>
                                 </article>
