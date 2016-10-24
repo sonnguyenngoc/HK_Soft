@@ -6,6 +6,7 @@ class QuickBookingHotelsController < ApplicationController
 
     respond_to do |format|
       if @quick_booking_hotel.save
+        QuickBookingHotelMailer.quick_booking_hotel_email(@quick_booking_hotel).deliver_now
         format.html { redirect_to quick_hotel_thankyou_path }
       end
     end

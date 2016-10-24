@@ -6,7 +6,7 @@ class BookingToursController < ApplicationController
     @booking_tour = BookingTour.new(booking_tour_params)
     respond_to do |format|
       if @booking_tour.save
-        BookingTourMailer.booking_tour_email(@booking_tour).deliver_later
+        BookingTourMailer.booking_tour_email(@booking_tour).deliver_now
         format.html { redirect_to tour_thankyou_path }
       end
     end
