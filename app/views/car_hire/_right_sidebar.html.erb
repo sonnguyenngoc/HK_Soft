@@ -3,7 +3,7 @@
         <% if !@car_detail.manufacturer_id.nil? %><h2 class="box-title"><%= @car_detail.manufacturer.name %></h2><% end %>
         <span class="price clearfix">
             <small class="pull-left">Giá thuê</small>
-            <span class="pull-right"><% if @car_detail.price == 0 %>Liên Hệ<% else %><%= format_number(@car_detail.price) %> VND<% end %></span>
+            <span class="pull-right"><% if @car_detail.price == 0 %>Liên Hệ<% else %><%= format_number(@car_detail.price) %> VNĐ<% end %></span>
         </span>
         <%= link_to "Chọn thuê xe", car_booking_path(car_book_id: @car_detail, car_name: @car_detail.url_friendly), class: "button yellow full-width uppercase btn-small" %>
     </div>
