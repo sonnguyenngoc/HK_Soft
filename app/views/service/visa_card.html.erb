@@ -132,15 +132,17 @@
                     </div>
                     <% else %>
                     <div class="post">
+                        <% if @visa_card.present? %>
                         <figure class="image-container">
-                            <img src="/frontend/images/blog/post/image/1.png" alt="" />
+                            <img src="<%= @visa_card.image_url.large_image %>" alt="" />
                         </figure>
                         <div class="details">
-                            <h1 class="entry-title">NHỮNG NÉT CHUNG VỀ VISA</h1>
+                            <h1 class="entry-title"><%= @visa_card.title %></h1>
                             <div class="post-content text-justify">
-                                <%= @visa_card.content.html_safe if !@visa_card.content.empty? %>    
+                                <%= @visa_card.content.html_safe if !@visa_card.content.empty? %>
                             </div>
                         </div>
+                        <% end %>
                     </div>
                     <% end %>
                 </div>
