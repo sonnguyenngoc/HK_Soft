@@ -218,3 +218,6 @@ a.button {
     width: 100%;
     height: auto;
 }
+#footer .bottom .container {
+    margin-bottom: 30px !important;
+}
