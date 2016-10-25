@@ -95,7 +95,7 @@
                                         <%= link_to image_tag(item.image_url.larger_image), tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "hover-effect" %>
                                     </figure>
                                     <div class="details">
-                                        <h4 class="box-title text-justify transform-capitalize"><%= link_to item.name, tour_detail_path(tour_id: item, tour_name: item.url_friendly) %></h4>
+                                        <h4 class="box-title text-justify transform-capitalize"><%= link_to truncate(strip_tags(item.name), length: 75), tour_detail_path(tour_id: item, tour_name: item.url_friendly), title: item.name %></h4>
                                         <% if item.is_sale == true %><span class="price-1"><% if item.old_price == 0 %>Liên hệ<% else %><%= format_number(item.old_price) %> VNĐ<% end %></span><% end %>
                                         <span class="price"><% if item.new_price == 0 %>Liên hệ<% else %><%= format_number(item.new_price) %> VNĐ<% end %></span>
                                         <hr>
@@ -128,7 +128,7 @@
                                                 Tour sớm nhất:<span> <% if item.tour_schedules.get_tour_schedules.count > 0 %><% if !item.get_lastest_tour_from_date.nil? %><%= item.get_lastest_tour_from_date %><% end %><% if !item.get_lastest_tour_to_date.nil? %> - <%= item.get_lastest_tour_to_date %><% end %><% else %>Chưa có lịch cho tour<% end %></span>
                                             </div>
                                         </div>
-                                        <%= link_to "XEM TOUR", tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "button btn-small full-width sky-blue1" %>
+                                        <%= link_to "XEM TOUR", tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "button btn-small full-width sky-blue1", title: item.name %>
                                     </div>
                                 </article>
                             </div>
