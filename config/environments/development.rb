@@ -39,7 +39,7 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
   
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => '27.0.15.181' }
   
   # set delivery method to :smtp, :sendmail or :test
   config.action_mailer.delivery_method = :smtp
@@ -49,7 +49,7 @@ Rails.application.configure do
     :address              => "smtp.gmail.com",
     :port                 => 587,
     :user_name            => 'kham.pha.moi.259@gmail.com',
-    :password             => '77725930c',
+    :password             => 'aA456321@',
     :authentication       => "plain",
    :enable_starttls_auto => true
   }
