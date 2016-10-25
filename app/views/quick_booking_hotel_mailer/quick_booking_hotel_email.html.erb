@@ -5,9 +5,9 @@
 <p>ID/Passport: #<%= @quick_booking_hotel.passport %></p>
 <p>Tên khách sạn: <%= @quick_booking_hotel.hotel_name %></p>
 <p>Tỉnh/Thành phố: <%= @quick_booking_hotel.location %></p>
-<p>Số người lớn: <% @quick_booking_hotel.adult.to_s %></p>
-<p>Số trẻ em: <% @quick_booking_hotel.child.to_s %></p>
-<p>Số phòng: <% @quick_booking_hotel.number.to_s %></p>
+<p>Số người lớn: <%= @quick_booking_hotel.adult %></p>
+<p>Số trẻ em: <%= @quick_booking_hotel.child %></p>
+<p>Số phòng: <%= @quick_booking_hotel.number %></p>
 <p>Ngày nhận phòng: <%= @quick_booking_hotel.date_from.strftime("%d/%m/%Y") %></p>
 <p>Ngày trả phòng: <%= @quick_booking_hotel.date_to.strftime("%d/%m/%Y") %></p>
 <p>Lời nhắn: <%= @quick_booking_hotel.message %></p>
