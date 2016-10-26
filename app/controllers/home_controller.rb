@@ -11,6 +11,7 @@ class HomeController < ApplicationController
     end
     
     def google_search_console
+        render :layout => false
     end
     
     def sitemap
