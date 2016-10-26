@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     # Trang chủ
     root "home#index"
     get "google915b06707f118fa3.html" => "home#google_search_console", as: :google_search_console
+    get "sitemap.html" => "home#sitemap", as: :sitemap
     
     # Giới thiệu
     get "gioi-thieu.html" => "about_us#index", as: :about_us
