@@ -221,3 +221,20 @@ a.button {
 #footer .bottom .container {
     margin-bottom: 30px !important;
 }
+#HomePopup .modal-footer {
+    padding: 0px;
+}
+#HomePopup .modal-dialog {
+    width: 420px;
+}
+#HomePopup button, input[type="button"].button {
+    font-size: 0.9167em;
+    font-weight: bold;
+    background: white;
+    height: 20px;
+    line-height: 0px;
+    color: black;
+}
+#HomePopup button:hover, input[type="button"].button:hover {
+    background: white;
+}
