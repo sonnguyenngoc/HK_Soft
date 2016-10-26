@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     match "/404", :to => "errors#not_found", :via => :all
     # Trang chủ
     root "home#index"
+    get "google915b06707f118fa3.html" => "home#google_search_console", as: :google_search_console
     
     # Giới thiệu
     get "gioi-thieu.html" => "about_us#index", as: :about_us
