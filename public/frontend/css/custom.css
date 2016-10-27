@@ -238,3 +238,14 @@ a.button {
 #HomePopup button:hover, input[type="button"].button:hover {
     background: white;
 }
+.tab-container.style1 ul.tab-custom li a {
+    background: #01b7f2;
+    color: #fff;
+}
+.tab-container.style1 ul.tab-custom li.active>a, .tab-container.style1 ul.tabs li:hover>a {
+    background: #d9d9d9;
+    color: #9e9e9e;
+}
+.tab-container.style1 ul.tab-custom li.active>a:after, .tab-container.style1 ul.tabs li:hover>a:after {
+    border-top: 5px solid #d9d9d9;
+}
