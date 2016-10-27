@@ -99,7 +99,7 @@
                                         <div class="transform-capitalize line-height-short"><strong>Phương tiện: </strong><% if item.get_transportations.include?("car") %>Xe du lịch. <% end %> <% if item.get_transportations.include?("plane") %>Máy bay. <% end %><% if item.get_transportations.include?("trunk") %>Tàu cao tốc. <% end %></div>
                                         <% if item.tour_highlights.count > 0 %>
                                         <div class="transform-capitalize line-height-short"><strong>Điểm nổi bật: </strong></div>
-                                        <ul class="features check">
+                                        <ul class="features check text-justify">
                                             <% item.tour_highlights.each do |item| %>
                                             <li class="tour-highlights"><%= item.title %></li>
                                             <% end %>

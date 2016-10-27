@@ -174,8 +174,8 @@ label.error {
     line-height: 1.2em;
 }
 .tour-locations .box .features li.tour-highlights {
-    line-height: 0.5em !important;
-    padding: 1.2em 0 0.5em 18px !important;
+    line-height: 1.3em !important;
+    padding: 1em 0 0.5em 18px !important;
 }
 .line-height-short {
     line-height: 1.5em;
