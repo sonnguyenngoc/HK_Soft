@@ -224,9 +224,6 @@ a.button {
 #HomePopup .modal-footer {
     padding: 0px;
 }
-#HomePopup .modal-dialog {
-    width: 420px;
-}
 #HomePopup button, input[type="button"].button {
     font-size: 0.9167em;
     font-weight: bold;
@@ -238,6 +235,12 @@ a.button {
 #HomePopup button:hover, input[type="button"].button:hover {
     background: white;
 }
+#HomePopup button, input[type="button"].button {
+    border-radius: 6px;
+}
+#HomePopup .modal-dialog {
+    width: 420px;
+}
 .tab-container.style1 ul.tab-custom li a {
     background: #01b7f2;
     color: #fff;
@@ -248,4 +251,18 @@ a.button {
 }
 .tab-container.style1 ul.tab-custom li.active>a:after, .tab-container.style1 ul.tabs li:hover>a:after {
     border-top: 5px solid #d9d9d9;
+}
+@media (max-width:320px)  {
+    #HomePopup .modal-dialog {
+        width: 225px;
+    }    
+}
+@media (min-width:961px)  {
+    #main-menu ul.menu>li, .chaser ul.menu>li {
+        padding-left: 9px;
+        padding-right: 9px;
+    }
+    #footer .bottom .copyright, #footer .bottom #back-to-top {
+        margin-top: 28px;
+    }
 }
