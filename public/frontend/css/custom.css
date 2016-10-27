@@ -257,7 +257,7 @@ a.button {
         width: 225px;
     }    
 }
-@media (min-width:961px)  {
+@media (max-width:1025px)  {
     #main-menu ul.menu>li, .chaser ul.menu>li {
         padding-left: 9px;
         padding-right: 9px;
