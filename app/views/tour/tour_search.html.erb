@@ -114,14 +114,6 @@
                                             <div class="selector star-custom">
                                                 <i class="soap-icon-error"></i><i class="soap-icon-error"></i><i class="soap-icon-error"></i><i class="soap-icon-error"></i><i class="soap-icon-error"></i>
                                             </div>
-                                            <div class="selector">
-                                                <select class="full-width">
-                                                    <option value="">Lịch khởi hành - [<%= item.get_count_tour_schedules %>]</option>
-                                                    <% item.tour_schedules.get_tour_schedules.each do |schedule| %>
-                                                        <option value=""><% if !schedule.from_date.nil? %><%= schedule.from_date.strftime("%d/%m/%Y") %><% end %><% if !schedule.to_date.nil? %> - <%= schedule.to_date.strftime("%d/%m/%Y") %><% end %></option>
-                                                    <% end %>
-                                                </select>
-                                            </div>
                                             <div class="time">
                                                 <i class="soap-icon-clock yellow-color"></i>
                                                 Tour sớm nhất:<span> <% if item.tour_schedules.get_tour_schedules.count > 0 %><% if !item.get_lastest_tour_from_date.nil? %><%= item.get_lastest_tour_from_date %><% end %><% if !item.get_lastest_tour_to_date.nil? %> - <%= item.get_lastest_tour_to_date %><% end %><% else %>Chưa có lịch cho tour<% end %></span>

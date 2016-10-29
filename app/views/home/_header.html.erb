@@ -21,7 +21,7 @@
             <nav id="main-menu" role="navigation">
                 <ul class="menu">
                     <li class="back-to-home"><%= link_to image_tag("/frontend/images/home.png", alt: "Về trang chủ", class: "custom-home-icon"), root_path, title: "Về trang chủ" %></li>
-                    <li<% if params[:controller] == "hot_tours" %> class="active"<% end %>><%= link_to "Tour Giá Sock", hot_tours_path %></li>
+                    <li<% if params[:controller] == "hot_tours" %> class="active"<% end %>><%= link_to "Tour Giá Sốc", hot_tours_path %></li>
                     <li class="menu-item-has-children megamenu-menu <%= "active" if params[:controller] == "tour" %>">
                         <%= link_to "Tour Du Lịch", tour_path %>
                         <div class="megamenu-wrapper container" data-items-per-column="5">
@@ -86,7 +86,7 @@
         <nav id="mobile-menu-01" class="mobile-menu collapse">
             <ul id="mobile-primary-menu" class="menu">
                 <li class="<%= "active" if params[:controller] == "home" %>"><%= link_to "Trang Chủ", root_path %></li>
-                <li class="<%= "active" if params[:controller] == "hot_tours" %>"><%= link_to "Tour Giá Sock", hot_tours_path %></li>
+                <li class="<%= "active" if params[:controller] == "hot_tours" %>"><%= link_to "Tour Giá Sốc", hot_tours_path %></li>
                 <li class="menu-item-has-children <%= "active" if params[:controller] == "tour" %>">
                     <%= link_to "Tour Du Lịch", tour_path %>
                     <ul>

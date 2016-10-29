@@ -266,3 +266,15 @@ a.button {
         margin-top: 28px;
     }
 }
+.chaser {
+    background: #01b7f2;
+}
+.chaser ul.menu>li>a {
+    color: #fff;
+}
+#main-menu ul.menu>li:hover>a, .chaser ul.menu>li:hover>a {
+    color: #ffd200;
+}
+#main-menu ul.menu>li.active>a, .chaser ul.menu>li.active>a {
+    color: #ffd200;
+}
