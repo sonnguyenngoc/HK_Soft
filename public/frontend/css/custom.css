@@ -278,3 +278,20 @@ a.button {
 #main-menu ul.menu>li.active>a, .chaser ul.menu>li.active>a {
     color: #ffd200;
 }
+
+/* Custom color */
+body {
+    color: #000;
+}
+.box-title small {
+    color: #000;
+}
+#footer.style3 p, #footer.style3 span, #footer.style3 input, #footer.style3 .contact-details .contact-phone, #footer.style3 li {
+    color: #000;
+}
+#footer.style3 .copyright p {
+    color: #000;
+}
+.price small {
+    color: #000;
+}
