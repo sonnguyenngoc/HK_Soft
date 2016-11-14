@@ -295,3 +295,6 @@ body {
 .price small {
     color: #000;
 }
+.post-content td, .post-content th {
+    padding: 0px 10px
+}
