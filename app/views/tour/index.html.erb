@@ -117,7 +117,7 @@
                                             </div>
                                             <div class="time">
                                                 <i class="soap-icon-clock yellow-color"></i>
-                                                Tour sớm nhất:<span> <% if item.tour_schedules.get_tour_schedules.count > 0 %><%= item.tour_schedules.start_date %><% end %></span>
+                                                Tour sớm nhất:<span> <% if item.tour_schedules.get_tour_schedules.count > 0 %><%= item.tour_schedules.start_date if item.tour_schedules.start_date.present? %><% end %></span>
                                             </div>
                                         </div>
                                         <%= link_to "XEM TOUR", tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "button btn-small full-width sky-blue1", title: item.name %>
