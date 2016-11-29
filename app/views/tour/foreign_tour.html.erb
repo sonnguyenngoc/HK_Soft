@@ -123,7 +123,7 @@
                                             </div>
                                             <div class="time">
                                                 <i class="soap-icon-clock yellow-color"></i>
-                                                Tour sớm nhất:<span> <% if item.tour_schedules.get_tour_schedules.count > 0 %><% if !item.get_lastest_tour_from_date.nil? %><%= item.get_lastest_tour_from_date %><% end %><% if !item.get_lastest_tour_to_date.nil? %> - <%= item.get_lastest_tour_to_date %><% end %><% else %>Chưa có lịch cho tour<% end %></span>
+                                                Tour sớm nhất:<span> <% if item.tour_schedules.get_tour_schedules.count > 0 %><%= item.tour_schedules.start_date %><% end %></span>
                                             </div>
                                             <div class="time">
                                                 <i class="soap-icon-passed yellow-color"></i>

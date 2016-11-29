@@ -116,11 +116,11 @@
                                             </div>
                                             <div class="time">
                                                 <i class="soap-icon-clock yellow-color"></i>
-                                                Tour sớm nhất:<span> <% if item.tour_schedules.get_tour_schedules.count > 0 %><% if !item.get_lastest_tour_from_date.nil? %><%= item.get_lastest_tour_from_date %><% end %><% if !item.get_lastest_tour_to_date.nil? %> - <%= item.get_lastest_tour_to_date %><% end %><% else %>Chưa có lịch cho tour<% end %></span>
+                                                Tour sớm nhất:<span> <% if item.tour_schedules.get_tour_schedules.count > 0 %><%= item.tour_schedules.start_date %><% end %></span>
                                             </div>
                                             <div class="time">
                                                 <i class="soap-icon-passed yellow-color"></i>
-                                                Giá: <% if item.is_sale == true %><s><span><% if item.old_price == 0 %>Liên hệ<% else %><%= format_number(item.old_price) %> VND</s><% end %> - <% end %><span><% if item.new_price == 0 %>Liên hệ<% else %><%= format_number(item.new_price) %> VND<% end %></span>
+                                                Giá: <% if item.is_sale == true %><s><span><% if item.old_price == 0 %>Liên hệ<% else %><%= format_number(item.old_price) %> VNĐ</s><% end %> - <% end %><span><% if item.new_price == 0 %>Liên hệ<% else %><span class="color-price"><%= format_number(item.new_price) %> VNĐ</span><% end %></span>
                                             </div>
                                         </div>
                                         <%= link_to "XEM TOUR", tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "button btn-small full-width" %>

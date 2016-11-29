@@ -72,7 +72,7 @@
                                 </dl>
                             </div>
                             <div class="price-section table-cell custom-tour-price">
-                                <div class="price"><small>Giá tour</small><% if @tour.is_sale == true %><del><% if @tour.old_price == 0 %>Liên hệ<% else %><%= format_number(@tour.old_price) %> VNĐ<% end %></del><br><% end %><% if @tour.new_price == 0 %>Liên hệ<% else %><%= format_number(@tour.new_price) %> VNĐ<% end %></div>
+                                <div class="price"><small>Giá tour</small><% if @tour.is_sale == true %><del><% if @tour.old_price == 0 %>Liên hệ<% else %><%= format_number(@tour.old_price) %> VNĐ<% end %></del><br><% end %><% if @tour.new_price == 0 %>Liên hệ<% else %><span class="color-price"><%= format_number(@tour.new_price) %> VNĐ</span><% end %></div>
                                 <%= link_to "ĐẶT TOUR", tour_booking_path(tour_booking_id: @tour, tour_name: @tour.url_friendly), class: "button btn-small sky-blue1 uppercase" %>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                             <div class="tab-container style1">
                                 <ul class="tabs full-width tab-custom">
                                     <li class="active"><a href="#tab-control-1" data-toggle="tab">Điểm nổi bật</a></li>
-                                    <li><a href="#tab-control-2" data-toggle="tab">Lịch trình</a></li>
+                                    <li><a href="#tab-control-2" data-toggle="tab">Lịch khởi hành</a></li>
                                     <li><a href="#tab-control-3" data-toggle="tab">Điều kiện</a></li>
                                     <li><a href="#tab-control-4" data-toggle="tab">Lưu ý</a></li>
                                     <li><a href="#tab-control-5" data-toggle="tab">Đánh giá</a></li>
@@ -95,7 +95,7 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane fade in" id="tab-control-2">
-                                        <h4><strong>Lịch trình</strong></h4>
+                                        <h4><strong>Lịch khởi hành</strong></h4>
                                         <div class="text-justify">
                                             <% if !@tour.tab_content_2.nil? %>
                                             <%= @tour.tab_content_2.html_safe %>

@@ -6,11 +6,11 @@
     <div class="page-title-container style2">
         <div class="container">
             <div class="page-title">
-                <h2 class="entry-title">Tour Giá Sock</h2>
+                <h2 class="entry-title">Tour Giá Sốc</h2>
             </div>
             <ul class="breadcrumbs">
                 <li><%= link_to "Trang Chủ", root_path %></li>
-                <li class="active">Tour Giá Sock</li>
+                <li class="active">Tour Giá Sốc</li>
             </ul>
         </div>
     </div>
@@ -82,7 +82,7 @@
             <div class="container">
                 
                 <div class="text-center description block">
-                    <h1>DANH SÁCH TOUR GIÁ SOCK</h1>
+                    <h1>DANH SÁCH TOUR GIÁ SỐC</h1>
                 </div>
                 
                 <div id="main">
@@ -97,7 +97,7 @@
                                     <div class="details">
                                         <h4 class="box-title text-justify transform-capitalize"><%= link_to item.name, tour_detail_path(tour_id: item, tour_name: item.url_friendly) %></h4>
                                         <% if item.is_sale == true %><span class="price-1"><% if item.old_price == 0 %>Liên hệ<% else %><%= format_number(item.old_price) %> VNĐ<% end %></span><% end %>
-                                        <span class="price"><% if item.new_price == 0 %>Liên hệ<% else %><%= format_number(item.new_price) %> VNĐ<% end %></span>
+                                        <span class="price"><% if item.new_price == 0 %>Liên hệ<% else %><span class="color-price"><%= format_number(item.new_price) %> VNĐ</span><% end %></span>
                                         <hr>
                                         <div class="transform-capitalize line-height-short"><strong>Phương tiện: </strong><% if item.get_transportations.include?("car") %>Xe du lịch. <% end %> <% if item.get_transportations.include?("plane") %>Máy bay. <% end %><% if item.get_transportations.include?("trunk") %>Tàu cao tốc. <% end %></div>
                                         <% if item.tour_highlights.count > 0 %>
@@ -117,7 +117,7 @@
                                             </div>
                                             <div class="time">
                                                 <i class="soap-icon-clock yellow-color"></i>
-                                                Tour sớm nhất:<span> <% if item.tour_schedules.get_tour_schedules.count > 0 %><% if !item.get_lastest_tour_from_date.nil? %><%= item.get_lastest_tour_from_date %><% end %><% if !item.get_lastest_tour_to_date.nil? %> - <%= item.get_lastest_tour_to_date %><% end %><% else %>Chưa có lịch cho tour<% end %></span>
+                                                Tour sớm nhất:<span> <% if item.tour_schedules.get_tour_schedules.count > 0 %><%= item.tour_schedules.start_date %><% end %></span>
                                             </div>
                                         </div>
                                         <%= link_to "XEM TOUR", tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "button btn-small full-width sky-blue1" %>

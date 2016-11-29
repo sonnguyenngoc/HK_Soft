@@ -298,3 +298,9 @@ body {
 .post-content td, .post-content th {
     padding: 0px 10px
 }
+.color-price {
+    color: #ff0000;
+}
+.tour-locations .box .time span {
+    color: #ff0000;
+}
