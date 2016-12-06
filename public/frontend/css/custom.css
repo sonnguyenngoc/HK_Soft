@@ -238,9 +238,9 @@ a.button {
 #HomePopup button, input[type="button"].button {
     border-radius: 6px;
 }
-#HomePopup .modal-dialog {
+/*#HomePopup .modal-dialog {
     width: 420px;
-}
+}*/
 .tab-container.style1 ul.tab-custom li a {
     background: #01b7f2;
     color: #fff;
