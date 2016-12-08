@@ -221,6 +221,9 @@ a.button {
 #footer .bottom .container {
     margin-bottom: 30px !important;
 }
+.modal-body {
+    padding: 0;
+}
 #HomePopup .modal-footer {
     padding: 0px;
 }
@@ -238,9 +241,9 @@ a.button {
 #HomePopup button, input[type="button"].button {
     border-radius: 6px;
 }
-/*#HomePopup .modal-dialog {
-    width: 420px;
-}*/
+#HomePopup .modal-dialog {
+    width: 800px;
+}
 .tab-container.style1 ul.tab-custom li a {
     background: #01b7f2;
     color: #fff;
