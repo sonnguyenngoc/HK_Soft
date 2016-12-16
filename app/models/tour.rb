@@ -9,11 +9,11 @@ class Tour < ActiveRecord::Base
     accepts_nested_attributes_for :tour_images, :reject_if => lambda { |a| a[:image_url].blank? && a[:id].blank? }, :allow_destroy => true
     
     def self.get_discount_tours
-        self.where("tours.is_sale = true and tours.hidden = false").order("created_at DESC")
+        self.where("tours.is_sale = true and tours.hidden = false").order("published_at DESC")
     end
     
     def self.get_hot_tours
-        self.where("tours.is_hot = true and tours.hidden = false").order("created_at DESC")
+        self.where("tours.is_hot = true and tours.hidden = false").order("published_at DESC")
     end
     
     def url_friendly
@@ -37,7 +37,7 @@ class Tour < ActiveRecord::Base
     end
     
     def self.get_tour_listing(params)
-        records = self.where("tours.hidden = false").order("created_at DESC")
+        records = self.where("tours.hidden = false").order("published_at DESC")
         records = records.where(hidden: false)
         
         if params[:name].present?
@@ -56,22 +56,22 @@ class Tour < ActiveRecord::Base
     end
     
     def self.get_deal_tours_listing
-        self.where("tours.is_sale = true and tours.hidden = false").order("created_at DESC")
+        self.where("tours.is_sale = true and tours.hidden = false").order("published_at DESC")
     end
     
     def self.get_new_year_tours_listing
-        self.where("tours.is_new_year = true and tours.hidden = false").order("created_at DESC")
+        self.where("tours.is_new_year = true and tours.hidden = false").order("published_at DESC")
     end
     
     def self.get_hot_tours_listing
-        self.where("tours.is_hot = true and tours.hidden = false").order("created_at DESC")
+        self.where("tours.is_hot = true and tours.hidden = false").order("published_at DESC")
     end
     
     def get_lastest_tour_from_date
         records = self.tour_schedules.where("from_date > ?", Time.now)
         if records.count > 0
             if !records.first.from_date.nil?
-                records = records.order("created_at ASC").first.from_date.strftime("%d/%m/%Y")
+                records = records.order("published_at ASC").first.from_date.strftime("%d/%m/%Y")
             else
                 records = nil
             end
@@ -86,7 +86,7 @@ class Tour < ActiveRecord::Base
         records = self.tour_schedules.where("from_date > ?", Time.now)
         if records.count > 0
             if !records.first.to_date.nil?
-                records = records.order("created_at ASC").first.to_date.strftime("%d/%m/%Y")
+                records = records.order("published_at ASC").first.to_date.strftime("%d/%m/%Y")
             else
                 records = nil
             end
@@ -102,7 +102,7 @@ class Tour < ActiveRecord::Base
     end
     
     def self.get_domestic_tour(params)
-        records = self.where(type_name: "Tour Trong Nước").order("created_at DESC")
+        records = self.where(type_name: "Tour Trong Nước").order("published_at DESC")
         records = records.where(hidden: false)
         
         if params[:name].present?
@@ -121,7 +121,7 @@ class Tour < ActiveRecord::Base
     end
     
     def self.get_foreign_tour(params)
-        records = self.where(type_name: "Tour Nước Ngoài").order("created_at DESC")
+        records = self.where(type_name: "Tour Nước Ngoài").order("published_at DESC")
         records = records.where(hidden: false)
         
         if params[:name].present?
@@ -140,11 +140,15 @@ class Tour < ActiveRecord::Base
     end
     
     def self.get_lastest_domestic_tour
-        self.where(type_name: "Tour Trong Nước").where(hidden: false).order("created_at DESC").first(8)
+        self.where(type_name: "Tour Trong Nước").where(hidden: false).order("published_at DESC").first(8)
     end
     
     def self.get_lastest_foreign_tour
-        self.where(type_name: "Tour Nước Ngoài").where(hidden: false).order("created_at DESC").first(8)
+        self.where(type_name: "Tour Nước Ngoài").where(hidden: false).order("published_at DESC").first(8)
+    end
+    
+    def self.get_lastest_new_year_tours_listing
+        self.where("tours.is_new_year = true and tours.hidden = false").order("published_at DESC").first(8)
     end
     
     def self.get_tour_packages(params)
@@ -167,7 +171,7 @@ class Tour < ActiveRecord::Base
     end
     
     def self.get_related_tours(article_category_id)
-        records = self.order("created_at DESC")
+        records = self.order("published_at DESC")
         records = records.where(hidden: false)
         
         records = records.where(article_category_id: article_category_id)
