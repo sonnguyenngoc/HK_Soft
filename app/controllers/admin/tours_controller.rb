@@ -147,6 +147,6 @@ class Admin::ToursController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tour_params
-      params.require(:tour).permit(:image_url, :tab_content_1, :tab_content_2, :tab_content_3, :tab_content_4, :meta_keywords, :meta_description, :approved, :article_category_id, :type_name, :name, :description, :content, :is_sale, :is_hot, :is_new_year, :discount_percent, :new_price, :time_line, :old_price, :surcharge_1, :surcharge_2, :services, :duration, :position, :hotel, :transportation, tour_schedules_attributes: [:id, :from_date, :to_date, :start_date, :depart, :arrive, :seat, :_destroy], tour_highlights_attributes: [:id, :title, :_destroy], tour_images_attributes: [:id, :image_url, :_destroy])
+      params.require(:tour).permit(:published_at, :image_url, :tab_content_1, :tab_content_2, :tab_content_3, :tab_content_4, :meta_keywords, :meta_description, :approved, :article_category_id, :type_name, :name, :description, :content, :is_sale, :is_hot, :is_new_year, :discount_percent, :new_price, :time_line, :old_price, :surcharge_1, :surcharge_2, :services, :duration, :position, :hotel, :transportation, tour_schedules_attributes: [:id, :from_date, :to_date, :start_date, :depart, :arrive, :seat, :_destroy], tour_highlights_attributes: [:id, :title, :_destroy], tour_images_attributes: [:id, :image_url, :_destroy])
     end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161129012243) do
+ActiveRecord::Schema.define(version: 20161216065143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -728,6 +728,7 @@ ActiveRecord::Schema.define(version: 20161129012243) do
     t.text     "tab_content_3"
     t.text     "tab_content_4"
     t.boolean  "is_new_year",         default: false
+    t.datetime "published_at"
   end
 
   create_table "user_groups", force: :cascade do |t|

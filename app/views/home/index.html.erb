@@ -173,10 +173,10 @@
         </div>
         
         <div class="container section">
-            <% if @domestic_tour.count > 0 %>
-                <h2>Tour Trong Nước Mới Nhất</h2>
+            <% if @new_year_tours.count > 0 %>
+                <h2>Tour Tết 2017</h2>
                 <div class="row image-box discount-label style10">
-                    <% @domestic_tour.each do |item| %>
+                    <% @new_year_tours.each do |item| %>
                         <div class="col-sms-6 col-sm-6 col-md-3">
                             <article class="box">
                                 <% if item.is_sale == true %><span class="discount"><span class="discount-text">Giảm giá <%= item.discount_percent %>%</span></span><% end %>
