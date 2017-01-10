@@ -93,7 +93,7 @@
 													
 													<% if item.product.get_main_image.present? %>
 																			
-														<%= link_to image_tag(item.product.get_main_image.image_url.small_image), { controller: "product", action: "product", product_id: item.product_id } %>
+														<%= link_to image_tag(item.product.get_main_image.image_url.small_image), { controller: "product", action: "product", product_id: item.product_id, title: url_friendly(item.product.name) } %>
 													
 													<% else %>
 														
@@ -109,7 +109,7 @@
 		
 												<td data-title="Product Name and Category">
 													
-													<%= link_to item.product.name, { controller: "product", action: "product", product_id: item.product_id } %>
+													<%= link_to item.product.name, { controller: "product", action: "product", product_id: item.product_id, title: url_friendly(item.product.name) } %>
 		
 												</td>
 		

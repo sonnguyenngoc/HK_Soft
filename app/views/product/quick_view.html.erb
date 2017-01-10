@@ -158,7 +158,7 @@
 
 		<div class="single_product_description">
 
-			<h3><%= link_to @product.name, { controller: "product", action: "product", product_id: @product } %></h3>
+			<h3><%= link_to @product.name, { controller: "product", action: "product", product_id: @product , title: url_friendly(@product.name)} %></h3>
 
 			<div class="description_section v_centered">
 
@@ -187,7 +187,7 @@
 					<li class="rate">
 						<% if @product.comments.count == 0 %>
 	
-							<%= link_to "Chưa đánh giá sản phẩm.", { controller: "product", action: "product", product_id: @product.id, status: "tab_comment" } %>
+							<%= link_to "Chưa đánh giá sản phẩm.", { controller: "product", action: "product", product_id: @product.id, status: "tab_comment", title: url_friendly(@product.name) } %>
 							
 						<% else %>
 							
@@ -209,7 +209,7 @@
 						
 						<%= link_to '<span class="tooltip top">Thêm vào danh sách so sánh</span>'.html_safe, add_item_line_item_compares_path(product_id: @product), class: "color_orange button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container quick_view_add_to_compare_button" %>
 		
-						<%= link_to '<span class="tooltip top">Câu hỏi về sản phẩm</span>'.html_safe, { controller: "product", action: "product", product_id: @product.id, status: "tab-questions"}, class: "color_facebook button_dark_grey def_icon_btn middle_btn add_to_question tooltip_container" %>
+						<%= link_to '<span class="tooltip top">Câu hỏi về sản phẩm</span>'.html_safe, { controller: "product", action: "product", product_id: @product.id, status: "tab-questions", title: url_friendly(@product.name)}, class: "color_facebook button_dark_grey def_icon_btn middle_btn add_to_question tooltip_container" %>
 					</li>
 
 				</ul>

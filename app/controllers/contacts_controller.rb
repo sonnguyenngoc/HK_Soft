@@ -11,12 +11,11 @@ class ContactsController < ApplicationController
   # POST /contacts.json
   def create
     @contact = Contact.new(contact_params)
-    @secret_key = "6Le7mh8TAAAAAGKRPjxYnO9t0O1_m8dgxa-EgcOB"
+    #@secret_key = "6Le7mh8TAAAAAGKRPjxYnO9t0O1_m8dgxa-EgcOB"
     @contact.user_id = current_user if current_user.present?
-    status = verify_google_recaptcha(@secret_key, params["g-recaptcha-response"])
+    #status = verify_google_recaptcha(@secret_key, params["g-recaptcha-response"])
     respond_to do |format|
-      if status
-        @contact.save
+      if @contact.save
         format.html { redirect_to controller: "information", action: "finish_contact_us" }
       else
         flash[:notice] = "Gửi tin nhắn liên hệ thất bại"

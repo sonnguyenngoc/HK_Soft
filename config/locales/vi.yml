@@ -345,6 +345,8 @@ vi:
     sessions:
       signed_in: "Đăng nhập tài khoản thành công."
       signed_out: "Đăng xuất tài khoản thành công."
+    omniauth_callbacks:
+      success: "Đăng nhập tài khoản %{kind} thành công."
   
   will_paginate:
     page_entries_info:

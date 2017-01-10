@@ -8,10 +8,9 @@
     </div>
 </div>
 
-<% if @current_area.id.present? %>
+<% if @current_area.id.present? and Company.get_branch.count > 0 %>
 
     <div class="container">
-        
         
         
         <section class="section_offset">
@@ -184,13 +183,13 @@
         <div class="animated_item">
             
             <!-- Place this tag where you want the widget to render. -->
-            <div class="g-person" data-width="230" data-href="//plus.google.com/u/0/104171666401993038308" data-rel="author"></div>
+            <div class="g-person" data-width="230" data-href="//plus.google.com/u/1/103092952550902100368" data-rel="author"></div>
             
         </div>
          
         <footer class="animated_item bottom_box">
             
-            <%= link_to "Vào trang", "//plus.google.com/u/0/104171666401993038308", class: "button_grey middle_btn", target: "_blank" %>
+            <%= link_to "Vào trang", "//plus.google.com/u/1/103092952550902100368", class: "button_grey middle_btn", target: "_blank" %>
 
         </footer><!--/ .animated_item-->
         
@@ -283,7 +282,7 @@
 
             <div class="proportional_frame">
 
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3024.238131852431!2d-74.006059!3d40.712773999999996!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258fda88cefb3%3A0x7f1e88758d210007!2z0J3RjNGOLdC50L7RgNC60YHQutC40Lkg0KHQuNGC0Lgt0YXQvtC70Ls!5e0!3m2!1sru!2sua!4v1415946524959" style="border:0"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d839.7960909803785!2d106.65668806767965!3d10.842979735680693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529a30b4aa939%3A0x514d147f7527ae6!2zMTAyIEzDqiBWxINuIFRo4buNLCA5LCBHw7IgVuG6pXAsIEjhu5MgQ2jDrSBNaW5oLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1466480580650" style="border:0"></iframe>
 
             </div>
 
@@ -315,7 +314,7 @@
     
     <!-- - - - - - - - - - - - - - Footer section- - - - - - - - - - - - - - - - -->
     <% if !@is_mobile.present? %>
-            <div class="footer_section section_1">
+            <div class="footer_section section_1 footer_section_dark">
         
                 <div class="container">
         
@@ -339,7 +338,7 @@
         
                                             <div style="display: inline">
                                                 
-                                                <div class="fb-page" data-href="https://www.facebook.com/DacSanVungMien.net" data-tabs="timeline" data-width="410" data-height="340" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                                                <div class="fb-page" data-href="https://www.facebook.com/DacSanVungMien.net" data-tabs="timeline" data-width="410" data-height="262px" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
                                                    
                                                     <div class="fb-xfbml-parse-ignore">
                                                         
@@ -385,7 +384,7 @@
         
                                 </ul>
                                 
-                                <%= link_to "Theo dõi trang", "https://www.facebook.com/DacSanVungMien.net/", class: "button_grey middle_btn", target: "_blank" %>
+                                <!--<%= link_to "Theo dõi trang", "https://www.facebook.com/DacSanVungMien.net/", class: "button_grey middle_btn", target: "_blank" %>-->
                                 
                             </section><!--/ .widget-->
                             
@@ -435,9 +434,9 @@
         
                             <section class="widget">
         
-                                <h4>Ý kiến khách hàng</h4>
+                                <h4>Ý kiến khách hàng <%= link_to "Xem tất cả", testimonial_list_path, class: "small-h4-more-link" %></h4>
         
-                                <ul class="list_of_entries">
+                                <ul class="list_of_entries footer-customer-review">
                                     
                                     <% Testimonial.all.limit(4).each do |item| %>
         
@@ -473,7 +472,7 @@
         
                                 </ul>
                                 
-                                <%= link_to "Xem toàn bộ", testimonial_list_path, class: "button_grey middle_btn" %>
+                                <!--<%= link_to "Xem toàn bộ", testimonial_list_path, class: "button_grey middle_btn" %>-->
         
                             </section><!--/ .widget-->
         
@@ -487,9 +486,9 @@
         
                             <section class="widget">
         
-                                <h4>Bài viết mới nhất</h4>
+                                <h4>Bài viết mới nhất <%= link_to "Xem tất cả", {controller: 'blog', action: 'index'}, class: "small-h4-more-link" %></h4>
         
-                                <ul class="list_of_entries">
+                                <ul class="list_of_entries footer-news-list">
                                     
                                     <% Article.get_lastest_blog_posts.each do |blog| %>
         
@@ -507,7 +506,7 @@
             
                                                 <div class="wrapper">
             
-                                                    <h6 class="entry_title"><%= link_to blog.title, { controller: "blog", action: "show", blog_id: blog.id } %></h6>
+                                                    <h6 class="entry_title"><%= link_to blog.title, { controller: "blog", action: "show", blog_id: blog.id }, title: blog.title %></h6>
             
                                                     <!-- - - - - - - - - - - - - - Byline - - - - - - - - - - - - - - - - -->
             
@@ -703,14 +702,14 @@
                    
                     <h3 class="company_name"><%= Company.get_company.name %></h3>  
                     
-                    <strong>Văn phòng giao dịch: </strong> <%= Company.get_company.head_office_address + ", " + Company.get_company.area.name  %> </br>               
+                    <strong>Địa điểm giao dịch: </strong> <%= Company.get_company.head_office_address + ", " + Company.get_company.area.name  %> </br>               
                    
                     <strong>Giấy Phép Đăng Ký: </strong> <%= Company.get_company.certificate_no %> - Cấp ngày <%= Company.get_company.date_of_issue.strftime("%d-%m-%Y") %> <br/>
                    
                     <strong>Điện Thoại: </strong> <%= Company.get_company.phone %>&nbsp;&nbsp;<strong> Hotline: </strong> <%= Company.get_company.hotline %>&nbsp;&nbsp; <strong>Email: </strong> <a href="mailto:<%= Company.get_company.email %>"><%= Company.get_company.email %></a><br/>
                     
                     <a href="http://online.gov.vn/CustomWebsiteDisplay.aspx?DocId=25865" target="_blank">
-                        <img alt="" title="" src="http://online.gov.vn/Images/dathongbao.png" width="150">
+                        <img alt="" title="" src="<%= url_for("/frontend/images/dathongbao.png") %>" width="150">
                     </a>
                
                 <% end %>
@@ -921,3 +920,5 @@
     });
 
 </script>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-520993b51c3b7da7"></script>

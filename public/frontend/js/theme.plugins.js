@@ -443,7 +443,7 @@
 			$('.carousel_in_tabs.type_2, .owl_carousel.four_items').owlCarousel({
 				responsive : {
 					0 : {
-						items : 1
+						items : 2
 					},
 					490 : {
 						items : 2

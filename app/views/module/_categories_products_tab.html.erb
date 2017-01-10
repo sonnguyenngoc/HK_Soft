@@ -51,12 +51,12 @@
 									<div class="image_wrap">
 			
 										<% if product.get_main_image.present? %>
-											<a href="<%= url_for( controller: "product", action: "product", product_id: product.id) %>">						
+											<a href="<%= url_for( controller: "product", action: "product", product_id: product.id, title: url_friendly(product.name)) %>">						
 												<img src="<%= product.get_main_image.image_url.medium_image %>" alt="">
 											</a>
 										<% else %>
 											
-											<a href="<%= url_for( controller: "product", action: "product", product_id: product.id) %>">
+											<a href="<%= url_for( controller: "product", action: "product", product_id: product.id, title: url_friendly(product.name)) %>">
 												<img src="/frontend/images/medium_image.png" alt="">
 											</a>
 											
@@ -126,7 +126,7 @@
 			
 									<div class="description">
 			
-										<p><%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, title: product.name %></p>
+										<p><%= link_to product.name, { controller: "product", action: "product", product_id: product.id, title: url_friendly(product.name) }, title: product.name %></p>
 			
 										<div class="clearfix product_info">
 			
@@ -227,12 +227,12 @@
 									<div class="image_wrap">
 			
 										<% if product.get_main_image.present? %>
-											<a href="<%= url_for( controller: "product", action: "product", product_id: product.id) %>">						
+											<a href="<%= url_for( controller: "product", action: "product", product_id: product.id, title: url_friendly(product.name)) %>">						
 												<img src="<%= product.get_main_image.image_url.medium_image %>" alt="">
 											</a>
 										<% else %>
 											
-											<a href="<%= url_for( controller: "product", action: "product", product_id: product.id) %>">
+											<a href="<%= url_for( controller: "product", action: "product", product_id: product.id, title: url_friendly(product.name)) %>">
 												<img src="/frontend/images/medium_image.png" alt="">
 											</a>
 											
@@ -302,7 +302,7 @@
 			
 									<div class="description">
 			
-										<p><%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, title: product.name %></p>
+										<p><%= link_to product.name, { controller: "product", action: "product", product_id: product.id, title: url_friendly(product.name) }, title: product.name %></p>
 			
 										<div class="clearfix product_info">
 			

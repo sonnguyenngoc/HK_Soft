@@ -66,4 +66,5 @@ gem 'onliner'
 gem 'devise_lastseenable'
 gem 'cancan'
 gem "koala", "~> 2.2"
+gem "sixarm_ruby_unaccent", ">= 1.1.1", "< 2"
 

@@ -1,3 +1,5 @@
+<% content_for :title, @category.name %>
+
 <body>
 
     <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
@@ -54,7 +56,7 @@
                             
                             <% if @current_area.id.present? %><li><%= link_to @current_area.name, change_current_area_path(@current_area.id) %></li><% end %>
                             
-                            <% @category.parent.each do |item| %><li><%= link_to item.name, { controller: "product", action: "category", category_id: item.id } %></li><% end %>
+                            <% @category.parent.each do |item| %><li><%= link_to item.name, { controller: "product", action: "category", category_id: item.id, title: url_friendly(item.name) } %></li><% end %>
                             
                             <li><%= @category.name %></li>
         
@@ -266,7 +268,7 @@
                                                                 
                                                                 <div class="nowrap-ellipsis">
                                                                    
-                                                                   <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, title: product.name %>
+                                                                   <%= link_to product.name, { controller: "product", action: "product", product_id: product.id, title: url_friendly(product.name) }, title: product.name %>
                                                                    
                                                                 </div>
                 
@@ -304,7 +306,7 @@
                 
                                                                 <div class="nowrap-ellipsis">
                                                                     
-                                                                    <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, class: "product_title", title: product.name %>
+                                                                    <%= link_to product.name, { controller: "product", action: "product", product_id: product.id, title: url_friendly(product.name) }, class: "product_title", title: product.name %>
                                                                     <% if !product.manufacturer.nil? %>
                                                                         <%= link_to product.manufacturer.name, { controller: "manufacturer", action: "list" }, class: "product_category" %>
                                                                     <% end %>
@@ -495,7 +497,7 @@
                                                         
                                                         <div class="nowrap-ellipsis">
                                                            
-                                                           <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, title: product.name %>
+                                                           <%= link_to product.name, { controller: "product", action: "product", product_id: product.id, title: url_friendly(product.name) }, title: product.name %>
                                                             
                                                         </div>
         
@@ -541,7 +543,7 @@
         
                                                         <div class="nowrap-ellipsis">
                                                             
-                                                            <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, class: "product_title", title: product.name %>
+                                                            <%= link_to product.name, { controller: "product", action: "product", product_id: product.id, title: url_friendly(product.name) }, class: "product_title", title: product.name %>
                                                             <% if !product.manufacturer.nil? %>
                                                                 <%= link_to product.manufacturer.name, { controller: "manufacturer", action: "list" }, class: "product_category" %>
                                                             <% end %>

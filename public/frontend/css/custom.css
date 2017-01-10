@@ -563,3 +563,11 @@ input, textarea, select, .form-control {
 #footer .list_of_entries li {
     padding: 5px 0;
 }
+@media (max-width: 489px) {
+    .owl-item .product_item .actions_wrap {
+        display: block !important;
+    }
+    .owl-item .product_item .actions_wrap .middle_btn {
+        font-size: 18px;
+    }
+}

@@ -248,7 +248,7 @@
                                                                 
                                                                 <div class="nowrap-ellipsis">
                                                                    
-                                                                   <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, title: product.name %>
+                                                                   <%= link_to product.name, { controller: "product", action: "product", product_id: product.id, title: url_friendly(product.name) }, title: product.name %>
                                                                    
                                                                 </div>
                 
@@ -286,7 +286,7 @@
                 
                                                                 <div class="nowrap-ellipsis">
                                                                     
-                                                                    <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, class: "product_title", title: product.name %>
+                                                                    <%= link_to product.name, { controller: "product", action: "product", product_id: product.id, title: url_friendly(product.name) }, class: "product_title", title: product.name %>
                                                                     <%= link_to product.manufacturer.name, { controller: "manufacturer", action: "list" }, class: "product_category" %>
                                                                 
                                                                 </div>
@@ -475,7 +475,7 @@
                                                         
                                                         <div class="nowrap-ellipsis">
                                                            
-                                                           <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, title: product.name %>
+                                                           <%= link_to product.name, { controller: "product", action: "product", product_id: product.id, title: url_friendly(product.name) }, title: product.name %>
                                                             
                                                         </div>
         
@@ -521,7 +521,7 @@
         
                                                         <div class="nowrap-ellipsis">
                                                             
-                                                            <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, class: "product_title", title: product.name %>
+                                                            <%= link_to product.name, { controller: "product", action: "product", product_id: product.id, title: url_friendly(product.name) }, class: "product_title", title: product.name %>
                                                             <%= link_to product.manufacturer.name, { controller: "manufacturer", action: "list" }, class: "product_category" %>
                                                         
                                                         </div>

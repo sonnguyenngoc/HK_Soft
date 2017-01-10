@@ -1,3 +1,5 @@
+<% content_for :title, "So sánh sản phẩm" %>
+
 <body>
 
     <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
@@ -53,7 +55,7 @@
                                         <td>
                                             <% if item.product.get_main_image.present? %>
 																			
-                                                <%= link_to image_tag(item.product.get_main_image.image_url.small_image), { controller: "product", action: "product", product_id: item.product_id } %>
+                                                <%= link_to image_tag(item.product.get_main_image.image_url.small_image), { controller: "product", action: "product", product_id: item.product_id, title: url_friendly(item.product.name) } %>
                                             
                                             <% else %>
                                                 
@@ -75,7 +77,7 @@
       
                                         <td>
       
-                                            <%= link_to item.product.name, { controller: "product", action: "product", product_id: item.product_id } %>
+                                            <%= link_to item.product.name, { controller: "product", action: "product", product_id: item.product_id, title: url_friendly(item.product.name) } %>
           
                                         </td>
                                     
@@ -109,7 +111,7 @@
           
 												<% if item.product.comments.count == 0 %>
 	
-													<%= link_to "Chưa đánh giá sản phẩm.", { controller: "product", action: "product", product_id: item.product.id, status: "tab_comment" }, class: "small_link" %>
+													<%= link_to "Chưa đánh giá sản phẩm.", { controller: "product", action: "product", product_id: item.product.id, status: "tab_comment", title: url_friendly(item.product.name) }, class: "small_link" %>
 													
 												<% else %>
 													

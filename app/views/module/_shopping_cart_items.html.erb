@@ -53,15 +53,15 @@
                             
                             <% if item.product.get_main_image.present? %>
                                         
-                                <%= link_to image_tag(item.product.get_main_image.image_url.smaller_image), { controller: "product", action: "product", product_id: item.product.id }, class: "product_thumb", title: item.product.name %>
+                                <%= link_to image_tag(item.product.get_main_image.image_url.smaller_image), { controller: "product", action: "product", product_id: item.product.id, title: url_friendly(item.product.name) }, class: "product_thumb", title: item.product.name %>
                             
                             <% else %>
                                 
-                                <%= link_to image_tag("/frontend/images/smaller_image.png"), { controller: "product", action: "product", product_id: item.product.id }, class: "product_thumb", title: item.product.name %>
+                                <%= link_to image_tag("/frontend/images/smaller_image.png"), { controller: "product", action: "product", product_id: item.product.id, title: url_friendly(item.product.name) }, class: "product_thumb", title: item.product.name %>
                             
                             <% end %>
     
-                            <%= link_to item.product.name, { controller: "product", action: "product", product_id: item.product.id }, class: "product_name" %>
+                            <%= link_to item.product.name, { controller: "product", action: "product", product_id: item.product.id, title: url_friendly(item.product.name) }, class: "product_name" %>
     
                             <p><%= item.quantity %> x <%= format_number(item.product.price) %> đ</p>
     

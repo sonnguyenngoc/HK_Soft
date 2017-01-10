@@ -17,7 +17,7 @@
         
                                     <!-- - - - - - - - - - - - - - Logo - - - - - - - - - - - - - - - - -->
                                     
-                                    <%= link_to image_tag("/frontend/images/dsvm_logo2.png", class: ""), root_path, class: "logo" %>
+                                    <%= link_to image_tag("/frontend/images/dsvm_logo2.png?v=3", class: ""), go_home_path, class: "logo" %>
         
                                     <!-- - - - - - - - - - - - - - End of logo - - - - - - - - - - - - - - - - -->
         
@@ -176,9 +176,9 @@
                 $(".tab_containers_wrap").each(function() {
                         $(this).css("visibility", "visible");
                         if($(window).width() < 490) {
-                            $(this).find('.owl-item').width($(this).find('.owl-stage-outer').width()/2);
-                            $(this).find('.owl-item .product_item').height($(this).find('.owl-stage-outer').width()/2 + 35);
-                            $(this).height($(this).find('.tab_container').height() + 10);
+                            //$(this).find('.owl-item').width($(this).find('.owl-stage-outer').width()/2);
+                            //$(this).find('.owl-item .product_item').height($(this).find('.owl-stage-outer').width()/2 + 35);
+                            //$(this).height($(this).find('.tab_container').height() + 0);
                         }
                 });
         }        

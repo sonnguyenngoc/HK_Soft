@@ -44,7 +44,7 @@ Rails.application.routes.draw do
     
     # blog
     get "bai-viet" => "blog#index", as: :index
-    get "bai-viet/chi-tiet-bai-viet/:blog_id" => "blog#show", as: :show
+    get "bai-viet/chi-tiet-bai-viet/:blog_id(/:title)" => "blog#show", as: :show
     get "bai-viet/chuyen-muc-bai-viet/:article_category_id" => "blog#article_category", as: :article_category
     get "bai-viet/su-kien/chuong-trinh-khuyen-mai/:article_category_id" => "blog#deal", as: :deal
     # end blog
@@ -75,10 +75,10 @@ Rails.application.routes.draw do
     # end branch
     
     # product
-    get "san-pham/chuyen-muc/:category_id" => "product#category", as: :category
+    get "san-pham/chuyen-muc/:category_id(/:title)" => "product#category", as: :category
     get "san-pham/tat-ca-chuyen-muc" => "product#all_category", as: :all_category
     get "san-pham/san-pham-so-sanh" => "product#comparison", as: :comparison
-    get "san-pham/chi-tiet-san-pham/:product_id" => "product#product", as: :product
+    get "san-pham/chi-tiet-san-pham/:product_id(/:title)" => "product#product", as: :product
     get "san-pham/xem-nhanh/:product_id" => "product#quick_view", as: :quick_view
     get "product/add_cart_success" => "product/add_cart_success", as: :add_cart_success
     get "product/add_wishlist_success" => "product/add_wishlist_success", as: :add_wishlist_success

@@ -12,13 +12,13 @@
         
             <% if category.children.order(:ordered).count == 0 %>
                 
-                <li class="top"><%= link_to category.name, { controller: "product", action: "category", category_id: category.id } %></li>
+                <li class="top"><%= link_to category.name, { controller: "product", action: "category", category_id: category.id, title: url_friendly(category.name) } %></li>
                 
             <% else %>
 
                 <li class="has_megamenu animated_item">
     
-                    <%= link_to category.name, { controller: "product", action: "category", category_id: category.id } %>
+                    <%= link_to category.name, { controller: "product", action: "category", category_id: category.id, title: url_friendly(category.name) } %>
     
                     <!-- - - - - - - - - - - - - - Mega menu - - - - - - - - - - - - - - - - -->
     
@@ -30,13 +30,13 @@
         
                             <div class="mega_menu_item">
                             
-                                <h6><b><%= link_to child_1.name, { controller: "product", action: "category", category_id: child_1.id } %></b></h6>
+                                <h6><b><%= link_to child_1.name, { controller: "product", action: "category", category_id: child_1.id, title: url_friendly(child_1.name) } %></b></h6>
                             
                                 <ul class="list_of_links">
                                     
                                     <% child_1.children.order(:ordered).each do |child_2| %>
         
-                                        <li><%= link_to child_2.name, { controller: "product", action: "category", category_id: child_2.id } %></li>
+                                        <li><%= link_to child_2.name, { controller: "product", action: "category", category_id: child_2.id, title: url_friendly(child_2.name) } %></li>
                                         
                                     <% end %>
         

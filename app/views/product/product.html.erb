@@ -1,3 +1,5 @@
+<% content_for :title, @product.name %>
+
 <body>
 
     <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
@@ -1014,7 +1016,7 @@
 																			
 																			<div class="nowrap-ellipsis">
 																				
-																				<%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, title: product.name %>
+																				<%= link_to product.name, { controller: "product", action: "product", product_id: product.id, title: url_friendly(product.name) }, title: product.name %>
 																			
 																			</div>
 																			
@@ -1160,7 +1162,7 @@
 																	
 																	<div class="nowrap-ellipsis">
 																		
-																		<%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, title: product.name %>
+																		<%= link_to product.name, { controller: "product", action: "product", product_id: product.id, title: url_friendly(product.name) }, title: product.name %>
 																	
 																	</div>
 																	

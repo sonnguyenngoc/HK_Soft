@@ -298,6 +298,9 @@
     .tab_containers_wrap {
         visibility: hidden;
     }
+    .mobile_chat_box_page .tab_containers_wrap {
+        visibility: visible;
+    }
     .chat_box_page .invisible {
         display: none;
     }
@@ -332,6 +335,9 @@
     [class*="page_wrapper"] form .row [class*="col-"]:not(:first-child) {
         margin-top: 10px;
         margin-bottom: 10px;
+    }
+    .footer_section_3 {
+        padding-bottom: 75px;
     }
 }
 @media (max-width: 489px) {
@@ -400,4 +406,17 @@
         margin-bottom: 10px !important;
         margin-top: 10px !important;
     }
+}
+@media (max-width: 489px) {
+    .owl-item.last .product_item .actions_wrap {
+        display: block !important;
+    }
+    .owl-item .product_item .actions_wrap .middle_btn {
+        font-size: 16px;
+    }
+}
+@media only screen and (max-width: 480px) {
+    .theme_box {
+        padding: 30px 19px;
+    }    
 }

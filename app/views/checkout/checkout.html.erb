@@ -28,9 +28,11 @@
   
                 <h1 class="page_title"><%= @title_head %></h1>
                 
-                <% if !current_user.present? %>
+                <% if !current_user.present? || true %>
                 
-                    <p class="page_title"><a href="#login" class="checkout-quick-login" onclick="$('.checkout-quick-login-box').toggle()">Đăng nhập vào tài khoản của bạn.</a></p>
+                    <h3>
+                        <p class="page_title"><a href="#login" class="checkout-quick-login" onclick="$('.checkout-quick-login-box').toggle()">Đăng nhập vào tài khoản của bạn.</a></p>
+                    </h3>
       
                     <!-- - - - - - - - - - - - - - Login - - - - - - - - - - - - - - - - -->
       
@@ -94,17 +96,17 @@
                     
                 <%= form_for @order, html: {class: "type_2"} do |f| %>
       
-                    <% if current_user.present? %>
+                    <% if current_user.present? && false %>
                         
                         <!-- - - - - - - - - - - - - - Billing information - - - - - - - - - - - - - - - - -->
   
                         <section class="section_offset">
           
-                            <h3>Thông tin đặt hàng</h3>
-          
+                            <h3>Thông tin đặt hàng (<span class="font-small"><span class="star-sign"></span> là thông tin bắt buộc</span>)</h3>
+                            
                             <div class="theme_box theme-box-boder">
                                 
-                                <ul class="shipping_method">
+                                <ul class="">
 
                                 <div class="type_2">
                                     
@@ -114,45 +116,49 @@
                                             
                                             <div class="col-sm-6">
                                                 
-                                                <label for="first_name" class="required">Họ:</label>
+                                                <label for="first_name" class="required">Tên đầy đủ:</label>
                                                 
-                                                <input class="required" readonly type="text" name="customer[first_name]" id="customer_first_name" value="<%= current_user.first_name %>">
+                                                <input class="required" readonly type="text" name="customer[first_name]" id="customer_first_name" value="<%= current_user.first_name %> <%= current_user.last_name %>">
                                                 
                                             </div><!--/ [col] -->
-          
+                                            
                                             <div class="col-sm-6">
+          
+                                                <label for="email">Email:</label>
+                                                
+                                                <input class="email" readonly type="text" name="customer[email]" id="customer_email" value="<%= current_user.email %>">
+          
+                                            </div><!--/ [col] -->
+                                            
+                                            <div class="col-sm-6" style="display: none">
+                                                
+                                                <label class="required">Quốc gia</label>
+          
+                                                <input class="required" readonly type="text" name="customer[country]" id="customer_country" value="<%= current_user.country %>">
+          
+                                            </div><!--/ [col] -->
+          
+                                            <!--<div class="col-sm-6">
                                                 
                                                 <label for="last_name" class="required">Tên:</label>
                                                 
                                                 <input class="required" readonly type="text" name="customer[last_name]" id="customer_last_name" value="<%= current_user.last_name %>">
                                                 
-                                            </div><!--/ [col] -->
+                                            </div>-->
+                                            <!--/ [col] -->
           
                                         </li><!--/ .row -->
           
                                         <li class="row">	
-                                            
-                                            <div class="col-xs-6">
-          
-                                                <label for="email" class="required">Email:</label>
-                                                
-                                                <input class="required email" readonly type="text" name="customer[email]" id="customer_email" value="<%= current_user.email %>">
-          
-                                            </div><!--/ [col] -->
-                                            
-                                            <div class="col-xs-6">
+                                            <div class="col-sm-6">
                                 
                                                 <label for="phone" class="required">Số điện thoại:</label>
                                                 
                                                 <input class="required" readonly type="text" name="customer[phone]" id="customer_phone" value="<%= current_user.phone %>">
                                                 
                                             </div><!--/ [col] -->
-          
-                                        </li><!-- / .row -->
-          
-                                        <li class="row">
-          
-                                            <div class="col-xs-6">
+                                            
+                                            <div class="col-sm-6">
           
                                                 <label for="company">Tên công ty:</label>
                                                 
@@ -160,9 +166,35 @@
           
                                             </div><!--/ [col] -->
                                             
-                                            <div class="col-xs-6">
+                                            <div class="col-sm-6" style="display: none">
 
-                                                <label for="zip_code">Mã bưu chính ZIP CODE:</label>
+                                                <label class="required">Tỉnh/Thành phố</label>
+                                                
+                                                <input readonly type="text" name="customer[province]" id="customer_province" value="<%= current_user.area.name %>">
+          
+                                            </div><!--/ [col] -->
+                                            
+                                            
+          
+                                        </li><!-- / .row -->
+          
+                                        <li class="row">
+                                            
+                                            <div class="col-sm-6">
+          
+                                                <label for="address" class="required">Địa chỉ:</label>
+                                                
+                                                <input class="required" readonly type="text" name="customer[address]" id="customer_address" value="<%= current_user.address_1 %>">
+          
+                                            </div><!--/ [col] -->
+                                            
+                                            
+          
+                                            
+                                            
+                                            <div class="col-sm-6">
+
+                                                <label for="zip_code">Mã bưu chính:</label>
                                                 
                                                 <input readonly type="text" name="customer[zip_code]" id="customer_zip_code" value="<%= current_user.zip_code %>">
                                                 
@@ -172,33 +204,15 @@
                                         
                                         <li class="row">
                                             
-                                            <div class="col-xs-12">
-          
-                                                <label for="address" class="required">Địa chỉ:</label>
-                                                
-                                                <input class="required" readonly type="text" name="customer[address]" id="customer_address" value="<%= current_user.address_1 %>">
-          
-                                            </div><!--/ [col] -->
+                                            
           
                                         </li><!-- / .row -->
           
                                         <li class="row">
           
-                                            <div class="col-sm-6">
-                                                
-                                                <label class="required">Quốc gia</label>
+                                            
           
-                                                <input class="required" readonly type="text" name="customer[country]" id="customer_country" value="<%= current_user.country %>">
-          
-                                            </div><!--/ [col] -->
-          
-                                            <div class="col-sm-6">
-
-                                                <label>Tỉnh/Thành phố</label>
-                                                
-                                                <input readonly type="text" name="customer[province]" id="customer_province" value="<%= current_user.area.name %>">
-          
-                                            </div><!--/ [col] -->
+                                            
           
                                         </li><!--/ .row -->
           
@@ -216,7 +230,7 @@
           
                         <section class="section_offset">
           
-                            <h3>Thông tin giao hàng</h3>
+                            <h3>Thông tin giao hàng (<span class="font-small"><span class="star-sign"></span> là thông tin bắt buộc</span>)</h3>
           
                             <div class="theme_box theme-box-boder">
                                 
@@ -226,45 +240,41 @@
                                         
                                         <div class="col-sm-6">
                                             
-                                            <label for="first_name" class="required">Họ:</label>
+                                            <label for="first_name" class="required">Tên đầy đủ:</label>
                                             
                                             <input class="required" type="text" name="order_delivery[first_name]" id="order_delivery_first_name" value="<%= current_user.first_name %>">
                                             
                                         </div><!--/ [col] -->
-        
+                                        
                                         <div class="col-sm-6">
+        
+                                            <label for="email" class="">Email:</label>
+                                           
+                                            <input class="email" type="text" name="order_delivery[email]" id="order_delivery_email" value="<%= current_user.email %>">
+        
+                                        </div><!--/ [col] -->
+        
+                                        <!--<div class="col-sm-6">
                                             
                                             <label for="last_name" class="required">Tên:</label>
                                             
                                             <input class="required" type="text" name="order_delivery[last_name]" id="order_delivery_last_name" value="<%= current_user.last_name %>">
                                             
-                                        </div><!--/ [col] -->
+                                        </div>--><!--/ [col] -->
         
                                     </li><!--/ .row -->
         
                                     <li class="row">
                                         
-                                        <div class="col-xs-6">
-        
-                                            <label for="email" class="required">Email:</label>
-                                           
-                                            <input class="required email" type="text" name="order_delivery[email]" id="order_delivery_email" value="<%= current_user.email %>">
-        
-                                        </div><!--/ [col] -->
-                                        
-                                        <div class="col-xs-6">
+                                        <div class="col-sm-6">
 
                                             <label for="phone" class="required">Số điện thoại:</label>
                                             
                                             <input class="required" type="text" name="order_delivery[phone]" id="order_delivery_phone" value="<%= current_user.phone %>">
                                             
                                         </div><!--/ [col] -->
-        
-                                    </li><!-- / .row -->
-        
-                                    <li class="row">
-        
-                                        <div class="col-xs-6">
+                                        
+                                        <div class="col-sm-6">
         
                                             <label for="company">Tên công ty:</label>
                                             
@@ -272,9 +282,25 @@
         
                                         </div><!--/ [col] -->
                                         
-                                        <div class="col-xs-6">
+                                        
+        
+                                    </li><!-- / .row -->
+        
+                                    <li class="row">
+                                        
+                                        <div class="col-sm-6">
+        
+                                            <label for="address" class="required">Địa chỉ:</label>
+                                            
+                                            <input class="required" type="text" name="order_delivery[address]" id="order_delivery_address" value="<%= current_user.address_1 %>">
+        
+                                        </div><!--/ [col] -->
+        
+                                        
+                                        
+                                        <div class="col-sm-6">
 
-                                            <label for="zip_code">Mã bưu chính ZIP/CODE:</label>
+                                            <label for="zip_code">Mã bưu chính:</label>
                                             
                                             <input type="text" name="order_delivery[zip_code]" id="order_delivery_zip_code" value="<%= current_user.zip_code %>">
                                             
@@ -284,17 +310,11 @@
                                     
                                     <li class="row">
                                         
-                                        <div class="col-xs-12">
-        
-                                            <label for="address" class="required">Địa chỉ:</label>
-                                            
-                                            <input class="required" type="text" name="order_delivery[address]" id="order_delivery_address" value="<%= current_user.address_1 %>">
-        
-                                        </div><!--/ [col] -->
+                                        
         
                                     </li><!-- / .row -->
         
-                                    <li class="row">
+                                    <li class="row" style="display: none">
         
                                         <div class="col-sm-6">
                                             
@@ -348,8 +368,8 @@
           
                         <section class="section_offset">
           
-                            <h3>Thông tin đặt hàng</h3>
-          
+                            <h3>Thông tin đặt hàng (<span class="font-small"><span class="star-sign"></span> là thông tin bắt buộc</span>)</h3>
+
                             <div class="theme_box theme-box-boder">
                                     
                                 <ul>
@@ -358,32 +378,32 @@
                                         
                                         <div class="col-sm-6">
                                             
-                                            <label for="first_name" class="required">Họ:</label>
+                                            <label for="first_name" class="required">Tên đầy đủ:</label>
 
                                             <input class="required" type="text" name="customer[first_name]" id="customer_first_name">
         
                                         </div><!--/ [col] -->
-        
+                                        
                                         <div class="col-sm-6">
+                                            
+                                            <label for="email">Email:</label>
+
+                                            <input class="email" type="text" name="customer[email]" id="customer_email">
+        
+                                        </div><!--/ [col] -->
+        
+                                        <!--<div class="col-sm-6">
                                             
                                             <label for="last_name" class="required">Tên:</label>
 
                                             <input class="required" type="text" name="customer[last_name]" id="customer_last_name">
         
-                                        </div><!--/ [col] -->
+                                        </div>--><!--/ [col] -->
         
                                     </li><!--/ .row -->
         
                                     <li class="row">
                                         
-                                        <div class="col-sm-6">
-                                            
-                                            <label for="email" class="required">Email:</label>
-
-                                            <input class="required" type="text" name="customer[email]" id="customer_email">
-        
-                                        </div><!--/ [col] -->
-        
                                         <div class="col-sm-6">
                                             
                                             <label for="phone" class="required">Số điện thoại:</label>
@@ -391,44 +411,48 @@
                                             <input class="required" type="text" name="customer[phone]" id="customer_phone">
         
                                         </div><!--/ [col] -->
-        
-                                    </li><!--/ .row -->
-        
-                                    <li class="row">	
-        
-                                        <div class="col-xs-6">
+                                        
+                                        <div class="col-sm-6">
         
                                             <label for="address">Tên công ty:</label>
 
                                             <input type="text" name="customer[company]" id="customer_company">
         
                                         </div><!--/ [col] -->
-                                        
-                                        <div class="col-xs-6">
         
-                                            <label for="zip_code">Mã bưu chính ZIP/CODE:</label>
-
-                                            <input type="text" name="customer[zip_code]" id="customer_zip_code">
+                                    </li><!--/ .row -->
         
-                                        </div><!--/ [col] -->
+                                    <li class="row">	
         
-                                    </li><!-- / .row -->
-        
-                                    <li class="row">
-        
-                                        <div class="col-xs-12">
+                                        <div class="col-sm-6">
         
                                             <label for="address" class="required">Địa chỉ:</label>
 
                                             <input class="required" type="text" name="customer[address]" id="customer_address">
         
                                         </div><!--/ [col] -->
+                                        
+                                        <div class="col-sm-6">
+        
+                                            <label for="zip_code">Mã bưu chính:</label>
+
+                                            <input type="text" name="customer[zip_code]" id="customer_zip_code">
+        
+                                        </div><!--/ [col] -->
+                                        
+                                        
+        
+                                    </li><!-- / .row -->
+        
+                                    <li class="row">
+        
+                                        
         
                                     </li><!--/ .row -->
         
                                     <li class="row">
         
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-6" style="display: none">
                                             
                                             <label class="required">Quốc gia</label>
         
@@ -444,7 +468,7 @@
         
                                         </div><!--/ [col] -->
         
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-6" style="display: none">
 
                                             <label class="required">Tỉnh/Thành phố</label>
                                             
@@ -468,8 +492,8 @@
         
                                     <li class="row">
         
-                                        <div class="col-xs-12">
-        
+                                        <div class="col-sm-12">
+                                            <br />
                                             <input checked type="checkbox" name="order[different_delivery]" value="true" id="different_delivery_checkbox">
 
                                             <label for="different_delivery_checkbox">Địa chỉ giao hàng và thanh toán giống nhau.</label>
@@ -490,7 +514,7 @@
           
                         <section class="section_offset different_delivery_box">
           
-                            <h3>Thông tin giao hàng</h3>
+                            <h3>Thông tin giao hàng (<span class="font-small"><span class="star-sign"></span> là thông tin bắt buộc</span>)</h3>
           
                             <div class="theme_box theme-box-boder">
                                     
@@ -500,45 +524,40 @@
                                         
                                         <div class="col-sm-6">
                                             
-                                            <label for="first_name" class="required">Họ:</label>
+                                            <label for="first_name" class="required">Tên đầy đủ:</label>
 
                                             <input class="required" type="text" name="order_delivery[first_name]" id="order_delivery_first_name">
         
                                         </div><!--/ [col] -->
-        
+                                        
                                         <div class="col-sm-6">
+        
+                                            <label for="email">Email:</label>
+
+                                            <input class="email" type="text" name="order_delivery[email]" id="order_delivery_email">
+        
+                                        </div><!--/ [col] -->
+        
+                                        <!--<div class="col-sm-6">
                                             
                                             <label for="last_name" class="required">Tên:</label>
 
                                             <input class="required" type="text" name="order_delivery[last_name]" id="order_delivery_last_name">
         
-                                        </div><!--/ [col] -->
+                                        </div>--><!--/ [col] -->
         
                                     </li><!--/ .row -->
         
                                     <li class="row">
-                                        
-                                        <div class="col-xs-6">
-        
-                                            <label for="email" class="required">Email:</label>
-
-                                            <input class="required" type="text" name="order_delivery[email]" id="order_delivery_email">
-        
-                                        </div><!--/ [col] -->
-        
-                                        <div class="col-xs-6">
+                                        <div class="col-sm-6">
         
                                             <label for="phone" class="required">Số điện thoại:</label>
 
                                             <input class="required" type="text" name="order_delivery[phone]" id="order_delivery_phone">
         
                                         </div><!--/ [col] -->
-        
-                                    </li><!-- / .row -->
-        
-                                    <li class="row">
-        
-                                        <div class="col-xs-6">
+                                        
+                                        <div class="col-sm-6">
         
                                             <label for="company">Tên công ty:</label>
 
@@ -546,7 +565,23 @@
         
                                         </div><!--/ [col] -->
                                         
-                                        <div class="col-xs-6">
+                                        
+        
+                                    </li><!-- / .row -->
+        
+                                    <li class="row">
+                                        
+                                        <div class="col-sm-6">
+        
+                                            <label for="address" class="required">Địa chỉ:</label>
+
+                                            <input class="required" type="text" name="order_delivery[address]" id="order_delivery_address">
+        
+                                        </div><!--/ [col] -->
+        
+                                        
+                                        
+                                        <div class="col-sm-6">
         
                                             <label for="zip_code">Mã bưu chính ZIP/CODE:</label>
 
@@ -558,19 +593,13 @@
                                     
                                     <li class="row">
         
-                                        <div class="col-xs-12">
-        
-                                            <label for="address" class="required">Địa chỉ:</label>
-
-                                            <input class="required" type="text" name="order_delivery[address]" id="order_delivery_address">
-        
-                                        </div><!--/ [col] -->
+                                        
         
                                     </li><!-- / .row -->
         
                                     <li class="row">
         
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-6" style="display:none">
                                             
                                             <label class="required">Quốc gia</label>
         
@@ -586,7 +615,7 @@
         
                                         </div><!--/ [col] -->
         
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-6" style="display:none">
 
                                             <label class="required">Tỉnh/Thành phố</label>
                                             
@@ -630,13 +659,13 @@
       
                             <ul class="shipping_method">
                                 
-                                <% @delivery_method.each do |item| %>
+                                <% @delivery_method.order("title").each_with_index do |item,index| %>
       
                                     <li>
           
-                                        <input checked type="radio" value="<%= item.id %>" name="order_delivery[delivery_method_id]" id="order_delivery_delivery_method_id_<%= item.id %>">
+                                        <input <%= "checked" if index == 0 %> type="radio" value="<%= item.id %>" name="order_delivery[delivery_method_id]" id="order_delivery_delivery_method_id_<%= item.id %>">
     
-                                        <label for="order_delivery_delivery_method_id_<%= item.id %>"><%= item.title %></label>
+                                        <label for="order_delivery_delivery_method_id_<%= item.id %>"><%= item.title %> (<%= item.description %>)</label>
           
                                     </li>
                                     
@@ -662,19 +691,22 @@
       
                             <ul class="simple_vertical_list">
       
-                                <% @payment_method.each do |item| %>
+                                <% @payment_method.order("title desc").each_with_index do |item, index| %>
       
                                     <li>
           
-                                        <input checked type="radio" value="<%= item.id %>"  name="order_delivery[payment_method_id]" id="order_delivery_payment_method_id_<%= item.id %>">
+                                        <input <%= "checked" if index == 0 %> type="radio" value="<%= item.id %>"  name="order_delivery[payment_method_id]" id="order_delivery_payment_method_id_<%= item.id %>">
     
-                                        <label for="order_delivery_payment_method_id_<%= item.id %>"><%= item.title %></label>
+                                        <label for="order_delivery_payment_method_id_<%= item.id %>"><%= item.title %>
+                                        
+                                        <%= '(' + item.description + ')' if item.description.present? %>
+                                        
+                                        </label>
           
                                     </li>
                                     
                                 <% end %>
                                 
-                                <br/>
                                 
                                 <li>
       
@@ -702,7 +734,7 @@
                     <!-- - - - - - - - - - - - - - End of order review - - - - - - - - - - - - - - - - -->
                 
                 <% end %>
-  
+            <br />
             </div><!--/ .container-->
   
         </div><!--/ .page_wrapper-->
@@ -710,7 +742,8 @@
         <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
   
         <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
-  
+        
+        
         <%= render 'module/footer' %>
         
         <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->

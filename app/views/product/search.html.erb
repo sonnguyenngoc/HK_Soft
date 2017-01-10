@@ -171,7 +171,7 @@
                                                                 
                                                                 <% if product.get_main_image.present? %>
                                                                     
-                                                                    <a class="img_item" href="<%= url_for ({controller: "product", action: "product", product_id: product.id}) %>">
+                                                                    <a class="img_item" href="<%= url_for ({controller: "product", action: "product", product_id: product.id, title: url_friendly(product.name)}) %>">
                                                                     
                                                                         <img class="full_width" src="<%= product.get_main_image.image_url.medium_image %>" alt="">
                                                                         
@@ -179,7 +179,7 @@
                                                                 
                                                                 <% else %>
                                                                     
-                                                                    <a class="img_item" href="<%= url_for ({controller: "product", action: "product", product_id: product.id}) %>">
+                                                                    <a class="img_item" href="<%= url_for ({controller: "product", action: "product", product_id: product.id, title: url_friendly(product.name)}) %>">
                                                                     
                                                                         <img class="full_width" src="/frontend/images/medium_image.png" alt="">
                                                                         
@@ -261,7 +261,7 @@
                                                                 
                                                                 <div class="nowrap-ellipsis">
                                                                    
-                                                                   <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, title: product.name %>
+                                                                   <%= link_to product.name, { controller: "product", action: "product", product_id: product.id, title: url_friendly(product.name) }, title: product.name %>
                                                                    
                                                                 </div>
                 
@@ -307,7 +307,7 @@
                 
                                                                 <div class="nowrap-ellipsis">
                                                                     
-                                                                    <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, class: "product_title", title: product.name %>
+                                                                    <%= link_to product.name, { controller: "product", action: "product", product_id: product.id, title: url_friendly(product.name) }, class: "product_title", title: product.name %>
                                                                     <% if !product.manufacturer.nil? %>
                                                                         <%= link_to product.manufacturer.name, { controller: "manufacturer", action: "list" }, class: "product_category" %>
                                                                     <% end %>
@@ -419,14 +419,14 @@
                                                     <div class="image_wrap">
                                                         
                                                         <% if product.get_main_image.present? %>
-                                                            <a class="img_item" href="<%= url_for ({controller: "product", action: "product", product_id: product.id}) %>">
+                                                            <a class="img_item" href="<%= url_for ({controller: "product", action: "product", product_id: product.id, title: url_friendly(product.name)}) %>">
                                                             
                                                                 <img src="<%= product.get_main_image.image_url.medium_image %>" alt="">
                                                                 
                                                             </a>
                                                         
                                                         <% else %>
-                                                            <a class="img_item" href="<%= url_for ({controller: "product", action: "product", product_id: product.id}) %>">
+                                                            <a class="img_item" href="<%= url_for ({controller: "product", action: "product", product_id: product.id, title: url_friendly(product.name)}) %>">
                                                             
                                                                 <img src="/frontend/images/medium_image.png" alt="">
                                                                 
@@ -508,7 +508,7 @@
                                                         
                                                         <div class="nowrap-ellipsis">
                                                            
-                                                           <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, title: product.name %>
+                                                           <%= link_to product.name, { controller: "product", action: "product", product_id: product.id, title: url_friendly(product.name) }, title: product.name %>
                                                            
                                                         </div>
         
@@ -554,7 +554,7 @@
         
                                                         <div class="nowrap-ellipsis">
                                                             
-                                                            <%= link_to product.name, { controller: "product", action: "product", product_id: product.id }, class: "product_title", title: product.name %>
+                                                            <%= link_to product.name, { controller: "product", action: "product", product_id: product.id, title: url_friendly(product.name) }, class: "product_title", title: product.name %>
                                                             <% if !product.manufacturer.nil? %>
                                                                 <%= link_to product.manufacturer.name, { controller: "manufacturer", action: "list" }, class: "product_category" %>
                                                             <% end %>

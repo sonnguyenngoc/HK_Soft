@@ -51,7 +51,7 @@ class Order < ActiveRecord::Base
   
   def self.get_order_pending
     records = self.all
-    records = records.where("LOWER(orders.status) LIKE ?", "pending")
+    records = records.where("LOWER(orders.status) LIKE ?", "pending").order("created_at desc")
     return records
   end
   def self.search(params)
