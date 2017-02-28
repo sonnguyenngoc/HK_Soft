@@ -105,25 +105,7 @@
         </script>
     
         <%= yield %>
-        <% if (params[:controller] == "home" && params[:action] == "index") %>
-        <div class="modal fade" id="HomePopup">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <a href="<%= new_year_tours_path %>"><img src="/frontend/images/img_popup_4.jpg" style="width: 100%; height: auto;"></a>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="button_dark_grey" data-dismiss="modal">X</button>
-                </div>
-            </div><!-- /.modal-content -->
-          </div><!-- /.modal-dialog -->
-        </div><!-- /.modal -->
-        <script>
-            jQuery(function ($) {
-                $('#HomePopup').modal('show');
-            });
-        </script>
-        <% end %>
+        
     </body>
 
 </html>
