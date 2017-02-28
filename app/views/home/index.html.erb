@@ -172,6 +172,7 @@
             </div>
         </div>
         
+        <% if @new_year_tours.count > 0 || @foreign_tour.count > 0 %>
         <div class="container section">
             <% if @new_year_tours.count > 0 %>
                 <h2>Tour Tết 2017</h2>
@@ -213,6 +214,7 @@
                 </div>
             <% end %>
         </div>
+        <% end %>
         
         <% if Tour.get_discount_tours.count > 0 %>
             <div class="global-map-area section parallax" data-stellar-background-ratio="0.5" style="background-position: 50% 110.5px;">
