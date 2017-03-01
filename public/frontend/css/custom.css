@@ -3,9 +3,6 @@
  * Author:  http://themeforest.net/user/soaptheme 
  */
 body {
-    font: 90%/150% "Open Sans",Arial,Helvetica,sans-serif;
-}
-.footer-wrapper {
     font: 75%/150% "Open Sans",Arial,Helvetica,sans-serif;
 }
 #header .logo {
@@ -370,10 +367,6 @@ h4 {
 .box-title small {
     font-size: 14px;
 }
-.image-box .discount {
-    line-height: 74px;
-    text-indent: -6px;
-}
 #footer .discover li {
-    font-size: 12px;
+    font-size: 13px;
 }
