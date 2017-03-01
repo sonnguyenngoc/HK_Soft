@@ -51,6 +51,7 @@
 		
 		
 		$(document).ready(function() {
+			var AUTH_TOKEN = $('meta[name=csrf-token]').attr('content');
 			
 			// add related articles to list	
 			$(document).on("click", ".add_related_articles_button", function() {
@@ -103,6 +104,32 @@
 			});
 			$(document).on("click", ".table_related_products .remove_button", function() {
 				$(this).parents("tr").remove();
+			});
+			
+			// Grap link with data-method attribute
+			$(document).on('click', 'a.link-method[data-method]', function(e) {
+				e.preventDefault();
+				
+				var method = $(this).attr("data-method");
+				var action = $(this).attr("href");
+				
+				var newForm = jQuery('<form>', {
+					'action': action,
+					'method': 'POST',
+					'target': '_top'
+				});
+				newForm.append(jQuery('<input>', {
+					'name': 'authenticity_token',
+					'value': AUTH_TOKEN,
+					'type': 'hidden'
+				}));
+				newForm.append(jQuery('<input>', {
+					'name': '_method',
+					'value': method,
+					'type': 'hidden'
+				}));
+				$(document.body).append(newForm);
+				newForm.submit();
 			});
 			
 		});
