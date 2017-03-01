@@ -308,3 +308,16 @@ body {
 .tour-locations .box .time span {
     color: #ff0000;
 }
+#main-menu ul.menu>.megamenu-menu ul.megamenu ul.sub-menu li li a,
+.chaser ul.menu>.megamenu-menu ul.megamenu ul.sub-menu li li a,
+#main-menu ul.menu>li ul li>a, .chaser ul.menu>li ul li>a {
+    font-size: 14px;
+    color: #fff !important;
+    opacity: 1;
+}
+#main-menu ul.menu>.megamenu-menu ul.megamenu, .chaser ul.menu>.megamenu-menu ul.megamenu {
+    background: #00a7f2;
+}
+.image-box.style9 .details {
+    height: 260px;
+}
