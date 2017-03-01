@@ -2,6 +2,12 @@
  * Title:   Custom Style File
  * Author:  http://themeforest.net/user/soaptheme 
  */
+body {
+    font: 90%/150% "Open Sans",Arial,Helvetica,sans-serif;
+}
+.footer-wrapper {
+    font: 75%/150% "Open Sans",Arial,Helvetica,sans-serif;
+}
 #header .logo {
     margin: 10px 0 5px 0;
 }
@@ -319,5 +325,55 @@ body {
     background: #00a7f2;
 }
 .image-box.style9 .details {
-    height: 260px;
+    height: 215px;
+}
+#tour-details .intro2 .term-description dt {
+    width: 160px;
+    white-space: nowrap;
+    font-size: 12px;
+}
+.post-content {
+    font-size: 14px;
+}
+ul.arrow, ul.triangle, ul.circle, ul.check, ul.chevron, ul.arrow-square, ul.check-square, ul.check-circle, ul.decimal, ul.upper-roman, ul.lower-latin, ul.upper-latin {
+    font-size: 14px;
+}
+.contact-form label {
+    font-size: 14px;
+}
+.icon-box.style5 .description {
+    padding: 5px 15px 0 0;
+}
+input.input-text, textarea, span.custom-select {
+    font-size: 13px;
+}
+#main-menu ul.menu>li, .chaser ul.menu>li {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+#main-menu ul.menu>li>a, .chaser ul.menu>li>a {
+    letter-spacing: normal;
+}
+h4 {
+    font-size: 16px;
+}
+.image-box.style9 .box-title .transform-capitalize {
+    text-transform: capitalize;
+    display: inline-block;
+    height: 80px;
+    overflow: hidden;
+}
+.color-price {
+    font-weight: bold;
+    font-size: 15px;
+}
+.box-title small {
+    font-size: 14px;
+}
+.image-box .discount {
+    line-height: 74px;
+    text-indent: -6px;
+}
+#footer .discover li {
+    font-size: 12px;
 }
