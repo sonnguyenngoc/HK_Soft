@@ -64,11 +64,24 @@
                             </div>
                             <div class="table-cell">
                                 <dl class="term-description">
-                                    <dt>Thời gian chuyến tour:</dt><dd><%= @tour.time_line %></dd>
+                                    <dt>Thời gian tour:</dt><dd><%= @tour.time_line %></dd>
                                     <dt>Phương tiện:</i></dt><dd><% if @tour.get_transportations.include?("car") %>Xe du lịch. <% end %> <% if @tour.get_transportations.include?("plane") %>Máy bay. <% end %><% if @tour.get_transportations.include?("trunk") %>Tàu cao tốc. <% end %></dd>
-                                    <dt>Khách sạn:</i></dt><dd><%= @tour.hotel %></dd>
-                                    <dt>Phụ thu cuối tuần:</i></dt><dd><% if !@tour.surcharge_1.nil? %><% if @tour.surcharge_1 == 0 %>Liên hệ<% else %><%= format_number(@tour.surcharge_1) %> VNĐ/Khách<% end %><% end %></dd>
-                                    <dt>Phụ thu lễ tết:</i></dt><dd><% if !@tour.surcharge_2.nil? %><% if @tour.surcharge_2 == 0 %>Liên hệ<% else %><%= format_number(@tour.surcharge_2) %> VNĐ/Khách<% end %><% end %></dd>
+                                    
+                                    <% if @tour.hotel != 'Chọn khách sạn' %>
+                                        <dt>Khách sạn:</i></dt><dd><%= @tour.hotel %></dd>
+                                    <% end %>
+                                
+                                    <% if !@tour.resort_name.nil? %>
+                                        <dt>Resort:</i></dt><dd><%= @tour.resort_name %></dd>
+                                    <% end %>
+                                    
+                                    <% if !@tour.surcharge_1.nil? %>
+                                    <dt>Phụ thu cuối tuần:</i></dt><dd><%= format_number(@tour.surcharge_1) %> VNĐ/Khách</dd>
+                                    <% end %>
+                                
+                                    <% if !@tour.surcharge_2.nil? %>
+                                    <dt>Phụ thu lễ tết:</i></dt><dd><%= format_number(@tour.surcharge_2) %> VNĐ/Khách</dd>
+                                    <% end %>
                                 </dl>
                             </div>
                             <div class="price-section table-cell custom-tour-price">
@@ -85,9 +98,8 @@
                                     <li><a href="#tab-control-4" data-toggle="tab">Lưu ý</a></li>
                                     <li><a href="#tab-control-5" data-toggle="tab">Đánh giá</a></li>
                                 </ul>
-                                <div class="tab-content">
+                                <div class="tab-content size-content">
                                     <div class="tab-pane fade in active" id="tab-control-1">
-                                        <h4><strong>Điểm nổi bật</strong></h4>
                                         <div class="text-justify">
                                             <% if !@tour.tab_content_1.nil? %>
                                             <%= @tour.tab_content_1.html_safe %>
@@ -95,7 +107,6 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane fade in" id="tab-control-2">
-                                        <h4><strong>Lịch khởi hành</strong></h4>
                                         <div class="text-justify">
                                             <% if !@tour.tab_content_2.nil? %>
                                             <%= @tour.tab_content_2.html_safe %>
@@ -103,7 +114,6 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane fade in" id="tab-control-3">
-                                        <h4><strong>Điều kiện</strong></h4>
                                         <div class="text-justify">
                                             <% if !@tour.tab_content_3.nil? %>
                                             <%= @tour.tab_content_3.html_safe %>
@@ -111,7 +121,6 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane fade in" id="tab-control-4">
-                                        <h4><strong>Lưu ý</strong></h4>
                                         <div class="text-justify">
                                             <% if !@tour.tab_content_4.nil? %>
                                             <%= @tour.tab_content_4.html_safe %>
@@ -119,7 +128,6 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane fade in" id="tab-control-5">
-                                        <h4><strong>Đánh giá</strong></h4>
                                         <div class="text-justify">
                                             <div class="fb-comments" data-href="http://www.newdiscovery.vn/" data-colorscheme="light" data-numposts="5" data-width="100%"></div>
                                         </div>
@@ -128,8 +136,38 @@
                             </div>
                         </div>
                         <h2>THÔNG TIN CHI TIẾT</h2>
-                        <div class="post-content text-justify">
+                        <div class="size-content text-justify">
+                            <% if @tour.tour_details.count == 0 %>
                             <%= @tour.content.html_safe %>
+                            <% else %>
+                            <div class="toggle-container">
+                                <% @tour.tour_details.each_with_index do |item,index| %>
+                                    <% if index == 0 %>
+                                    <div class="panel style1 arrow-right">
+                                        <h4 class="panel-title">
+                                            <a class="" href="#question<%= index %>" data-toggle="collapse"><%= item.title %></a>
+                                        </h4>
+                                        <div class="panel-collapse collapse in" id="question<%= index %>">
+                                            <div class="panel-content">
+                                                <p><%= item.content.html_safe %></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% else %>
+                                    <div class="panel style1 arrow-right">
+                                        <h4 class="panel-title">
+                                            <a class="collapsed" href="#question<%= index %>" data-toggle="collapse"><%= item.title %></a>
+                                        </h4>
+                                        <div class="panel-collapse collapse" id="question<%= index %>">
+                                            <div class="panel-content">
+                                                <p><%= item.content.html_safe %></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% end %>
+                                <% end %>
+                            </div>  
+                            <% end %>
                         </div>
                         <hr>
                         <h2>VỊ TRÍ</h2>

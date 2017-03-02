@@ -1,0 +1,58 @@
+<% if @tour_event.errors.any? %>
+    <div id="error_explanation">
+        <span class="label label-warning"></span>
+        <div class="alert alert-warning alert-styled-left">
+            <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+            <% @tour_event.errors.full_messages.each do |message| %>
+                - <%= message %><br/>
+            <% end %>
+        </div>
+    </div>
+<% end %>
+
+<%= form_for [:admin, @tour_event], html: {class: "form-horizontal", id: "validate_checking"} do |f| %>
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:title) %> <span class='text-danger'>*</span></label>
+        <div class="col-lg-10">
+            <%= f.text_field :title, class: "form-control required" %>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label" ><%= t(:description) %></label>
+        <div class="col-lg-10">
+            <%= f.text_area :description, rows: "3", cols: "3", class: "form-control" %>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-2 control-label" >Thêm tour</label>
+        <div class="col-lg-10">
+            <% index = 0 %>
+            <%= f.fields_for :tour_event_details do |ff| %>
+              <% g = @tour_event.tour_event_details[index] %>
+              <%= ff.hidden_field :id %>
+              <div class="col-lg-9 padding-bottom">
+                  <select name="tour_event[tour_event_details_attributes][<%= index %>][tour_id]" id="tour_event_tour_event_details_attributes_<%= index %>_tour_id" class="select_tour" data-placeholder="<%= t(:placeholder_tours) %>...">
+                    <option value="">Chọn tour</option>
+                    <% Tour.get_active_tours.each do |item| %>
+                      <option <%= "selected" if g.tour_id == item.id %> value="<%= item.id %>"><%= item.name %></option>
+                    <% end %>
+                  </select>
+                  <br><br>
+              </div>
+              <% if g.tour_id? %>
+                <div class="col-lg-2 padding-bottom">
+                    <%= ff.check_box :_destroy %>
+                    <%= ff.label :_destroy, 'Remove' %>
+                </div>
+              <% end %>
+            <% index += 1 %>
+            <% end %>
+        </div>
+    </div>
+
+    <div class="text-right">
+        <%= button_tag "#{t(:save)}<i class=\"icon-plus22 position-right\"></i>".html_safe, class: "btn btn-primary"%>
+        <%= link_to "#{t(:cancel)}<i class=\"icon-cross3 position-right\"></i>".html_safe, admin_tour_events_path, class: "btn btn-danger"%>
+    </div>
+    
+<% end %>

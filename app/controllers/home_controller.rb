@@ -1,8 +1,6 @@
 class HomeController < ApplicationController
     def index
-        @domestic_tour = Tour.get_lastest_domestic_tour
-        @foreign_tour = Tour.get_lastest_foreign_tour
-        @new_year_tours = Tour.get_lastest_new_year_tours_listing
+        @tour_events = TourEvent.get_active_tour_events
         @discount_tours = Tour.get_discount_tours
         @cars = Car.get_lastest_cars
         @booking_tour = BookingTour.new

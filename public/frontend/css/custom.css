@@ -151,9 +151,6 @@ label.error {
 .tour-image-box .has-discount:before, .tour-image-box .discount {
     top: -4px;
 }
-#tour-details .intro2 .term-description dt {
-    width: 160px;
-}
 #tour-details .intro2 .image-container {
     width: 200px;
 }
@@ -167,7 +164,7 @@ label.error {
     width: 200px !important;
 }
 .custom-tour-price .price small {
-    color: #ff3e3e;
+    color: #01b7f2;
     font-size: 0.8em;
     font-weight: bold;
 }
@@ -325,9 +322,9 @@ body {
     height: 215px;
 }
 #tour-details .intro2 .term-description dt {
-    width: 160px;
+    width: 117px;
     white-space: nowrap;
-    font-size: 12px;
+    font-size: 11px;
 }
 .post-content {
     font-size: 14px;
@@ -369,4 +366,36 @@ h4 {
 }
 #footer .discover li {
     font-size: 13px;
+}
+#footer.style3 .social-icons li.facebook:hover a {
+    background: #4267b2;
+}
+#footer.style3 .social-icons li.googleplus:hover a {
+    background: #db4437;
+}
+#footer.style3 .social-icons li.youtube:hover a {
+    background: #cc181e;
+}
+#tour-details .intro2 .term-description dd {
+    color: #000;
+    font-size: 11px;
+}
+.font-tour-event strong, .font-tour-event del, .font-tour-event span {
+    font-size: 12px;
+}
+h4.tour-event-link {
+    font-size: 14px;
+}
+.text-uppercase {
+    text-transform: uppercase;
+}
+h1.text-uppercase {
+    text-transform: uppercase;
+}
+.size-content {
+    font-size: 13px;
+}
+.price-wrapper {
+    font-size: 1em;
+    line-height: 2.5em;
 }

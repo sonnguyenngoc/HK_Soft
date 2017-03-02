@@ -5,19 +5,12 @@
     
     <div class="page-title-container style2">
         <div class="container">
-            <div class="page-title pull-left">
-                <h2 class="entry-title">Du Lịch Phú Quốc</h2>
+            <div class="page-title pull-left text-uppercase">
+                <h2 class="entry-title"><%= @article_category.name %></h2>
             </div>
             <ul class="breadcrumbs pull-right">
                 <li><%= link_to "Trang Chủ", root_path %></li>
                 <li><%= link_to "Tour Du Lịch", tour_path %></li>
-                <li>
-                    <% if @article_category.parent.first.description == "domestic_tour" %>
-                        <%= link_to @article_category.parent.first.name, domestic_tour_path %>
-                    <% else %>
-                        <%= link_to @article_category.parent.first.name, foreign_tour_path %>
-                    <% end %>
-                </li>
                 <li class="active"><%= @article_category.name %></li>
             </ul>
         </div>
@@ -51,7 +44,7 @@
                             <img src="/frontend/images/logo_new_discovery_tour.png" alt="">
                         </div>
                         <div class="heading box">
-                            <h1 class="title"><%= @article_category.name %></h1>
+                            <h1 class="title text-uppercase"><%= @article_category.name %></h1>
                         </div>
                         <div class="search-box">
                             <%= form_tag(tour_packages_path(tour_packages_id: @article_category.id, name: @article_category.url_friendly), method: "get") do %>
@@ -81,7 +74,7 @@
         <div class="section white-bg">
             <div class="container">
                 <div class="text-center description block">
-                    <h1>Danh Sách <%= @article_category.name %></h1>
+                    <h1 class="text-uppercase">Danh Sách <%= @article_category.name %></h1>
                 </div>
                 
                 <div id="main">

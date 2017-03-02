@@ -14,6 +14,11 @@
                                 <%= link_to "Danh sách tour du lịch", admin_tours_path %>
                             </li>
                         <% end %>
+                        <% if can? :read, TourEvent %>
+                            <li class="<%= "active" if ["admin/tour_events"].include?(params[:controller]) %>">
+                                <%= link_to "Danh sách nhóm tour", admin_tour_events_path %>
+                            </li>
+                        <% end %>
                         <% if can? :read, Hotel %>
                             <li class="<%= "active" if ["admin/hotels"].include?(params[:controller]) %>">
                                 <%= link_to "Danh sách khách sạn", admin_hotels_path %>

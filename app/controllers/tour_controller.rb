@@ -14,6 +14,11 @@ class TourController < ApplicationController
     @tours = Tour.get_new_year_tours_listing.paginate(page: params[:page], per_page: 12)
   end
   
+  def event_tours
+    @page_name = ArticleCategory.find(params[:id])
+    @tours = Tour.get_new_year_tours_listing.paginate(page: params[:page], per_page: 12)
+  end
+  
   def tour_search
     @page_name = Category.where(description: "tour").first
     @tours = Tour.get_tour_listing(params).paginate(page: params[:page], per_page: 12)

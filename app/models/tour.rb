@@ -1,9 +1,12 @@
 class Tour < ActiveRecord::Base
     mount_uploader :image_url, TourImageUploader
-    has_many :tour_schedules
-    has_many :tour_highlights
-    has_many :tour_images
+    has_many :tour_schedules, dependent: :destroy
+    has_many :tour_highlights, dependent: :destroy
+    has_many :tour_images, dependent: :destroy
     belongs_to :article_category
+    has_many :tour_event_details, dependent: :destroy
+    has_many :tour_details, dependent: :destroy
+    accepts_nested_attributes_for :tour_details, :reject_if => lambda { |a| a[:title].blank? && a[:content].blank? }, :allow_destroy => true
     accepts_nested_attributes_for :tour_highlights, :reject_if => lambda { |a| a[:title].blank? }, :allow_destroy => true
     accepts_nested_attributes_for :tour_schedules, :reject_if => lambda { |a| a[:from_date].blank? }, :allow_destroy => true
     accepts_nested_attributes_for :tour_images, :reject_if => lambda { |a| a[:image_url].blank? && a[:id].blank? }, :allow_destroy => true
@@ -14,6 +17,10 @@ class Tour < ActiveRecord::Base
     
     def self.get_hot_tours
         self.where("tours.is_hot = true and tours.hidden = false").order("published_at DESC")
+    end
+    
+    def self.get_active_tours
+        where(hidden: false).order("published_at DESC")
     end
     
     def url_friendly

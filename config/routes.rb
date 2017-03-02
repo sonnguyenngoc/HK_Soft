@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :tour_events
   devise_for :users
   
   scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
@@ -23,7 +24,6 @@ Rails.application.routes.draw do
     get "gia-hot-tour-doan.html" => "tour_group#booking_tour_group", as: :booking_tour_group
     get "gia-hot-tour-doan/thanh-cong.html" => "tour_group#tour_group_thankyou", as: :tour_group_thankyou
     get "tour-khuyen-mai.html" => "tour#deal_tours", as: :deal_tours
-    get "tour-tet-2017.html" => "tour#new_year_tours", as: :new_year_tours
     get "tour-gia-sock.html" => "hot_tours#index", as: :hot_tours
     get "tour-du-lich/tim-kiem-tour.html" => "tour#tour_search", as: :tour_search
     get "bang-gia-tour.html" => "tour#tour_pricing", as: :tour_pricing
@@ -222,6 +222,12 @@ Rails.application.routes.draw do
             get 'approve'
             get 'hidden'
             get 'un_hidden'
+          end
+        end
+        resources :tour_events, path: "nhom-tour" do
+          collection do
+            get 'approve'
+            get 'inactive'
           end
         end
         resources :hotels, path: "danh-sach-khach-san"

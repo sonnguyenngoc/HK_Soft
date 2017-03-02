@@ -172,46 +172,32 @@
             </div>
         </div>
         
-        <% if @new_year_tours.count > 0 || @foreign_tour.count > 0 %>
+        <% if @tour_events.count > 0 %>
         <div class="container section">
-            <% if @new_year_tours.count > 0 %>
-                <h2>Tour Tết 2017</h2>
-                <div class="row image-box discount-label style10">
-                    <% @new_year_tours.each do |item| %>
-                        <div class="col-sms-6 col-sm-6 col-md-3">
-                            <article class="box">
-                                <% if item.is_sale == true %><span class="discount"><span class="discount-text">Giảm giá <%= item.discount_percent %>%</span></span><% end %>
-                                <figure class="animated fadeInDown" data-animation-type="fadeInDown" data-animation-duration="2" style="animation-duration: 2s; visibility: visible;">
-                                    <%= link_to image_tag(item.image_url.large_image, width: "270", height: "160"), tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "hover-effect" %>
-                                </figure>
-                                <div class="details">
-                                    <%= link_to "Xem Tour", tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "button btn-mini sky-blue1" %>
-                                    <h4 class="box-title"><%= link_to truncate(strip_tags(item.name), length: 30), tour_detail_path(tour_id: item, tour_name: item.url_friendly), title: item.name, class: "transform-capitalize" %><small><strong>Giá:</strong> <% if item.is_sale == true %><del><% if item.old_price == 0 %>Liên hệ<% else %><%= format_number(item.old_price) %> VNĐ<% end %></del> - <% end %><% if item.new_price == 0 %>Liên hệ<% else %><span class="color-price"><%= format_number(item.new_price) %> VNĐ<% end %></span></small></h4>
-                                </div>
-                            </article>
-                        </div>
-                    <% end %>
-                </div>
-            <% end %>
-            
-            <% if @foreign_tour.count > 0 %>
-                <h2>Tour Nước Ngoài Mới Nhất</h2>
-                <div class="row image-box discount-label style10">
-                    <% @foreign_tour.each do |item| %>
-                        <div class="col-sms-6 col-sm-6 col-md-3">
-                            <article class="box">
-                                <% if item.is_sale == true %><span class="discount"><span class="discount-text">Giảm giá <%= item.discount_percent %>%</span></span><% end %>
-                                <figure class="animated fadeInDown" data-animation-type="fadeInDown" data-animation-duration="2" style="animation-duration: 2s; visibility: visible;">
-                                    <%= link_to image_tag(item.image_url.large_image, width: "270", height: "160"), tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "hover-effect" %>
-                                </figure>
-                                <div class="details">
-                                    <%= link_to "Xem Tour", tour_detail_path(tour_id: item, tour_name: item.url_friendly), class: "button btn-mini sky-blue1" %>
-                                    <h4 class="box-title"><%= link_to truncate(strip_tags(item.name), length: 30), tour_detail_path(tour_id: item, tour_name: item.url_friendly), title: item.name, class: "transform-capitalize" %><small><strong>Giá:</strong> <% if item.is_sale == true %><del><% if item.old_price == 0 %>Liên hệ<% else %><%= format_number(item.old_price) %> VNĐ<% end %></del> - <% end %><% if item.new_price == 0 %>Liên hệ<% else %><span class="color-price"><%= format_number(item.new_price) %> VNĐ</span><% end %></small></h4>
-                                </div>
-                            </article>
-                        </div>
-                    <% end %>
-                </div>
+            <% @tour_events.each do |item| %>
+            <h2><%= item.title %></h2>
+            <div class="row image-box discount-label style10">
+                <% item.tour_event_details.each do |tour_event| %>
+                    <div class="col-sms-6 col-sm-6 col-md-3">
+                        <article class="box">
+                            <% if tour_event.tour.is_sale == true %><span class="discount"><span class="discount-text">Giảm giá <%= tour_event.tour.discount_percent %>%</span></span><% end %>
+                            <figure class="animated fadeInDown" data-animation-type="fadeInDown" data-animation-duration="2" style="animation-duration: 2s; visibility: visible;">
+                                <%= link_to image_tag(tour_event.tour.image_url.large_image, width: "270", height: "160"), tour_detail_path(tour_id: tour_event.tour_id, tour_name: tour_event.tour.url_friendly), class: "hover-effect" %>
+                            </figure>
+                            <div class="details">
+                                <%= link_to "Xem Tour", tour_detail_path(tour_id: tour_event.tour_id, tour_name: tour_event.tour.url_friendly), class: "button btn-mini sky-blue1" %>
+                                <h4 class="box-title tour-event-link"><%= link_to truncate(strip_tags(tour_event.tour.name), length: 40), tour_detail_path(tour_id: tour_event.tour_id, tour_name: tour_event.tour.url_friendly), title: tour_event.tour.name, class: "transform-capitalize" %>
+                                    <small class="font-tour-event">
+                                        <strong>Giá:</strong>
+                                        <% if tour_event.tour.is_sale == true %><del><% if tour_event.tour.old_price == 0 %>Liên hệ<% else %><%= format_number(tour_event.tour.old_price) %> VNĐ<% end %></del> -
+                                        <% end %><% if tour_event.tour.new_price == 0 %>Liên hệ<% else %><span class="color-price"><%= format_number(tour_event.tour.new_price) %> VNĐ<% end %></span>
+                                    </small>
+                                </h4>
+                            </div>
+                        </article>
+                    </div>
+                <% end %>
+            </div>
             <% end %>
         </div>
         <% end %>

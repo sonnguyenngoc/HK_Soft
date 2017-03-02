@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161216065143) do
+ActiveRecord::Schema.define(version: 20170302034317) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 20161216065143) do
     t.integer  "level"
     t.string   "meta_keywords"
     t.text     "meta_description"
+    t.string   "name_vi"
+    t.string   "description_vi"
   end
 
   create_table "article_categories_articles", force: :cascade do |t|
@@ -74,6 +76,8 @@ ActiveRecord::Schema.define(version: 20161216065143) do
     t.integer  "user_id"
     t.boolean  "approved",             default: false
     t.string   "image_url_full_width"
+    t.string   "title_vi"
+    t.string   "content_vi"
   end
 
   create_table "articles_products", force: :cascade do |t|
@@ -256,6 +260,7 @@ ActiveRecord::Schema.define(version: 20161216065143) do
     t.integer  "head_area_id"
     t.integer  "branch_area_id"
     t.string   "type_company"
+    t.string   "fax"
     t.string   "representative"
     t.string   "issued_by"
     t.string   "hotline_2"
@@ -275,6 +280,8 @@ ActiveRecord::Schema.define(version: 20161216065143) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+    t.string   "phone"
+    t.string   "subject"
   end
 
   create_table "conversations", force: :cascade do |t|
@@ -541,6 +548,58 @@ ActiveRecord::Schema.define(version: 20161216065143) do
     t.integer  "user_id"
   end
 
+  create_table "program_languages", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "program_languages_projects", force: :cascade do |t|
+    t.integer  "program_language_id"
+    t.integer  "project_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  create_table "project_categories", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "name_vi"
+    t.text     "description_vi"
+  end
+
+  create_table "project_categories_projects", force: :cascade do |t|
+    t.integer  "project_category_id"
+    t.integer  "project_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  create_table "project_images", force: :cascade do |t|
+    t.string   "image_url"
+    t.integer  "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "image_url"
+    t.string   "author"
+    t.string   "name"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.text     "description"
+    t.string   "website"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "author_vi"
+    t.string   "name_vi"
+    t.string   "description_vi"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -592,6 +651,29 @@ ActiveRecord::Schema.define(version: 20161216065143) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "tour_details", force: :cascade do |t|
+    t.integer  "tour_id"
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tour_event_details", force: :cascade do |t|
+    t.integer  "tour_event_id"
+    t.integer  "tour_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "tour_events", force: :cascade do |t|
+    t.string   "title"
+    t.boolean  "active",      default: false
+    t.text     "description"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "tour_groups", force: :cascade do |t|
@@ -670,6 +752,7 @@ ActiveRecord::Schema.define(version: 20161216065143) do
     t.text     "tab_content_4"
     t.boolean  "is_new_year",         default: false
     t.datetime "published_at"
+    t.string   "resort_name"
   end
 
   create_table "user_groups", force: :cascade do |t|

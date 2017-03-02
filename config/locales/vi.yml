@@ -385,6 +385,8 @@ vi:
   booking_visa: "Đặt làm visa"
   gallery: "Hình ảnh hoạt động"
   tour_group: "Tour đoàn"
+  tour_event: "Nhóm tour"
+  placeholder_tours: "Chọn tour du lịch để thêm vào"
   tour_groups: "Danh sách đặt tour đoàn"
   quick_booking_hotel: "Đặt khách sạn nhanh"
   quick_booking_hotels: "Danh sách đặt khách sạn nhanh"
