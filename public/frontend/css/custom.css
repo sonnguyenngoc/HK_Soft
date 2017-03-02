@@ -322,7 +322,7 @@ body {
     background: #00a7f2;
 }
 .image-box.style9 .details {
-    height: 215px;
+    height: 265px;
 }
 #tour-details .intro2 .term-description dt {
     width: 160px;
@@ -357,7 +357,7 @@ h4 {
 .image-box.style9 .box-title .transform-capitalize {
     text-transform: capitalize;
     display: inline-block;
-    height: 80px;
+    height: 140px;
     overflow: hidden;
 }
 .color-price {
@@ -369,4 +369,9 @@ h4 {
 }
 #footer .discover li {
     font-size: 13px;
+}
+#tour-details .intro2 .term-description dt, #tour-details .intro2 .term-description dd {
+    font-weight: bold;
+    padding-left: 0;
+    font-size: 11px;
 }
