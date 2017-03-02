@@ -319,7 +319,7 @@ body {
     background: #00a7f2;
 }
 .image-box.style9 .details {
-    height: 215px;
+    height: 265px;
 }
 #tour-details .intro2 .term-description dt {
     width: 117px;
@@ -354,7 +354,7 @@ h4 {
 .image-box.style9 .box-title .transform-capitalize {
     text-transform: capitalize;
     display: inline-block;
-    height: 80px;
+    height: 140px;
     overflow: hidden;
 }
 .color-price {
@@ -393,7 +393,7 @@ h1.text-uppercase {
     text-transform: uppercase;
 }
 .size-content {
-    font-size: 13px;
+    font-size: 12px;
 }
 .price-wrapper {
     font-size: 1em;
