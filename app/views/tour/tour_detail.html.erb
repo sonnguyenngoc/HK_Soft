@@ -1,3 +1,6 @@
+<meta property="og:title"              content="<%= @tour.name %>" />
+<meta property="og:image"              content="<%= @tour.tour_images.count > 0 ? @tour.tour_images.first.image_url.big_image : '' %>" />
+
 <div id="page-wrapper">
     
     <!-- HEADER -->
@@ -87,6 +90,9 @@
                             <div class="price-section table-cell custom-tour-price">
                                 <div class="price"><small>Giá tour</small><% if @tour.is_sale == true %><del><% if @tour.old_price == 0 %>Liên hệ<% else %><%= format_number(@tour.old_price) %> VNĐ<% end %></del><br><% end %><% if @tour.new_price == 0 %>Liên hệ<% else %><span class="color-price"><%= format_number(@tour.new_price) %> VNĐ</span><% end %></div>
                                 <%= link_to "ĐẶT TOUR", tour_booking_path(tour_booking_id: @tour, tour_name: @tour.url_friendly), class: "button btn-small sky-blue1 uppercase" %>
+                                <br />
+                                <!-- Go to www.addthis.com/dashboard to customize your tools --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-58b8ad5f53012c7c"></script> 
+                                <!-- Go to www.addthis.com/dashboard to customize your tools --> <div style="margin-top: 20px" class="addthis_inline_share_toolbox"></div>
                             </div>
                         </div>
                         <div class="intro2 small-box border-box table-wrapper hidden-table-sms">

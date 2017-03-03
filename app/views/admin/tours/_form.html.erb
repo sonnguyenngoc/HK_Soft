@@ -213,25 +213,28 @@
                     <div class="col-lg-10">
                         <% index = 0 %>
                         <%= f.fields_for :tour_details do |ff| %>
-                            <% g = @tour.tour_details[index] %>
-                            <%= ff.hidden_field :id %>
-                            <label class="col-lg-12 control-label">Thông tin <%= index+1 %>:</label>
-                            <div class="col-lg-10 padding-bottom">
-                                <input class="form-control" type="text" value="<%= g.title %>" name="tour[tour_details_attributes][<%= index %>][title]" id="tour_tour_details_attributes_<%= index %>_title" aria-required="true" placeholder="Nhập tiêu đề cho thông tin <%= index+1 %>.....">
-                                <br>
-                                <textarea rows="6" cols="6" class="form-control editor-inlite" name="tour[tour_details_attributes][<%= index %>][content]" id="tour_tour_details_attributes_<%= index %>_content" placeholder="Nhập nội dung cho thông tin <%= index+1 %>....."><%= g.content %></textarea>
-                                <hr>
-                            </div>
-                            <% if g.title? %>
-                            <div class="col-lg-2 padding-bottom">
-                                <%= ff.check_box :_destroy %>
-                                <%= ff.label :_destroy, 'Remove' %>
-                            </div>
-                            <% end %>
-                        <% index += 1 %>
-                        <% end %>
+                            <div class="ltt-box">
+                                <% g = @tour.tour_details[index] %>
+                                <%= ff.hidden_field :id %>
+                                <label class="col-lg-12 control-label">Thông tin <%= index+1 %>:</label>
+                                <div class="col-lg-10 padding-bottom">
+                                    <input class="form-control" type="text" value="<%= g.title %>" name="tour[tour_details_attributes][<%= index %>][title]" id="tour_tour_details_attributes_<%= index %>_title" aria-required="true" placeholder="Nhập tiêu đề cho thông tin <%= index+1 %>.....">
+                                    <br>
+                                    <textarea rows="6" cols="6" class="form-control editor-inlite" name="tour[tour_details_attributes][<%= index %>][content]" id="tour_tour_details_attributes_<%= index %>_content" placeholder="Nhập nội dung cho thông tin <%= index+1 %>....."><%= g.content %></textarea>
+                                    <hr>
+                                </div>
+                                <% if g.title? %>
+                                <div class="col-lg-2 padding-bottom">
+                                    <%= ff.check_box :_destroy %>
+                                    <%= ff.label :_destroy, 'Remove' %>
+                                </div>
+                                <% end %>
+                            </div>                        
+                            <% index += 1 %>
+                        <% end %>                        
                     </div>
                 </div>
+                <%= link_to "Thêm lịch trình <i class=\"icon-plus2 position-right\"></i>".html_safe, '#add', class: "btn btn-primary ltt-add"%>
             </div>
             
             <div class="tab-pane has-padding" id="control-tab2">
@@ -395,3 +398,9 @@
 <% end %>
 
 <%= render "/admin/main/editor_upload" %>
+
+<script>
+    $(document).ready(function() {
+        
+    });
+</script>
