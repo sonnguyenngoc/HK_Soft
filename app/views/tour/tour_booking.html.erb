@@ -133,8 +133,13 @@
                         <dl class="other-details">
                             <dt class="feature">Phương Tiện:</dt><% Tour.transportation_listing.each do |item| %><% if @tour.get_transportations.include?(item) %><dd class="value"><%= t(item) %></dd><% end %><% end %>
                             <dt class="feature">Dịch Vụ:</dt><% Tour.service_listing.each do |item| %><% if @tour.get_services.include?(item) %><dd class="value"><%= t(item) %></dd><% end %><% end %>
-                            <dt class="feature">Phụ thu cuối tuần</dt><dd class="value"><% if @tour.surcharge_1 == 0 %>Liên hệ<% else %><%= format_number(@tour.surcharge_1) %> VNĐ/Khách<% end %></dd>
-                            <dt class="feature">Phụ thu cuối tuần</dt><dd class="value"><% if @tour.surcharge_2== 0 %>Liên hệ<% else %><%= format_number(@tour.surcharge_2) %> VNĐ/Khách<% end %></dd>
+                            <% if !@tour.surcharge_1.nil? %>
+                            <dt class="feature">Phụ thu cuối tuần:</dt><dd><%= format_number(@tour.surcharge_1) %> VNĐ/Khách</dd>
+                            <% end %>
+                        
+                            <% if !@tour.surcharge_2.nil? %>
+                            <dt class="feature">Phụ thu lễ tết:</dt><dd><%= format_number(@tour.surcharge_2) %> VNĐ/Khách</dd>
+                            <% end %>        
                         </dl>
                         <dl class="other-details">
                             <dt class="total-price">Giá: </dt><dd class="total-price-value"><% if @tour.new_price == 0 %>Liên hệ<% else %><%= format_number(@tour.new_price) %> VNĐ<% end %></dd>

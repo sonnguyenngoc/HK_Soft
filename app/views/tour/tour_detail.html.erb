@@ -1,5 +1,5 @@
-<meta property="og:title"              content="<%= @tour.name %>" />
-<meta property="og:image"              content="<%= @tour.tour_images.count > 0 ? @tour.tour_images.first.image_url.big_image : '' %>" />
+<meta property="og:title" content="<%= @tour.name %>" />
+<meta property="og:image" content="<%= @tour.tour_images.count > 0 ? @tour.tour_images.first.image_url.big_image : '' %>" />
 
 <div id="page-wrapper">
     
@@ -9,7 +9,7 @@
     <div class="page-title-container style2">
         <div class="container">
             <div class="page-title pull-left">
-                <h2 class="entry-title transform-capitalize"><%= @tour.name %></h2>
+                <h2 class="entry-title transform-capitalize"><%= truncate(strip_tags(@tour.name), length: 70) %></h2>
             </div>
             <ul class="breadcrumbs pull-right">
                 <li><%= link_to "Trang Chủ", root_path %></li>
@@ -68,22 +68,22 @@
                             <div class="table-cell">
                                 <dl class="term-description">
                                     <dt>Thời gian tour:</dt><dd><%= @tour.time_line %></dd>
-                                    <dt>Phương tiện:</i></dt><dd><% if @tour.get_transportations.include?("car") %>Xe du lịch. <% end %> <% if @tour.get_transportations.include?("plane") %>Máy bay. <% end %><% if @tour.get_transportations.include?("trunk") %>Tàu cao tốc. <% end %></dd>
+                                    <dt>Phương tiện:</dt><dd><% if @tour.get_transportations.include?("car") %>Xe du lịch. <% end %> <% if @tour.get_transportations.include?("plane") %>Máy bay. <% end %><% if @tour.get_transportations.include?("trunk") %>Tàu cao tốc. <% end %></dd>
                                     
                                     <% if @tour.hotel != 'Chọn khách sạn' %>
-                                        <dt>Khách sạn:</i></dt><dd><%= @tour.hotel %></dd>
+                                        <dt>Khách sạn:</dt><dd><%= @tour.hotel %></dd>
                                     <% end %>
                                 
                                     <% if !@tour.resort_name.nil? %>
-                                        <dt>Resort:</i></dt><dd><%= @tour.resort_name %></dd>
+                                        <dt>Resort:</dt><dd><%= @tour.resort_name %></dd>
                                     <% end %>
                                     
                                     <% if !@tour.surcharge_1.nil? %>
-                                    <dt>Phụ thu cuối tuần:</i></dt><dd><%= format_number(@tour.surcharge_1) %> VNĐ/Khách</dd>
+                                    <dt>Phụ thu cuối tuần:</dt><dd><%= format_number(@tour.surcharge_1) %> VNĐ/Khách</dd>
                                     <% end %>
                                 
                                     <% if !@tour.surcharge_2.nil? %>
-                                    <dt>Phụ thu lễ tết:</i></dt><dd><%= format_number(@tour.surcharge_2) %> VNĐ/Khách</dd>
+                                    <dt>Phụ thu lễ tết:</dt><dd><%= format_number(@tour.surcharge_2) %> VNĐ/Khách</dd>
                                     <% end %>
                                 </dl>
                             </div>
