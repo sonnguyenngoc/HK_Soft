@@ -399,3 +399,6 @@ h1.text-uppercase {
     font-size: 1em;
     line-height: 2.5em;
 }
+#tour-details .intro2 .term-description dt, #tour-details .intro2 .term-description dd {
+    font-weight: bold;
+}
