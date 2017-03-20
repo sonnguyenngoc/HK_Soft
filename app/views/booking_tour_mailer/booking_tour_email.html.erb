@@ -7,10 +7,14 @@
 
 <p>Tour: <%= @booking_tour.tour_name %></p>
 <p>Giá tour: <% if @booking_tour.price == 0 %>Liên hệ<% else %><%= @booking_tour.price %> VNĐ<% end %></p>
+<% if @booking_tour.from_date.present? && @booking_tour.to_date.present? %>
 <p>Ngày đặt tour: <%= @booking_tour.from_date.strftime("%d/%m/%Y") %> - <%= @booking_tour.to_date.strftime("%d/%m/%Y") %></p>
+<% end %>
 <p>Số người lớn: <%= @booking_tour.adult %></p>
 <p>Số trẻ em (Từ 11 tuổi trở lên): <%= @booking_tour.child %></p>
 <p>Số trẻ em (Từ 5 tuổi đến dưới 11 tuổi): <%= @booking_tour.child_2 %></p>
 <p>Số trẻ em (Dưới 5 tuổi): <%= @booking_tour.child_3 %></p>
+<% if @booking_tour.message.present? %>
 <p>Lời nhắn: <%= @booking_tour.message.html_safe %></p>
+<% end %>
 <p>Ngày gửi: <%= @booking_tour.created_at.in_time_zone("Asia/Bangkok").strftime("%d/%m/%Y %H:%M") %> (GMT+07:00)</p>

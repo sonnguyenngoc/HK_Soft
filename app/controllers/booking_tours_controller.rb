@@ -4,12 +4,12 @@ class BookingToursController < ApplicationController
   # POST /booking_tours.json
   def create
     @booking_tour = BookingTour.new(booking_tour_params)
-    respond_to do |format|
       if @booking_tour.save
         BookingTourMailer.booking_tour_email(@booking_tour).deliver_now
-        format.html { redirect_to tour_thankyou_path }
-      end
+        redirect_to tour_thankyou_path
     end
+      
+      puts @booking_tour.errors.to_json
   end
   private
 
