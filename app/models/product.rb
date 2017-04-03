@@ -407,7 +407,9 @@ class Product < ActiveRecord::Base
       # @user = Koala::Facebook::API.new('EAAIl2ILpcl0BAOg4mt5csKsUEVkqDo4Y4kglSQZB1X6bDEBNLpf9ViqFucs06xf9l48sK4D1Xrowc3o3TMRqRX494TVun8TF3ZB9ZBqdXkx6HJNa6PtNWrlcYBs2Q4NjBA3ovQTCFedRXgEeqZAKEOn7drj8Hs0ZD')
 
       # @user = Koala::Facebook::API.new('EAACEdEose0cBAErceaWRPnQDzdITApzR5wF1pY13FnRaz5MOq69UnFznwIfZAm1x3RNZAzlckMaTDPDHJvxhGO0tx1gkBs1vD7HAQeZBFGR2cz2mHKs0ZBaFIw13e4FURTmuIgBKSDLxU5P0BsObyBZBBlZCWxTbLcpZCicQzYIywZDZD')
-      @user = Koala::Facebook::API.new('EAAIl2ILpcl0BADLPsfZAXu0CqPttEiD0HDduCXjRW7GPUnlENCmckhGmZCbLTlhfj5y6Fa1iycbMW9PRvS63TZBKtyWLRRWi8sYFL14I5PlsNOMEvlhDGCxZCUdgPF2mvoAfRla8avjIoY8s4JSqFki9CKKjoxwZD')
+      # @user = Koala::Facebook::API.new('EAAIl2ILpcl0BADLPsfZAXu0CqPttEiD0HDduCXjRW7GPUnlENCmckhGmZCbLTlhfj5y6Fa1iycbMW9PRvS63TZBKtyWLRRWi8sYFL14I5PlsNOMEvlhDGCxZCUdgPF2mvoAfRla8avjIoY8s4JSqFki9CKKjoxwZD')
+      # @user = Koala::Facebook::API.new('EAAIl2ILpcl0BAEIwDr1dReQnSQTNlGEuGePDIYokfGck0V5EYoZBL6G3n95s1N4CgRWAETPRdEFxiZCpuMpeXTzpFHEkVF4wiZBmdSbPuzzqyCw6GdcQIDoZAtnhQxIdXUvtBe4YYe7ifWUCg9Q17ks2RuAnQPgZD')
+      @user = Koala::Facebook::API.new('EAAIl2ILpcl0BAMK4RH2rnJKguYC7jFHrWbnlIuvCpgq6FaZCZBr4uJHjHDu7502oMgO4zSM06I03nA68fVjDwJZCqaSwKNFy2Wm2YDZBXAggYQaeetc3AETZC1X9gUwbMSWTWZAf5qS8rg56qBxqBYVO7hUygz9g4ZD')
 
       @article = Article.get_facebook_share_message
       if !@article.nil?

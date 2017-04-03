@@ -9,7 +9,7 @@ function arrange_mobile_layout() {
     //Home page
     $(".home_top_categories").insertAfter( $('.home_main') );
     $(".home_infoblocks").insertAfter( $('.home_main') );
-    
+
     // Other page
     $("main").insertBefore( $('aside') );
 }
@@ -17,7 +17,7 @@ function undo_arrange_mobile_layout() {
     // Home page
     $(".home_infoblocks").insertBefore( $('.home_main') );
     $(".home_top_categories").insertBefore( $('.home_main_slider') );
-    
+
     // Other page
     $("aside").insertBefore( $('main') );
 }
@@ -25,24 +25,36 @@ function undo_arrange_mobile_layout() {
 
 
 $(document).ready(function () {
-    
+
     // events when changing anything in filter box
     $(".v_centered .sort_select select").change(function() {
         $(this).parents("form").submit();
     });
-    
+
     // events when changing anything in filter box
     $(".v_centered .show_select select").change(function() {
         $(this).parents("form").submit();
     });
-    
+
     // update website layout
     update_layout();
     $('aside').show();
+
+    // customtab
+    $(document).on('click', '.customtab ul li a', function() {
+        var tab = $(this).attr('href');
+        var li = $(this).parents('li');
+
+        li.parent().find('li').removeClass('active');
+        li.addClass('active');
+
+        $(this).parents('.customtab').find('.customtab-content').removeClass('active');
+        $('[rel=' + tab + ']').addClass('active');
+    });
 });
 
 // update website layout
 update_layout();
-$( window ).resize(function () {    
+$( window ).resize(function () {
     update_layout();
 });

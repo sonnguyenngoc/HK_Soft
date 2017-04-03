@@ -1,4 +1,4 @@
-<% if Category.get_by_status(@current_area, status).present? %>
+
 	<section class="section_offset animated transparent" data-animation="fadeInDown"> 
 		
 		<% if status == "deal" %>
@@ -13,16 +13,14 @@
 			
 			<ul class="tabs_nav clearfix">
 				
-				<li><a href="#tab-<%= status %>-all">Tất cả</a></li>
-				
+				<li><a href="#tab-<%= status %>-all">Tất cả<span style="display: none"><%= @current_area.id %></span></a></li>
+				<% count_all = 0 %>
 				<% Category.get_by_status(@current_area, status).each_with_index do |category,index| %>
-					
-					
 				
-					<% if category.products.where(is_show: true).count > 0 %>
+					<% if category.get_products_by_status(@current_area, status).count > 0 %>
 				   
 						<li><a href="#tab-<%= status %>-<%= index %>"><%= category.name %></a></li>
-						
+						<% count_all += 1 %>
 					<% end %>
 				
 				<% end %>
@@ -33,7 +31,7 @@
 	
 			<!-- - - - - - - - - - - - - - Tabs container - - - - - - - - - - - - - - - - -->			
 			
-			<div class="tab_containers_wrap">
+			<div class="tab_containers_wrap <%= 'count-none' if count_all == 0 %>">
 				
 				<div id="tab-<%= status %>-all" class="tab_container">
 					<!-- - - - - - - - - - - - - - Carousel of today's deals - - - - - - - - - - - - - - - - -->
@@ -414,4 +412,3 @@
 		
 	
 	</section><!--/ .section_offset-->
-<% end %>

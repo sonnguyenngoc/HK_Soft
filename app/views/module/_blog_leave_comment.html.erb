@@ -114,7 +114,7 @@
 							
 							<% if current_user.present? %>
 																				
-								<%= f.text_field :name, value: current_user.first_name + ' ' + current_user.last_name, readonly: true, class: "required" %>
+								<%= f.text_field :name, value: current_user.first_name.to_s + ' ' + current_user.last_name.to_s, readonly: true, class: "required" %>
 							
 							<% else %>
 								

@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.5.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
-gem 'mysql2'
+# gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -64,7 +64,6 @@ gem 'private_pub'
 gem 'thin'
 gem 'onliner'
 gem 'devise_lastseenable'
-gem 'cancan'
 gem "koala", "~> 2.2"
 gem "sixarm_ruby_unaccent", ">= 1.1.1", "< 2"
 

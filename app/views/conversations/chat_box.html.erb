@@ -7,11 +7,11 @@
 		<%= csrf_meta_tags %>
 		<meta charset="utf-8">
 		<meta name="author" content="">
-		
+
 		<meta name="description" content="<%= @META_DESCRIPTION %>" />
 		<meta name="keywords" content="<%= @META_KEYWORDS %>" />
 		<meta content='<%= user_signed_in? ? current_user.id : "" %>' name='user-id'/>
-		
+
 		<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
 		<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
 		<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
@@ -49,14 +49,14 @@
 		<%= stylesheet_link_tag "/frontend/css/bootstrap.min.css" %>
 		<%= stylesheet_link_tag "/frontend/css/font-awesome.min.css"%>
 		<%= stylesheet_link_tag "/frontend/css/font-awesome.css" %>
-		
+
 		<!-- Theme CSS
 		============================================ -->
 		<%= stylesheet_link_tag "/frontend/js/rs-plugin/css/settings.css" %>
 		<%= stylesheet_link_tag "/frontend/js/owlcarousel/owl.carousel.css" %>
 		<%= stylesheet_link_tag "/frontend/js/arcticmodal/jquery.arcticmodal.css" %>
 		<%= stylesheet_link_tag "/frontend/css/style.css" %>
-		<%= stylesheet_link_tag "/frontend/stylesheets/custom.css" %>
+		<%= stylesheet_link_tag "/frontend/stylesheets/custom.css?v=1" %>
 		<%= stylesheet_link_tag "/frontend/stylesheets/mobile.css" %>
 		<%= stylesheet_link_tag "/frontend/stylesheets/chat.css" %>
         <%= stylesheet_link_tag "/frontend/stylesheets/mobile_chat_box.css" %>
@@ -64,36 +64,36 @@
 		<!-- JS Libs
 		============================================ -->
 		<%= javascript_include_tag "/frontend/js/modernizr.js" %>
-		
-		
+
+
 		<!-- Old IE stylesheet
 		============================================ -->
 		<!--[if lte IE 9]>
 		<%= stylesheet_link_tag '/frontend/css/oldie.css' %>
 		<![endif]-->
-		
+
 		<!-- JS for Rails -->
 		<%= javascript_include_tag 'application' %>
 		<!-- /js for rails -->
-		
+
 		<!-- Css Product Image Zoom
 		============================================ -->
 		<%= stylesheet_link_tag '/frontend/js/fancybox/source/jquery.fancybox.css' %>
 		<%= stylesheet_link_tag '/frontend/js/fancybox/source/helpers/jquery.fancybox-thumbs.css' %>
-		<%= javascript_include_tag "/frontend/js/custom.js" %>
-		
+		<%= javascript_include_tag "/frontend/js/custom.js?v=1" %>
+
 		<script>
-		
+
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-		  
+
 			ga('create', 'UA-77038521-1', 'auto');
 			ga('send', 'pageview');
-		  
+
 		</script>
-		
+
 		<script src='https://www.google.com/recaptcha/api.js?hl=vi'></script>
 	</head>
 	<body class="chat_box_page">
@@ -107,7 +107,7 @@
 			<div class="secondary_page_wrapper mobile_chat_box_page">
 
 				<div class="container">
-					
+
 					<!--<% if current_user.present? %>-->
 					<!---->
 					<!--	<h5>Xin chào: <%= current_user.first_name.to_s + " " + current_user.last_name.to_s %></h5>-->
@@ -116,311 +116,305 @@
 					<!---->
 					<!--<% end %>-->
 
-					<div class="section_offsetz">
+					<div class="section_offsetz login-boxx">
 
 						<div class="row">
-							
+
 							<% if user_signed_in? %>
 
 								<section class="col-sm-12">
-	
+
 									<!-- - - - - - - - - - - - - - Tabs v2 - - - - - - - - - - - - - - - - -->
-	
+
 									<div class="tabs type_2">
-	
+
 										<!-- - - - - - - - - - - - - - Navigation of tabs - - - - - - - - - - - - - - - - -->
-	
+
 										<ul class="tabs_nav clearfix">
-	
+
 											<li><a href="#messages"><i class="fa fa-comments"></i></a></li>
-											
+
 											<% if current_user.is_admin == true %>
-		
+
 												<li><a href="#users_online"><i class="icon-users"></i></a></li>
-												
+
 											<% else %>
-												
+
 												<li class="<%= 'active' if params[:new_user] == "true" %>"><a href="#users_online"><i class="icon-users"></i></a></li>
-												
+
 											<% end %>
-											
+
 											<li>
-												
+
 												<a href="#conversations"><i class="icon-history"></i>
-													
+
 													<% if current_user.unread_conversations_count > 0 %>
-            
+
 														<span class="badge badge-info"><number><%= current_user.unread_conversations_count %></number></span>
-											  
+
 													<% end %>
-												
+
 												</a>
-											
+
 											</li>
-	
+
 										</ul>
-										
+
 										<!-- - - - - - - - - - - - - - End navigation of tabs - - - - - - - - - - - - - - - - -->
-	
+
 										<!-- - - - - - - - - - - - - - Tabs container - - - - - - - - - - - - - - - - -->
-	
+
 										<div class="tab_containers_wrap">
-	
+
 											<!-- - - - - - - - - - - - - - Tab - - - - - - - - - - - - - - - - -->
-	
+
 											<div id="messages" class="tab_container chatbox_tab_container">
-	
+
 												<p>Hiện chưa có nội dung chat</p>
-	
+
 											</div><!--/ #tab-7-->
-	
+
 											<!-- - - - - - - - - - - - - - End tab - - - - - - - - - - - - - - - - -->
-											
+
 											<!-- - - - - - - - - - - - - - Tab - - - - - - - - - - - - - - - - -->
-	
+
 											<div id="users_online" class="tab_container">
-	
+
 												<ul class="list_type_5 chat_box_tabs">
-	
+
 													<% if current_user.is_admin == true %>
-						
+
 														<% User.get_online_users.each do |user| %>
-														
+
 															<% if current_user.id != user.id %>
-																
+
 																<li><%= link_to user.first_name.to_s + " " + user.last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %></li>
-																
+
 															<% end %>
-															
+
 														<% end %>
-													
+
 													<% else %>
-														
+
 														<% User.get_admins.each do |user| %>
-																
+
 															<li><%= link_to user.first_name.to_s + " " + user.last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %></li>
-														
+
 														<% end %>
-														
+
 													<% end %>
-					
+
 												</ul>
-	
+
 											</div><!--/ #tab-9-->
-	
+
 											<!-- - - - - - - - - - - - - - End tab - - - - - - - - - - - - - - - - -->
-											
+
 											<!-- - - - - - - - - - - - - - Tab - - - - - - - - - - - - - - - - -->
-	
+
 											<div id="conversations" class="tab_container">
-											
+
 											<ul class="conversation">
-												
+
 												<% if current_user.involving_conversations.count != 0 %>
-												
+
 													<% current_user.involving_conversations.each do |chat| %>
-			
+
 														<li class="animated_item <%= "unread_conversation" if current_user.unread_messages({conversation_id: chat.id}).count > 0 %>">
-															
+
 															<a href="#" class="start-conversation" data-sid="<%= current_user.id %>" data-rip="<%= chat.get_chatter(current_user).id %>" class="">
 																<b><%= chat.get_chatter(current_user).first_name.to_s + " " + chat.get_chatter(current_user).last_name.to_s %>
 																<% if current_user.unread_messages({conversation_id: chat.id}).count > 0 %>
-              
+
 																	(<span class="badge badge-info"><number><%= current_user.unread_messages({conversation_id: chat.id}).count %></number></span>)
-																  
+
 																<% end %>
 															</b><br/>
-																
+
 																<p class="style_chat"><%= truncate(strip_tags(chat.get_new_message.body), length: 50) %></p>
-															
+
 															</a>
-														
+
 														</li>
-														
+
 													<% end %>
-												
+
 												<% else %>
-													
+
 													<li class="animated_item">
-															
+
 														<a href="#"><b>Bạn chưa có cuộc trò chuyện nào...</b></a>
-														
+
 													<li>
-												
+
 												<% end %>
-											
+
 											</ul>
-	
+
 											</div><!--/ #tab-7-->
-	
+
 											<!-- - - - - - - - - - - - - - End tab - - - - - - - - - - - - - - - - -->
-	
+
 										</div><!--/ .tab_containers_wrap -->
-	
+
 										<!-- - - - - - - - - - - - - - End of tabs containers - - - - - - - - - - - - - - - - -->
-	
+
 									</div><!--/ .tabs-->
-									
+
 									<!-- - - - - - - - - - - - - - End of tabs v2 - - - - - - - - - - - - - - - - -->
-	
+
 								</section><!--/ [col]-->
-							
+
 							<% else %>
-								
+
 								<section class="col-sm-12">
 
 									<!-- - - - - - - - - - - - - - Tabs v2 - - - - - - - - - - - - - - - - -->
-	
+
 									<div class="tabs type_2">
-	
+
 										<!-- - - - - - - - - - - - - - Navigation of tabs - - - - - - - - - - - - - - - - -->
-	
+
 										<ul class="tabs_nav clearfix">
-											
+
 											<li><a style="padding: 1px 2px 2px 1px !important;" href="<%= url_for('/') %>"><img style="width: 40px" src="<%= url_for('/frontend/images/dsvm_logo2_small_50.png') %>" /></a></li>
-											
+
 											<li class="active"><a  style="padding: 6px !important" href="#register"><i style="font-size: 21px;" class="icon-users"></i></a></li>
-											
+
 											<!--<li><a href="#login"><i class="icon-login-2"></i> Đăng nhập</a></li>-->
 										</ul>
-										
+
 										<!-- - - - - - - - - - - - - - End navigation of tabs - - - - - - - - - - - - - - - - -->
-	
+
 										<!-- - - - - - - - - - - - - - Tabs container - - - - - - - - - - - - - - - - -->
-	
+
 										<div class="tab_containers_wrap">
-	
+
 											<!-- - - - - - - - - - - - - - Tab - - - - - - - - - - - - - - - - -->
-	
+
 											<!--<div id="register" class="tab_container active">
-										
+
 											</div>--><!--/ #tab-9-->
-	
+
 											<!-- - - - - - - - - - - - - - End tab - - - - - - - - - - - - - - - - -->
-											
+
 											<!-- - - - - - - - - - - - - - Tab - - - - - - - - - - - - - - - - -->
-	
+
 											<div id="login" class="tab_container">
-												
+
 												<h3>Đăng nhập</h3>
-											
-												<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "type_2"}) do |f| %>
-												
-														<ul>
-												
-															<li>
-																
-																<label for="login_email">Địa chỉ email:</label>
-																
-																<%= f.email_field :email, autofocus: true, class: "form-control required", placeholder: "Nhập địa chỉ email..." %>
-															
-															</li>
-												
-															<li>
-																
-																<label for="login_password">Mật khẩu:</label>
-																
-																<%= f.password_field :password, autocomplete: "off", class: "form-control required", placeholder: "Nhập mật khẩu..." %>
-															
-															</li>
-												
-															<li class="v_centered">
-																
-																<%= button_tag "Đăng nhập", class: "button_blue middle_btn"%>
-																
-																<%= link_to "Quên mật khẩu?", { controller: "account", action: "forgotten" }, class: "small_link" %>
-															
-															</li>
-												
-														</ul>
-												
-													<% end %>
-											
-												<div class="streamlined">
-													<h4>Đăng nhập bằng mạng xã hội:</h4>
-													<!--Social icon's list-->
-													<ul class="horizontal_list social_btns">
-											
-														<li><%= link_to '<i class="icon-facebook-1"></i><span class="tooltip top">Facebook</span>'.html_safe, user_omniauth_authorize_path(:facebook), class: "icon_btn middle_btn social_facebook tooltip_container" %></li>
-														<li><%= link_to '<i class="icon-gplus-2"></i><span class="tooltip top">GooglePlus</span>'.html_safe, user_omniauth_authorize_path(:google_oauth2), class: "icon_btn middle_btn social_googleplus tooltip_container" %></li>
-											
-													</ul><!--/ .horizontal_list.wrapper.social_btns-->
-													<!--End social icon's list-->
-											
-												</div><!--/ .streamlined-->
+												<p>Vui lòng chọn hình thức đăng nhập:</p>
+												<div class="customtab">
+													<ul class="customtab-head">
+														<li class=""><a href="#login-tab">Thành viên</a></li>
+														<li><a href="#social-tab">Mạng xã hội</a></li>
+													</ul>
+
+													<div class="customtab-content" rel="#login-tab">
+														<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "type_2"}) do |f| %>
+															<ul>
+																<li>
+																	<label for="login_email">Địa chỉ email:</label>
+																	<%= f.email_field :email, autofocus: true, class: "form-control required", placeholder: "Nhập địa chỉ email..." %>
+																</li>
+																<li>
+																	<label for="login_password">Mật khẩu:</label>
+																	<%= f.password_field :password, autocomplete: "off", class: "form-control required", placeholder: "Nhập mật khẩu..." %>
+																</li>
+																	<li class="v_centered">
+																	<%= button_tag "Đăng nhập", class: "button_blue middle_btn"%>
+																	<%= link_to "Quên mật khẩu?", { controller: "account", action: "forgotten" }, class: "small_link" %>
+																</li>
+															</ul>
+														<% end %>
+													</div>
+													<div class="customtab-content" rel="#social-tab">
+														<div class="streamlined">
+															<br />
+															<h4>Đăng nhập bằng mạng xã hội:</h4>
+															<!--Social icon's list-->
+															<ul class="horizontal_list social_btns">
+																	<li><%= link_to '<i class="icon-facebook-1"></i><span class="tooltip top">Facebook</span>'.html_safe, user_omniauth_authorize_path(:facebook), class: "icon_btn middle_btn social_facebook tooltip_container" %></li>
+																<li><%= link_to '<i class="icon-gplus-2"></i><span class="tooltip top">GooglePlus</span>'.html_safe, user_omniauth_authorize_path(:google_oauth2), class: "icon_btn middle_btn social_googleplus tooltip_container" %></li>
+																</ul><!--/ .horizontal_list.wrapper.social_btns-->
+															<!--End social icon's list-->
+														</div><!--/ .streamlined-->
+													</div>
+												</div>
+
 												<br />
 												<hr>
 												<br />
-												
+
 												<h3>Đăng ký</h3>
-												
-												<p>Bạn cần điền thông tin bên dưới để chat với quản trị viên.</p>
+
+												<p>Bạn cần đăng ký để tạo liên kết và hưởng nhiều chính sách ưu đãi của chúng tôi.</p>
 												<br />
-	
+
 												<%= form_for User.new, url: quick_register_path, html: {class: "type_2", id: "new_user_validate_mobile"} do |f| %>
-													
+
 													<ul>
-											
+
 														<li>
-															
-															<label for="login_email">Họ & Tên:</label>
-															
+
+															<label for="login_email" style="margin-top: 0">Họ & Tên:</label>
+
 															<%= f.text_field :first_name, autofocus: true, class: "form-control required" %>
-														
+
 														</li>
-														
+
 														<% if !Option.get_user_guest.nil? %>
-															
+
 															<% if Option.get_user_guest.accept_email == true %>
-														
+
 																<li>
-																	
+
 																	<label for="login_email">Email:</label>
-																	
+
 																	<%= f.email_field :email, class: "form-control required" %>
-																
+
 																</li>
-																
+
 															<% end %>
-															
+
 														<% end %>
-														
+
 														<li>
-															
+
 															<label for="login_email">Số điện thoại:</label>
-															
+
 															<%= f.text_field :phone, class: "form-control required" %>
-														
+
 														</li>
-											
+
 														<li class="v_centered">
-															
+
 															<input type="submit" value="Đăng ký" class="button_blue middle_btn">
-														
+
 														</li>
-											
+
 													</ul>
-											
+
 												<% end %>
-	
+
 											</div><!--/ #tab-7-->
-	
+
 											<!-- - - - - - - - - - - - - - End tab - - - - - - - - - - - - - - - - -->
-	
+
 										</div><!--/ .tab_containers_wrap -->
-	
+
 										<!-- - - - - - - - - - - - - - End of tabs containers - - - - - - - - - - - - - - - - -->
-	
+
 									</div><!--/ .tabs-->
-									
+
 									<!-- - - - - - - - - - - - - - End of tabs v2 - - - - - - - - - - - - - - - - -->
-	
+
 								</section><!--/ [col]-->
-								
+
 								<div style="padding: 30px 20px;">
 									<%= render "/module/follow_facebook" %>
 								</div>
-								
+
 							<% end %>
 
 						</div><!--/ .row -->
@@ -428,16 +422,16 @@
 					</div><!--/ .section_offset -->
 				</div><!--/ .container-->
 			</div><!--/ .page_wrapper-->
-			
+
 			<!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
-			
+
 			<% if !user_signed_in? %>
 				<%= render "module/footer" %>
 			<% end %>
 		</div><!--/ [layout]-->
-		
+
 		<!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
-		
+
 		<!-- Include Libs & Plugins
 		============================================ -->
         <%= javascript_include_tag "/frontend/js/jquery-2.1.1.min.js" %>
@@ -463,9 +457,9 @@
             function resizeChatbox() {
                 $(".chatboxcontent").height($(window).height()-152);
             }
-			
+
 			function startConversation(sender_id, recipient_id) {
-				
+
 				$.ajax({ url: '/conversations',
 					type: 'POST',
 					beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
@@ -475,11 +469,11 @@
 					}
 				});
 			};
-			
+
             $(window).resize(function(){
                 resizeChatbox();
             });
-			
+
 			$(document).ready(function() {
 				setInterval("resizeChatbox();", 100);
 				// start conversation
@@ -491,11 +485,11 @@
 					resizeChatbox();
 				<% end %>
 			});
-			
+
 			$(document).ready(function(){
 				$("#new_user_validate_mobile").validate();
 			});
-			
+
         </script>
 		<style>
 			.tab_container {

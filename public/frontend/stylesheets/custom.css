@@ -41,7 +41,7 @@
     position: relative;
     top: -1px;
     font-size: 13px;
-    font-family: 'fontello';	
+    font-family: 'fontello';
 }
 .pagination > li > a {
     position: relative;
@@ -203,7 +203,7 @@ form ul > li:not(:last-child) {
 .total_info [class*="price"] {
     width: 100px;
 }
-@media only screen and (max-height: 900px) {    
+@media only screen and (max-height: 900px) {
     .social_feeds {
         top: 144px;
     }
@@ -721,7 +721,7 @@ footer.view_all {
     padding: 5px 0;
     height: 45px;
 }
-@media only screen and (item-1) {    
+@media only screen and (item-1) {
     .table_layout .product_item.tem-1, .table_layout .entry, .table_layout blockquote {
         width: 272px;
      }
@@ -963,7 +963,7 @@ h3.care {
     }
     .related_posts .entry_thumb img {
         width: 100%;
-    }    
+    }
 }
 .social_feeds .dropdown {
     width: 390px;
@@ -978,7 +978,7 @@ h3.care {
 .tags_container a {
     display: inline-block;
     margin-right: 15px;
-    line-height: 27px;    
+    line-height: 27px;
 }
 .product_item:not(.type_3) .actions_wrap_viewall {
     opacity: 1;
@@ -1000,7 +1000,7 @@ h3.care {
 }
 
 .page_wrapper {
-    
+
 }
 .conversation_rightbar .dropdown.visible {
     height: 288px;
@@ -1187,4 +1187,46 @@ input:not([type="submit"]), textarea, .active_option {
     width: 265px;
     margin-bottom: -10px;
     margin-top: -5px;
+}
+@media only screen and (min-width: 1000px) {
+    .actions_wrap > .centered_buttons > [class*="button"]:not(:first-child) {
+        margin-top: 5px;
+        display: block;
+        width: 190px;
+        margin: 10px auto 0 auto;
+    }
+}
+.customtab-content {
+    display: none;
+}
+.customtab-content.active {
+    display: block;
+}
+.customtab ul.customtab-head {
+    height: 28px;
+}
+.customtab ul.customtab-head li {
+    display: inline-block;
+}
+.customtab ul.customtab-head li a {
+    padding: 8px 15px;
+    background: #f5f5f5;
+    margin-right: 10px;
+    border: solid 1px #0186c8;
+}
+.customtab ul.customtab-head li.active a {
+    background: #0186c8;
+    color: #fff;
+}
+.footer_register_box {
+    height: 500px;
+    overflow: auto;
+    top: 10px;
+    bottom: inherit;
+}
+.login-boxx, .login-boxx p, .login-boxx label {
+    color: #333;
+}
+.login-boxx h3 {
+    font-weight: bold;
 }

@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users, only: :omniauth_callbacks, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
-  
+
   scope "(:locale)", locale: /vi|en/, defaults: {locale: "vi"} do
     root "home#index"
     get "home-tab" => "home#home_tab", as: :home_tab
-    
+
     # change current area session
     get "change_current_area/:area_id" => "home#change_current_area", as: :change_current_area
     get "go_home" => "home#go_home", as: :go_home
-    
+
     # account
     get "tai-khoan/dang-nhap" => "account#login", as: :login
     get "tai-khoan/dang-nhap-nhanh" => "account#quick_login", as: :quick_login
@@ -35,20 +35,20 @@ Rails.application.routes.draw do
     get "tai-khoan/phieu-mua-hang/phieu-mua-hang-da-dung" => "account#voucher_success", as: :voucher_success
     get "account/no_singed" => "account/no_singed", as: :no_singed
     # end account
-    
+
     # checkout
     get "dat-hang/gio-hang" => "checkout#shopping_cart", as: :shopping_cart
     get "dat-hang/dat-hang" => "checkout#checkout", as: :checkout
     get "dat-hang/dat-hang-thanh-cong" => "checkout#success", as: :success
     # end checkout
-    
+
     # blog
     get "bai-viet" => "blog#index", as: :index
     get "bai-viet/chi-tiet-bai-viet/:blog_id(/:title)" => "blog#show", as: :show
     get "bai-viet/chuyen-muc-bai-viet/:article_category_id" => "blog#article_category", as: :article_category
     get "bai-viet/su-kien/chuong-trinh-khuyen-mai/:article_category_id" => "blog#deal", as: :deal
     # end blog
-    
+
     # information
     get "thong-tin/ve-chung-toi" => "information#about_us", as: :about_us
     get "thong-tin/lien-he" => "information#contact_us", as: :contact_us
@@ -64,16 +64,16 @@ Rails.application.routes.draw do
     get "thong-tin/chinh-sach-va-quy-dinh-trang" => "information#terms_conditions", as: :terms_conditions
     get "thong-tin/so-do-website" => "information#sitemap", as: :sitemap
     # end information
-    
+
     # manufacturer
     get "thuong-hieu-cung-cap/danh-sach" => "manufacturer#list", as: :list
     get "thuong-hieu-cung-cap/danh-sach-san-pham/:manufacturer_id" => "manufacturer#products", as: :products
     # end manufacturer
-    
+
     # branch
     get "chi-nhanh/danh-sach" => "branch#list", as: :list_branch
     # end branch
-    
+
     # product
     get "san-pham/chuyen-muc/:category_id(/:title)" => "product#category", as: :category
     get "san-pham/tat-ca-chuyen-muc" => "product#all_category", as: :all_category
@@ -92,7 +92,7 @@ Rails.application.routes.draw do
     post "conversations/quick_register" => "conversations#quick_register", as: :quick_register
     post "conversations/destop_quick_register" => "conversations#destop_quick_register", as: :destop_quick_register
     # end product
-    
+
     # resources
     resources :comments
     resources :newsletters
@@ -133,14 +133,14 @@ Rails.application.routes.draw do
     resources :feedbacks
     resources :testimonials
     #end of resources
-    
+
     resources :areas, path: "khu-vuc" do
       collection do
         get 'ajax_area_menus'
       end
     end
 
-  
+
     namespace :admin, path: "quan-tri" do
       get "/" => "main#index"
       scope(:path_names => { :new => "tao-moi", :edit => "chinh-sua" }) do
