@@ -32,6 +32,9 @@ class User < ActiveRecord::Base
             if registered_user
                 return registered_user
             else
+                puts "================================"
+                puts data.to_json
+
                 user = User.create(
                     first_name: data["name"],
                     provider:access_token.provider,

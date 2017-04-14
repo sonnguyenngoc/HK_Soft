@@ -1221,7 +1221,7 @@ input:not([type="submit"]), textarea, .active_option {
 .footer_register_box {
     height: 500px;
     overflow: auto;
-    top: 10px;
+    top: 46px;
     bottom: inherit;
 }
 .login-boxx, .login-boxx p, .login-boxx label {
@@ -1229,4 +1229,51 @@ input:not([type="submit"]), textarea, .active_option {
 }
 .login-boxx h3 {
     font-weight: bold;
+}
+#footer .footer_section.section_2 h4 {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+#footer .footer_section.section_2 .list_of_links li a {
+    padding: 0px 0 0px;
+    border-bottom: 0px solid #eaeaea;
+}
+#footer .footer_section.section_2 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: #f5f5f5;
+}
+#new_user_validate_mobile label.error {
+    display: block !important;
+    margin: 2px 0;
+    color: #ff0000;
+}
+#quick_register label.error, #new_user label.error {
+    display: block !important;
+    margin: 2px 0;
+    color: #ff0000;
+}
+.required_star {
+    color: red;
+    font-size: 13px;
+}
+
+@media (max-width: 489px) {
+    form:not(.type_2) .form_el {
+        width: 100%;
+    }
+    form:not(.type_2) label[for] {
+        text-align: left;
+        padding-left: 0;
+    }
+}
+.label-0 label {
+    text-align: left;
+    padding: 0;
+    margin-top: 10px !important;
+    width: 100% !important;
+    margin-top: 15px !important;
+}
+.label-0 label.error {
+    margin-top: 0px !important;
 }

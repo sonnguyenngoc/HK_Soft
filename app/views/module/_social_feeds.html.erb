@@ -6,7 +6,7 @@
 
         <button class="icon_btn middle_btn social_facebook open_"><i class="icon-facebook-1"></i></button>
 
-        
+
         <section class="dropdown">
 
             <div class="animated_item">
@@ -18,43 +18,43 @@
             <div class="animated_item">
 
                 <div style="display: inline">
-                    
+
                     <div class="fb-page" data-href="https://www.facebook.com/DacSanVungMien.net" data-tabs="timeline" data-width="410" data-height="340" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
-                       
+
                         <div class="fb-xfbml-parse-ignore">
-                            
+
                             <blockquote cite="https://www.facebook.com/DacSanVungMien.net">
-                               
+
                                 <a href="https://www.facebook.com/DacSanVungMien.net">DacSanVungMien.net</a>
-                           
+
                             </blockquote>
-                        
+
                         </div>
-                    
+
                     </div>
-                    
+
                     <div id="fb-root"></div>
-                    
+
                     <script>
-                    
+
                         (function(d, s, id) {
-                        
+
                             var js, fjs = d.getElementsByTagName(s)[0];
-                            
+
                             if (d.getElementById(id)) return;
-                            
+
                             js = d.createElement(s); js.id = id;
-                            
+
                             js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.5&appId=604561792922205";
-                            
+
                             fjs.parentNode.insertBefore(js, fjs);
-                        
+
                         }
-                        
+
                         (document, 'script', 'facebook-jssdk'));
-                    
+
                     </script>
-                
+
                 </div>
 
             </div><!--/ .animated_item-->
@@ -80,18 +80,18 @@
             </div><!--/ .animated_item-->
 
             <div class="animated_item">
-                
+
                 <!-- Place this tag where you want the widget to render. -->
                 <div class="g-person" data-width="230" data-href="//plus.google.com/u/1/103092952550902100368" data-rel="author"></div>
-                
+
             </div>
-             
+
             <footer class="animated_item bottom_box">
-                
+
                 <%= link_to "Vào trang", "//plus.google.com/u/1/103092952550902100368", class: "button_grey middle_btn", target: "_blank" %>
 
             </footer><!--/ .animated_item-->
-            
+
             <!-- Place this tag in your head or just before your close body tag. -->
             <script src="https://apis.google.com/js/platform.js" async defer></script>
 
@@ -114,7 +114,7 @@
                 <h3 class="title">Liên hệ</h3>
 
             </div><!--/ .animated_item-->
-             
+
             <div class="animated_item">
 
                 <p class="form_caption">Điền thông tin và nội dung tin nhắn để gửi đến Đặc sản vùng miền.</p>
@@ -152,7 +152,7 @@
                             </div>
 
                         </li>
-                        
+
                         <li class="row">
 
                             <div class="col-xs-12">
@@ -164,11 +164,11 @@
                         </li>
 
                     </ul>
-                    
+
                     <!--<div class="recaptcha_contact">
-                                        
+
                         <div class="g-recaptcha" data-sitekey="6Le7mh8TAAAAALNVSNBWWfIHmrp-pZfOCoToS2p5"></div>
-                        
+
                     </div>-->
 
                 <% end %>
@@ -196,13 +196,13 @@
                 <h3 class="title">Thông tin công ty</h3>
 
             </div><!--/ .animated_item-->
-               
+
             <div class="animated_item">
-                
+
                 <% if !Company.get_company.nil? %>
-                    
+
                     <p class="c_info_location">Văn Phòng: <%= Company.get_company.head_office_address + ", " + Company.get_company.area.name %></p>
-                
+
                 <% end %>
 
                 <div class="proportional_frame">
@@ -212,28 +212,28 @@
                 </div>
 
                 <ul class="c_info_list">
-                   
+
                     <% if !Company.get_company.nil? %>
-                       
+
                         <li class="c_info_phone">ĐT: <%= Company.get_company.phone %></li>
-                       
+
                         <li class="c_info_phone">Hotline: <%= Company.get_company.hotline %></li>
-                        
+
                         <li class="c_info_mail">Email: <a href="mailto:<%= Company.get_company.email %>"><%= Company.get_company.email %></a></li>
-                    
+
                     <% end %>
-                
+
                 </ul>
 
             </div><!--/ .animated_item-->
 
         </section><!--/ .dropdown-->
-    
+
     </li>
 
     <!-- - - - - - - - - - - - - - End google map - - - - - - - - - - - - - - - - -->
-    
-    
+
+
     <!-- - - - - - - - - - - - - - Google map - - - - - - - - - - - - - - - - -->
 
     <li>
@@ -249,145 +249,149 @@
                 <h3 class="title">Chia sẻ trang</h3>
 
             </div><!--/ .animated_item-->
-               
+
             <div class="animated_item">
                 <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=58c798b2f9f6880011d66a6b&product=inline-share-buttons"></script>
                 <div class="sharethis-inline-share-buttons"></div>
             </div><!--/ .animated_item-->
 
         </section><!--/ .dropdown-->
-    
+
     </li>
 
     <!-- - - - - - - - - - - - - - End google map - - - - - - - - - - - - - - - - -->
-    
-    
+
+
     <!-- - - - - - - - - - - - - - Conversation - - - - - - - - - - - - - - - - -->
-    
+
     <li class="conversation_rightbar">
         <% if user_signed_in? %>
             <button class="botton_footer_register_box icon_btn middle_btn conversation_rightbox open_"><i class="icon-comment" style="color: #fff"></i></button>
-            
+
             <!--Location-->
-    
+
             <section class="dropdown">
-    
+
                 <div class="animated_item">
-                    
+
                     <h3 class="title">Nội dung trao đổi</h3>
                 </div>
-                
-                
+
+
                     <% User.get_admins.each do |user| %>
                         <div class="animated_item">
                             <p class="c_info_location">
                                 <a href="#" class="start-conversation" data-sid="<%= current_user.id %>" data-rip="<%= user.id %>">
                                     <b><%= user.first_name.to_s + " " + user.last_name.to_s %></b><br/>
-                                                                     
+
                                     Chat với quản trị viên
-                                    
+
                                 </a>
                             </p>
                         </div>
                     <% end %>
-                    
+
                     <% if current_user.involving_conversations.count != 0 %>
-                                            
+
                         <% current_user.involving_conversations.each do |chat| %>
-                            <div class="animated_item">
-                                <p class="c_info_location <%= "unread_conversation" if current_user.unread_messages({conversation_id: chat.id}).count > 0 %>">
-                                    <b><%= link_to chat.get_chatter(current_user).first_name.to_s + " " + chat.get_chatter(current_user).last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => chat.get_chatter(current_user).id %></b>
-                                    <br /><%= truncate(strip_tags(chat.get_new_message.body), length: 50) %>
-                                                        
-                                    <% if chat.messages.count > 0 %>
-                                        <%= chat.messages.lastest_message.created_at.strftime("%H:%M %d-%m-%Y") %>
-                                    <% end %>
-                                </p>
-                            </div>
+                            <% if chat.get_chatter(current_user).present? %>
+                                <div class="animated_item">
+                                    <p class="c_info_location <%= "unread_conversation" if current_user.unread_messages({conversation_id: chat.id}).count > 0 %>">
+                                        <% if current_user.is_admin == true %>
+                                            <b><%= link_to chat.get_chatter(current_user).first_name.to_s + " " + chat.get_chatter(current_user).last_name.to_s + " (" + chat.get_chatter(current_user).phone.to_s + ")", "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => chat.get_chatter(current_user).id %></b>
+                                        <% else %>
+                                            <b><%= link_to chat.get_chatter(current_user).first_name.to_s + " " + chat.get_chatter(current_user).last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => chat.get_chatter(current_user).id %></b>
+                                        <% end %>
+                                        <br /><%= truncate(strip_tags(chat.get_new_message.body), length: 50) %>
+
+                                        <% if chat.messages.count > 0 %>
+                                            <%= chat.messages.lastest_message.created_at.strftime("%H:%M %d-%m-%Y") %>
+                                        <% end %>
+                                    </p>
+                                </div>
+                            <% end %>
                         <% end %>
-                    
+
                     <% else %>
                         <div class="animated_item">
                             <p class="c_info_location">
-                                    
+
                                 <a href="#"><b>Bạn chưa có cuộc trò chuyện nào...</b></a>
-                                
+
                             </p>
                         </div>
-                            
+
                     <% end %>
 
-                   
-                
-    
+
+
+
             </section><!--/ .dropdown-->
         <% else %>
             <button class="conversation_rightbox botton_footer_register_box icon_btn middle_btn member_online"><i class="icon-comment" style="color: #fff"></i></button>
         <% end %>
-    
+
     </li>
     <!-- - - - - - - - - - - - - - End conversation - - - - - - - - - - - - - - - - -->
-    
-    
+
+
     <% if user_signed_in? %>
-        
+
         <!-- - - - - - - - - - - - - - Member Online - - - - - - - - - - - - - - - - -->
-        
-        
+
+
         <li>
-    
+
             <button class="icon_btn middle_btn member_online open_"><i class="icon-user-5"></i></button>
-    
+
             <!--Location-->
-    
+
             <section class="dropdown">
-    
+
                 <div class="animated_item">
-                    
+
                     <% if current_user.is_admin == true %>
-    
+
                         <h3 class="title">Thành viên đang online</h3>
-                        
+
                     <% else %>
-                        
+
                         <h3 class="title">Quản trị viên đang online</h3>
-                        
+
                     <% end %>
 
                 </div><!--/ .animated_item-->
-                   
+
                 <div class="animated_item">
-                    
+
                     <% if current_user.is_admin == true %>
-                    
+
                         <% User.get_online_users.each do |user| %>
-                        
+
                             <% if current_user.id != user.id %>
-                                
-                                <p class="c_info_location"><%= link_to user.first_name.to_s + " " + user.last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %></p>
-                                
+                                <p class="c_info_location"><%= link_to user.first_name.to_s + " " + user.last_name.to_s + " (" + user.phone.to_s + ")", "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %></p>
                             <% end %>
-                            
+
                         <% end %>
-                    
+
                     <% else %>
-                        
-                        <% User.get_online_admins.each do |user| %>
-                                
+
+                        <% User.get_admins.each do |user| %>
+
                             <p class="c_info_location"><%= link_to user.first_name.to_s + " " + user.last_name.to_s, "#", class: "start-conversation", "data-sid" => current_user.id, "data-rip" => user.id %></p>
-                        
+
                         <% end %>
-                        
+
                     <% end %>
-    
+
                 </div><!--/ .animated_item-->
-    
+
             </section><!--/ .dropdown-->
-        
+
         </li>
-    
+
         <!-- - - - - - - - - - - - - - End member online - - - - - - - - - - - - - - - - -->
-    
+
     <% end %>
 
 </ul>

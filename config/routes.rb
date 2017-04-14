@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     root "home#index"
     get "home-tab" => "home#home_tab", as: :home_tab
 
+    # check email exists
+    get "check-email-exist" => "home#check_email_exist", as: :check_email_exist
+
     # change current area session
     get "change_current_area/:area_id" => "home#change_current_area", as: :change_current_area
     get "go_home" => "home#go_home", as: :go_home

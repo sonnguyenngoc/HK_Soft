@@ -56,7 +56,7 @@
 		<%= stylesheet_link_tag "/frontend/js/owlcarousel/owl.carousel.css" %>
 		<%= stylesheet_link_tag "/frontend/js/arcticmodal/jquery.arcticmodal.css" %>
 		<%= stylesheet_link_tag "/frontend/css/style.css" %>
-		<%= stylesheet_link_tag "/frontend/stylesheets/custom.css?v=1" %>
+		<%= stylesheet_link_tag "/frontend/stylesheets/custom.css?v=3" %>
 		<%= stylesheet_link_tag "/frontend/stylesheets/mobile.css" %>
 		<%= stylesheet_link_tag "/frontend/stylesheets/chat.css" %>
         <%= stylesheet_link_tag "/frontend/stylesheets/mobile_chat_box.css" %>
@@ -80,7 +80,7 @@
 		============================================ -->
 		<%= stylesheet_link_tag '/frontend/js/fancybox/source/jquery.fancybox.css' %>
 		<%= stylesheet_link_tag '/frontend/js/fancybox/source/helpers/jquery.fancybox-thumbs.css' %>
-		<%= javascript_include_tag "/frontend/js/custom.js?v=1" %>
+		<%= javascript_include_tag "/frontend/js/custom.js?v=3" %>
 
 		<script>
 
@@ -219,23 +219,26 @@
 												<% if current_user.involving_conversations.count != 0 %>
 
 													<% current_user.involving_conversations.each do |chat| %>
+														<% if chat.get_chatter(current_user).present? %>
 
-														<li class="animated_item <%= "unread_conversation" if current_user.unread_messages({conversation_id: chat.id}).count > 0 %>">
+															<li class="animated_item <%= "unread_conversation" if current_user.unread_messages({conversation_id: chat.id}).count > 0 %>">
 
-															<a href="#" class="start-conversation" data-sid="<%= current_user.id %>" data-rip="<%= chat.get_chatter(current_user).id %>" class="">
-																<b><%= chat.get_chatter(current_user).first_name.to_s + " " + chat.get_chatter(current_user).last_name.to_s %>
-																<% if current_user.unread_messages({conversation_id: chat.id}).count > 0 %>
+																<a href="#" class="start-conversation" data-sid="<%= current_user.id %>" data-rip="<%= chat.get_chatter(current_user).id %>" class="">
+																	<b><%= chat.get_chatter(current_user).first_name.to_s + " " + chat.get_chatter(current_user).last_name.to_s %>
+																	<% if current_user.unread_messages({conversation_id: chat.id}).count > 0 %>
 
-																	(<span class="badge badge-info"><number><%= current_user.unread_messages({conversation_id: chat.id}).count %></number></span>)
+																		(<span class="badge badge-info"><number><%= current_user.unread_messages({conversation_id: chat.id}).count %></number></span>)
 
-																<% end %>
-															</b><br/>
+																	<% end %>
+																</b><br/>
 
-																<p class="style_chat"><%= truncate(strip_tags(chat.get_new_message.body), length: 50) %></p>
+																	<p class="style_chat"><%= truncate(strip_tags(chat.get_new_message.body), length: 50) %></p>
 
-															</a>
+																</a>
 
-														</li>
+															</li>
+
+														<% end %>
 
 													<% end %>
 
@@ -303,7 +306,7 @@
 											<div id="login" class="tab_container">
 
 												<h3>Đăng nhập</h3>
-												<p>Vui lòng chọn hình thức đăng nhập:</p>
+												<p>Vui lòng chọn cách đăng nhập:</p>
 												<div class="customtab">
 													<ul class="customtab-head">
 														<li class=""><a href="#login-tab">Thành viên</a></li>
@@ -357,9 +360,17 @@
 
 														<li>
 
-															<label for="login_email" style="margin-top: 0">Họ & Tên:</label>
+															<label for="login_email" style="margin-top: 0">Họ & Tên: <span class="required_star">*</span></label>
 
 															<%= f.text_field :first_name, autofocus: true, class: "form-control required" %>
+
+														</li>
+
+														<li>
+
+															<label for="login_email" style="margin-top: 8px">Email: <span class="required_star">*</span></label>
+
+															<%= f.text_field :email, autofocus: true, class: "form-control email required" %>
 
 														</li>
 
@@ -369,7 +380,7 @@
 
 																<li>
 
-																	<label for="login_email">Email:</label>
+																	<label for="login_email" style="margin-top: 8px">Email: <span class="required_star">*</span></label>
 
 																	<%= f.email_field :email, class: "form-control required" %>
 
@@ -381,9 +392,25 @@
 
 														<li>
 
-															<label for="login_email">Số điện thoại:</label>
+															<label for="login_email" style="margin-top: 8px">Số điện thoại: <span class="required_star">*</span></label>
 
-															<%= f.text_field :phone, class: "form-control required" %>
+															<%= f.text_field :phone, class: "form-control required", placeholder: "Số điện thoại khách hàng" %>
+
+														</li>
+
+														<li>
+
+															<label for="login_email" style="margin-top: 8px">Mật khẩu: <span class="required_star">*</span></label>
+
+															<%= f.password_field :password, autocomplete: "off", class: "form-control required" %>
+
+														</li>
+
+														<li class="pass_confirm">
+
+															<label for="login_email" style="margin-top: 8px">Xác nhận mật khẩu: <span class="required_star">*</span></label>
+
+															<%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
 
 														</li>
 
@@ -454,6 +481,31 @@
         <%= javascript_include_tag "/frontend/js/theme.plugins.js" %>
         <%= javascript_include_tag "/frontend/js/theme.core.js" %>
 		<script>
+
+			/*
+				* Translated default messages for the jQuery validation plugin.
+				* Locale: VI (Vietnamese; Tiếng Việt)
+				*/
+			   $.extend( $.validator.messages, {
+				   required: "Vui lòng nhập.",
+				   remote: "Hãy sửa cho đúng.",
+				   email: "Hãy nhập email.",
+				   url: "Hãy nhập URL.",
+				   date: "Hãy nhập ngày.",
+				   dateISO: "Hãy nhập ngày (ISO).",
+				   number: "Hãy nhập số.",
+				   digits: "Hãy nhập chữ số.",
+				   creditcard: "Hãy nhập số thẻ tín dụng.",
+				   equalTo: "Xác minh mật khẩu chưa khớp.",
+				   extension: "Phần mở rộng không đúng.",
+				   maxlength: $.validator.format( "Hãy nhập từ {0} kí tự trở xuống." ),
+				   minlength: $.validator.format( "Hãy nhập từ {0} kí tự trở lên." ),
+				   rangelength: $.validator.format( "Hãy nhập từ {0} đến {1} kí tự." ),
+				   range: $.validator.format( "Hãy nhập từ {0} đến {1}." ),
+				   max: $.validator.format( "Hãy nhập từ {0} trở xuống." ),
+				   min: $.validator.format( "Hãy nhập từ {1} trở lên." )
+			   } );
+
             function resizeChatbox() {
                 $(".chatboxcontent").height($(window).height()-152);
             }
@@ -487,7 +539,25 @@
 			});
 
 			$(document).ready(function(){
-				$("#new_user_validate_mobile").validate();
+				$("#new_user_validate_mobile").validate({
+					lang: 'vi',
+					rules: {
+						'user[password]': {
+							required: true,
+							minlength: 5
+						},
+						'user[password_confirmation]': {
+							required: true,
+							minlength: 5,
+							equalTo: "#new_user_validate_mobile #user_password"
+						},
+						'user[email]': {
+							required: true,
+							email: true,
+							remote: "/check-email-exist"
+						}
+					}
+				});
 			});
 
         </script>

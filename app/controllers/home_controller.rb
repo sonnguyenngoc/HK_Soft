@@ -9,27 +9,31 @@ class HomeController < ApplicationController
     @areas = Area.get_all_areas
     @blog_advertise = Article.get_banner_by_area(@current_area)
   end
-  
+
   def countdown
-    
-    
+
+
     render layout: nil
   end
-  
+
   def change_current_area
     area = Area.where(id: params[:area_id]).first
     session[:current_area_id] = area.nil? ? nil : area.id
-    
+
     redirect_to :back
   end
-  
+
   def go_home
     session[:current_area_id] = nil
-    
+
     redirect_to controller: "home", action: "index"
   end
-  
+
   def home_tab
     render layout: nil
+  end
+
+  def check_email_exist
+    render json: User.where(email: params[:user][:email]).count > 0 ? ['Email đã có người sử dụng.'] : 'true'
   end
 end

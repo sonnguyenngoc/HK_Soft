@@ -41,7 +41,7 @@ $(document).ready(function () {
     $('aside').show();
 
     // customtab
-    $(document).on('click', '.customtab ul li a', function() {
+    $(document).on('click', '.customtab ul.customtab-head li a', function() {
         var tab = $(this).attr('href');
         var li = $(this).parents('li');
 
@@ -51,6 +51,29 @@ $(document).ready(function () {
         $(this).parents('.customtab').find('.customtab-content').removeClass('active');
         $('[rel=' + tab + ']').addClass('active');
     });
+
+    //// Register form
+    //$(document).on('submit', '#new_user', function(e) {
+    //    e.preventDefault();
+    //
+    //    var form = $(this);
+    //    var method = form.attr('method');
+    //    var url = form.attr('action');
+    //
+    //    if (form.valid()) {
+    //        $.ajax({
+    //            url: url,
+    //            method: method,
+    //            data: form.serialize()
+    //        }).done(function( data ) {
+    //            if($('<div>').html( data ).find( '#error_explanation' ).length) {
+    //                alert('Email đã có người sử dụng. Vui lòng chọn emai khác.');
+    //            } else {
+    //                window.location = '/tai-khoan/tai-khoan-cua-toi';
+    //            }
+    //        });
+    //    }
+    //});
 });
 
 // update website layout

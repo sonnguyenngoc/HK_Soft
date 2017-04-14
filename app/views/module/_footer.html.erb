@@ -664,10 +664,10 @@
 
                                 <ul class="list_of_links">
 
-                                    <li><%= link_to "Trung tâm hỗ trợ khách hàng", { controller: "information", action: "customer_support_center" } %></li>
-                                    <li><%= link_to "Chính sách thanh toán", { controller: "information", action: "payment_policy" } %></li>
-                                    <li><%= link_to "Chính sách giao hàng", { controller: "information", action: "delivery_policy" } %></li>
-                                    <li><%= link_to "Chính sách bảo hành", { controller: "information", action: "warranty_policy" } %></li>
+                                    <li><%= link_to "Câu hỏi thường gặp", { controller: "information", action: "faq" } %></li>
+                                    <li><%= link_to "Chính sách bảo mật", { controller: "information", action: "privacy_policy" } %></li>
+                                    <li><%= link_to "Chính sách giao hàng", { controller: "information", action: "delivery" } %></li>
+                                    <li><%= link_to "Điều khoản sử dụng", { controller: "information", action: "terms_conditions" } %></li>
 
                                 </ul>
 
@@ -775,7 +775,7 @@
                     <br/>
 
                     <h3>Đăng nhập</h3>
-                    <p>Vui lòng chọn hình thức đăng nhập:</p>
+                    <p>Vui lòng chọn cách đăng nhập:</p>
                     <div class="customtab">
                         <ul class="customtab-head">
                             <li class=""><a href="#login-tab">Thành viên</a></li>
@@ -797,7 +797,7 @@
 
                                     <li>
 
-                                        <label for="login_password">Mật khẩu:</label>
+                                        <label for="login_password" style="margin-top: 8px;">Mật khẩu:</label>
 
                                         <%= f.password_field :password, autocomplete: "off", class: "form-control required", placeholder: "Nhập mật khẩu..." %>
 
@@ -850,9 +850,17 @@
 
                             <li>
 
-                                <label for="login_email" style="margin-top: 0">Họ & Tên:</label>
+                                <label for="login_email" style="margin-top: 15px">Họ & Tên: <span class="required_star">*</span></label>
 
                                 <%= f.text_field :first_name, autofocus: true, class: "form-control required", placeholder: "Họ tên khách hàng" %>
+
+                            </li>
+
+                            <li>
+
+                                <label for="login_email" style="margin-top: 8px">Email: <span class="required_star">*</span></label>
+
+                                <%= f.text_field :email, autofocus: true, class: "form-control email required" %>
 
                             </li>
 
@@ -874,9 +882,25 @@
 
                             <li>
 
-                                <label for="login_email">Số điện thoại:</label>
+                                <label for="login_email" style="margin-top: 8px">Số điện thoại: <span class="required_star">*</span></label>
 
                                 <%= f.text_field :phone, class: "form-control required", placeholder: "Số điện thoại khách hàng" %>
+
+                            </li>
+
+                            <li>
+
+                                <label for="login_email" style="margin-top: 8px">Mật khẩu: <span class="required_star">*</span></label>
+
+                                <%= f.password_field :password, autocomplete: "off", class: "form-control required" %>
+
+                            </li>
+
+                            <li class="pass_confirm">
+
+                                <label for="login_email" style="margin-top: 8px">Xác nhận mật khẩu: <span class="required_star">*</span></label>
+
+                                <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
 
                             </li>
 
@@ -901,6 +925,10 @@
 <% end %>
 
 <script>
+
+
+
+
     $(document).ready(function() {
         // mobile social button
         $('.mobile_container_socical_feeds .social_btns li a').click(function() {
@@ -929,7 +957,49 @@
     });
 
     $(document).ready(function(){
-        $("#quick_register").validate();
+        /*
+        * Translated default messages for the jQuery validation plugin.
+        * Locale: VI (Vietnamese; Tiếng Việt)
+        */
+       $.extend( $.validator.messages, {
+           required: "Vui lòng nhập.",
+           remote: "Hãy sửa cho đúng.",
+           email: "Hãy nhập email.",
+           url: "Hãy nhập URL.",
+           date: "Hãy nhập ngày.",
+           dateISO: "Hãy nhập ngày (ISO).",
+           number: "Hãy nhập số.",
+           digits: "Hãy nhập chữ số.",
+           creditcard: "Hãy nhập số thẻ tín dụng.",
+           equalTo: "Xác minh mật khẩu chưa khớp.",
+           extension: "Phần mở rộng không đúng.",
+           maxlength: $.validator.format( "Hãy nhập từ {0} kí tự trở xuống." ),
+           minlength: $.validator.format( "Hãy nhập từ {0} kí tự trở lên." ),
+           rangelength: $.validator.format( "Hãy nhập từ {0} đến {1} kí tự." ),
+           range: $.validator.format( "Hãy nhập từ {0} đến {1}." ),
+           max: $.validator.format( "Hãy nhập từ {0} trở xuống." ),
+           min: $.validator.format( "Hãy nhập từ {1} trở lên." )
+       } );
+
+        $("#quick_register").validate({
+            lang: 'vi',
+            rules: {
+                'user[password]': {
+                    required: true,
+                    minlength: 5
+                },
+                'user[password_confirmation]': {
+                    required: true,
+                    minlength: 5,
+                    equalTo: "#quick_register #user_password"
+                },
+                'user[email]': {
+                    required: true,
+                    email: true,
+                    remote: "/check-email-exist"
+                }
+            }
+        });
     });
 
     $(document).ready(function(){
