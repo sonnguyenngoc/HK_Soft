@@ -117,9 +117,7 @@
                         <article class="image-box hotel listing-style1">
                             <figure class="clearfix">
                                 <small class="uppercase"><strong>Loại phòng:</strong> <%= @hotel_booking.hotel_rooms.count %> loại</small><br/>
-                                <small class="uppercase"><strong>Loại khách sạn:</strong> <%= @hotel_booking.hotel_type %></small><br/>
-                                <small class="uppercase"><strong>Khu vực:</strong> <%= @hotel_booking.area.name %></small><br/>
-                                <small class="uppercase"><strong>Địa chỉ:</strong> <%= @hotel_booking.address %></small><br/><br/>
+                                <small class="uppercase"><strong>Loại khách sạn:</strong> <%= @hotel_booking.hotel_type %></small><br/>                                
                                 <%= link_to "Xem", book_hotel_detail_path(hotel_id: @hotel_booking), class: "button sky-blue1" %>
                             </figure>
                             <div class="details">

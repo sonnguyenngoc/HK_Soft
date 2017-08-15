@@ -69,7 +69,7 @@
                         <tbody>
                             <% @visas.each do |item| %>
                                 <tr>
-                                    <td><strong><a href="<%= edit_admin_visa_path(item) %>">Visa cho <%= item.country.name %></strong></a></td>
+                                    <td><strong><a href="<%= edit_admin_visa_path(item) %>">Visa cho <% if item.country.present? %><%= item.country.name %><% end %></strong></a></td>
                                     <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
                                     <td class="text-center">
                                         <% if can?(:update, item) or can?(:delete, item) %>

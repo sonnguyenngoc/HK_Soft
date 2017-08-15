@@ -6,11 +6,11 @@
     <div class="page-title-container style2">
         <div class="container">
             <div class="page-title pull-left">
-                <h2 class="entry-title">Chính sách đổi trả voucher & hoàn tiền</h2>
+                <h2 class="entry-title">Chính sách đổi trả & hoàn tiền</h2>
             </div>
             <ul class="breadcrumbs pull-right">
                 <li><%= link_to "Trang Chủ", root_path %></li>
-                <li class="active">Chính sách đổi trả voucher & hoàn tiền</li>
+                <li class="active">Chính sách đổi trả & hoàn tiền</li>
             </ul>
         </div>
     </div>
@@ -21,19 +21,17 @@
                 <div id="main" class="col-sm-8 col-md-9">
                     <% if Article.get_info_system_2.present? %>
                     <div class="post">
+                        <% if Article.get_info_system_2.image_url.present? %>
                         <figure class="image-container">
                             <img src="<%= Article.get_info_system_2.image_url.large_image %>" alt="" />
                         </figure>
+                        <% end %>
                         <div class="details">
-                            <h1 class="entry-title">Chính sách đổi trả voucher & hoàn tiền</h1>
+                            <h1 class="entry-title">Chính sách đổi trả & hoàn tiền</h1>
                             <div class="post-content text-justify">
                                 <p><%= Article.get_info_system_2.content.html_safe %></p>   
                             </div>
                             <div class="post-meta">
-                                <div class="entry-date">
-                                    <label class="date"><%= Article.get_info_system_2.created_at.strftime("%d") %></label>
-                                    <label class="month"><%= Article.get_info_system_2.created_at.strftime("%m") %></label>
-                                </div>
                                 <div class="entry-author fn">
                                     <i class="icon soap-icon-user"></i> Đăng bởi: <%= link_to "Du Lịch Khám Phá Mới", about_us_path %>
                                 </div>

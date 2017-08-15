@@ -77,6 +77,8 @@ class Admin::ArticlesController < ApplicationController
         @article.products << Product.find(id)
       end
     end
+    
+    @article_categories = ArticleCategory.all
 
     respond_to do |format|
       if @article.save

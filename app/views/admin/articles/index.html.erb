@@ -124,9 +124,17 @@
                                     <td>
                                         <div class="media-left">
                                             <% if can? :update, item %>
-                                                <%= link_to image_tag(item.image_url.medium_image, size: "180x110", class: "img-rouded"), edit_admin_article_path(item) %>
+                                                <% if item.image_url.present? %>
+                                                    <%= link_to image_tag(item.image_url.medium_image, size: "180x110", class: "img-rouded"), edit_admin_article_path(item) %>
+                                                <% else %>
+                                                    <%= link_to image_tag("/backend/assets/images/placeholder.jpg", size: "180x110", class: "img-rouded"), edit_admin_article_path(item) %>
+                                                <% end %>
                                             <% else %>
-                                                <%= image_tag(item.image_url, size: "180x110", class: "img-rouded") %>
+                                                <% if item.image_url.present? %>
+                                                    <%= image_tag(item.image_url, size: "180x110", class: "img-rouded") %>
+                                                <% else %>
+                                                    <%= image_tag("/backend/assets/images/placeholder.jpg", size: "180x110", class: "img-rouded") %>
+                                                <% end %>
                                             <% end %>
                                         </div>
                                     </td>

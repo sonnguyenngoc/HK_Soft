@@ -7,8 +7,9 @@
                     <ul class="discover triangle hover row">
                         <li class="<%= "active" if (params[:controller] == "home" && params[:action] == "sitemap") %> col-xs-12"><%= link_to "Sitemap", sitemap_path %></li>
                         <li class="<%= "active" if (params[:controller] == "about_us" && params[:action] == "index") %> col-xs-12"><%= link_to "Giới thiệu", about_us_path %></li>
+                        <li class="col-xs-12"><%= link_to "Hồ sơ năng lực", "https://drive.google.com/file/d/0B70r8qS7CHHpWkFBdDgtSDNycmc/view?usp=sharing", target: "_blank" %></li>
                         <li class="<%= "active" if (params[:controller] == "about_us" && params[:action] == "activities_photos") %> col-xs-12"><%= link_to "Hình ảnh hoạt động", activities_photos_path %></li>
-                        <li class="<%= "active" if (params[:controller] == "about_us" && params[:action] == "info_system_1") %> col-xs-12"><%= link_to "Chính sách thanh toán", info_system_1_path %></li>
+                        <li class="<%= "active" if (params[:controller] == "about_us" && params[:action] == "info_system_1") %> col-xs-12"><%= link_to "Phương thức thanh toán", info_system_1_path %></li>
                         <li class="<%= "active" if (params[:controller] == "about_us" && params[:action] == "info_system_2") %> col-xs-12"><%= link_to "Chính sách đổi trả & hoàn tiền", info_system_2_path %></li>
                         <li class="<%= "active" if (params[:controller] == "about_us" && params[:action] == "info_system_3") %> col-xs-12"><%= link_to "Chính sách bảo mật thông tin khách hàng", info_system_3_path %></li>
                         <li class="<%= "active" if (params[:controller] == "about_us" && params[:action] == "info_system_4") %> col-xs-12"><%= link_to "Chính sách giải quyết tranh chấp, khiếu nại", info_system_4_path %></li>
@@ -94,6 +95,7 @@
                         <li class="facebook"><a title="cungmuadulich.net" href="https://www.facebook.com/cungmuadulich.net/" data-toggle="tooltip" target="_blank"><i class="soap-icon-facebook"></i></a></li>
                         <li class="facebook"><a title="Công Ty Du Lịch Khám Phá Mới" href="https://www.facebook.com/CongTyDuLichKhamPhaMoi" data-toggle="tooltip" target="_blank"><i class="soap-icon-facebook"></i></a></li>
                     </ul>
+                    <%= link_to image_tag("/frontend/images/dathongbao.png", class: "logo-registered", alt: "Đã đăng ký Bộ Công Thương"), "http://online.gov.vn/CustomWebsiteDisplay.aspx?DocId=35892", title: "Đã đăng ký Bộ Công Thương", target: "_blank" %>
                 </div>
             </div>
         </div>
@@ -107,7 +109,7 @@
                 <a id="back-to-top" href="#" class="animated" data-animation-type="bounce"><i class="soap-icon-longarrow-up circle"></i></a>
             </div>
             <div class="copyright pull-right">
-                <p> 2016 &copy; All Rights Reserved. Du Lịch Khám Phá Mới</p>
+                <p>2017 &copy; All Rights Reserved. Du Lịch Khám Phá Mới</p>
             </div>
         </div>
     </div>

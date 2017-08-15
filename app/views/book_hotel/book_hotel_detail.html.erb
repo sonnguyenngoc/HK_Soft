@@ -57,8 +57,6 @@
                                         <ul>
                                             <li><label>Loại phòng:</label><%= @hotel.hotel_rooms.count %> loại</li>
                                             <li><label>Loại khách sạn:</label><%= @hotel.hotel_type %></li>
-                                            <li><label>Khu vực:</label><%= @hotel.area.name %></li>
-                                            <li><label>Địa chỉ:</label><%= @hotel.address %></li>
                                         </ul>
                                     </div>
                                     <div class="col-sm-7 col-lg-7 table-cell testimonials">
@@ -315,7 +313,7 @@
                 <div class="sidebar col-md-3">
                     <article class="detailed-logo">
                         <div class="details">
-                            <h2 class="box-title"><%= @hotel.name %><small><i class="soap-icon-departure yellow-color"></i><span class="fourty-space"><%= @hotel.area.name %></span></small></h2>
+                            <h2 class="box-title"><%= @hotel.name %></h2>
                             <div class="feedback clearfix">
                                 <div title="4 stars" class="five-stars-container" data-toggle="tooltip" data-placement="bottom">
                                     <% if @hotel.hotel_type == "Khách sạn 1 sao" %>

@@ -402,3 +402,6 @@ h1.text-uppercase {
 #tour-details .intro2 .term-description dt, #tour-details .intro2 .term-description dd {
     font-weight: bold;
 }
+img.logo-registered {
+    margin-top: 20px;
+}

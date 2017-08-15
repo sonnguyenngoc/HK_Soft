@@ -186,7 +186,7 @@
                             </figure>
                             <div class="details">
                                 <%= link_to "Xem Tour", tour_detail_path(tour_id: tour_event.tour_id, tour_name: tour_event.tour.url_friendly), class: "button btn-mini sky-blue1" %>
-                                <h4 class="box-title tour-event-link"><%= link_to truncate(strip_tags(tour_event.tour.name), length: 40), tour_detail_path(tour_id: tour_event.tour_id, tour_name: tour_event.tour.url_friendly), title: tour_event.tour.name, class: "transform-capitalize" %>
+                                <h4 class="box-title tour-event-link"><%= link_to truncate(strip_tags(tour_event.tour.name), length: 35), tour_detail_path(tour_id: tour_event.tour_id, tour_name: tour_event.tour.url_friendly), title: tour_event.tour.name, class: "transform-capitalize" %>
                                     <small class="font-tour-event">
                                         <strong>Giá:</strong>
                                         <% if tour_event.tour.is_sale == true %><del><% if tour_event.tour.old_price == 0 %>Liên hệ<% else %><%= format_number(tour_event.tour.old_price) %> VNĐ<% end %></del> -
