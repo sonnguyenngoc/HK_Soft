@@ -4,9 +4,9 @@
             <ul class="quick-menu pull-right">
                 <li><a href="<%= tour_pricing_path %>" class="button yellow btn-small" style="height: 30px; font-size: 1em;"><i class="soap-icon-beach"></i> BẢNG GIÁ TOUR</a></li>
                 <li class="ribbon">
-                    <a href="#vietnamese">Tiếng Việt</a>
+                    <a href="javascript:void(0)">Tiếng Việt</a>
                     <ul class="menu mini">
-                        <li class="active"><a href="#vietnamese" title="Tiếng Việt">Tiếng Việt</a></li>
+                        <li class="active"><a href="javascript:void(0)" title="Tiếng Việt">Tiếng Việt</a></li>
                     </ul>
                 </li>  
             </ul> 
@@ -21,59 +21,67 @@
             <nav id="main-menu" role="navigation">
                 <ul class="menu">
                     <li class="back-to-home"><%= link_to image_tag("/frontend/images/home.png", alt: "Về trang chủ", class: "custom-home-icon"), root_path, title: "Về trang chủ" %></li>
-                    <li<% if params[:controller] == "hot_tours" %> class="active"<% end %>><%= link_to "Tour Giá Sốc", hot_tours_path %></li>
-                    <li class="menu-item-has-children megamenu-menu <%= "active" if params[:controller] == "tour" %>">
+                    <li<% if params[:controller] == "hot_tours" %> class="active"<% end %>><%= link_to "Tour Tiết Kiệm", hot_tours_path %></li>                    
+                    <li class="menu-item-has-children <%= "active" if (params[:controller] == "tour") || (params[:controller] == "tour_group") %>">
                         <%= link_to "Tour Du Lịch", tour_path %>
-                        <div class="megamenu-wrapper container" data-items-per-column="5">
-                            <div class="megamenu-holder">
-                                <ul class="megamenu">
-                                    <% ArticleCategory.get_menu_tours.each do |tours| %>
-                                        <% tours.children.order("created_at ASC").each do |child_1| %>
-                                            <li class="menu-item-has-children">
-                                                <% if child_1.description == "domestic_tour" %>
-                                                    <%= link_to child_1.name, domestic_tour_path %>
-                                                <% elsif child_1.description == "foreign_tour" %>
-                                                    <%= link_to child_1.name, foreign_tour_path %>
-                                                <% elsif child_1.description == "deal_tours" %>
-                                                    <%= link_to child_1.name, deal_tours_path %>
-                                                <% else %>
-                                                    <%= link_to child_1.name, "#" %>
+                        <ul>
+                            <% ArticleCategory.get_menu_tours.each do |tours| %>
+                                <% tours.children.order("created_at ASC").each do |child_1| %>
+                                    <li class="menu-item-has-children">
+                                        <% if child_1.description == "domestic_tour" %>
+                                            <%= link_to child_1.name, domestic_tour_path %>
+                                        <% elsif child_1.description == "foreign_tour" %>
+                                            <%= link_to child_1.name, foreign_tour_path %>
+                                        <% elsif child_1.description == "deal_tours" %>
+                                            <%= link_to child_1.name, deal_tours_path %>
+                                        <% else %>
+                                            <%= link_to child_1.name, tour_packages_path(tour_packages_id: child_1, name: child_1.url_friendly) %>
+                                        <% end %>
+                                        <% if child_1.children.count > 0 %>
+                                        <ul class="left">
+                                            <% child_1.children.order("created_at ASC").each do |child_2| %>
+                                            <li><%= link_to child_2.name, tour_packages_path(tour_packages_id: child_2, name: child_2.url_friendly) %></li>
+                                            <% end %>
+                                        </ul>
+                                        <% end %>
+                                    </li>
+                                <% end %>
+                            <% end %>
+                            <li class="<%= "active" if params[:controller] == "tour_group" %>">
+                                <%= link_to "Tour Hot Khách Đoàn", booking_tour_group_path %>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="<%= "active" if params[:controller] == "book_hotel" %>">
+                        <%= link_to "Đặt Khách Sạn", hotel_listing_path %>
+                    </li>
+                    <li class="<%= "active" if (params[:controller] == "service" && params[:action] == "visa_card") %>">
+                        <%= link_to "Visa", visa_card_path %>
+                    </li>
+                    <li class="menu-item-has-children <%= "active" if (params[:controller] == "service" && params[:action] == "plane_ticket_booking") ||
+                                                                      (params[:controller] == "service" && params[:action] == "index") ||
+                                                                      (params[:controller] == "car_hire") %>">
+                        <%= link_to "Dịch Vụ Khác", service_path %>
+                        <ul>                            
+                            <li class="menu-item-has-children">
+                                <%= link_to "Thuê Xe Giá Rẻ", car_hire_path %>
+                                <ul class="">
+                                    <% ArticleCategory.get_menu_services.each do |service| %>
+                                        <% service.children.order("created_at ASC").each do |child_1| %>
+                                            <% if child_1.description == "car_hire" %>
+                                                <% child_1.children.order("created_at ASC").each do |child_2| %>
+                                                    <li><%= link_to child_2.name, car_grid_view_path(car_category_id: child_2, car_category_name: child_2.url_friendly) %></li>
                                                 <% end %>
-                                                <ul class="clearfix">
-                                                    <% child_1.children.order("created_at ASC").each do |child_2| %>
-                                                    <li><%= link_to child_2.name, tour_packages_path(tour_packages_id: child_2, name: child_2.url_friendly) %></li>
-                                                    <% end %>
-                                                </ul>
-                                            </li>
+                                            <% end %>
                                         <% end %>
                                     <% end %>
                                 </ul>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="menu-item-has-children <%= "active" if params[:controller] == "service" %>">
-                        <%= link_to "Vé Máy Bay & Visa", service_path %>
-                        <ul>
-                            <li><%= link_to "Đặt vé máy bay", plane_ticket_booking_path %></li>
-                            <li><%= link_to "Làm thẻ visa", visa_card_path %></li>
+                            </li>
+                            <li><%= link_to "Vé Máy Bay", plane_ticket_booking_path %></li>
                         </ul>
                     </li>
-                    </li>
-                    <li class="<%= "active" if params[:controller] == "book_hotel" %>"><%= link_to "Đặt Khách Sạn", hotel_listing_path %></li>
-                    <li class="<%= "active" if params[:controller] == "tour_group" %>"><%= link_to "Giá Hot Tour Đoàn", booking_tour_group_path %></li>
-                    <li class="menu-item-has-children <%= "active" if params[:controller] == "car_hire" %>">
-                        <%= link_to "Thuê Xe Ô Tô", car_hire_path %>
-                        <ul>
-                            <% ArticleCategory.get_menu_services.each do |service| %>
-                            <% service.children.order("created_at ASC").each do |child_1| %>
-                            <% if child_1.description == "car_hire" %>
-                            <% child_1.children.order("created_at ASC").each do |child_2| %>
-                            <li><%= link_to child_2.name, car_grid_view_path(car_category_id: child_2, car_category_name: child_2.url_friendly) %></li>
-                            <% end %>
-                            <% end %>
-                            <% end %>
-                            <% end %>
-                        </ul>
+                    <li class="<%= "active" if params[:controller] == "tour_handbook" %>">
+                        <%= link_to "Cẩm Nang Du Lịch", tour_handbook_path %>
                     </li>
                     <li class="<%= "active" if params[:controller] == "contact" %>"><%= link_to "Liên Hệ", contact_path %></li>
                 </ul>
@@ -82,9 +90,9 @@
 
         <nav id="mobile-menu-01" class="mobile-menu collapse">
             <ul id="mobile-primary-menu" class="menu">
-                <li class="<%= "active" if params[:controller] == "home" %>"><%= link_to "Trang Chủ", root_path %></li>
-                <li class="<%= "active" if params[:controller] == "hot_tours" %>"><%= link_to "Tour Giá Sốc", hot_tours_path %></li>
-                <li class="menu-item-has-children <%= "active" if params[:controller] == "tour" %>">
+                <li class="back-to-home"><%= link_to image_tag("/frontend/images/home.png", alt: "Về trang chủ", class: "custom-home-icon"), root_path, title: "Về trang chủ" %></li>
+                <li<% if params[:controller] == "hot_tours" %> class="active"<% end %>><%= link_to "Tour Tiết Kiệm", hot_tours_path %></li>                    
+                <li class="menu-item-has-children <%= "active" if (params[:controller] == "tour") || (params[:controller] == "tour_group") %>">
                     <%= link_to "Tour Du Lịch", tour_path %>
                     <ul>
                         <% ArticleCategory.get_menu_tours.each do |tours| %>
@@ -97,46 +105,55 @@
                                     <% elsif child_1.description == "deal_tours" %>
                                         <%= link_to child_1.name, deal_tours_path %>
                                     <% else %>
-                                        <%= link_to child_1.name, "#" %>
+                                        <%= link_to child_1.name, tour_packages_path(tour_packages_id: child_1, name: child_1.url_friendly) %>
                                     <% end %>
-                                    <ul>
+                                    <% if child_1.children.count > 0 %>
+                                    <ul class="left">
                                         <% child_1.children.order("created_at ASC").each do |child_2| %>
                                         <li><%= link_to child_2.name, tour_packages_path(tour_packages_id: child_2, name: child_2.url_friendly) %></li>
                                         <% end %>
                                     </ul>
+                                    <% end %>
                                 </li>
                             <% end %>
                         <% end %>
+                        <li class="<%= "active" if params[:controller] == "tour_group" %>">
+                            <%= link_to "Tour Hot Khách Đoàn", booking_tour_group_path %>
+                        </li>
                     </ul>
                 </li>
-                <li class="menu-item-has-children <%= "active" if params[:controller] == "service" %>">
-                    <%= link_to "Vé Máy Bay & Visa", service_path %>
-                    <ul>
-                        <li><%= link_to "Đặt vé máy bay", plane_ticket_booking_path %></li>
-                        <li><%= link_to "Làm thẻ visa", visa_card_path %></li>
+                <li class="<%= "active" if params[:controller] == "book_hotel" %>">
+                    <%= link_to "Đặt Khách Sạn", hotel_listing_path %>
+                </li>
+                <li class="<%= "active" if (params[:controller] == "service" && params[:action] == "visa_card") %>">
+                    <%= link_to "Visa", visa_card_path %>
+                </li>
+                <li class="menu-item-has-children <%= "active" if (params[:controller] == "service" && params[:action] == "plane_ticket_booking") ||
+                                                                  (params[:controller] == "service" && params[:action] == "index") ||
+                                                                  (params[:controller] == "car_hire") %>">
+                    <%= link_to "Dịch Vụ Khác", service_path %>
+                    <ul>                            
+                        <li class="menu-item-has-children">
+                            <%= link_to "Thuê Xe Giá Rẻ", car_hire_path %>
+                            <ul class="">
+                                <% ArticleCategory.get_menu_services.each do |service| %>
+                                    <% service.children.order("created_at ASC").each do |child_1| %>
+                                        <% if child_1.description == "car_hire" %>
+                                            <% child_1.children.order("created_at ASC").each do |child_2| %>
+                                                <li><%= link_to child_2.name, car_grid_view_path(car_category_id: child_2, car_category_name: child_2.url_friendly) %></li>
+                                            <% end %>
+                                        <% end %>
+                                    <% end %>
+                                <% end %>
+                            </ul>
+                        </li>
+                        <li><%= link_to "Vé Máy Bay", plane_ticket_booking_path %></li>
                     </ul>
                 </li>
-                </li>
-                <li class="<%= "active" if params[:controller] == "book_hotel" %>"><%= link_to "Đặt Khách Sạn", hotel_listing_path %></li>
-                <li class="<%= "active" if params[:controller] == "tour_group" %>"><%= link_to "Giá Hot Tour Đoàn", booking_tour_group_path %></li>
-                <li class="menu-item-has-children <%= "active" if params[:controller] == "car_hire" %>">
-                    <%= link_to "Thuê Xe Ô Tô", car_hire_path %>
-                    <ul>
-                        <% ArticleCategory.get_menu_services.each do |service| %>
-                        <% service.children.order("created_at ASC").each do |child_1| %>
-                        <% if child_1.description == "car_hire" %>
-                        <% child_1.children.order("created_at ASC").each do |child_2| %>
-                        <li><%= link_to child_2.name, car_grid_view_path(car_category_id: child_2, car_category_name: child_2.url_friendly) %></li>
-                        <% end %>
-                        <% end %>
-                        <% end %>
-                        <% end %>
-                    </ul>
+                <li class="<%= "active" if params[:controller] == "tour_handbook" %>">
+                    <%= link_to "Cẩm Nang Du Lịch", tour_handbook_path %>
                 </li>
                 <li class="<%= "active" if params[:controller] == "contact" %>"><%= link_to "Liên Hệ", contact_path %></li>
-                <li>
-                    <%= link_to '<i class="soap-icon-shopping"></i> BẢNG GIÁ TOUR'.html_safe, tour_pricing_path %>
-                </li>
             </ul>
 
             <ul class="mobile-topnav container">

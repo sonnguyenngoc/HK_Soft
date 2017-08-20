@@ -3,7 +3,7 @@
     <!-- HEADER -->
     <%= render "/home/header" %>
     
-    <div class="page-title-container style2">
+    <div class="page-title-container style4">
         <div class="container">
             <div class="page-title pull-left">
                 <h2 class="entry-title">Đặt Khách Sạn</h2>
@@ -33,7 +33,7 @@
                     <div class="col-sm-8 col-md-9">
                         <div class="hotel-list">
                             <div class="row image-box hotel listing-style3">
-                                <% @hotels.each do |item| %>
+                                <% @hotels.each do |item| %>                                    
                                     <article class="box">
                                         <figure class="col-sm-5 col-md-4">
                                             <a title="" href="<%= slideshow_popup_path(hotel_id: item.id) %>" class="hover-effect popup-gallery"><img width="270" height="160" alt="" src="<%= item.image_url.medium_image %>"></a>

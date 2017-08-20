@@ -12,6 +12,16 @@ class UserGroup < ActiveRecord::Base
     def self.permission_classes
         [
             {
+                class_name: "Area",
+                display_name: I18n.t(:area),
+                actions: [
+                            {name: "read", values: ["yes","no"], multiple: false},
+                            {name: "create", values: ["yes","no"], multiple: false},
+                            {name: "update", values: ["yes","no"], multiple: false},
+                            {name: "delete", values: ["yes","no"], multiple: false},
+                        ]
+            },
+            {
                 class_name: "Tour",
                 display_name: I18n.t(:tour),
                 actions: [

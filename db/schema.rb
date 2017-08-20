@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170302034317) do
+ActiveRecord::Schema.define(version: 20170819031638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -391,6 +391,8 @@ ActiveRecord::Schema.define(version: 20170302034317) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.text     "description"
+    t.string   "area_name"
+    t.string   "type_resort"
   end
 
   create_table "line_item_compares", force: :cascade do |t|
@@ -753,6 +755,8 @@ ActiveRecord::Schema.define(version: 20170302034317) do
     t.boolean  "is_new_year",         default: false
     t.datetime "published_at"
     t.string   "resort_name"
+    t.string   "label"
+    t.string   "file_tour"
   end
 
   create_table "user_groups", force: :cascade do |t|

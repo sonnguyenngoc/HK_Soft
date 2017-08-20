@@ -1,5 +1,6 @@
 class Area < ActiveRecord::Base
   validates :name, presence: true
+  validates :name, :uniqueness => {:allow_blank => true}
   
   has_and_belongs_to_many :products
   has_and_belongs_to_many :articles

@@ -32,7 +32,11 @@
                             <span class="action" style="-webkit-user-select: none;"><i class="icon-googleplus5"></i></span>
                         </div>
                         <span class="help-block">Accepted formats: gif, png, jpg.</span>
+                        <% if @tour.image_url.present? %>
                         <%= image_tag(@tour.image_url.big_image, size: "202x128", class: "img-rouded") %>
+                        <% else %>
+                        <%= image_tag("/backend/assets/images/placeholder.jpg", size: "202x128", class: "img-rouded") %>
+                        <% end %>                        
                     </div>
                 </div>
                 <div class="form-group">
@@ -152,9 +156,14 @@
                 </div>
                 
                 <div class="form-group">
-                    <label class="col-lg-3 control-label" >Tên resort</label>
-                    <div class="col-lg-9">
+                    <label class="col-lg-3 control-label" >Tên/Loại resort</label>
+                    <div class="col-lg-4">
                         <%= f.text_field :resort_name, class: "form-control" %>
+                    </div>
+                    
+                    <label class="col-lg-2 control-label" >Thêm nhãn cho tour:</label>
+                    <div class="col-lg-3">
+                        <%= f.text_field :label, class: "form-control" %>
                     </div>
                 </div>
                 
@@ -203,6 +212,22 @@
                     <%= f.label "Mô tả", class: "col-lg-3 control-label" %>
                     <div class="col-lg-9">
                       <%= f.text_area :description, rows: "5", cols: "5", class: "form-control" %>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <%= f.label "Upload file chương trình (pdf/doc/docx)", class: "col-lg-3 control-label" %>
+                    <div class="col-lg-9">
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <span class="btn btn-default btn-file"><span>Chọn file để Upload</span>
+                                <input type="file" name="tour[file_tour]" id="tour_file_tour" value="<%= @tour.file_tour if @tour.file_tour.present? %>" />
+                            </span>
+                            <% if @tour.file_tour.present? %>
+                            <span class="fileinput-filename"><%= @tour.file_tour %></span>
+                            <% else %>
+                            <span class="fileinput-filename"></span>
+                            <span class="fileinput-new">Chưa có file nào được chọn</span>
+                            <% end %>
+                        </div>
                     </div>
                 </div>
             </div>

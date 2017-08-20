@@ -3,7 +3,7 @@
     <!-- HEADER -->
     <%= render "/home/header" %>
     
-    <div class="page-title-container style2">
+    <div class="page-title-container style4">
         <div class="container">
             <div class="page-title pull-left">
                 <h2 class="entry-title">Tìm Kiếm Khách Sạn</h2>
@@ -35,12 +35,12 @@
                                 <% @hotels.each do |item| %>
                                     <article class="box">
                                         <figure class="col-sm-5 col-md-4">
-                                            <a title="" href="<%= slideshow_popup_path %>" class="hover-effect popup-gallery"><img width="270" height="160" alt="" src="/frontend/images/hotels/1.png"></a>
+                                            <a title="" href="<%= slideshow_popup_path(hotel_id: item.id) %>" class="hover-effect popup-gallery"><img width="270" height="160" alt="" src="<%= item.image_url.medium_image %>"></a>
                                         </figure>
                                         <div class="details col-sm-7 col-md-8">
                                             <div>
                                                 <div>
-                                                    <h4 class="box-title"><%= item.name %><small><i class="soap-icon-departure yellow-color"></i> <%= item.area.name %></small></h4>
+                                                    <h4 class="box-title"><%= item.name %></h4>
                                                     <div class="amenities">
                                                         <i class="soap-icon-wifi circle"></i>
                                                         <i class="soap-icon-fitnessfacility circle"></i>

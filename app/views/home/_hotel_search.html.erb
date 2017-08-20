@@ -16,16 +16,9 @@
                 </div>
             </div>
             <div class="form-group col-sm-6 col-md-5">
-                <h4 class="title">Khu vực</h4>
-                <label>Chọn khu vực cần tìm</label>
-                <div class="selector">
-                    <select class="full-width" name="area_id">
-                        <option value="">Chọn khu vực cần tìm</option>
-                        <% Area.get_list_province_city.order("name ASC").each do |item| %>
-                            <option value="<%= item.id %>"><%= item.name %></option>
-                        <% end %>
-                    </select>
-                </div>
+                <h4 class="title">Tên khách sạn/Resort</h4>
+                <label>Nhập tên khách sạn/Resort</label>
+                <input type="text" name="name" class="input-text full-width" placeholder="Nhập tên khách sạn/resort cần tìm" />
             </div>
             <div class="form-group col-sm-6 col-md-2 fixheight">
                 <label class="hidden-xs">&nbsp;</label>

@@ -39,12 +39,13 @@
     
         <!-- Main Style -->
         <%= stylesheet_link_tag "/frontend/css/style-light-blue.css" %>
+        <%= stylesheet_link_tag "/frontend/css/jquery.fancybox.min.css" %>
     
         <!-- Updated Styles -->
         <%= stylesheet_link_tag "/frontend/css/updates.css" %>
     
         <!-- Custom Styles -->
-        <%= stylesheet_link_tag "/frontend/css/custom.css?v=1.2" %>
+        <%= stylesheet_link_tag "/frontend/css/custom.css?v=1.6" %>
         
         <% if params[:controller] == "tour" && params[:action] == "tour_pricing" %>
             <%= stylesheet_link_tag "/frontend/css/custom_table.css" %>

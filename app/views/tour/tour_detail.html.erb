@@ -6,7 +6,7 @@
     <!-- HEADER -->
     <%= render "/home/header" %>
 
-    <div class="page-title-container style2">
+    <div class="page-title-container style4">
         <div class="container">
             <div class="page-title pull-left">
                 <h2 class="entry-title transform-capitalize"><%= truncate(strip_tags(@tour.name), length: 70) %></h2>
@@ -33,7 +33,21 @@
             <div class="row">
                 <div id="main" class="col-md-9">
                     <div class="featured-gallery image-box tour-image-box">
-                        <% if @tour.is_sale == true %><span class="discount"><span class="discount-text">Giảm giá <%= @tour.discount_percent %>%</span></span><% end %>
+                        <% if @tour.is_sale == true %>
+                            <span class="discount">
+                                <span class="discount-text">
+                                    Giảm giá <%= @tour.discount_percent %>%
+                                </span>
+                            </span>
+                        <% else %>
+                            <% if @tour.label.present? %>
+                                <span class="discount">
+                                    <span class="discount-text">
+                                        <%= @tour.label %>
+                                    </span>
+                                </span>
+                            <% end %>
+                        <% end %>
                         <div class="flexslider photo-gallery style1" id="post-slideshow1" data-sync="#post-carousel1" data-func-on-start="showTourDetailedDiscount">
                             <ul class="slides">
                                 <li><img src="<%= @tour.image_url.big_image %>" alt="" /></li>
@@ -84,6 +98,9 @@
                                 
                                     <% if !@tour.surcharge_2.nil? %>
                                     <dt>Phụ thu lễ tết:</dt><dd><%= format_number(@tour.surcharge_2) %> VNĐ/Khách</dd>
+                                    <% end %>
+                                    <% if @tour.file_tour.present? %>
+                                        <dt>Chương trình:</dt><dd><%= link_to "Xem & Tải Xuống Ngay", @tour.file_tour_url, class: "custom_file_tour", target: "_blank" %></dd>
                                     <% end %>
                                 </dl>
                             </div>

@@ -28,49 +28,60 @@
                             <span class="action" style="-webkit-user-select: none;"><i class="icon-googleplus5"></i></span>
                         </div>
                         <span class="help-block">Accepted formats: gif, png, jpg.</span>
+                        <% if @hotel.image_url.present? %>
                         <%= image_tag(@hotel.image_url, size: "202x128", class: "img-rouded") %>
+                        <% else %>
+                        <%= image_tag("/backend/assets/images/placeholder.jpg", size: "202x128", class: "img-rouded") %>
+                        <% end %>                        
                     </div>
                 </div>
                    
                 <div class="form-group">
-                    <label class="col-lg-3 control-label" >Tên khách sạn <span class='text-danger'>*</span></label>
+                    <label class="col-lg-3 control-label" >Tên khách sạn/Resort <span class='text-danger'>*</span></label>
                     <div class="col-lg-9">
-                        <%= f.text_field :name, class: "form-control" %>
+                        <%= f.text_field :name, class: "form-control required" %>
                     </div>
                 </div>
                     
                 <div class="form-group">
-                    <label class="col-lg-3 control-label" >Loại khách sạn <span class='text-danger'>*</span></label>
+                    <label class="col-lg-3 control-label" >Loại khách sạn</label>
                     <div class="col-lg-9">
-                        <%= f.select(:hotel_type, ['Khách sạn 1 sao', 'Khách sạn 2 sao', 'Khách sạn 3 sao', 'Khách sạn 4 sao', 'Khách sạn 5 sao'], {}, { :class => 'select-hotel' })%>
+                        <%= f.select(:hotel_type, ['Chọn khách sạn', 'Khách sạn 1 sao', 'Khách sạn 2 sao', 'Khách sạn 3 sao', 'Khách sạn 4 sao', 'Khách sạn 5 sao'], {}, { :class => 'select-hotel' })%>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Loại Resort</label>
+                    <div class="col-lg-9">
+                        <%= f.text_field :type_resort, class: "form-control" %>
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label class="col-lg-3 control-label" >Địa chỉ <span class='text-danger'>*</span></label>
                     <div class="col-lg-9">
-                        <%= f.text_field :address, class: "form-control" %>
+                        <%= f.text_field :address, class: "form-control required" %>
                     </div>
                 </div>
                     
                 <div class="form-group">
                     <label class="col-lg-3 control-label" >Vị trí <span class='text-danger'>*</span></label>
                     <div class="col-lg-9">
-                        <%= f.text_field :position, class: "form-control" %>
+                        <%= f.text_field :position, class: "form-control required" %>
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label class="col-lg-3 control-label" >Khu vực <span class='text-danger'>*</span></label>
+                    <div class="col-lg-9">
+                        <%= f.text_field :area_name, class: "form-control required" %>
                     </div>
                 </div>
                     
                 <div class="form-group">
                     <label class="col-lg-3 control-label" >Giá tiền trung bình <span class='text-danger'>*</span></label>
                     <div class="col-lg-9">
-                        <%= f.text_field :avg_price, class: "form-control" %>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <%= f.label "Khu vực của khách sạn ", class: "col-lg-3 control-label" %>
-                    <div class="col-lg-9">
-                        <%= f.collection_select(:area_id, Area.get_list_province_city, :id, :name, {:prompt=> "Chọn khu vực của khách sạn....."}, {class: "select-area"}) %>
+                        <%= f.text_field :avg_price, class: "form-control required" %>
                     </div>
                 </div>
                     
@@ -107,7 +118,7 @@
             <div class="tab-pane has-padding" id="control-tab2">
                 
                 <div class="form-group">
-                    <label class="col-lg-2 control-label" >Giới thiệu về tour <span class='text-danger'>*</span></label>
+                    <label class="col-lg-2 control-label" >Giới thiệu về khách sạn <span class='text-danger'>*</span></label>
                 </div>
                 <div class="form-group">
                     <div class="upload_tools text-right" style="margin-bottom: 5px; margin-top: -30px;">											
@@ -175,7 +186,7 @@
             
             <div class="tab-pane has-padding" id="control-tab4">
                 <div class="form-group">
-                    <label class="col-lg-2 control-label" >Hình ảnh của tour</label>
+                    <label class="col-lg-2 control-label" >Hình ảnh của khách sạn</label>
                     <div class="col-lg-10">
                         <% index = 0 %>
                         <%= f.fields_for :hotel_images do |ff| %>

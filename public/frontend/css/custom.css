@@ -94,7 +94,7 @@ label.error {
     padding: 0px 15px 0;
 }
 @media only screen and (max-width: 900px) {   
-    .page-title-container.style2 .page-title .entry-title {
+    .page-title-container.style4 .page-title .entry-title {
         display: none !important;
     }
     .tour_sale_color h1 {
@@ -367,6 +367,17 @@ h4 {
 #footer .discover li {
     font-size: 13px;
 }
+#footer.style3 .social-icons li a {
+    background: #4267b2;
+}
+.social-icons li a {
+    border-radius: 5px;
+    width: 40px;
+    margin-right: 6px;
+    height: 40px;
+    line-height: 38px;
+    font-size: 1.5em;
+}
 #footer.style3 .social-icons li.facebook:hover a {
     background: #4267b2;
 }
@@ -404,4 +415,26 @@ h1.text-uppercase {
 }
 img.logo-registered {
     margin-top: 20px;
+}
+.page-title-container.style4 .page-title .entry-title {
+    text-transform: uppercase !important;
+}
+.section-custom {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+ul.search-tabs li a {
+    opacity: 1;
+}
+ul.search-tabs li a:hover {
+    opacity: 0.8;
+}
+.page-title-container.style4 .breadcrumbs li a.active {
+    color: #fff !important;
+}
+a.custom_file_tour {
+    color: #194eb0;
+}
+a.custom_file_tour:hover {
+    color: #e44049;
 }

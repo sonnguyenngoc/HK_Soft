@@ -1,5 +1,6 @@
 class Tour < ActiveRecord::Base
     mount_uploader :image_url, TourImageUploader
+    mount_uploader :file_tour, FileTourUploader
     has_many :tour_schedules, dependent: :destroy
     has_many :tour_highlights, dependent: :destroy
     has_many :tour_images, dependent: :destroy
