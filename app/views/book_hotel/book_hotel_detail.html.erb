@@ -56,7 +56,14 @@
                                     <div class="col-sm-5 col-lg-5 features table-cell">
                                         <ul>
                                             <li><label>Loại phòng:</label><%= @hotel.hotel_rooms.count %> loại</li>
+                                            <% if @hotel.type_resort.present? %>
+                                            <li><label>Loại Resort:</label><%= @hotel.type_resort %></li>
+                                            <% elsif !@hotel.hotel_type = "Chọn khách sạn" %>
                                             <li><label>Loại khách sạn:</label><%= @hotel.hotel_type %></li>
+                                            <% end %>
+                                            <% if @hotel.area_name.present? %>
+                                            <li><label>Khu vực:</label><%= @hotel.area_name %></li>
+                                            <% end %>
                                         </ul>
                                     </div>
                                     <div class="col-sm-7 col-lg-7 table-cell testimonials">
