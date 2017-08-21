@@ -89,15 +89,15 @@
                                         <dt>Khách sạn:</dt><dd><%= @tour.hotel %></dd>
                                     <% end %>
                                 
-                                    <% if !@tour.resort_name.present? %>
+                                    <% if @tour.resort_name.present? %>
                                         <dt>Resort:</dt><dd><%= @tour.resort_name %></dd>
                                     <% end %>
                                     
-                                    <% if !@tour.surcharge_1.present? %>
+                                    <% if @tour.surcharge_1.present? %>
                                     <dt>Phụ thu cuối tuần:</dt><dd><%= format_number(@tour.surcharge_1) %> VNĐ/Khách</dd>
                                     <% end %>
                                 
-                                    <% if !@tour.surcharge_2.present? %>
+                                    <% if @tour.surcharge_2.present? %>
                                     <dt>Phụ thu lễ tết:</dt><dd><%= format_number(@tour.surcharge_2) %> VNĐ/Khách</dd>
                                     <% end %>
                                 
