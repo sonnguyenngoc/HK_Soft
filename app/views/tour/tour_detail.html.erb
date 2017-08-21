@@ -1,6 +1,7 @@
 <meta property="og:title" content="<%= @tour.name %>" />
-<meta property="og:image" content="<%= @tour.tour_images.count > 0 ? @tour.tour_images.first.image_url.big_image : '' %>" />
-
+<meta property="og:image" content="<%= @tour.tour_images.count > 0 ? 'http://newdiscovery.vn' + @tour.tour_images.first.image_url.big_image.to_s : '' %>" />
+<meta property="og:url" content="<%= url_for(only_path: false) %>" />
+<meta property="og:site_name" content="NEWDISCOVERY.VN" />
 <div id="page-wrapper">
     
     <!-- HEADER -->

@@ -27,7 +27,7 @@
                         <div class="tab-content">
                             <div class="tab-pane fade in active" id="car-details">
                                 <h2>Giới thiệu</h2>
-                                <p class="text-justify"><%= @car_detail.description %></p>
+                                <p class="text-justify"><%= @car_detail.description.html_safe if @car_detail.description.present? %></p>
                                 <hr/>
                                 <h2>Bảng giá chi tiết</h2>
                                 <div class="text-justify article_content"><%= @car_detail.content.html_safe %></div>

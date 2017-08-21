@@ -438,3 +438,9 @@ a.custom_file_tour {
 a.custom_file_tour:hover {
     color: #e44049;
 }
+.slide-pointer {
+    cursor: pointer;
+}
+.hotel-list {
+    margin-top: 0px;
+}
