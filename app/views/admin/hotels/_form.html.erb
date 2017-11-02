@@ -74,7 +74,11 @@
                 <div class="form-group">
                     <label class="col-lg-3 control-label" >Khu vực <span class='text-danger'>*</span></label>
                     <div class="col-lg-9">
-                        <%= f.text_field :area_name, class: "form-control required" %>
+                        <select name="hotel[hotel_area_id]" id="hotel_hotel_area_id" class="select-hotel-area select-item-color required" data-placeholder="<%= t(:placeholder_hotel_areas) %>...">
+                            <% HotelArea.get_hotel_areas.each do |item| %>
+                                <option <%= "selected" if @hotel.hotel_area_id == item.id %> value="<%= item.id %>"><%= item.name %></option>
+                            <% end %>
+                        </select>
                     </div>
                 </div>
                     

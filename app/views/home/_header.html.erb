@@ -21,7 +21,10 @@
             <nav id="main-menu" role="navigation">
                 <ul class="menu">
                     <li class="back-to-home"><%= link_to image_tag("/frontend/images/home.png", alt: "Về trang chủ", class: "custom-home-icon"), root_path, title: "Về trang chủ" %></li>
-                    <li<% if params[:controller] == "hot_tours" %> class="active"<% end %>><%= link_to "Tour Tiết Kiệm", hot_tours_path %></li>                    
+                    <li<% if params[:controller] == "hot_tours" %> class="active"<% end %>><%= link_to "Tour Tiết Kiệm", hot_tours_path %></li>
+                    <% ArticleCategory.get_main_menu_tours.each do |tour| %>
+                        <li class="<%= "active" if (params[:controller] == "tour") %>"><%= link_to tour.name, tour_packages_path(tour_packages_id: tour, name: tour.url_friendly) %></li>
+                    <% end %>
                     <li class="menu-item-has-children <%= "active" if (params[:controller] == "tour") || (params[:controller] == "tour_group") %>">
                         <%= link_to "Tour Du Lịch", tour_path %>
                         <ul>
@@ -92,6 +95,9 @@
             <ul id="mobile-primary-menu" class="menu">
                 <li class="back-to-home"><%= link_to image_tag("/frontend/images/home.png", alt: "Về trang chủ", class: "custom-home-icon"), root_path, title: "Về trang chủ" %></li>
                 <li<% if params[:controller] == "hot_tours" %> class="active"<% end %>><%= link_to "Tour Tiết Kiệm", hot_tours_path %></li>                    
+                <% ArticleCategory.get_main_menu_tours.each do |tour| %>
+                    <li><%= link_to tour.name, tour_packages_path(tour_packages_id: tour, name: tour.url_friendly) %></li>
+                <% end %>
                 <li class="menu-item-has-children <%= "active" if (params[:controller] == "tour") || (params[:controller] == "tour_group") %>">
                     <%= link_to "Tour Du Lịch", tour_path %>
                     <ul>

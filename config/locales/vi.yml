@@ -311,6 +311,7 @@ vi:
   read_condition: "Điều kiện xem"
   manufacturer: "Thương hiệu"
   area: "Khu vực"
+  hotel_area: "Khu vực khách sạn"
   article_category: "Chuyên mục bài viết"
   code_status: "Mã bài viết"
   slideshow: "Slideshow trình chiếu"
@@ -394,6 +395,12 @@ vi:
   visas: "Danh sách Visa"
   country: "Quốc gia"
   countries: "Danh sách các quốc gia"
+  hotel_areas: "Khu vực khách sạn"
+  manage: "Quản lý"
+  listing_hotel_areas: "Danh sách khu vực"
+  new_hotel_area: "Thêm khu vực khách sạn"
+  edit_hotel_area: "Cập nhật khu vực khách sạn"
+  placeholder_hotel_areas: "Chọn khu vực khách sạn"
   
   activerecord:
     attributes:

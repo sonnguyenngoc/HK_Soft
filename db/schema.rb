@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170819031638) do
+ActiveRecord::Schema.define(version: 20171102062151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,13 +44,14 @@ ActiveRecord::Schema.define(version: 20170819031638) do
   create_table "article_categories", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.integer  "level"
     t.string   "meta_keywords"
     t.text     "meta_description"
     t.string   "name_vi"
     t.string   "description_vi"
+    t.boolean  "is_main_menu",     default: false
   end
 
   create_table "article_categories_articles", force: :cascade do |t|
@@ -359,6 +360,12 @@ ActiveRecord::Schema.define(version: 20170819031638) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "hotel_areas", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "hotel_images", force: :cascade do |t|
     t.string   "image_url"
     t.integer  "hotel_id"
@@ -388,11 +395,12 @@ ActiveRecord::Schema.define(version: 20170819031638) do
     t.decimal  "avg_price"
     t.string   "services"
     t.text     "content"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.text     "description"
     t.string   "area_name"
     t.string   "type_resort"
+    t.integer  "hotel_area_id"
   end
 
   create_table "line_item_compares", force: :cascade do |t|

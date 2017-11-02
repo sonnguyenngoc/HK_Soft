@@ -21,6 +21,24 @@
                 <div class="row">
                     <div class="col-sm-4 col-md-3">
                         <div class="toggle-container filters-container">
+                            <% if HotelArea.get_hotel_areas.count > 0 %>
+                            <div class="toggle-container filters-container">
+                                <div class="panel style1 arrow-right">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" href="#modify-search-panel" aria-expanded="true">Khu vực khách sạn</a>
+                                    </h4>
+                                    <div id="modify-search-panel" class="panel-collapse collapse in">
+                                        <div class="panel-content">
+                                            <ul class="circle box">
+                                                <% HotelArea.get_hotel_areas.each do |item| %>
+                                                <li<% if params[:hotel_area_id].to_i == item.id %> class="active"<% end %>><%= link_to item.name, hotel_listing_path(hotel_area_id: item.id), class: "country-size" %></li>
+                                                <% end %>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><br>
+                            <% end %>
                             <article class="detailed-logo">
                                 <div class="details">
                                     <h2 class="box-title">Đăng Ký Khách Sạn Khác</h2>

@@ -31,16 +31,16 @@
             <div class="page-header">
                 <div class="page-header-content">
                     <div class="page-title">
-                        <h4><span class="text-semibold">Tạo mới khách sạn</span></h4>
+                        <h4><span class="text-semibold"><%= t(:new_hotel_area) %></span></h4>
                     </div>
                 </div>
             
                 <div class="breadcrumb-line">
                     <ul class="breadcrumb">
                         <li><%= link_to '<i class="icon-home2 position-left"></i>'.html_safe + t(:home), { controller: "main", action: "index" } %></li>
-                        <li><a href="<%= admin_hotels_path %>">Quản lý</a></li>
-                        <li><a href="<%= admin_hotels_path %>">Danh sách khách sạn</a></li>
-                        <li class="active">Tạo mới khách sạn</li>
+                        <li><a href="<%= admin_hotel_areas_path %>"><%= t(:manage) %></a></li>
+                        <li><a href="<%= admin_hotel_areas_path %>"><%= t(:hotel_areas) %></a></li>
+                        <li class="active"><%= t(:new_hotel_area) %></li>
                     </ul>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                         <!-- Basic layout-->
                         <div class="panel panel-flat">
                             <div class="panel-heading">
-                                <h5 class="panel-title">Tạo mới khách sạn</h5>
+                                <h5 class="panel-title"><%= t(:new_hotel_area) %></h5>
                             </div>
                             
                             <div class="panel-body">
@@ -85,16 +85,6 @@
 <!-- /page container -->
 
 <!-- Theme JS files -->
-<%= javascript_include_tag '/backend/assets/js/core/libraries/jquery_ui/datepicker.min.js' %>
-<%= javascript_include_tag '/backend/assets/js/core/libraries/jquery_ui/effects.min.js' %>
-<%= javascript_include_tag '/backend/assets/js/plugins/ui/moment/moment.min.js' %>
-<%= javascript_include_tag '/backend/assets/js/plugins/pickers/daterangepicker.js' %>
-<%= javascript_include_tag '/backend/assets/js/plugins/pickers/anytime.min.js' %>
-<%= javascript_include_tag '/backend/assets/js/plugins/pickers/pickadate/picker.js' %>
-<%= javascript_include_tag '/backend/assets/js/plugins/pickers/pickadate/picker.date.js' %>
-<%= javascript_include_tag '/backend/assets/js/plugins/pickers/pickadate/picker.time.js' %>
-<%= javascript_include_tag '/backend/assets/js/plugins/pickers/pickadate/legacy.js' %>
-
 <%= javascript_include_tag '/backend/assets/js/core/libraries/jquery_ui/core.min.js' %>
 <%= javascript_include_tag '/backend/assets/js/plugins/forms/styling/uniform.min.js' %>
 <%= javascript_include_tag '/backend/assets/js/plugins/forms/styling/switchery.min.js' %>
@@ -107,25 +97,29 @@
 <%= javascript_include_tag '/backend/assets/js/plugins/notifications/jgrowl.min.js' %>
 
 <%= javascript_include_tag '/backend/assets/js/core/app.js' %>
-<%= javascript_include_tag '/backend/assets/js/pages/picker_date.js' %>
-<%= javascript_include_tag '/backend/assets/js/pages/form_layouts.js' %>
-<%= javascript_include_tag '/backend/assets/js/pages/form_multiselect.js' %>
-<%= javascript_include_tag '/backend/assets/js/pages/colors_primary.js' %>
+<%= javascript_include_tag '/backend/assets/js/pages/colors_teal.js' %>
+<%= javascript_include_tag '/backend/assets/js/pages/colors_warning.js' %>
+<%= javascript_include_tag '/backend/assets/js/pages/colors_violet.js' %>
 <!-- /theme JS files -->
 <script>
-    $("#product_is_show").uniform({
-        wrapperClass: "border-teal text-teal-600"
-    });
-    $(".select-hotel, .select-hotel-area, .select-area, .select-tour-type").select2();
     // Checkboxes and radios
-    $(".checkbox-related-articles, #tour_is_sale, #tour_transportation_car, #tour_transportation_trunk, #tour_transportation_plane").uniform({
-        radioClass: 'choice',
-        checkboxClass: 'checker',
-        wrapperClass: "border-info text-info-600"
-    });
-    $(".hotel_services").uniform({
+    $(".styled-level-1, .multiselect-container input").uniform({
         radioClass: 'choice',
         checkboxClass: 'checker',
         wrapperClass: "border-teal text-teal-600"
+    });
+    
+    // Checkboxes and radios
+    $(".styled-level-2, .multiselect-container input").uniform({
+        radioClass: 'choice',
+        checkboxClass: 'checker',
+        wrapperClass: "border-warning text-warning-600"
+    });
+    
+    // Checkboxes and radios
+    $(".styled-level-3, .multiselect-container input").uniform({
+        radioClass: 'choice',
+        checkboxClass: 'checker',
+        wrapperClass: "border-violet text-violet-600"
     });
 </script>

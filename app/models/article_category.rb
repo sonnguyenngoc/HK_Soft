@@ -26,6 +26,9 @@ class ArticleCategory < ActiveRecord::Base
   def self.get_menu_tours
     self.all.where(description: "tour").order("created_at ASC")
   end
+  def self.get_main_menu_tours
+    self.where(is_main_menu: true).order("created_at ASC")
+  end
   def self.get_menu_about_us
     self.all.where(description: "about_us").first
   end

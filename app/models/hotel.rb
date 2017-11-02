@@ -1,6 +1,7 @@
 class Hotel < ActiveRecord::Base
     mount_uploader :image_url, HotelUploader
     belongs_to :area
+    belongs_to :hotel_area
     has_many :hotel_images
     has_many :hotel_rooms
     accepts_nested_attributes_for :hotel_images, :reject_if => lambda { |a| a[:image_url].blank? && a[:id].blank? }, :allow_destroy => true
@@ -67,7 +68,11 @@ class Hotel < ActiveRecord::Base
         
         if params[:hotel_type].present?
             records = records.where(hotel_type: params[:hotel_type])
-        end 
+        end
+        
+        if params[:hotel_area_id].present?
+            records = records.where(hotel_area_id: params[:hotel_area_id])
+        end
         
         if params[:name].present?
             records = records.where(name: params[:name])

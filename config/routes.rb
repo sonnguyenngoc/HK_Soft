@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+Rails.application.routes.draw do  
   resources :tour_events
   devise_for :users
   
@@ -93,6 +93,7 @@ Rails.application.routes.draw do
     namespace :admin, path: "quan-tri" do
       get "/" => "main#index"
       scope(:path_names => { :new => "tao-moi", :edit => "chinh-sua" }) do
+        resources :hotel_areas, path: "khu-vuc-khach-san"
         resources :shopping_carts, path: "gio-hang"
         resources :products, path: "danh-sach-san-pham" do
           collection do

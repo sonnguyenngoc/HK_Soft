@@ -1,0 +1,2 @@
+module HotelAreasHelper
+end

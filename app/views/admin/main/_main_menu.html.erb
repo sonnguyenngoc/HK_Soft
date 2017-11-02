@@ -24,6 +24,11 @@
                                 <%= link_to "Danh sách khách sạn", admin_hotels_path %>
                             </li>
                         <% end %>
+                        <% if can? :read, HotelArea %>
+                            <li class="<%= "active" if ["admin/hotel_areas"].include?(params[:controller]) %>">
+                                <%= link_to "Khu vực khách sạn", admin_hotel_areas_path %>
+                            </li>
+                        <% end %>
                         <% if can? :read, Car %>
                             <li class="<%= "active" if ["admin/cars"].include?(params[:controller]) %>">
                                 <%= link_to "Danh sách xe", admin_cars_path %>

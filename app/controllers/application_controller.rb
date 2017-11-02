@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
         "frontend"
       elsif (devise_controller? && resource_name == :user && action_name != 'edit') || controller_name == 'passwords'
         "login"
-      elsif controller_name == "main" || controller_name == "products" || controller_name == "categories" || controller_name == "manufacturers" ||
+      elsif controller_name == "main" || controller_name == "products"|| controller_name == "hotel_areas" || controller_name == "categories" || controller_name == "manufacturers" ||
             controller_name == "articles" || controller_name == "article_categories" || controller_name == "areas" || controller_name == "orders" || controller_name == "slideshows" ||
             controller_name == "delivery_methods" || controller_name == "payment_methods" || controller_name == "comments" || controller_name == "questions" || controller_name == "customers" ||
             controller_name == "coupons" || controller_name == "vouchers" || controller_name == "comment_articles" || controller_name == "companies" || controller_name == "code_statuses" || controller_name == "testimonials" ||

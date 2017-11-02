@@ -106,8 +106,16 @@
                                         <td>
                                             <% if can? :update, item %>
                                                 <strong><%= link_to item.name.html_safe, edit_admin_article_category_path(item) %></strong>
+                                                <% if item.is_main_menu == true %>
+                                                    <br>
+                                                    <span class="label bg-teal-600">Đang hiển thị thanh menu</span><br>
+                                                <% end %>
                                             <% else %>
                                                 <strong><%= item.name.html_safe %></strong>
+                                                <% if item.is_main_menu == true %>
+                                                    <br>
+                                                    <span class="label bg-teal-600">Đang hiển thị thanh menu</span><br>
+                                                <% end %>
                                             <% end %>
                                         </td>
                                         <td>
@@ -151,8 +159,16 @@
                                             <td>
                                                 <% if can? :update, child_1 %>
                                                     <strong>--- <%= link_to child_1.name.html_safe, edit_admin_article_category_path(child_1) %></strong>
+                                                    <% if child_1.is_main_menu == true %>
+                                                        <br>
+                                                        <span class="label bg-teal-600">Đang hiển thị thanh menu</span><br>
+                                                    <% end %>
                                                 <% else %>
                                                     <strong>--- <%= child_1.name.html_safe %></strong>
+                                                    <% if child_1.is_main_menu == true %>
+                                                        <br>
+                                                        <span class="label bg-teal-600">Đang hiển thị thanh menu</span><br>
+                                                    <% end %>
                                                 <% end %>
                                             </td>
                                             <td>
@@ -194,8 +210,16 @@
                                                 <td>
                                                     <% if can? :update, child_2 %>
                                                         <strong>--------- <%= link_to child_2.name.html_safe, edit_admin_article_category_path(child_2) %></strong>
+                                                        <% if child_2.is_main_menu == true %>
+                                                            <br>
+                                                            <span class="label bg-teal-600">Đang hiển thị thanh menu</span><br>
+                                                        <% end %>
                                                     <% else %>
                                                         <strong>--------- <%= child_2.name.html_safe %></strong>
+                                                        <% if child_2.is_main_menu == true %>
+                                                            <br>
+                                                            <span class="label bg-teal-600">Đang hiển thị thanh menu</span><br>
+                                                        <% end %>
                                                     <% end %>
                                                 </td>
                                                 <td>
