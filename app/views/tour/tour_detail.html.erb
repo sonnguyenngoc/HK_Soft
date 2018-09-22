@@ -123,7 +123,7 @@
                                     <li><a href="#tab-control-4" data-toggle="tab">Lưu ý</a></li>
                                     <li><a href="#tab-control-5" data-toggle="tab">Đánh giá</a></li>
                                 </ul>
-                                <div class="tab-content size-content">
+                                <div class="tour-main-tab tab-content size-content">
                                     <div class="tab-pane fade in active" id="tab-control-1">
                                         <div class="text-justify">
                                             <% if !@tour.tab_content_1.nil? %>
@@ -161,7 +161,7 @@
                             </div>
                         </div>
                         <h2>THÔNG TIN CHI TIẾT</h2>
-                        <div class="size-content text-justify">
+                        <div class="tour-main-content size-content text-justify">
                             <% if @tour.tour_details.count == 0 %>
                             <%= @tour.content.html_safe %>
                             <% else %>

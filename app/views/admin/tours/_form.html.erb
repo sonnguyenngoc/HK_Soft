@@ -376,12 +376,20 @@
             <div class="tab-pane has-padding" id="control-tab6">
                 <% count = 1 %>
                 <%= f.fields_for :tour_highlights do |ff| %>
+                    <% g = @tour.tour_highlights[count-1] %>
+                    <%= ff.hidden_field :id %>
                     <span class="label bg-info">Điểm nổi bật <%= count %></span>
                     <div class="form-group">
                         <label class="col-lg-2 control-label" >Thông tin:</label>
-                        <div class="col-lg-10">
+                        <div class="col-lg-8">
                             <%= ff.text_field :title, class: "form-control" %>
                         </div>
+                        <% if g.title? %>
+                        <div class="col-lg-2 padding-bottom">
+                            <%= ff.check_box :_destroy %>
+                            <%= ff.label :_destroy, 'Remove' %>
+                        </div>
+                        <% end %>
                     </div>
                     <hr/><% count = count + 1 %>
                 <% end %>

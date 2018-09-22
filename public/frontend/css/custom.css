@@ -444,3 +444,43 @@ a.custom_file_tour:hover {
 .hotel-list {
     margin-top: 0px;
 }
+#tour-details .intro2 {
+    padding: 0;
+}
+.border-box {
+    border: 0;
+}
+/* Tour Content */
+.tour-main-content, .tour-main-tab {
+    font-size: 13pt;
+    line-height: 1.8;
+}
+.tour-main-content h1 {
+    font-size: 28px;
+}
+.tour-main-content h2 {
+    font-size: 26px;
+}
+.tour-main-content h3 {
+    font-size: 24px;
+}
+.tour-main-content h4 {
+    font-size: 22px;
+}
+.tour-main-content h5 {
+    font-size: 20px;
+}
+.tour-main-content h1 {
+    font-size: 18px;
+}
+.tour-main-content p {
+    font-size: 13pt;
+}
+.tour-main-content a {
+    color: #01b7f2;
+    font-weight: 600;
+}
+.tour-main-content a:hover {
+    color: #ff0000;
+    opacity: 0.8;
+}
