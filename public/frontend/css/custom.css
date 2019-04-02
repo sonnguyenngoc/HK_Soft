@@ -3,13 +3,13 @@
  * Author:  http://themeforest.net/user/soaptheme 
  */
 body {
-    font: 75%/150% "Open Sans",Arial,Helvetica,sans-serif;
+    font-family: "Open Sans",Helvetica,Arial,sans-serif;
 }
 #header .logo {
-    margin: 10px 0 5px 0;
+    margin: 5px 0 5px 0;
 }
 #main-menu ul.menu, .chaser ul.menu {
-    margin: 15px 0;
+    margin: 20px 0;
     margin-right: 20px;
 }
 #footer .footer-wrapper {
@@ -17,9 +17,6 @@ body {
 }
 #footer .bottom .copyright, #footer .bottom #back-to-top {
     margin-top: 45px;
-}
-#footer .bottom .container {
-    margin-bottom: 10px;
 }
 .selector span.custom-select:before {
     background: #01b7f2;
@@ -220,7 +217,7 @@ a.button {
     height: auto;
 }
 #footer .bottom .container {
-    margin-bottom: 30px !important;
+    margin-bottom: 10px !important;
 }
 .modal-body {
     padding: 0;
@@ -268,6 +265,16 @@ a.button {
     }
     #footer .bottom .copyright, #footer .bottom #back-to-top {
         margin-top: 28px;
+    }    
+}
+@media (max-width: 1200px) {
+    #header .logo a {
+        background-size: auto 60px;
+    }
+}
+@media (max-width: 991px) {
+    #header .logo a {
+        background-size: auto 30px;
     }
 }
 .chaser {
@@ -347,6 +354,9 @@ input.input-text, textarea, span.custom-select {
 }
 #main-menu ul.menu>li>a, .chaser ul.menu>li>a {
     letter-spacing: normal;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
 }
 h4 {
     font-size: 16px;
@@ -365,7 +375,8 @@ h4 {
     font-size: 14px;
 }
 #footer .discover li {
-    font-size: 13px;
+    font-size: 15px;
+    line-height: 2.3;
 }
 #footer.style3 .social-icons li a {
     background: #4267b2;
@@ -483,4 +494,32 @@ a.custom_file_tour:hover {
 .tour-main-content a:hover {
     color: #ff0000;
     opacity: 0.8;
+}
+#footer.style3 .travel-news .s-title {
+    text-transform: uppercase;
+}
+#footer.style3 .travel-news .s-title a {
+    line-height: 18px;
+}
+#footer .travel-news li {
+    margin-bottom: 15px;
+}
+#footer .footer-wrapper p {
+    font-size: 15px;
+    line-height: 1.8;
+}
+.contact-details .contact-email {
+    padding: 0 24px 0 0;
+}
+address {
+    margin-bottom: 10px;
+}
+.toggle-container .panel h4.panel-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+.toggle-container .panel.style1.arrow-right .panel-content {
+    font-family: font-family: "Open Sans",Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
 }

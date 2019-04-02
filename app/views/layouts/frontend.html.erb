@@ -43,16 +43,18 @@
     
         <!-- Updated Styles -->
         <%= stylesheet_link_tag "/frontend/css/updates.css" %>
-    
+
+        <!-- Responsive Styles -->
+        <%= stylesheet_link_tag "/frontend/css/responsive.css" %>
+        
         <!-- Custom Styles -->
-        <%= stylesheet_link_tag "/frontend/css/custom.css?v=1.9" %>
+        <%= stylesheet_link_tag "/frontend/css/custom.css?v=3.0" %>
         
         <% if params[:controller] == "tour" && params[:action] == "tour_pricing" %>
             <%= stylesheet_link_tag "/frontend/css/custom_table.css" %>
         <% end %>
-    
-        <!-- Responsive Styles -->
-        <%= stylesheet_link_tag "/frontend/css/responsive.css" %>
+        
+        <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Roboto:400,500,700,900" %>
     
         <!-- CSS for IE -->
         <!--[if lte IE 9]>
